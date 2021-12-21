@@ -1,0 +1,1948 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>oomph-lib: oomph::SolidNode Class Reference</title>
+<link rel="apple-touch-icon" sizes="57x57" href="../../figures/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="../../figures/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../../figures/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../../figures/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../../figures/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../../figures/apple-touch-icon-120x120.png">
+<link rel="icon" type="image/png" href="../../figures/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../figures/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../figures/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../figures/manifest.json">
+<link rel="mask-icon" href="../../figures/safari-pinned-tab.svg" color="#008000">
+<link rel="shortcut icon" href="../../figures/favicon.ico">
+<meta name="msapplication-TileColor" content="#00a300">
+<meta name="msapplication-config" content="../../figures/browserconfig.xml">
+<meta name="theme-color" content="#008000">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css">
+<!-- Doxygen css-->
+<!-- <link rel="stylesheet" type="text/css" href="doxygen.css"> -->
+<!-- Bootstrap -->
+<link href="../../css/bootstrap.css" rel="stylesheet">
+<!-- oomph-lib specific overrides -->
+<link rel="stylesheet" type="text/css" href="../../css/oomph_header.css">
+</head>
+<body>
+<nav class="navbar navbar-default">
+<div class="container">
+<div class="container-fluid">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="../../html/index.html"><img alt="oomph-lib" src="../../figures/oomph_logo.png"></a>
+  </div>
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">          
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li class="dropdown-header">Big picture</li>
+          <li><a href="../../../doc/intro/html/index.html">The finite element method</a></li>
+          <li><a href="../../../doc/the_data_structure/html/index.html">The data structure</a></li>
+          <li><a href="../../../doc/quick_guide/html/index.html">Not-so-quick guide</a></li>
+          <li><a href="../../../doc/optimisation/html/index.html">Optimisation</a></li>
+          <li><a href="../../../doc/order_of_action_functions/html/index.html">Order of action functions</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Example codes and tutorials</li>
+          <li><a href="../../../doc/example_code_list/html/index.html">List of example codes and tutorials</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#meshes">Meshing</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#solvers">Solvers</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#parallel">MPI parallel processing</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#visualisation">Post-processing/visualisation</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Other</li>
+          <li><a href="../../../doc/change_log/html/index.html">Change log</a></li>
+          <li><a href="../../../doc/creating_doc/html/index.html">Creating documentation</a></li>
+          <li><a href="../../../doc/coding_conventions/html/index.html">Coding conventions</a></li>
+          <li><a href="../../../doc/index/html/index.html">Index</a></li>
+          <li><a href="../../../doc/FAQ/html/index.html">FAQ</a></li>
+        </ul>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Installation<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../../../doc/the_distribution/html/index.html">Installation guide</a></li>
+            <li><a href="../../../doc/copyright/html/index.html">Copyright</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../../../doc/people/html/index.html">People</a></li>            
+            <li><a href="../../../doc/contact/html/index.html">Contact/Get involved</a></li>
+            <li><a href="../../../doc/publications/html/index.html">Publications</a></li>
+            <li><a href="../../../doc/acknowledgements/html/index.html">Acknowledgements</a></li>
+            <li><a href="../../../doc/picture_show/index.html">Picture show</a></li>
+          </ul>
+        </li>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right navbar-search">
+      <form class="navbar-form" role="search" action="../../../doc/search_results/html/index.html">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search" name="q">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Go</button>
+          </span>
+        </div><!-- /input-group -->
+       <!--<div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>-->
+      </form>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
+</div>
+</nav>
+<!-- Generated by Doxygen 1.9.2 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',false,false,'search.php','Search');
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceoomph.html">oomph</a></li><li class="navelem"><a class="el" href="classoomph_1_1SolidNode.html">SolidNode</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="classoomph_1_1SolidNode-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">oomph::SolidNode Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>A Class for nodes that deform elastically (i.e. position is an unknown in the problem). The idea is that the Eulerian positions are stored in a <a class="el" href="classoomph_1_1Data.html" title="A class that represents a collection of data; each Data object may contain many different individual ...">Data</a> object and the Lagrangian coordinates are stored in addition. The pointer that addresses the Eulerian positions is set to the pointer to Value in the <a class="el" href="classoomph_1_1Data.html" title="A class that represents a collection of data; each Data object may contain many different individual ...">Data</a> object. Hence, <a class="el" href="classoomph_1_1SolidNode.html" title="A Class for nodes that deform elastically (i.e. position is an unknown in the problem)....">SolidNode</a> uses knowledge of the internal structure of <a class="el" href="classoomph_1_1Data.html" title="A class that represents a collection of data; each Data object may contain many different individual ...">Data</a> and must be a friend of the <a class="el" href="classoomph_1_1Data.html" title="A class that represents a collection of data; each Data object may contain many different individual ...">Data</a> class. In order to allow a mesh to deform via an elastic-style equation in deforming-domain problems, the positions are stored separately from the values, so that elastic problems may be combined with any other type of problem.  
+ <a href="classoomph_1_1SolidNode.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="nodes_8h_source.html">nodes.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for oomph::SolidNode:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+ <div class="center">
+  <img src="classoomph_1_1SolidNode.png" alt=""/>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a7f6839c0a4abd087be6a68601b558da2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#a7f6839c0a4abd087be6a68601b558da2">SolidNode</a> ()</td></tr>
+<tr class="memdesc:a7f6839c0a4abd087be6a68601b558da2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default Constructor.  <a href="classoomph_1_1SolidNode.html#a7f6839c0a4abd087be6a68601b558da2">More...</a><br /></td></tr>
+<tr class="separator:a7f6839c0a4abd087be6a68601b558da2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8f4ed97c7124e7e55f1089bab99b9d7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#ad8f4ed97c7124e7e55f1089bab99b9d7">SolidNode</a> (const unsigned &amp;n_lagrangian, const unsigned &amp;n_lagrangian_type, const unsigned &amp;n_dim, const unsigned &amp;n_position_type, const unsigned &amp;initial_n_value)</td></tr>
+<tr class="memdesc:ad8f4ed97c7124e7e55f1089bab99b9d7"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classoomph_1_1Steady.html" title="////////////////////////////////////////////////////////////////////// //////////////////////////////...">Steady</a> constructor. The node has n_lagrangian Lagrangian coordinates of n_lagrangian_type types (1 for Lagrange elements, 2 for 1D Hermite etc.). The Eulerian dimension of the Node is n_dim and we have n_position_type (generalised) Eulerian coordinates. There are initial_n_value values stored at this node.  <a href="classoomph_1_1SolidNode.html#ad8f4ed97c7124e7e55f1089bab99b9d7">More...</a><br /></td></tr>
+<tr class="separator:ad8f4ed97c7124e7e55f1089bab99b9d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a439c1ce56488d9fdc9c9511e1df9152d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#a439c1ce56488d9fdc9c9511e1df9152d">SolidNode</a> (<a class="el" href="classoomph_1_1TimeStepper.html">TimeStepper</a> *const &amp;time_stepper_pt, const unsigned &amp;n_lagrangian, const unsigned &amp;n_lagrangian_type, const unsigned &amp;n_dim, const unsigned &amp;Nposition_type, const unsigned &amp;initial_n_value)</td></tr>
+<tr class="memdesc:a439c1ce56488d9fdc9c9511e1df9152d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unsteady constructor. Allocates storage for initial_n_value nodal values with history values as required by timestepper. The node has n_lagrangian Lagrangian coordinates of n_lagrangian_type types (1 for Lagrange elements, 2 for 1D Hermite etc.)/ The Eulerian dimension of the Node is n_dim and we have n_position_type generalised Eulerian coordinates.  <a href="classoomph_1_1SolidNode.html#a439c1ce56488d9fdc9c9511e1df9152d">More...</a><br /></td></tr>
+<tr class="separator:a439c1ce56488d9fdc9c9511e1df9152d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8dd2dcdf8f2585a30da22e391fcb7888"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#a8dd2dcdf8f2585a30da22e391fcb7888">~SolidNode</a> ()</td></tr>
+<tr class="memdesc:a8dd2dcdf8f2585a30da22e391fcb7888"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor that cleans up the additional memory allocated in SolidNodes.  <a href="classoomph_1_1SolidNode.html#a8dd2dcdf8f2585a30da22e391fcb7888">More...</a><br /></td></tr>
+<tr class="separator:a8dd2dcdf8f2585a30da22e391fcb7888"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fa6a0606a6b7927a403cdb1523674ca"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#a4fa6a0606a6b7927a403cdb1523674ca">SolidNode</a> (const <a class="el" href="classoomph_1_1SolidNode.html">SolidNode</a> &amp;solid_node)=delete</td></tr>
+<tr class="memdesc:a4fa6a0606a6b7927a403cdb1523674ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Broken copy constructor.  <a href="classoomph_1_1SolidNode.html#a4fa6a0606a6b7927a403cdb1523674ca">More...</a><br /></td></tr>
+<tr class="separator:a4fa6a0606a6b7927a403cdb1523674ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff78fee3d530bc39c14e231b261219ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#aff78fee3d530bc39c14e231b261219ea">operator=</a> (const <a class="el" href="classoomph_1_1SolidNode.html">SolidNode</a> &amp;)=delete</td></tr>
+<tr class="memdesc:aff78fee3d530bc39c14e231b261219ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Broken assignment operator.  <a href="classoomph_1_1SolidNode.html#aff78fee3d530bc39c14e231b261219ea">More...</a><br /></td></tr>
+<tr class="separator:aff78fee3d530bc39c14e231b261219ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4dfa5355b84b58745b0c6a3fef60112"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#ae4dfa5355b84b58745b0c6a3fef60112">copy</a> (<a class="el" href="classoomph_1_1SolidNode.html">SolidNode</a> *orig_node_pt)</td></tr>
+<tr class="memdesc:ae4dfa5355b84b58745b0c6a3fef60112"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy nodal positions and associated data from specified node object.  <a href="classoomph_1_1SolidNode.html#ae4dfa5355b84b58745b0c6a3fef60112">More...</a><br /></td></tr>
+<tr class="separator:ae4dfa5355b84b58745b0c6a3fef60112"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad56eb7d55fcd10b3aaa34c5b4ab9f6a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#aad56eb7d55fcd10b3aaa34c5b4ab9f6a">dump</a> (std::ostream &amp;dump_file) const</td></tr>
+<tr class="memdesc:aad56eb7d55fcd10b3aaa34c5b4ab9f6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dump nodal positions (variable and fixed) and associated data to file for restart.  <a href="classoomph_1_1SolidNode.html#aad56eb7d55fcd10b3aaa34c5b4ab9f6a">More...</a><br /></td></tr>
+<tr class="separator:aad56eb7d55fcd10b3aaa34c5b4ab9f6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4614b9f9c2222cb40cb004f85a66e57"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#ac4614b9f9c2222cb40cb004f85a66e57">read</a> (std::ifstream &amp;restart_file)</td></tr>
+<tr class="memdesc:ac4614b9f9c2222cb40cb004f85a66e57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read nodal positions (variable and fixed) and associated data from file for restart.  <a href="classoomph_1_1SolidNode.html#ac4614b9f9c2222cb40cb004f85a66e57">More...</a><br /></td></tr>
+<tr class="separator:ac4614b9f9c2222cb40cb004f85a66e57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2fd2ecf8163f4576d49f08b25280a4d"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classoomph_1_1Data.html">Data</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#aa2fd2ecf8163f4576d49f08b25280a4d">variable_position</a> () const</td></tr>
+<tr class="memdesc:aa2fd2ecf8163f4576d49f08b25280a4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the variable_position data (const version)  <a href="classoomph_1_1SolidNode.html#aa2fd2ecf8163f4576d49f08b25280a4d">More...</a><br /></td></tr>
+<tr class="separator:aa2fd2ecf8163f4576d49f08b25280a4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22078726936f5bf3cf9e4328b3852a4a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1Data.html">Data</a> *const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#a22078726936f5bf3cf9e4328b3852a4a">variable_position_pt</a> () const</td></tr>
+<tr class="memdesc:a22078726936f5bf3cf9e4328b3852a4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to variable_position data (const version)  <a href="classoomph_1_1SolidNode.html#a22078726936f5bf3cf9e4328b3852a4a">More...</a><br /></td></tr>
+<tr class="separator:a22078726936f5bf3cf9e4328b3852a4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd91751e0695df391ecd0e8a9249eb4f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#abd91751e0695df391ecd0e8a9249eb4f">set_external_variable_position_pt</a> (<a class="el" href="classoomph_1_1Data.html">Data</a> *const &amp;data_pt)</td></tr>
+<tr class="memdesc:abd91751e0695df391ecd0e8a9249eb4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the variable position data from an external data object.  <a href="classoomph_1_1SolidNode.html#abd91751e0695df391ecd0e8a9249eb4f">More...</a><br /></td></tr>
+<tr class="separator:abd91751e0695df391ecd0e8a9249eb4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12b206264401d5b2ff6aefff386bdca4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#a12b206264401d5b2ff6aefff386bdca4">set_position_time_stepper</a> (<a class="el" href="classoomph_1_1TimeStepper.html">TimeStepper</a> *const &amp;position_time_stepper_pt, const bool &amp;preserve_existing_data)</td></tr>
+<tr class="memdesc:a12b206264401d5b2ff6aefff386bdca4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a new position timestepper be resizing the appropriate storage Overloaded from the basic implementation to take into account the fact that position is now <a class="el" href="classoomph_1_1Data.html" title="A class that represents a collection of data; each Data object may contain many different individual ...">Data</a>.  <a href="classoomph_1_1SolidNode.html#a12b206264401d5b2ff6aefff386bdca4">More...</a><br /></td></tr>
+<tr class="separator:a12b206264401d5b2ff6aefff386bdca4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33be0ea0fc6c0575d20f303b19a7d4b5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#a33be0ea0fc6c0575d20f303b19a7d4b5">does_pointer_correspond_to_position_data</a> (double *const &amp;parameter_pt)</td></tr>
+<tr class="memdesc:a33be0ea0fc6c0575d20f303b19a7d4b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overload the check whether the pointer parameter_pt addresses position data values.  <a href="classoomph_1_1SolidNode.html#a33be0ea0fc6c0575d20f303b19a7d4b5">More...</a><br /></td></tr>
+<tr class="separator:a33be0ea0fc6c0575d20f303b19a7d4b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8d9a8e77ccc142be77767b33c09532a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#aa8d9a8e77ccc142be77767b33c09532a">position_is_a_copy</a> () const</td></tr>
+<tr class="memdesc:aa8d9a8e77ccc142be77767b33c09532a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return whether any position component has been copied.  <a href="classoomph_1_1SolidNode.html#aa8d9a8e77ccc142be77767b33c09532a">More...</a><br /></td></tr>
+<tr class="separator:aa8d9a8e77ccc142be77767b33c09532a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa20d88cc797c6635bfd634376c177d87"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#aa20d88cc797c6635bfd634376c177d87">position_is_a_copy</a> (const unsigned &amp;<a class="el" href="cfortran_8h.html#adb50e893b86b3e55e751a42eab3cba82">i</a>) const</td></tr>
+<tr class="memdesc:aa20d88cc797c6635bfd634376c177d87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return whether the position coordinate i has been copied.  <a href="classoomph_1_1SolidNode.html#aa20d88cc797c6635bfd634376c177d87">More...</a><br /></td></tr>
+<tr class="separator:aa20d88cc797c6635bfd634376c177d87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38c52c20fe9d4783ae93a6f1fda21f24"><td class="memItemLeft" align="right" valign="top">const long &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#a38c52c20fe9d4783ae93a6f1fda21f24">position_eqn_number</a> (const unsigned &amp;k, const unsigned &amp;<a class="el" href="cfortran_8h.html#adb50e893b86b3e55e751a42eab3cba82">i</a>) const</td></tr>
+<tr class="memdesc:a38c52c20fe9d4783ae93a6f1fda21f24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the equation number for generalised Eulerian coordinate: type of coordinate: k, coordinate direction: i.  <a href="classoomph_1_1SolidNode.html#a38c52c20fe9d4783ae93a6f1fda21f24">More...</a><br /></td></tr>
+<tr class="separator:a38c52c20fe9d4783ae93a6f1fda21f24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd8204156be2ff0fa40834ca35daf243"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#afd8204156be2ff0fa40834ca35daf243">position_is_pinned</a> (const unsigned &amp;<a class="el" href="cfortran_8h.html#adb50e893b86b3e55e751a42eab3cba82">i</a>)</td></tr>
+<tr class="memdesc:afd8204156be2ff0fa40834ca35daf243"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test whether the i-th coordinate is pinned, 0: false; 1: true.  <a href="classoomph_1_1SolidNode.html#afd8204156be2ff0fa40834ca35daf243">More...</a><br /></td></tr>
+<tr class="separator:afd8204156be2ff0fa40834ca35daf243"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7254744691474f94df8ae3f4b75da38"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#af7254744691474f94df8ae3f4b75da38">position_is_pinned</a> (const unsigned &amp;k, const unsigned &amp;<a class="el" href="cfortran_8h.html#adb50e893b86b3e55e751a42eab3cba82">i</a>)</td></tr>
+<tr class="memdesc:af7254744691474f94df8ae3f4b75da38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test whether the k-th type of the i-th coordinate is pinned 0: false; 1: true.  <a href="classoomph_1_1SolidNode.html#af7254744691474f94df8ae3f4b75da38">More...</a><br /></td></tr>
+<tr class="separator:af7254744691474f94df8ae3f4b75da38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa283a553b0141e859dd7b4f80bb88e6d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#aa283a553b0141e859dd7b4f80bb88e6d">pin_position</a> (const unsigned &amp;<a class="el" href="cfortran_8h.html#adb50e893b86b3e55e751a42eab3cba82">i</a>)</td></tr>
+<tr class="memdesc:aa283a553b0141e859dd7b4f80bb88e6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pin the nodal position.  <a href="classoomph_1_1SolidNode.html#aa283a553b0141e859dd7b4f80bb88e6d">More...</a><br /></td></tr>
+<tr class="separator:aa283a553b0141e859dd7b4f80bb88e6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4fefc1c7f3bb6f17ab39ce934bddaf6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#ad4fefc1c7f3bb6f17ab39ce934bddaf6">pin_position</a> (const unsigned &amp;k, const unsigned &amp;<a class="el" href="cfortran_8h.html#adb50e893b86b3e55e751a42eab3cba82">i</a>)</td></tr>
+<tr class="memdesc:ad4fefc1c7f3bb6f17ab39ce934bddaf6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pin the generalised nodal position. &lsquo;Type&rsquo;: k; Coordinate direction: i.  <a href="classoomph_1_1SolidNode.html#ad4fefc1c7f3bb6f17ab39ce934bddaf6">More...</a><br /></td></tr>
+<tr class="separator:ad4fefc1c7f3bb6f17ab39ce934bddaf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab43707b1893ca89e684609f045ea8101"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#ab43707b1893ca89e684609f045ea8101">unpin_position</a> (const unsigned &amp;<a class="el" href="cfortran_8h.html#adb50e893b86b3e55e751a42eab3cba82">i</a>)</td></tr>
+<tr class="memdesc:ab43707b1893ca89e684609f045ea8101"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpin the nodal position.  <a href="classoomph_1_1SolidNode.html#ab43707b1893ca89e684609f045ea8101">More...</a><br /></td></tr>
+<tr class="separator:ab43707b1893ca89e684609f045ea8101"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c9577dbae23ec836abf47bf49ea745f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#a3c9577dbae23ec836abf47bf49ea745f">unpin_position</a> (const unsigned &amp;k, const unsigned &amp;<a class="el" href="cfortran_8h.html#adb50e893b86b3e55e751a42eab3cba82">i</a>)</td></tr>
+<tr class="memdesc:a3c9577dbae23ec836abf47bf49ea745f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpin the generalised nodal position. &lsquo;Type&rsquo;: k; Coordinate direction: i.  <a href="classoomph_1_1SolidNode.html#a3c9577dbae23ec836abf47bf49ea745f">More...</a><br /></td></tr>
+<tr class="separator:a3c9577dbae23ec836abf47bf49ea745f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab051ba65aed07fe75f6cfd9b32de62cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#ab051ba65aed07fe75f6cfd9b32de62cc">pin_all</a> ()</td></tr>
+<tr class="memdesc:ab051ba65aed07fe75f6cfd9b32de62cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pin all the stored variables (Overloaded)  <a href="classoomph_1_1SolidNode.html#ab051ba65aed07fe75f6cfd9b32de62cc">More...</a><br /></td></tr>
+<tr class="separator:ab051ba65aed07fe75f6cfd9b32de62cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0df372aae692d679cfceeb46fb5783a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#a0df372aae692d679cfceeb46fb5783a9">unpin_all</a> ()</td></tr>
+<tr class="memdesc:a0df372aae692d679cfceeb46fb5783a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpin all the stored variables (Overloaded)  <a href="classoomph_1_1SolidNode.html#a0df372aae692d679cfceeb46fb5783a9">More...</a><br /></td></tr>
+<tr class="separator:a0df372aae692d679cfceeb46fb5783a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08b51c4154b8c399fa021d948ad36b98"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#a08b51c4154b8c399fa021d948ad36b98">constrain_positions</a> ()</td></tr>
+<tr class="memdesc:a08b51c4154b8c399fa021d948ad36b98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overload the constrain positions function to constrain all position values.  <a href="classoomph_1_1SolidNode.html#a08b51c4154b8c399fa021d948ad36b98">More...</a><br /></td></tr>
+<tr class="separator:a08b51c4154b8c399fa021d948ad36b98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1959abfbb37f775a4d6808ceb9afd421"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#a1959abfbb37f775a4d6808ceb9afd421">unconstrain_positions</a> ()</td></tr>
+<tr class="memdesc:a1959abfbb37f775a4d6808ceb9afd421"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overload the unconstrain positions function to unconstrain all position values.  <a href="classoomph_1_1SolidNode.html#a1959abfbb37f775a4d6808ceb9afd421">More...</a><br /></td></tr>
+<tr class="separator:a1959abfbb37f775a4d6808ceb9afd421"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af98a0623f9e41a10f48112b9ff7b38a0"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#af98a0623f9e41a10f48112b9ff7b38a0">nlagrangian</a> () const</td></tr>
+<tr class="memdesc:af98a0623f9e41a10f48112b9ff7b38a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return number of lagrangian coordinates.  <a href="classoomph_1_1SolidNode.html#af98a0623f9e41a10f48112b9ff7b38a0">More...</a><br /></td></tr>
+<tr class="separator:af98a0623f9e41a10f48112b9ff7b38a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c1e52e4b6dde53b98228d621f7fcb0a"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#a3c1e52e4b6dde53b98228d621f7fcb0a">nlagrangian_type</a> () const</td></tr>
+<tr class="memdesc:a3c1e52e4b6dde53b98228d621f7fcb0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of types of Lagrangian coordinates used to interpolate the Lagrangian coordinates within the element.  <a href="classoomph_1_1SolidNode.html#a3c1e52e4b6dde53b98228d621f7fcb0a">More...</a><br /></td></tr>
+<tr class="separator:a3c1e52e4b6dde53b98228d621f7fcb0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6780c66ed3f5db5cbb8fe2c0a476974"><td class="memItemLeft" align="right" valign="top">double &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#aa6780c66ed3f5db5cbb8fe2c0a476974">xi</a> (const unsigned &amp;<a class="el" href="cfortran_8h.html#adb50e893b86b3e55e751a42eab3cba82">i</a>)</td></tr>
+<tr class="memdesc:aa6780c66ed3f5db5cbb8fe2c0a476974"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference to i-th Lagrangian position.  <a href="classoomph_1_1SolidNode.html#aa6780c66ed3f5db5cbb8fe2c0a476974">More...</a><br /></td></tr>
+<tr class="separator:aa6780c66ed3f5db5cbb8fe2c0a476974"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad53bcd19edbfefd653a53aaf6ce53183"><td class="memItemLeft" align="right" valign="top">const double &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#ad53bcd19edbfefd653a53aaf6ce53183">xi</a> (const unsigned &amp;<a class="el" href="cfortran_8h.html#adb50e893b86b3e55e751a42eab3cba82">i</a>) const</td></tr>
+<tr class="memdesc:ad53bcd19edbfefd653a53aaf6ce53183"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference to i-th Lagrangian position (const version)  <a href="classoomph_1_1SolidNode.html#ad53bcd19edbfefd653a53aaf6ce53183">More...</a><br /></td></tr>
+<tr class="separator:ad53bcd19edbfefd653a53aaf6ce53183"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada699bd006497ddeabb0bc0750d99965"><td class="memItemLeft" align="right" valign="top">double &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#ada699bd006497ddeabb0bc0750d99965">xi_gen</a> (const unsigned &amp;k, const unsigned &amp;<a class="el" href="cfortran_8h.html#adb50e893b86b3e55e751a42eab3cba82">i</a>)</td></tr>
+<tr class="memdesc:ada699bd006497ddeabb0bc0750d99965"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference to the generalised Lagrangian position. &lsquo;Type&rsquo;: k; 'Coordinate direction: i.  <a href="classoomph_1_1SolidNode.html#ada699bd006497ddeabb0bc0750d99965">More...</a><br /></td></tr>
+<tr class="separator:ada699bd006497ddeabb0bc0750d99965"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fc3dd01eab8b60a493fa34e18fad6be"><td class="memItemLeft" align="right" valign="top">const double &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#a6fc3dd01eab8b60a493fa34e18fad6be">xi_gen</a> (const unsigned &amp;k, const unsigned &amp;<a class="el" href="cfortran_8h.html#adb50e893b86b3e55e751a42eab3cba82">i</a>) const</td></tr>
+<tr class="memdesc:a6fc3dd01eab8b60a493fa34e18fad6be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference to the generalised Lagrangian position. &lsquo;Type&rsquo;: k; 'Coordinate direction: i. (const version.  <a href="classoomph_1_1SolidNode.html#a6fc3dd01eab8b60a493fa34e18fad6be">More...</a><br /></td></tr>
+<tr class="separator:a6fc3dd01eab8b60a493fa34e18fad6be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a790277999eb7d8ff0c3f2398d8aaedb0"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#a790277999eb7d8ff0c3f2398d8aaedb0">lagrangian_position</a> (const unsigned &amp;<a class="el" href="cfortran_8h.html#adb50e893b86b3e55e751a42eab3cba82">i</a>) const</td></tr>
+<tr class="memdesc:a790277999eb7d8ff0c3f2398d8aaedb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return lagrangian coordinate either directly or via hanging node representation.  <a href="classoomph_1_1SolidNode.html#a790277999eb7d8ff0c3f2398d8aaedb0">More...</a><br /></td></tr>
+<tr class="separator:a790277999eb7d8ff0c3f2398d8aaedb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d001ac17bfbfdb96209d723577dd598"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#a7d001ac17bfbfdb96209d723577dd598">lagrangian_position_gen</a> (const unsigned &amp;k, const unsigned &amp;<a class="el" href="cfortran_8h.html#adb50e893b86b3e55e751a42eab3cba82">i</a>) const</td></tr>
+<tr class="memdesc:a7d001ac17bfbfdb96209d723577dd598"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return generalised lagrangian coordinate either directly or via hanging node representation.  <a href="classoomph_1_1SolidNode.html#a7d001ac17bfbfdb96209d723577dd598">More...</a><br /></td></tr>
+<tr class="separator:a7d001ac17bfbfdb96209d723577dd598"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0f41fc05338192c3e9d4492c516110d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#ae0f41fc05338192c3e9d4492c516110d">assign_eqn_numbers</a> (unsigned long &amp;global_number, <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double * &gt; &amp;dof_pt)</td></tr>
+<tr class="memdesc:ae0f41fc05338192c3e9d4492c516110d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overload the assign equation numbers routine.  <a href="classoomph_1_1SolidNode.html#ae0f41fc05338192c3e9d4492c516110d">More...</a><br /></td></tr>
+<tr class="separator:ae0f41fc05338192c3e9d4492c516110d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93ba15b4ab3ccd1d0030179878df4330"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#a93ba15b4ab3ccd1d0030179878df4330">describe_dofs</a> (std::ostream &amp;out, const std::string &amp;current_string) const</td></tr>
+<tr class="memdesc:a93ba15b4ab3ccd1d0030179878df4330"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to describe the dofs of the Node. The ostream specifies the output stream to which the description is written; the string stores the currently assembled output that is ultimately written to the output stream by Data::describe_dofs(...); it is typically built up incrementally as we descend through the call hierarchy of this function when called from Problem::describe_dofs(...)  <a href="classoomph_1_1SolidNode.html#a93ba15b4ab3ccd1d0030179878df4330">More...</a><br /></td></tr>
+<tr class="separator:a93ba15b4ab3ccd1d0030179878df4330"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f40df8654ff95575da7aaa7b31dca2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#a5f40df8654ff95575da7aaa7b31dca2e">add_value_pt_to_map</a> (std::map&lt; unsigned, double * &gt; &amp;map_of_value_pt)</td></tr>
+<tr class="memdesc:a5f40df8654ff95575da7aaa7b31dca2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overload the function add_values_to_map so that it also adds the variable position data.  <a href="classoomph_1_1SolidNode.html#a5f40df8654ff95575da7aaa7b31dca2e">More...</a><br /></td></tr>
+<tr class="separator:a5f40df8654ff95575da7aaa7b31dca2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20562ea5133c1150b6999a73badb63e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#a20562ea5133c1150b6999a73badb63e8">add_values_to_vector</a> (<a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;vector_of_values)</td></tr>
+<tr class="memdesc:a20562ea5133c1150b6999a73badb63e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add all data, position and time history values to the vector Overload to add the Lagrangian coordinates to the vector.  <a href="classoomph_1_1SolidNode.html#a20562ea5133c1150b6999a73badb63e8">More...</a><br /></td></tr>
+<tr class="separator:a20562ea5133c1150b6999a73badb63e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8884dfe9e2808883e90c7f2822151784"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#a8884dfe9e2808883e90c7f2822151784">read_values_from_vector</a> (const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;vector_of_values, unsigned &amp;index)</td></tr>
+<tr class="memdesc:a8884dfe9e2808883e90c7f2822151784"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read all data and time history values from the vector starting from index. On return the index will be set the value at the end of the data that has been read in Overload to add the position information and Lagrangian coordinates.  <a href="classoomph_1_1SolidNode.html#a8884dfe9e2808883e90c7f2822151784">More...</a><br /></td></tr>
+<tr class="separator:a8884dfe9e2808883e90c7f2822151784"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad875a778d7d3bc32a847d93f6698bce4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#ad875a778d7d3bc32a847d93f6698bce4">add_eqn_numbers_to_vector</a> (<a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; long &gt; &amp;vector_of_eqn_numbers)</td></tr>
+<tr class="memdesc:ad875a778d7d3bc32a847d93f6698bce4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add all equation numbers to the vector in the internal storage order. Overload to add equation numbers associated with the positional dofs.  <a href="classoomph_1_1SolidNode.html#ad875a778d7d3bc32a847d93f6698bce4">More...</a><br /></td></tr>
+<tr class="separator:ad875a778d7d3bc32a847d93f6698bce4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38bede9e51c7d6355969db2bc075f476"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#a38bede9e51c7d6355969db2bc075f476">read_eqn_numbers_from_vector</a> (const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; long &gt; &amp;vector_of_eqn_numbers, unsigned &amp;index)</td></tr>
+<tr class="memdesc:a38bede9e51c7d6355969db2bc075f476"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read all equation numbers from the vector starting from index. On return the index will be set to the value at the end of the data that has been read in Overload to include the equation numbrs associated with the positional dofs.  <a href="classoomph_1_1SolidNode.html#a38bede9e51c7d6355969db2bc075f476">More...</a><br /></td></tr>
+<tr class="separator:a38bede9e51c7d6355969db2bc075f476"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae66793af1a576edd29523ffb98b7225c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#ae66793af1a576edd29523ffb98b7225c">node_update</a> (const bool &amp;update_all_time_levels_for_new_node=false)</td></tr>
+<tr class="memdesc:ae66793af1a576edd29523ffb98b7225c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overload node update function: Since the position of SolidNodes is determined by unknowns, there's nothing to be done apart from performing the auxiliary node update function (if any)  <a href="classoomph_1_1SolidNode.html#ae66793af1a576edd29523ffb98b7225c">More...</a><br /></td></tr>
+<tr class="separator:ae66793af1a576edd29523ffb98b7225c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a155e729f069278a17a2828690ed67904"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#a155e729f069278a17a2828690ed67904">Nlagrangian</a></td></tr>
+<tr class="memdesc:a155e729f069278a17a2828690ed67904"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of Lagrangian coordinates of the node.  <a href="classoomph_1_1SolidNode.html#a155e729f069278a17a2828690ed67904">More...</a><br /></td></tr>
+<tr class="separator:a155e729f069278a17a2828690ed67904"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6676ab16593ad3d062ac8e29906d7786"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#a6676ab16593ad3d062ac8e29906d7786">Nlagrangian_type</a></td></tr>
+<tr class="memdesc:a6676ab16593ad3d062ac8e29906d7786"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of types of Lagrangian coordinates used to interpolate the Lagrangian coordinates within the element.  <a href="classoomph_1_1SolidNode.html#a6676ab16593ad3d062ac8e29906d7786">More...</a><br /></td></tr>
+<tr class="separator:a6676ab16593ad3d062ac8e29906d7786"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f3dce8a2802efc650d67cbf7e407a98"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1Data.html">Data</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#a5f3dce8a2802efc650d67cbf7e407a98">Variable_position_pt</a></td></tr>
+<tr class="memdesc:a5f3dce8a2802efc650d67cbf7e407a98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to data that will hold variable positions in elastic nodes.  <a href="classoomph_1_1SolidNode.html#a5f3dce8a2802efc650d67cbf7e407a98">More...</a><br /></td></tr>
+<tr class="separator:a5f3dce8a2802efc650d67cbf7e407a98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8ed3701effa80f70d817ee171559d1f"><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#ac8ed3701effa80f70d817ee171559d1f">Xi_position</a></td></tr>
+<tr class="memdesc:ac8ed3701effa80f70d817ee171559d1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Storage for the Lagrangian positions.  <a href="classoomph_1_1SolidNode.html#ac8ed3701effa80f70d817ee171559d1f">More...</a><br /></td></tr>
+<tr class="separator:ac8ed3701effa80f70d817ee171559d1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a0c5b916610af540ccc98a09584b8f34f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SolidNode.html#a0c5b916610af540ccc98a09584b8f34f">xi_gen_range_check</a> (const unsigned &amp;k, const unsigned &amp;<a class="el" href="cfortran_8h.html#adb50e893b86b3e55e751a42eab3cba82">i</a>) const</td></tr>
+<tr class="memdesc:a0c5b916610af540ccc98a09584b8f34f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Private function to check that the arguments to the position functions are in range.  <a href="classoomph_1_1SolidNode.html#a0c5b916610af540ccc98a09584b8f34f">More...</a><br /></td></tr>
+<tr class="separator:a0c5b916610af540ccc98a09584b8f34f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >A Class for nodes that deform elastically (i.e. position is an unknown in the problem). The idea is that the Eulerian positions are stored in a <a class="el" href="classoomph_1_1Data.html" title="A class that represents a collection of data; each Data object may contain many different individual ...">Data</a> object and the Lagrangian coordinates are stored in addition. The pointer that addresses the Eulerian positions is set to the pointer to Value in the <a class="el" href="classoomph_1_1Data.html" title="A class that represents a collection of data; each Data object may contain many different individual ...">Data</a> object. Hence, <a class="el" href="classoomph_1_1SolidNode.html" title="A Class for nodes that deform elastically (i.e. position is an unknown in the problem)....">SolidNode</a> uses knowledge of the internal structure of <a class="el" href="classoomph_1_1Data.html" title="A class that represents a collection of data; each Data object may contain many different individual ...">Data</a> and must be a friend of the <a class="el" href="classoomph_1_1Data.html" title="A class that represents a collection of data; each Data object may contain many different individual ...">Data</a> class. In order to allow a mesh to deform via an elastic-style equation in deforming-domain problems, the positions are stored separately from the values, so that elastic problems may be combined with any other type of problem. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8h_source.html#l01686">1686</a> of file <a class="el" href="nodes_8h_source.html">nodes.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a7f6839c0a4abd087be6a68601b558da2" name="a7f6839c0a4abd087be6a68601b558da2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f6839c0a4abd087be6a68601b558da2">&#9670;&nbsp;</a></span>SolidNode() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">oomph::SolidNode::SolidNode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default Constructor. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8h_source.html#l01709">1709</a> of file <a class="el" href="nodes_8h_source.html">nodes.h</a>.</p>
+
+</div>
+</div>
+<a id="ad8f4ed97c7124e7e55f1089bab99b9d7" name="ad8f4ed97c7124e7e55f1089bab99b9d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8f4ed97c7124e7e55f1089bab99b9d7">&#9670;&nbsp;</a></span>SolidNode() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">oomph::SolidNode::SolidNode </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n_lagrangian</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n_lagrangian_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n_dim</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n_position_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>initial_n_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classoomph_1_1Steady.html" title="////////////////////////////////////////////////////////////////////// //////////////////////////////...">Steady</a> constructor. The node has n_lagrangian Lagrangian coordinates of n_lagrangian_type types (1 for Lagrange elements, 2 for 1D Hermite etc.). The Eulerian dimension of the Node is n_dim and we have n_position_type (generalised) Eulerian coordinates. There are initial_n_value values stored at this node. </p>
+<p ><a class="el" href="classoomph_1_1Steady.html" title="////////////////////////////////////////////////////////////////////// //////////////////////////////...">Steady</a> constructor. The node has NLgrangian Lagrangian coordinates of n_lagrangian_type types (1 for Lagrange elements, 2 for 1D Hermite etc.). The Eulerian dimension of the Node is n_dim and we have n_position_type (generalised) Eulerian coordinates. There are initial_n_value values stored at this node and NAdditional_solid additional values associated with the solid equations are stored in a separate <a class="el" href="classoomph_1_1Data.html" title="A class that represents a collection of data; each Data object may contain many different individual ...">Data</a> object at the node. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8cc_source.html#l03348">3348</a> of file <a class="el" href="nodes_8cc_source.html">nodes.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="nodes_8h_source.html#l00112">oomph::Data::Value</a>, <a class="el" href="nodes_8h_source.html#l01702">Variable_position_pt</a>, and <a class="el" href="nodes_8h_source.html#l01705">Xi_position</a>.</p>
+
+</div>
+</div>
+<a id="a439c1ce56488d9fdc9c9511e1df9152d" name="a439c1ce56488d9fdc9c9511e1df9152d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a439c1ce56488d9fdc9c9511e1df9152d">&#9670;&nbsp;</a></span>SolidNode() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">oomph::SolidNode::SolidNode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1TimeStepper.html">TimeStepper</a> *const &amp;&#160;</td>
+          <td class="paramname"><em>time_stepper_pt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n_lagrangian</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n_lagrangian_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n_dim</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>Nposition_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>initial_n_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Unsteady constructor. Allocates storage for initial_n_value nodal values with history values as required by timestepper. The node has n_lagrangian Lagrangian coordinates of n_lagrangian_type types (1 for Lagrange elements, 2 for 1D Hermite etc.)/ The Eulerian dimension of the Node is n_dim and we have n_position_type generalised Eulerian coordinates. </p>
+<p >Unsteady constructor. Allocates storage for initial_n_value nodal values with history values as required by timestepper. The node has NLgrangian Lagrangian coordinates of n_lagrangian_type types (1 for Lagrange elements, 2 for 1D Hermite etc.)/ The Eulerian dimension of the Node is n_dim and we have n_position_type generalised Eulerian coordinates. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8cc_source.html#l03384">3384</a> of file <a class="el" href="nodes_8cc_source.html">nodes.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="nodes_8h_source.html#l00112">oomph::Data::Value</a>, <a class="el" href="nodes_8h_source.html#l01702">Variable_position_pt</a>, and <a class="el" href="nodes_8h_source.html#l01705">Xi_position</a>.</p>
+
+</div>
+</div>
+<a id="a8dd2dcdf8f2585a30da22e391fcb7888" name="a8dd2dcdf8f2585a30da22e391fcb7888"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8dd2dcdf8f2585a30da22e391fcb7888">&#9670;&nbsp;</a></span>~SolidNode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">oomph::SolidNode::~SolidNode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Destructor that cleans up the additional memory allocated in SolidNodes. </p>
+<p >Destructor to clean up the memory allocated for nodal positions and additional solid variables. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8cc_source.html#l03416">3416</a> of file <a class="el" href="nodes_8cc_source.html">nodes.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="nodes_8h_source.html#l01702">Variable_position_pt</a>, and <a class="el" href="nodes_8h_source.html#l01705">Xi_position</a>.</p>
+
+</div>
+</div>
+<a id="a4fa6a0606a6b7927a403cdb1523674ca" name="a4fa6a0606a6b7927a403cdb1523674ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fa6a0606a6b7927a403cdb1523674ca">&#9670;&nbsp;</a></span>SolidNode() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">oomph::SolidNode::SolidNode </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classoomph_1_1SolidNode.html">SolidNode</a> &amp;&#160;</td>
+          <td class="paramname"><em>solid_node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Broken copy constructor. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad875a778d7d3bc32a847d93f6698bce4" name="ad875a778d7d3bc32a847d93f6698bce4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad875a778d7d3bc32a847d93f6698bce4">&#9670;&nbsp;</a></span>add_eqn_numbers_to_vector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::SolidNode::add_eqn_numbers_to_vector </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; long &gt; &amp;&#160;</td>
+          <td class="paramname"><em>vector_of_eqn_numbers</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add all equation numbers to the vector in the internal storage order. Overload to add equation numbers associated with the positional dofs. </p>
+<p >Add equations numbers associated with the node position to the vector after the standard nodal equation numbers. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8cc_source.html#l03799">3799</a> of file <a class="el" href="nodes_8cc_source.html">nodes.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="nodes_8cc_source.html#l01236">oomph::Data::add_eqn_numbers_to_vector()</a>, and <a class="el" href="nodes_8h_source.html#l01702">Variable_position_pt</a>.</p>
+
+</div>
+</div>
+<a id="a5f40df8654ff95575da7aaa7b31dca2e" name="a5f40df8654ff95575da7aaa7b31dca2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f40df8654ff95575da7aaa7b31dca2e">&#9670;&nbsp;</a></span>add_value_pt_to_map()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::SolidNode::add_value_pt_to_map </td>
+          <td>(</td>
+          <td class="paramtype">std::map&lt; unsigned, double * &gt; &amp;&#160;</td>
+          <td class="paramname"><em>map_of_value_pt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Overload the function add_values_to_map so that it also adds the variable position data. </p>
+<p >Add pointers to all data values (including position data) to a map. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8cc_source.html#l03693">3693</a> of file <a class="el" href="nodes_8cc_source.html">nodes.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="nodes_8cc_source.html#l01089">oomph::Data::add_value_pt_to_map()</a>, and <a class="el" href="nodes_8h_source.html#l01702">Variable_position_pt</a>.</p>
+
+</div>
+</div>
+<a id="a20562ea5133c1150b6999a73badb63e8" name="a20562ea5133c1150b6999a73badb63e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20562ea5133c1150b6999a73badb63e8">&#9670;&nbsp;</a></span>add_values_to_vector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::SolidNode::add_values_to_vector </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>vector_of_values</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add all data, position and time history values to the vector Overload to add the Lagrangian coordinates to the vector. </p>
+<p >Add Lagrangian coordinates to the vector after positional data and "standard" data. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8cc_source.html#l03708">3708</a> of file <a class="el" href="nodes_8cc_source.html">nodes.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="nodes_8h_source.html#l01871">nlagrangian()</a>, <a class="el" href="nodes_8h_source.html#l01878">nlagrangian_type()</a>, and <a class="el" href="nodes_8h_source.html#l01705">Xi_position</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="triangle__mesh_8template_8cc_source.html#l18330">oomph::RefineableTriangleMesh&lt; ELEMENT &gt;::get_required_nodal_information_helper()</a>, and <a class="el" href="triangle__mesh_8template_8cc_source.html#l26810">oomph::RefineableTriangleMesh&lt; ELEMENT &gt;::get_required_nodal_information_load_balance_helper()</a>.</p>
+
+</div>
+</div>
+<a id="ae0f41fc05338192c3e9d4492c516110d" name="ae0f41fc05338192c3e9d4492c516110d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0f41fc05338192c3e9d4492c516110d">&#9670;&nbsp;</a></span>assign_eqn_numbers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::SolidNode::assign_eqn_numbers </td>
+          <td>(</td>
+          <td class="paramtype">unsigned long &amp;&#160;</td>
+          <td class="paramname"><em>global_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double * &gt; &amp;&#160;</td>
+          <td class="paramname"><em>dof_pt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Overload the assign equation numbers routine. </p>
+<p >Assign (global) equation number, for SolidNodes. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8cc_source.html#l03652">3652</a> of file <a class="el" href="nodes_8cc_source.html">nodes.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="nodes_8cc_source.html#l00896">oomph::Data::assign_eqn_numbers()</a>, and <a class="el" href="nodes_8h_source.html#l01702">Variable_position_pt</a>.</p>
+
+</div>
+</div>
+<a id="a08b51c4154b8c399fa021d948ad36b98" name="a08b51c4154b8c399fa021d948ad36b98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08b51c4154b8c399fa021d948ad36b98">&#9670;&nbsp;</a></span>constrain_positions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::SolidNode::constrain_positions </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Overload the constrain positions function to constrain all position values. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8h_source.html#l01858">1858</a> of file <a class="el" href="nodes_8h_source.html">nodes.h</a>.</p>
+
+<p class="reference">References <a class="el" href="nodes_8h_source.html#l00451">oomph::Data::constrain_all()</a>, and <a class="el" href="nodes_8h_source.html#l01702">Variable_position_pt</a>.</p>
+
+</div>
+</div>
+<a id="ae4dfa5355b84b58745b0c6a3fef60112" name="ae4dfa5355b84b58745b0c6a3fef60112"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4dfa5355b84b58745b0c6a3fef60112">&#9670;&nbsp;</a></span>copy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::SolidNode::copy </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1SolidNode.html">SolidNode</a> *&#160;</td>
+          <td class="paramname"><em>orig_node_pt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copy nodal positions and associated data from specified node object. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8cc_source.html#l03433">3433</a> of file <a class="el" href="nodes_8cc_source.html">nodes.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="nodes_8cc_source.html#l00601">oomph::Data::copy()</a>, <a class="el" href="nodes_8h_source.html#l01695">Nlagrangian</a>, <a class="el" href="nodes_8h_source.html#l01871">nlagrangian()</a>, <a class="el" href="nodes_8h_source.html#l01699">Nlagrangian_type</a>, <a class="el" href="nodes_8h_source.html#l01878">nlagrangian_type()</a>, <a class="el" href="nodes_8h_source.html#l01702">Variable_position_pt</a>, <a class="el" href="nodes_8h_source.html#l01766">variable_position_pt()</a>, and <a class="el" href="nodes_8h_source.html#l01705">Xi_position</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="mesh_8cc_source.html#l02590">oomph::Mesh::convert_to_boundary_node()</a>, and <a class="el" href="problem_8cc_source.html#l11860">oomph::Problem::copy()</a>.</p>
+
+</div>
+</div>
+<a id="a93ba15b4ab3ccd1d0030179878df4330" name="a93ba15b4ab3ccd1d0030179878df4330"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93ba15b4ab3ccd1d0030179878df4330">&#9670;&nbsp;</a></span>describe_dofs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::SolidNode::describe_dofs </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>current_string</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to describe the dofs of the Node. The ostream specifies the output stream to which the description is written; the string stores the currently assembled output that is ultimately written to the output stream by Data::describe_dofs(...); it is typically built up incrementally as we descend through the call hierarchy of this function when called from Problem::describe_dofs(...) </p>
+<p >Function to describe the dofs of the <a class="el" href="classoomph_1_1SolidNode.html" title="A Class for nodes that deform elastically (i.e. position is an unknown in the problem)....">SolidNode</a>. The ostream specifies the output stream to which the description is written; the string stores the currently assembled output that is ultimately written to the output stream by Data::describe_dofs(...); it is typically built up incrementally as we descend through the call hierarchy of this function when called from Problem::describe_dofs(...) </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8cc_source.html#l03671">3671</a> of file <a class="el" href="nodes_8cc_source.html">nodes.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="nodes_8cc_source.html#l00939">oomph::Data::describe_dofs()</a>, <a class="el" href="oomph__definitions_8cc_source.html#l00286">oomph::Global_string_for_annotation::string()</a>, and <a class="el" href="nodes_8h_source.html#l01702">Variable_position_pt</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="elements_8cc_source.html#l06878">oomph::SolidFiniteElement::describe_solid_local_dofs()</a>.</p>
+
+</div>
+</div>
+<a id="a33be0ea0fc6c0575d20f303b19a7d4b5" name="a33be0ea0fc6c0575d20f303b19a7d4b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33be0ea0fc6c0575d20f303b19a7d4b5">&#9670;&nbsp;</a></span>does_pointer_correspond_to_position_data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool oomph::SolidNode::does_pointer_correspond_to_position_data </td>
+          <td>(</td>
+          <td class="paramtype">double *const &amp;&#160;</td>
+          <td class="paramname"><em>parameter_pt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Overload the check whether the pointer parameter_pt addresses position data values. </p>
+<p >Check whether the pointer parameter_pt refers to positional data. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8cc_source.html#l03573">3573</a> of file <a class="el" href="nodes_8cc_source.html">nodes.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="nodes_8cc_source.html#l00568">oomph::Data::does_pointer_correspond_to_value()</a>, and <a class="el" href="nodes_8h_source.html#l01702">Variable_position_pt</a>.</p>
+
+</div>
+</div>
+<a id="aad56eb7d55fcd10b3aaa34c5b4ab9f6a" name="aad56eb7d55fcd10b3aaa34c5b4ab9f6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad56eb7d55fcd10b3aaa34c5b4ab9f6a">&#9670;&nbsp;</a></span>dump()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::SolidNode::dump </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>dump_file</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dump nodal positions (variable and fixed) and associated data to file for restart. </p>
+<p >Dump nodal positions and associated data to file for restart. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8cc_source.html#l03470">3470</a> of file <a class="el" href="nodes_8cc_source.html">nodes.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="nodes_8h_source.html#l01695">Nlagrangian</a>, <a class="el" href="nodes_8h_source.html#l01699">Nlagrangian_type</a>, and <a class="el" href="nodes_8h_source.html#l01705">Xi_position</a>.</p>
+
+</div>
+</div>
+<a id="a790277999eb7d8ff0c3f2398d8aaedb0" name="a790277999eb7d8ff0c3f2398d8aaedb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a790277999eb7d8ff0c3f2398d8aaedb0">&#9670;&nbsp;</a></span>lagrangian_position()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double oomph::SolidNode::lagrangian_position </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return lagrangian coordinate either directly or via hanging node representation. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8cc_source.html#l03586">3586</a> of file <a class="el" href="nodes_8cc_source.html">nodes.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00603">i</a>, and <a class="el" href="nodes_8h_source.html#l01884">xi()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="refineable__mesh_8cc_source.html#l00926">oomph::TreeBasedRefineableMeshBase::adapt_mesh()</a>, <a class="el" href="mesh_8cc_source.html#l09190">oomph::Mesh::delete_all_external_storage()</a>, and <a class="el" href="refineable__mesh_8cc_source.html#l04433">oomph::TreeBasedRefineableMeshBase::p_adapt_mesh()</a>.</p>
+
+</div>
+</div>
+<a id="a7d001ac17bfbfdb96209d723577dd598" name="a7d001ac17bfbfdb96209d723577dd598"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d001ac17bfbfdb96209d723577dd598">&#9670;&nbsp;</a></span>lagrangian_position_gen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double oomph::SolidNode::lagrangian_position_gen </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>i</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return generalised lagrangian coordinate either directly or via hanging node representation. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8cc_source.html#l03619">3619</a> of file <a class="el" href="nodes_8cc_source.html">nodes.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00603">i</a>, and <a class="el" href="nodes_8h_source.html#l01903">xi_gen()</a>.</p>
+
+</div>
+</div>
+<a id="af98a0623f9e41a10f48112b9ff7b38a0" name="af98a0623f9e41a10f48112b9ff7b38a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af98a0623f9e41a10f48112b9ff7b38a0">&#9670;&nbsp;</a></span>nlagrangian()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned oomph::SolidNode::nlagrangian </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return number of lagrangian coordinates. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8h_source.html#l01871">1871</a> of file <a class="el" href="nodes_8h_source.html">nodes.h</a>.</p>
+
+<p class="reference">References <a class="el" href="nodes_8h_source.html#l01695">Nlagrangian</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="refineable__mesh_8cc_source.html#l00926">oomph::TreeBasedRefineableMeshBase::adapt_mesh()</a>, <a class="el" href="nodes_8cc_source.html#l03708">add_values_to_vector()</a>, <a class="el" href="hermite__elements_8cc_source.html#l01270">oomph::SolidQHermiteElement&lt; DIM &gt;::build_face_element()</a>, <a class="el" href="Qelements_8h_source.html#l01894">oomph::SolidQElement&lt; 1, NNODE_1D &gt;::build_face_element()</a>, <a class="el" href="Qelements_8h_source.html#l02060">oomph::SolidQElement&lt; 2, NNODE_1D &gt;::build_face_element()</a>, <a class="el" href="Qelements_8h_source.html#l02240">oomph::SolidQElement&lt; 3, NNODE_1D &gt;::build_face_element()</a>, <a class="el" href="Telements_8cc_source.html#l00935">oomph::SolidTBubbleEnrichedElement&lt; DIM, NNODE_1D &gt;::build_face_element()</a>, <a class="el" href="Telements_8h_source.html#l03780">oomph::SolidTElement&lt; 1, NNODE_1D &gt;::build_face_element()</a>, <a class="el" href="Telements_8h_source.html#l03840">oomph::SolidTElement&lt; 2, NNODE_1D &gt;::build_face_element()</a>, <a class="el" href="Telements_8h_source.html#l03901">oomph::SolidTElement&lt; 3, NNODE_1D &gt;::build_face_element()</a>, <a class="el" href="nodes_8cc_source.html#l03433">copy()</a>, <a class="el" href="mesh_8cc_source.html#l09190">oomph::Mesh::delete_all_external_storage()</a>, <a class="el" href="error__estimator_8h_source.html#l00465">oomph::DummyErrorEstimator::DummyErrorEstimator()</a>, <a class="el" href="missing__masters_8cc_source.html#l00658">oomph::Missing_masters_functions::get_required_master_nodal_information_helper()</a>, <a class="el" href="multi__domain_8cc_source.html#l01010">oomph::Multi_domain_functions::get_required_master_nodal_information_helper()</a>, <a class="el" href="refineable__mesh_8cc_source.html#l04433">oomph::TreeBasedRefineableMeshBase::p_adapt_mesh()</a>, <a class="el" href="nodes_8cc_source.html#l03755">read_values_from_vector()</a>, and <a class="el" href="mesh_8cc_source.html#l09564">oomph::SolidMesh::set_lagrangian_nodal_coordinates()</a>.</p>
+
+</div>
+</div>
+<a id="a3c1e52e4b6dde53b98228d621f7fcb0a" name="a3c1e52e4b6dde53b98228d621f7fcb0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c1e52e4b6dde53b98228d621f7fcb0a">&#9670;&nbsp;</a></span>nlagrangian_type()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned oomph::SolidNode::nlagrangian_type </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Number of types of Lagrangian coordinates used to interpolate the Lagrangian coordinates within the element. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8h_source.html#l01878">1878</a> of file <a class="el" href="nodes_8h_source.html">nodes.h</a>.</p>
+
+<p class="reference">References <a class="el" href="nodes_8h_source.html#l01699">Nlagrangian_type</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="nodes_8cc_source.html#l03708">add_values_to_vector()</a>, <a class="el" href="refineable__brick__element_8h_source.html#l00294">oomph::RefineableSolidQElement&lt; 3 &gt;::build()</a>, <a class="el" href="refineable__quad__element_8h_source.html#l00278">oomph::RefineableSolidQElement&lt; 2 &gt;::build()</a>, <a class="el" href="nodes_8cc_source.html#l03433">copy()</a>, <a class="el" href="missing__masters_8cc_source.html#l00658">oomph::Missing_masters_functions::get_required_master_nodal_information_helper()</a>, <a class="el" href="multi__domain_8cc_source.html#l01010">oomph::Multi_domain_functions::get_required_master_nodal_information_helper()</a>, <a class="el" href="projection_8h_source.html#l00748">oomph::ProjectionProblem&lt; PROJECTABLE_ELEMENT &gt;::project()</a>, <a class="el" href="nodes_8cc_source.html#l03755">read_values_from_vector()</a>, and <a class="el" href="mesh_8cc_source.html#l09564">oomph::SolidMesh::set_lagrangian_nodal_coordinates()</a>.</p>
+
+</div>
+</div>
+<a id="ae66793af1a576edd29523ffb98b7225c" name="ae66793af1a576edd29523ffb98b7225c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae66793af1a576edd29523ffb98b7225c">&#9670;&nbsp;</a></span>node_update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::SolidNode::node_update </td>
+          <td>(</td>
+          <td class="paramtype">const bool &amp;&#160;</td>
+          <td class="paramname"><em>update_all_time_levels_for_new_node</em> = <code>false</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Overload node update function: Since the position of SolidNodes is determined by unknowns, there's nothing to be done apart from performing the auxiliary node update function (if any) </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8h_source.html#l01982">1982</a> of file <a class="el" href="nodes_8h_source.html">nodes.h</a>.</p>
+
+</div>
+</div>
+<a id="aff78fee3d530bc39c14e231b261219ea" name="aff78fee3d530bc39c14e231b261219ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff78fee3d530bc39c14e231b261219ea">&#9670;&nbsp;</a></span>operator=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::SolidNode::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classoomph_1_1SolidNode.html">SolidNode</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Broken assignment operator. </p>
+
+</div>
+</div>
+<a id="ab051ba65aed07fe75f6cfd9b32de62cc" name="ab051ba65aed07fe75f6cfd9b32de62cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab051ba65aed07fe75f6cfd9b32de62cc">&#9670;&nbsp;</a></span>pin_all()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::SolidNode::pin_all </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pin all the stored variables (Overloaded) </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8h_source.html#l01843">1843</a> of file <a class="el" href="nodes_8h_source.html">nodes.h</a>.</p>
+
+<p class="reference">References <a class="el" href="nodes_8h_source.html#l00397">oomph::Data::pin_all()</a>, and <a class="el" href="nodes_8h_source.html#l01702">Variable_position_pt</a>.</p>
+
+</div>
+</div>
+<a id="aa283a553b0141e859dd7b4f80bb88e6d" name="aa283a553b0141e859dd7b4f80bb88e6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa283a553b0141e859dd7b4f80bb88e6d">&#9670;&nbsp;</a></span>pin_position() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::SolidNode::pin_position </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pin the nodal position. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8h_source.html#l01817">1817</a> of file <a class="el" href="nodes_8h_source.html">nodes.h</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="nodes_8h_source.html#l00385">oomph::Data::pin()</a>, and <a class="el" href="nodes_8h_source.html#l01702">Variable_position_pt</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="refineable__brick__element_8cc_source.html#l01293">oomph::RefineableQElement&lt; 3 &gt;::build()</a>, <a class="el" href="refineable__quad__element_8cc_source.html#l00642">oomph::RefineableQElement&lt; 2 &gt;::build()</a>, <a class="el" href="hp__refineable__elements_8cc_source.html#l01990">oomph::PRefineableQElement&lt; 2, INITIAL_NNODE_1D &gt;::p_refine()</a>, <a class="el" href="hp__refineable__elements_8cc_source.html#l06104">oomph::PRefineableQElement&lt; 3, INITIAL_NNODE_1D &gt;::p_refine()</a>, <a class="el" href="projection_8h_source.html#l01503">oomph::ProjectionProblem&lt; PROJECTABLE_ELEMENT &gt;::pin_all()</a>, <a class="el" href="projection_8h_source.html#l01667">oomph::ProjectionProblem&lt; PROJECTABLE_ELEMENT &gt;::pin_dofs_of_coordinate()</a>, <a class="el" href="hp__refineable__elements_8cc_source.html#l03207">oomph::PRefineableQElement&lt; 2, INITIAL_NNODE_1D &gt;::rebuild_from_sons()</a>, <a class="el" href="hp__refineable__elements_8cc_source.html#l07633">oomph::PRefineableQElement&lt; 3, INITIAL_NNODE_1D &gt;::rebuild_from_sons()</a>, <a class="el" href="refineable__brick__spectral__element_8h_source.html#l00079">oomph::RefineableQSpectralElement&lt; 3 &gt;::rebuild_from_sons()</a>, <a class="el" href="refineable__quad__spectral__element_8h_source.html#l00079">oomph::RefineableQSpectralElement&lt; 2 &gt;::rebuild_from_sons()</a>, and <a class="el" href="elastic__problems_8cc_source.html#l00343">oomph::SolidICProblem::reset_original_state()</a>.</p>
+
+</div>
+</div>
+<a id="ad4fefc1c7f3bb6f17ab39ce934bddaf6" name="ad4fefc1c7f3bb6f17ab39ce934bddaf6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4fefc1c7f3bb6f17ab39ce934bddaf6">&#9670;&nbsp;</a></span>pin_position() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::SolidNode::pin_position </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>i</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pin the generalised nodal position. &lsquo;Type&rsquo;: k; Coordinate direction: i. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8h_source.html#l01824">1824</a> of file <a class="el" href="nodes_8h_source.html">nodes.h</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="nodes_8h_source.html#l00385">oomph::Data::pin()</a>, and <a class="el" href="nodes_8h_source.html#l01702">Variable_position_pt</a>.</p>
+
+</div>
+</div>
+<a id="a38c52c20fe9d4783ae93a6f1fda21f24" name="a38c52c20fe9d4783ae93a6f1fda21f24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38c52c20fe9d4783ae93a6f1fda21f24">&#9670;&nbsp;</a></span>position_eqn_number()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const long &amp; oomph::SolidNode::position_eqn_number </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>i</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return the equation number for generalised Eulerian coordinate: type of coordinate: k, coordinate direction: i. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8h_source.html#l01798">1798</a> of file <a class="el" href="nodes_8h_source.html">nodes.h</a>.</p>
+
+<p class="reference">References <a class="el" href="nodes_8h_source.html#l00367">oomph::Data::eqn_number()</a>, <a class="el" href="cfortran_8h_source.html#l00603">i</a>, and <a class="el" href="nodes_8h_source.html#l01702">Variable_position_pt</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="elements_8cc_source.html#l06902">oomph::SolidFiniteElement::assign_solid_local_eqn_numbers()</a>.</p>
+
+</div>
+</div>
+<a id="aa8d9a8e77ccc142be77767b33c09532a" name="aa8d9a8e77ccc142be77767b33c09532a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8d9a8e77ccc142be77767b33c09532a">&#9670;&nbsp;</a></span>position_is_a_copy() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool oomph::SolidNode::position_is_a_copy </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return whether any position component has been copied. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8h_source.html#l01785">1785</a> of file <a class="el" href="nodes_8h_source.html">nodes.h</a>.</p>
+
+<p class="reference">References <a class="el" href="nodes_8h_source.html#l00253">oomph::Data::is_a_copy()</a>, and <a class="el" href="nodes_8h_source.html#l01702">Variable_position_pt</a>.</p>
+
+</div>
+</div>
+<a id="aa20d88cc797c6635bfd634376c177d87" name="aa20d88cc797c6635bfd634376c177d87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa20d88cc797c6635bfd634376c177d87">&#9670;&nbsp;</a></span>position_is_a_copy() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool oomph::SolidNode::position_is_a_copy </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return whether the position coordinate i has been copied. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8h_source.html#l01791">1791</a> of file <a class="el" href="nodes_8h_source.html">nodes.h</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="nodes_8h_source.html#l00253">oomph::Data::is_a_copy()</a>, and <a class="el" href="nodes_8h_source.html#l01702">Variable_position_pt</a>.</p>
+
+</div>
+</div>
+<a id="afd8204156be2ff0fa40834ca35daf243" name="afd8204156be2ff0fa40834ca35daf243"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd8204156be2ff0fa40834ca35daf243">&#9670;&nbsp;</a></span>position_is_pinned() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool oomph::SolidNode::position_is_pinned </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Test whether the i-th coordinate is pinned, 0: false; 1: true. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8h_source.html#l01804">1804</a> of file <a class="el" href="nodes_8h_source.html">nodes.h</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="nodes_8h_source.html#l00417">oomph::Data::is_pinned()</a>, and <a class="el" href="nodes_8h_source.html#l01702">Variable_position_pt</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="elastic__problems_8cc_source.html#l00191">oomph::SolidICProblem::backup_original_state()</a>, <a class="el" href="refineable__quad__element_8cc_source.html#l02146">oomph::RefineableSolidQElement&lt; 2 &gt;::get_edge_solid_bcs()</a>, <a class="el" href="refineable__brick__element_8cc_source.html#l02866">oomph::RefineableSolidQElement&lt; 3 &gt;::get_face_solid_bcs()</a>, and <a class="el" href="problem_8cc_source.html#l04304">oomph::Problem::set_pinned_values_to_zero()</a>.</p>
+
+</div>
+</div>
+<a id="af7254744691474f94df8ae3f4b75da38" name="af7254744691474f94df8ae3f4b75da38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7254744691474f94df8ae3f4b75da38">&#9670;&nbsp;</a></span>position_is_pinned() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool oomph::SolidNode::position_is_pinned </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>i</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Test whether the k-th type of the i-th coordinate is pinned 0: false; 1: true. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8h_source.html#l01811">1811</a> of file <a class="el" href="nodes_8h_source.html">nodes.h</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="nodes_8h_source.html#l00417">oomph::Data::is_pinned()</a>, and <a class="el" href="nodes_8h_source.html#l01702">Variable_position_pt</a>.</p>
+
+</div>
+</div>
+<a id="ac4614b9f9c2222cb40cb004f85a66e57" name="ac4614b9f9c2222cb40cb004f85a66e57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4614b9f9c2222cb40cb004f85a66e57">&#9670;&nbsp;</a></span>read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::SolidNode::read </td>
+          <td>(</td>
+          <td class="paramtype">std::ifstream &amp;&#160;</td>
+          <td class="paramname"><em>restart_file</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read nodal positions (variable and fixed) and associated data from file for restart. </p>
+<p >Read nodal positions and associated data to file for restart. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8cc_source.html#l03490">3490</a> of file <a class="el" href="nodes_8cc_source.html">nodes.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="nodes_8h_source.html#l01695">Nlagrangian</a>, <a class="el" href="nodes_8h_source.html#l01699">Nlagrangian_type</a>, <a class="el" href="oomph__definitions_8cc_source.html#l00286">oomph::Global_string_for_annotation::string()</a>, and <a class="el" href="nodes_8h_source.html#l01705">Xi_position</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="mesh_8cc_source.html#l01130">oomph::Mesh::read()</a>.</p>
+
+</div>
+</div>
+<a id="a38bede9e51c7d6355969db2bc075f476" name="a38bede9e51c7d6355969db2bc075f476"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38bede9e51c7d6355969db2bc075f476">&#9670;&nbsp;</a></span>read_eqn_numbers_from_vector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::SolidNode::read_eqn_numbers_from_vector </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; long &gt; &amp;&#160;</td>
+          <td class="paramname"><em>vector_of_eqn_numbers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned &amp;&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read all equation numbers from the vector starting from index. On return the index will be set to the value at the end of the data that has been read in Overload to include the equation numbrs associated with the positional dofs. </p>
+<p >Read the equation numbers associated with the node position from the vector after reading in the standard nodal equaiton numbers. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8cc_source.html#l03811">3811</a> of file <a class="el" href="nodes_8cc_source.html">nodes.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="nodes_8cc_source.html#l01274">oomph::Data::read_eqn_numbers_from_vector()</a>, and <a class="el" href="nodes_8h_source.html#l01702">Variable_position_pt</a>.</p>
+
+</div>
+</div>
+<a id="a8884dfe9e2808883e90c7f2822151784" name="a8884dfe9e2808883e90c7f2822151784"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8884dfe9e2808883e90c7f2822151784">&#9670;&nbsp;</a></span>read_values_from_vector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::SolidNode::read_values_from_vector </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>vector_of_values</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned &amp;&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read all data and time history values from the vector starting from index. On return the index will be set the value at the end of the data that has been read in Overload to add the position information and Lagrangian coordinates. </p>
+<p >Read the lagrangian coordinates in from the vector after reading in the positional and "standard" data. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8cc_source.html#l03755">3755</a> of file <a class="el" href="nodes_8cc_source.html">nodes.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="nodes_8h_source.html#l01871">nlagrangian()</a>, <a class="el" href="nodes_8h_source.html#l01878">nlagrangian_type()</a>, and <a class="el" href="nodes_8h_source.html#l01705">Xi_position</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="triangle__mesh_8template_8cc_source.html#l19416">oomph::RefineableTriangleMesh&lt; ELEMENT &gt;::construct_new_halo_node_helper()</a>, and <a class="el" href="triangle__mesh_8template_8cc_source.html#l27905">oomph::RefineableTriangleMesh&lt; ELEMENT &gt;::construct_new_node_load_balance_helper()</a>.</p>
+
+</div>
+</div>
+<a id="abd91751e0695df391ecd0e8a9249eb4f" name="abd91751e0695df391ecd0e8a9249eb4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd91751e0695df391ecd0e8a9249eb4f">&#9670;&nbsp;</a></span>set_external_variable_position_pt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::SolidNode::set_external_variable_position_pt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Data.html">Data</a> *const &amp;&#160;</td>
+          <td class="paramname"><em>data_pt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the variable position data from an external data object. </p>
+<p >Set the variable position data from an external source. This is mainly used when setting periodic solid problems. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8cc_source.html#l03532">3532</a> of file <a class="el" href="nodes_8cc_source.html">nodes.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="nodes_8h_source.html#l00112">oomph::Data::Value</a>, and <a class="el" href="nodes_8h_source.html#l01702">Variable_position_pt</a>.</p>
+
+</div>
+</div>
+<a id="a12b206264401d5b2ff6aefff386bdca4" name="a12b206264401d5b2ff6aefff386bdca4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12b206264401d5b2ff6aefff386bdca4">&#9670;&nbsp;</a></span>set_position_time_stepper()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::SolidNode::set_position_time_stepper </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1TimeStepper.html">TimeStepper</a> *const &amp;&#160;</td>
+          <td class="paramname"><em>position_time_stepper_pt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool &amp;&#160;</td>
+          <td class="paramname"><em>preserve_existing_data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set a new position timestepper be resizing the appropriate storage Overloaded from the basic implementation to take into account the fact that position is now <a class="el" href="classoomph_1_1Data.html" title="A class that represents a collection of data; each Data object may contain many different individual ...">Data</a>. </p>
+<p >Set a new position <a class="el" href="classoomph_1_1TimeStepper.html" title="////////////////////////////////////////////////////////////////////// //////////////////////////////...">TimeStepper</a> be resizing the appropriate storage. The current (zero) values will be unaffected, but all other entries will be set to zero. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8cc_source.html#l03548">3548</a> of file <a class="el" href="nodes_8cc_source.html">nodes.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="nodes_8cc_source.html#l00406">oomph::Data::set_time_stepper()</a>, <a class="el" href="nodes_8h_source.html#l00112">oomph::Data::Value</a>, and <a class="el" href="nodes_8h_source.html#l01702">Variable_position_pt</a>.</p>
+
+</div>
+</div>
+<a id="a1959abfbb37f775a4d6808ceb9afd421" name="a1959abfbb37f775a4d6808ceb9afd421"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1959abfbb37f775a4d6808ceb9afd421">&#9670;&nbsp;</a></span>unconstrain_positions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::SolidNode::unconstrain_positions </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Overload the unconstrain positions function to unconstrain all position values. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8h_source.html#l01865">1865</a> of file <a class="el" href="nodes_8h_source.html">nodes.h</a>.</p>
+
+<p class="reference">References <a class="el" href="nodes_8h_source.html#l00461">oomph::Data::unconstrain_all()</a>, and <a class="el" href="nodes_8h_source.html#l01702">Variable_position_pt</a>.</p>
+
+</div>
+</div>
+<a id="a0df372aae692d679cfceeb46fb5783a9" name="a0df372aae692d679cfceeb46fb5783a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0df372aae692d679cfceeb46fb5783a9">&#9670;&nbsp;</a></span>unpin_all()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::SolidNode::unpin_all </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Unpin all the stored variables (Overloaded) </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8h_source.html#l01850">1850</a> of file <a class="el" href="nodes_8h_source.html">nodes.h</a>.</p>
+
+<p class="reference">References <a class="el" href="nodes_8h_source.html#l00407">oomph::Data::unpin_all()</a>, and <a class="el" href="nodes_8h_source.html#l01702">Variable_position_pt</a>.</p>
+
+</div>
+</div>
+<a id="ab43707b1893ca89e684609f045ea8101" name="ab43707b1893ca89e684609f045ea8101"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab43707b1893ca89e684609f045ea8101">&#9670;&nbsp;</a></span>unpin_position() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::SolidNode::unpin_position </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Unpin the nodal position. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8h_source.html#l01830">1830</a> of file <a class="el" href="nodes_8h_source.html">nodes.h</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="nodes_8h_source.html#l00391">oomph::Data::unpin()</a>, and <a class="el" href="nodes_8h_source.html#l01702">Variable_position_pt</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="elastic__problems_8cc_source.html#l00048">oomph::SolidICProblem::setup_problem()</a>, <a class="el" href="projection_8h_source.html#l01573">oomph::ProjectionProblem&lt; PROJECTABLE_ELEMENT &gt;::unpin_all()</a>, and <a class="el" href="projection_8h_source.html#l01639">oomph::ProjectionProblem&lt; PROJECTABLE_ELEMENT &gt;::unpin_dofs_of_coordinate()</a>.</p>
+
+</div>
+</div>
+<a id="a3c9577dbae23ec836abf47bf49ea745f" name="a3c9577dbae23ec836abf47bf49ea745f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c9577dbae23ec836abf47bf49ea745f">&#9670;&nbsp;</a></span>unpin_position() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::SolidNode::unpin_position </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>i</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Unpin the generalised nodal position. &lsquo;Type&rsquo;: k; Coordinate direction: i. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8h_source.html#l01837">1837</a> of file <a class="el" href="nodes_8h_source.html">nodes.h</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="nodes_8h_source.html#l00391">oomph::Data::unpin()</a>, and <a class="el" href="nodes_8h_source.html#l01702">Variable_position_pt</a>.</p>
+
+</div>
+</div>
+<a id="aa2fd2ecf8163f4576d49f08b25280a4d" name="aa2fd2ecf8163f4576d49f08b25280a4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2fd2ecf8163f4576d49f08b25280a4d">&#9670;&nbsp;</a></span>variable_position()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classoomph_1_1Data.html">Data</a> &amp; oomph::SolidNode::variable_position </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return the variable_position data (const version) </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8h_source.html#l01760">1760</a> of file <a class="el" href="nodes_8h_source.html">nodes.h</a>.</p>
+
+<p class="reference">References <a class="el" href="nodes_8h_source.html#l01702">Variable_position_pt</a>.</p>
+
+</div>
+</div>
+<a id="a22078726936f5bf3cf9e4328b3852a4a" name="a22078726936f5bf3cf9e4328b3852a4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22078726936f5bf3cf9e4328b3852a4a">&#9670;&nbsp;</a></span>variable_position_pt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoomph_1_1Data.html">Data</a> *const  &amp; oomph::SolidNode::variable_position_pt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pointer to variable_position data (const version) </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8h_source.html#l01766">1766</a> of file <a class="el" href="nodes_8h_source.html">nodes.h</a>.</p>
+
+<p class="reference">References <a class="el" href="nodes_8h_source.html#l01702">Variable_position_pt</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="periodic__orbit__handler_8h_source.html#l01045">oomph::PeriodicOrbitAssemblyHandler&lt; NNODE_1D &gt;::adapt_temporal_mesh()</a>, <a class="el" href="nodes_8h_source.html#l02829">oomph::BoundaryNode&lt; NODE_TYPE &gt;::assign_eqn_numbers()</a>, <a class="el" href="element__with__external__element_8cc_source.html#l00246">oomph::ElementWithExternalElement::assign_external_interaction_data_local_eqn_numbers()</a>, <a class="el" href="elements_8cc_source.html#l00691">oomph::GeneralisedElement::assign_local_eqn_numbers()</a>, <a class="el" href="mesh_8cc_source.html#l03262">oomph::Mesh::classify_halo_and_haloed_nodes()</a>, <a class="el" href="multi__domain_8template_8cc_source.html#l02068">oomph::Multi_domain_functions::construct_new_external_halo_master_node_helper()</a>, <a class="el" href="missing__masters_8template_8cc_source.html#l00251">oomph::Missing_masters_functions::construct_new_external_halo_master_node_helper()</a>, <a class="el" href="multi__domain_8cc_source.html#l01452">oomph::Multi_domain_functions::construct_new_external_halo_node_helper()</a>, <a class="el" href="missing__masters_8cc_source.html#l01298">oomph::Missing_masters_functions::construct_new_external_halo_node_helper()</a>, <a class="el" href="triangle__mesh_8template_8cc_source.html#l19416">oomph::RefineableTriangleMesh&lt; ELEMENT &gt;::construct_new_halo_node_helper()</a>, <a class="el" href="triangle__mesh_8template_8cc_source.html#l27905">oomph::RefineableTriangleMesh&lt; ELEMENT &gt;::construct_new_node_load_balance_helper()</a>, <a class="el" href="nodes_8cc_source.html#l03433">copy()</a>, <a class="el" href="displacement__control__element_8h_source.html#l00122">oomph::DisplacementControlElement::DisplacementControlElement()</a>, <a class="el" href="fsi_8h_source.html#l00724">oomph::FSI_functions::doc_fsi()</a>, <a class="el" href="missing__masters_8cc_source.html#l00658">oomph::Missing_masters_functions::get_required_master_nodal_information_helper()</a>, <a class="el" href="multi__domain_8cc_source.html#l01010">oomph::Multi_domain_functions::get_required_master_nodal_information_helper()</a>, <a class="el" href="missing__masters_8cc_source.html#l00436">oomph::Missing_masters_functions::get_required_nodal_information_helper()</a>, <a class="el" href="multi__domain_8cc_source.html#l00754">oomph::Multi_domain_functions::get_required_nodal_information_helper()</a>, <a class="el" href="triangle__mesh_8template_8cc_source.html#l18330">oomph::RefineableTriangleMesh&lt; ELEMENT &gt;::get_required_nodal_information_helper()</a>, <a class="el" href="triangle__mesh_8template_8cc_source.html#l26810">oomph::RefineableTriangleMesh&lt; ELEMENT &gt;::get_required_nodal_information_load_balance_helper()</a>, <a class="el" href="hijacked__elements_8h_source.html#l00240">oomph::Hijacked&lt; ELEMENT &gt;::hijack_nodal_position_value()</a>, <a class="el" href="navier__stokes__preconditioners_8h_source.html#l00554">oomph::left()</a>, <a class="el" href="problem_8cc_source.html#l02568">oomph::Problem::remove_duplicate_data()</a>, and <a class="el" href="problem_8cc_source.html#l16700">oomph::Problem::synchronise_eqn_numbers()</a>.</p>
+
+</div>
+</div>
+<a id="aa6780c66ed3f5db5cbb8fe2c0a476974" name="aa6780c66ed3f5db5cbb8fe2c0a476974"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6780c66ed3f5db5cbb8fe2c0a476974">&#9670;&nbsp;</a></span>xi() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double &amp; oomph::SolidNode::xi </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reference to i-th Lagrangian position. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8h_source.html#l01884">1884</a> of file <a class="el" href="nodes_8h_source.html">nodes.h</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="nodes_8h_source.html#l01699">Nlagrangian_type</a>, <a class="el" href="nodes_8cc_source.html#l03312">xi_gen_range_check()</a>, and <a class="el" href="nodes_8h_source.html#l01705">Xi_position</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="mesh__smooth_8h_source.html#l00395">oomph::NonLinearElasticitySmoothMesh&lt; ELEMENT &gt;::actions_before_newton_solve()</a>, <a class="el" href="refineable__mesh_8cc_source.html#l00926">oomph::TreeBasedRefineableMeshBase::adapt_mesh()</a>, <a class="el" href="refineable__brick__element_8h_source.html#l00294">oomph::RefineableSolidQElement&lt; 3 &gt;::build()</a>, <a class="el" href="refineable__quad__element_8h_source.html#l00278">oomph::RefineableSolidQElement&lt; 2 &gt;::build()</a>, <a class="el" href="circular__shell__mesh_8template_8cc_source.html#l00041">oomph::CircularCylindricalShellMesh&lt; ELEMENT &gt;::build_mesh()</a>, <a class="el" href="mesh_8cc_source.html#l09190">oomph::Mesh::delete_all_external_storage()</a>, <a class="el" href="error__estimator_8h_source.html#l00465">oomph::DummyErrorEstimator::DummyErrorEstimator()</a>, <a class="el" href="rectangular__quadmesh_8template_8h_source.html#l00579">oomph::ElasticRefineableRectangularQuadMesh&lt; ELEMENT &gt;::ElasticRefineableRectangularQuadMesh()</a>, <a class="el" href="error__estimator_8h_source.html#l00587">oomph::DummyErrorEstimator::get_element_errors()</a>, <a class="el" href="nodes_8cc_source.html#l03586">lagrangian_position()</a>, <a class="el" href="mesh__smooth_8h_source.html#l00529">oomph::LinearElasticitySmoothMesh&lt; LINEAR_ELASTICITY_ELEMENT &gt;::operator()()</a>, <a class="el" href="mesh__smooth_8h_source.html#l00664">oomph::PoissonSmoothMesh&lt; POISSON_ELEMENT &gt;::operator()()</a>, and <a class="el" href="refineable__mesh_8cc_source.html#l04433">oomph::TreeBasedRefineableMeshBase::p_adapt_mesh()</a>.</p>
+
+</div>
+</div>
+<a id="ad53bcd19edbfefd653a53aaf6ce53183" name="ad53bcd19edbfefd653a53aaf6ce53183"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad53bcd19edbfefd653a53aaf6ce53183">&#9670;&nbsp;</a></span>xi() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const double &amp; oomph::SolidNode::xi </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reference to i-th Lagrangian position (const version) </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8h_source.html#l01893">1893</a> of file <a class="el" href="nodes_8h_source.html">nodes.h</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="nodes_8h_source.html#l01699">Nlagrangian_type</a>, <a class="el" href="nodes_8cc_source.html#l03312">xi_gen_range_check()</a>, and <a class="el" href="nodes_8h_source.html#l01705">Xi_position</a>.</p>
+
+</div>
+</div>
+<a id="ada699bd006497ddeabb0bc0750d99965" name="ada699bd006497ddeabb0bc0750d99965"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada699bd006497ddeabb0bc0750d99965">&#9670;&nbsp;</a></span>xi_gen() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double &amp; oomph::SolidNode::xi_gen </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>i</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reference to the generalised Lagrangian position. &lsquo;Type&rsquo;: k; 'Coordinate direction: i. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8h_source.html#l01903">1903</a> of file <a class="el" href="nodes_8h_source.html">nodes.h</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="nodes_8h_source.html#l01699">Nlagrangian_type</a>, <a class="el" href="nodes_8cc_source.html#l03312">xi_gen_range_check()</a>, and <a class="el" href="nodes_8h_source.html#l01705">Xi_position</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="circular__shell__mesh_8template_8cc_source.html#l00041">oomph::CircularCylindricalShellMesh&lt; ELEMENT &gt;::build_mesh()</a>, <a class="el" href="nodes_8cc_source.html#l03619">lagrangian_position_gen()</a>, <a class="el" href="projection_8h_source.html#l00748">oomph::ProjectionProblem&lt; PROJECTABLE_ELEMENT &gt;::project()</a>, and <a class="el" href="mesh_8cc_source.html#l09564">oomph::SolidMesh::set_lagrangian_nodal_coordinates()</a>.</p>
+
+</div>
+</div>
+<a id="a6fc3dd01eab8b60a493fa34e18fad6be" name="a6fc3dd01eab8b60a493fa34e18fad6be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fc3dd01eab8b60a493fa34e18fad6be">&#9670;&nbsp;</a></span>xi_gen() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const double &amp; oomph::SolidNode::xi_gen </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>i</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reference to the generalised Lagrangian position. &lsquo;Type&rsquo;: k; 'Coordinate direction: i. (const version. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8h_source.html#l01913">1913</a> of file <a class="el" href="nodes_8h_source.html">nodes.h</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="nodes_8h_source.html#l01699">Nlagrangian_type</a>, <a class="el" href="nodes_8cc_source.html#l03312">xi_gen_range_check()</a>, and <a class="el" href="nodes_8h_source.html#l01705">Xi_position</a>.</p>
+
+</div>
+</div>
+<a id="a0c5b916610af540ccc98a09584b8f34f" name="a0c5b916610af540ccc98a09584b8f34f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c5b916610af540ccc98a09584b8f34f">&#9670;&nbsp;</a></span>xi_gen_range_check()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::SolidNode::xi_gen_range_check </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>i</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Private function to check that the arguments to the position functions are in range. </p>
+<p >////////////////////////////////////////////////////////////////////////</p>
+<p >//////////////////////////////////////////////////////////////////////// Private function to check that the argument is within the range of stored Lagrangain coordinates and position types. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8cc_source.html#l03312">3312</a> of file <a class="el" href="nodes_8cc_source.html">nodes.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="nodes_8h_source.html#l01695">Nlagrangian</a>, and <a class="el" href="nodes_8h_source.html#l01699">Nlagrangian_type</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="nodes_8h_source.html#l01884">xi()</a>, and <a class="el" href="nodes_8h_source.html#l01903">xi_gen()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a155e729f069278a17a2828690ed67904" name="a155e729f069278a17a2828690ed67904"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a155e729f069278a17a2828690ed67904">&#9670;&nbsp;</a></span>Nlagrangian</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned oomph::SolidNode::Nlagrangian</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Number of Lagrangian coordinates of the node. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8h_source.html#l01695">1695</a> of file <a class="el" href="nodes_8h_source.html">nodes.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="nodes_8cc_source.html#l03433">copy()</a>, <a class="el" href="nodes_8cc_source.html#l03470">dump()</a>, <a class="el" href="nodes_8h_source.html#l01871">nlagrangian()</a>, <a class="el" href="nodes_8cc_source.html#l03490">read()</a>, and <a class="el" href="nodes_8cc_source.html#l03312">xi_gen_range_check()</a>.</p>
+
+</div>
+</div>
+<a id="a6676ab16593ad3d062ac8e29906d7786" name="a6676ab16593ad3d062ac8e29906d7786"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6676ab16593ad3d062ac8e29906d7786">&#9670;&nbsp;</a></span>Nlagrangian_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned oomph::SolidNode::Nlagrangian_type</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Number of types of Lagrangian coordinates used to interpolate the Lagrangian coordinates within the element. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8h_source.html#l01699">1699</a> of file <a class="el" href="nodes_8h_source.html">nodes.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="nodes_8cc_source.html#l03433">copy()</a>, <a class="el" href="nodes_8cc_source.html#l03470">dump()</a>, <a class="el" href="nodes_8h_source.html#l01878">nlagrangian_type()</a>, <a class="el" href="nodes_8cc_source.html#l03490">read()</a>, <a class="el" href="nodes_8h_source.html#l01884">xi()</a>, <a class="el" href="nodes_8h_source.html#l01903">xi_gen()</a>, and <a class="el" href="nodes_8cc_source.html#l03312">xi_gen_range_check()</a>.</p>
+
+</div>
+</div>
+<a id="a5f3dce8a2802efc650d67cbf7e407a98" name="a5f3dce8a2802efc650d67cbf7e407a98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f3dce8a2802efc650d67cbf7e407a98">&#9670;&nbsp;</a></span>Variable_position_pt</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoomph_1_1Data.html">Data</a>* oomph::SolidNode::Variable_position_pt</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pointer to data that will hold variable positions in elastic nodes. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8h_source.html#l01702">1702</a> of file <a class="el" href="nodes_8h_source.html">nodes.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="nodes_8cc_source.html#l03799">add_eqn_numbers_to_vector()</a>, <a class="el" href="nodes_8cc_source.html#l03693">add_value_pt_to_map()</a>, <a class="el" href="nodes_8cc_source.html#l03652">assign_eqn_numbers()</a>, <a class="el" href="nodes_8h_source.html#l01858">constrain_positions()</a>, <a class="el" href="nodes_8cc_source.html#l03433">copy()</a>, <a class="el" href="nodes_8cc_source.html#l03671">describe_dofs()</a>, <a class="el" href="nodes_8cc_source.html#l03573">does_pointer_correspond_to_position_data()</a>, <a class="el" href="nodes_8h_source.html#l01843">pin_all()</a>, <a class="el" href="nodes_8h_source.html#l01817">pin_position()</a>, <a class="el" href="nodes_8h_source.html#l01798">position_eqn_number()</a>, <a class="el" href="nodes_8h_source.html#l01785">position_is_a_copy()</a>, <a class="el" href="nodes_8h_source.html#l01804">position_is_pinned()</a>, <a class="el" href="nodes_8cc_source.html#l03811">read_eqn_numbers_from_vector()</a>, <a class="el" href="nodes_8cc_source.html#l03532">set_external_variable_position_pt()</a>, <a class="el" href="nodes_8cc_source.html#l03548">set_position_time_stepper()</a>, <a class="el" href="nodes_8cc_source.html#l03348">SolidNode()</a>, <a class="el" href="nodes_8h_source.html#l01865">unconstrain_positions()</a>, <a class="el" href="nodes_8h_source.html#l01850">unpin_all()</a>, <a class="el" href="nodes_8h_source.html#l01830">unpin_position()</a>, <a class="el" href="nodes_8h_source.html#l01760">variable_position()</a>, <a class="el" href="nodes_8h_source.html#l01766">variable_position_pt()</a>, and <a class="el" href="nodes_8cc_source.html#l03416">~SolidNode()</a>.</p>
+
+</div>
+</div>
+<a id="ac8ed3701effa80f70d817ee171559d1f" name="ac8ed3701effa80f70d817ee171559d1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8ed3701effa80f70d817ee171559d1f">&#9670;&nbsp;</a></span>Xi_position</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double* oomph::SolidNode::Xi_position</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Storage for the Lagrangian positions. </p>
+
+<p class="definition">Definition at line <a class="el" href="nodes_8h_source.html#l01705">1705</a> of file <a class="el" href="nodes_8h_source.html">nodes.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="nodes_8cc_source.html#l03708">add_values_to_vector()</a>, <a class="el" href="nodes_8cc_source.html#l03433">copy()</a>, <a class="el" href="nodes_8cc_source.html#l03470">dump()</a>, <a class="el" href="nodes_8cc_source.html#l03490">read()</a>, <a class="el" href="nodes_8cc_source.html#l03755">read_values_from_vector()</a>, <a class="el" href="nodes_8cc_source.html#l03348">SolidNode()</a>, <a class="el" href="nodes_8h_source.html#l01884">xi()</a>, <a class="el" href="nodes_8h_source.html#l01903">xi_gen()</a>, and <a class="el" href="nodes_8cc_source.html#l03416">~SolidNode()</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li><a class="el" href="nodes_8h_source.html">nodes.h</a></li>
+<li><a class="el" href="nodes_8cc_source.html">nodes.cc</a></li>
+</ul>
+</div><!-- contents -->
+
+    <!-- jQuery for Bootstrap and Doxygen -->
+    <script src="../../js/jquery-1.12.0.min.js"></script>
+    <!-- Minified boostrap plugins-->
+    <script src="../../js/bootstrap.js"></script>
+    <!-- Doxygen dependency to add powertips to source code-->
+    <script src="../../js/jquery.powertip.min.js"></script>
+    <!-- The  following script is generated by doxygen and hides/shows levels in 
+         the data structure lists and adds powertips to source code-->
+    <script src="../../js/dynsections.js" ></script>
+    <!-- add to Doxygen's class names so bootstrap css and js recognises them-->
+    <script type="text/javascript">
+    $(".contents").addClass("container");
+    $(".header").addClass("container");
+    $(".navpath").addClass("container");
+    $("#navrow3").addClass("container");
+    $("#navrow4").addClass("container");
+    $(".mlabel").addClass("label");
+    $(".mlabel").addClass("label-default");
+    $(".memitem").addClass("panel");
+    $(".memitem").addClass("panel-info");
+    $(".memproto").addClass("panel-heading");
+    $(".memdoc").addClass("panel-body");
+    </script>
+    <footer>
+      <div class="container">
+        <div class="text-muted" style="float:right;">Generated by <a href="http://www.doxygen.org/index.html">
+          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Tue Dec 21 2021 16:52:25
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>oomph-lib: oomph::SpineNode Class Reference</title>
+<link rel="apple-touch-icon" sizes="57x57" href="../../figures/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="../../figures/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../../figures/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../../figures/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../../figures/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../../figures/apple-touch-icon-120x120.png">
+<link rel="icon" type="image/png" href="../../figures/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../figures/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../figures/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../figures/manifest.json">
+<link rel="mask-icon" href="../../figures/safari-pinned-tab.svg" color="#008000">
+<link rel="shortcut icon" href="../../figures/favicon.ico">
+<meta name="msapplication-TileColor" content="#00a300">
+<meta name="msapplication-config" content="../../figures/browserconfig.xml">
+<meta name="theme-color" content="#008000">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css">
+<!-- Doxygen css-->
+<!-- <link rel="stylesheet" type="text/css" href="doxygen.css"> -->
+<!-- Bootstrap -->
+<link href="../../css/bootstrap.css" rel="stylesheet">
+<!-- oomph-lib specific overrides -->
+<link rel="stylesheet" type="text/css" href="../../css/oomph_header.css">
+</head>
+<body>
+<nav class="navbar navbar-default">
+<div class="container">
+<div class="container-fluid">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="../../html/index.html"><img alt="oomph-lib" src="../../figures/oomph_logo.png"></a>
+  </div>
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">          
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li class="dropdown-header">Big picture</li>
+          <li><a href="../../../doc/intro/html/index.html">The finite element method</a></li>
+          <li><a href="../../../doc/the_data_structure/html/index.html">The data structure</a></li>
+          <li><a href="../../../doc/quick_guide/html/index.html">Not-so-quick guide</a></li>
+          <li><a href="../../../doc/optimisation/html/index.html">Optimisation</a></li>
+          <li><a href="../../../doc/order_of_action_functions/html/index.html">Order of action functions</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Example codes and tutorials</li>
+          <li><a href="../../../doc/example_code_list/html/index.html">List of example codes and tutorials</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#meshes">Meshing</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#solvers">Solvers</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#parallel">MPI parallel processing</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#visualisation">Post-processing/visualisation</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Other</li>
+          <li><a href="../../../doc/change_log/html/index.html">Change log</a></li>
+          <li><a href="../../../doc/creating_doc/html/index.html">Creating documentation</a></li>
+          <li><a href="../../../doc/coding_conventions/html/index.html">Coding conventions</a></li>
+          <li><a href="../../../doc/index/html/index.html">Index</a></li>
+          <li><a href="../../../doc/FAQ/html/index.html">FAQ</a></li>
+        </ul>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Installation<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../../../doc/the_distribution/html/index.html">Installation guide</a></li>
+            <li><a href="../../../doc/copyright/html/index.html">Copyright</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../../../doc/people/html/index.html">People</a></li>            
+            <li><a href="../../../doc/contact/html/index.html">Contact/Get involved</a></li>
+            <li><a href="../../../doc/publications/html/index.html">Publications</a></li>
+            <li><a href="../../../doc/acknowledgements/html/index.html">Acknowledgements</a></li>
+            <li><a href="../../../doc/picture_show/index.html">Picture show</a></li>
+          </ul>
+        </li>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right navbar-search">
+      <form class="navbar-form" role="search" action="../../../doc/search_results/html/index.html">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search" name="q">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Go</button>
+          </span>
+        </div><!-- /input-group -->
+       <!--<div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>-->
+      </form>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
+</div>
+</nav>
+<!-- Generated by Doxygen 1.9.2 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',false,false,'search.php','Search');
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceoomph.html">oomph</a></li><li class="navelem"><a class="el" href="classoomph_1_1SpineNode.html">SpineNode</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="classoomph_1_1SpineNode-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">oomph::SpineNode Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Class for nodes that live on spines. The assumption is that each Node lies at a fixed fraction on a single spine (although more complex behaviour could be included by adding more variables to the spine). In general, more complex node updating should be handled by the classes implemented for algebraic node updates.  
+ <a href="classoomph_1_1SpineNode.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="spines_8h_source.html">spines.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for oomph::SpineNode:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+ <div class="center">
+  <img src="classoomph_1_1SpineNode.png" alt=""/>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:af2bbfcecaae18b9256de02a0f0a9bddd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SpineNode.html#af2bbfcecaae18b9256de02a0f0a9bddd">SpineNode</a> (const unsigned &amp;n_dim, const unsigned &amp;n_position_type, const unsigned &amp;initial_nvalue)</td></tr>
+<tr class="memdesc:af2bbfcecaae18b9256de02a0f0a9bddd"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classoomph_1_1Steady.html" title="////////////////////////////////////////////////////////////////////// //////////////////////////////...">Steady</a> Constructor, initialise pointers to zero.  <a href="classoomph_1_1SpineNode.html#af2bbfcecaae18b9256de02a0f0a9bddd">More...</a><br /></td></tr>
+<tr class="separator:af2bbfcecaae18b9256de02a0f0a9bddd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35d835d5f7b549f45b69669044e30545"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SpineNode.html#a35d835d5f7b549f45b69669044e30545">SpineNode</a> (<a class="el" href="classoomph_1_1TimeStepper.html">TimeStepper</a> *const &amp;time_stepper_pt, const unsigned &amp;n_dim, const unsigned &amp;n_position_type, const unsigned &amp;initial_nvalue)</td></tr>
+<tr class="memdesc:a35d835d5f7b549f45b69669044e30545"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unsteady Constructor, initialise pointers to zero.  <a href="classoomph_1_1SpineNode.html#a35d835d5f7b549f45b69669044e30545">More...</a><br /></td></tr>
+<tr class="separator:a35d835d5f7b549f45b69669044e30545"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae04ead0542be9e109e78b0e0b0c3e260"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1Spine.html">Spine</a> *&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SpineNode.html#ae04ead0542be9e109e78b0e0b0c3e260">spine_pt</a> ()</td></tr>
+<tr class="memdesc:ae04ead0542be9e109e78b0e0b0c3e260"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access function to spine.  <a href="classoomph_1_1SpineNode.html#ae04ead0542be9e109e78b0e0b0c3e260">More...</a><br /></td></tr>
+<tr class="separator:ae04ead0542be9e109e78b0e0b0c3e260"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3980c5355fa505586d4fb1e8456fbc45"><td class="memItemLeft" align="right" valign="top">double &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SpineNode.html#a3980c5355fa505586d4fb1e8456fbc45">fraction</a> ()</td></tr>
+<tr class="memdesc:a3980c5355fa505586d4fb1e8456fbc45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set reference to fraction along spine.  <a href="classoomph_1_1SpineNode.html#a3980c5355fa505586d4fb1e8456fbc45">More...</a><br /></td></tr>
+<tr class="separator:a3980c5355fa505586d4fb1e8456fbc45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea3f896adfd22337085a04e81662ed41"><td class="memItemLeft" align="right" valign="top">unsigned &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SpineNode.html#aea3f896adfd22337085a04e81662ed41">node_update_fct_id</a> ()</td></tr>
+<tr class="memdesc:aea3f896adfd22337085a04e81662ed41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access function to ID of node update function (within specific mesh)  <a href="classoomph_1_1SpineNode.html#aea3f896adfd22337085a04e81662ed41">More...</a><br /></td></tr>
+<tr class="separator:aea3f896adfd22337085a04e81662ed41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa113d107e57ebaa3053e4cb899616b79"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1SpineMesh.html">SpineMesh</a> *&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SpineNode.html#aa113d107e57ebaa3053e4cb899616b79">spine_mesh_pt</a> ()</td></tr>
+<tr class="memdesc:aa113d107e57ebaa3053e4cb899616b79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access function to Pointer to <a class="el" href="classoomph_1_1SpineMesh.html" title="/////////////////////////////////////////////////////////////////////// /////////////////////////////...">SpineMesh</a> that this node is a part of and which implements the node update function(s)  <a href="classoomph_1_1SpineNode.html#aa113d107e57ebaa3053e4cb899616b79">More...</a><br /></td></tr>
+<tr class="separator:aa113d107e57ebaa3053e4cb899616b79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5af32b3551d15eb665485d0ed0233bde"><td class="memItemLeft" align="right" valign="top">double &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SpineNode.html#a5af32b3551d15eb665485d0ed0233bde">h</a> ()</td></tr>
+<tr class="memdesc:a5af32b3551d15eb665485d0ed0233bde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access function to spine height.  <a href="classoomph_1_1SpineNode.html#a5af32b3551d15eb665485d0ed0233bde">More...</a><br /></td></tr>
+<tr class="separator:a5af32b3551d15eb665485d0ed0233bde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc47a59bee4ca3e42a56545afe20876d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SpineNode.html#afc47a59bee4ca3e42a56545afe20876d">node_update</a> (const bool &amp;update_all_time_levels_for_new_node=false)</td></tr>
+<tr class="memdesc:afc47a59bee4ca3e42a56545afe20876d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overload thet node update function, call the update function in the Node's <a class="el" href="classoomph_1_1SpineMesh.html" title="/////////////////////////////////////////////////////////////////////// /////////////////////////////...">SpineMesh</a>.  <a href="classoomph_1_1SpineNode.html#afc47a59bee4ca3e42a56545afe20876d">More...</a><br /></td></tr>
+<tr class="separator:afc47a59bee4ca3e42a56545afe20876d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46735b4f430014997c525134c0889b4d"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SpineNode.html#a46735b4f430014997c525134c0889b4d">ngeom_data</a> () const</td></tr>
+<tr class="memdesc:a46735b4f430014997c525134c0889b4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of geometric data, zero if no spine.  <a href="classoomph_1_1SpineNode.html#a46735b4f430014997c525134c0889b4d">More...</a><br /></td></tr>
+<tr class="separator:a46735b4f430014997c525134c0889b4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afba3d62d2da3b8fa6421958fda3f0a14"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SpineNode.html#afba3d62d2da3b8fa6421958fda3f0a14">ngeom_object</a> () const</td></tr>
+<tr class="memdesc:afba3d62d2da3b8fa6421958fda3f0a14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of geometric objects, zero if no spine.  <a href="classoomph_1_1SpineNode.html#afba3d62d2da3b8fa6421958fda3f0a14">More...</a><br /></td></tr>
+<tr class="separator:afba3d62d2da3b8fa6421958fda3f0a14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef188e8daec81d355a8e26e24ede3696"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1Data.html">Data</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SpineNode.html#aef188e8daec81d355a8e26e24ede3696">all_geom_data_pt</a> ()</td></tr>
+<tr class="memdesc:aef188e8daec81d355a8e26e24ede3696"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the vector of all geometric data.  <a href="classoomph_1_1SpineNode.html#aef188e8daec81d355a8e26e24ede3696">More...</a><br /></td></tr>
+<tr class="separator:aef188e8daec81d355a8e26e24ede3696"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0e8308eeacb6371b701ed7594c33f3d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1GeomObject.html">GeomObject</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SpineNode.html#af0e8308eeacb6371b701ed7594c33f3d">all_geom_object_pt</a> ()</td></tr>
+<tr class="memdesc:af0e8308eeacb6371b701ed7594c33f3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the vector of all geometric objects.  <a href="classoomph_1_1SpineNode.html#af0e8308eeacb6371b701ed7594c33f3d">More...</a><br /></td></tr>
+<tr class="separator:af0e8308eeacb6371b701ed7594c33f3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:aa37f2daad3dddb01e58ecec5d9304cd0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1Spine.html">Spine</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SpineNode.html#aa37f2daad3dddb01e58ecec5d9304cd0">Spine_pt</a></td></tr>
+<tr class="memdesc:aa37f2daad3dddb01e58ecec5d9304cd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Private internal data pointer to a spine.  <a href="classoomph_1_1SpineNode.html#aa37f2daad3dddb01e58ecec5d9304cd0">More...</a><br /></td></tr>
+<tr class="separator:aa37f2daad3dddb01e58ecec5d9304cd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87d72975d31d015c4360b5092abdbf69"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SpineNode.html#a87d72975d31d015c4360b5092abdbf69">Fraction</a></td></tr>
+<tr class="memdesc:a87d72975d31d015c4360b5092abdbf69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Private double that represents the fixed fraction along the spine.  <a href="classoomph_1_1SpineNode.html#a87d72975d31d015c4360b5092abdbf69">More...</a><br /></td></tr>
+<tr class="separator:a87d72975d31d015c4360b5092abdbf69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8154a0fe0c361b730edc27e8e85c077a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1SpineMesh.html">SpineMesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SpineNode.html#a8154a0fe0c361b730edc27e8e85c077a">Spine_mesh_pt</a></td></tr>
+<tr class="memdesc:a8154a0fe0c361b730edc27e8e85c077a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to <a class="el" href="classoomph_1_1SpineMesh.html" title="/////////////////////////////////////////////////////////////////////// /////////////////////////////...">SpineMesh</a> that this node is a part of. (The mesh implements the node update function(s))  <a href="classoomph_1_1SpineNode.html#a8154a0fe0c361b730edc27e8e85c077a">More...</a><br /></td></tr>
+<tr class="separator:a8154a0fe0c361b730edc27e8e85c077a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac68d55d54018e5d908c5f81ab4b053a7"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SpineNode.html#ac68d55d54018e5d908c5f81ab4b053a7">Node_update_fct_id</a></td></tr>
+<tr class="memdesc:ac68d55d54018e5d908c5f81ab4b053a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID of node update function (within specific mesh &ndash; useful if there are multiple node update functions, e.g. in two-layer problems.  <a href="classoomph_1_1SpineNode.html#ac68d55d54018e5d908c5f81ab4b053a7">More...</a><br /></td></tr>
+<tr class="separator:ac68d55d54018e5d908c5f81ab4b053a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Class for nodes that live on spines. The assumption is that each Node lies at a fixed fraction on a single spine (although more complex behaviour could be included by adding more variables to the spine). In general, more complex node updating should be handled by the classes implemented for algebraic node updates. </p>
+
+<p class="definition">Definition at line <a class="el" href="spines_8h_source.html#l00327">327</a> of file <a class="el" href="spines_8h_source.html">spines.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="af2bbfcecaae18b9256de02a0f0a9bddd" name="af2bbfcecaae18b9256de02a0f0a9bddd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2bbfcecaae18b9256de02a0f0a9bddd">&#9670;&nbsp;</a></span>SpineNode() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">oomph::SpineNode::SpineNode </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n_dim</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n_position_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>initial_nvalue</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classoomph_1_1Steady.html" title="////////////////////////////////////////////////////////////////////// //////////////////////////////...">Steady</a> Constructor, initialise pointers to zero. </p>
+
+<p class="definition">Definition at line <a class="el" href="spines_8h_source.html#l00347">347</a> of file <a class="el" href="spines_8h_source.html">spines.h</a>.</p>
+
+</div>
+</div>
+<a id="a35d835d5f7b549f45b69669044e30545" name="a35d835d5f7b549f45b69669044e30545"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35d835d5f7b549f45b69669044e30545">&#9670;&nbsp;</a></span>SpineNode() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">oomph::SpineNode::SpineNode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1TimeStepper.html">TimeStepper</a> *const &amp;&#160;</td>
+          <td class="paramname"><em>time_stepper_pt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n_dim</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n_position_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>initial_nvalue</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Unsteady Constructor, initialise pointers to zero. </p>
+
+<p class="definition">Definition at line <a class="el" href="spines_8h_source.html#l00359">359</a> of file <a class="el" href="spines_8h_source.html">spines.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aef188e8daec81d355a8e26e24ede3696" name="aef188e8daec81d355a8e26e24ede3696"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef188e8daec81d355a8e26e24ede3696">&#9670;&nbsp;</a></span>all_geom_data_pt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoomph_1_1Data.html">Data</a> ** oomph::SpineNode::all_geom_data_pt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return the vector of all geometric data. </p>
+
+<p class="definition">Definition at line <a class="el" href="spines_8h_source.html#l00433">433</a> of file <a class="el" href="spines_8h_source.html">spines.h</a>.</p>
+
+<p class="reference">References <a class="el" href="spines_8h_source.html#l00198">oomph::Spine::geom_data_pt()</a>, and <a class="el" href="spines_8h_source.html#l00331">Spine_pt</a>.</p>
+
+</div>
+</div>
+<a id="af0e8308eeacb6371b701ed7594c33f3d" name="af0e8308eeacb6371b701ed7594c33f3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0e8308eeacb6371b701ed7594c33f3d">&#9670;&nbsp;</a></span>all_geom_object_pt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoomph_1_1GeomObject.html">GeomObject</a> ** oomph::SpineNode::all_geom_object_pt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return the vector of all geometric objects. </p>
+
+<p class="definition">Definition at line <a class="el" href="spines_8h_source.html#l00439">439</a> of file <a class="el" href="spines_8h_source.html">spines.h</a>.</p>
+
+<p class="reference">References <a class="el" href="spines_8h_source.html#l00244">oomph::Spine::geom_object_pt()</a>, and <a class="el" href="spines_8h_source.html#l00331">Spine_pt</a>.</p>
+
+</div>
+</div>
+<a id="a3980c5355fa505586d4fb1e8456fbc45" name="a3980c5355fa505586d4fb1e8456fbc45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3980c5355fa505586d4fb1e8456fbc45">&#9670;&nbsp;</a></span>fraction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double &amp; oomph::SpineNode::fraction </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set reference to fraction along spine. </p>
+
+<p class="definition">Definition at line <a class="el" href="spines_8h_source.html#l00378">378</a> of file <a class="el" href="spines_8h_source.html">spines.h</a>.</p>
+
+<p class="reference">References <a class="el" href="spines_8h_source.html#l00334">Fraction</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="bretherton__spine__mesh_8template_8cc_source.html#l00058">oomph::BrethertonSpineMesh&lt; ELEMENT, INTERFACE_ELEMENT &gt;::BrethertonSpineMesh()</a>, <a class="el" href="channel__spine__mesh_8template_8cc_source.html#l00153">oomph::ChannelSpineMesh&lt; ELEMENT &gt;::build_channel_spine_mesh()</a>, <a class="el" href="horizontal__single__layer__spine__mesh_8template_8cc_source.html#l00075">oomph::HorizontalSingleLayerSpineMesh&lt; ELEMENT &gt;::build_horizontal_single_layer_mesh()</a>, <a class="el" href="single__layer__cubic__spine__mesh_8template_8cc_source.html#l00066">oomph::SingleLayerCubicSpineMesh&lt; ELEMENT &gt;::build_single_layer_mesh()</a>, <a class="el" href="single__layer__spine__mesh_8template_8cc_source.html#l00114">oomph::SingleLayerSpineMesh&lt; ELEMENT &gt;::build_single_layer_mesh()</a>, <a class="el" href="two__layer__spine__mesh_8template_8cc_source.html#l00267">oomph::TwoLayerSpineMesh&lt; ELEMENT &gt;::build_two_layer_mesh()</a>, <a class="el" href="channel__spine__mesh_8template_8h_source.html#l00133">oomph::ChannelSpineMesh&lt; ELEMENT &gt;::spine_node_update()</a>, <a class="el" href="horizontal__single__layer__spine__mesh_8template_8h_source.html#l00063">oomph::HorizontalSingleLayerSpineMesh&lt; ELEMENT &gt;::spine_node_update()</a>, <a class="el" href="single__layer__cubic__spine__mesh_8template_8h_source.html#l00066">oomph::SingleLayerCubicSpineMesh&lt; ELEMENT &gt;::spine_node_update()</a>, <a class="el" href="single__layer__spine__mesh_8template_8h_source.html#l00075">oomph::SingleLayerSpineMesh&lt; ELEMENT &gt;::spine_node_update()</a>, <a class="el" href="bretherton__spine__mesh_8template_8h_source.html#l00464">oomph::BrethertonSpineMesh&lt; ELEMENT, INTERFACE_ELEMENT &gt;::spine_node_update_channel()</a>, <a class="el" href="bretherton__spine__mesh_8template_8h_source.html#l00208">oomph::BrethertonSpineMesh&lt; ELEMENT, INTERFACE_ELEMENT &gt;::spine_node_update_film_lower()</a>, <a class="el" href="bretherton__spine__mesh_8template_8h_source.html#l00440">oomph::BrethertonSpineMesh&lt; ELEMENT, INTERFACE_ELEMENT &gt;::spine_node_update_film_upper()</a>, <a class="el" href="bretherton__spine__mesh_8template_8h_source.html#l00231">oomph::BrethertonSpineMesh&lt; ELEMENT, INTERFACE_ELEMENT &gt;::spine_node_update_horizontal_transition_lower()</a>, <a class="el" href="bretherton__spine__mesh_8template_8h_source.html#l00393">oomph::BrethertonSpineMesh&lt; ELEMENT, INTERFACE_ELEMENT &gt;::spine_node_update_horizontal_transition_upper()</a>, <a class="el" href="two__layer__spine__mesh_8template_8h_source.html#l00242">oomph::TwoLayerSpineMesh&lt; ELEMENT &gt;::spine_node_update_lower()</a>, <a class="el" href="two__layer__spine__mesh_8template_8h_source.html#l00254">oomph::TwoLayerSpineMesh&lt; ELEMENT &gt;::spine_node_update_upper()</a>, <a class="el" href="bretherton__spine__mesh_8template_8h_source.html#l00277">oomph::BrethertonSpineMesh&lt; ELEMENT, INTERFACE_ELEMENT &gt;::spine_node_update_vertical_transition_lower()</a>, and <a class="el" href="bretherton__spine__mesh_8template_8h_source.html#l00335">oomph::BrethertonSpineMesh&lt; ELEMENT, INTERFACE_ELEMENT &gt;::spine_node_update_vertical_transition_upper()</a>.</p>
+
+</div>
+</div>
+<a id="a5af32b3551d15eb665485d0ed0233bde" name="a5af32b3551d15eb665485d0ed0233bde"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5af32b3551d15eb665485d0ed0233bde">&#9670;&nbsp;</a></span>h()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double &amp; oomph::SpineNode::h </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Access function to spine height. </p>
+
+<p class="definition">Definition at line <a class="el" href="spines_8h_source.html#l00397">397</a> of file <a class="el" href="spines_8h_source.html">spines.h</a>.</p>
+
+<p class="reference">References <a class="el" href="spines_8h_source.html#l00150">oomph::Spine::height()</a>, and <a class="el" href="spines_8h_source.html#l00331">Spine_pt</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="horizontal__single__layer__spine__mesh_8template_8h_source.html#l00063">oomph::HorizontalSingleLayerSpineMesh&lt; ELEMENT &gt;::spine_node_update()</a>, <a class="el" href="single__layer__cubic__spine__mesh_8template_8h_source.html#l00066">oomph::SingleLayerCubicSpineMesh&lt; ELEMENT &gt;::spine_node_update()</a>, <a class="el" href="single__layer__spine__mesh_8template_8h_source.html#l00075">oomph::SingleLayerSpineMesh&lt; ELEMENT &gt;::spine_node_update()</a>, <a class="el" href="bretherton__spine__mesh_8template_8h_source.html#l00208">oomph::BrethertonSpineMesh&lt; ELEMENT, INTERFACE_ELEMENT &gt;::spine_node_update_film_lower()</a>, <a class="el" href="bretherton__spine__mesh_8template_8h_source.html#l00440">oomph::BrethertonSpineMesh&lt; ELEMENT, INTERFACE_ELEMENT &gt;::spine_node_update_film_upper()</a>, <a class="el" href="bretherton__spine__mesh_8template_8h_source.html#l00231">oomph::BrethertonSpineMesh&lt; ELEMENT, INTERFACE_ELEMENT &gt;::spine_node_update_horizontal_transition_lower()</a>, <a class="el" href="bretherton__spine__mesh_8template_8h_source.html#l00393">oomph::BrethertonSpineMesh&lt; ELEMENT, INTERFACE_ELEMENT &gt;::spine_node_update_horizontal_transition_upper()</a>, <a class="el" href="two__layer__spine__mesh_8template_8h_source.html#l00242">oomph::TwoLayerSpineMesh&lt; ELEMENT &gt;::spine_node_update_lower()</a>, <a class="el" href="two__layer__spine__mesh_8template_8h_source.html#l00254">oomph::TwoLayerSpineMesh&lt; ELEMENT &gt;::spine_node_update_upper()</a>, <a class="el" href="bretherton__spine__mesh_8template_8h_source.html#l00277">oomph::BrethertonSpineMesh&lt; ELEMENT, INTERFACE_ELEMENT &gt;::spine_node_update_vertical_transition_lower()</a>, and <a class="el" href="bretherton__spine__mesh_8template_8h_source.html#l00335">oomph::BrethertonSpineMesh&lt; ELEMENT, INTERFACE_ELEMENT &gt;::spine_node_update_vertical_transition_upper()</a>.</p>
+
+</div>
+</div>
+<a id="a46735b4f430014997c525134c0889b4d" name="a46735b4f430014997c525134c0889b4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46735b4f430014997c525134c0889b4d">&#9670;&nbsp;</a></span>ngeom_data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned oomph::SpineNode::ngeom_data </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return the number of geometric data, zero if no spine. </p>
+
+<p class="definition">Definition at line <a class="el" href="spines_8h_source.html#l00407">407</a> of file <a class="el" href="spines_8h_source.html">spines.h</a>.</p>
+
+<p class="reference">References <a class="el" href="spines_8h_source.html#l00171">oomph::Spine::ngeom_data()</a>, and <a class="el" href="spines_8h_source.html#l00331">Spine_pt</a>.</p>
+
+</div>
+</div>
+<a id="afba3d62d2da3b8fa6421958fda3f0a14" name="afba3d62d2da3b8fa6421958fda3f0a14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afba3d62d2da3b8fa6421958fda3f0a14">&#9670;&nbsp;</a></span>ngeom_object()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned oomph::SpineNode::ngeom_object </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return the number of geometric objects, zero if no spine. </p>
+
+<p class="definition">Definition at line <a class="el" href="spines_8h_source.html#l00420">420</a> of file <a class="el" href="spines_8h_source.html">spines.h</a>.</p>
+
+<p class="reference">References <a class="el" href="spines_8h_source.html#l00218">oomph::Spine::ngeom_object()</a>, and <a class="el" href="spines_8h_source.html#l00331">Spine_pt</a>.</p>
+
+</div>
+</div>
+<a id="afc47a59bee4ca3e42a56545afe20876d" name="afc47a59bee4ca3e42a56545afe20876d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc47a59bee4ca3e42a56545afe20876d">&#9670;&nbsp;</a></span>node_update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::SpineNode::node_update </td>
+          <td>(</td>
+          <td class="paramtype">const bool &amp;&#160;</td>
+          <td class="paramname"><em>update_all_time_levels_for_new_node</em> = <code>false</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Overload thet node update function, call the update function in the Node's <a class="el" href="classoomph_1_1SpineMesh.html" title="/////////////////////////////////////////////////////////////////////// /////////////////////////////...">SpineMesh</a>. </p>
+<p >////////////////////////////////////////////////////////////////</p>
+<p >//////////////////////////////////////////////////////////////// Update function, call the update function in the Node's <a class="el" href="classoomph_1_1SpineMesh.html" title="/////////////////////////////////////////////////////////////////////// /////////////////////////////...">SpineMesh</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="spines_8cc_source.html#l00044">44</a> of file <a class="el" href="spines_8cc_source.html">spines.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="spines_8h_source.html#l00338">Spine_mesh_pt</a>, and <a class="el" href="classoomph_1_1SpineMesh.html#aa7843aadce3c540f34442671f59eb75b">oomph::SpineMesh::spine_node_update()</a>.</p>
+
+</div>
+</div>
+<a id="aea3f896adfd22337085a04e81662ed41" name="aea3f896adfd22337085a04e81662ed41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea3f896adfd22337085a04e81662ed41">&#9670;&nbsp;</a></span>node_update_fct_id()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned &amp; oomph::SpineNode::node_update_fct_id </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Access function to ID of node update function (within specific mesh) </p>
+
+<p class="definition">Definition at line <a class="el" href="spines_8h_source.html#l00384">384</a> of file <a class="el" href="spines_8h_source.html">spines.h</a>.</p>
+
+<p class="reference">References <a class="el" href="spines_8h_source.html#l00342">Node_update_fct_id</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="bretherton__spine__mesh_8template_8cc_source.html#l00058">oomph::BrethertonSpineMesh&lt; ELEMENT, INTERFACE_ELEMENT &gt;::BrethertonSpineMesh()</a>, <a class="el" href="channel__spine__mesh_8template_8cc_source.html#l00153">oomph::ChannelSpineMesh&lt; ELEMENT &gt;::build_channel_spine_mesh()</a>, <a class="el" href="two__layer__spine__mesh_8template_8cc_source.html#l00267">oomph::TwoLayerSpineMesh&lt; ELEMENT &gt;::build_two_layer_mesh()</a>, <a class="el" href="bretherton__spine__mesh_8template_8h_source.html#l00140">oomph::BrethertonSpineMesh&lt; ELEMENT, INTERFACE_ELEMENT &gt;::spine_node_update()</a>, and <a class="el" href="two__layer__spine__mesh_8template_8h_source.html#l00175">oomph::TwoLayerSpineMesh&lt; ELEMENT &gt;::spine_node_update()</a>.</p>
+
+</div>
+</div>
+<a id="aa113d107e57ebaa3053e4cb899616b79" name="aa113d107e57ebaa3053e4cb899616b79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa113d107e57ebaa3053e4cb899616b79">&#9670;&nbsp;</a></span>spine_mesh_pt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoomph_1_1SpineMesh.html">SpineMesh</a> *&amp; oomph::SpineNode::spine_mesh_pt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Access function to Pointer to <a class="el" href="classoomph_1_1SpineMesh.html" title="/////////////////////////////////////////////////////////////////////// /////////////////////////////...">SpineMesh</a> that this node is a part of and which implements the node update function(s) </p>
+
+<p class="definition">Definition at line <a class="el" href="spines_8h_source.html#l00391">391</a> of file <a class="el" href="spines_8h_source.html">spines.h</a>.</p>
+
+<p class="reference">References <a class="el" href="spines_8h_source.html#l00338">Spine_mesh_pt</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="bretherton__spine__mesh_8template_8cc_source.html#l00058">oomph::BrethertonSpineMesh&lt; ELEMENT, INTERFACE_ELEMENT &gt;::BrethertonSpineMesh()</a>, <a class="el" href="channel__spine__mesh_8template_8cc_source.html#l00153">oomph::ChannelSpineMesh&lt; ELEMENT &gt;::build_channel_spine_mesh()</a>, <a class="el" href="horizontal__single__layer__spine__mesh_8template_8cc_source.html#l00075">oomph::HorizontalSingleLayerSpineMesh&lt; ELEMENT &gt;::build_horizontal_single_layer_mesh()</a>, <a class="el" href="single__layer__cubic__spine__mesh_8template_8cc_source.html#l00066">oomph::SingleLayerCubicSpineMesh&lt; ELEMENT &gt;::build_single_layer_mesh()</a>, <a class="el" href="single__layer__spine__mesh_8template_8cc_source.html#l00114">oomph::SingleLayerSpineMesh&lt; ELEMENT &gt;::build_single_layer_mesh()</a>, and <a class="el" href="two__layer__spine__mesh_8template_8cc_source.html#l00267">oomph::TwoLayerSpineMesh&lt; ELEMENT &gt;::build_two_layer_mesh()</a>.</p>
+
+</div>
+</div>
+<a id="ae04ead0542be9e109e78b0e0b0c3e260" name="ae04ead0542be9e109e78b0e0b0c3e260"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae04ead0542be9e109e78b0e0b0c3e260">&#9670;&nbsp;</a></span>spine_pt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoomph_1_1Spine.html">Spine</a> *&amp; oomph::SpineNode::spine_pt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Access function to spine. </p>
+
+<p class="definition">Definition at line <a class="el" href="spines_8h_source.html#l00372">372</a> of file <a class="el" href="spines_8h_source.html">spines.h</a>.</p>
+
+<p class="reference">References <a class="el" href="spines_8h_source.html#l00331">Spine_pt</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="bretherton__spine__mesh_8template_8cc_source.html#l00058">oomph::BrethertonSpineMesh&lt; ELEMENT, INTERFACE_ELEMENT &gt;::BrethertonSpineMesh()</a>, <a class="el" href="channel__spine__mesh_8template_8cc_source.html#l00153">oomph::ChannelSpineMesh&lt; ELEMENT &gt;::build_channel_spine_mesh()</a>, <a class="el" href="horizontal__single__layer__spine__mesh_8template_8cc_source.html#l00075">oomph::HorizontalSingleLayerSpineMesh&lt; ELEMENT &gt;::build_horizontal_single_layer_mesh()</a>, <a class="el" href="single__layer__cubic__spine__mesh_8template_8cc_source.html#l00066">oomph::SingleLayerCubicSpineMesh&lt; ELEMENT &gt;::build_single_layer_mesh()</a>, <a class="el" href="single__layer__spine__mesh_8template_8cc_source.html#l00114">oomph::SingleLayerSpineMesh&lt; ELEMENT &gt;::build_single_layer_mesh()</a>, <a class="el" href="two__layer__spine__mesh_8template_8cc_source.html#l00267">oomph::TwoLayerSpineMesh&lt; ELEMENT &gt;::build_two_layer_mesh()</a>, <a class="el" href="hijacked__elements_8h_source.html#l00279">oomph::Hijacked&lt; ELEMENT &gt;::hijack_nodal_spine_value()</a>, <a class="el" href="bretherton__spine__mesh_8template_8cc_source.html#l01158">oomph::BrethertonSpineMesh&lt; ELEMENT, INTERFACE_ELEMENT &gt;::reposition_spines()</a>, <a class="el" href="channel__spine__mesh_8template_8h_source.html#l00133">oomph::ChannelSpineMesh&lt; ELEMENT &gt;::spine_node_update()</a>, <a class="el" href="bretherton__spine__mesh_8template_8h_source.html#l00464">oomph::BrethertonSpineMesh&lt; ELEMENT, INTERFACE_ELEMENT &gt;::spine_node_update_channel()</a>, <a class="el" href="bretherton__spine__mesh_8template_8h_source.html#l00208">oomph::BrethertonSpineMesh&lt; ELEMENT, INTERFACE_ELEMENT &gt;::spine_node_update_film_lower()</a>, <a class="el" href="bretherton__spine__mesh_8template_8h_source.html#l00440">oomph::BrethertonSpineMesh&lt; ELEMENT, INTERFACE_ELEMENT &gt;::spine_node_update_film_upper()</a>, <a class="el" href="bretherton__spine__mesh_8template_8h_source.html#l00231">oomph::BrethertonSpineMesh&lt; ELEMENT, INTERFACE_ELEMENT &gt;::spine_node_update_horizontal_transition_lower()</a>, <a class="el" href="bretherton__spine__mesh_8template_8h_source.html#l00393">oomph::BrethertonSpineMesh&lt; ELEMENT, INTERFACE_ELEMENT &gt;::spine_node_update_horizontal_transition_upper()</a>, <a class="el" href="bretherton__spine__mesh_8template_8h_source.html#l00277">oomph::BrethertonSpineMesh&lt; ELEMENT, INTERFACE_ELEMENT &gt;::spine_node_update_vertical_transition_lower()</a>, and <a class="el" href="bretherton__spine__mesh_8template_8h_source.html#l00335">oomph::BrethertonSpineMesh&lt; ELEMENT, INTERFACE_ELEMENT &gt;::spine_node_update_vertical_transition_upper()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a87d72975d31d015c4360b5092abdbf69" name="a87d72975d31d015c4360b5092abdbf69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87d72975d31d015c4360b5092abdbf69">&#9670;&nbsp;</a></span>Fraction</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double oomph::SpineNode::Fraction</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Private double that represents the fixed fraction along the spine. </p>
+
+<p class="definition">Definition at line <a class="el" href="spines_8h_source.html#l00334">334</a> of file <a class="el" href="spines_8h_source.html">spines.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="spines_8h_source.html#l00378">fraction()</a>.</p>
+
+</div>
+</div>
+<a id="ac68d55d54018e5d908c5f81ab4b053a7" name="ac68d55d54018e5d908c5f81ab4b053a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac68d55d54018e5d908c5f81ab4b053a7">&#9670;&nbsp;</a></span>Node_update_fct_id</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned oomph::SpineNode::Node_update_fct_id</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ID of node update function (within specific mesh &ndash; useful if there are multiple node update functions, e.g. in two-layer problems. </p>
+
+<p class="definition">Definition at line <a class="el" href="spines_8h_source.html#l00342">342</a> of file <a class="el" href="spines_8h_source.html">spines.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="spines_8h_source.html#l00384">node_update_fct_id()</a>.</p>
+
+</div>
+</div>
+<a id="a8154a0fe0c361b730edc27e8e85c077a" name="a8154a0fe0c361b730edc27e8e85c077a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8154a0fe0c361b730edc27e8e85c077a">&#9670;&nbsp;</a></span>Spine_mesh_pt</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoomph_1_1SpineMesh.html">SpineMesh</a>* oomph::SpineNode::Spine_mesh_pt</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="classoomph_1_1SpineMesh.html" title="/////////////////////////////////////////////////////////////////////// /////////////////////////////...">SpineMesh</a> that this node is a part of. (The mesh implements the node update function(s)) </p>
+
+<p class="definition">Definition at line <a class="el" href="spines_8h_source.html#l00338">338</a> of file <a class="el" href="spines_8h_source.html">spines.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="spines_8cc_source.html#l00044">node_update()</a>, and <a class="el" href="spines_8h_source.html#l00391">spine_mesh_pt()</a>.</p>
+
+</div>
+</div>
+<a id="aa37f2daad3dddb01e58ecec5d9304cd0" name="aa37f2daad3dddb01e58ecec5d9304cd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa37f2daad3dddb01e58ecec5d9304cd0">&#9670;&nbsp;</a></span>Spine_pt</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoomph_1_1Spine.html">Spine</a>* oomph::SpineNode::Spine_pt</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Private internal data pointer to a spine. </p>
+
+<p class="definition">Definition at line <a class="el" href="spines_8h_source.html#l00331">331</a> of file <a class="el" href="spines_8h_source.html">spines.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="spines_8h_source.html#l00433">all_geom_data_pt()</a>, <a class="el" href="spines_8h_source.html#l00439">all_geom_object_pt()</a>, <a class="el" href="spines_8h_source.html#l00397">h()</a>, <a class="el" href="spines_8h_source.html#l00407">ngeom_data()</a>, <a class="el" href="spines_8h_source.html#l00420">ngeom_object()</a>, and <a class="el" href="spines_8h_source.html#l00372">spine_pt()</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li><a class="el" href="spines_8h_source.html">spines.h</a></li>
+<li><a class="el" href="spines_8cc_source.html">spines.cc</a></li>
+</ul>
+</div><!-- contents -->
+
+    <!-- jQuery for Bootstrap and Doxygen -->
+    <script src="../../js/jquery-1.12.0.min.js"></script>
+    <!-- Minified boostrap plugins-->
+    <script src="../../js/bootstrap.js"></script>
+    <!-- Doxygen dependency to add powertips to source code-->
+    <script src="../../js/jquery.powertip.min.js"></script>
+    <!-- The  following script is generated by doxygen and hides/shows levels in 
+         the data structure lists and adds powertips to source code-->
+    <script src="../../js/dynsections.js" ></script>
+    <!-- add to Doxygen's class names so bootstrap css and js recognises them-->
+    <script type="text/javascript">
+    $(".contents").addClass("container");
+    $(".header").addClass("container");
+    $(".navpath").addClass("container");
+    $("#navrow3").addClass("container");
+    $("#navrow4").addClass("container");
+    $(".mlabel").addClass("label");
+    $(".mlabel").addClass("label-default");
+    $(".memitem").addClass("panel");
+    $(".memitem").addClass("panel-info");
+    $(".memproto").addClass("panel-heading");
+    $(".memdoc").addClass("panel-body");
+    </script>
+    <footer>
+      <div class="container">
+        <div class="text-muted" style="float:right;">Generated by <a href="http://www.doxygen.org/index.html">
+          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Tue Dec 21 2021 16:52:32
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>oomph-lib: oomph::QAdvectionDiffusionReactionElement&lt; NREAGENT, DIM, NNODE_1D &gt; Class Template Reference</title>
+<link rel="apple-touch-icon" sizes="57x57" href="../../figures/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="../../figures/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../../figures/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../../figures/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../../figures/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../../figures/apple-touch-icon-120x120.png">
+<link rel="icon" type="image/png" href="../../figures/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../figures/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../figures/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../figures/manifest.json">
+<link rel="mask-icon" href="../../figures/safari-pinned-tab.svg" color="#008000">
+<link rel="shortcut icon" href="../../figures/favicon.ico">
+<meta name="msapplication-TileColor" content="#00a300">
+<meta name="msapplication-config" content="../../figures/browserconfig.xml">
+<meta name="theme-color" content="#008000">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css">
+<!-- Doxygen css-->
+<!-- <link rel="stylesheet" type="text/css" href="doxygen.css"> -->
+<!-- Bootstrap -->
+<link href="../../css/bootstrap.css" rel="stylesheet">
+<!-- oomph-lib specific overrides -->
+<link rel="stylesheet" type="text/css" href="../../css/oomph_header.css">
+</head>
+<body>
+<nav class="navbar navbar-default">
+<div class="container">
+<div class="container-fluid">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="../../html/index.html"><img alt="oomph-lib" src="../../figures/oomph_logo.png"></a>
+  </div>
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">          
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li class="dropdown-header">Big picture</li>
+          <li><a href="../../../doc/intro/html/index.html">The finite element method</a></li>
+          <li><a href="../../../doc/the_data_structure/html/index.html">The data structure</a></li>
+          <li><a href="../../../doc/quick_guide/html/index.html">Not-so-quick guide</a></li>
+          <li><a href="../../../doc/optimisation/html/index.html">Optimisation</a></li>
+          <li><a href="../../../doc/order_of_action_functions/html/index.html">Order of action functions</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Example codes and tutorials</li>
+          <li><a href="../../../doc/example_code_list/html/index.html">List of example codes and tutorials</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#meshes">Meshing</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#solvers">Solvers</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#parallel">MPI parallel processing</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#visualisation">Post-processing/visualisation</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Other</li>
+          <li><a href="../../../doc/change_log/html/index.html">Change log</a></li>
+          <li><a href="../../../doc/creating_doc/html/index.html">Creating documentation</a></li>
+          <li><a href="../../../doc/coding_conventions/html/index.html">Coding conventions</a></li>
+          <li><a href="../../../doc/index/html/index.html">Index</a></li>
+          <li><a href="../../../doc/FAQ/html/index.html">FAQ</a></li>
+        </ul>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Installation<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../../../doc/the_distribution/html/index.html">Installation guide</a></li>
+            <li><a href="../../../doc/copyright/html/index.html">Copyright</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../../../doc/people/html/index.html">People</a></li>            
+            <li><a href="../../../doc/contact/html/index.html">Contact/Get involved</a></li>
+            <li><a href="../../../doc/publications/html/index.html">Publications</a></li>
+            <li><a href="../../../doc/acknowledgements/html/index.html">Acknowledgements</a></li>
+            <li><a href="../../../doc/picture_show/index.html">Picture show</a></li>
+          </ul>
+        </li>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right navbar-search">
+      <form class="navbar-form" role="search" action="../../../doc/search_results/html/index.html">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search" name="q">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Go</button>
+          </span>
+        </div><!-- /input-group -->
+       <!--<div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>-->
+      </form>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
+</div>
+</nav>
+<!-- Generated by Doxygen 1.9.2 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',false,false,'search.php','Search');
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceoomph.html">oomph</a></li><li class="navelem"><a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html">QAdvectionDiffusionReactionElement</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="classoomph_1_1QAdvectionDiffusionReactionElement-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">oomph::QAdvectionDiffusionReactionElement&lt; NREAGENT, DIM, NNODE_1D &gt; Class Template Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>//////////////////////////////////////////////////////////////////////// ////////////////////////////////////////////////////////////////////////  
+ <a href="classoomph_1_1QAdvectionDiffusionReactionElement.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="advection__diffusion__reaction__elements_8h_source.html">advection_diffusion_reaction_elements.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for oomph::QAdvectionDiffusionReactionElement&lt; NREAGENT, DIM, NNODE_1D &gt;:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+ <div class="center">
+  <img src="classoomph_1_1QAdvectionDiffusionReactionElement.png" usemap="#oomph::QAdvectionDiffusionReactionElement_3C_20NREAGENT_2C_20DIM_2C_20NNODE_5F1D_20_3E_map" alt=""/>
+  <map id="oomph::QAdvectionDiffusionReactionElement_3C_20NREAGENT_2C_20DIM_2C_20NNODE_5F1D_20_3E_map" name="oomph::QAdvectionDiffusionReactionElement_3C_20NREAGENT_2C_20DIM_2C_20NNODE_5F1D_20_3E_map">
+<area href="classoomph_1_1QElement.html" title="/////////////////////////////////////////////////////////////////////// /////////////////////////////..." alt="oomph::QElement&lt; DIM, NNODE_1D &gt;" shape="rect" coords="0,0,525,24"/>
+<area href="classoomph_1_1AdvectionDiffusionReactionEquations.html" alt="oomph::AdvectionDiffusionReactionEquations&lt; NREAGENT, DIM &gt;" shape="rect" coords="535,0,1060,24"/>
+<area href="classoomph_1_1RefineableQAdvectionDiffusionReactionElement.html" title="Refineable version of QAdvectionDiffusionReactionElement. Inherit from the standard QAdvectionDiffusi..." alt="oomph::RefineableQAdvectionDiffusionReactionElement&lt; NREAGENT, DIM, NNODE_1D &gt;" shape="rect" coords="267,112,792,136"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:add22bb19f8f4a185e0e7820c7f43121f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html#add22bb19f8f4a185e0e7820c7f43121f">QAdvectionDiffusionReactionElement</a> ()</td></tr>
+<tr class="memdesc:add22bb19f8f4a185e0e7820c7f43121f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor: Call constructors for <a class="el" href="classoomph_1_1QElement.html" title="/////////////////////////////////////////////////////////////////////// /////////////////////////////...">QElement</a> and Advection Diffusion equations.  <a href="classoomph_1_1QAdvectionDiffusionReactionElement.html#add22bb19f8f4a185e0e7820c7f43121f">More...</a><br /></td></tr>
+<tr class="separator:add22bb19f8f4a185e0e7820c7f43121f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef049aaa3d88af391817ff275c1f5ab2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html#aef049aaa3d88af391817ff275c1f5ab2">QAdvectionDiffusionReactionElement</a> (const <a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html">QAdvectionDiffusionReactionElement</a>&lt; NREAGENT, DIM, NNODE_1D &gt; &amp;dummy)=delete</td></tr>
+<tr class="memdesc:aef049aaa3d88af391817ff275c1f5ab2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Broken copy constructor.  <a href="classoomph_1_1QAdvectionDiffusionReactionElement.html#aef049aaa3d88af391817ff275c1f5ab2">More...</a><br /></td></tr>
+<tr class="separator:aef049aaa3d88af391817ff275c1f5ab2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accb3be408129427b803e9f52acaff350"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html#accb3be408129427b803e9f52acaff350">operator=</a> (const <a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html">QAdvectionDiffusionReactionElement</a>&lt; NREAGENT, DIM, NNODE_1D &gt; &amp;)=delete</td></tr>
+<tr class="memdesc:accb3be408129427b803e9f52acaff350"><td class="mdescLeft">&#160;</td><td class="mdescRight">Broken assignment operator.  <a href="classoomph_1_1QAdvectionDiffusionReactionElement.html#accb3be408129427b803e9f52acaff350">More...</a><br /></td></tr>
+<tr class="separator:accb3be408129427b803e9f52acaff350"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6a740436c52b5c541c1758508be0710"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html#ac6a740436c52b5c541c1758508be0710">required_nvalue</a> (const unsigned &amp;n) const</td></tr>
+<tr class="memdesc:ac6a740436c52b5c541c1758508be0710"><td class="mdescLeft">&#160;</td><td class="mdescRight">Required # of &lsquo;values&rsquo; (pinned or dofs) at node n.  <a href="classoomph_1_1QAdvectionDiffusionReactionElement.html#ac6a740436c52b5c541c1758508be0710">More...</a><br /></td></tr>
+<tr class="separator:ac6a740436c52b5c541c1758508be0710"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abea67b1715ee4b70086ee68dcddbc0b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html#abea67b1715ee4b70086ee68dcddbc0b1">output</a> (std::ostream &amp;outfile)</td></tr>
+<tr class="memdesc:abea67b1715ee4b70086ee68dcddbc0b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output function: x,y,u or x,y,z,u.  <a href="classoomph_1_1QAdvectionDiffusionReactionElement.html#abea67b1715ee4b70086ee68dcddbc0b1">More...</a><br /></td></tr>
+<tr class="separator:abea67b1715ee4b70086ee68dcddbc0b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acafd4d0efa43a6c63600c8f1e8823c5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html#acafd4d0efa43a6c63600c8f1e8823c5b">output</a> (std::ostream &amp;outfile, const unsigned &amp;n_plot)</td></tr>
+<tr class="memdesc:acafd4d0efa43a6c63600c8f1e8823c5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output function: x,y,u or x,y,z,u at n_plot^DIM plot points.  <a href="classoomph_1_1QAdvectionDiffusionReactionElement.html#acafd4d0efa43a6c63600c8f1e8823c5b">More...</a><br /></td></tr>
+<tr class="separator:acafd4d0efa43a6c63600c8f1e8823c5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a3333fcb25ba0d5e74e74c2964d8d1c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html#a5a3333fcb25ba0d5e74e74c2964d8d1c">output</a> (FILE *file_pt)</td></tr>
+<tr class="memdesc:a5a3333fcb25ba0d5e74e74c2964d8d1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">C-style output function: x,y,u or x,y,z,u.  <a href="classoomph_1_1QAdvectionDiffusionReactionElement.html#a5a3333fcb25ba0d5e74e74c2964d8d1c">More...</a><br /></td></tr>
+<tr class="separator:a5a3333fcb25ba0d5e74e74c2964d8d1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd8dbb087ca525304f3328d823311d6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html#abd8dbb087ca525304f3328d823311d6f">output</a> (FILE *file_pt, const unsigned &amp;n_plot)</td></tr>
+<tr class="memdesc:abd8dbb087ca525304f3328d823311d6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">C-style output function: x,y,u or x,y,z,u at n_plot^DIM plot points.  <a href="classoomph_1_1QAdvectionDiffusionReactionElement.html#abd8dbb087ca525304f3328d823311d6f">More...</a><br /></td></tr>
+<tr class="separator:abd8dbb087ca525304f3328d823311d6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dcfb4e1778ee7e46c86609ea4d1ce30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html#a4dcfb4e1778ee7e46c86609ea4d1ce30">output_fct</a> (std::ostream &amp;outfile, const unsigned &amp;n_plot, <a class="el" href="classoomph_1_1FiniteElement.html#a690fd33af26cc3e84f39bba6d5a85202">FiniteElement::SteadyExactSolutionFctPt</a> exact_soln_pt)</td></tr>
+<tr class="memdesc:a4dcfb4e1778ee7e46c86609ea4d1ce30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output function for an exact solution: x,y,u_exact or x,y,z,u_exact at n_plot^DIM plot points.  <a href="classoomph_1_1QAdvectionDiffusionReactionElement.html#a4dcfb4e1778ee7e46c86609ea4d1ce30">More...</a><br /></td></tr>
+<tr class="separator:a4dcfb4e1778ee7e46c86609ea4d1ce30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aced1d7c07e1e49b95aff9b354676808b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html#aced1d7c07e1e49b95aff9b354676808b">output_fct</a> (std::ostream &amp;outfile, const unsigned &amp;n_plot, const double &amp;time, <a class="el" href="classoomph_1_1FiniteElement.html#ad4ecf2b61b158a4b4d351a60d23c633e">FiniteElement::UnsteadyExactSolutionFctPt</a> exact_soln_pt)</td></tr>
+<tr class="memdesc:aced1d7c07e1e49b95aff9b354676808b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output function for a time-dependent exact solution. x,y,u_exact or x,y,z,u_exact at n_plot^DIM plot points (Calls the steady version)  <a href="classoomph_1_1QAdvectionDiffusionReactionElement.html#aced1d7c07e1e49b95aff9b354676808b">More...</a><br /></td></tr>
+<tr class="separator:aced1d7c07e1e49b95aff9b354676808b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html">oomph::AdvectionDiffusionReactionEquations&lt; NREAGENT, DIM &gt;</a></td></tr>
+<tr class="memitem:a9faf94e7eab10c6d765e488604e83bce inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a9faf94e7eab10c6d765e488604e83bce">AdvectionDiffusionReactionEquations</a> ()</td></tr>
+<tr class="memdesc:a9faf94e7eab10c6d765e488604e83bce inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor: Initialise the Source_fct_pt, Wind_fct_pt, Reaction_fct_pt to null and initialise the dimensionless timescale and diffusion ratios.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a9faf94e7eab10c6d765e488604e83bce">More...</a><br /></td></tr>
+<tr class="separator:a9faf94e7eab10c6d765e488604e83bce inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe43359eb995e9e1b77e3ae99dfd4d7a inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#abe43359eb995e9e1b77e3ae99dfd4d7a">AdvectionDiffusionReactionEquations</a> (const <a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html">AdvectionDiffusionReactionEquations</a> &amp;dummy)=delete</td></tr>
+<tr class="memdesc:abe43359eb995e9e1b77e3ae99dfd4d7a inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Broken copy constructor.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#abe43359eb995e9e1b77e3ae99dfd4d7a">More...</a><br /></td></tr>
+<tr class="separator:abe43359eb995e9e1b77e3ae99dfd4d7a inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81b847a31053cd9c4b57e5360cc08912 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a81b847a31053cd9c4b57e5360cc08912">operator=</a> (const <a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html">AdvectionDiffusionReactionEquations</a> &amp;)=delete</td></tr>
+<tr class="memdesc:a81b847a31053cd9c4b57e5360cc08912 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Broken assignment operator.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a81b847a31053cd9c4b57e5360cc08912">More...</a><br /></td></tr>
+<tr class="separator:a81b847a31053cd9c4b57e5360cc08912 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee62f50a48000d58952af4465e12da42 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">virtual unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#aee62f50a48000d58952af4465e12da42">c_index_adv_diff_react</a> (const unsigned &amp;<a class="el" href="cfortran_8h.html#adb50e893b86b3e55e751a42eab3cba82">i</a>) const</td></tr>
+<tr class="memdesc:aee62f50a48000d58952af4465e12da42 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the index at which the unknown i-th reagent is stored. The default value, i, is appropriate for single-physics problems, when there are only i variables, the values that satisfies the advection-diffusion-reaction equation. In derived multi-physics elements, this function should be overloaded to reflect the chosen storage scheme. Note that these equations require that the unknown is always stored at the same index at each node.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#aee62f50a48000d58952af4465e12da42">More...</a><br /></td></tr>
+<tr class="separator:aee62f50a48000d58952af4465e12da42 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81547df09819081a060b9c3de7aff00f inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a81547df09819081a060b9c3de7aff00f">dc_dt_adv_diff_react</a> (const unsigned &amp;n, const unsigned &amp;r) const</td></tr>
+<tr class="memdesc:a81547df09819081a060b9c3de7aff00f inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">dc_r/dt at local node n. Uses suitably interpolated value for hanging nodes.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a81547df09819081a060b9c3de7aff00f">More...</a><br /></td></tr>
+<tr class="separator:a81547df09819081a060b9c3de7aff00f inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab649fd63f9b0a0be021fdbd6bf55a53e inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#ab649fd63f9b0a0be021fdbd6bf55a53e">dc_dt_adv_diff_react</a> (const unsigned &amp;n, <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;dc_dt) const</td></tr>
+<tr class="memdesc:ab649fd63f9b0a0be021fdbd6bf55a53e inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">dc/dt at local node n. Uses suitably interpolated value for hanging nodes.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#ab649fd63f9b0a0be021fdbd6bf55a53e">More...</a><br /></td></tr>
+<tr class="separator:ab649fd63f9b0a0be021fdbd6bf55a53e inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa86a885411cd5ad68e5fd5ccc229a344 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#aa86a885411cd5ad68e5fd5ccc229a344">disable_ALE</a> ()</td></tr>
+<tr class="memdesc:aa86a885411cd5ad68e5fd5ccc229a344 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disable ALE, i.e. assert the mesh is not moving &ndash; you do this at your own risk!  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#aa86a885411cd5ad68e5fd5ccc229a344">More...</a><br /></td></tr>
+<tr class="separator:aa86a885411cd5ad68e5fd5ccc229a344 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af73e55a69343e9cfe0b1d037656dde42 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#af73e55a69343e9cfe0b1d037656dde42">enable_ALE</a> ()</td></tr>
+<tr class="memdesc:af73e55a69343e9cfe0b1d037656dde42 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">(Re-)enable ALE, i.e. take possible mesh motion into account when evaluating the time-derivative. Note: By default, ALE is enabled, at the expense of possibly creating unnecessary work in problems where the mesh is, in fact, stationary.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#af73e55a69343e9cfe0b1d037656dde42">More...</a><br /></td></tr>
+<tr class="separator:af73e55a69343e9cfe0b1d037656dde42 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1e7d719b0582b5de79336cc93c164f1 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#af1e7d719b0582b5de79336cc93c164f1">output</a> (std::ostream &amp;outfile)</td></tr>
+<tr class="memdesc:af1e7d719b0582b5de79336cc93c164f1 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output with default number of plot points.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#af1e7d719b0582b5de79336cc93c164f1">More...</a><br /></td></tr>
+<tr class="separator:af1e7d719b0582b5de79336cc93c164f1 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5427b45a60b1bf8f5817aa91ec0b85b inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#ae5427b45a60b1bf8f5817aa91ec0b85b">output</a> (std::ostream &amp;outfile, const unsigned &amp;nplot)</td></tr>
+<tr class="memdesc:ae5427b45a60b1bf8f5817aa91ec0b85b inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output FE representation of soln: x,y,u or x,y,z,u at nplot^DIM plot points.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#ae5427b45a60b1bf8f5817aa91ec0b85b">More...</a><br /></td></tr>
+<tr class="separator:ae5427b45a60b1bf8f5817aa91ec0b85b inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c601388186ba678ca3dbcfb1b7d0351 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a4c601388186ba678ca3dbcfb1b7d0351">output</a> (FILE *file_pt)</td></tr>
+<tr class="memdesc:a4c601388186ba678ca3dbcfb1b7d0351 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">C_style output with default number of plot points.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a4c601388186ba678ca3dbcfb1b7d0351">More...</a><br /></td></tr>
+<tr class="separator:a4c601388186ba678ca3dbcfb1b7d0351 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9812b602241c9c4b136467322d648b32 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a9812b602241c9c4b136467322d648b32">output</a> (FILE *file_pt, const unsigned &amp;n_plot)</td></tr>
+<tr class="memdesc:a9812b602241c9c4b136467322d648b32 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">C-style output FE representation of soln: x,y,u or x,y,z,u at n_plot^DIM plot points.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a9812b602241c9c4b136467322d648b32">More...</a><br /></td></tr>
+<tr class="separator:a9812b602241c9c4b136467322d648b32 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bb86e81dc853b3f917429b32bb83ced inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a9bb86e81dc853b3f917429b32bb83ced">output_fct</a> (std::ostream &amp;outfile, const unsigned &amp;nplot, FiniteElement::SteadyExactSolutionFctPt exact_soln_pt)</td></tr>
+<tr class="memdesc:a9bb86e81dc853b3f917429b32bb83ced inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output exact soln: x,y,u_exact or x,y,z,u_exact at nplot^DIM plot points.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a9bb86e81dc853b3f917429b32bb83ced">More...</a><br /></td></tr>
+<tr class="separator:a9bb86e81dc853b3f917429b32bb83ced inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39a7c4196a7bff99cb73051bf73425e0 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a39a7c4196a7bff99cb73051bf73425e0">compute_norm</a> (double &amp;norm)</td></tr>
+<tr class="memdesc:a39a7c4196a7bff99cb73051bf73425e0 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute norm of the solution: sum of squares of the L2 norm for each reagent.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a39a7c4196a7bff99cb73051bf73425e0">More...</a><br /></td></tr>
+<tr class="separator:a39a7c4196a7bff99cb73051bf73425e0 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae12f448c4eb9dbd8866607aa302e4439 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#ae12f448c4eb9dbd8866607aa302e4439">compute_error</a> (std::ostream &amp;outfile, FiniteElement::SteadyExactSolutionFctPt exact_soln_pt, double &amp;error, double &amp;norm)</td></tr>
+<tr class="memdesc:ae12f448c4eb9dbd8866607aa302e4439 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get error against and norm of exact solution.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#ae12f448c4eb9dbd8866607aa302e4439">More...</a><br /></td></tr>
+<tr class="separator:ae12f448c4eb9dbd8866607aa302e4439 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09b5724eb84637cc1a8043f35ae9d947 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a09b5724eb84637cc1a8043f35ae9d947">compute_error</a> (std::ostream &amp;outfile, FiniteElement::UnsteadyExactSolutionFctPt exact_soln_pt, const double &amp;time, double &amp;error, double &amp;norm)</td></tr>
+<tr class="memdesc:a09b5724eb84637cc1a8043f35ae9d947 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dummy, time dependent error checker.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a09b5724eb84637cc1a8043f35ae9d947">More...</a><br /></td></tr>
+<tr class="separator:a09b5724eb84637cc1a8043f35ae9d947 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4495c56d201441cbcc832cb7a5f5835 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#ae2c61fff21c20bf7a9fd2149509a8d22">AdvectionDiffusionReactionSourceFctPt</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#ad4495c56d201441cbcc832cb7a5f5835">source_fct_pt</a> ()</td></tr>
+<tr class="memdesc:ad4495c56d201441cbcc832cb7a5f5835 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access function: Pointer to source function.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#ad4495c56d201441cbcc832cb7a5f5835">More...</a><br /></td></tr>
+<tr class="separator:ad4495c56d201441cbcc832cb7a5f5835 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a967eac75128567b28521f17e0b06eca5 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#ae2c61fff21c20bf7a9fd2149509a8d22">AdvectionDiffusionReactionSourceFctPt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a967eac75128567b28521f17e0b06eca5">source_fct_pt</a> () const</td></tr>
+<tr class="memdesc:a967eac75128567b28521f17e0b06eca5 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access function: Pointer to source function. Const version.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a967eac75128567b28521f17e0b06eca5">More...</a><br /></td></tr>
+<tr class="separator:a967eac75128567b28521f17e0b06eca5 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44dd594a65bc11a671adaca4cc73f8ec inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#ae550d7a5c318dfa4b0b321386f579663">AdvectionDiffusionReactionWindFctPt</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a44dd594a65bc11a671adaca4cc73f8ec">wind_fct_pt</a> ()</td></tr>
+<tr class="memdesc:a44dd594a65bc11a671adaca4cc73f8ec inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access function: Pointer to wind function.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a44dd594a65bc11a671adaca4cc73f8ec">More...</a><br /></td></tr>
+<tr class="separator:a44dd594a65bc11a671adaca4cc73f8ec inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e4b974cb7412566a8a7213f889fe17c inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#ae550d7a5c318dfa4b0b321386f579663">AdvectionDiffusionReactionWindFctPt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a6e4b974cb7412566a8a7213f889fe17c">wind_fct_pt</a> () const</td></tr>
+<tr class="memdesc:a6e4b974cb7412566a8a7213f889fe17c inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access function: Pointer to reaction function. Const version.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a6e4b974cb7412566a8a7213f889fe17c">More...</a><br /></td></tr>
+<tr class="separator:a6e4b974cb7412566a8a7213f889fe17c inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0f1c74e792679cd86d1bcb7b19adeba inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#af34cf234e3d0f32ee5849de52ed2e484">AdvectionDiffusionReactionReactionFctPt</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#ab0f1c74e792679cd86d1bcb7b19adeba">reaction_fct_pt</a> ()</td></tr>
+<tr class="memdesc:ab0f1c74e792679cd86d1bcb7b19adeba inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access function: Pointer to reaction function.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#ab0f1c74e792679cd86d1bcb7b19adeba">More...</a><br /></td></tr>
+<tr class="separator:ab0f1c74e792679cd86d1bcb7b19adeba inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae147453bf2db440cdb3cb1c2dface51a inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#af34cf234e3d0f32ee5849de52ed2e484">AdvectionDiffusionReactionReactionFctPt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#ae147453bf2db440cdb3cb1c2dface51a">reaction_fct_pt</a> () const</td></tr>
+<tr class="memdesc:ae147453bf2db440cdb3cb1c2dface51a inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access function: Pointer to reaction function. Const version.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#ae147453bf2db440cdb3cb1c2dface51a">More...</a><br /></td></tr>
+<tr class="separator:ae147453bf2db440cdb3cb1c2dface51a inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a235335148565155e3a0b4cb7064a45 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a19417243c90c53ce2a6ddb14bb18985b">AdvectionDiffusionReactionReactionDerivFctPt</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a7a235335148565155e3a0b4cb7064a45">reaction_deriv_fct_pt</a> ()</td></tr>
+<tr class="memdesc:a7a235335148565155e3a0b4cb7064a45 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access function: Pointer to reaction derivatives function.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a7a235335148565155e3a0b4cb7064a45">More...</a><br /></td></tr>
+<tr class="separator:a7a235335148565155e3a0b4cb7064a45 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18181890ce0120e21fcdc8db66f4e375 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a19417243c90c53ce2a6ddb14bb18985b">AdvectionDiffusionReactionReactionDerivFctPt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a18181890ce0120e21fcdc8db66f4e375">reaction_deriv_fct_pt</a> () const</td></tr>
+<tr class="memdesc:a18181890ce0120e21fcdc8db66f4e375 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access function: Pointer to reaction function. Const version.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a18181890ce0120e21fcdc8db66f4e375">More...</a><br /></td></tr>
+<tr class="separator:a18181890ce0120e21fcdc8db66f4e375 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a23e5e0442d084780bbe4b601d642f0 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a4a23e5e0442d084780bbe4b601d642f0">diff</a> () const</td></tr>
+<tr class="memdesc:a4a23e5e0442d084780bbe4b601d642f0 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector of diffusion coefficients.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a4a23e5e0442d084780bbe4b601d642f0">More...</a><br /></td></tr>
+<tr class="separator:a4a23e5e0442d084780bbe4b601d642f0 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e9442b43c0ae8b272ad51cc8d4d393d inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; *&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a5e9442b43c0ae8b272ad51cc8d4d393d">diff_pt</a> ()</td></tr>
+<tr class="memdesc:a5e9442b43c0ae8b272ad51cc8d4d393d inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to vector of diffusion coefficients.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a5e9442b43c0ae8b272ad51cc8d4d393d">More...</a><br /></td></tr>
+<tr class="separator:a5e9442b43c0ae8b272ad51cc8d4d393d inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ec71ba8a2d05f9a6a3c773c813cc44b inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a7ec71ba8a2d05f9a6a3c773c813cc44b">tau</a> () const</td></tr>
+<tr class="memdesc:a7ec71ba8a2d05f9a6a3c773c813cc44b inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector of dimensionless timescales.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a7ec71ba8a2d05f9a6a3c773c813cc44b">More...</a><br /></td></tr>
+<tr class="separator:a7ec71ba8a2d05f9a6a3c773c813cc44b inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1495b34b8ae89e0dc9c876ce4ab19b2 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; *&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#ac1495b34b8ae89e0dc9c876ce4ab19b2">tau_pt</a> ()</td></tr>
+<tr class="memdesc:ac1495b34b8ae89e0dc9c876ce4ab19b2 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to vector of dimensionless timescales.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#ac1495b34b8ae89e0dc9c876ce4ab19b2">More...</a><br /></td></tr>
+<tr class="separator:ac1495b34b8ae89e0dc9c876ce4ab19b2 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1a1f2ec901ee6b47368873b479d65f8 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#aa1a1f2ec901ee6b47368873b479d65f8">get_source_adv_diff_react</a> (const unsigned &amp;ipt, const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;x, <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;source) const</td></tr>
+<tr class="memdesc:aa1a1f2ec901ee6b47368873b479d65f8 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get source term at (Eulerian) position x. This function is virtual to allow overloading in multi-physics problems where the strength of the source function might be determined by another system of equations.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#aa1a1f2ec901ee6b47368873b479d65f8">More...</a><br /></td></tr>
+<tr class="separator:aa1a1f2ec901ee6b47368873b479d65f8 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a9c4e48cc5d3e1b1c28df2ddc7fb876 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a9a9c4e48cc5d3e1b1c28df2ddc7fb876">get_wind_adv_diff_react</a> (const unsigned &amp;ipt, const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;<a class="el" href="cfortran_8h.html#ab7123126e4885ef647dd9c6e3807a21c">s</a>, const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;x, <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;wind) const</td></tr>
+<tr class="memdesc:a9a9c4e48cc5d3e1b1c28df2ddc7fb876 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get wind at (Eulerian) position x and/or local coordinate s. This function is virtual to allow overloading in multi-physics problems where the wind function might be determined by another system of equations.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a9a9c4e48cc5d3e1b1c28df2ddc7fb876">More...</a><br /></td></tr>
+<tr class="separator:a9a9c4e48cc5d3e1b1c28df2ddc7fb876 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac94cf14f198e405d2b6980c435e905b3 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#ac94cf14f198e405d2b6980c435e905b3">get_reaction_adv_diff_react</a> (const unsigned &amp;ipt, const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;C, <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;R) const</td></tr>
+<tr class="memdesc:ac94cf14f198e405d2b6980c435e905b3 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get reaction as a function of the given reagent concentrations This function is virtual to allow overloading in multi-physics problems where the reaction function might be determined by another system of equations.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#ac94cf14f198e405d2b6980c435e905b3">More...</a><br /></td></tr>
+<tr class="separator:ac94cf14f198e405d2b6980c435e905b3 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c210d5dea52b006558aadaf6c46cdef inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a5c210d5dea52b006558aadaf6c46cdef">get_reaction_deriv_adv_diff_react</a> (const unsigned &amp;ipt, const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;C, <a class="el" href="classoomph_1_1DenseMatrix.html">DenseMatrix</a>&lt; double &gt; &amp;dRdC) const</td></tr>
+<tr class="memdesc:a5c210d5dea52b006558aadaf6c46cdef inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the derivatives of the reaction terms with respect to the concentration variables. If no explicit function pointer is set, these will be calculated by finite differences.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a5c210d5dea52b006558aadaf6c46cdef">More...</a><br /></td></tr>
+<tr class="separator:a5c210d5dea52b006558aadaf6c46cdef inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a585caf6a5b4798be3d6863cb99ce9486 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a585caf6a5b4798be3d6863cb99ce9486">get_flux</a> (const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;<a class="el" href="cfortran_8h.html#ab7123126e4885ef647dd9c6e3807a21c">s</a>, <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;flux) const</td></tr>
+<tr class="memdesc:a585caf6a5b4798be3d6863cb99ce9486 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get flux: <img class="formulaInl" alt="$\mbox{flux}[DIM r + i] = \mbox{d}C_{r} / \mbox{d}x_i $" src="form_37.png" width="146" height="14"/>.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a585caf6a5b4798be3d6863cb99ce9486">More...</a><br /></td></tr>
+<tr class="separator:a585caf6a5b4798be3d6863cb99ce9486 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8533939c7514a9d6e0c971896b9e0b5f inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a8533939c7514a9d6e0c971896b9e0b5f">fill_in_contribution_to_residuals</a> (<a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;residuals)</td></tr>
+<tr class="memdesc:a8533939c7514a9d6e0c971896b9e0b5f inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add the element's contribution to its residual vector (wrapper)  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a8533939c7514a9d6e0c971896b9e0b5f">More...</a><br /></td></tr>
+<tr class="separator:a8533939c7514a9d6e0c971896b9e0b5f inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3159b45548886825c6911362e7af4412 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a3159b45548886825c6911362e7af4412">fill_in_contribution_to_jacobian</a> (<a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;residuals, <a class="el" href="classoomph_1_1DenseMatrix.html">DenseMatrix</a>&lt; double &gt; &amp;jacobian)</td></tr>
+<tr class="memdesc:a3159b45548886825c6911362e7af4412 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add the element's contribution to its residual vector and the element Jacobian matrix (wrapper)  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a3159b45548886825c6911362e7af4412">More...</a><br /></td></tr>
+<tr class="separator:a3159b45548886825c6911362e7af4412 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab17c45d1503570971558ec692ed3f5d inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#aab17c45d1503570971558ec692ed3f5d">fill_in_contribution_to_jacobian_and_mass_matrix</a> (<a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;residuals, <a class="el" href="classoomph_1_1DenseMatrix.html">DenseMatrix</a>&lt; double &gt; &amp;jacobian, <a class="el" href="classoomph_1_1DenseMatrix.html">DenseMatrix</a>&lt; double &gt; &amp;mass_matrix)</td></tr>
+<tr class="memdesc:aab17c45d1503570971558ec692ed3f5d inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add the element's contribution to its residuals vector, jacobian matrix and mass matrix.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#aab17c45d1503570971558ec692ed3f5d">More...</a><br /></td></tr>
+<tr class="separator:aab17c45d1503570971558ec692ed3f5d inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add39e76f83bda4927e9e3a6990550df4 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#add39e76f83bda4927e9e3a6990550df4">interpolated_c_adv_diff_react</a> (const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;<a class="el" href="cfortran_8h.html#ab7123126e4885ef647dd9c6e3807a21c">s</a>, const unsigned &amp;<a class="el" href="cfortran_8h.html#adb50e893b86b3e55e751a42eab3cba82">i</a>) const</td></tr>
+<tr class="memdesc:add39e76f83bda4927e9e3a6990550df4 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return FE representation of function value c_i(s) at local coordinate s.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#add39e76f83bda4927e9e3a6990550df4">More...</a><br /></td></tr>
+<tr class="separator:add39e76f83bda4927e9e3a6990550df4 inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adeea179e8f74d19394c675d64dda140d inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#adeea179e8f74d19394c675d64dda140d">self_test</a> ()</td></tr>
+<tr class="memdesc:adeea179e8f74d19394c675d64dda140d inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Self-test: Return 0 for OK.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#adeea179e8f74d19394c675d64dda140d">More...</a><br /></td></tr>
+<tr class="separator:adeea179e8f74d19394c675d64dda140d inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a086abd063c483b32c8a78674748ebffc inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a086abd063c483b32c8a78674748ebffc">integrate_reagents</a> (<a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;C) const</td></tr>
+<tr class="memdesc:a086abd063c483b32c8a78674748ebffc inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the integrated reagent concentrations.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a086abd063c483b32c8a78674748ebffc">More...</a><br /></td></tr>
+<tr class="separator:a086abd063c483b32c8a78674748ebffc inherit pub_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:acb2af6c72ae97ffe0c762c9df692c3ab"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html#acb2af6c72ae97ffe0c762c9df692c3ab">dshape_and_dtest_eulerian_adv_diff_react</a> (const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;<a class="el" href="cfortran_8h.html#ab7123126e4885ef647dd9c6e3807a21c">s</a>, <a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;psi, <a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;dpsidx, <a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;test, <a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;dtestdx) const</td></tr>
+<tr class="memdesc:acb2af6c72ae97ffe0c762c9df692c3ab"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classoomph_1_1Shape.html" title="A Class for shape functions. In simple cases, the shape functions have only one index that can be tho...">Shape</a>, test functions &amp; derivs. w.r.t. to global coords. Return Jacobian.  <a href="classoomph_1_1QAdvectionDiffusionReactionElement.html#acb2af6c72ae97ffe0c762c9df692c3ab">More...</a><br /></td></tr>
+<tr class="separator:acb2af6c72ae97ffe0c762c9df692c3ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a52a7accae36bd8e3bb46e659f9c983"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html#a2a52a7accae36bd8e3bb46e659f9c983">dshape_and_dtest_eulerian_at_knot_adv_diff_react</a> (const unsigned &amp;ipt, <a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;psi, <a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;dpsidx, <a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;test, <a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;dtestdx) const</td></tr>
+<tr class="memdesc:a2a52a7accae36bd8e3bb46e659f9c983"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classoomph_1_1Shape.html" title="A Class for shape functions. In simple cases, the shape functions have only one index that can be tho...">Shape</a>, test functions &amp; derivs. w.r.t. to global coords. at integration point ipt. Return Jacobian.  <a href="classoomph_1_1QAdvectionDiffusionReactionElement.html#a2a52a7accae36bd8e3bb46e659f9c983">More...</a><br /></td></tr>
+<tr class="separator:a2a52a7accae36bd8e3bb46e659f9c983"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classoomph_1_1AdvectionDiffusionReactionEquations')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html">oomph::AdvectionDiffusionReactionEquations&lt; NREAGENT, DIM &gt;</a></td></tr>
+<tr class="memitem:a5854e8da379aa518eccc82633844f43d inherit pro_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a5854e8da379aa518eccc82633844f43d">fill_in_generic_residual_contribution_adv_diff_react</a> (<a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;residuals, <a class="el" href="classoomph_1_1DenseMatrix.html">DenseMatrix</a>&lt; double &gt; &amp;jacobian, <a class="el" href="classoomph_1_1DenseMatrix.html">DenseMatrix</a>&lt; double &gt; &amp;mass_matrix, unsigned flag)</td></tr>
+<tr class="memdesc:a5854e8da379aa518eccc82633844f43d inherit pro_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add the element's contribution to its residual vector only (if flag=and/or element Jacobian matrix.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a5854e8da379aa518eccc82633844f43d">More...</a><br /></td></tr>
+<tr class="separator:a5854e8da379aa518eccc82633844f43d inherit pro_methods_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_types_classoomph_1_1AdvectionDiffusionReactionEquations"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classoomph_1_1AdvectionDiffusionReactionEquations')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html">oomph::AdvectionDiffusionReactionEquations&lt; NREAGENT, DIM &gt;</a></td></tr>
+<tr class="memitem:ae2c61fff21c20bf7a9fd2149509a8d22 inherit pub_types_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#ae2c61fff21c20bf7a9fd2149509a8d22">AdvectionDiffusionReactionSourceFctPt</a>) (const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;x, <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;f)</td></tr>
+<tr class="memdesc:ae2c61fff21c20bf7a9fd2149509a8d22 inherit pub_types_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function pointer to source function fct(x,f(x)) &ndash; x is a Vector!  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#ae2c61fff21c20bf7a9fd2149509a8d22">More...</a><br /></td></tr>
+<tr class="separator:ae2c61fff21c20bf7a9fd2149509a8d22 inherit pub_types_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af34cf234e3d0f32ee5849de52ed2e484 inherit pub_types_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#af34cf234e3d0f32ee5849de52ed2e484">AdvectionDiffusionReactionReactionFctPt</a>) (const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;c, <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;R)</td></tr>
+<tr class="memdesc:af34cf234e3d0f32ee5849de52ed2e484 inherit pub_types_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function pointer to reaction terms.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#af34cf234e3d0f32ee5849de52ed2e484">More...</a><br /></td></tr>
+<tr class="separator:af34cf234e3d0f32ee5849de52ed2e484 inherit pub_types_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19417243c90c53ce2a6ddb14bb18985b inherit pub_types_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a19417243c90c53ce2a6ddb14bb18985b">AdvectionDiffusionReactionReactionDerivFctPt</a>) (const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;c, <a class="el" href="classoomph_1_1DenseMatrix.html">DenseMatrix</a>&lt; double &gt; &amp;dRdC)</td></tr>
+<tr class="memdesc:a19417243c90c53ce2a6ddb14bb18985b inherit pub_types_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function pointer to derivative of reaction terms.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a19417243c90c53ce2a6ddb14bb18985b">More...</a><br /></td></tr>
+<tr class="separator:a19417243c90c53ce2a6ddb14bb18985b inherit pub_types_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae550d7a5c318dfa4b0b321386f579663 inherit pub_types_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#ae550d7a5c318dfa4b0b321386f579663">AdvectionDiffusionReactionWindFctPt</a>) (const double &amp;time, const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;x, <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;wind)</td></tr>
+<tr class="memdesc:ae550d7a5c318dfa4b0b321386f579663 inherit pub_types_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function pointer to wind function fct(x,w(x)) &ndash; x is a Vector!  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#ae550d7a5c318dfa4b0b321386f579663">More...</a><br /></td></tr>
+<tr class="separator:ae550d7a5c318dfa4b0b321386f579663 inherit pub_types_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classoomph_1_1AdvectionDiffusionReactionEquations"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classoomph_1_1AdvectionDiffusionReactionEquations')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html">oomph::AdvectionDiffusionReactionEquations&lt; NREAGENT, DIM &gt;</a></td></tr>
+<tr class="memitem:a8b928ce5e5281dbceeaeff607426e8c9 inherit pro_attribs_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a8b928ce5e5281dbceeaeff607426e8c9">Diff_pt</a></td></tr>
+<tr class="memdesc:a8b928ce5e5281dbceeaeff607426e8c9 inherit pro_attribs_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to global diffusion coefficients.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a8b928ce5e5281dbceeaeff607426e8c9">More...</a><br /></td></tr>
+<tr class="separator:a8b928ce5e5281dbceeaeff607426e8c9 inherit pro_attribs_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a6c48497b039e0ac38fb59589284c2a inherit pro_attribs_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a3a6c48497b039e0ac38fb59589284c2a">Tau_pt</a></td></tr>
+<tr class="memdesc:a3a6c48497b039e0ac38fb59589284c2a inherit pro_attribs_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to global timescales.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a3a6c48497b039e0ac38fb59589284c2a">More...</a><br /></td></tr>
+<tr class="separator:a3a6c48497b039e0ac38fb59589284c2a inherit pro_attribs_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6ca2d3a2a816c0f8b0d26c5b8968730 inherit pro_attribs_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#ae2c61fff21c20bf7a9fd2149509a8d22">AdvectionDiffusionReactionSourceFctPt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#af6ca2d3a2a816c0f8b0d26c5b8968730">Source_fct_pt</a></td></tr>
+<tr class="memdesc:af6ca2d3a2a816c0f8b0d26c5b8968730 inherit pro_attribs_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to source function:  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#af6ca2d3a2a816c0f8b0d26c5b8968730">More...</a><br /></td></tr>
+<tr class="separator:af6ca2d3a2a816c0f8b0d26c5b8968730 inherit pro_attribs_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e1e209fc3f97a86cbccc339365e05ed inherit pro_attribs_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#ae550d7a5c318dfa4b0b321386f579663">AdvectionDiffusionReactionWindFctPt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a3e1e209fc3f97a86cbccc339365e05ed">Wind_fct_pt</a></td></tr>
+<tr class="memdesc:a3e1e209fc3f97a86cbccc339365e05ed inherit pro_attribs_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to wind function:  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a3e1e209fc3f97a86cbccc339365e05ed">More...</a><br /></td></tr>
+<tr class="separator:a3e1e209fc3f97a86cbccc339365e05ed inherit pro_attribs_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8c79db1875df1f761145f420d15f540 inherit pro_attribs_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#af34cf234e3d0f32ee5849de52ed2e484">AdvectionDiffusionReactionReactionFctPt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#af8c79db1875df1f761145f420d15f540">Reaction_fct_pt</a></td></tr>
+<tr class="memdesc:af8c79db1875df1f761145f420d15f540 inherit pro_attribs_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to reaction function.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#af8c79db1875df1f761145f420d15f540">More...</a><br /></td></tr>
+<tr class="separator:af8c79db1875df1f761145f420d15f540 inherit pro_attribs_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a775cbfc8b013934cfc15d8c740a50298 inherit pro_attribs_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a19417243c90c53ce2a6ddb14bb18985b">AdvectionDiffusionReactionReactionDerivFctPt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a775cbfc8b013934cfc15d8c740a50298">Reaction_deriv_fct_pt</a></td></tr>
+<tr class="memdesc:a775cbfc8b013934cfc15d8c740a50298 inherit pro_attribs_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to reaction derivatives.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a775cbfc8b013934cfc15d8c740a50298">More...</a><br /></td></tr>
+<tr class="separator:a775cbfc8b013934cfc15d8c740a50298 inherit pro_attribs_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90fda4646c402a21c3df37ded04f3fc3 inherit pro_attribs_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a90fda4646c402a21c3df37ded04f3fc3">ALE_is_disabled</a></td></tr>
+<tr class="memdesc:a90fda4646c402a21c3df37ded04f3fc3 inherit pro_attribs_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="mdescLeft">&#160;</td><td class="mdescRight">Boolean flag to indicate if ALE formulation is disabled when time-derivatives are computed. Only set to true if you're sure that the mesh is stationary.  <a href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a90fda4646c402a21c3df37ded04f3fc3">More...</a><br /></td></tr>
+<tr class="separator:a90fda4646c402a21c3df37ded04f3fc3 inherit pro_attribs_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_static_attribs_classoomph_1_1AdvectionDiffusionReactionEquations"><td colspan="2" onclick="javascript:toggleInherit('pro_static_attribs_classoomph_1_1AdvectionDiffusionReactionEquations')"><img src="closed.png" alt="-"/>&#160;Static Protected Attributes inherited from <a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html">oomph::AdvectionDiffusionReactionEquations&lt; NREAGENT, DIM &gt;</a></td></tr>
+<tr class="memitem:a0ef36aeb40c7bf1b66abaa7bb3c017c9 inherit pro_static_attribs_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memItemLeft" align="right" valign="top">static const unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a0ef36aeb40c7bf1b66abaa7bb3c017c9">N_reagent</a></td></tr>
+<tr class="separator:a0ef36aeb40c7bf1b66abaa7bb3c017c9 inherit pro_static_attribs_classoomph_1_1AdvectionDiffusionReactionEquations"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;unsigned NREAGENT, unsigned DIM, unsigned NNODE_1D&gt;<br />
+class oomph::QAdvectionDiffusionReactionElement&lt; NREAGENT, DIM, NNODE_1D &gt;</div><p >//////////////////////////////////////////////////////////////////////// //////////////////////////////////////////////////////////////////////// </p>
+<p ><a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html" title="//////////////////////////////////////////////////////////////////////// ////////////////////////////...">QAdvectionDiffusionReactionElement</a> elements are linear/quadrilateral/brick-shaped Advection Diffusion elements with isoparametric interpolation for the function. </p>
+
+<p class="definition">Definition at line <a class="el" href="advection__diffusion__reaction__elements_8h_source.html#l00666">666</a> of file <a class="el" href="advection__diffusion__reaction__elements_8h_source.html">advection_diffusion_reaction_elements.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="add22bb19f8f4a185e0e7820c7f43121f" name="add22bb19f8f4a185e0e7820c7f43121f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add22bb19f8f4a185e0e7820c7f43121f">&#9670;&nbsp;</a></span>QAdvectionDiffusionReactionElement() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned NREAGENT, unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html">oomph::QAdvectionDiffusionReactionElement</a>&lt; NREAGENT, DIM, NNODE_1D &gt;::<a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html">QAdvectionDiffusionReactionElement</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor: Call constructors for <a class="el" href="classoomph_1_1QElement.html" title="/////////////////////////////////////////////////////////////////////// /////////////////////////////...">QElement</a> and Advection Diffusion equations. </p>
+
+<p class="definition">Definition at line <a class="el" href="advection__diffusion__reaction__elements_8h_source.html#l00673">673</a> of file <a class="el" href="advection__diffusion__reaction__elements_8h_source.html">advection_diffusion_reaction_elements.h</a>.</p>
+
+</div>
+</div>
+<a id="aef049aaa3d88af391817ff275c1f5ab2" name="aef049aaa3d88af391817ff275c1f5ab2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef049aaa3d88af391817ff275c1f5ab2">&#9670;&nbsp;</a></span>QAdvectionDiffusionReactionElement() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned NREAGENT, unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html">oomph::QAdvectionDiffusionReactionElement</a>&lt; NREAGENT, DIM, NNODE_1D &gt;::<a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html">QAdvectionDiffusionReactionElement</a> </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html">QAdvectionDiffusionReactionElement</a>&lt; NREAGENT, DIM, NNODE_1D &gt; &amp;&#160;</td>
+          <td class="paramname"><em>dummy</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Broken copy constructor. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="acb2af6c72ae97ffe0c762c9df692c3ab" name="acb2af6c72ae97ffe0c762c9df692c3ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb2af6c72ae97ffe0c762c9df692c3ab">&#9670;&nbsp;</a></span>dshape_and_dtest_eulerian_adv_diff_react()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned NREAGENT, unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html">oomph::QAdvectionDiffusionReactionElement</a>&lt; NREAGENT, DIM, NNODE_1D &gt;::dshape_and_dtest_eulerian_adv_diff_react </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;&#160;</td>
+          <td class="paramname"><em>psi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;&#160;</td>
+          <td class="paramname"><em>dpsidx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;&#160;</td>
+          <td class="paramname"><em>test</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;&#160;</td>
+          <td class="paramname"><em>dtestdx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classoomph_1_1Shape.html" title="A Class for shape functions. In simple cases, the shape functions have only one index that can be tho...">Shape</a>, test functions &amp; derivs. w.r.t. to global coords. Return Jacobian. </p>
+<p >Define the shape functions and test functions and derivatives w.r.t. global coordinates and return Jacobian of mapping.</p>
+<p >Galerkin: Test functions = shape functions </p>
+
+<p>Implements <a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a9136ed44e7820d58983e2299bb721e50">oomph::AdvectionDiffusionReactionEquations&lt; NREAGENT, DIM &gt;</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="advection__diffusion__reaction__elements_8h_source.html#l00781">781</a> of file <a class="el" href="advection__diffusion__reaction__elements_8h_source.html">advection_diffusion_reaction_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00603">i</a>, and <a class="el" href="cfortran_8h_source.html#l00568">s</a>.</p>
+
+</div>
+</div>
+<a id="a2a52a7accae36bd8e3bb46e659f9c983" name="a2a52a7accae36bd8e3bb46e659f9c983"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a52a7accae36bd8e3bb46e659f9c983">&#9670;&nbsp;</a></span>dshape_and_dtest_eulerian_at_knot_adv_diff_react()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned NREAGENT, unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html">oomph::QAdvectionDiffusionReactionElement</a>&lt; NREAGENT, DIM, NNODE_1D &gt;::dshape_and_dtest_eulerian_at_knot_adv_diff_react </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>ipt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;&#160;</td>
+          <td class="paramname"><em>psi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;&#160;</td>
+          <td class="paramname"><em>dpsidx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;&#160;</td>
+          <td class="paramname"><em>test</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;&#160;</td>
+          <td class="paramname"><em>dtestdx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classoomph_1_1Shape.html" title="A Class for shape functions. In simple cases, the shape functions have only one index that can be tho...">Shape</a>, test functions &amp; derivs. w.r.t. to global coords. at integration point ipt. Return Jacobian. </p>
+<p >Define the shape functions and test functions and derivatives w.r.t. global coordinates and return Jacobian of mapping.</p>
+<p >Galerkin: Test functions = shape functions </p>
+
+<p>Implements <a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a9c9e4d0b83ec320061bb4f5e98d60b61">oomph::AdvectionDiffusionReactionEquations&lt; NREAGENT, DIM &gt;</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="advection__diffusion__reaction__elements_8h_source.html#l00814">814</a> of file <a class="el" href="advection__diffusion__reaction__elements_8h_source.html">advection_diffusion_reaction_elements.h</a>.</p>
+
+</div>
+</div>
+<a id="accb3be408129427b803e9f52acaff350" name="accb3be408129427b803e9f52acaff350"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accb3be408129427b803e9f52acaff350">&#9670;&nbsp;</a></span>operator=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned NREAGENT, unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html">oomph::QAdvectionDiffusionReactionElement</a>&lt; NREAGENT, DIM, NNODE_1D &gt;::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html">QAdvectionDiffusionReactionElement</a>&lt; NREAGENT, DIM, NNODE_1D &gt; &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Broken assignment operator. </p>
+
+</div>
+</div>
+<a id="a5a3333fcb25ba0d5e74e74c2964d8d1c" name="a5a3333fcb25ba0d5e74e74c2964d8d1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a3333fcb25ba0d5e74e74c2964d8d1c">&#9670;&nbsp;</a></span>output() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned NREAGENT, unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html">oomph::QAdvectionDiffusionReactionElement</a>&lt; NREAGENT, DIM, NNODE_1D &gt;::output </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>file_pt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>C-style output function: x,y,u or x,y,z,u. </p>
+
+<p class="definition">Definition at line <a class="el" href="advection__diffusion__reaction__elements_8h_source.html#l00714">714</a> of file <a class="el" href="advection__diffusion__reaction__elements_8h_source.html">advection_diffusion_reaction_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="advection__diffusion__reaction__elements_8h_source.html#l00201">oomph::AdvectionDiffusionReactionEquations::output()</a>.</p>
+
+</div>
+</div>
+<a id="abd8dbb087ca525304f3328d823311d6f" name="abd8dbb087ca525304f3328d823311d6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd8dbb087ca525304f3328d823311d6f">&#9670;&nbsp;</a></span>output() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned NREAGENT, unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html">oomph::QAdvectionDiffusionReactionElement</a>&lt; NREAGENT, DIM, NNODE_1D &gt;::output </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>file_pt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n_plot</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>C-style output function: x,y,u or x,y,z,u at n_plot^DIM plot points. </p>
+
+<p class="definition">Definition at line <a class="el" href="advection__diffusion__reaction__elements_8h_source.html#l00721">721</a> of file <a class="el" href="advection__diffusion__reaction__elements_8h_source.html">advection_diffusion_reaction_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="advection__diffusion__reaction__elements_8h_source.html#l00201">oomph::AdvectionDiffusionReactionEquations::output()</a>.</p>
+
+</div>
+</div>
+<a id="abea67b1715ee4b70086ee68dcddbc0b1" name="abea67b1715ee4b70086ee68dcddbc0b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abea67b1715ee4b70086ee68dcddbc0b1">&#9670;&nbsp;</a></span>output() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned NREAGENT, unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html">oomph::QAdvectionDiffusionReactionElement</a>&lt; NREAGENT, DIM, NNODE_1D &gt;::output </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>outfile</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Output function: x,y,u or x,y,z,u. </p>
+
+<p class="definition">Definition at line <a class="el" href="advection__diffusion__reaction__elements_8h_source.html#l00698">698</a> of file <a class="el" href="advection__diffusion__reaction__elements_8h_source.html">advection_diffusion_reaction_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="advection__diffusion__reaction__elements_8h_source.html#l00201">oomph::AdvectionDiffusionReactionEquations::output()</a>.</p>
+
+</div>
+</div>
+<a id="acafd4d0efa43a6c63600c8f1e8823c5b" name="acafd4d0efa43a6c63600c8f1e8823c5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acafd4d0efa43a6c63600c8f1e8823c5b">&#9670;&nbsp;</a></span>output() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned NREAGENT, unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html">oomph::QAdvectionDiffusionReactionElement</a>&lt; NREAGENT, DIM, NNODE_1D &gt;::output </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>outfile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n_plot</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Output function: x,y,u or x,y,z,u at n_plot^DIM plot points. </p>
+
+<p class="definition">Definition at line <a class="el" href="advection__diffusion__reaction__elements_8h_source.html#l00705">705</a> of file <a class="el" href="advection__diffusion__reaction__elements_8h_source.html">advection_diffusion_reaction_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="advection__diffusion__reaction__elements_8h_source.html#l00201">oomph::AdvectionDiffusionReactionEquations::output()</a>.</p>
+
+</div>
+</div>
+<a id="aced1d7c07e1e49b95aff9b354676808b" name="aced1d7c07e1e49b95aff9b354676808b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aced1d7c07e1e49b95aff9b354676808b">&#9670;&nbsp;</a></span>output_fct() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned NREAGENT, unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html">oomph::QAdvectionDiffusionReactionElement</a>&lt; NREAGENT, DIM, NNODE_1D &gt;::output_fct </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>outfile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n_plot</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>time</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1FiniteElement.html#ad4ecf2b61b158a4b4d351a60d23c633e">FiniteElement::UnsteadyExactSolutionFctPt</a>&#160;</td>
+          <td class="paramname"><em>exact_soln_pt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Output function for a time-dependent exact solution. x,y,u_exact or x,y,z,u_exact at n_plot^DIM plot points (Calls the steady version) </p>
+
+<p>Reimplemented from <a class="el" href="classoomph_1_1AdvectionDiffusionReactionEquations.html#a3e08aa0bcdc081ee1b8775ed5c098c74">oomph::AdvectionDiffusionReactionEquations&lt; NREAGENT, DIM &gt;</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="advection__diffusion__reaction__elements_8h_source.html#l00741">741</a> of file <a class="el" href="advection__diffusion__reaction__elements_8h_source.html">advection_diffusion_reaction_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="advection__diffusion__reaction__elements_8cc_source.html#l00519">oomph::AdvectionDiffusionReactionEquations::output_fct()</a>.</p>
+
+</div>
+</div>
+<a id="a4dcfb4e1778ee7e46c86609ea4d1ce30" name="a4dcfb4e1778ee7e46c86609ea4d1ce30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dcfb4e1778ee7e46c86609ea4d1ce30">&#9670;&nbsp;</a></span>output_fct() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned NREAGENT, unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html">oomph::QAdvectionDiffusionReactionElement</a>&lt; NREAGENT, DIM, NNODE_1D &gt;::output_fct </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>outfile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n_plot</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1FiniteElement.html#a690fd33af26cc3e84f39bba6d5a85202">FiniteElement::SteadyExactSolutionFctPt</a>&#160;</td>
+          <td class="paramname"><em>exact_soln_pt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Output function for an exact solution: x,y,u_exact or x,y,z,u_exact at n_plot^DIM plot points. </p>
+
+<p class="definition">Definition at line <a class="el" href="advection__diffusion__reaction__elements_8h_source.html#l00729">729</a> of file <a class="el" href="advection__diffusion__reaction__elements_8h_source.html">advection_diffusion_reaction_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="advection__diffusion__reaction__elements_8cc_source.html#l00519">oomph::AdvectionDiffusionReactionEquations::output_fct()</a>.</p>
+
+</div>
+</div>
+<a id="ac6a740436c52b5c541c1758508be0710" name="ac6a740436c52b5c541c1758508be0710"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6a740436c52b5c541c1758508be0710">&#9670;&nbsp;</a></span>required_nvalue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned NREAGENT, unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned <a class="el" href="classoomph_1_1QAdvectionDiffusionReactionElement.html">oomph::QAdvectionDiffusionReactionElement</a>&lt; NREAGENT, DIM, NNODE_1D &gt;::required_nvalue </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Required # of &lsquo;values&rsquo; (pinned or dofs) at node n. </p>
+
+<p class="definition">Definition at line <a class="el" href="advection__diffusion__reaction__elements_8h_source.html#l00691">691</a> of file <a class="el" href="advection__diffusion__reaction__elements_8h_source.html">advection_diffusion_reaction_elements.h</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="advection__diffusion__reaction__elements_8h_source.html">advection_diffusion_reaction_elements.h</a></li>
+</ul>
+</div><!-- contents -->
+
+    <!-- jQuery for Bootstrap and Doxygen -->
+    <script src="../../js/jquery-1.12.0.min.js"></script>
+    <!-- Minified boostrap plugins-->
+    <script src="../../js/bootstrap.js"></script>
+    <!-- Doxygen dependency to add powertips to source code-->
+    <script src="../../js/jquery.powertip.min.js"></script>
+    <!-- The  following script is generated by doxygen and hides/shows levels in 
+         the data structure lists and adds powertips to source code-->
+    <script src="../../js/dynsections.js" ></script>
+    <!-- add to Doxygen's class names so bootstrap css and js recognises them-->
+    <script type="text/javascript">
+    $(".contents").addClass("container");
+    $(".header").addClass("container");
+    $(".navpath").addClass("container");
+    $("#navrow3").addClass("container");
+    $("#navrow4").addClass("container");
+    $(".mlabel").addClass("label");
+    $(".mlabel").addClass("label-default");
+    $(".memitem").addClass("panel");
+    $(".memitem").addClass("panel-info");
+    $(".memproto").addClass("panel-heading");
+    $(".memdoc").addClass("panel-body");
+    </script>
+    <footer>
+      <div class="container">
+        <div class="text-muted" style="float:right;">Generated by <a href="http://www.doxygen.org/index.html">
+          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Tue Dec 21 2021 16:51:40
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

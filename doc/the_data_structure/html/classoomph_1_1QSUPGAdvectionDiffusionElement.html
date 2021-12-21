@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>oomph-lib: oomph::QSUPGAdvectionDiffusionElement&lt; DIM, NNODE_1D &gt; Class Template Reference</title>
+<link rel="apple-touch-icon" sizes="57x57" href="../../figures/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="../../figures/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../../figures/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../../figures/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../../figures/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../../figures/apple-touch-icon-120x120.png">
+<link rel="icon" type="image/png" href="../../figures/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../figures/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../figures/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../figures/manifest.json">
+<link rel="mask-icon" href="../../figures/safari-pinned-tab.svg" color="#008000">
+<link rel="shortcut icon" href="../../figures/favicon.ico">
+<meta name="msapplication-TileColor" content="#00a300">
+<meta name="msapplication-config" content="../../figures/browserconfig.xml">
+<meta name="theme-color" content="#008000">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css">
+<!-- Doxygen css-->
+<!-- <link rel="stylesheet" type="text/css" href="doxygen.css"> -->
+<!-- Bootstrap -->
+<link href="../../css/bootstrap.css" rel="stylesheet">
+<!-- oomph-lib specific overrides -->
+<link rel="stylesheet" type="text/css" href="../../css/oomph_header.css">
+</head>
+<body>
+<nav class="navbar navbar-default">
+<div class="container">
+<div class="container-fluid">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="../../html/index.html"><img alt="oomph-lib" src="../../figures/oomph_logo.png"></a>
+  </div>
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">          
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li class="dropdown-header">Big picture</li>
+          <li><a href="../../../doc/intro/html/index.html">The finite element method</a></li>
+          <li><a href="../../../doc/the_data_structure/html/index.html">The data structure</a></li>
+          <li><a href="../../../doc/quick_guide/html/index.html">Not-so-quick guide</a></li>
+          <li><a href="../../../doc/optimisation/html/index.html">Optimisation</a></li>
+          <li><a href="../../../doc/order_of_action_functions/html/index.html">Order of action functions</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Example codes and tutorials</li>
+          <li><a href="../../../doc/example_code_list/html/index.html">List of example codes and tutorials</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#meshes">Meshing</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#solvers">Solvers</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#parallel">MPI parallel processing</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#visualisation">Post-processing/visualisation</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Other</li>
+          <li><a href="../../../doc/change_log/html/index.html">Change log</a></li>
+          <li><a href="../../../doc/creating_doc/html/index.html">Creating documentation</a></li>
+          <li><a href="../../../doc/coding_conventions/html/index.html">Coding conventions</a></li>
+          <li><a href="../../../doc/index/html/index.html">Index</a></li>
+          <li><a href="../../../doc/FAQ/html/index.html">FAQ</a></li>
+        </ul>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Installation<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../../../doc/the_distribution/html/index.html">Installation guide</a></li>
+            <li><a href="../../../doc/copyright/html/index.html">Copyright</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../../../doc/people/html/index.html">People</a></li>            
+            <li><a href="../../../doc/contact/html/index.html">Contact/Get involved</a></li>
+            <li><a href="../../../doc/publications/html/index.html">Publications</a></li>
+            <li><a href="../../../doc/acknowledgements/html/index.html">Acknowledgements</a></li>
+            <li><a href="../../../doc/picture_show/index.html">Picture show</a></li>
+          </ul>
+        </li>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right navbar-search">
+      <form class="navbar-form" role="search" action="../../../doc/search_results/html/index.html">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search" name="q">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Go</button>
+          </span>
+        </div><!-- /input-group -->
+       <!--<div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>-->
+      </form>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
+</div>
+</nav>
+<!-- Generated by Doxygen 1.9.2 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',false,false,'search.php','Search');
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceoomph.html">oomph</a></li><li class="navelem"><a class="el" href="classoomph_1_1QSUPGAdvectionDiffusionElement.html">QSUPGAdvectionDiffusionElement</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="classoomph_1_1QSUPGAdvectionDiffusionElement-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">oomph::QSUPGAdvectionDiffusionElement&lt; DIM, NNODE_1D &gt; Class Template Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>QSUPGAdvectionDiffusionElement&lt;DIM,NNODE_1D&gt; elements are SUPG-stabilised Advection Diffusion elements with NNODE_1D nodal points in each coordinate direction. Inherits from <a class="el" href="classoomph_1_1QAdvectionDiffusionElement.html" title="//////////////////////////////////////////////////////////////////////// ////////////////////////////...">QAdvectionDiffusionElement</a> and overwrites their test functions.  
+ <a href="classoomph_1_1QSUPGAdvectionDiffusionElement.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="supg__advection__diffusion__elements_8h_source.html">supg_advection_diffusion_elements.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for oomph::QSUPGAdvectionDiffusionElement&lt; DIM, NNODE_1D &gt;:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+ <div class="center">
+  <img src="classoomph_1_1QSUPGAdvectionDiffusionElement.png" usemap="#oomph::QSUPGAdvectionDiffusionElement_3C_20DIM_2C_20NNODE_5F1D_20_3E_map" alt=""/>
+  <map id="oomph::QSUPGAdvectionDiffusionElement_3C_20DIM_2C_20NNODE_5F1D_20_3E_map" name="oomph::QSUPGAdvectionDiffusionElement_3C_20DIM_2C_20NNODE_5F1D_20_3E_map">
+<area href="classoomph_1_1QAdvectionDiffusionElement.html" title="//////////////////////////////////////////////////////////////////////// ////////////////////////////..." alt="oomph::QAdvectionDiffusionElement&lt; DIM, NNODE_1D &gt;" shape="rect" coords="221,56,654,80"/>
+<area href="classoomph_1_1QElement.html" title="/////////////////////////////////////////////////////////////////////// /////////////////////////////..." alt="oomph::QElement&lt; DIM, NNODE_1D &gt;" shape="rect" coords="0,0,433,24"/>
+<area href="classoomph_1_1RefineableQSUPGAdvectionDiffusionElement.html" title="////////////////////////////////////////////////////////////////////// //////////////////////////////..." alt="oomph::RefineableQSUPGAdvectionDiffusionElement&lt; DIM, NNODE_1D &gt;" shape="rect" coords="221,168,654,192"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ad5b142914b89f193f32967997e42d1a2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QSUPGAdvectionDiffusionElement.html#ad5b142914b89f193f32967997e42d1a2">QSUPGAdvectionDiffusionElement</a> ()</td></tr>
+<tr class="memdesc:ad5b142914b89f193f32967997e42d1a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor: Call constructors for underlying QAdvectionDiffusion element. Initialise stabilisation parameter to zero.  <a href="classoomph_1_1QSUPGAdvectionDiffusionElement.html#ad5b142914b89f193f32967997e42d1a2">More...</a><br /></td></tr>
+<tr class="separator:ad5b142914b89f193f32967997e42d1a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43b3c4aecd65d3c2f5bd710c56bf98dd"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QSUPGAdvectionDiffusionElement.html#a43b3c4aecd65d3c2f5bd710c56bf98dd">get_Tau_SUPG</a> ()</td></tr>
+<tr class="memdesc:a43b3c4aecd65d3c2f5bd710c56bf98dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get stabilisation parameter for the element.  <a href="classoomph_1_1QSUPGAdvectionDiffusionElement.html#a43b3c4aecd65d3c2f5bd710c56bf98dd">More...</a><br /></td></tr>
+<tr class="separator:a43b3c4aecd65d3c2f5bd710c56bf98dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23b79fb4702c948646eade4261a8a281"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QSUPGAdvectionDiffusionElement.html#a23b79fb4702c948646eade4261a8a281">switch_off_stabilisation</a> ()</td></tr>
+<tr class="memdesc:a23b79fb4702c948646eade4261a8a281"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set stabilisation parameter for the element to zero.  <a href="classoomph_1_1QSUPGAdvectionDiffusionElement.html#a23b79fb4702c948646eade4261a8a281">More...</a><br /></td></tr>
+<tr class="separator:a23b79fb4702c948646eade4261a8a281"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0aaae49d23075bac8fc1f2d467354dce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QSUPGAdvectionDiffusionElement.html#a0aaae49d23075bac8fc1f2d467354dce">compute_stabilisation_parameter</a> ()</td></tr>
+<tr class="memdesc:a0aaae49d23075bac8fc1f2d467354dce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute stabilisation parameter for the element.  <a href="classoomph_1_1QSUPGAdvectionDiffusionElement.html#a0aaae49d23075bac8fc1f2d467354dce">More...</a><br /></td></tr>
+<tr class="separator:a0aaae49d23075bac8fc1f2d467354dce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9055a63b9b8c9f3bf606192e52413326"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QSUPGAdvectionDiffusionElement.html#a9055a63b9b8c9f3bf606192e52413326">output</a> (std::ostream &amp;outfile, const unsigned &amp;nplot)</td></tr>
+<tr class="memdesc:a9055a63b9b8c9f3bf606192e52413326"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output function: x,y,u,w_x,w_y,tau_supg or x,y,z,u,w_x,w_y,w_z,tau_supg nplot points in each coordinate direction.  <a href="classoomph_1_1QSUPGAdvectionDiffusionElement.html#a9055a63b9b8c9f3bf606192e52413326">More...</a><br /></td></tr>
+<tr class="separator:a9055a63b9b8c9f3bf606192e52413326"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13469ca1c2520461e62374e600ecf84d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QSUPGAdvectionDiffusionElement.html#a13469ca1c2520461e62374e600ecf84d">output</a> (std::ostream &amp;outfile)</td></tr>
+<tr class="memdesc:a13469ca1c2520461e62374e600ecf84d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output at default number of plot points.  <a href="classoomph_1_1QSUPGAdvectionDiffusionElement.html#a13469ca1c2520461e62374e600ecf84d">More...</a><br /></td></tr>
+<tr class="separator:a13469ca1c2520461e62374e600ecf84d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57517d0b9c06ffee384f70fe587076c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QSUPGAdvectionDiffusionElement.html#a57517d0b9c06ffee384f70fe587076c2">output</a> (FILE *file_pt)</td></tr>
+<tr class="memdesc:a57517d0b9c06ffee384f70fe587076c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">C-style output.  <a href="classoomph_1_1QSUPGAdvectionDiffusionElement.html#a57517d0b9c06ffee384f70fe587076c2">More...</a><br /></td></tr>
+<tr class="separator:a57517d0b9c06ffee384f70fe587076c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac567806bf5318e95b1517cb80e8a3b78"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QSUPGAdvectionDiffusionElement.html#ac567806bf5318e95b1517cb80e8a3b78">output</a> (FILE *file_pt, const unsigned &amp;n_plot)</td></tr>
+<tr class="memdesc:ac567806bf5318e95b1517cb80e8a3b78"><td class="mdescLeft">&#160;</td><td class="mdescRight">C_style output at n_plot points.  <a href="classoomph_1_1QSUPGAdvectionDiffusionElement.html#ac567806bf5318e95b1517cb80e8a3b78">More...</a><br /></td></tr>
+<tr class="separator:ac567806bf5318e95b1517cb80e8a3b78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classoomph_1_1QAdvectionDiffusionElement"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classoomph_1_1QAdvectionDiffusionElement')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classoomph_1_1QAdvectionDiffusionElement.html">oomph::QAdvectionDiffusionElement&lt; DIM, NNODE_1D &gt;</a></td></tr>
+<tr class="memitem:a2b1a0c14ece711eee8af18864147e884 inherit pub_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QAdvectionDiffusionElement.html#a2b1a0c14ece711eee8af18864147e884">QAdvectionDiffusionElement</a> ()</td></tr>
+<tr class="memdesc:a2b1a0c14ece711eee8af18864147e884 inherit pub_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor: Call constructors for <a class="el" href="classoomph_1_1QElement.html" title="/////////////////////////////////////////////////////////////////////// /////////////////////////////...">QElement</a> and Advection Diffusion equations.  <a href="classoomph_1_1QAdvectionDiffusionElement.html#a2b1a0c14ece711eee8af18864147e884">More...</a><br /></td></tr>
+<tr class="separator:a2b1a0c14ece711eee8af18864147e884 inherit pub_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b2edca97e83bd6eb5949916eec7ed69 inherit pub_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QAdvectionDiffusionElement.html#a7b2edca97e83bd6eb5949916eec7ed69">QAdvectionDiffusionElement</a> (const <a class="el" href="classoomph_1_1QAdvectionDiffusionElement.html">QAdvectionDiffusionElement</a>&lt; DIM, NNODE_1D &gt; &amp;dummy)=delete</td></tr>
+<tr class="memdesc:a7b2edca97e83bd6eb5949916eec7ed69 inherit pub_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Broken copy constructor.  <a href="classoomph_1_1QAdvectionDiffusionElement.html#a7b2edca97e83bd6eb5949916eec7ed69">More...</a><br /></td></tr>
+<tr class="separator:a7b2edca97e83bd6eb5949916eec7ed69 inherit pub_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af38cb6a3a6761fb8a797e00a8b99c41a inherit pub_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QAdvectionDiffusionElement.html#af38cb6a3a6761fb8a797e00a8b99c41a">operator=</a> (const <a class="el" href="classoomph_1_1QAdvectionDiffusionElement.html">QAdvectionDiffusionElement</a>&lt; DIM, NNODE_1D &gt; &amp;)=delete</td></tr>
+<tr class="memdesc:af38cb6a3a6761fb8a797e00a8b99c41a inherit pub_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Broken assignment operator.  <a href="classoomph_1_1QAdvectionDiffusionElement.html#af38cb6a3a6761fb8a797e00a8b99c41a">More...</a><br /></td></tr>
+<tr class="separator:af38cb6a3a6761fb8a797e00a8b99c41a inherit pub_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5add10bf35486c4ece4505a067cc2fd2 inherit pub_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QAdvectionDiffusionElement.html#a5add10bf35486c4ece4505a067cc2fd2">required_nvalue</a> (const unsigned &amp;n) const</td></tr>
+<tr class="memdesc:a5add10bf35486c4ece4505a067cc2fd2 inherit pub_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Required # of &lsquo;values&rsquo; (pinned or dofs) at node n.  <a href="classoomph_1_1QAdvectionDiffusionElement.html#a5add10bf35486c4ece4505a067cc2fd2">More...</a><br /></td></tr>
+<tr class="separator:a5add10bf35486c4ece4505a067cc2fd2 inherit pub_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af30152cc8ea671b103239fc6b3e506ce inherit pub_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QAdvectionDiffusionElement.html#af30152cc8ea671b103239fc6b3e506ce">output</a> (std::ostream &amp;outfile)</td></tr>
+<tr class="memdesc:af30152cc8ea671b103239fc6b3e506ce inherit pub_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output function: x,y,u or x,y,z,u.  <a href="classoomph_1_1QAdvectionDiffusionElement.html#af30152cc8ea671b103239fc6b3e506ce">More...</a><br /></td></tr>
+<tr class="separator:af30152cc8ea671b103239fc6b3e506ce inherit pub_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a248d31c455b267075d437ae2833540c6 inherit pub_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QAdvectionDiffusionElement.html#a248d31c455b267075d437ae2833540c6">output</a> (std::ostream &amp;outfile, const unsigned &amp;n_plot)</td></tr>
+<tr class="memdesc:a248d31c455b267075d437ae2833540c6 inherit pub_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output function: x,y,u or x,y,z,u at n_plot^DIM plot points.  <a href="classoomph_1_1QAdvectionDiffusionElement.html#a248d31c455b267075d437ae2833540c6">More...</a><br /></td></tr>
+<tr class="separator:a248d31c455b267075d437ae2833540c6 inherit pub_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a792f83bb2d8c22365cce60c43853396c inherit pub_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QAdvectionDiffusionElement.html#a792f83bb2d8c22365cce60c43853396c">output</a> (FILE *file_pt)</td></tr>
+<tr class="memdesc:a792f83bb2d8c22365cce60c43853396c inherit pub_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="mdescLeft">&#160;</td><td class="mdescRight">C-style output function: x,y,u or x,y,z,u.  <a href="classoomph_1_1QAdvectionDiffusionElement.html#a792f83bb2d8c22365cce60c43853396c">More...</a><br /></td></tr>
+<tr class="separator:a792f83bb2d8c22365cce60c43853396c inherit pub_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a891cdaba60a0cd6b3438f161fb537933 inherit pub_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QAdvectionDiffusionElement.html#a891cdaba60a0cd6b3438f161fb537933">output</a> (FILE *file_pt, const unsigned &amp;n_plot)</td></tr>
+<tr class="memdesc:a891cdaba60a0cd6b3438f161fb537933 inherit pub_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="mdescLeft">&#160;</td><td class="mdescRight">C-style output function: x,y,u or x,y,z,u at n_plot^DIM plot points.  <a href="classoomph_1_1QAdvectionDiffusionElement.html#a891cdaba60a0cd6b3438f161fb537933">More...</a><br /></td></tr>
+<tr class="separator:a891cdaba60a0cd6b3438f161fb537933 inherit pub_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42d9f526bc4bcc8fe51c6dbb1d216b4c inherit pub_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QAdvectionDiffusionElement.html#a42d9f526bc4bcc8fe51c6dbb1d216b4c">output_fct</a> (std::ostream &amp;outfile, const unsigned &amp;n_plot, <a class="el" href="classoomph_1_1FiniteElement.html#a690fd33af26cc3e84f39bba6d5a85202">FiniteElement::SteadyExactSolutionFctPt</a> exact_soln_pt)</td></tr>
+<tr class="memdesc:a42d9f526bc4bcc8fe51c6dbb1d216b4c inherit pub_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output function for an exact solution: x,y,u_exact or x,y,z,u_exact at n_plot^DIM plot points.  <a href="classoomph_1_1QAdvectionDiffusionElement.html#a42d9f526bc4bcc8fe51c6dbb1d216b4c">More...</a><br /></td></tr>
+<tr class="separator:a42d9f526bc4bcc8fe51c6dbb1d216b4c inherit pub_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e5d05a939eebc797ec8d6b400296bfd inherit pub_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QAdvectionDiffusionElement.html#a0e5d05a939eebc797ec8d6b400296bfd">output_fct</a> (std::ostream &amp;outfile, const unsigned &amp;n_plot, const double &amp;time, <a class="el" href="classoomph_1_1FiniteElement.html#ad4ecf2b61b158a4b4d351a60d23c633e">FiniteElement::UnsteadyExactSolutionFctPt</a> exact_soln_pt)</td></tr>
+<tr class="memdesc:a0e5d05a939eebc797ec8d6b400296bfd inherit pub_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output function for a time-dependent exact solution. x,y,u_exact or x,y,z,u_exact at n_plot^DIM plot points (Calls the steady version)  <a href="classoomph_1_1QAdvectionDiffusionElement.html#a0e5d05a939eebc797ec8d6b400296bfd">More...</a><br /></td></tr>
+<tr class="separator:a0e5d05a939eebc797ec8d6b400296bfd inherit pub_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a07f5aafc7171048c0237574bf74ab265"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QSUPGAdvectionDiffusionElement.html#a07f5aafc7171048c0237574bf74ab265">dshape_and_dtest_eulerian_adv_diff</a> (const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;<a class="el" href="cfortran_8h.html#ab7123126e4885ef647dd9c6e3807a21c">s</a>, <a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;psi, <a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;dpsidx, <a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;test, <a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;dtestdx) const</td></tr>
+<tr class="memdesc:a07f5aafc7171048c0237574bf74ab265"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classoomph_1_1Shape.html" title="A Class for shape functions. In simple cases, the shape functions have only one index that can be tho...">Shape</a>, test functions &amp; derivs. w.r.t. to global coords. Return Jacobian.  <a href="classoomph_1_1QSUPGAdvectionDiffusionElement.html#a07f5aafc7171048c0237574bf74ab265">More...</a><br /></td></tr>
+<tr class="separator:a07f5aafc7171048c0237574bf74ab265"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af77acfc13df8c460118d2c1bfbf0d74d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QSUPGAdvectionDiffusionElement.html#af77acfc13df8c460118d2c1bfbf0d74d">dshape_and_dtest_eulerian_at_knot_adv_diff</a> (const unsigned &amp;ipt, <a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;psi, <a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;dpsidx, <a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;test, <a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;dtestdx) const</td></tr>
+<tr class="memdesc:af77acfc13df8c460118d2c1bfbf0d74d"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classoomph_1_1Shape.html" title="A Class for shape functions. In simple cases, the shape functions have only one index that can be tho...">Shape</a>, test functions &amp; derivs. w.r.t. to global coords. Return Jacobian.  <a href="classoomph_1_1QSUPGAdvectionDiffusionElement.html#af77acfc13df8c460118d2c1bfbf0d74d">More...</a><br /></td></tr>
+<tr class="separator:af77acfc13df8c460118d2c1bfbf0d74d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_classoomph_1_1QAdvectionDiffusionElement"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classoomph_1_1QAdvectionDiffusionElement')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classoomph_1_1QAdvectionDiffusionElement.html">oomph::QAdvectionDiffusionElement&lt; DIM, NNODE_1D &gt;</a></td></tr>
+<tr class="memitem:a968920ec8057c9b5a49154c5845c7dbd inherit pro_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QAdvectionDiffusionElement.html#a968920ec8057c9b5a49154c5845c7dbd">dshape_and_dtest_eulerian_adv_diff</a> (const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;<a class="el" href="cfortran_8h.html#ab7123126e4885ef647dd9c6e3807a21c">s</a>, <a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;psi, <a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;dpsidx, <a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;test, <a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;dtestdx) const</td></tr>
+<tr class="memdesc:a968920ec8057c9b5a49154c5845c7dbd inherit pro_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classoomph_1_1Shape.html" title="A Class for shape functions. In simple cases, the shape functions have only one index that can be tho...">Shape</a>, test functions &amp; derivs. w.r.t. to global coords. Return Jacobian.  <a href="classoomph_1_1QAdvectionDiffusionElement.html#a968920ec8057c9b5a49154c5845c7dbd">More...</a><br /></td></tr>
+<tr class="separator:a968920ec8057c9b5a49154c5845c7dbd inherit pro_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc66bf00b79622cc6580787b9d86f215 inherit pro_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QAdvectionDiffusionElement.html#afc66bf00b79622cc6580787b9d86f215">dshape_and_dtest_eulerian_at_knot_adv_diff</a> (const unsigned &amp;ipt, <a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;psi, <a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;dpsidx, <a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;test, <a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;dtestdx) const</td></tr>
+<tr class="memdesc:afc66bf00b79622cc6580787b9d86f215 inherit pro_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classoomph_1_1Shape.html" title="A Class for shape functions. In simple cases, the shape functions have only one index that can be tho...">Shape</a>, test functions &amp; derivs. w.r.t. to global coords. at integration point ipt. Return Jacobian.  <a href="classoomph_1_1QAdvectionDiffusionElement.html#afc66bf00b79622cc6580787b9d86f215">More...</a><br /></td></tr>
+<tr class="separator:afc66bf00b79622cc6580787b9d86f215 inherit pro_methods_classoomph_1_1QAdvectionDiffusionElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:aa1caa73d77fcc84d91c531cb71a4f27e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QSUPGAdvectionDiffusionElement.html#aa1caa73d77fcc84d91c531cb71a4f27e">Tau_SUPG</a></td></tr>
+<tr class="memdesc:aa1caa73d77fcc84d91c531cb71a4f27e"><td class="mdescLeft">&#160;</td><td class="mdescRight">SUPG stabilisation parameter.  <a href="classoomph_1_1QSUPGAdvectionDiffusionElement.html#aa1caa73d77fcc84d91c531cb71a4f27e">More...</a><br /></td></tr>
+<tr class="separator:aa1caa73d77fcc84d91c531cb71a4f27e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;unsigned DIM, unsigned NNODE_1D&gt;<br />
+class oomph::QSUPGAdvectionDiffusionElement&lt; DIM, NNODE_1D &gt;</div><p >QSUPGAdvectionDiffusionElement&lt;DIM,NNODE_1D&gt; elements are SUPG-stabilised Advection Diffusion elements with NNODE_1D nodal points in each coordinate direction. Inherits from <a class="el" href="classoomph_1_1QAdvectionDiffusionElement.html" title="//////////////////////////////////////////////////////////////////////// ////////////////////////////...">QAdvectionDiffusionElement</a> and overwrites their test functions. </p>
+
+<p class="definition">Definition at line <a class="el" href="supg__advection__diffusion__elements_8h_source.html#l00042">42</a> of file <a class="el" href="supg__advection__diffusion__elements_8h_source.html">supg_advection_diffusion_elements.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ad5b142914b89f193f32967997e42d1a2" name="ad5b142914b89f193f32967997e42d1a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5b142914b89f193f32967997e42d1a2">&#9670;&nbsp;</a></span>QSUPGAdvectionDiffusionElement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoomph_1_1QSUPGAdvectionDiffusionElement.html">oomph::QSUPGAdvectionDiffusionElement</a>&lt; DIM, NNODE_1D &gt;::<a class="el" href="classoomph_1_1QSUPGAdvectionDiffusionElement.html">QSUPGAdvectionDiffusionElement</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor: Call constructors for underlying QAdvectionDiffusion element. Initialise stabilisation parameter to zero. </p>
+
+<p class="definition">Definition at line <a class="el" href="supg__advection__diffusion__elements_8h_source.html#l00049">49</a> of file <a class="el" href="supg__advection__diffusion__elements_8h_source.html">supg_advection_diffusion_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="supg__advection__diffusion__elements_8h_source.html#l00250">oomph::QSUPGAdvectionDiffusionElement&lt; DIM, NNODE_1D &gt;::Tau_SUPG</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a0aaae49d23075bac8fc1f2d467354dce" name="a0aaae49d23075bac8fc1f2d467354dce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0aaae49d23075bac8fc1f2d467354dce">&#9670;&nbsp;</a></span>compute_stabilisation_parameter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classoomph_1_1QSUPGAdvectionDiffusionElement.html">oomph::QSUPGAdvectionDiffusionElement</a>&lt; DIM, NNODE_1D &gt;::compute_stabilisation_parameter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Compute stabilisation parameter for the element. </p>
+
+<p class="definition">Definition at line <a class="el" href="supg__advection__diffusion__elements_8h_source.html#l00070">70</a> of file <a class="el" href="supg__advection__diffusion__elements_8h_source.html">supg_advection_diffusion_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="cfortran_8h_source.html#l00568">s</a>, <a class="el" href="supg__advection__diffusion__elements_8h_source.html#l00250">oomph::QSUPGAdvectionDiffusionElement&lt; DIM, NNODE_1D &gt;::Tau_SUPG</a>, and <a class="el" href="pseudo__buckling__ring_8h_source.html#l00049">oomph::x</a>.</p>
+
+</div>
+</div>
+<a id="a07f5aafc7171048c0237574bf74ab265" name="a07f5aafc7171048c0237574bf74ab265"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07f5aafc7171048c0237574bf74ab265">&#9670;&nbsp;</a></span>dshape_and_dtest_eulerian_adv_diff()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classoomph_1_1QSUPGAdvectionDiffusionElement.html">oomph::QSUPGAdvectionDiffusionElement</a>&lt; DIM, NNODE_1D &gt;::dshape_and_dtest_eulerian_adv_diff </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;&#160;</td>
+          <td class="paramname"><em>psi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;&#160;</td>
+          <td class="paramname"><em>dpsidx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;&#160;</td>
+          <td class="paramname"><em>test</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;&#160;</td>
+          <td class="paramname"><em>dtestdx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classoomph_1_1Shape.html" title="A Class for shape functions. In simple cases, the shape functions have only one index that can be tho...">Shape</a>, test functions &amp; derivs. w.r.t. to global coords. Return Jacobian. </p>
+<p >QSUPGAdvectionDiffusionElement&lt;DIM,NNODE_1D&gt; elements are SUPG-stabilised Advection Diffusion elements with NNODE_1D nodal points in each coordinate direction. Inherits from <a class="el" href="classoomph_1_1QAdvectionDiffusionElement.html" title="//////////////////////////////////////////////////////////////////////// ////////////////////////////...">QAdvectionDiffusionElement</a> and overwrites their test functions.</p>
+<p >Define the shape functions and test functions and derivatives w.r.t. global coordinates and return Jacobian of mapping.</p>
+<p >SUPG stabilisation: Petrov-Galerkin, i.e. test functions <img class="formulaInl" alt="$ \ne $" src="form_36.png" width="9" height="13"/> shape functions </p>
+
+<p class="definition">Definition at line <a class="el" href="supg__advection__diffusion__elements_8cc_source.html#l00048">48</a> of file <a class="el" href="supg__advection__diffusion__elements_8cc_source.html">supg_advection_diffusion_elements.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00603">i</a>, and <a class="el" href="cfortran_8h_source.html#l00568">s</a>.</p>
+
+</div>
+</div>
+<a id="af77acfc13df8c460118d2c1bfbf0d74d" name="af77acfc13df8c460118d2c1bfbf0d74d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af77acfc13df8c460118d2c1bfbf0d74d">&#9670;&nbsp;</a></span>dshape_and_dtest_eulerian_at_knot_adv_diff()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classoomph_1_1QSUPGAdvectionDiffusionElement.html">oomph::QSUPGAdvectionDiffusionElement</a>&lt; DIM, NNODE_1D &gt;::dshape_and_dtest_eulerian_at_knot_adv_diff </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>ipt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;&#160;</td>
+          <td class="paramname"><em>psi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;&#160;</td>
+          <td class="paramname"><em>dpsidx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;&#160;</td>
+          <td class="paramname"><em>test</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;&#160;</td>
+          <td class="paramname"><em>dtestdx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classoomph_1_1Shape.html" title="A Class for shape functions. In simple cases, the shape functions have only one index that can be tho...">Shape</a>, test functions &amp; derivs. w.r.t. to global coords. Return Jacobian. </p>
+<p >Define the shape functions and test functions and derivatives w.r.t. global coordinates and return Jacobian of mapping.</p>
+<p >SUPG stabilisation: Petrov-Galerkin, i.e. test functions <img class="formulaInl" alt="$ \ne $" src="form_36.png" width="9" height="13"/> shape functions </p>
+
+<p class="definition">Definition at line <a class="el" href="supg__advection__diffusion__elements_8cc_source.html#l00106">106</a> of file <a class="el" href="supg__advection__diffusion__elements_8cc_source.html">supg_advection_diffusion_elements.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="multi__domain_8cc_source.html#l00060">oomph::Multi_domain_functions::Dim</a>, <a class="el" href="cfortran_8h_source.html#l00603">i</a>, and <a class="el" href="cfortran_8h_source.html#l00568">s</a>.</p>
+
+</div>
+</div>
+<a id="a43b3c4aecd65d3c2f5bd710c56bf98dd" name="a43b3c4aecd65d3c2f5bd710c56bf98dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43b3c4aecd65d3c2f5bd710c56bf98dd">&#9670;&nbsp;</a></span>get_Tau_SUPG()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classoomph_1_1QSUPGAdvectionDiffusionElement.html">oomph::QSUPGAdvectionDiffusionElement</a>&lt; DIM, NNODE_1D &gt;::get_Tau_SUPG </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get stabilisation parameter for the element. </p>
+
+<p class="definition">Definition at line <a class="el" href="supg__advection__diffusion__elements_8h_source.html#l00056">56</a> of file <a class="el" href="supg__advection__diffusion__elements_8h_source.html">supg_advection_diffusion_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="supg__advection__diffusion__elements_8h_source.html#l00250">oomph::QSUPGAdvectionDiffusionElement&lt; DIM, NNODE_1D &gt;::Tau_SUPG</a>.</p>
+
+</div>
+</div>
+<a id="a57517d0b9c06ffee384f70fe587076c2" name="a57517d0b9c06ffee384f70fe587076c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57517d0b9c06ffee384f70fe587076c2">&#9670;&nbsp;</a></span>output() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classoomph_1_1QSUPGAdvectionDiffusionElement.html">oomph::QSUPGAdvectionDiffusionElement</a>&lt; DIM, NNODE_1D &gt;::output </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>file_pt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>C-style output. </p>
+
+<p class="definition">Definition at line <a class="el" href="supg__advection__diffusion__elements_8h_source.html#l00219">219</a> of file <a class="el" href="supg__advection__diffusion__elements_8h_source.html">supg_advection_diffusion_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="elements_8h_source.html#l03055">oomph::FiniteElement::output()</a>.</p>
+
+</div>
+</div>
+<a id="ac567806bf5318e95b1517cb80e8a3b78" name="ac567806bf5318e95b1517cb80e8a3b78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac567806bf5318e95b1517cb80e8a3b78">&#9670;&nbsp;</a></span>output() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classoomph_1_1QSUPGAdvectionDiffusionElement.html">oomph::QSUPGAdvectionDiffusionElement</a>&lt; DIM, NNODE_1D &gt;::output </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>file_pt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n_plot</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>C_style output at n_plot points. </p>
+
+<p class="definition">Definition at line <a class="el" href="supg__advection__diffusion__elements_8h_source.html#l00225">225</a> of file <a class="el" href="supg__advection__diffusion__elements_8h_source.html">supg_advection_diffusion_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="elements_8h_source.html#l03055">oomph::FiniteElement::output()</a>.</p>
+
+</div>
+</div>
+<a id="a13469ca1c2520461e62374e600ecf84d" name="a13469ca1c2520461e62374e600ecf84d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13469ca1c2520461e62374e600ecf84d">&#9670;&nbsp;</a></span>output() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classoomph_1_1QSUPGAdvectionDiffusionElement.html">oomph::QSUPGAdvectionDiffusionElement</a>&lt; DIM, NNODE_1D &gt;::output </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>outfile</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Output at default number of plot points. </p>
+
+<p class="definition">Definition at line <a class="el" href="supg__advection__diffusion__elements_8h_source.html#l00213">213</a> of file <a class="el" href="supg__advection__diffusion__elements_8h_source.html">supg_advection_diffusion_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="elements_8h_source.html#l03055">oomph::FiniteElement::output()</a>.</p>
+
+</div>
+</div>
+<a id="a9055a63b9b8c9f3bf606192e52413326" name="a9055a63b9b8c9f3bf606192e52413326"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9055a63b9b8c9f3bf606192e52413326">&#9670;&nbsp;</a></span>output() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classoomph_1_1QSUPGAdvectionDiffusionElement.html">oomph::QSUPGAdvectionDiffusionElement</a>&lt; DIM, NNODE_1D &gt;::output </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>outfile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>nplot</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Output function: x,y,u,w_x,w_y,tau_supg or x,y,z,u,w_x,w_y,w_z,tau_supg nplot points in each coordinate direction. </p>
+
+<p class="definition">Definition at line <a class="el" href="supg__advection__diffusion__elements_8h_source.html#l00169">169</a> of file <a class="el" href="supg__advection__diffusion__elements_8h_source.html">supg_advection_diffusion_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="cfortran_8h_source.html#l00568">s</a>, <a class="el" href="supg__advection__diffusion__elements_8h_source.html#l00250">oomph::QSUPGAdvectionDiffusionElement&lt; DIM, NNODE_1D &gt;::Tau_SUPG</a>, and <a class="el" href="pseudo__buckling__ring_8h_source.html#l00049">oomph::x</a>.</p>
+
+</div>
+</div>
+<a id="a23b79fb4702c948646eade4261a8a281" name="a23b79fb4702c948646eade4261a8a281"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23b79fb4702c948646eade4261a8a281">&#9670;&nbsp;</a></span>switch_off_stabilisation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classoomph_1_1QSUPGAdvectionDiffusionElement.html">oomph::QSUPGAdvectionDiffusionElement</a>&lt; DIM, NNODE_1D &gt;::switch_off_stabilisation </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set stabilisation parameter for the element to zero. </p>
+
+<p class="definition">Definition at line <a class="el" href="supg__advection__diffusion__elements_8h_source.html#l00063">63</a> of file <a class="el" href="supg__advection__diffusion__elements_8h_source.html">supg_advection_diffusion_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="supg__advection__diffusion__elements_8h_source.html#l00250">oomph::QSUPGAdvectionDiffusionElement&lt; DIM, NNODE_1D &gt;::Tau_SUPG</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="aa1caa73d77fcc84d91c531cb71a4f27e" name="aa1caa73d77fcc84d91c531cb71a4f27e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1caa73d77fcc84d91c531cb71a4f27e">&#9670;&nbsp;</a></span>Tau_SUPG</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classoomph_1_1QSUPGAdvectionDiffusionElement.html">oomph::QSUPGAdvectionDiffusionElement</a>&lt; DIM, NNODE_1D &gt;::Tau_SUPG</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>SUPG stabilisation parameter. </p>
+
+<p class="definition">Definition at line <a class="el" href="supg__advection__diffusion__elements_8h_source.html#l00250">250</a> of file <a class="el" href="supg__advection__diffusion__elements_8h_source.html">supg_advection_diffusion_elements.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="supg__advection__diffusion__elements_8h_source.html#l00070">oomph::QSUPGAdvectionDiffusionElement&lt; DIM, NNODE_1D &gt;::compute_stabilisation_parameter()</a>, <a class="el" href="supg__advection__diffusion__elements_8h_source.html#l00056">oomph::QSUPGAdvectionDiffusionElement&lt; DIM, NNODE_1D &gt;::get_Tau_SUPG()</a>, <a class="el" href="supg__advection__diffusion__elements_8h_source.html#l00169">oomph::QSUPGAdvectionDiffusionElement&lt; DIM, NNODE_1D &gt;::output()</a>, <a class="el" href="supg__advection__diffusion__elements_8h_source.html#l00049">oomph::QSUPGAdvectionDiffusionElement&lt; DIM, NNODE_1D &gt;::QSUPGAdvectionDiffusionElement()</a>, and <a class="el" href="supg__advection__diffusion__elements_8h_source.html#l00063">oomph::QSUPGAdvectionDiffusionElement&lt; DIM, NNODE_1D &gt;::switch_off_stabilisation()</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li><a class="el" href="supg__advection__diffusion__elements_8h_source.html">supg_advection_diffusion_elements.h</a></li>
+<li><a class="el" href="supg__advection__diffusion__elements_8cc_source.html">supg_advection_diffusion_elements.cc</a></li>
+</ul>
+</div><!-- contents -->
+
+    <!-- jQuery for Bootstrap and Doxygen -->
+    <script src="../../js/jquery-1.12.0.min.js"></script>
+    <!-- Minified boostrap plugins-->
+    <script src="../../js/bootstrap.js"></script>
+    <!-- Doxygen dependency to add powertips to source code-->
+    <script src="../../js/jquery.powertip.min.js"></script>
+    <!-- The  following script is generated by doxygen and hides/shows levels in 
+         the data structure lists and adds powertips to source code-->
+    <script src="../../js/dynsections.js" ></script>
+    <!-- add to Doxygen's class names so bootstrap css and js recognises them-->
+    <script type="text/javascript">
+    $(".contents").addClass("container");
+    $(".header").addClass("container");
+    $(".navpath").addClass("container");
+    $("#navrow3").addClass("container");
+    $("#navrow4").addClass("container");
+    $(".mlabel").addClass("label");
+    $(".mlabel").addClass("label-default");
+    $(".memitem").addClass("panel");
+    $(".memitem").addClass("panel-info");
+    $(".memproto").addClass("panel-heading");
+    $(".memdoc").addClass("panel-body");
+    </script>
+    <footer>
+      <div class="container">
+        <div class="text-muted" style="float:right;">Generated by <a href="http://www.doxygen.org/index.html">
+          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Tue Dec 21 2021 16:51:48
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

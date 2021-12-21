@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>oomph-lib: oomph::AxisymmetricQCrouzeixRaviartElement Class Reference</title>
+<link rel="apple-touch-icon" sizes="57x57" href="../../figures/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="../../figures/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../../figures/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../../figures/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../../figures/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../../figures/apple-touch-icon-120x120.png">
+<link rel="icon" type="image/png" href="../../figures/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../figures/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../figures/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../figures/manifest.json">
+<link rel="mask-icon" href="../../figures/safari-pinned-tab.svg" color="#008000">
+<link rel="shortcut icon" href="../../figures/favicon.ico">
+<meta name="msapplication-TileColor" content="#00a300">
+<meta name="msapplication-config" content="../../figures/browserconfig.xml">
+<meta name="theme-color" content="#008000">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css">
+<!-- Doxygen css-->
+<!-- <link rel="stylesheet" type="text/css" href="doxygen.css"> -->
+<!-- Bootstrap -->
+<link href="../../css/bootstrap.css" rel="stylesheet">
+<!-- oomph-lib specific overrides -->
+<link rel="stylesheet" type="text/css" href="../../css/oomph_header.css">
+</head>
+<body>
+<nav class="navbar navbar-default">
+<div class="container">
+<div class="container-fluid">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="../../html/index.html"><img alt="oomph-lib" src="../../figures/oomph_logo.png"></a>
+  </div>
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">          
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li class="dropdown-header">Big picture</li>
+          <li><a href="../../../doc/intro/html/index.html">The finite element method</a></li>
+          <li><a href="../../../doc/the_data_structure/html/index.html">The data structure</a></li>
+          <li><a href="../../../doc/quick_guide/html/index.html">Not-so-quick guide</a></li>
+          <li><a href="../../../doc/optimisation/html/index.html">Optimisation</a></li>
+          <li><a href="../../../doc/order_of_action_functions/html/index.html">Order of action functions</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Example codes and tutorials</li>
+          <li><a href="../../../doc/example_code_list/html/index.html">List of example codes and tutorials</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#meshes">Meshing</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#solvers">Solvers</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#parallel">MPI parallel processing</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#visualisation">Post-processing/visualisation</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Other</li>
+          <li><a href="../../../doc/change_log/html/index.html">Change log</a></li>
+          <li><a href="../../../doc/creating_doc/html/index.html">Creating documentation</a></li>
+          <li><a href="../../../doc/coding_conventions/html/index.html">Coding conventions</a></li>
+          <li><a href="../../../doc/index/html/index.html">Index</a></li>
+          <li><a href="../../../doc/FAQ/html/index.html">FAQ</a></li>
+        </ul>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Installation<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../../../doc/the_distribution/html/index.html">Installation guide</a></li>
+            <li><a href="../../../doc/copyright/html/index.html">Copyright</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../../../doc/people/html/index.html">People</a></li>            
+            <li><a href="../../../doc/contact/html/index.html">Contact/Get involved</a></li>
+            <li><a href="../../../doc/publications/html/index.html">Publications</a></li>
+            <li><a href="../../../doc/acknowledgements/html/index.html">Acknowledgements</a></li>
+            <li><a href="../../../doc/picture_show/index.html">Picture show</a></li>
+          </ul>
+        </li>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right navbar-search">
+      <form class="navbar-form" role="search" action="../../../doc/search_results/html/index.html">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search" name="q">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Go</button>
+          </span>
+        </div><!-- /input-group -->
+       <!--<div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>-->
+      </form>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
+</div>
+</nav>
+<!-- Generated by Doxygen 1.9.2 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',false,false,'search.php','Search');
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceoomph.html">oomph</a></li><li class="navelem"><a class="el" href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html">AxisymmetricQCrouzeixRaviartElement</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
+<a href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">oomph::AxisymmetricQCrouzeixRaviartElement Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>/////////////////////////////////////////////////////////////////////////// ///////////////////////////////////////////////////////////////////////////  
+ <a href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="axisym__navier__stokes__elements_8h_source.html">axisym_navier_stokes_elements.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for oomph::AxisymmetricQCrouzeixRaviartElement:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+ <div class="center">
+  <img src="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.png" usemap="#oomph::AxisymmetricQCrouzeixRaviartElement_map" alt=""/>
+  <map id="oomph::AxisymmetricQCrouzeixRaviartElement_map" name="oomph::AxisymmetricQCrouzeixRaviartElement_map">
+<area href="classoomph_1_1QElement.html" alt="oomph::QElement&lt; 2, 3 &gt;" shape="rect" coords="0,0,333,24"/>
+<area href="classoomph_1_1RefineableAxisymmetricQCrouzeixRaviartElement.html" title="Refineable version of Axisymmetric Quad Crouzeix Raviart elements (note that unlike the cartesian ver..." alt="oomph::RefineableAxisymmetricQCrouzeixRaviartElement" shape="rect" coords="171,112,504,136"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a971e34ee93385674ff784d9b1baf1871"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#a971e34ee93385674ff784d9b1baf1871">AxisymmetricQCrouzeixRaviartElement</a> ()</td></tr>
+<tr class="memdesc:a971e34ee93385674ff784d9b1baf1871"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor, there are three internal values (for the pressure)  <a href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#a971e34ee93385674ff784d9b1baf1871">More...</a><br /></td></tr>
+<tr class="separator:a971e34ee93385674ff784d9b1baf1871"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7988679549e63ef87fc3f062fb6a559"><td class="memItemLeft" align="right" valign="top">virtual unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#ae7988679549e63ef87fc3f062fb6a559">required_nvalue</a> (const unsigned &amp;n) const</td></tr>
+<tr class="memdesc:ae7988679549e63ef87fc3f062fb6a559"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of values (pinned or dofs) required at local node n.  <a href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#ae7988679549e63ef87fc3f062fb6a559">More...</a><br /></td></tr>
+<tr class="separator:ae7988679549e63ef87fc3f062fb6a559"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acaa357820f2efb863d442b66e9761c6d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#acaa357820f2efb863d442b66e9761c6d">p_axi_nst</a> (const unsigned &amp;<a class="el" href="cfortran_8h.html#adb50e893b86b3e55e751a42eab3cba82">i</a>) const</td></tr>
+<tr class="memdesc:acaa357820f2efb863d442b66e9761c6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the pressure values at internal dof i_internal (Discontinous pressure interpolation &ndash; no need to cater for hanging nodes).  <a href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#acaa357820f2efb863d442b66e9761c6d">More...</a><br /></td></tr>
+<tr class="separator:acaa357820f2efb863d442b66e9761c6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a923c2ccbc5bd523118273e63cc18fd5f"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#a923c2ccbc5bd523118273e63cc18fd5f">npres_axi_nst</a> () const</td></tr>
+<tr class="memdesc:a923c2ccbc5bd523118273e63cc18fd5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return number of pressure values.  <a href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#a923c2ccbc5bd523118273e63cc18fd5f">More...</a><br /></td></tr>
+<tr class="separator:a923c2ccbc5bd523118273e63cc18fd5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65e65b5d7dd33b374c259b53dc99a83c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#a65e65b5d7dd33b374c259b53dc99a83c">fix_pressure</a> (const unsigned &amp;p_dof, const double &amp;pvalue)</td></tr>
+<tr class="memdesc:a65e65b5d7dd33b374c259b53dc99a83c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to fix the internal pressure dof idof_internal.  <a href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#a65e65b5d7dd33b374c259b53dc99a83c">More...</a><br /></td></tr>
+<tr class="separator:a65e65b5d7dd33b374c259b53dc99a83c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60ea4ee3c006bc04984f1dcadb87a79d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#a60ea4ee3c006bc04984f1dcadb87a79d">get_traction</a> (const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;<a class="el" href="cfortran_8h.html#ab7123126e4885ef647dd9c6e3807a21c">s</a>, const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;N, <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;traction) const</td></tr>
+<tr class="memdesc:a60ea4ee3c006bc04984f1dcadb87a79d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute traction at local coordinate s for outer unit normal N.  <a href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#a60ea4ee3c006bc04984f1dcadb87a79d">More...</a><br /></td></tr>
+<tr class="separator:a60ea4ee3c006bc04984f1dcadb87a79d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc569122e3649deba56231175f3116cf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#adc569122e3649deba56231175f3116cf">p_local_eqn</a> (const unsigned &amp;n) const</td></tr>
+<tr class="memdesc:adc569122e3649deba56231175f3116cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overload the access function for the pressure's local equation numbers.  <a href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#adc569122e3649deba56231175f3116cf">More...</a><br /></td></tr>
+<tr class="separator:adc569122e3649deba56231175f3116cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7811d55e87a839fb5c01d9e306cfda8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#af7811d55e87a839fb5c01d9e306cfda8">output</a> (std::ostream &amp;outfile)</td></tr>
+<tr class="memdesc:af7811d55e87a839fb5c01d9e306cfda8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Redirect output to <a class="el" href="classNavierStokesEquations.html" title="and">NavierStokesEquations</a> output.  <a href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#af7811d55e87a839fb5c01d9e306cfda8">More...</a><br /></td></tr>
+<tr class="separator:af7811d55e87a839fb5c01d9e306cfda8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb5ef7f9b09d4b3ed6d5ee04cad58fec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#afb5ef7f9b09d4b3ed6d5ee04cad58fec">output</a> (std::ostream &amp;outfile, const unsigned &amp;n_plot)</td></tr>
+<tr class="memdesc:afb5ef7f9b09d4b3ed6d5ee04cad58fec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Redirect output to <a class="el" href="classNavierStokesEquations.html" title="and">NavierStokesEquations</a> output.  <a href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#afb5ef7f9b09d4b3ed6d5ee04cad58fec">More...</a><br /></td></tr>
+<tr class="separator:afb5ef7f9b09d4b3ed6d5ee04cad58fec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89e6624edb01f732c6c10b068227de54"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#a89e6624edb01f732c6c10b068227de54">output</a> (FILE *file_pt)</td></tr>
+<tr class="memdesc:a89e6624edb01f732c6c10b068227de54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Redirect output to <a class="el" href="classNavierStokesEquations.html" title="and">NavierStokesEquations</a> output.  <a href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#a89e6624edb01f732c6c10b068227de54">More...</a><br /></td></tr>
+<tr class="separator:a89e6624edb01f732c6c10b068227de54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04743e5848f04627a7069879f4da8389"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#a04743e5848f04627a7069879f4da8389">output</a> (FILE *file_pt, const unsigned &amp;n_plot)</td></tr>
+<tr class="memdesc:a04743e5848f04627a7069879f4da8389"><td class="mdescLeft">&#160;</td><td class="mdescRight">Redirect output to <a class="el" href="classNavierStokesEquations.html" title="and">NavierStokesEquations</a> output.  <a href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#a04743e5848f04627a7069879f4da8389">More...</a><br /></td></tr>
+<tr class="separator:a04743e5848f04627a7069879f4da8389"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85c8740ef4dd17626ae47c9344e15ae8"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#a85c8740ef4dd17626ae47c9344e15ae8">ndof_types</a> () const</td></tr>
+<tr class="memdesc:a85c8740ef4dd17626ae47c9344e15ae8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of "DOF types" that degrees of freedom in this element are sub-divided into: Velocity (3 components) and pressure.  <a href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#a85c8740ef4dd17626ae47c9344e15ae8">More...</a><br /></td></tr>
+<tr class="separator:a85c8740ef4dd17626ae47c9344e15ae8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83a50021a007f1a932fe841119d93412"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#a83a50021a007f1a932fe841119d93412">get_dof_numbers_for_unknowns</a> (std::list&lt; std::pair&lt; unsigned long, unsigned &gt; &gt; &amp;dof_lookup_list) const</td></tr>
+<tr class="memdesc:a83a50021a007f1a932fe841119d93412"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a list of pairs for all unknowns in this element, so that the first entry in each pair contains the global equation number of the unknown, while the second one contains the number of the "DOF type" that this unknown is associated with. (Function can obviously only be called if the equation numbering scheme has been set up.)  <a href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#a83a50021a007f1a932fe841119d93412">More...</a><br /></td></tr>
+<tr class="separator:a83a50021a007f1a932fe841119d93412"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a48bd4be228495e97e5d8bf8a70162182"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#a48bd4be228495e97e5d8bf8a70162182">dshape_and_dtest_eulerian_axi_nst</a> (const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;<a class="el" href="cfortran_8h.html#ab7123126e4885ef647dd9c6e3807a21c">s</a>, <a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;psi, <a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;dpsidx, <a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;test, <a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;dtestdx) const</td></tr>
+<tr class="memdesc:a48bd4be228495e97e5d8bf8a70162182"><td class="mdescLeft">&#160;</td><td class="mdescRight">Velocity shape and test functions and their derivs w.r.t. to global coords at local coordinate s (taken from geometry) Return Jacobian of mapping between local and global coordinates.  <a href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#a48bd4be228495e97e5d8bf8a70162182">More...</a><br /></td></tr>
+<tr class="separator:a48bd4be228495e97e5d8bf8a70162182"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84026f3c225ef35731a04cc5866c7d6b"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#a84026f3c225ef35731a04cc5866c7d6b">dshape_and_dtest_eulerian_at_knot_axi_nst</a> (const unsigned &amp;ipt, <a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;psi, <a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;dpsidx, <a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;test, <a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;dtestdx) const</td></tr>
+<tr class="memdesc:a84026f3c225ef35731a04cc5866c7d6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Velocity shape and test functions and their derivs w.r.t. to global coords at ipt-th integation point (taken from geometry) Return Jacobian of mapping between local and global coordinates.  <a href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#a84026f3c225ef35731a04cc5866c7d6b">More...</a><br /></td></tr>
+<tr class="separator:a84026f3c225ef35731a04cc5866c7d6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abef9fe3b35d6a0eb08b18a33aa6b03c7"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#abef9fe3b35d6a0eb08b18a33aa6b03c7">dshape_and_dtest_eulerian_at_knot_axi_nst</a> (const unsigned &amp;ipt, <a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;psi, <a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;dpsidx, <a class="el" href="classoomph_1_1RankFourTensor.html">RankFourTensor</a>&lt; double &gt; &amp;d_dpsidx_dX, <a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;test, <a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;dtestdx, <a class="el" href="classoomph_1_1RankFourTensor.html">RankFourTensor</a>&lt; double &gt; &amp;d_dtestdx_dX, <a class="el" href="classoomph_1_1DenseMatrix.html">DenseMatrix</a>&lt; double &gt; &amp;djacobian_dX) const</td></tr>
+<tr class="memdesc:abef9fe3b35d6a0eb08b18a33aa6b03c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shape/test functions and derivs w.r.t. to global coords at integration point ipt; return Jacobian of mapping (J). Also compute derivatives of dpsidx, dtestdx and J w.r.t. nodal coordinates.  <a href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#abef9fe3b35d6a0eb08b18a33aa6b03c7">More...</a><br /></td></tr>
+<tr class="separator:abef9fe3b35d6a0eb08b18a33aa6b03c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a16bdbe2fc4e1bfe09123c50d101688"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#a6a16bdbe2fc4e1bfe09123c50d101688">pshape_axi_nst</a> (const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;<a class="el" href="cfortran_8h.html#ab7123126e4885ef647dd9c6e3807a21c">s</a>, <a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;psi) const</td></tr>
+<tr class="memdesc:a6a16bdbe2fc4e1bfe09123c50d101688"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pressure shape functions at local coordinate s.  <a href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#a6a16bdbe2fc4e1bfe09123c50d101688">More...</a><br /></td></tr>
+<tr class="separator:a6a16bdbe2fc4e1bfe09123c50d101688"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af131ceee4d1612696b66ce7ac3a866d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#af131ceee4d1612696b66ce7ac3a866d1">pshape_axi_nst</a> (const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;<a class="el" href="cfortran_8h.html#ab7123126e4885ef647dd9c6e3807a21c">s</a>, <a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;psi, <a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;test) const</td></tr>
+<tr class="memdesc:af131ceee4d1612696b66ce7ac3a866d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pressure shape and test functions at local coordinte s.  <a href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#af131ceee4d1612696b66ce7ac3a866d1">More...</a><br /></td></tr>
+<tr class="separator:af131ceee4d1612696b66ce7ac3a866d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a8ec7b0e02c2ab96d0cb9b5238b76b145"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#a8ec7b0e02c2ab96d0cb9b5238b76b145">P_axi_nst_internal_index</a></td></tr>
+<tr class="memdesc:a8ec7b0e02c2ab96d0cb9b5238b76b145"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal index that indicates at which internal data the pressure is stored.  <a href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#a8ec7b0e02c2ab96d0cb9b5238b76b145">More...</a><br /></td></tr>
+<tr class="separator:a8ec7b0e02c2ab96d0cb9b5238b76b145"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:a6edd4a05741c3ee8ee1ac82f7c3f9eff"><td class="memItemLeft" align="right" valign="top">static const unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#a6edd4a05741c3ee8ee1ac82f7c3f9eff">Initial_Nvalue</a> []</td></tr>
+<tr class="memdesc:a6edd4a05741c3ee8ee1ac82f7c3f9eff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Static array of ints to hold required number of variables at nodes.  <a href="classoomph_1_1AxisymmetricQCrouzeixRaviartElement.html#a6edd4a05741c3ee8ee1ac82f7c3f9eff">More...</a><br /></td></tr>
+<tr class="separator:a6edd4a05741c3ee8ee1ac82f7c3f9eff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >/////////////////////////////////////////////////////////////////////////// /////////////////////////////////////////////////////////////////////////// </p>
+<p >Crouzeix_Raviart elements are Navier&ndash;Stokes elements with quadratic interpolation for velocities and positions, but a discontinuous linear pressure interpolation </p>
+
+<p class="definition">Definition at line <a class="el" href="axisym__navier__stokes__elements_8h_source.html#l01335">1335</a> of file <a class="el" href="axisym__navier__stokes__elements_8h_source.html">axisym_navier_stokes_elements.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a971e34ee93385674ff784d9b1baf1871" name="a971e34ee93385674ff784d9b1baf1871"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a971e34ee93385674ff784d9b1baf1871">&#9670;&nbsp;</a></span>AxisymmetricQCrouzeixRaviartElement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">oomph::AxisymmetricQCrouzeixRaviartElement::AxisymmetricQCrouzeixRaviartElement </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor, there are three internal values (for the pressure) </p>
+
+<p class="definition">Definition at line <a class="el" href="axisym__navier__stokes__elements_8h_source.html#l01392">1392</a> of file <a class="el" href="axisym__navier__stokes__elements_8h_source.html">axisym_navier_stokes_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="axisym__navier__stokes__elements_8h_source.html#l01346">P_axi_nst_internal_index</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="abef9fe3b35d6a0eb08b18a33aa6b03c7" name="abef9fe3b35d6a0eb08b18a33aa6b03c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abef9fe3b35d6a0eb08b18a33aa6b03c7">&#9670;&nbsp;</a></span>dshape_and_dtest_eulerian_at_knot_axi_nst() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double oomph::AxisymmetricQCrouzeixRaviartElement::dshape_and_dtest_eulerian_at_knot_axi_nst </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>ipt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;&#160;</td>
+          <td class="paramname"><em>psi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;&#160;</td>
+          <td class="paramname"><em>dpsidx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1RankFourTensor.html">RankFourTensor</a>&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>d_dpsidx_dX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;&#160;</td>
+          <td class="paramname"><em>test</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;&#160;</td>
+          <td class="paramname"><em>dtestdx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1RankFourTensor.html">RankFourTensor</a>&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>d_dtestdx_dX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1DenseMatrix.html">DenseMatrix</a>&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>djacobian_dX</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Shape/test functions and derivs w.r.t. to global coords at integration point ipt; return Jacobian of mapping (J). Also compute derivatives of dpsidx, dtestdx and J w.r.t. nodal coordinates. </p>
+<p >Define the shape functions (psi) and test functions (test) and their derivatives w.r.t. global coordinates (dpsidx and dtestdx) and return Jacobian of mapping (J). Additionally compute the derivatives of dpsidx, dtestdx and J w.r.t. nodal coordinates.</p>
+<p >Galerkin: Test functions = shape functions </p>
+
+<p class="definition">Definition at line <a class="el" href="axisym__navier__stokes__elements_8h_source.html#l01540">1540</a> of file <a class="el" href="axisym__navier__stokes__elements_8h_source.html">axisym_navier_stokes_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00603">i</a>.</p>
+
+</div>
+</div>
+<a id="a84026f3c225ef35731a04cc5866c7d6b" name="a84026f3c225ef35731a04cc5866c7d6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84026f3c225ef35731a04cc5866c7d6b">&#9670;&nbsp;</a></span>dshape_and_dtest_eulerian_at_knot_axi_nst() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double oomph::AxisymmetricQCrouzeixRaviartElement::dshape_and_dtest_eulerian_at_knot_axi_nst </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>ipt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;&#160;</td>
+          <td class="paramname"><em>psi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;&#160;</td>
+          <td class="paramname"><em>dpsidx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;&#160;</td>
+          <td class="paramname"><em>test</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;&#160;</td>
+          <td class="paramname"><em>dtestdx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Velocity shape and test functions and their derivs w.r.t. to global coords at ipt-th integation point (taken from geometry) Return Jacobian of mapping between local and global coordinates. </p>
+<p >Derivatives of the shape functions and test functions w.r.t. to global (Eulerian) coordinates. Return Jacobian of mapping between local and global coordinates. </p>
+
+<p class="definition">Definition at line <a class="el" href="axisym__navier__stokes__elements_8h_source.html#l01511">1511</a> of file <a class="el" href="axisym__navier__stokes__elements_8h_source.html">axisym_navier_stokes_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00603">i</a>.</p>
+
+</div>
+</div>
+<a id="a48bd4be228495e97e5d8bf8a70162182" name="a48bd4be228495e97e5d8bf8a70162182"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48bd4be228495e97e5d8bf8a70162182">&#9670;&nbsp;</a></span>dshape_and_dtest_eulerian_axi_nst()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double oomph::AxisymmetricQCrouzeixRaviartElement::dshape_and_dtest_eulerian_axi_nst </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;&#160;</td>
+          <td class="paramname"><em>psi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;&#160;</td>
+          <td class="paramname"><em>dpsidx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;&#160;</td>
+          <td class="paramname"><em>test</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;&#160;</td>
+          <td class="paramname"><em>dtestdx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Velocity shape and test functions and their derivs w.r.t. to global coords at local coordinate s (taken from geometry) Return Jacobian of mapping between local and global coordinates. </p>
+<p >Derivatives of the shape functions and test functions w.r.t. to global (Eulerian) coordinates. Return Jacobian of mapping between local and global coordinates. </p>
+
+<p class="definition">Definition at line <a class="el" href="axisym__navier__stokes__elements_8h_source.html#l01485">1485</a> of file <a class="el" href="axisym__navier__stokes__elements_8h_source.html">axisym_navier_stokes_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00603">i</a>, and <a class="el" href="cfortran_8h_source.html#l00568">s</a>.</p>
+
+</div>
+</div>
+<a id="a65e65b5d7dd33b374c259b53dc99a83c" name="a65e65b5d7dd33b374c259b53dc99a83c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65e65b5d7dd33b374c259b53dc99a83c">&#9670;&nbsp;</a></span>fix_pressure()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::AxisymmetricQCrouzeixRaviartElement::fix_pressure </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>p_dof</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>pvalue</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Function to fix the internal pressure dof idof_internal. </p>
+
+<p class="definition">Definition at line <a class="el" href="axisym__navier__stokes__elements_8h_source.html#l01418">1418</a> of file <a class="el" href="axisym__navier__stokes__elements_8h_source.html">axisym_navier_stokes_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="axisym__navier__stokes__elements_8h_source.html#l01346">P_axi_nst_internal_index</a>.</p>
+
+</div>
+</div>
+<a id="a83a50021a007f1a932fe841119d93412" name="a83a50021a007f1a932fe841119d93412"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83a50021a007f1a932fe841119d93412">&#9670;&nbsp;</a></span>get_dof_numbers_for_unknowns()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::AxisymmetricQCrouzeixRaviartElement::get_dof_numbers_for_unknowns </td>
+          <td>(</td>
+          <td class="paramtype">std::list&lt; std::pair&lt; unsigned long, unsigned &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>dof_lookup_list</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create a list of pairs for all unknowns in this element, so that the first entry in each pair contains the global equation number of the unknown, while the second one contains the number of the "DOF type" that this unknown is associated with. (Function can obviously only be called if the equation numbering scheme has been set up.) </p>
+<p >/////////////////////////////////////////////////////////////////// ///////////////////////////////////////////////////////////////////</p>
+<p >Create a list of pairs for all unknowns in this element, so that the first entry in each pair contains the global equation number of the unknown, while the second one contains the number of the "DOF type" that this unknown is associated with. (Function can obviously only be called if the equation numbering scheme has been set up.) </p>
+
+<p class="definition">Definition at line <a class="el" href="axisym__navier__stokes__elements_8cc_source.html#l03639">3639</a> of file <a class="el" href="axisym__navier__stokes__elements_8cc_source.html">axisym_navier_stokes_elements.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="axisym__navier__stokes__elements_8h_source.html#l01412">npres_axi_nst()</a>, and <a class="el" href="axisym__navier__stokes__elements_8h_source.html#l01431">p_local_eqn()</a>.</p>
+
+</div>
+</div>
+<a id="a60ea4ee3c006bc04984f1dcadb87a79d" name="a60ea4ee3c006bc04984f1dcadb87a79d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60ea4ee3c006bc04984f1dcadb87a79d">&#9670;&nbsp;</a></span>get_traction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::AxisymmetricQCrouzeixRaviartElement::get_traction </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>N</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>traction</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compute traction at local coordinate s for outer unit normal N. </p>
+
+<p class="definition">Definition at line <a class="el" href="axisym__navier__stokes__elements_8cc_source.html#l03720">3720</a> of file <a class="el" href="axisym__navier__stokes__elements_8cc_source.html">axisym_navier_stokes_elements.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="quadtree_8h_source.html#l00060">oomph::QuadTreeNames::N</a>, and <a class="el" href="cfortran_8h_source.html#l00568">s</a>.</p>
+
+</div>
+</div>
+<a id="a85c8740ef4dd17626ae47c9344e15ae8" name="a85c8740ef4dd17626ae47c9344e15ae8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85c8740ef4dd17626ae47c9344e15ae8">&#9670;&nbsp;</a></span>ndof_types()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned oomph::AxisymmetricQCrouzeixRaviartElement::ndof_types </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The number of "DOF types" that degrees of freedom in this element are sub-divided into: Velocity (3 components) and pressure. </p>
+
+<p class="definition">Definition at line <a class="el" href="axisym__navier__stokes__elements_8h_source.html#l01463">1463</a> of file <a class="el" href="axisym__navier__stokes__elements_8h_source.html">axisym_navier_stokes_elements.h</a>.</p>
+
+</div>
+</div>
+<a id="a923c2ccbc5bd523118273e63cc18fd5f" name="a923c2ccbc5bd523118273e63cc18fd5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a923c2ccbc5bd523118273e63cc18fd5f">&#9670;&nbsp;</a></span>npres_axi_nst()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned oomph::AxisymmetricQCrouzeixRaviartElement::npres_axi_nst </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return number of pressure values. </p>
+
+<p class="definition">Definition at line <a class="el" href="axisym__navier__stokes__elements_8h_source.html#l01412">1412</a> of file <a class="el" href="axisym__navier__stokes__elements_8h_source.html">axisym_navier_stokes_elements.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="axisym__navier__stokes__elements_8cc_source.html#l03639">get_dof_numbers_for_unknowns()</a>, and <a class="el" href="refineable__axisym__navier__stokes__elements_8h_source.html#l00768">oomph::RefineableAxisymmetricQCrouzeixRaviartElement::unpin_elemental_pressure_dofs()</a>.</p>
+
+</div>
+</div>
+<a id="a89e6624edb01f732c6c10b068227de54" name="a89e6624edb01f732c6c10b068227de54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89e6624edb01f732c6c10b068227de54">&#9670;&nbsp;</a></span>output() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::AxisymmetricQCrouzeixRaviartElement::output </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>file_pt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Redirect output to <a class="el" href="classNavierStokesEquations.html" title="and">NavierStokesEquations</a> output. </p>
+
+<p class="definition">Definition at line <a class="el" href="axisym__navier__stokes__elements_8h_source.html#l01450">1450</a> of file <a class="el" href="axisym__navier__stokes__elements_8h_source.html">axisym_navier_stokes_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="oomph__utilities_8cc_source.html#l00436">oomph::CommandLineArgs::output()</a>.</p>
+
+</div>
+</div>
+<a id="a04743e5848f04627a7069879f4da8389" name="a04743e5848f04627a7069879f4da8389"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04743e5848f04627a7069879f4da8389">&#9670;&nbsp;</a></span>output() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::AxisymmetricQCrouzeixRaviartElement::output </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>file_pt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n_plot</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Redirect output to <a class="el" href="classNavierStokesEquations.html" title="and">NavierStokesEquations</a> output. </p>
+
+<p class="definition">Definition at line <a class="el" href="axisym__navier__stokes__elements_8h_source.html#l01456">1456</a> of file <a class="el" href="axisym__navier__stokes__elements_8h_source.html">axisym_navier_stokes_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="oomph__utilities_8cc_source.html#l00436">oomph::CommandLineArgs::output()</a>.</p>
+
+</div>
+</div>
+<a id="af7811d55e87a839fb5c01d9e306cfda8" name="af7811d55e87a839fb5c01d9e306cfda8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7811d55e87a839fb5c01d9e306cfda8">&#9670;&nbsp;</a></span>output() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::AxisymmetricQCrouzeixRaviartElement::output </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>outfile</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Redirect output to <a class="el" href="classNavierStokesEquations.html" title="and">NavierStokesEquations</a> output. </p>
+
+<p class="definition">Definition at line <a class="el" href="axisym__navier__stokes__elements_8h_source.html#l01437">1437</a> of file <a class="el" href="axisym__navier__stokes__elements_8h_source.html">axisym_navier_stokes_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="oomph__utilities_8cc_source.html#l00436">oomph::CommandLineArgs::output()</a>.</p>
+
+</div>
+</div>
+<a id="afb5ef7f9b09d4b3ed6d5ee04cad58fec" name="afb5ef7f9b09d4b3ed6d5ee04cad58fec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb5ef7f9b09d4b3ed6d5ee04cad58fec">&#9670;&nbsp;</a></span>output() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::AxisymmetricQCrouzeixRaviartElement::output </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>outfile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n_plot</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Redirect output to <a class="el" href="classNavierStokesEquations.html" title="and">NavierStokesEquations</a> output. </p>
+
+<p class="definition">Definition at line <a class="el" href="axisym__navier__stokes__elements_8h_source.html#l01443">1443</a> of file <a class="el" href="axisym__navier__stokes__elements_8h_source.html">axisym_navier_stokes_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="oomph__utilities_8cc_source.html#l00436">oomph::CommandLineArgs::output()</a>.</p>
+
+</div>
+</div>
+<a id="acaa357820f2efb863d442b66e9761c6d" name="acaa357820f2efb863d442b66e9761c6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acaa357820f2efb863d442b66e9761c6d">&#9670;&nbsp;</a></span>p_axi_nst()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double oomph::AxisymmetricQCrouzeixRaviartElement::p_axi_nst </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return the pressure values at internal dof i_internal (Discontinous pressure interpolation &ndash; no need to cater for hanging nodes). </p>
+
+<p class="definition">Definition at line <a class="el" href="axisym__navier__stokes__elements_8h_source.html#l01406">1406</a> of file <a class="el" href="axisym__navier__stokes__elements_8h_source.html">axisym_navier_stokes_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00603">i</a>, and <a class="el" href="axisym__navier__stokes__elements_8h_source.html#l01346">P_axi_nst_internal_index</a>.</p>
+
+</div>
+</div>
+<a id="adc569122e3649deba56231175f3116cf" name="adc569122e3649deba56231175f3116cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc569122e3649deba56231175f3116cf">&#9670;&nbsp;</a></span>p_local_eqn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int oomph::AxisymmetricQCrouzeixRaviartElement::p_local_eqn </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Overload the access function for the pressure's local equation numbers. </p>
+
+<p class="definition">Definition at line <a class="el" href="axisym__navier__stokes__elements_8h_source.html#l01431">1431</a> of file <a class="el" href="axisym__navier__stokes__elements_8h_source.html">axisym_navier_stokes_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="axisym__navier__stokes__elements_8h_source.html#l01346">P_axi_nst_internal_index</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="axisym__navier__stokes__elements_8cc_source.html#l03639">get_dof_numbers_for_unknowns()</a>.</p>
+
+</div>
+</div>
+<a id="a6a16bdbe2fc4e1bfe09123c50d101688" name="a6a16bdbe2fc4e1bfe09123c50d101688"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a16bdbe2fc4e1bfe09123c50d101688">&#9670;&nbsp;</a></span>pshape_axi_nst() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::AxisymmetricQCrouzeixRaviartElement::pshape_axi_nst </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;&#160;</td>
+          <td class="paramname"><em>psi</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pressure shape functions at local coordinate s. </p>
+<p >Pressure shape functions. </p>
+
+<p class="definition">Definition at line <a class="el" href="axisym__navier__stokes__elements_8h_source.html#l01582">1582</a> of file <a class="el" href="axisym__navier__stokes__elements_8h_source.html">axisym_navier_stokes_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00568">s</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="axisym__navier__stokes__elements_8h_source.html#l01591">pshape_axi_nst()</a>.</p>
+
+</div>
+</div>
+<a id="af131ceee4d1612696b66ce7ac3a866d1" name="af131ceee4d1612696b66ce7ac3a866d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af131ceee4d1612696b66ce7ac3a866d1">&#9670;&nbsp;</a></span>pshape_axi_nst() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::AxisymmetricQCrouzeixRaviartElement::pshape_axi_nst </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;&#160;</td>
+          <td class="paramname"><em>psi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;&#160;</td>
+          <td class="paramname"><em>test</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pressure shape and test functions at local coordinte s. </p>
+<p >Define the pressure shape and test functions. </p>
+
+<p class="definition">Definition at line <a class="el" href="axisym__navier__stokes__elements_8h_source.html#l01591">1591</a> of file <a class="el" href="axisym__navier__stokes__elements_8h_source.html">axisym_navier_stokes_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="axisym__navier__stokes__elements_8h_source.html#l01582">pshape_axi_nst()</a>, and <a class="el" href="cfortran_8h_source.html#l00568">s</a>.</p>
+
+</div>
+</div>
+<a id="ae7988679549e63ef87fc3f062fb6a559" name="ae7988679549e63ef87fc3f062fb6a559"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7988679549e63ef87fc3f062fb6a559">&#9670;&nbsp;</a></span>required_nvalue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned oomph::AxisymmetricQCrouzeixRaviartElement::required_nvalue </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Number of values (pinned or dofs) required at local node n. </p>
+<p >Number of values (pinned or dofs) required at node n. </p>
+
+<p class="definition">Definition at line <a class="el" href="axisym__navier__stokes__elements_8cc_source.html#l03711">3711</a> of file <a class="el" href="axisym__navier__stokes__elements_8cc_source.html">axisym_navier_stokes_elements.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="axisym__navier__stokes__elements_8h_source.html#l01341">Initial_Nvalue</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a6edd4a05741c3ee8ee1ac82f7c3f9eff" name="a6edd4a05741c3ee8ee1ac82f7c3f9eff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6edd4a05741c3ee8ee1ac82f7c3f9eff">&#9670;&nbsp;</a></span>Initial_Nvalue</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned oomph::AxisymmetricQCrouzeixRaviartElement::Initial_Nvalue</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    3, 3, 3, 3, 3, 3, 3, 3, 3}</div>
+</div><!-- fragment -->
+<p>Static array of ints to hold required number of variables at nodes. </p>
+<p >Axisymmetric Crouzeix-Raviart elements. </p>
+
+<p class="definition">Definition at line <a class="el" href="axisym__navier__stokes__elements_8h_source.html#l01341">1341</a> of file <a class="el" href="axisym__navier__stokes__elements_8h_source.html">axisym_navier_stokes_elements.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="axisym__navier__stokes__elements_8cc_source.html#l03711">required_nvalue()</a>.</p>
+
+</div>
+</div>
+<a id="a8ec7b0e02c2ab96d0cb9b5238b76b145" name="a8ec7b0e02c2ab96d0cb9b5238b76b145"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ec7b0e02c2ab96d0cb9b5238b76b145">&#9670;&nbsp;</a></span>P_axi_nst_internal_index</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned oomph::AxisymmetricQCrouzeixRaviartElement::P_axi_nst_internal_index</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Internal index that indicates at which internal data the pressure is stored. </p>
+
+<p class="definition">Definition at line <a class="el" href="axisym__navier__stokes__elements_8h_source.html#l01346">1346</a> of file <a class="el" href="axisym__navier__stokes__elements_8h_source.html">axisym_navier_stokes_elements.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="axisym__navier__stokes__elements_8h_source.html#l01392">AxisymmetricQCrouzeixRaviartElement()</a>, <a class="el" href="axisym__navier__stokes__elements_8h_source.html#l01418">fix_pressure()</a>, <a class="el" href="refineable__axisym__navier__stokes__elements_8h_source.html#l00984">oomph::RefineableAxisymmetricQCrouzeixRaviartElement::further_build()</a>, <a class="el" href="axisym__navier__stokes__elements_8h_source.html#l01406">p_axi_nst()</a>, <a class="el" href="axisym__navier__stokes__elements_8h_source.html#l01431">p_local_eqn()</a>, <a class="el" href="refineable__axisym__navier__stokes__elements_8h_source.html#l00795">oomph::RefineableAxisymmetricQCrouzeixRaviartElement::rebuild_from_sons()</a>, and <a class="el" href="refineable__axisym__navier__stokes__elements_8h_source.html#l00768">oomph::RefineableAxisymmetricQCrouzeixRaviartElement::unpin_elemental_pressure_dofs()</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li><a class="el" href="axisym__navier__stokes__elements_8h_source.html">axisym_navier_stokes_elements.h</a></li>
+<li><a class="el" href="axisym__navier__stokes__elements_8cc_source.html">axisym_navier_stokes_elements.cc</a></li>
+</ul>
+</div><!-- contents -->
+
+    <!-- jQuery for Bootstrap and Doxygen -->
+    <script src="../../js/jquery-1.12.0.min.js"></script>
+    <!-- Minified boostrap plugins-->
+    <script src="../../js/bootstrap.js"></script>
+    <!-- Doxygen dependency to add powertips to source code-->
+    <script src="../../js/jquery.powertip.min.js"></script>
+    <!-- The  following script is generated by doxygen and hides/shows levels in 
+         the data structure lists and adds powertips to source code-->
+    <script src="../../js/dynsections.js" ></script>
+    <!-- add to Doxygen's class names so bootstrap css and js recognises them-->
+    <script type="text/javascript">
+    $(".contents").addClass("container");
+    $(".header").addClass("container");
+    $(".navpath").addClass("container");
+    $("#navrow3").addClass("container");
+    $("#navrow4").addClass("container");
+    $(".mlabel").addClass("label");
+    $(".mlabel").addClass("label-default");
+    $(".memitem").addClass("panel");
+    $(".memitem").addClass("panel-info");
+    $(".memproto").addClass("panel-heading");
+    $(".memdoc").addClass("panel-body");
+    </script>
+    <footer>
+      <div class="container">
+        <div class="text-muted" style="float:right;">Generated by <a href="http://www.doxygen.org/index.html">
+          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Tue Dec 21 2021 16:49:31
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

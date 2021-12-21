@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>oomph-lib: oomph::QWomersleyElement&lt; DIM, NNODE_1D &gt; Class Template Reference</title>
+<link rel="apple-touch-icon" sizes="57x57" href="../../figures/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="../../figures/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../../figures/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../../figures/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../../figures/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../../figures/apple-touch-icon-120x120.png">
+<link rel="icon" type="image/png" href="../../figures/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../figures/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../figures/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../figures/manifest.json">
+<link rel="mask-icon" href="../../figures/safari-pinned-tab.svg" color="#008000">
+<link rel="shortcut icon" href="../../figures/favicon.ico">
+<meta name="msapplication-TileColor" content="#00a300">
+<meta name="msapplication-config" content="../../figures/browserconfig.xml">
+<meta name="theme-color" content="#008000">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css">
+<!-- Doxygen css-->
+<!-- <link rel="stylesheet" type="text/css" href="doxygen.css"> -->
+<!-- Bootstrap -->
+<link href="../../css/bootstrap.css" rel="stylesheet">
+<!-- oomph-lib specific overrides -->
+<link rel="stylesheet" type="text/css" href="../../css/oomph_header.css">
+</head>
+<body>
+<nav class="navbar navbar-default">
+<div class="container">
+<div class="container-fluid">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="../../html/index.html"><img alt="oomph-lib" src="../../figures/oomph_logo.png"></a>
+  </div>
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">          
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li class="dropdown-header">Big picture</li>
+          <li><a href="../../../doc/intro/html/index.html">The finite element method</a></li>
+          <li><a href="../../../doc/the_data_structure/html/index.html">The data structure</a></li>
+          <li><a href="../../../doc/quick_guide/html/index.html">Not-so-quick guide</a></li>
+          <li><a href="../../../doc/optimisation/html/index.html">Optimisation</a></li>
+          <li><a href="../../../doc/order_of_action_functions/html/index.html">Order of action functions</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Example codes and tutorials</li>
+          <li><a href="../../../doc/example_code_list/html/index.html">List of example codes and tutorials</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#meshes">Meshing</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#solvers">Solvers</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#parallel">MPI parallel processing</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#visualisation">Post-processing/visualisation</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Other</li>
+          <li><a href="../../../doc/change_log/html/index.html">Change log</a></li>
+          <li><a href="../../../doc/creating_doc/html/index.html">Creating documentation</a></li>
+          <li><a href="../../../doc/coding_conventions/html/index.html">Coding conventions</a></li>
+          <li><a href="../../../doc/index/html/index.html">Index</a></li>
+          <li><a href="../../../doc/FAQ/html/index.html">FAQ</a></li>
+        </ul>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Installation<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../../../doc/the_distribution/html/index.html">Installation guide</a></li>
+            <li><a href="../../../doc/copyright/html/index.html">Copyright</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../../../doc/people/html/index.html">People</a></li>            
+            <li><a href="../../../doc/contact/html/index.html">Contact/Get involved</a></li>
+            <li><a href="../../../doc/publications/html/index.html">Publications</a></li>
+            <li><a href="../../../doc/acknowledgements/html/index.html">Acknowledgements</a></li>
+            <li><a href="../../../doc/picture_show/index.html">Picture show</a></li>
+          </ul>
+        </li>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right navbar-search">
+      <form class="navbar-form" role="search" action="../../../doc/search_results/html/index.html">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search" name="q">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Go</button>
+          </span>
+        </div><!-- /input-group -->
+       <!--<div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>-->
+      </form>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
+</div>
+</nav>
+<!-- Generated by Doxygen 1.9.2 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',false,false,'search.php','Search');
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceoomph.html">oomph</a></li><li class="navelem"><a class="el" href="classoomph_1_1QWomersleyElement.html">QWomersleyElement</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
+<a href="classoomph_1_1QWomersleyElement-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">oomph::QWomersleyElement&lt; DIM, NNODE_1D &gt; Class Template Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>//////////////////////////////////////////////////////////////////////// ////////////////////////////////////////////////////////////////////////  
+ <a href="classoomph_1_1QWomersleyElement.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="womersley__elements_8h_source.html">womersley_elements.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for oomph::QWomersleyElement&lt; DIM, NNODE_1D &gt;:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+ <div class="center">
+  <img src="classoomph_1_1QWomersleyElement.png" usemap="#oomph::QWomersleyElement_3C_20DIM_2C_20NNODE_5F1D_20_3E_map" alt=""/>
+  <map id="oomph::QWomersleyElement_3C_20DIM_2C_20NNODE_5F1D_20_3E_map" name="oomph::QWomersleyElement_3C_20DIM_2C_20NNODE_5F1D_20_3E_map">
+<area href="classoomph_1_1QElement.html" title="/////////////////////////////////////////////////////////////////////// /////////////////////////////..." alt="oomph::QElement&lt; DIM, NNODE_1D &gt;" shape="rect" coords="0,0,295,24"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a42dc522e6a7adb0b87e335a797d07bf4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QWomersleyElement.html#a42dc522e6a7adb0b87e335a797d07bf4">QWomersleyElement</a> ()</td></tr>
+<tr class="memdesc:a42dc522e6a7adb0b87e335a797d07bf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor: Call constructors for <a class="el" href="classoomph_1_1QElement.html" title="/////////////////////////////////////////////////////////////////////// /////////////////////////////...">QElement</a> and Womersley equations.  <a href="classoomph_1_1QWomersleyElement.html#a42dc522e6a7adb0b87e335a797d07bf4">More...</a><br /></td></tr>
+<tr class="separator:a42dc522e6a7adb0b87e335a797d07bf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3586a3cced227f4705cdaed6c8f00c1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QWomersleyElement.html#ab3586a3cced227f4705cdaed6c8f00c1">QWomersleyElement</a> (const <a class="el" href="classoomph_1_1QWomersleyElement.html">QWomersleyElement</a>&lt; DIM, NNODE_1D &gt; &amp;dummy)=delete</td></tr>
+<tr class="memdesc:ab3586a3cced227f4705cdaed6c8f00c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Broken copy constructor.  <a href="classoomph_1_1QWomersleyElement.html#ab3586a3cced227f4705cdaed6c8f00c1">More...</a><br /></td></tr>
+<tr class="separator:ab3586a3cced227f4705cdaed6c8f00c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a055d07e92db5f23758629b60feaae792"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QWomersleyElement.html#a055d07e92db5f23758629b60feaae792">operator=</a> (const <a class="el" href="classoomph_1_1QWomersleyElement.html">QWomersleyElement</a>&lt; DIM, NNODE_1D &gt; &amp;)=delete</td></tr>
+<tr class="memdesc:a055d07e92db5f23758629b60feaae792"><td class="mdescLeft">&#160;</td><td class="mdescRight">Broken assignment operator.  <a href="classoomph_1_1QWomersleyElement.html#a055d07e92db5f23758629b60feaae792">More...</a><br /></td></tr>
+<tr class="separator:a055d07e92db5f23758629b60feaae792"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31a20c3d89a4bc5698c81e01ca22dc8d"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QWomersleyElement.html#a31a20c3d89a4bc5698c81e01ca22dc8d">required_nvalue</a> (const unsigned &amp;n) const</td></tr>
+<tr class="memdesc:a31a20c3d89a4bc5698c81e01ca22dc8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Required # of &lsquo;values&rsquo; (pinned or dofs) at node n.  <a href="classoomph_1_1QWomersleyElement.html#a31a20c3d89a4bc5698c81e01ca22dc8d">More...</a><br /></td></tr>
+<tr class="separator:a31a20c3d89a4bc5698c81e01ca22dc8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a8951b6a947e120821c1a83048975d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QWomersleyElement.html#a5a8951b6a947e120821c1a83048975d4">output</a> (std::ostream &amp;outfile)</td></tr>
+<tr class="memdesc:a5a8951b6a947e120821c1a83048975d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output function: x,y,u or x,y,z,u.  <a href="classoomph_1_1QWomersleyElement.html#a5a8951b6a947e120821c1a83048975d4">More...</a><br /></td></tr>
+<tr class="separator:a5a8951b6a947e120821c1a83048975d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98968ff614577c7796f293cb020831da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QWomersleyElement.html#a98968ff614577c7796f293cb020831da">output</a> (std::ostream &amp;outfile, const unsigned &amp;n_plot)</td></tr>
+<tr class="memdesc:a98968ff614577c7796f293cb020831da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output function: x,y,u or x,y,z,u at n_plot^DIM plot points.  <a href="classoomph_1_1QWomersleyElement.html#a98968ff614577c7796f293cb020831da">More...</a><br /></td></tr>
+<tr class="separator:a98968ff614577c7796f293cb020831da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d73507033cac13eed334354502663d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QWomersleyElement.html#a2d73507033cac13eed334354502663d6">output</a> (FILE *file_pt)</td></tr>
+<tr class="memdesc:a2d73507033cac13eed334354502663d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">C-style output function: x,y,u or x,y,z,u.  <a href="classoomph_1_1QWomersleyElement.html#a2d73507033cac13eed334354502663d6">More...</a><br /></td></tr>
+<tr class="separator:a2d73507033cac13eed334354502663d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedac8e0c2b41e446b7c835731b179255"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QWomersleyElement.html#aedac8e0c2b41e446b7c835731b179255">output</a> (FILE *file_pt, const unsigned &amp;n_plot)</td></tr>
+<tr class="memdesc:aedac8e0c2b41e446b7c835731b179255"><td class="mdescLeft">&#160;</td><td class="mdescRight">C-style output function: x,y,u or x,y,z,u at n_plot^DIM plot points.  <a href="classoomph_1_1QWomersleyElement.html#aedac8e0c2b41e446b7c835731b179255">More...</a><br /></td></tr>
+<tr class="separator:aedac8e0c2b41e446b7c835731b179255"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae15d32d03c1e64811cc29098c85d1e23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QWomersleyElement.html#ae15d32d03c1e64811cc29098c85d1e23">output_fct</a> (std::ostream &amp;outfile, const unsigned &amp;n_plot, <a class="el" href="classoomph_1_1FiniteElement.html#a690fd33af26cc3e84f39bba6d5a85202">FiniteElement::SteadyExactSolutionFctPt</a> exact_soln_pt)</td></tr>
+<tr class="memdesc:ae15d32d03c1e64811cc29098c85d1e23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output function for an exact solution: x,y,u_exact or x,y,z,u_exact at n_plot^DIM plot points.  <a href="classoomph_1_1QWomersleyElement.html#ae15d32d03c1e64811cc29098c85d1e23">More...</a><br /></td></tr>
+<tr class="separator:ae15d32d03c1e64811cc29098c85d1e23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2730f3cf9212c0b5cbc22939a376af07"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QWomersleyElement.html#a2730f3cf9212c0b5cbc22939a376af07">output_fct</a> (std::ostream &amp;outfile, const unsigned &amp;n_plot, const double &amp;time, <a class="el" href="classoomph_1_1FiniteElement.html#ad4ecf2b61b158a4b4d351a60d23c633e">FiniteElement::UnsteadyExactSolutionFctPt</a> exact_soln_pt)</td></tr>
+<tr class="memdesc:a2730f3cf9212c0b5cbc22939a376af07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output function for a time-dependent exact solution. x,y,u_exact or x,y,z,u_exact at n_plot^DIM plot points (Calls the steady version)  <a href="classoomph_1_1QWomersleyElement.html#a2730f3cf9212c0b5cbc22939a376af07">More...</a><br /></td></tr>
+<tr class="separator:a2730f3cf9212c0b5cbc22939a376af07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:afe507e9f0d7359d47c0c682fed7c952b"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QWomersleyElement.html#afe507e9f0d7359d47c0c682fed7c952b">dshape_and_dtest_eulerian_womersley</a> (const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;<a class="el" href="cfortran_8h.html#ab7123126e4885ef647dd9c6e3807a21c">s</a>, <a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;psi, <a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;dpsidx, <a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;test, <a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;dtestdx) const</td></tr>
+<tr class="memdesc:afe507e9f0d7359d47c0c682fed7c952b"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classoomph_1_1Shape.html" title="A Class for shape functions. In simple cases, the shape functions have only one index that can be tho...">Shape</a>, test functions &amp; derivs. w.r.t. to global coords. Return Jacobian.  <a href="classoomph_1_1QWomersleyElement.html#afe507e9f0d7359d47c0c682fed7c952b">More...</a><br /></td></tr>
+<tr class="separator:afe507e9f0d7359d47c0c682fed7c952b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c4db93fb861995c7910ffe44751f449"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QWomersleyElement.html#a5c4db93fb861995c7910ffe44751f449">dshape_and_dtest_eulerian_at_knot_womersley</a> (const unsigned &amp;ipt, <a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;psi, <a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;dpsidx, <a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;test, <a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;dtestdx) const</td></tr>
+<tr class="memdesc:a5c4db93fb861995c7910ffe44751f449"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shape/test functions and derivs w.r.t. to global coords at integration point ipt; return Jacobian of mapping.  <a href="classoomph_1_1QWomersleyElement.html#a5c4db93fb861995c7910ffe44751f449">More...</a><br /></td></tr>
+<tr class="separator:a5c4db93fb861995c7910ffe44751f449"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:ae91c242198d9b4683a446f711e6acd4b"><td class="memItemLeft" align="right" valign="top">static const unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QWomersleyElement.html#ae91c242198d9b4683a446f711e6acd4b">Initial_Nvalue</a> = 1</td></tr>
+<tr class="memdesc:ae91c242198d9b4683a446f711e6acd4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Static array of ints to hold number of variables at nodes: Initial_Nvalue[n].  <a href="classoomph_1_1QWomersleyElement.html#ae91c242198d9b4683a446f711e6acd4b">More...</a><br /></td></tr>
+<tr class="separator:ae91c242198d9b4683a446f711e6acd4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;unsigned DIM, unsigned NNODE_1D&gt;<br />
+class oomph::QWomersleyElement&lt; DIM, NNODE_1D &gt;</div><p >//////////////////////////////////////////////////////////////////////// //////////////////////////////////////////////////////////////////////// </p>
+<p ><a class="el" href="classoomph_1_1QWomersleyElement.html" title="//////////////////////////////////////////////////////////////////////// ////////////////////////////...">QWomersleyElement</a> elements are linear/quadrilateral/brick-shaped Womersley elements with isoparametric interpolation for the function. </p>
+
+<p class="definition">Definition at line <a class="el" href="womersley__elements_8h_source.html#l00633">633</a> of file <a class="el" href="womersley__elements_8h_source.html">womersley_elements.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a42dc522e6a7adb0b87e335a797d07bf4" name="a42dc522e6a7adb0b87e335a797d07bf4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42dc522e6a7adb0b87e335a797d07bf4">&#9670;&nbsp;</a></span>QWomersleyElement() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoomph_1_1QWomersleyElement.html">oomph::QWomersleyElement</a>&lt; DIM, NNODE_1D &gt;::<a class="el" href="classoomph_1_1QWomersleyElement.html">QWomersleyElement</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor: Call constructors for <a class="el" href="classoomph_1_1QElement.html" title="/////////////////////////////////////////////////////////////////////// /////////////////////////////...">QElement</a> and Womersley equations. </p>
+
+<p class="definition">Definition at line <a class="el" href="womersley__elements_8h_source.html#l00644">644</a> of file <a class="el" href="womersley__elements_8h_source.html">womersley_elements.h</a>.</p>
+
+</div>
+</div>
+<a id="ab3586a3cced227f4705cdaed6c8f00c1" name="ab3586a3cced227f4705cdaed6c8f00c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3586a3cced227f4705cdaed6c8f00c1">&#9670;&nbsp;</a></span>QWomersleyElement() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoomph_1_1QWomersleyElement.html">oomph::QWomersleyElement</a>&lt; DIM, NNODE_1D &gt;::<a class="el" href="classoomph_1_1QWomersleyElement.html">QWomersleyElement</a> </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classoomph_1_1QWomersleyElement.html">QWomersleyElement</a>&lt; DIM, NNODE_1D &gt; &amp;&#160;</td>
+          <td class="paramname"><em>dummy</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Broken copy constructor. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5c4db93fb861995c7910ffe44751f449" name="a5c4db93fb861995c7910ffe44751f449"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c4db93fb861995c7910ffe44751f449">&#9670;&nbsp;</a></span>dshape_and_dtest_eulerian_at_knot_womersley()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classoomph_1_1QWomersleyElement.html">oomph::QWomersleyElement</a>&lt; DIM, NNODE_1D &gt;::dshape_and_dtest_eulerian_at_knot_womersley </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>ipt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;&#160;</td>
+          <td class="paramname"><em>psi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;&#160;</td>
+          <td class="paramname"><em>dpsidx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;&#160;</td>
+          <td class="paramname"><em>test</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;&#160;</td>
+          <td class="paramname"><em>dtestdx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Shape/test functions and derivs w.r.t. to global coords at integration point ipt; return Jacobian of mapping. </p>
+<p >Define the shape functions and test functions and derivatives w.r.t. global coordinates and return Jacobian of mapping.</p>
+<p >Galerkin: Test functions = shape functions </p>
+
+<p class="definition">Definition at line <a class="el" href="womersley__elements_8h_source.html#l01520">1520</a> of file <a class="el" href="womersley__elements_8h_source.html">womersley_elements.h</a>.</p>
+
+</div>
+</div>
+<a id="afe507e9f0d7359d47c0c682fed7c952b" name="afe507e9f0d7359d47c0c682fed7c952b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe507e9f0d7359d47c0c682fed7c952b">&#9670;&nbsp;</a></span>dshape_and_dtest_eulerian_womersley()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classoomph_1_1QWomersleyElement.html">oomph::QWomersleyElement</a>&lt; DIM, NNODE_1D &gt;::dshape_and_dtest_eulerian_womersley </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;&#160;</td>
+          <td class="paramname"><em>psi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;&#160;</td>
+          <td class="paramname"><em>dpsidx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;&#160;</td>
+          <td class="paramname"><em>test</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;&#160;</td>
+          <td class="paramname"><em>dtestdx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classoomph_1_1Shape.html" title="A Class for shape functions. In simple cases, the shape functions have only one index that can be tho...">Shape</a>, test functions &amp; derivs. w.r.t. to global coords. Return Jacobian. </p>
+<p >///////////////////////////////////////////////////////////////////// /////////////////////////////////////////////////////////////////////</p>
+<p >Define the shape functions and test functions and derivatives w.r.t. global coordinates and return Jacobian of mapping.</p>
+<p >Galerkin: Test functions = shape functions </p>
+
+<p class="definition">Definition at line <a class="el" href="womersley__elements_8h_source.html#l01487">1487</a> of file <a class="el" href="womersley__elements_8h_source.html">womersley_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00603">i</a>, and <a class="el" href="cfortran_8h_source.html#l00568">s</a>.</p>
+
+</div>
+</div>
+<a id="a055d07e92db5f23758629b60feaae792" name="a055d07e92db5f23758629b60feaae792"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a055d07e92db5f23758629b60feaae792">&#9670;&nbsp;</a></span>operator=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classoomph_1_1QWomersleyElement.html">oomph::QWomersleyElement</a>&lt; DIM, NNODE_1D &gt;::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classoomph_1_1QWomersleyElement.html">QWomersleyElement</a>&lt; DIM, NNODE_1D &gt; &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Broken assignment operator. </p>
+
+</div>
+</div>
+<a id="a2d73507033cac13eed334354502663d6" name="a2d73507033cac13eed334354502663d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d73507033cac13eed334354502663d6">&#9670;&nbsp;</a></span>output() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classoomph_1_1QWomersleyElement.html">oomph::QWomersleyElement</a>&lt; DIM, NNODE_1D &gt;::output </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>file_pt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>C-style output function: x,y,u or x,y,z,u. </p>
+
+<p class="definition">Definition at line <a class="el" href="womersley__elements_8h_source.html#l00679">679</a> of file <a class="el" href="womersley__elements_8h_source.html">womersley_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="oomph__utilities_8cc_source.html#l00436">oomph::CommandLineArgs::output()</a>.</p>
+
+</div>
+</div>
+<a id="aedac8e0c2b41e446b7c835731b179255" name="aedac8e0c2b41e446b7c835731b179255"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedac8e0c2b41e446b7c835731b179255">&#9670;&nbsp;</a></span>output() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classoomph_1_1QWomersleyElement.html">oomph::QWomersleyElement</a>&lt; DIM, NNODE_1D &gt;::output </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>file_pt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n_plot</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>C-style output function: x,y,u or x,y,z,u at n_plot^DIM plot points. </p>
+
+<p class="definition">Definition at line <a class="el" href="womersley__elements_8h_source.html#l00687">687</a> of file <a class="el" href="womersley__elements_8h_source.html">womersley_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="oomph__utilities_8cc_source.html#l00436">oomph::CommandLineArgs::output()</a>.</p>
+
+</div>
+</div>
+<a id="a5a8951b6a947e120821c1a83048975d4" name="a5a8951b6a947e120821c1a83048975d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a8951b6a947e120821c1a83048975d4">&#9670;&nbsp;</a></span>output() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classoomph_1_1QWomersleyElement.html">oomph::QWomersleyElement</a>&lt; DIM, NNODE_1D &gt;::output </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>outfile</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Output function: x,y,u or x,y,z,u. </p>
+
+<p class="definition">Definition at line <a class="el" href="womersley__elements_8h_source.html#l00663">663</a> of file <a class="el" href="womersley__elements_8h_source.html">womersley_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="oomph__utilities_8cc_source.html#l00436">oomph::CommandLineArgs::output()</a>.</p>
+
+</div>
+</div>
+<a id="a98968ff614577c7796f293cb020831da" name="a98968ff614577c7796f293cb020831da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98968ff614577c7796f293cb020831da">&#9670;&nbsp;</a></span>output() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classoomph_1_1QWomersleyElement.html">oomph::QWomersleyElement</a>&lt; DIM, NNODE_1D &gt;::output </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>outfile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n_plot</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Output function: x,y,u or x,y,z,u at n_plot^DIM plot points. </p>
+
+<p class="definition">Definition at line <a class="el" href="womersley__elements_8h_source.html#l00671">671</a> of file <a class="el" href="womersley__elements_8h_source.html">womersley_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="oomph__utilities_8cc_source.html#l00436">oomph::CommandLineArgs::output()</a>.</p>
+
+</div>
+</div>
+<a id="a2730f3cf9212c0b5cbc22939a376af07" name="a2730f3cf9212c0b5cbc22939a376af07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2730f3cf9212c0b5cbc22939a376af07">&#9670;&nbsp;</a></span>output_fct() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classoomph_1_1QWomersleyElement.html">oomph::QWomersleyElement</a>&lt; DIM, NNODE_1D &gt;::output_fct </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>outfile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n_plot</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>time</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1FiniteElement.html#ad4ecf2b61b158a4b4d351a60d23c633e">FiniteElement::UnsteadyExactSolutionFctPt</a>&#160;</td>
+          <td class="paramname"><em>exact_soln_pt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Output function for a time-dependent exact solution. x,y,u_exact or x,y,z,u_exact at n_plot^DIM plot points (Calls the steady version) </p>
+
+<p class="definition">Definition at line <a class="el" href="womersley__elements_8h_source.html#l00706">706</a> of file <a class="el" href="womersley__elements_8h_source.html">womersley_elements.h</a>.</p>
+
+</div>
+</div>
+<a id="ae15d32d03c1e64811cc29098c85d1e23" name="ae15d32d03c1e64811cc29098c85d1e23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae15d32d03c1e64811cc29098c85d1e23">&#9670;&nbsp;</a></span>output_fct() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classoomph_1_1QWomersleyElement.html">oomph::QWomersleyElement</a>&lt; DIM, NNODE_1D &gt;::output_fct </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>outfile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n_plot</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1FiniteElement.html#a690fd33af26cc3e84f39bba6d5a85202">FiniteElement::SteadyExactSolutionFctPt</a>&#160;</td>
+          <td class="paramname"><em>exact_soln_pt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Output function for an exact solution: x,y,u_exact or x,y,z,u_exact at n_plot^DIM plot points. </p>
+
+<p class="definition">Definition at line <a class="el" href="womersley__elements_8h_source.html#l00695">695</a> of file <a class="el" href="womersley__elements_8h_source.html">womersley_elements.h</a>.</p>
+
+</div>
+</div>
+<a id="a31a20c3d89a4bc5698c81e01ca22dc8d" name="a31a20c3d89a4bc5698c81e01ca22dc8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31a20c3d89a4bc5698c81e01ca22dc8d">&#9670;&nbsp;</a></span>required_nvalue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned <a class="el" href="classoomph_1_1QWomersleyElement.html">oomph::QWomersleyElement</a>&lt; DIM, NNODE_1D &gt;::required_nvalue </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Required # of &lsquo;values&rsquo; (pinned or dofs) at node n. </p>
+
+<p class="definition">Definition at line <a class="el" href="womersley__elements_8h_source.html#l00656">656</a> of file <a class="el" href="womersley__elements_8h_source.html">womersley_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="womersley__elements_8h_source.html#l00639">oomph::QWomersleyElement&lt; DIM, NNODE_1D &gt;::Initial_Nvalue</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ae91c242198d9b4683a446f711e6acd4b" name="ae91c242198d9b4683a446f711e6acd4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae91c242198d9b4683a446f711e6acd4b">&#9670;&nbsp;</a></span>Initial_Nvalue</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned <a class="el" href="classoomph_1_1QWomersleyElement.html">oomph::QWomersleyElement</a>&lt; DIM, NNODE_1D &gt;::Initial_Nvalue = 1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Static array of ints to hold number of variables at nodes: Initial_Nvalue[n]. </p>
+
+<p class="definition">Definition at line <a class="el" href="womersley__elements_8h_source.html#l00639">639</a> of file <a class="el" href="womersley__elements_8h_source.html">womersley_elements.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="womersley__elements_8h_source.html#l00656">oomph::QWomersleyElement&lt; DIM, NNODE_1D &gt;::required_nvalue()</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li><a class="el" href="womersley__elements_8h_source.html">womersley_elements.h</a></li>
+<li><a class="el" href="womersley__elements_8cc_source.html">womersley_elements.cc</a></li>
+</ul>
+</div><!-- contents -->
+
+    <!-- jQuery for Bootstrap and Doxygen -->
+    <script src="../../js/jquery-1.12.0.min.js"></script>
+    <!-- Minified boostrap plugins-->
+    <script src="../../js/bootstrap.js"></script>
+    <!-- Doxygen dependency to add powertips to source code-->
+    <script src="../../js/jquery.powertip.min.js"></script>
+    <!-- The  following script is generated by doxygen and hides/shows levels in 
+         the data structure lists and adds powertips to source code-->
+    <script src="../../js/dynsections.js" ></script>
+    <!-- add to Doxygen's class names so bootstrap css and js recognises them-->
+    <script type="text/javascript">
+    $(".contents").addClass("container");
+    $(".header").addClass("container");
+    $(".navpath").addClass("container");
+    $("#navrow3").addClass("container");
+    $("#navrow4").addClass("container");
+    $(".mlabel").addClass("label");
+    $(".mlabel").addClass("label-default");
+    $(".memitem").addClass("panel");
+    $(".memitem").addClass("panel-info");
+    $(".memproto").addClass("panel-heading");
+    $(".memdoc").addClass("panel-body");
+    </script>
+    <footer>
+      <div class="container">
+        <div class="text-muted" style="float:right;">Generated by <a href="http://www.doxygen.org/index.html">
+          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Tue Dec 21 2021 16:51:51
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

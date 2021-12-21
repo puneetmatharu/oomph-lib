@@ -1,0 +1,307 @@
+\hypertarget{classoomph_1_1AlgebraicMesh}{}\doxysection{oomph\+::Algebraic\+Mesh Class Reference}
+\label{classoomph_1_1AlgebraicMesh}\index{oomph::AlgebraicMesh@{oomph::AlgebraicMesh}}
+
+
+////////////////////////////////////////////////////////////////////  
+
+
+
+
+{\ttfamily \#include $<$algebraic\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+::Algebraic\+Mesh\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=6.896552cm]{classoomph_1_1AlgebraicMesh}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1AlgebraicMesh_a27bab6278bc48a4bf5d22874fc1a0e16}{Algebraic\+Mesh}} ()
+\begin{DoxyCompactList}\small\item\em Constructor\+: create a null zeroth entry in the Geom\+\_\+object\+\_\+list\+\_\+pt \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} (each \mbox{\hyperlink{classoomph_1_1AlgebraicMesh}{Algebraic\+Mesh}}\textquotesingle{}s constructor should add any other geometric objects to this list) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1AlgebraicMesh_a905ffe19c47a99e9da3f1b397257ea05}{Algebraic\+Mesh}} (const \mbox{\hyperlink{classoomph_1_1AlgebraicMesh}{Algebraic\+Mesh}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1AlgebraicMesh_a148dc4078a5fa2cc9ae651003e3a14ca}{$\sim$\+Algebraic\+Mesh}} ()
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1AlgebraicNode}{Algebraic\+Node}} $\ast$ \mbox{\hyperlink{classoomph_1_1AlgebraicMesh_ae87af0c5ddc685dbc9e694d70b474d64}{node\+\_\+pt}} (const unsigned long \&n)
+\begin{DoxyCompactList}\small\item\em Return a pointer to the n-\/th global \mbox{\hyperlink{classoomph_1_1AlgebraicNode}{Algebraic\+Node}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1AlgebraicMesh_ab01d6f93354f3c4e5c9d1f0a5885a65b}{algebraic\+\_\+node\+\_\+update}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, \mbox{\hyperlink{classoomph_1_1AlgebraicNode}{Algebraic\+Node}} $\ast$\&\mbox{\hyperlink{classoomph_1_1AlgebraicMesh_ae87af0c5ddc685dbc9e694d70b474d64}{node\+\_\+pt}})=0
+\begin{DoxyCompactList}\small\item\em Update the nodal position posn at time level t (t=0\+: present; t\texorpdfstring{$>$}{>}0\+: previous). Must be implemented for every specific algebraic mesh. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1AlgebraicMesh_a6c6a35ae2be6e2766f5b80d85693c1ce}{update\+\_\+node\+\_\+update}} (\mbox{\hyperlink{classoomph_1_1AlgebraicNode}{Algebraic\+Node}} $\ast$\&\mbox{\hyperlink{classoomph_1_1AlgebraicMesh_ae87af0c5ddc685dbc9e694d70b474d64}{node\+\_\+pt}})=0
+\begin{DoxyCompactList}\small\item\em Update the node update info for given node, following mesh adaptation. Must be implemented for every specific algebraic mesh, though it may, of course, be left empty. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1AlgebraicMesh_ad3a5638cacb6df1a47c475bb177b6ed7}{node\+\_\+update}} (const bool \&update\+\_\+all\+\_\+solid\+\_\+nodes=false)
+\begin{DoxyCompactList}\small\item\em Update all nodal positions via algebraic node update functions \mbox{[}Doesn\textquotesingle{}t make sense to use this mesh with Solid\+Elements anyway, so we buffer the case if update\+\_\+all\+\_\+solid\+\_\+nodes is set to true.\mbox{]}. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1AlgebraicMesh_adfac67a6cb78db3955e20a241f2f4df4}{self\+\_\+test}} ()
+\begin{DoxyCompactList}\small\item\em Self test\+: check consistentency of multiple node updates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1AlgebraicMesh_ae3be691428fed5ec4b60cc5b7f7db49f}{add\+\_\+geom\+\_\+object\+\_\+list\+\_\+pt}} (\mbox{\hyperlink{classoomph_1_1GeomObject}{Geom\+Object}} $\ast$geom\+\_\+object\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Add the specified \mbox{\hyperlink{classoomph_1_1GeomObject}{Geom\+Object}} to the list of geometric objects associated with this \mbox{\hyperlink{classoomph_1_1AlgebraicMesh}{Algebraic\+Mesh}}; remembering that the zeroth entry is null (set in the constructor above) \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1AlgebraicMesh_ab6a636ffb928e10e004747988fb03404}{ngeom\+\_\+object\+\_\+list\+\_\+pt}} ()
+\begin{DoxyCompactList}\small\item\em Return number of geometric objects associated with \mbox{\hyperlink{classoomph_1_1AlgebraicMesh}{Algebraic\+Mesh}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1GeomObject}{Geom\+Object}} $\ast$ \mbox{\hyperlink{classoomph_1_1AlgebraicMesh_a7257c48270d6dbc21b78d7e49cc6d952}{geom\+\_\+object\+\_\+list\+\_\+pt}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})
+\begin{DoxyCompactList}\small\item\em Access function to the ith \mbox{\hyperlink{classoomph_1_1GeomObject}{Geom\+Object}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1GeomObject}{Geom\+Object}} $\ast$ $>$ \mbox{\hyperlink{classoomph_1_1AlgebraicMesh_ab823bbf2e61cf588a2ae2299c5717141}{Geom\+\_\+object\+\_\+list\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of Geom\+Objects associated with this \mbox{\hyperlink{classoomph_1_1AlgebraicMesh}{Algebraic\+Mesh}} The zeroth entry is null, proper entries from the 1st index onwards... \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+//////////////////////////////////////////////////////////////////// 
+
+//////////////////////////////////////////////////////////////////// Algebraic meshes contain Algebraic\+Elements and Algebraic\+Nodes. They implement the node update functions that are used by the Algebraic\+Nodes to update their positions. 
+
+Definition at line \mbox{\hyperlink{algebraic__elements_8h_source_l00598}{598}} of file \mbox{\hyperlink{algebraic__elements_8h_source}{algebraic\+\_\+elements.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1AlgebraicMesh_a27bab6278bc48a4bf5d22874fc1a0e16}\label{classoomph_1_1AlgebraicMesh_a27bab6278bc48a4bf5d22874fc1a0e16}} 
+\index{oomph::AlgebraicMesh@{oomph::AlgebraicMesh}!AlgebraicMesh@{AlgebraicMesh}}
+\index{AlgebraicMesh@{AlgebraicMesh}!oomph::AlgebraicMesh@{oomph::AlgebraicMesh}}
+\doxysubsubsection{\texorpdfstring{AlgebraicMesh()}{AlgebraicMesh()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily oomph\+::\+Algebraic\+Mesh\+::\+Algebraic\+Mesh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor\+: create a null zeroth entry in the Geom\+\_\+object\+\_\+list\+\_\+pt \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} (each \mbox{\hyperlink{classoomph_1_1AlgebraicMesh}{Algebraic\+Mesh}}\textquotesingle{}s constructor should add any other geometric objects to this list) 
+
+
+
+Definition at line \mbox{\hyperlink{algebraic__elements_8h_source_l00604}{604}} of file \mbox{\hyperlink{algebraic__elements_8h_source}{algebraic\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{algebraic__elements_8h_source_l00823}{add\+\_\+geom\+\_\+object\+\_\+list\+\_\+pt()}}.
+
+\mbox{\Hypertarget{classoomph_1_1AlgebraicMesh_a905ffe19c47a99e9da3f1b397257ea05}\label{classoomph_1_1AlgebraicMesh_a905ffe19c47a99e9da3f1b397257ea05}} 
+\index{oomph::AlgebraicMesh@{oomph::AlgebraicMesh}!AlgebraicMesh@{AlgebraicMesh}}
+\index{AlgebraicMesh@{AlgebraicMesh}!oomph::AlgebraicMesh@{oomph::AlgebraicMesh}}
+\doxysubsubsection{\texorpdfstring{AlgebraicMesh()}{AlgebraicMesh()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily oomph\+::\+Algebraic\+Mesh\+::\+Algebraic\+Mesh (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classoomph_1_1AlgebraicMesh}{Algebraic\+Mesh}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Broken copy constructor. 
+
+\mbox{\Hypertarget{classoomph_1_1AlgebraicMesh_a148dc4078a5fa2cc9ae651003e3a14ca}\label{classoomph_1_1AlgebraicMesh_a148dc4078a5fa2cc9ae651003e3a14ca}} 
+\index{oomph::AlgebraicMesh@{oomph::AlgebraicMesh}!````~AlgebraicMesh@{$\sim$AlgebraicMesh}}
+\index{````~AlgebraicMesh@{$\sim$AlgebraicMesh}!oomph::AlgebraicMesh@{oomph::AlgebraicMesh}}
+\doxysubsubsection{\texorpdfstring{$\sim$AlgebraicMesh()}{~AlgebraicMesh()}}
+{\footnotesize\ttfamily oomph\+::\+Algebraic\+Mesh\+::$\sim$\+Algebraic\+Mesh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Broken assignment operator. 
+
+Surely a proper destructor is required... ? 
+
+Definition at line \mbox{\hyperlink{algebraic__elements_8h_source_l00616}{616}} of file \mbox{\hyperlink{algebraic__elements_8h_source}{algebraic\+\_\+elements.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1AlgebraicMesh_ae3be691428fed5ec4b60cc5b7f7db49f}\label{classoomph_1_1AlgebraicMesh_ae3be691428fed5ec4b60cc5b7f7db49f}} 
+\index{oomph::AlgebraicMesh@{oomph::AlgebraicMesh}!add\_geom\_object\_list\_pt@{add\_geom\_object\_list\_pt}}
+\index{add\_geom\_object\_list\_pt@{add\_geom\_object\_list\_pt}!oomph::AlgebraicMesh@{oomph::AlgebraicMesh}}
+\doxysubsubsection{\texorpdfstring{add\_geom\_object\_list\_pt()}{add\_geom\_object\_list\_pt()}}
+{\footnotesize\ttfamily void oomph\+::\+Algebraic\+Mesh\+::add\+\_\+geom\+\_\+object\+\_\+list\+\_\+pt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1GeomObject}{Geom\+Object}} $\ast$}]{geom\+\_\+object\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add the specified \mbox{\hyperlink{classoomph_1_1GeomObject}{Geom\+Object}} to the list of geometric objects associated with this \mbox{\hyperlink{classoomph_1_1AlgebraicMesh}{Algebraic\+Mesh}}; remembering that the zeroth entry is null (set in the constructor above) 
+
+
+
+Definition at line \mbox{\hyperlink{algebraic__elements_8h_source_l00823}{823}} of file \mbox{\hyperlink{algebraic__elements_8h_source}{algebraic\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{algebraic__elements_8h_source_l00844}{Geom\+\_\+object\+\_\+list\+\_\+pt}}.
+
+
+
+Referenced by \mbox{\hyperlink{channel__with__leaflet__mesh_8template_8h_source_l00374}{oomph\+::\+Algebraic\+Channel\+With\+Leaflet\+Mesh$<$ ELEMENT $>$\+::\+Algebraic\+Channel\+With\+Leaflet\+Mesh()}}, \mbox{\hyperlink{collapsible__channel__mesh_8template_8h_source_l00436}{oomph\+::\+Algebraic\+Collapsible\+Channel\+Mesh$<$ ELEMENT $>$\+::\+Algebraic\+Collapsible\+Channel\+Mesh()}}, \mbox{\hyperlink{cylinder__with__flag__mesh_8template_8h_source_l00165}{oomph\+::\+Algebraic\+Cylinder\+With\+Flag\+Mesh$<$ ELEMENT $>$\+::\+Algebraic\+Cylinder\+With\+Flag\+Mesh()}}, \mbox{\hyperlink{fish__mesh_8template_8h_source_l00342}{oomph\+::\+Algebraic\+Fish\+Mesh$<$ ELEMENT $>$\+::\+Algebraic\+Fish\+Mesh()}}, \mbox{\hyperlink{fsi__driven__cavity__mesh_8template_8h_source_l00166}{oomph\+::\+Algebraic\+FSIDriven\+Cavity\+Mesh$<$ ELEMENT $>$\+::\+Algebraic\+FSIDriven\+Cavity\+Mesh()}}, \mbox{\hyperlink{algebraic__elements_8h_source_l00604}{Algebraic\+Mesh()}}, \mbox{\hyperlink{quarter__circle__sector__mesh_8template_8h_source_l00451}{oomph\+::\+Algebraic\+Refineable\+Quarter\+Circle\+Sector\+Mesh$<$ ELEMENT $>$\+::\+Algebraic\+Refineable\+Quarter\+Circle\+Sector\+Mesh()}}, and \mbox{\hyperlink{quarter__tube__mesh_8template_8h_source_l00448}{oomph\+::\+Algebraic\+Refineable\+Quarter\+Tube\+Mesh$<$ ELEMENT $>$\+::\+Algebraic\+Refineable\+Quarter\+Tube\+Mesh()}}.
+
+\mbox{\Hypertarget{classoomph_1_1AlgebraicMesh_ab01d6f93354f3c4e5c9d1f0a5885a65b}\label{classoomph_1_1AlgebraicMesh_ab01d6f93354f3c4e5c9d1f0a5885a65b}} 
+\index{oomph::AlgebraicMesh@{oomph::AlgebraicMesh}!algebraic\_node\_update@{algebraic\_node\_update}}
+\index{algebraic\_node\_update@{algebraic\_node\_update}!oomph::AlgebraicMesh@{oomph::AlgebraicMesh}}
+\doxysubsubsection{\texorpdfstring{algebraic\_node\_update()}{algebraic\_node\_update()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Algebraic\+Mesh\+::algebraic\+\_\+node\+\_\+update (\begin{DoxyParamCaption}\item[{const unsigned \&}]{t,  }\item[{\mbox{\hyperlink{classoomph_1_1AlgebraicNode}{Algebraic\+Node}} $\ast$\&}]{node\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Update the nodal position posn at time level t (t=0\+: present; t\texorpdfstring{$>$}{>}0\+: previous). Must be implemented for every specific algebraic mesh. 
+
+
+
+Implemented in \mbox{\hyperlink{classoomph_1_1DummyAlgebraicMesh_ae13a52cb8561a07233851e2d1db7b4e4}{oomph\+::\+Dummy\+Algebraic\+Mesh}}, \mbox{\hyperlink{classoomph_1_1AlgebraicChannelWithLeafletMesh_a4c01b99ca83286f872c517fc5269a890}{oomph\+::\+Algebraic\+Channel\+With\+Leaflet\+Mesh$<$ ELEMENT $>$}}, \mbox{\hyperlink{classoomph_1_1AlgebraicCollapsibleChannelMesh_ae1ea6d9baa12e2ca87d21d4370f41870}{oomph\+::\+Algebraic\+Collapsible\+Channel\+Mesh$<$ ELEMENT $>$}}, \mbox{\hyperlink{classoomph_1_1AlgebraicCylinderWithFlagMesh_a5e1e770e82577e5702470d8b87f8599d}{oomph\+::\+Algebraic\+Cylinder\+With\+Flag\+Mesh$<$ ELEMENT $>$}}, \mbox{\hyperlink{classoomph_1_1AlgebraicFishMesh_ac66d6542472dac702a7414aa9d7f995f}{oomph\+::\+Algebraic\+Fish\+Mesh$<$ ELEMENT $>$}}, \mbox{\hyperlink{classoomph_1_1AlgebraicFSIDrivenCavityMesh_a56c72b78935e84f7fef3f6b5d85556c3}{oomph\+::\+Algebraic\+FSIDriven\+Cavity\+Mesh$<$ ELEMENT $>$}}, \mbox{\hyperlink{classoomph_1_1AlgebraicRefineableQuarterCircleSectorMesh_ac591df8f18ad687e1dc9b70b731c2de1}{oomph\+::\+Algebraic\+Refineable\+Quarter\+Circle\+Sector\+Mesh$<$ ELEMENT $>$}}, and \mbox{\hyperlink{classoomph_1_1AlgebraicRefineableQuarterTubeMesh_af98a0aaff29c54ffa35f72f7dcf6b8c7}{oomph\+::\+Algebraic\+Refineable\+Quarter\+Tube\+Mesh$<$ ELEMENT $>$}}.
+
+
+
+Referenced by \mbox{\hyperlink{algebraic__elements_8cc_source_l00231}{oomph\+::\+Algebraic\+Node\+::node\+\_\+update()}}.
+
+\mbox{\Hypertarget{classoomph_1_1AlgebraicMesh_a7257c48270d6dbc21b78d7e49cc6d952}\label{classoomph_1_1AlgebraicMesh_a7257c48270d6dbc21b78d7e49cc6d952}} 
+\index{oomph::AlgebraicMesh@{oomph::AlgebraicMesh}!geom\_object\_list\_pt@{geom\_object\_list\_pt}}
+\index{geom\_object\_list\_pt@{geom\_object\_list\_pt}!oomph::AlgebraicMesh@{oomph::AlgebraicMesh}}
+\doxysubsubsection{\texorpdfstring{geom\_object\_list\_pt()}{geom\_object\_list\_pt()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classoomph_1_1GeomObject}{Geom\+Object}} $\ast$ oomph\+::\+Algebraic\+Mesh\+::geom\+\_\+object\+\_\+list\+\_\+pt (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function to the ith \mbox{\hyperlink{classoomph_1_1GeomObject}{Geom\+Object}}. 
+
+
+
+Definition at line \mbox{\hyperlink{algebraic__elements_8h_source_l00835}{835}} of file \mbox{\hyperlink{algebraic__elements_8h_source}{algebraic\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{algebraic__elements_8h_source_l00844}{Geom\+\_\+object\+\_\+list\+\_\+pt}}, and \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}.
+
+
+
+Referenced by \mbox{\hyperlink{multi__domain_8template_8cc_source_l02068}{oomph\+::\+Multi\+\_\+domain\+\_\+functions\+::construct\+\_\+new\+\_\+external\+\_\+halo\+\_\+master\+\_\+node\+\_\+helper()}}, \mbox{\hyperlink{missing__masters_8template_8cc_source_l00251}{oomph\+::\+Missing\+\_\+masters\+\_\+functions\+::construct\+\_\+new\+\_\+external\+\_\+halo\+\_\+master\+\_\+node\+\_\+helper()}}, \mbox{\hyperlink{multi__domain_8cc_source_l01452}{oomph\+::\+Multi\+\_\+domain\+\_\+functions\+::construct\+\_\+new\+\_\+external\+\_\+halo\+\_\+node\+\_\+helper()}}, \mbox{\hyperlink{missing__masters_8cc_source_l01298}{oomph\+::\+Missing\+\_\+masters\+\_\+functions\+::construct\+\_\+new\+\_\+external\+\_\+halo\+\_\+node\+\_\+helper()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l19416}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::construct\+\_\+new\+\_\+halo\+\_\+node\+\_\+helper()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l27905}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::construct\+\_\+new\+\_\+node\+\_\+load\+\_\+balance\+\_\+helper()}}, \mbox{\hyperlink{missing__masters_8cc_source_l00658}{oomph\+::\+Missing\+\_\+masters\+\_\+functions\+::get\+\_\+required\+\_\+master\+\_\+nodal\+\_\+information\+\_\+helper()}}, \mbox{\hyperlink{multi__domain_8cc_source_l01010}{oomph\+::\+Multi\+\_\+domain\+\_\+functions\+::get\+\_\+required\+\_\+master\+\_\+nodal\+\_\+information\+\_\+helper()}}, \mbox{\hyperlink{missing__masters_8cc_source_l00436}{oomph\+::\+Missing\+\_\+masters\+\_\+functions\+::get\+\_\+required\+\_\+nodal\+\_\+information\+\_\+helper()}}, \mbox{\hyperlink{multi__domain_8cc_source_l00754}{oomph\+::\+Multi\+\_\+domain\+\_\+functions\+::get\+\_\+required\+\_\+nodal\+\_\+information\+\_\+helper()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l18330}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::get\+\_\+required\+\_\+nodal\+\_\+information\+\_\+helper()}}, and \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l26810}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::get\+\_\+required\+\_\+nodal\+\_\+information\+\_\+load\+\_\+balance\+\_\+helper()}}.
+
+\mbox{\Hypertarget{classoomph_1_1AlgebraicMesh_ab6a636ffb928e10e004747988fb03404}\label{classoomph_1_1AlgebraicMesh_ab6a636ffb928e10e004747988fb03404}} 
+\index{oomph::AlgebraicMesh@{oomph::AlgebraicMesh}!ngeom\_object\_list\_pt@{ngeom\_object\_list\_pt}}
+\index{ngeom\_object\_list\_pt@{ngeom\_object\_list\_pt}!oomph::AlgebraicMesh@{oomph::AlgebraicMesh}}
+\doxysubsubsection{\texorpdfstring{ngeom\_object\_list\_pt()}{ngeom\_object\_list\_pt()}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Algebraic\+Mesh\+::ngeom\+\_\+object\+\_\+list\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return number of geometric objects associated with \mbox{\hyperlink{classoomph_1_1AlgebraicMesh}{Algebraic\+Mesh}}. 
+
+
+
+Definition at line \mbox{\hyperlink{algebraic__elements_8h_source_l00829}{829}} of file \mbox{\hyperlink{algebraic__elements_8h_source}{algebraic\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{algebraic__elements_8h_source_l00844}{Geom\+\_\+object\+\_\+list\+\_\+pt}}.
+
+
+
+Referenced by \mbox{\hyperlink{missing__masters_8cc_source_l00658}{oomph\+::\+Missing\+\_\+masters\+\_\+functions\+::get\+\_\+required\+\_\+master\+\_\+nodal\+\_\+information\+\_\+helper()}}, \mbox{\hyperlink{multi__domain_8cc_source_l01010}{oomph\+::\+Multi\+\_\+domain\+\_\+functions\+::get\+\_\+required\+\_\+master\+\_\+nodal\+\_\+information\+\_\+helper()}}, \mbox{\hyperlink{missing__masters_8cc_source_l00436}{oomph\+::\+Missing\+\_\+masters\+\_\+functions\+::get\+\_\+required\+\_\+nodal\+\_\+information\+\_\+helper()}}, \mbox{\hyperlink{multi__domain_8cc_source_l00754}{oomph\+::\+Multi\+\_\+domain\+\_\+functions\+::get\+\_\+required\+\_\+nodal\+\_\+information\+\_\+helper()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l18330}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::get\+\_\+required\+\_\+nodal\+\_\+information\+\_\+helper()}}, and \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l26810}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::get\+\_\+required\+\_\+nodal\+\_\+information\+\_\+load\+\_\+balance\+\_\+helper()}}.
+
+\mbox{\Hypertarget{classoomph_1_1AlgebraicMesh_ae87af0c5ddc685dbc9e694d70b474d64}\label{classoomph_1_1AlgebraicMesh_ae87af0c5ddc685dbc9e694d70b474d64}} 
+\index{oomph::AlgebraicMesh@{oomph::AlgebraicMesh}!node\_pt@{node\_pt}}
+\index{node\_pt@{node\_pt}!oomph::AlgebraicMesh@{oomph::AlgebraicMesh}}
+\doxysubsubsection{\texorpdfstring{node\_pt()}{node\_pt()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classoomph_1_1AlgebraicNode}{Algebraic\+Node}} $\ast$ oomph\+::\+Algebraic\+Mesh\+::node\+\_\+pt (\begin{DoxyParamCaption}\item[{const unsigned long \&}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return a pointer to the n-\/th global \mbox{\hyperlink{classoomph_1_1AlgebraicNode}{Algebraic\+Node}}. 
+
+
+
+Definition at line \mbox{\hyperlink{algebraic__elements_8h_source_l00620}{620}} of file \mbox{\hyperlink{algebraic__elements_8h_source}{algebraic\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{mesh_8h_source_l00183}{oomph\+::\+Mesh\+::\+Node\+\_\+pt}}.
+
+
+
+Referenced by \mbox{\hyperlink{fish__mesh_8template_8h_source_l00358}{oomph\+::\+Algebraic\+Fish\+Mesh$<$ ELEMENT $>$\+::algebraic\+\_\+node\+\_\+update()}}, \mbox{\hyperlink{quarter__circle__sector__mesh_8template_8h_source_l00527}{oomph\+::\+Algebraic\+Refineable\+Quarter\+Circle\+Sector\+Mesh$<$ ELEMENT $>$\+::algebraic\+\_\+node\+\_\+update()}}, \mbox{\hyperlink{quarter__tube__mesh_8template_8h_source_l00551}{oomph\+::\+Algebraic\+Refineable\+Quarter\+Tube\+Mesh$<$ ELEMENT $>$\+::algebraic\+\_\+node\+\_\+update()}}, \mbox{\hyperlink{algebraic__elements_8h_source_l00653}{node\+\_\+update()}}, \mbox{\hyperlink{algebraic__elements_8h_source_l00786}{self\+\_\+test()}}, \mbox{\hyperlink{quarter__circle__sector__mesh_8template_8h_source_l00573}{oomph\+::\+Algebraic\+Refineable\+Quarter\+Circle\+Sector\+Mesh$<$ ELEMENT $>$\+::update\+\_\+node\+\_\+update()}}, and \mbox{\hyperlink{quarter__tube__mesh_8template_8h_source_l00595}{oomph\+::\+Algebraic\+Refineable\+Quarter\+Tube\+Mesh$<$ ELEMENT $>$\+::update\+\_\+node\+\_\+update()}}.
+
+\mbox{\Hypertarget{classoomph_1_1AlgebraicMesh_ad3a5638cacb6df1a47c475bb177b6ed7}\label{classoomph_1_1AlgebraicMesh_ad3a5638cacb6df1a47c475bb177b6ed7}} 
+\index{oomph::AlgebraicMesh@{oomph::AlgebraicMesh}!node\_update@{node\_update}}
+\index{node\_update@{node\_update}!oomph::AlgebraicMesh@{oomph::AlgebraicMesh}}
+\doxysubsubsection{\texorpdfstring{node\_update()}{node\_update()}}
+{\footnotesize\ttfamily void oomph\+::\+Algebraic\+Mesh\+::node\+\_\+update (\begin{DoxyParamCaption}\item[{const bool \&}]{update\+\_\+all\+\_\+solid\+\_\+nodes = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Update all nodal positions via algebraic node update functions \mbox{[}Doesn\textquotesingle{}t make sense to use this mesh with Solid\+Elements anyway, so we buffer the case if update\+\_\+all\+\_\+solid\+\_\+nodes is set to true.\mbox{]}. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1Mesh_a95bf112e5e1b3892e70a41f91b3cc523}{oomph\+::\+Mesh}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classoomph_1_1AlgebraicFishMesh_a39cd5a86b0f762efd09f4fefba6da1c3}{oomph\+::\+Algebraic\+Fish\+Mesh$<$ ELEMENT $>$}}, \mbox{\hyperlink{classoomph_1_1AlgebraicRefineableFishMesh_a8123da4b48355b39f19e0494a9d4545c}{oomph\+::\+Algebraic\+Refineable\+Fish\+Mesh$<$ ELEMENT $>$}}, \mbox{\hyperlink{classoomph_1_1AlgebraicRefineableQuarterCircleSectorMesh_a32a096b894031167a90bafdab167ffc7}{oomph\+::\+Algebraic\+Refineable\+Quarter\+Circle\+Sector\+Mesh$<$ ELEMENT $>$}}, and \mbox{\hyperlink{classoomph_1_1AlgebraicRefineableQuarterTubeMesh_af521c0a76cf0bd14692979bd7747507d}{oomph\+::\+Algebraic\+Refineable\+Quarter\+Tube\+Mesh$<$ ELEMENT $>$}}.
+
+
+
+Definition at line \mbox{\hyperlink{algebraic__elements_8h_source_l00653}{653}} of file \mbox{\hyperlink{algebraic__elements_8h_source}{algebraic\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{mesh_8h_source_l00135}{oomph\+::\+Mesh\+::\+External\+\_\+halo\+\_\+node\+\_\+pt}}, \mbox{\hyperlink{mesh_8h_source_l02377}{oomph\+::\+Mesh\+::external\+\_\+halo\+\_\+node\+\_\+pt()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{mesh_8h_source_l02308}{oomph\+::\+Mesh\+::nexternal\+\_\+halo\+\_\+node()}}, \mbox{\hyperlink{mesh_8h_source_l00596}{oomph\+::\+Mesh\+::nnode()}}, \mbox{\hyperlink{algebraic__elements_8h_source_l00620}{node\+\_\+pt()}}, \mbox{\hyperlink{algebraic__elements_8cc_source_l00231}{oomph\+::\+Algebraic\+Node\+::node\+\_\+update()}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00286}{oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string()}}, and \mbox{\hyperlink{pseudo__buckling__ring_8h_source_l00049}{oomph\+::x}}.
+
+
+
+Referenced by \mbox{\hyperlink{fish__mesh_8template_8h_source_l00395}{oomph\+::\+Algebraic\+Fish\+Mesh$<$ ELEMENT $>$\+::node\+\_\+update()}}, \mbox{\hyperlink{quarter__circle__sector__mesh_8template_8h_source_l00501}{oomph\+::\+Algebraic\+Refineable\+Quarter\+Circle\+Sector\+Mesh$<$ ELEMENT $>$\+::node\+\_\+update()}}, and \mbox{\hyperlink{quarter__tube__mesh_8template_8h_source_l00525}{oomph\+::\+Algebraic\+Refineable\+Quarter\+Tube\+Mesh$<$ ELEMENT $>$\+::node\+\_\+update()}}.
+
+\mbox{\Hypertarget{classoomph_1_1AlgebraicMesh_adfac67a6cb78db3955e20a241f2f4df4}\label{classoomph_1_1AlgebraicMesh_adfac67a6cb78db3955e20a241f2f4df4}} 
+\index{oomph::AlgebraicMesh@{oomph::AlgebraicMesh}!self\_test@{self\_test}}
+\index{self\_test@{self\_test}!oomph::AlgebraicMesh@{oomph::AlgebraicMesh}}
+\doxysubsubsection{\texorpdfstring{self\_test()}{self\_test()}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Algebraic\+Mesh\+::self\+\_\+test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Self test\+: check consistentency of multiple node updates. 
+
+
+
+Definition at line \mbox{\hyperlink{algebraic__elements_8h_source_l00786}{786}} of file \mbox{\hyperlink{algebraic__elements_8h_source}{algebraic\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{mesh_8h_source_l00596}{oomph\+::\+Mesh\+::nnode()}}, \mbox{\hyperlink{algebraic__elements_8h_source_l00620}{node\+\_\+pt()}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00319}{oomph\+::oomph\+\_\+info}}, \mbox{\hyperlink{algebraic__elements_8h_source_l00786}{self\+\_\+test()}}, and \mbox{\hyperlink{mesh_8cc_source_l00778}{oomph\+::\+Mesh\+::self\+\_\+test()}}.
+
+
+
+Referenced by \mbox{\hyperlink{algebraic__elements_8h_source_l00786}{self\+\_\+test()}}, \mbox{\hyperlink{quarter__circle__sector__mesh_8template_8h_source_l00491}{oomph\+::\+Algebraic\+Refineable\+Quarter\+Circle\+Sector\+Mesh$<$ ELEMENT $>$\+::self\+\_\+test()}}, and \mbox{\hyperlink{quarter__tube__mesh_8template_8h_source_l00495}{oomph\+::\+Algebraic\+Refineable\+Quarter\+Tube\+Mesh$<$ ELEMENT $>$\+::self\+\_\+test()}}.
+
+\mbox{\Hypertarget{classoomph_1_1AlgebraicMesh_a6c6a35ae2be6e2766f5b80d85693c1ce}\label{classoomph_1_1AlgebraicMesh_a6c6a35ae2be6e2766f5b80d85693c1ce}} 
+\index{oomph::AlgebraicMesh@{oomph::AlgebraicMesh}!update\_node\_update@{update\_node\_update}}
+\index{update\_node\_update@{update\_node\_update}!oomph::AlgebraicMesh@{oomph::AlgebraicMesh}}
+\doxysubsubsection{\texorpdfstring{update\_node\_update()}{update\_node\_update()}}
+{\footnotesize\ttfamily virtual void oomph\+::\+Algebraic\+Mesh\+::update\+\_\+node\+\_\+update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1AlgebraicNode}{Algebraic\+Node}} $\ast$\&}]{node\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Update the node update info for given node, following mesh adaptation. Must be implemented for every specific algebraic mesh, though it may, of course, be left empty. 
+
+
+
+Implemented in \mbox{\hyperlink{classoomph_1_1DummyAlgebraicMesh_a8797e6bf088b172b5d7e1de8a2dfc326}{oomph\+::\+Dummy\+Algebraic\+Mesh}}, \mbox{\hyperlink{classoomph_1_1AlgebraicChannelWithLeafletMesh_ace3a90b4e530c75bec8301e2291151eb}{oomph\+::\+Algebraic\+Channel\+With\+Leaflet\+Mesh$<$ ELEMENT $>$}}, \mbox{\hyperlink{classoomph_1_1RefineableAlgebraicChannelWithLeafletMesh_a8ee7168fbb84bb87880a2590dd52eaa8}{oomph\+::\+Refineable\+Algebraic\+Channel\+With\+Leaflet\+Mesh$<$ ELEMENT $>$}}, \mbox{\hyperlink{classoomph_1_1AlgebraicCollapsibleChannelMesh_abad38fb50d067a126af1161a3a603972}{oomph\+::\+Algebraic\+Collapsible\+Channel\+Mesh$<$ ELEMENT $>$}}, \mbox{\hyperlink{classoomph_1_1RefineableAlgebraicCollapsibleChannelMesh_a4bc2b99f24e5e5dc534fe5906d4f4e6e}{oomph\+::\+Refineable\+Algebraic\+Collapsible\+Channel\+Mesh$<$ ELEMENT $>$}}, \mbox{\hyperlink{classoomph_1_1AlgebraicCylinderWithFlagMesh_a9d909de1db84a3b7e42494535b152d92}{oomph\+::\+Algebraic\+Cylinder\+With\+Flag\+Mesh$<$ ELEMENT $>$}}, \mbox{\hyperlink{classoomph_1_1RefineableAlgebraicCylinderWithFlagMesh_a186963cf4b1fc118929e49e012eba4d2}{oomph\+::\+Refineable\+Algebraic\+Cylinder\+With\+Flag\+Mesh$<$ ELEMENT $>$}}, \mbox{\hyperlink{classoomph_1_1AlgebraicFishMesh_a4f992939c299f87abc762c14aab50b5c}{oomph\+::\+Algebraic\+Fish\+Mesh$<$ ELEMENT $>$}}, \mbox{\hyperlink{classoomph_1_1AlgebraicFSIDrivenCavityMesh_a87d34d6cf84c62a9049773451c664176}{oomph\+::\+Algebraic\+FSIDriven\+Cavity\+Mesh$<$ ELEMENT $>$}}, \mbox{\hyperlink{classoomph_1_1RefineableAlgebraicFSIDrivenCavityMesh_aa68685323573763e1ded0cceed5ad14f}{oomph\+::\+Refineable\+Algebraic\+FSIDriven\+Cavity\+Mesh$<$ ELEMENT $>$}}, \mbox{\hyperlink{classoomph_1_1AlgebraicRefineableQuarterCircleSectorMesh_a08abc1bf64e0637fc87c36638c41b846}{oomph\+::\+Algebraic\+Refineable\+Quarter\+Circle\+Sector\+Mesh$<$ ELEMENT $>$}}, and \mbox{\hyperlink{classoomph_1_1AlgebraicRefineableQuarterTubeMesh_a7ed9f4ce0442a6f962a1561318542a67}{oomph\+::\+Algebraic\+Refineable\+Quarter\+Tube\+Mesh$<$ ELEMENT $>$}}.
+
+
+
+Referenced by \mbox{\hyperlink{multi__domain_8template_8cc_source_l02068}{oomph\+::\+Multi\+\_\+domain\+\_\+functions\+::construct\+\_\+new\+\_\+external\+\_\+halo\+\_\+master\+\_\+node\+\_\+helper()}}, \mbox{\hyperlink{missing__masters_8template_8cc_source_l00251}{oomph\+::\+Missing\+\_\+masters\+\_\+functions\+::construct\+\_\+new\+\_\+external\+\_\+halo\+\_\+master\+\_\+node\+\_\+helper()}}, \mbox{\hyperlink{multi__domain_8cc_source_l01452}{oomph\+::\+Multi\+\_\+domain\+\_\+functions\+::construct\+\_\+new\+\_\+external\+\_\+halo\+\_\+node\+\_\+helper()}}, \mbox{\hyperlink{missing__masters_8cc_source_l01298}{oomph\+::\+Missing\+\_\+masters\+\_\+functions\+::construct\+\_\+new\+\_\+external\+\_\+halo\+\_\+node\+\_\+helper()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l19416}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::construct\+\_\+new\+\_\+halo\+\_\+node\+\_\+helper()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l27905}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::construct\+\_\+new\+\_\+node\+\_\+load\+\_\+balance\+\_\+helper()}}, and \mbox{\hyperlink{algebraic__elements_8cc_source_l00048}{oomph\+::\+Algebraic\+Element\+Base\+::setup\+\_\+algebraic\+\_\+node\+\_\+update()}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1AlgebraicMesh_ab823bbf2e61cf588a2ae2299c5717141}\label{classoomph_1_1AlgebraicMesh_ab823bbf2e61cf588a2ae2299c5717141}} 
+\index{oomph::AlgebraicMesh@{oomph::AlgebraicMesh}!Geom\_object\_list\_pt@{Geom\_object\_list\_pt}}
+\index{Geom\_object\_list\_pt@{Geom\_object\_list\_pt}!oomph::AlgebraicMesh@{oomph::AlgebraicMesh}}
+\doxysubsubsection{\texorpdfstring{Geom\_object\_list\_pt}{Geom\_object\_list\_pt}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1GeomObject}{Geom\+Object}}$\ast$$>$ oomph\+::\+Algebraic\+Mesh\+::\+Geom\+\_\+object\+\_\+list\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of Geom\+Objects associated with this \mbox{\hyperlink{classoomph_1_1AlgebraicMesh}{Algebraic\+Mesh}} The zeroth entry is null, proper entries from the 1st index onwards... 
+
+
+
+Definition at line \mbox{\hyperlink{algebraic__elements_8h_source_l00844}{844}} of file \mbox{\hyperlink{algebraic__elements_8h_source}{algebraic\+\_\+elements.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{algebraic__elements_8h_source_l00823}{add\+\_\+geom\+\_\+object\+\_\+list\+\_\+pt()}}, \mbox{\hyperlink{algebraic__elements_8h_source_l00835}{geom\+\_\+object\+\_\+list\+\_\+pt()}}, and \mbox{\hyperlink{algebraic__elements_8h_source_l00829}{ngeom\+\_\+object\+\_\+list\+\_\+pt()}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{algebraic__elements_8h}{algebraic\+\_\+elements.\+h}}\end{DoxyCompactItemize}

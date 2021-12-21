@@ -1,0 +1,336 @@
+\hypertarget{classoomph_1_1ImposeParallelOutflowElement}{}\doxysection{oomph\+::Impose\+Parallel\+Outflow\+Element\texorpdfstring{$<$}{<} ELEMENT \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classoomph_1_1ImposeParallelOutflowElement}\index{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$@{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$}}
+
+
+\mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement}{Impose\+Parallel\+Outflow\+Element}} are elements that coincide with the faces of higher-\/dimensional \char`\"{}bulk\char`\"{} elements. They are used on boundaries where we would like to impose parallel outflow and impose the pressure.  
+
+
+
+
+{\ttfamily \#include $<$impose\+\_\+parallel\+\_\+outflow\+\_\+element.\+h$>$}
+
+Inheritance diagram for oomph\+::Impose\+Parallel\+Outflow\+Element\texorpdfstring{$<$}{<} ELEMENT \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.377919cm]{classoomph_1_1ImposeParallelOutflowElement}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement_ace1712cccb1e4b43ccf13d0dcfefee86}{Impose\+Parallel\+Outflow\+Element}} (\mbox{\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element}} $\ast$\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \&element\+\_\+pt, \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} int \&\mbox{\hyperlink{classoomph_1_1FaceElement_a14990bd081523c47cfe57e5ecf54dfe1}{face\+\_\+index}}, \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&id=0)
+\begin{DoxyCompactList}\small\item\em Constructor takes a \char`\"{}bulk\char`\"{} element, the index that identifies which face the \mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement}{Impose\+Parallel\+Outflow\+Element}} is supposed to be attached to, and the face element ID. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement_a843675c8f7cb2f457df56fe69dd84517}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals}} (\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&residuals)
+\begin{DoxyCompactList}\small\item\em Fill in the residuals. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement_aa299d5f5aa5184db817b4219665c77ed}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian}} (\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&residuals, \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ \&\mbox{\hyperlink{classoomph_1_1FiniteElement_aa6c806dab803b82ba4f02cf806971af8}{jacobian}})
+\begin{DoxyCompactList}\small\item\em Fill in contribution from Jacobian. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement_ac423772737af10cd5efd0c49c3cdef80}{output}} (std\+::ostream \&outfile)
+\begin{DoxyCompactList}\small\item\em Overload the output function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement_a94fce0938876acf656a7c43fc53aa8ca}{output}} (std\+::ostream \&outfile, \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&nplot)
+\begin{DoxyCompactList}\small\item\em Output function\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]},p in tecplot format. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement_afa3691d3309b635967e81461b7db8173}{zeta\+\_\+nodal}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&n, \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&k, \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em The \char`\"{}global\char`\"{} intrinsic coordinate of the element when viewed as part of a geometric object should be given by the \mbox{\hyperlink{classoomph_1_1FaceElement}{Face\+Element}} representation, by default This final over-\/ride is required because both Solid\+Finite\+Elements and Face\+Elements overload zeta\+\_\+nodal. \end{DoxyCompactList}\item 
+double $\ast$\& \mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement_a6a99ae539f03a4feedc32cb58c0a9cad}{pressure\+\_\+pt}} ()
+\begin{DoxyCompactList}\small\item\em Access function for the pressure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement_a34414fec7ca51f720ac5a0a548cd9ef2}{fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+parall\+\_\+lagr\+\_\+multiplier}} (\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&residuals, \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ \&\mbox{\hyperlink{classoomph_1_1FiniteElement_aa6c806dab803b82ba4f02cf806971af8}{jacobian}}, \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&flag)
+\begin{DoxyCompactList}\small\item\em Helper function to compute the residuals and, if flag==1, the Jacobian. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement_a3d403d29fdcbbc8954ae360331d03be4}{ndof\+\_\+types}} () \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em The number of degrees of freedom types that this element is divided into\+: The \mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement}{Impose\+Parallel\+Outflow\+Element}} is responsible for 1(2) of it\textquotesingle{}s own degrees of freedom. In addition to this, it also classifies the 2(3) constrained velocity bulk degrees of freedom which this face element is attached to. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement_a326aec64731513faa189b7a42856b0fe}{get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns}} (std\+::list$<$ std\+::pair$<$ unsigned long, unsigned $>$ $>$ \&dof\+\_\+lookup\+\_\+list) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Create a list of pairs for all unknowns in this element, so that the first entry in each pair contains the global equation number of the unknown, while the second one contains the LOCAL number of the \char`\"{}\+DOF types\char`\"{} that this unknown is associated with. (Function can obviously only be called if the equation numbering scheme has been set up.) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double $\ast$ \mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement_a94eb742690d8173e99d482a8f2426729}{Pressure\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em pointer to imposed pressure -- if null then no pressure imposed. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement_a8eae8247a1a373ea998eda8b5d409c02}{Id}}
+\begin{DoxyCompactList}\small\item\em Lagrange Id. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class ELEMENT$>$\newline
+class oomph\+::\+Impose\+Parallel\+Outflow\+Element$<$ ELEMENT $>$}
+\mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement}{Impose\+Parallel\+Outflow\+Element}} are elements that coincide with the faces of higher-\/dimensional \char`\"{}bulk\char`\"{} elements. They are used on boundaries where we would like to impose parallel outflow and impose the pressure. 
+
+Definition at line \mbox{\hyperlink{impose__parallel__outflow__element_8h_source_l00044}{44}} of file \mbox{\hyperlink{impose__parallel__outflow__element_8h_source}{impose\+\_\+parallel\+\_\+outflow\+\_\+element.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1ImposeParallelOutflowElement_ace1712cccb1e4b43ccf13d0dcfefee86}\label{classoomph_1_1ImposeParallelOutflowElement_ace1712cccb1e4b43ccf13d0dcfefee86}} 
+\index{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$@{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$}!ImposeParallelOutflowElement@{ImposeParallelOutflowElement}}
+\index{ImposeParallelOutflowElement@{ImposeParallelOutflowElement}!oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$@{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$}}
+\doxysubsubsection{\texorpdfstring{ImposeParallelOutflowElement()}{ImposeParallelOutflowElement()}}
+{\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
+\mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement}{oomph\+::\+Impose\+Parallel\+Outflow\+Element}}$<$ ELEMENT $>$\+::\mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement}{Impose\+Parallel\+Outflow\+Element}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element}} $\ast$\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \&}]{element\+\_\+pt,  }\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} int \&}]{face\+\_\+index,  }\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{id = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor takes a \char`\"{}bulk\char`\"{} element, the index that identifies which face the \mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement}{Impose\+Parallel\+Outflow\+Element}} is supposed to be attached to, and the face element ID. 
+
+
+
+Definition at line \mbox{\hyperlink{impose__parallel__outflow__element_8h_source_l00060}{60}} of file \mbox{\hyperlink{impose__parallel__outflow__element_8h_source}{impose\+\_\+parallel\+\_\+outflow\+\_\+element.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l04456}{oomph\+::\+Face\+Element\+::add\+\_\+additional\+\_\+values()}}, \mbox{\hyperlink{classoomph_1_1FiniteElement_a025ab56ef9c6eea66fb34416fdf19152}{oomph\+::\+Finite\+Element\+::build\+\_\+face\+\_\+element()}}, \mbox{\hyperlink{elements_8h_source_l02616}{oomph\+::\+Finite\+Element\+::dim()}}, \mbox{\hyperlink{elements_8h_source_l04654}{oomph\+::\+Face\+Element\+::face\+\_\+index()}}, \mbox{\hyperlink{impose__parallel__outflow__element_8h_source_l00052}{oomph\+::\+Impose\+Parallel\+Outflow\+Element$<$ ELEMENT $>$\+::\+Id}}, \mbox{\hyperlink{elements_8h_source_l02215}{oomph\+::\+Finite\+Element\+::nnode()}}, and \mbox{\hyperlink{impose__parallel__outflow__element_8h_source_l00049}{oomph\+::\+Impose\+Parallel\+Outflow\+Element$<$ ELEMENT $>$\+::\+Pressure\+\_\+pt}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1ImposeParallelOutflowElement_aa299d5f5aa5184db817b4219665c77ed}\label{classoomph_1_1ImposeParallelOutflowElement_aa299d5f5aa5184db817b4219665c77ed}} 
+\index{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$@{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$}!fill\_in\_contribution\_to\_jacobian@{fill\_in\_contribution\_to\_jacobian}}
+\index{fill\_in\_contribution\_to\_jacobian@{fill\_in\_contribution\_to\_jacobian}!oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$@{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$}}
+\doxysubsubsection{\texorpdfstring{fill\_in\_contribution\_to\_jacobian()}{fill\_in\_contribution\_to\_jacobian()}}
+{\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
+void \mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement}{oomph\+::\+Impose\+Parallel\+Outflow\+Element}}$<$ ELEMENT $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{residuals,  }\item[{\mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ \&}]{jacobian }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Fill in contribution from Jacobian. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1FiniteElement_a0ae7af222af38a0d53bf283dc85bdfea}{oomph\+::\+Finite\+Element}}.
+
+
+
+Definition at line \mbox{\hyperlink{impose__parallel__outflow__element_8h_source_l00095}{95}} of file \mbox{\hyperlink{impose__parallel__outflow__element_8h_source}{impose\+\_\+parallel\+\_\+outflow\+\_\+element.\+h}}.
+
+
+
+References \mbox{\hyperlink{impose__parallel__outflow__element_8h_source_l00137}{oomph\+::\+Impose\+Parallel\+Outflow\+Element$<$ ELEMENT $>$\+::fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+parall\+\_\+lagr\+\_\+multiplier()}}, and \mbox{\hyperlink{elements_8h_source_l01611}{oomph\+::\+Finite\+Element\+::jacobian}}.
+
+\mbox{\Hypertarget{classoomph_1_1ImposeParallelOutflowElement_a843675c8f7cb2f457df56fe69dd84517}\label{classoomph_1_1ImposeParallelOutflowElement_a843675c8f7cb2f457df56fe69dd84517}} 
+\index{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$@{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$}!fill\_in\_contribution\_to\_residuals@{fill\_in\_contribution\_to\_residuals}}
+\index{fill\_in\_contribution\_to\_residuals@{fill\_in\_contribution\_to\_residuals}!oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$@{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$}}
+\doxysubsubsection{\texorpdfstring{fill\_in\_contribution\_to\_residuals()}{fill\_in\_contribution\_to\_residuals()}}
+{\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
+void \mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement}{oomph\+::\+Impose\+Parallel\+Outflow\+Element}}$<$ ELEMENT $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{residuals }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Fill in the residuals. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1GeneralisedElement_a310c97f515e8504a48179c0e72c550d7}{oomph\+::\+Generalised\+Element}}.
+
+
+
+Definition at line \mbox{\hyperlink{impose__parallel__outflow__element_8h_source_l00087}{87}} of file \mbox{\hyperlink{impose__parallel__outflow__element_8h_source}{impose\+\_\+parallel\+\_\+outflow\+\_\+element.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l00227}{oomph\+::\+Generalised\+Element\+::\+Dummy\+\_\+matrix}}, and \mbox{\hyperlink{impose__parallel__outflow__element_8h_source_l00137}{oomph\+::\+Impose\+Parallel\+Outflow\+Element$<$ ELEMENT $>$\+::fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+parall\+\_\+lagr\+\_\+multiplier()}}.
+
+\mbox{\Hypertarget{classoomph_1_1ImposeParallelOutflowElement_a34414fec7ca51f720ac5a0a548cd9ef2}\label{classoomph_1_1ImposeParallelOutflowElement_a34414fec7ca51f720ac5a0a548cd9ef2}} 
+\index{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$@{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$}!fill\_in\_generic\_contribution\_to\_residuals\_parall\_lagr\_multiplier@{fill\_in\_generic\_contribution\_to\_residuals\_parall\_lagr\_multiplier}}
+\index{fill\_in\_generic\_contribution\_to\_residuals\_parall\_lagr\_multiplier@{fill\_in\_generic\_contribution\_to\_residuals\_parall\_lagr\_multiplier}!oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$@{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$}}
+\doxysubsubsection{\texorpdfstring{fill\_in\_generic\_contribution\_to\_residuals\_parall\_lagr\_multiplier()}{fill\_in\_generic\_contribution\_to\_residuals\_parall\_lagr\_multiplier()}}
+{\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
+void \mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement}{oomph\+::\+Impose\+Parallel\+Outflow\+Element}}$<$ ELEMENT $>$\+::fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+parall\+\_\+lagr\+\_\+multiplier (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{residuals,  }\item[{\mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ \&}]{jacobian,  }\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{flag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Helper function to compute the residuals and, if flag==1, the Jacobian. 
+
+
+
+Definition at line \mbox{\hyperlink{impose__parallel__outflow__element_8h_source_l00137}{137}} of file \mbox{\hyperlink{impose__parallel__outflow__element_8h_source}{impose\+\_\+parallel\+\_\+outflow\+\_\+element.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l04763}{oomph\+::\+Face\+Element\+::bulk\+\_\+element\+\_\+pt()}}, \mbox{\hyperlink{elements_8cc_source_l05516}{oomph\+::\+Face\+Element\+::continuous\+\_\+tangent\+\_\+and\+\_\+outer\+\_\+unit\+\_\+normal()}}, \mbox{\hyperlink{elements_8h_source_l02616}{oomph\+::\+Finite\+Element\+::dim()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{impose__parallel__outflow__element_8h_source_l00052}{oomph\+::\+Impose\+Parallel\+Outflow\+Element$<$ ELEMENT $>$\+::\+Id}}, \mbox{\hyperlink{nodes_8h_source_l02062}{oomph\+::\+Boundary\+Node\+Base\+::index\+\_\+of\+\_\+first\+\_\+value\+\_\+assigned\+\_\+by\+\_\+face\+\_\+element()}}, \mbox{\hyperlink{elements_8h_source_l01968}{oomph\+::\+Finite\+Element\+::integral\+\_\+pt()}}, \mbox{\hyperlink{elements_8cc_source_l05332}{oomph\+::\+Face\+Element\+::\+J\+\_\+eulerian\+\_\+at\+\_\+knot()}}, \mbox{\hyperlink{elements_8h_source_l01611}{oomph\+::\+Finite\+Element\+::jacobian}}, \mbox{\hyperlink{elements_8h_source_l02215}{oomph\+::\+Finite\+Element\+::nnode()}}, \mbox{\hyperlink{elements_8h_source_l01432}{oomph\+::\+Finite\+Element\+::nodal\+\_\+local\+\_\+eqn()}}, \mbox{\hyperlink{elements_8h_source_l02598}{oomph\+::\+Finite\+Element\+::nodal\+\_\+value()}}, \mbox{\hyperlink{elements_8h_source_l02180}{oomph\+::\+Finite\+Element\+::node\+\_\+pt()}}, \mbox{\hyperlink{impose__parallel__outflow__element_8h_source_l00049}{oomph\+::\+Impose\+Parallel\+Outflow\+Element$<$ ELEMENT $>$\+::\+Pressure\+\_\+pt}}, \mbox{\hyperlink{classoomph_1_1FiniteElement_a2de680722518136b5c6bf2aacc267a31}{oomph\+::\+Finite\+Element\+::shape\+\_\+at\+\_\+knot()}}, and \mbox{\hyperlink{constitutive__laws_8h_source_l00142}{oomph\+::W}}.
+
+
+
+Referenced by \mbox{\hyperlink{impose__parallel__outflow__element_8h_source_l00095}{oomph\+::\+Impose\+Parallel\+Outflow\+Element$<$ ELEMENT $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian()}}, and \mbox{\hyperlink{impose__parallel__outflow__element_8h_source_l00087}{oomph\+::\+Impose\+Parallel\+Outflow\+Element$<$ ELEMENT $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals()}}.
+
+\mbox{\Hypertarget{classoomph_1_1ImposeParallelOutflowElement_a326aec64731513faa189b7a42856b0fe}\label{classoomph_1_1ImposeParallelOutflowElement_a326aec64731513faa189b7a42856b0fe}} 
+\index{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$@{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$}!get\_dof\_numbers\_for\_unknowns@{get\_dof\_numbers\_for\_unknowns}}
+\index{get\_dof\_numbers\_for\_unknowns@{get\_dof\_numbers\_for\_unknowns}!oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$@{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$}}
+\doxysubsubsection{\texorpdfstring{get\_dof\_numbers\_for\_unknowns()}{get\_dof\_numbers\_for\_unknowns()}}
+{\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
+void \mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement}{oomph\+::\+Impose\+Parallel\+Outflow\+Element}}$<$ ELEMENT $>$\+::get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns (\begin{DoxyParamCaption}\item[{std\+::list$<$ std\+::pair$<$ unsigned long, unsigned $>$ $>$ \&}]{dof\+\_\+lookup\+\_\+list }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Create a list of pairs for all unknowns in this element, so that the first entry in each pair contains the global equation number of the unknown, while the second one contains the LOCAL number of the \char`\"{}\+DOF types\char`\"{} that this unknown is associated with. (Function can obviously only be called if the equation numbering scheme has been set up.) 
+
+For the \mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement}{Impose\+Parallel\+Outflow\+Element}}, we need to classify both the constrained velocity from the bulk element and the dof types from this element. In 3D, let up, vp, wp be the constrained velocity dof types associated with the \mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement}{Impose\+Parallel\+Outflow\+Element}}. Let Lp1 and Lp2 be the two Lagrange multiplier dof types associated with the \mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement}{Impose\+Parallel\+Outflow\+Element}}. Then we have\+:
+
+0 1 2 3 4 up vp wp L1 L2 
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1GeneralisedElement_a069f59bfc3e607a5bebba52c6314d777}{oomph\+::\+Generalised\+Element}}.
+
+
+
+Definition at line \mbox{\hyperlink{impose__parallel__outflow__element_8h_source_l00353}{353}} of file \mbox{\hyperlink{impose__parallel__outflow__element_8h_source}{impose\+\_\+parallel\+\_\+outflow\+\_\+element.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l04427}{oomph\+::\+Face\+Element\+::\+Bulk\+\_\+element\+\_\+pt}}, \mbox{\hyperlink{elements_8h_source_l04431}{oomph\+::\+Face\+Element\+::\+Bulk\+\_\+node\+\_\+number}}, \mbox{\hyperlink{elements_8h_source_l02616}{oomph\+::\+Finite\+Element\+::dim()}}, \mbox{\hyperlink{elements_8h_source_l00704}{oomph\+::\+Generalised\+Element\+::eqn\+\_\+number()}}, \mbox{\hyperlink{impose__parallel__outflow__element_8h_source_l00052}{oomph\+::\+Impose\+Parallel\+Outflow\+Element$<$ ELEMENT $>$\+::\+Id}}, \mbox{\hyperlink{nodes_8h_source_l02062}{oomph\+::\+Boundary\+Node\+Base\+::index\+\_\+of\+\_\+first\+\_\+value\+\_\+assigned\+\_\+by\+\_\+face\+\_\+element()}}, \mbox{\hyperlink{elements_8h_source_l02215}{oomph\+::\+Finite\+Element\+::nnode()}}, \mbox{\hyperlink{elements_8h_source_l01432}{oomph\+::\+Finite\+Element\+::nodal\+\_\+local\+\_\+eqn()}}, and \mbox{\hyperlink{elements_8h_source_l02180}{oomph\+::\+Finite\+Element\+::node\+\_\+pt()}}.
+
+\mbox{\Hypertarget{classoomph_1_1ImposeParallelOutflowElement_a3d403d29fdcbbc8954ae360331d03be4}\label{classoomph_1_1ImposeParallelOutflowElement_a3d403d29fdcbbc8954ae360331d03be4}} 
+\index{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$@{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$}!ndof\_types@{ndof\_types}}
+\index{ndof\_types@{ndof\_types}!oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$@{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$}}
+\doxysubsubsection{\texorpdfstring{ndof\_types()}{ndof\_types()}}
+{\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
+unsigned \mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement}{oomph\+::\+Impose\+Parallel\+Outflow\+Element}}$<$ ELEMENT $>$\+::ndof\+\_\+types (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+The number of degrees of freedom types that this element is divided into\+: The \mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement}{Impose\+Parallel\+Outflow\+Element}} is responsible for 1(2) of it\textquotesingle{}s own degrees of freedom. In addition to this, it also classifies the 2(3) constrained velocity bulk degrees of freedom which this face element is attached to. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1GeneralisedElement_a0c6037a870597b35dcf1c780710b9a56}{oomph\+::\+Generalised\+Element}}.
+
+
+
+Definition at line \mbox{\hyperlink{impose__parallel__outflow__element_8h_source_l00327}{327}} of file \mbox{\hyperlink{impose__parallel__outflow__element_8h_source}{impose\+\_\+parallel\+\_\+outflow\+\_\+element.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l02616}{oomph\+::\+Finite\+Element\+::dim()}}.
+
+\mbox{\Hypertarget{classoomph_1_1ImposeParallelOutflowElement_ac423772737af10cd5efd0c49c3cdef80}\label{classoomph_1_1ImposeParallelOutflowElement_ac423772737af10cd5efd0c49c3cdef80}} 
+\index{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$@{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$}!output@{output}}
+\index{output@{output}!oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$@{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$}}
+\doxysubsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
+void \mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement}{oomph\+::\+Impose\+Parallel\+Outflow\+Element}}$<$ ELEMENT $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Overload the output function. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1FiniteElement_a2ad98a3d2ef4999f1bef62c0ff13f2a7}{oomph\+::\+Finite\+Element}}.
+
+
+
+Definition at line \mbox{\hyperlink{impose__parallel__outflow__element_8h_source_l00104}{104}} of file \mbox{\hyperlink{impose__parallel__outflow__element_8h_source}{impose\+\_\+parallel\+\_\+outflow\+\_\+element.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l03055}{oomph\+::\+Finite\+Element\+::output()}}.
+
+\mbox{\Hypertarget{classoomph_1_1ImposeParallelOutflowElement_a94fce0938876acf656a7c43fc53aa8ca}\label{classoomph_1_1ImposeParallelOutflowElement_a94fce0938876acf656a7c43fc53aa8ca}} 
+\index{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$@{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$}!output@{output}}
+\index{output@{output}!oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$@{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$}}
+\doxysubsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
+void \mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement}{oomph\+::\+Impose\+Parallel\+Outflow\+Element}}$<$ ELEMENT $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{nplot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Output function\+: x,y,\mbox{[}z\mbox{]},u,v,\mbox{[}w\mbox{]},p in tecplot format. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1FiniteElement_afa9d9b2670f999b43e6679c9dd28c457}{oomph\+::\+Finite\+Element}}.
+
+
+
+Definition at line \mbox{\hyperlink{impose__parallel__outflow__element_8h_source_l00110}{110}} of file \mbox{\hyperlink{impose__parallel__outflow__element_8h_source}{impose\+\_\+parallel\+\_\+outflow\+\_\+element.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l03055}{oomph\+::\+Finite\+Element\+::output()}}.
+
+\mbox{\Hypertarget{classoomph_1_1ImposeParallelOutflowElement_a6a99ae539f03a4feedc32cb58c0a9cad}\label{classoomph_1_1ImposeParallelOutflowElement_a6a99ae539f03a4feedc32cb58c0a9cad}} 
+\index{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$@{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$}!pressure\_pt@{pressure\_pt}}
+\index{pressure\_pt@{pressure\_pt}!oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$@{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$}}
+\doxysubsubsection{\texorpdfstring{pressure\_pt()}{pressure\_pt()}}
+{\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
+double $\ast$\& \mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement}{oomph\+::\+Impose\+Parallel\+Outflow\+Element}}$<$ ELEMENT $>$\+::pressure\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access function for the pressure. 
+
+
+
+Definition at line \mbox{\hyperlink{impose__parallel__outflow__element_8h_source_l00129}{129}} of file \mbox{\hyperlink{impose__parallel__outflow__element_8h_source}{impose\+\_\+parallel\+\_\+outflow\+\_\+element.\+h}}.
+
+
+
+References \mbox{\hyperlink{impose__parallel__outflow__element_8h_source_l00049}{oomph\+::\+Impose\+Parallel\+Outflow\+Element$<$ ELEMENT $>$\+::\+Pressure\+\_\+pt}}.
+
+\mbox{\Hypertarget{classoomph_1_1ImposeParallelOutflowElement_afa3691d3309b635967e81461b7db8173}\label{classoomph_1_1ImposeParallelOutflowElement_afa3691d3309b635967e81461b7db8173}} 
+\index{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$@{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$}!zeta\_nodal@{zeta\_nodal}}
+\index{zeta\_nodal@{zeta\_nodal}!oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$@{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$}}
+\doxysubsubsection{\texorpdfstring{zeta\_nodal()}{zeta\_nodal()}}
+{\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
+double \mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement}{oomph\+::\+Impose\+Parallel\+Outflow\+Element}}$<$ ELEMENT $>$\+::zeta\+\_\+nodal (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{n,  }\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{k,  }\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+The \char`\"{}global\char`\"{} intrinsic coordinate of the element when viewed as part of a geometric object should be given by the \mbox{\hyperlink{classoomph_1_1FaceElement}{Face\+Element}} representation, by default This final over-\/ride is required because both Solid\+Finite\+Elements and Face\+Elements overload zeta\+\_\+nodal. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1FaceElement_a58c9f93705c7741f76c8487d152e68a6}{oomph\+::\+Face\+Element}}.
+
+
+
+Definition at line \mbox{\hyperlink{impose__parallel__outflow__element_8h_source_l00120}{120}} of file \mbox{\hyperlink{impose__parallel__outflow__element_8h_source}{impose\+\_\+parallel\+\_\+outflow\+\_\+element.\+h}}.
+
+
+
+References \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, and \mbox{\hyperlink{elements_8h_source_l04525}{oomph\+::\+Face\+Element\+::zeta\+\_\+nodal()}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1ImposeParallelOutflowElement_a8eae8247a1a373ea998eda8b5d409c02}\label{classoomph_1_1ImposeParallelOutflowElement_a8eae8247a1a373ea998eda8b5d409c02}} 
+\index{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$@{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$}!Id@{Id}}
+\index{Id@{Id}!oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$@{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$}}
+\doxysubsubsection{\texorpdfstring{Id}{Id}}
+{\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
+unsigned \mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement}{oomph\+::\+Impose\+Parallel\+Outflow\+Element}}$<$ ELEMENT $>$\+::Id\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lagrange Id. 
+
+
+
+Definition at line \mbox{\hyperlink{impose__parallel__outflow__element_8h_source_l00052}{52}} of file \mbox{\hyperlink{impose__parallel__outflow__element_8h_source}{impose\+\_\+parallel\+\_\+outflow\+\_\+element.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{impose__parallel__outflow__element_8h_source_l00137}{oomph\+::\+Impose\+Parallel\+Outflow\+Element$<$ ELEMENT $>$\+::fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+parall\+\_\+lagr\+\_\+multiplier()}}, \mbox{\hyperlink{impose__parallel__outflow__element_8h_source_l00353}{oomph\+::\+Impose\+Parallel\+Outflow\+Element$<$ ELEMENT $>$\+::get\+\_\+dof\+\_\+numbers\+\_\+for\+\_\+unknowns()}}, and \mbox{\hyperlink{impose__parallel__outflow__element_8h_source_l00060}{oomph\+::\+Impose\+Parallel\+Outflow\+Element$<$ ELEMENT $>$\+::\+Impose\+Parallel\+Outflow\+Element()}}.
+
+\mbox{\Hypertarget{classoomph_1_1ImposeParallelOutflowElement_a94eb742690d8173e99d482a8f2426729}\label{classoomph_1_1ImposeParallelOutflowElement_a94eb742690d8173e99d482a8f2426729}} 
+\index{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$@{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$}!Pressure\_pt@{Pressure\_pt}}
+\index{Pressure\_pt@{Pressure\_pt}!oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$@{oomph::ImposeParallelOutflowElement$<$ ELEMENT $>$}}
+\doxysubsubsection{\texorpdfstring{Pressure\_pt}{Pressure\_pt}}
+{\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
+double$\ast$ \mbox{\hyperlink{classoomph_1_1ImposeParallelOutflowElement}{oomph\+::\+Impose\+Parallel\+Outflow\+Element}}$<$ ELEMENT $>$\+::Pressure\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+pointer to imposed pressure -- if null then no pressure imposed. 
+
+
+
+Definition at line \mbox{\hyperlink{impose__parallel__outflow__element_8h_source_l00049}{49}} of file \mbox{\hyperlink{impose__parallel__outflow__element_8h_source}{impose\+\_\+parallel\+\_\+outflow\+\_\+element.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{impose__parallel__outflow__element_8h_source_l00137}{oomph\+::\+Impose\+Parallel\+Outflow\+Element$<$ ELEMENT $>$\+::fill\+\_\+in\+\_\+generic\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+parall\+\_\+lagr\+\_\+multiplier()}}, \mbox{\hyperlink{impose__parallel__outflow__element_8h_source_l00060}{oomph\+::\+Impose\+Parallel\+Outflow\+Element$<$ ELEMENT $>$\+::\+Impose\+Parallel\+Outflow\+Element()}}, and \mbox{\hyperlink{impose__parallel__outflow__element_8h_source_l00129}{oomph\+::\+Impose\+Parallel\+Outflow\+Element$<$ ELEMENT $>$\+::pressure\+\_\+pt()}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{impose__parallel__outflow__element_8h}{impose\+\_\+parallel\+\_\+outflow\+\_\+element.\+h}}\end{DoxyCompactItemize}

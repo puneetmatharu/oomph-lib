@@ -1,0 +1,397 @@
+\hypertarget{classoomph_1_1TriangleMeshPolyLine}{}\doxysection{oomph\+::Triangle\+Mesh\+Poly\+Line Class Reference}
+\label{classoomph_1_1TriangleMeshPolyLine}\index{oomph::TriangleMeshPolyLine@{oomph::TriangleMeshPolyLine}}
+
+
+Class defining a polyline for use in Triangle \mbox{\hyperlink{classoomph_1_1Mesh}{Mesh}} generation.  
+
+
+
+
+{\ttfamily \#include $<$unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h$>$}
+
+Inheritance diagram for oomph\+::Triangle\+Mesh\+Poly\+Line\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classoomph_1_1TriangleMeshPolyLine}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1TriangleMeshPolyLine_a40bbbeea638b97a4ad714a1e3e0950a4}{Triangle\+Mesh\+Poly\+Line}} (const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ $>$ \&\mbox{\hyperlink{classoomph_1_1TriangleMeshPolyLine_a301526f02bb4b669b648df905e3049c0}{vertex\+\_\+coordinate}}, const unsigned \&\mbox{\hyperlink{classoomph_1_1TriangleMeshPolyLine_af4fa1e14f3e2f8d16e085da928272872}{boundary\+\_\+id}}, const unsigned \&\mbox{\hyperlink{classoomph_1_1TriangleMeshPolyLine_a4535773043c6b9516b81df42468294c1}{boundary\+\_\+chunk}}=0)
+\begin{DoxyCompactList}\small\item\em Constructor\+: Takes vectors of vertex coordinates in order Also allows the optional specification of a boundary ID -- useful in a mesh generation context. If not specified it defaults to zero. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1TriangleMeshPolyLine_a7a2de094f944f5114002af38c98e59ce}{$\sim$\+Triangle\+Mesh\+Poly\+Line}} ()
+\begin{DoxyCompactList}\small\item\em Empty destructor. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TriangleMeshPolyLine_a7b6ab13f61cb9f4435dc4fc4fe1fa50d}{nvertex}} () const
+\begin{DoxyCompactList}\small\item\em Number of vertices. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TriangleMeshPolyLine_a51af74c24abbae9b2cc881946d8f2170}{nsegment}} () const
+\begin{DoxyCompactList}\small\item\em Number of segments. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TriangleMeshPolyLine_af4fa1e14f3e2f8d16e085da928272872}{boundary\+\_\+id}} () const
+\begin{DoxyCompactList}\small\item\em Boundary id. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TriangleMeshPolyLine_a4535773043c6b9516b81df42468294c1}{boundary\+\_\+chunk}} () const
+\begin{DoxyCompactList}\small\item\em Boundary chunk (Used when a boundary is represented by more than one polyline. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \mbox{\hyperlink{classoomph_1_1TriangleMeshPolyLine_a301526f02bb4b669b648df905e3049c0}{vertex\+\_\+coordinate}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Coordinate vector of i-\/th vertex (const version) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \& \mbox{\hyperlink{classoomph_1_1TriangleMeshPolyLine_ac97ed86bdbb81ae38dd0960dbdbadbfc}{vertex\+\_\+coordinate}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})
+\begin{DoxyCompactList}\small\item\em Coordinate vector of i-\/th vertex. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshPolyLine_ac5970458ab4954408d512495c003e5f0}{initial\+\_\+vertex\+\_\+coordinate}} (\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&vertex)
+\begin{DoxyCompactList}\small\item\em Get first vertex coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshPolyLine_a6a110bac1436632fc4206eec2a96f8f4}{final\+\_\+vertex\+\_\+coordinate}} (\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&vertex)
+\begin{DoxyCompactList}\small\item\em Get last vertex coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshPolyLine_a8306f0768e83e29aac7d0d2f9fb3c175}{output}} (std\+::ostream \&outfile, const unsigned \&n\+\_\+sample=50)
+\begin{DoxyCompactList}\small\item\em Output the polyline -- n\+\_\+sample is ignored. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshPolyLine_aaf93f024dbc779f5b5448daccfa6fe7c}{reverse}} ()
+\begin{DoxyCompactList}\small\item\em Reverse the polyline, this includes the connection information and the vertices order. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ $>$ \mbox{\hyperlink{classoomph_1_1TriangleMeshPolyLine_aa54beed8d41904a7e7429e0a59f127e7}{Vertex\+\_\+coordinate}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of vertex coordinates. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TriangleMeshPolyLine_a04b217e740ed45156f1f39cc4c15922e}{Boundary\+\_\+id}}
+\begin{DoxyCompactList}\small\item\em Boundary ID. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TriangleMeshPolyLine_a4ea4bb4d19d7cecf410772f99275ed98}{Boundary\+\_\+chunk}}
+\begin{DoxyCompactList}\small\item\em Boundary chunk (Used when a boundary is represented by more than one polyline. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Class defining a polyline for use in Triangle \mbox{\hyperlink{classoomph_1_1Mesh}{Mesh}} generation. 
+
+Definition at line \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00867}{867}} of file \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source}{unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshPolyLine_a40bbbeea638b97a4ad714a1e3e0950a4}\label{classoomph_1_1TriangleMeshPolyLine_a40bbbeea638b97a4ad714a1e3e0950a4}} 
+\index{oomph::TriangleMeshPolyLine@{oomph::TriangleMeshPolyLine}!TriangleMeshPolyLine@{TriangleMeshPolyLine}}
+\index{TriangleMeshPolyLine@{TriangleMeshPolyLine}!oomph::TriangleMeshPolyLine@{oomph::TriangleMeshPolyLine}}
+\doxysubsubsection{\texorpdfstring{TriangleMeshPolyLine()}{TriangleMeshPolyLine()}}
+{\footnotesize\ttfamily oomph\+::\+Triangle\+Mesh\+Poly\+Line\+::\+Triangle\+Mesh\+Poly\+Line (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ $>$ \&}]{vertex\+\_\+coordinate,  }\item[{const unsigned \&}]{boundary\+\_\+id,  }\item[{const unsigned \&}]{boundary\+\_\+chunk = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor\+: Takes vectors of vertex coordinates in order Also allows the optional specification of a boundary ID -- useful in a mesh generation context. If not specified it defaults to zero. 
+
+
+
+Definition at line \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00873}{873}} of file \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source}{unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h}}.
+
+
+
+References \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, and \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l01093}{Vertex\+\_\+coordinate}}.
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshPolyLine_a7a2de094f944f5114002af38c98e59ce}\label{classoomph_1_1TriangleMeshPolyLine_a7a2de094f944f5114002af38c98e59ce}} 
+\index{oomph::TriangleMeshPolyLine@{oomph::TriangleMeshPolyLine}!````~TriangleMeshPolyLine@{$\sim$TriangleMeshPolyLine}}
+\index{````~TriangleMeshPolyLine@{$\sim$TriangleMeshPolyLine}!oomph::TriangleMeshPolyLine@{oomph::TriangleMeshPolyLine}}
+\doxysubsubsection{\texorpdfstring{$\sim$TriangleMeshPolyLine()}{~TriangleMeshPolyLine()}}
+{\footnotesize\ttfamily virtual oomph\+::\+Triangle\+Mesh\+Poly\+Line\+::$\sim$\+Triangle\+Mesh\+Poly\+Line (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Empty destructor. 
+
+
+
+Definition at line \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00901}{901}} of file \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source}{unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshPolyLine_a4535773043c6b9516b81df42468294c1}\label{classoomph_1_1TriangleMeshPolyLine_a4535773043c6b9516b81df42468294c1}} 
+\index{oomph::TriangleMeshPolyLine@{oomph::TriangleMeshPolyLine}!boundary\_chunk@{boundary\_chunk}}
+\index{boundary\_chunk@{boundary\_chunk}!oomph::TriangleMeshPolyLine@{oomph::TriangleMeshPolyLine}}
+\doxysubsubsection{\texorpdfstring{boundary\_chunk()}{boundary\_chunk()}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Triangle\+Mesh\+Poly\+Line\+::boundary\+\_\+chunk (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Boundary chunk (Used when a boundary is represented by more than one polyline. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a106d1f0e203e8e17c8296419be284c16}{oomph\+::\+Triangle\+Mesh\+Curve\+Section}}.
+
+
+
+Definition at line \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00923}{923}} of file \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source}{unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h}}.
+
+
+
+References \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l01100}{Boundary\+\_\+chunk}}.
+
+
+
+Referenced by \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8cc_source_l03578}{oomph\+::\+Unstructured\+Two\+DMesh\+Geometry\+Base\+::add\+\_\+base\+\_\+vertex\+\_\+info\+\_\+helper()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8cc_source_l03415}{oomph\+::\+Unstructured\+Two\+DMesh\+Geometry\+Base\+::add\+\_\+connection\+\_\+matrix\+\_\+info\+\_\+helper()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8cc_source_l01905}{oomph\+::\+Unstructured\+Two\+DMesh\+Geometry\+Base\+::build\+\_\+triangulateio()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8cc_source_l01189}{oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::connect\+\_\+final\+\_\+vertex\+\_\+to\+\_\+polyline()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8cc_source_l01120}{oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::connect\+\_\+initial\+\_\+vertex\+\_\+to\+\_\+polyline()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8cc_source_l03542}{oomph\+::\+Unstructured\+Two\+DMesh\+Geometry\+Base\+::initialise\+\_\+base\+\_\+vertex()}}, and \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l32675}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::synchronize\+\_\+shared\+\_\+boundary\+\_\+connections()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshPolyLine_af4fa1e14f3e2f8d16e085da928272872}\label{classoomph_1_1TriangleMeshPolyLine_af4fa1e14f3e2f8d16e085da928272872}} 
+\index{oomph::TriangleMeshPolyLine@{oomph::TriangleMeshPolyLine}!boundary\_id@{boundary\_id}}
+\index{boundary\_id@{boundary\_id}!oomph::TriangleMeshPolyLine@{oomph::TriangleMeshPolyLine}}
+\doxysubsubsection{\texorpdfstring{boundary\_id()}{boundary\_id()}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Triangle\+Mesh\+Poly\+Line\+::boundary\+\_\+id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Boundary id. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a2e6d22017ce7abe7e84e3f16360f5444}{oomph\+::\+Triangle\+Mesh\+Curve\+Section}}.
+
+
+
+Definition at line \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00916}{916}} of file \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source}{unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h}}.
+
+
+
+References \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l01096}{Boundary\+\_\+id}}.
+
+
+
+Referenced by \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8cc_source_l03578}{oomph\+::\+Unstructured\+Two\+DMesh\+Geometry\+Base\+::add\+\_\+base\+\_\+vertex\+\_\+info\+\_\+helper()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8cc_source_l03415}{oomph\+::\+Unstructured\+Two\+DMesh\+Geometry\+Base\+::add\+\_\+connection\+\_\+matrix\+\_\+info\+\_\+helper()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l31877}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::add\+\_\+vertices\+\_\+for\+\_\+non\+\_\+deletion()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8cc_source_l01905}{oomph\+::\+Unstructured\+Two\+DMesh\+Geometry\+Base\+::build\+\_\+triangulateio()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l03345}{oomph\+::\+Unstructured\+Two\+DMesh\+Geometry\+Base\+::closed\+\_\+curve\+\_\+to\+\_\+polygon\+\_\+helper()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8cc_source_l01189}{oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::connect\+\_\+final\+\_\+vertex\+\_\+to\+\_\+polyline()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8cc_source_l01120}{oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::connect\+\_\+initial\+\_\+vertex\+\_\+to\+\_\+polyline()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l08131}{oomph\+::\+Triangle\+Mesh$<$ ELEMENT $>$\+::create\+\_\+distributed\+\_\+domain\+\_\+representation()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l03495}{oomph\+::\+Unstructured\+Two\+DMesh\+Geometry\+Base\+::create\+\_\+open\+\_\+curve\+\_\+with\+\_\+polyline\+\_\+helper()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l09511}{oomph\+::\+Triangle\+Mesh$<$ ELEMENT $>$\+::create\+\_\+shared\+\_\+polylines\+\_\+connections()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l33050}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::create\+\_\+temporary\+\_\+boundary\+\_\+connections()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l35896}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::get\+\_\+face\+\_\+mesh\+\_\+representation()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8cc_source_l03542}{oomph\+::\+Unstructured\+Two\+DMesh\+Geometry\+Base\+::initialise\+\_\+base\+\_\+vertex()}}, and \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l33295}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::restore\+\_\+polyline\+\_\+connections\+\_\+helper()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshPolyLine_a6a110bac1436632fc4206eec2a96f8f4}\label{classoomph_1_1TriangleMeshPolyLine_a6a110bac1436632fc4206eec2a96f8f4}} 
+\index{oomph::TriangleMeshPolyLine@{oomph::TriangleMeshPolyLine}!final\_vertex\_coordinate@{final\_vertex\_coordinate}}
+\index{final\_vertex\_coordinate@{final\_vertex\_coordinate}!oomph::TriangleMeshPolyLine@{oomph::TriangleMeshPolyLine}}
+\doxysubsubsection{\texorpdfstring{final\_vertex\_coordinate()}{final\_vertex\_coordinate()}}
+{\footnotesize\ttfamily void oomph\+::\+Triangle\+Mesh\+Poly\+Line\+::final\+\_\+vertex\+\_\+coordinate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{vertex }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get last vertex coordinates. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_aa5bbea1d7c1157f25d3b93101ac4b80f}{oomph\+::\+Triangle\+Mesh\+Curve\+Section}}.
+
+
+
+Definition at line \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00947}{947}} of file \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source}{unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h}}.
+
+
+
+References \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00904}{nvertex()}}, and \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l01093}{Vertex\+\_\+coordinate}}.
+
+
+
+Referenced by \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l11338}{oomph\+::\+Triangle\+Mesh$<$ ELEMENT $>$\+::sort\+\_\+polylines\+\_\+helper()}}, and \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l34629}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::update\+\_\+open\+\_\+curve\+\_\+using\+\_\+face\+\_\+mesh()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshPolyLine_ac5970458ab4954408d512495c003e5f0}\label{classoomph_1_1TriangleMeshPolyLine_ac5970458ab4954408d512495c003e5f0}} 
+\index{oomph::TriangleMeshPolyLine@{oomph::TriangleMeshPolyLine}!initial\_vertex\_coordinate@{initial\_vertex\_coordinate}}
+\index{initial\_vertex\_coordinate@{initial\_vertex\_coordinate}!oomph::TriangleMeshPolyLine@{oomph::TriangleMeshPolyLine}}
+\doxysubsubsection{\texorpdfstring{initial\_vertex\_coordinate()}{initial\_vertex\_coordinate()}}
+{\footnotesize\ttfamily void oomph\+::\+Triangle\+Mesh\+Poly\+Line\+::initial\+\_\+vertex\+\_\+coordinate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{vertex }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get first vertex coordinates. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a08c60883b595a52280c486badf8a4210}{oomph\+::\+Triangle\+Mesh\+Curve\+Section}}.
+
+
+
+Definition at line \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00941}{941}} of file \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source}{unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h}}.
+
+
+
+References \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l01093}{Vertex\+\_\+coordinate}}.
+
+
+
+Referenced by \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l11338}{oomph\+::\+Triangle\+Mesh$<$ ELEMENT $>$\+::sort\+\_\+polylines\+\_\+helper()}}, and \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l34629}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::update\+\_\+open\+\_\+curve\+\_\+using\+\_\+face\+\_\+mesh()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshPolyLine_a51af74c24abbae9b2cc881946d8f2170}\label{classoomph_1_1TriangleMeshPolyLine_a51af74c24abbae9b2cc881946d8f2170}} 
+\index{oomph::TriangleMeshPolyLine@{oomph::TriangleMeshPolyLine}!nsegment@{nsegment}}
+\index{nsegment@{nsegment}!oomph::TriangleMeshPolyLine@{oomph::TriangleMeshPolyLine}}
+\doxysubsubsection{\texorpdfstring{nsegment()}{nsegment()}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Triangle\+Mesh\+Poly\+Line\+::nsegment (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Number of segments. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a52af59a9a4f1b6adb35e5645ab8feb45}{oomph\+::\+Triangle\+Mesh\+Curve\+Section}}.
+
+
+
+Definition at line \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00910}{910}} of file \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source}{unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h}}.
+
+
+
+References \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l01093}{Vertex\+\_\+coordinate}}.
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshPolyLine_a7b6ab13f61cb9f4435dc4fc4fe1fa50d}\label{classoomph_1_1TriangleMeshPolyLine_a7b6ab13f61cb9f4435dc4fc4fe1fa50d}} 
+\index{oomph::TriangleMeshPolyLine@{oomph::TriangleMeshPolyLine}!nvertex@{nvertex}}
+\index{nvertex@{nvertex}!oomph::TriangleMeshPolyLine@{oomph::TriangleMeshPolyLine}}
+\doxysubsubsection{\texorpdfstring{nvertex()}{nvertex()}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Triangle\+Mesh\+Poly\+Line\+::nvertex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Number of vertices. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a491d849e8147152c10d55c8ca6c3d63d}{oomph\+::\+Triangle\+Mesh\+Curve\+Section}}.
+
+
+
+Definition at line \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00904}{904}} of file \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source}{unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h}}.
+
+
+
+References \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l01093}{Vertex\+\_\+coordinate}}.
+
+
+
+Referenced by \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8cc_source_l03578}{oomph\+::\+Unstructured\+Two\+DMesh\+Geometry\+Base\+::add\+\_\+base\+\_\+vertex\+\_\+info\+\_\+helper()}}, \mbox{\hyperlink{immersed__rigid__body__elements_8h_source_l00811}{oomph\+::\+Immersed\+Rigid\+Body\+Triangle\+Mesh\+Polygon\+::assign\+\_\+zeta()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8cc_source_l01905}{oomph\+::\+Unstructured\+Two\+DMesh\+Geometry\+Base\+::build\+\_\+triangulateio()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8cc_source_l01189}{oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::connect\+\_\+final\+\_\+vertex\+\_\+to\+\_\+polyline()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8cc_source_l01120}{oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::connect\+\_\+initial\+\_\+vertex\+\_\+to\+\_\+polyline()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l08131}{oomph\+::\+Triangle\+Mesh$<$ ELEMENT $>$\+::create\+\_\+distributed\+\_\+domain\+\_\+representation()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l36642}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::create\+\_\+polylines\+\_\+from\+\_\+polyfiles()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l09511}{oomph\+::\+Triangle\+Mesh$<$ ELEMENT $>$\+::create\+\_\+shared\+\_\+polylines\+\_\+connections()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00947}{final\+\_\+vertex\+\_\+coordinate()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8cc_source_l04121}{oomph\+::\+Unstructured\+Two\+DMesh\+Geometry\+Base\+::get\+\_\+connected\+\_\+vertex\+\_\+number\+\_\+on\+\_\+destination\+\_\+polyline()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l34092}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::get\+\_\+connected\+\_\+vertex\+\_\+number\+\_\+on\+\_\+dst\+\_\+boundary()}}, \mbox{\hyperlink{immersed__rigid__body__elements_8h_source_l00716}{oomph\+::\+Immersed\+Rigid\+Body\+Triangle\+Mesh\+Polygon\+::get\+\_\+initial\+\_\+position()}}, \mbox{\hyperlink{immersed__rigid__body__elements_8cc_source_l00549}{oomph\+::\+Immersed\+Rigid\+Body\+Triangle\+Mesh\+Polygon\+::reset\+\_\+reference\+\_\+configuration()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l33295}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::restore\+\_\+polyline\+\_\+connections\+\_\+helper()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l36453}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::surface\+\_\+remesh\+\_\+for\+\_\+inner\+\_\+hole\+\_\+boundaries()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8cc_source_l01420}{oomph\+::\+Triangle\+Mesh\+Closed\+Curve\+::\+Triangle\+Mesh\+Closed\+Curve()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8cc_source_l01836}{oomph\+::\+Triangle\+Mesh\+Open\+Curve\+::\+Triangle\+Mesh\+Open\+Curve()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8cc_source_l01577}{oomph\+::\+Triangle\+Mesh\+Polygon\+::\+Triangle\+Mesh\+Polygon()}}, and \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l10928}{oomph\+::\+Triangle\+Mesh$<$ ELEMENT $>$\+::update\+\_\+holes\+\_\+information\+\_\+helper()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshPolyLine_a8306f0768e83e29aac7d0d2f9fb3c175}\label{classoomph_1_1TriangleMeshPolyLine_a8306f0768e83e29aac7d0d2f9fb3c175}} 
+\index{oomph::TriangleMeshPolyLine@{oomph::TriangleMeshPolyLine}!output@{output}}
+\index{output@{output}!oomph::TriangleMeshPolyLine@{oomph::TriangleMeshPolyLine}}
+\doxysubsubsection{\texorpdfstring{output()}{output()}}
+{\footnotesize\ttfamily void oomph\+::\+Triangle\+Mesh\+Poly\+Line\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{const unsigned \&}]{n\+\_\+sample = {\ttfamily 50} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Output the polyline -- n\+\_\+sample is ignored. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a140b0bb85d7bf85cc025e19e996d5c53}{oomph\+::\+Triangle\+Mesh\+Curve\+Section}}.
+
+
+
+Definition at line \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00953}{953}} of file \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source}{unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h}}.
+
+
+
+References \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l01096}{Boundary\+\_\+id}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, and \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l01093}{Vertex\+\_\+coordinate}}.
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshPolyLine_aaf93f024dbc779f5b5448daccfa6fe7c}\label{classoomph_1_1TriangleMeshPolyLine_aaf93f024dbc779f5b5448daccfa6fe7c}} 
+\index{oomph::TriangleMeshPolyLine@{oomph::TriangleMeshPolyLine}!reverse@{reverse}}
+\index{reverse@{reverse}!oomph::TriangleMeshPolyLine@{oomph::TriangleMeshPolyLine}}
+\doxysubsubsection{\texorpdfstring{reverse()}{reverse()}}
+{\footnotesize\ttfamily void oomph\+::\+Triangle\+Mesh\+Poly\+Line\+::reverse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Reverse the polyline, this includes the connection information and the vertices order. 
+
+
+
+Definition at line \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00967}{967}} of file \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source}{unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h}}.
+
+
+
+References \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00559}{oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::final\+\_\+s\+\_\+connection\+\_\+value()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00475}{oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::final\+\_\+vertex\+\_\+connected\+\_\+bnd\+\_\+id()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00499}{oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::final\+\_\+vertex\+\_\+connected\+\_\+n\+\_\+chunk()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00487}{oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::final\+\_\+vertex\+\_\+connected\+\_\+n\+\_\+vertex()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00547}{oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::initial\+\_\+s\+\_\+connection\+\_\+value()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00439}{oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::initial\+\_\+vertex\+\_\+connected\+\_\+bnd\+\_\+id()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00463}{oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::initial\+\_\+vertex\+\_\+connected\+\_\+n\+\_\+chunk()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00451}{oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::initial\+\_\+vertex\+\_\+connected\+\_\+n\+\_\+vertex()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00395}{oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::is\+\_\+final\+\_\+vertex\+\_\+connected()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00529}{oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::is\+\_\+final\+\_\+vertex\+\_\+connected\+\_\+to\+\_\+curviline()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00351}{oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::is\+\_\+initial\+\_\+vertex\+\_\+connected()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00511}{oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::is\+\_\+initial\+\_\+vertex\+\_\+connected\+\_\+to\+\_\+curviline()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00401}{oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::set\+\_\+final\+\_\+vertex\+\_\+connected()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00535}{oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::set\+\_\+final\+\_\+vertex\+\_\+connected\+\_\+to\+\_\+curviline()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00357}{oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::set\+\_\+initial\+\_\+vertex\+\_\+connected()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00517}{oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::set\+\_\+initial\+\_\+vertex\+\_\+connected\+\_\+to\+\_\+curviline()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00572}{oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::tolerance\+\_\+for\+\_\+s\+\_\+connection()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00407}{oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::unset\+\_\+final\+\_\+vertex\+\_\+connected()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00541}{oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::unset\+\_\+final\+\_\+vertex\+\_\+connected\+\_\+to\+\_\+curviline()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00363}{oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::unset\+\_\+initial\+\_\+vertex\+\_\+connected()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00523}{oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::unset\+\_\+initial\+\_\+vertex\+\_\+connected\+\_\+to\+\_\+curviline()}}, and \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l01093}{Vertex\+\_\+coordinate}}.
+
+
+
+Referenced by \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l11338}{oomph\+::\+Triangle\+Mesh$<$ ELEMENT $>$\+::sort\+\_\+polylines\+\_\+helper()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l42038}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::update\+\_\+open\+\_\+curve\+\_\+after\+\_\+restart()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l38620}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::update\+\_\+open\+\_\+curve\+\_\+using\+\_\+elements\+\_\+area()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l34629}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::update\+\_\+open\+\_\+curve\+\_\+using\+\_\+face\+\_\+mesh()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l41269}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::update\+\_\+polygon\+\_\+after\+\_\+restart()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l37662}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::update\+\_\+polygon\+\_\+using\+\_\+elements\+\_\+area()}}, and \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l34138}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::update\+\_\+polygon\+\_\+using\+\_\+face\+\_\+mesh()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshPolyLine_ac97ed86bdbb81ae38dd0960dbdbadbfc}\label{classoomph_1_1TriangleMeshPolyLine_ac97ed86bdbb81ae38dd0960dbdbadbfc}} 
+\index{oomph::TriangleMeshPolyLine@{oomph::TriangleMeshPolyLine}!vertex\_coordinate@{vertex\_coordinate}}
+\index{vertex\_coordinate@{vertex\_coordinate}!oomph::TriangleMeshPolyLine@{oomph::TriangleMeshPolyLine}}
+\doxysubsubsection{\texorpdfstring{vertex\_coordinate()}{vertex\_coordinate()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \& oomph\+::\+Triangle\+Mesh\+Poly\+Line\+::vertex\+\_\+coordinate (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Coordinate vector of i-\/th vertex. 
+
+
+
+Definition at line \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00935}{935}} of file \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source}{unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h}}.
+
+
+
+References \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, and \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l01093}{Vertex\+\_\+coordinate}}.
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshPolyLine_a301526f02bb4b669b648df905e3049c0}\label{classoomph_1_1TriangleMeshPolyLine_a301526f02bb4b669b648df905e3049c0}} 
+\index{oomph::TriangleMeshPolyLine@{oomph::TriangleMeshPolyLine}!vertex\_coordinate@{vertex\_coordinate}}
+\index{vertex\_coordinate@{vertex\_coordinate}!oomph::TriangleMeshPolyLine@{oomph::TriangleMeshPolyLine}}
+\doxysubsubsection{\texorpdfstring{vertex\_coordinate()}{vertex\_coordinate()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ oomph\+::\+Triangle\+Mesh\+Poly\+Line\+::vertex\+\_\+coordinate (\begin{DoxyParamCaption}\item[{const unsigned \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Coordinate vector of i-\/th vertex (const version) 
+
+
+
+Definition at line \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00929}{929}} of file \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source}{unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h}}.
+
+
+
+References \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, and \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l01093}{Vertex\+\_\+coordinate}}.
+
+
+
+Referenced by \mbox{\hyperlink{immersed__rigid__body__elements_8h_source_l00811}{oomph\+::\+Immersed\+Rigid\+Body\+Triangle\+Mesh\+Polygon\+::assign\+\_\+zeta()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8cc_source_l01905}{oomph\+::\+Unstructured\+Two\+DMesh\+Geometry\+Base\+::build\+\_\+triangulateio()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8cc_source_l01189}{oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::connect\+\_\+final\+\_\+vertex\+\_\+to\+\_\+polyline()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8cc_source_l01120}{oomph\+::\+Triangle\+Mesh\+Curve\+Section\+::connect\+\_\+initial\+\_\+vertex\+\_\+to\+\_\+polyline()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l36642}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::create\+\_\+polylines\+\_\+from\+\_\+polyfiles()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l09511}{oomph\+::\+Triangle\+Mesh$<$ ELEMENT $>$\+::create\+\_\+shared\+\_\+polylines\+\_\+connections()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l35705}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::create\+\_\+sorted\+\_\+face\+\_\+mesh\+\_\+representation()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8cc_source_l04121}{oomph\+::\+Unstructured\+Two\+DMesh\+Geometry\+Base\+::get\+\_\+connected\+\_\+vertex\+\_\+number\+\_\+on\+\_\+destination\+\_\+polyline()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l34092}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::get\+\_\+connected\+\_\+vertex\+\_\+number\+\_\+on\+\_\+dst\+\_\+boundary()}}, \mbox{\hyperlink{immersed__rigid__body__elements_8h_source_l00716}{oomph\+::\+Immersed\+Rigid\+Body\+Triangle\+Mesh\+Polygon\+::get\+\_\+initial\+\_\+position()}}, \mbox{\hyperlink{immersed__rigid__body__elements_8cc_source_l00387}{oomph\+::\+Immersed\+Rigid\+Body\+Triangle\+Mesh\+Polygon\+::\+Immersed\+Rigid\+Body\+Triangle\+Mesh\+Polygon()}}, \mbox{\hyperlink{immersed__rigid__body__elements_8cc_source_l00549}{oomph\+::\+Immersed\+Rigid\+Body\+Triangle\+Mesh\+Polygon\+::reset\+\_\+reference\+\_\+configuration()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l33295}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::restore\+\_\+polyline\+\_\+connections\+\_\+helper()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l36453}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::surface\+\_\+remesh\+\_\+for\+\_\+inner\+\_\+hole\+\_\+boundaries()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8cc_source_l01420}{oomph\+::\+Triangle\+Mesh\+Closed\+Curve\+::\+Triangle\+Mesh\+Closed\+Curve()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8cc_source_l01836}{oomph\+::\+Triangle\+Mesh\+Open\+Curve\+::\+Triangle\+Mesh\+Open\+Curve()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8cc_source_l01577}{oomph\+::\+Triangle\+Mesh\+Polygon\+::\+Triangle\+Mesh\+Polygon()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l10928}{oomph\+::\+Triangle\+Mesh$<$ ELEMENT $>$\+::update\+\_\+holes\+\_\+information\+\_\+helper()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l42038}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::update\+\_\+open\+\_\+curve\+\_\+after\+\_\+restart()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l38620}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::update\+\_\+open\+\_\+curve\+\_\+using\+\_\+elements\+\_\+area()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l41269}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::update\+\_\+polygon\+\_\+after\+\_\+restart()}}, \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l37662}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::update\+\_\+polygon\+\_\+using\+\_\+elements\+\_\+area()}}, and \mbox{\hyperlink{triangle__mesh_8template_8cc_source_l34138}{oomph\+::\+Refineable\+Triangle\+Mesh$<$ ELEMENT $>$\+::update\+\_\+polygon\+\_\+using\+\_\+face\+\_\+mesh()}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshPolyLine_a4ea4bb4d19d7cecf410772f99275ed98}\label{classoomph_1_1TriangleMeshPolyLine_a4ea4bb4d19d7cecf410772f99275ed98}} 
+\index{oomph::TriangleMeshPolyLine@{oomph::TriangleMeshPolyLine}!Boundary\_chunk@{Boundary\_chunk}}
+\index{Boundary\_chunk@{Boundary\_chunk}!oomph::TriangleMeshPolyLine@{oomph::TriangleMeshPolyLine}}
+\doxysubsubsection{\texorpdfstring{Boundary\_chunk}{Boundary\_chunk}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Triangle\+Mesh\+Poly\+Line\+::\+Boundary\+\_\+chunk\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Boundary chunk (Used when a boundary is represented by more than one polyline. 
+
+
+
+Definition at line \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l01100}{1100}} of file \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source}{unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00923}{boundary\+\_\+chunk()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshPolyLine_a04b217e740ed45156f1f39cc4c15922e}\label{classoomph_1_1TriangleMeshPolyLine_a04b217e740ed45156f1f39cc4c15922e}} 
+\index{oomph::TriangleMeshPolyLine@{oomph::TriangleMeshPolyLine}!Boundary\_id@{Boundary\_id}}
+\index{Boundary\_id@{Boundary\_id}!oomph::TriangleMeshPolyLine@{oomph::TriangleMeshPolyLine}}
+\doxysubsubsection{\texorpdfstring{Boundary\_id}{Boundary\_id}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Triangle\+Mesh\+Poly\+Line\+::\+Boundary\+\_\+id\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Boundary ID. 
+
+
+
+Definition at line \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l01096}{1096}} of file \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source}{unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00916}{boundary\+\_\+id()}}, and \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00953}{output()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TriangleMeshPolyLine_aa54beed8d41904a7e7429e0a59f127e7}\label{classoomph_1_1TriangleMeshPolyLine_aa54beed8d41904a7e7429e0a59f127e7}} 
+\index{oomph::TriangleMeshPolyLine@{oomph::TriangleMeshPolyLine}!Vertex\_coordinate@{Vertex\_coordinate}}
+\index{Vertex\_coordinate@{Vertex\_coordinate}!oomph::TriangleMeshPolyLine@{oomph::TriangleMeshPolyLine}}
+\doxysubsubsection{\texorpdfstring{Vertex\_coordinate}{Vertex\_coordinate}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$double$>$ $>$ oomph\+::\+Triangle\+Mesh\+Poly\+Line\+::\+Vertex\+\_\+coordinate\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of vertex coordinates. 
+
+
+
+Definition at line \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l01093}{1093}} of file \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source}{unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00947}{final\+\_\+vertex\+\_\+coordinate()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00941}{initial\+\_\+vertex\+\_\+coordinate()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00910}{nsegment()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00904}{nvertex()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00953}{output()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00967}{reverse()}}, \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00873}{Triangle\+Mesh\+Poly\+Line()}}, and \mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h_source_l00929}{vertex\+\_\+coordinate()}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{unstructured__two__d__mesh__geometry__base_8h}{unstructured\+\_\+two\+\_\+d\+\_\+mesh\+\_\+geometry\+\_\+base.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,223 @@
+\hypertarget{namespaceoomph_1_1BlackBoxFDNewtonSolver}{}\doxysection{oomph\+::Black\+Box\+FDNewton\+Solver Namespace Reference}
+\label{namespaceoomph_1_1BlackBoxFDNewtonSolver}\index{oomph::BlackBoxFDNewtonSolver@{oomph::BlackBoxFDNewtonSolver}}
+
+
+Namespace for black-\/box FD Newton solver.  
+
+
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void($\ast$ \mbox{\hyperlink{namespaceoomph_1_1BlackBoxFDNewtonSolver_ae43745d4b8933505d52d50820c5ed5bf}{Residual\+Fct\+Pt}}) (const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&parameters, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&unknowns, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&residuals)
+\item 
+typedef void($\ast$ \mbox{\hyperlink{namespaceoomph_1_1BlackBoxFDNewtonSolver_a6a8995752628445edff43f942b4d3e88}{Jacobian\+Fct\+Pt}}) (const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&, \mbox{\hyperlink{classoomph_1_1DenseDoubleMatrix}{Dense\+Double\+Matrix}} \&jacobian)
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespaceoomph_1_1BlackBoxFDNewtonSolver_ae132e48f67e6523676abad29b61397ba}{black\+\_\+box\+\_\+fd\+\_\+newton\+\_\+solve}} (\mbox{\hyperlink{namespaceoomph_1_1BlackBoxFDNewtonSolver_ae43745d4b8933505d52d50820c5ed5bf}{Residual\+Fct\+Pt}} residual\+\_\+fct, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&params, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&unknowns, \mbox{\hyperlink{namespaceoomph_1_1BlackBoxFDNewtonSolver_a6a8995752628445edff43f942b4d3e88}{Jacobian\+Fct\+Pt}} jacobian\+\_\+fct)
+\begin{DoxyCompactList}\small\item\em Black-\/box FD Newton solver\+: Calling sequence for residual function is. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceoomph_1_1BlackBoxFDNewtonSolver_a4a1361a9b08163b59fe82b3042b0f887}{line\+\_\+search}} (const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&x\+\_\+old, const double half\+\_\+residual\+\_\+squared\+\_\+old, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&gradient, \mbox{\hyperlink{namespaceoomph_1_1BlackBoxFDNewtonSolver_ae43745d4b8933505d52d50820c5ed5bf}{Residual\+Fct\+Pt}} residual\+\_\+fct, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&params, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&newton\+\_\+dir, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{namespaceoomph_a9d1d2da2b8bb8e73af72b5cadb8fe97c}{x}}, double \&half\+\_\+residual\+\_\+squared, const double \&stpmax)
+\begin{DoxyCompactList}\small\item\em Line search helper for globally convergent Newton method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+unsigned \mbox{\hyperlink{namespaceoomph_1_1BlackBoxFDNewtonSolver_a20ac8568daf0d63afa3945a817ff3e2d}{Max\+\_\+iter}} = 20
+\begin{DoxyCompactList}\small\item\em Max. \# of Newton iterations. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{namespaceoomph_1_1BlackBoxFDNewtonSolver_a3067ba88fad991fdb619eae7533028bd}{N\+\_\+iter\+\_\+taken}} = 0
+\begin{DoxyCompactList}\small\item\em Number of Newton iterations taken in most recent invocation. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespaceoomph_1_1BlackBoxFDNewtonSolver_ac2603699f47446716ca5a818f46a7f17}{Doc\+\_\+\+Progress}} = false
+\begin{DoxyCompactList}\small\item\em Flag to indicate if progress of Newton iteration is to be documented (defaults to false) \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespaceoomph_1_1BlackBoxFDNewtonSolver_a6f0d2ceb4451e66bb7ef4ab4fdb62bcf}{FD\+\_\+step}} = 1.\+0e-\/8
+\begin{DoxyCompactList}\small\item\em FD step. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespaceoomph_1_1BlackBoxFDNewtonSolver_a4bacc59c8e1194e553f698530e9e945e}{Tol}} = 1.\+0e-\/8
+\begin{DoxyCompactList}\small\item\em Tolerance. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespaceoomph_1_1BlackBoxFDNewtonSolver_afd90cb451fb7ae5a8e30cab0a1884568}{Use\+\_\+step\+\_\+length\+\_\+control}} = false
+\begin{DoxyCompactList}\small\item\em Use steplength control do make globally convergent (default false) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Namespace for black-\/box FD Newton solver. 
+
+/////////////////////////////////////////////////////////////// /////////////////////////////////////////////////////////////// 
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{namespaceoomph_1_1BlackBoxFDNewtonSolver_a6a8995752628445edff43f942b4d3e88}\label{namespaceoomph_1_1BlackBoxFDNewtonSolver_a6a8995752628445edff43f942b4d3e88}} 
+\index{oomph::BlackBoxFDNewtonSolver@{oomph::BlackBoxFDNewtonSolver}!JacobianFctPt@{JacobianFctPt}}
+\index{JacobianFctPt@{JacobianFctPt}!oomph::BlackBoxFDNewtonSolver@{oomph::BlackBoxFDNewtonSolver}}
+\doxysubsubsection{\texorpdfstring{JacobianFctPt}{JacobianFctPt}}
+{\footnotesize\ttfamily typedef void($\ast$ oomph\+::\+Black\+Box\+FDNewton\+Solver\+::\+Jacobian\+Fct\+Pt) (const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&, \mbox{\hyperlink{classoomph_1_1DenseDoubleMatrix}{Dense\+Double\+Matrix}} \&jacobian)}
+
+
+
+Definition at line \mbox{\hyperlink{black__box__newton__solver_8h_source_l00060}{60}} of file \mbox{\hyperlink{black__box__newton__solver_8h_source}{black\+\_\+box\+\_\+newton\+\_\+solver.\+h}}.
+
+\mbox{\Hypertarget{namespaceoomph_1_1BlackBoxFDNewtonSolver_ae43745d4b8933505d52d50820c5ed5bf}\label{namespaceoomph_1_1BlackBoxFDNewtonSolver_ae43745d4b8933505d52d50820c5ed5bf}} 
+\index{oomph::BlackBoxFDNewtonSolver@{oomph::BlackBoxFDNewtonSolver}!ResidualFctPt@{ResidualFctPt}}
+\index{ResidualFctPt@{ResidualFctPt}!oomph::BlackBoxFDNewtonSolver@{oomph::BlackBoxFDNewtonSolver}}
+\doxysubsubsection{\texorpdfstring{ResidualFctPt}{ResidualFctPt}}
+{\footnotesize\ttfamily typedef void($\ast$ oomph\+::\+Black\+Box\+FDNewton\+Solver\+::\+Residual\+Fct\+Pt) (const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&parameters, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&unknowns, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&residuals)}
+
+
+
+Definition at line \mbox{\hyperlink{black__box__newton__solver_8h_source_l00055}{55}} of file \mbox{\hyperlink{black__box__newton__solver_8h_source}{black\+\_\+box\+\_\+newton\+\_\+solver.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespaceoomph_1_1BlackBoxFDNewtonSolver_ae132e48f67e6523676abad29b61397ba}\label{namespaceoomph_1_1BlackBoxFDNewtonSolver_ae132e48f67e6523676abad29b61397ba}} 
+\index{oomph::BlackBoxFDNewtonSolver@{oomph::BlackBoxFDNewtonSolver}!black\_box\_fd\_newton\_solve@{black\_box\_fd\_newton\_solve}}
+\index{black\_box\_fd\_newton\_solve@{black\_box\_fd\_newton\_solve}!oomph::BlackBoxFDNewtonSolver@{oomph::BlackBoxFDNewtonSolver}}
+\doxysubsubsection{\texorpdfstring{black\_box\_fd\_newton\_solve()}{black\_box\_fd\_newton\_solve()}}
+{\footnotesize\ttfamily void oomph\+::\+Black\+Box\+FDNewton\+Solver\+::black\+\_\+box\+\_\+fd\+\_\+newton\+\_\+solve (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceoomph_1_1BlackBoxFDNewtonSolver_ae43745d4b8933505d52d50820c5ed5bf}{Residual\+Fct\+Pt}}}]{residual\+\_\+fct,  }\item[{const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{params,  }\item[{\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{unknowns,  }\item[{\mbox{\hyperlink{namespaceoomph_1_1BlackBoxFDNewtonSolver_a6a8995752628445edff43f942b4d3e88}{Jacobian\+Fct\+Pt}}}]{jacobian\+\_\+fct }\end{DoxyParamCaption})}
+
+
+
+Black-\/box FD Newton solver\+: Calling sequence for residual function is. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{residual\_fct(parameters,unknowns,residuals) }
+
+\end{DoxyCode}
+ where all arguments are double Vectors. unknowns.\+size() = residuals.\+size() Reset number of Newton iterations taken in most recent invocation
+
+Definition at line \mbox{\hyperlink{black__box__newton__solver_8cc_source_l00067}{67}} of file \mbox{\hyperlink{black__box__newton__solver_8cc_source}{black\+\_\+box\+\_\+newton\+\_\+solver.\+cc}}.
+
+
+
+References \mbox{\hyperlink{black__box__newton__solver_8cc_source_l00051}{Doc\+\_\+\+Progress}}, \mbox{\hyperlink{black__box__newton__solver_8cc_source_l00054}{FD\+\_\+step}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{black__box__newton__solver_8cc_source_l00233}{line\+\_\+search()}}, \mbox{\hyperlink{black__box__newton__solver_8cc_source_l00044}{Max\+\_\+iter}}, \mbox{\hyperlink{black__box__newton__solver_8cc_source_l00047}{N\+\_\+iter\+\_\+taken}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00319}{oomph\+::oomph\+\_\+info}}, \mbox{\hyperlink{matrices_8cc_source_l00050}{oomph\+::\+Double\+Matrix\+Base\+::solve()}}, \mbox{\hyperlink{matrices_8h_source_l00182}{oomph\+::\+Matrix$<$ T, MATRIX\+\_\+\+TYPE $>$\+::sparse\+\_\+indexed\+\_\+output()}}, \mbox{\hyperlink{oomph__definitions_8h_source_l00464}{oomph\+::\+Oomph\+Info\+::stream\+\_\+pt()}}, \mbox{\hyperlink{black__box__newton__solver_8cc_source_l00057}{Tol}}, and \mbox{\hyperlink{black__box__newton__solver_8cc_source_l00060}{Use\+\_\+step\+\_\+length\+\_\+control}}.
+
+\mbox{\Hypertarget{namespaceoomph_1_1BlackBoxFDNewtonSolver_a4a1361a9b08163b59fe82b3042b0f887}\label{namespaceoomph_1_1BlackBoxFDNewtonSolver_a4a1361a9b08163b59fe82b3042b0f887}} 
+\index{oomph::BlackBoxFDNewtonSolver@{oomph::BlackBoxFDNewtonSolver}!line\_search@{line\_search}}
+\index{line\_search@{line\_search}!oomph::BlackBoxFDNewtonSolver@{oomph::BlackBoxFDNewtonSolver}}
+\doxysubsubsection{\texorpdfstring{line\_search()}{line\_search()}}
+{\footnotesize\ttfamily void oomph\+::\+Black\+Box\+FDNewton\+Solver\+::line\+\_\+search (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{x\+\_\+old,  }\item[{const double}]{half\+\_\+residual\+\_\+squared\+\_\+old,  }\item[{const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{gradient,  }\item[{\mbox{\hyperlink{namespaceoomph_1_1BlackBoxFDNewtonSolver_ae43745d4b8933505d52d50820c5ed5bf}{Residual\+Fct\+Pt}}}]{residual\+\_\+fct,  }\item[{const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{params,  }\item[{\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{newton\+\_\+dir,  }\item[{\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{x,  }\item[{double \&}]{half\+\_\+residual\+\_\+squared,  }\item[{const double \&}]{stpmax }\end{DoxyParamCaption})}
+
+
+
+Line search helper for globally convergent Newton method. 
+
+
+
+Definition at line \mbox{\hyperlink{black__box__newton__solver_8cc_source_l00233}{233}} of file \mbox{\hyperlink{black__box__newton__solver_8cc_source}{black\+\_\+box\+\_\+newton\+\_\+solver.\+cc}}.
+
+
+
+References \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, and \mbox{\hyperlink{pseudo__buckling__ring_8h_source_l00049}{oomph\+::x}}.
+
+
+
+Referenced by \mbox{\hyperlink{black__box__newton__solver_8cc_source_l00067}{black\+\_\+box\+\_\+fd\+\_\+newton\+\_\+solve()}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceoomph_1_1BlackBoxFDNewtonSolver_ac2603699f47446716ca5a818f46a7f17}\label{namespaceoomph_1_1BlackBoxFDNewtonSolver_ac2603699f47446716ca5a818f46a7f17}} 
+\index{oomph::BlackBoxFDNewtonSolver@{oomph::BlackBoxFDNewtonSolver}!Doc\_Progress@{Doc\_Progress}}
+\index{Doc\_Progress@{Doc\_Progress}!oomph::BlackBoxFDNewtonSolver@{oomph::BlackBoxFDNewtonSolver}}
+\doxysubsubsection{\texorpdfstring{Doc\_Progress}{Doc\_Progress}}
+{\footnotesize\ttfamily bool oomph\+::\+Black\+Box\+FDNewton\+Solver\+::\+Doc\+\_\+\+Progress = false}
+
+
+
+Flag to indicate if progress of Newton iteration is to be documented (defaults to false) 
+
+
+
+Definition at line \mbox{\hyperlink{black__box__newton__solver_8cc_source_l00051}{51}} of file \mbox{\hyperlink{black__box__newton__solver_8cc_source}{black\+\_\+box\+\_\+newton\+\_\+solver.\+cc}}.
+
+
+
+Referenced by \mbox{\hyperlink{black__box__newton__solver_8cc_source_l00067}{black\+\_\+box\+\_\+fd\+\_\+newton\+\_\+solve()}}.
+
+\mbox{\Hypertarget{namespaceoomph_1_1BlackBoxFDNewtonSolver_a6f0d2ceb4451e66bb7ef4ab4fdb62bcf}\label{namespaceoomph_1_1BlackBoxFDNewtonSolver_a6f0d2ceb4451e66bb7ef4ab4fdb62bcf}} 
+\index{oomph::BlackBoxFDNewtonSolver@{oomph::BlackBoxFDNewtonSolver}!FD\_step@{FD\_step}}
+\index{FD\_step@{FD\_step}!oomph::BlackBoxFDNewtonSolver@{oomph::BlackBoxFDNewtonSolver}}
+\doxysubsubsection{\texorpdfstring{FD\_step}{FD\_step}}
+{\footnotesize\ttfamily double oomph\+::\+Black\+Box\+FDNewton\+Solver\+::\+FD\+\_\+step = 1.\+0e-\/8}
+
+
+
+FD step. 
+
+
+
+Definition at line \mbox{\hyperlink{black__box__newton__solver_8cc_source_l00054}{54}} of file \mbox{\hyperlink{black__box__newton__solver_8cc_source}{black\+\_\+box\+\_\+newton\+\_\+solver.\+cc}}.
+
+
+
+Referenced by \mbox{\hyperlink{black__box__newton__solver_8cc_source_l00067}{black\+\_\+box\+\_\+fd\+\_\+newton\+\_\+solve()}}, \mbox{\hyperlink{problem_8cc_source_l07887}{oomph\+::\+Problem\+::get\+\_\+derivative\+\_\+wrt\+\_\+global\+\_\+parameter()}}, \mbox{\hyperlink{problem_8cc_source_l07823}{oomph\+::\+Problem\+::get\+\_\+fd\+\_\+jacobian()}}, \mbox{\hyperlink{problem_8cc_source_l07985}{oomph\+::\+Problem\+::get\+\_\+hessian\+\_\+vector\+\_\+products()}}, \mbox{\hyperlink{assembly__handler_8cc_source_l01244}{oomph\+::\+Fold\+Handler\+::get\+\_\+jacobian()}}, \mbox{\hyperlink{assembly__handler_8cc_source_l03137}{oomph\+::\+Pitch\+Fork\+Handler\+::get\+\_\+jacobian()}}, \mbox{\hyperlink{assembly__handler_8cc_source_l04782}{oomph\+::\+Hopf\+Handler\+::get\+\_\+jacobian()}}, \mbox{\hyperlink{assembly__handler_8cc_source_l00677}{oomph\+::\+Augmented\+Block\+Fold\+Linear\+Solver\+::resolve()}}, \mbox{\hyperlink{assembly__handler_8cc_source_l02510}{oomph\+::\+Augmented\+Block\+Pitch\+Fork\+Linear\+Solver\+::resolve()}}, \mbox{\hyperlink{assembly__handler_8cc_source_l00405}{oomph\+::\+Augmented\+Block\+Fold\+Linear\+Solver\+::solve()}}, \mbox{\hyperlink{assembly__handler_8cc_source_l02275}{oomph\+::\+Augmented\+Block\+Pitch\+Fork\+Linear\+Solver\+::solve()}}, \mbox{\hyperlink{assembly__handler_8cc_source_l03621}{oomph\+::\+Block\+Hopf\+Linear\+Solver\+::solve()}}, and \mbox{\hyperlink{assembly__handler_8cc_source_l03966}{oomph\+::\+Block\+Hopf\+Linear\+Solver\+::solve\+\_\+for\+\_\+two\+\_\+rhs()}}.
+
+\mbox{\Hypertarget{namespaceoomph_1_1BlackBoxFDNewtonSolver_a20ac8568daf0d63afa3945a817ff3e2d}\label{namespaceoomph_1_1BlackBoxFDNewtonSolver_a20ac8568daf0d63afa3945a817ff3e2d}} 
+\index{oomph::BlackBoxFDNewtonSolver@{oomph::BlackBoxFDNewtonSolver}!Max\_iter@{Max\_iter}}
+\index{Max\_iter@{Max\_iter}!oomph::BlackBoxFDNewtonSolver@{oomph::BlackBoxFDNewtonSolver}}
+\doxysubsubsection{\texorpdfstring{Max\_iter}{Max\_iter}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Black\+Box\+FDNewton\+Solver\+::\+Max\+\_\+iter = 20}
+
+
+
+Max. \# of Newton iterations. 
+
+
+
+Definition at line \mbox{\hyperlink{black__box__newton__solver_8cc_source_l00044}{44}} of file \mbox{\hyperlink{black__box__newton__solver_8cc_source}{black\+\_\+box\+\_\+newton\+\_\+solver.\+cc}}.
+
+
+
+Referenced by \mbox{\hyperlink{black__box__newton__solver_8cc_source_l00067}{black\+\_\+box\+\_\+fd\+\_\+newton\+\_\+solve()}}, \mbox{\hyperlink{complex__smoother_8h_source_l00532}{oomph\+::\+Complex\+Damped\+Jacobi$<$ MATRIX $>$\+::complex\+\_\+solve\+\_\+helper()}}, \mbox{\hyperlink{complex__smoother_8h_source_l01255}{oomph\+::\+Complex\+GMRES$<$ MATRIX $>$\+::complex\+\_\+solve\+\_\+helper()}}, \mbox{\hyperlink{iterative__linear__solver_8cc_source_l00605}{oomph\+::\+CG$<$ MATRIX $>$\+::solve\+\_\+helper()}}, \mbox{\hyperlink{iterative__linear__solver_8cc_source_l00171}{oomph\+::\+Bi\+CGStab$<$ MATRIX $>$\+::solve\+\_\+helper()}}, \mbox{\hyperlink{iterative__linear__solver_8cc_source_l01164}{oomph\+::\+GS$<$ MATRIX $>$\+::solve\+\_\+helper()}}, \mbox{\hyperlink{iterative__linear__solver_8cc_source_l01922}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::solve\+\_\+helper()}}, \mbox{\hyperlink{iterative__linear__solver_8cc_source_l02250}{oomph\+::\+GMRES$<$ MATRIX $>$\+::solve\+\_\+helper()}}, \mbox{\hyperlink{complex__smoother_8h_source_l02521}{oomph\+::\+Helmholtz\+GMRESMG$<$ MATRIX $>$\+::solve\+\_\+helper()}}, and \mbox{\hyperlink{complex__smoother_8h_source_l03619}{oomph\+::\+Helmholtz\+FGMRESMG$<$ MATRIX $>$\+::solve\+\_\+helper()}}.
+
+\mbox{\Hypertarget{namespaceoomph_1_1BlackBoxFDNewtonSolver_a3067ba88fad991fdb619eae7533028bd}\label{namespaceoomph_1_1BlackBoxFDNewtonSolver_a3067ba88fad991fdb619eae7533028bd}} 
+\index{oomph::BlackBoxFDNewtonSolver@{oomph::BlackBoxFDNewtonSolver}!N\_iter\_taken@{N\_iter\_taken}}
+\index{N\_iter\_taken@{N\_iter\_taken}!oomph::BlackBoxFDNewtonSolver@{oomph::BlackBoxFDNewtonSolver}}
+\doxysubsubsection{\texorpdfstring{N\_iter\_taken}{N\_iter\_taken}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Black\+Box\+FDNewton\+Solver\+::\+N\+\_\+iter\+\_\+taken = 0}
+
+
+
+Number of Newton iterations taken in most recent invocation. 
+
+
+
+Definition at line \mbox{\hyperlink{black__box__newton__solver_8cc_source_l00047}{47}} of file \mbox{\hyperlink{black__box__newton__solver_8cc_source}{black\+\_\+box\+\_\+newton\+\_\+solver.\+cc}}.
+
+
+
+Referenced by \mbox{\hyperlink{black__box__newton__solver_8cc_source_l00067}{black\+\_\+box\+\_\+fd\+\_\+newton\+\_\+solve()}}.
+
+\mbox{\Hypertarget{namespaceoomph_1_1BlackBoxFDNewtonSolver_a4bacc59c8e1194e553f698530e9e945e}\label{namespaceoomph_1_1BlackBoxFDNewtonSolver_a4bacc59c8e1194e553f698530e9e945e}} 
+\index{oomph::BlackBoxFDNewtonSolver@{oomph::BlackBoxFDNewtonSolver}!Tol@{Tol}}
+\index{Tol@{Tol}!oomph::BlackBoxFDNewtonSolver@{oomph::BlackBoxFDNewtonSolver}}
+\doxysubsubsection{\texorpdfstring{Tol}{Tol}}
+{\footnotesize\ttfamily double oomph\+::\+Black\+Box\+FDNewton\+Solver\+::\+Tol = 1.\+0e-\/8}
+
+
+
+Tolerance. 
+
+
+
+Definition at line \mbox{\hyperlink{black__box__newton__solver_8cc_source_l00057}{57}} of file \mbox{\hyperlink{black__box__newton__solver_8cc_source}{black\+\_\+box\+\_\+newton\+\_\+solver.\+cc}}.
+
+
+
+Referenced by \mbox{\hyperlink{black__box__newton__solver_8cc_source_l00067}{black\+\_\+box\+\_\+fd\+\_\+newton\+\_\+solve()}}.
+
+\mbox{\Hypertarget{namespaceoomph_1_1BlackBoxFDNewtonSolver_afd90cb451fb7ae5a8e30cab0a1884568}\label{namespaceoomph_1_1BlackBoxFDNewtonSolver_afd90cb451fb7ae5a8e30cab0a1884568}} 
+\index{oomph::BlackBoxFDNewtonSolver@{oomph::BlackBoxFDNewtonSolver}!Use\_step\_length\_control@{Use\_step\_length\_control}}
+\index{Use\_step\_length\_control@{Use\_step\_length\_control}!oomph::BlackBoxFDNewtonSolver@{oomph::BlackBoxFDNewtonSolver}}
+\doxysubsubsection{\texorpdfstring{Use\_step\_length\_control}{Use\_step\_length\_control}}
+{\footnotesize\ttfamily bool oomph\+::\+Black\+Box\+FDNewton\+Solver\+::\+Use\+\_\+step\+\_\+length\+\_\+control = false}
+
+
+
+Use steplength control do make globally convergent (default false) 
+
+
+
+Definition at line \mbox{\hyperlink{black__box__newton__solver_8cc_source_l00060}{60}} of file \mbox{\hyperlink{black__box__newton__solver_8cc_source}{black\+\_\+box\+\_\+newton\+\_\+solver.\+cc}}.
+
+
+
+Referenced by \mbox{\hyperlink{black__box__newton__solver_8cc_source_l00067}{black\+\_\+box\+\_\+fd\+\_\+newton\+\_\+solve()}}.
+

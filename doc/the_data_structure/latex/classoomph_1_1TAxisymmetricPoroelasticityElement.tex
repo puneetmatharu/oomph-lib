@@ -1,0 +1,1867 @@
+\hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement}{}\doxysection{oomph\+::TAxisymmetric\+Poroelasticity\+Element\texorpdfstring{$<$}{<} ORDER \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classoomph_1_1TAxisymmetricPoroelasticityElement}\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+
+
+================================================================= Element which solves the Darcy/linear elasticity equations using TElements Geometrically the element is always a six noded triangle. We use the mid-\/side nodes to store edge-\/based flux degrees of freedom and internal data for the discontinuous pressure  
+
+
+
+
+{\ttfamily \#include $<$Taxisym\+\_\+poroelasticity\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+::TAxisymmetric\+Poroelasticity\+Element\texorpdfstring{$<$}{<} ORDER \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.114804cm]{classoomph_1_1TAxisymmetricPoroelasticityElement}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_aa05de51d7ccb8f104cb1015936e52754}{TAxisymmetric\+Poroelasticity\+Element}} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a7aa7d550317b1d4ed1d9c1122ea9ea8c}{$\sim$\+TAxisymmetric\+Poroelasticity\+Element}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a4e741ac6c7cacf006e930b0793d6797f}{required\+\_\+nvalue}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&n) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Number of values required at node n. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a5c977c1abd1bf1a479a15491b0dbb0c2}{face\+\_\+index\+\_\+of\+\_\+edge}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&j) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Return the face index associated with specified edge. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_affd83cf08ab80d7888634ff2c1f58c76}{face\+\_\+local\+\_\+coordinate\+\_\+of\+\_\+flux\+\_\+interpolation\+\_\+point}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&edge, \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&n, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}}) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Compute the face element coordinates of the nth flux interpolation point along specified edge. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_ac7f6238d6a5734895b6b04812873e66a}{face\+\_\+index\+\_\+of\+\_\+q\+\_\+edge\+\_\+basis\+\_\+fct}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&j) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Return the face index associated with j-\/th edge flux degree of freedom. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_adcfaa53074c4710fa4c4d34ce37d326c}{u\+\_\+index\+\_\+axisym\+\_\+poroelasticity}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&j) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Return the nodal index of the j-\/th solid displacement unknown \mbox{[}0\+: r; 1\+: z\mbox{]}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_ac6fcfbad57e73d5f6bacff687a67df4b}{q\+\_\+edge\+\_\+local\+\_\+eqn}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&j) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Return the equation number of the j-\/th edge (flux) degree of freedom. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_ae13e181da7a330ebe62cc51d50584942}{q\+\_\+internal\+\_\+local\+\_\+eqn}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&j) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Return the equation number of the j-\/th internal degree of freedom. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1Data}{Data}} $\ast$ $>$ \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a184b75afe1f4928ff0b7396d92644dc3}{q\+\_\+edge\+\_\+data\+\_\+pt}} () \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Return vector of pointers to the \mbox{\hyperlink{classoomph_1_1Data}{Data}} objects that store the edge flux values. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Data}{Data}} $\ast$ \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a1ce56c532e1508ab38176a2205e4a52d}{q\+\_\+internal\+\_\+data\+\_\+pt}} () \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Return pointer to the \mbox{\hyperlink{classoomph_1_1Data}{Data}} object that stores the internal flux values. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a53999a350be9bf4320a19750dd85e71b}{q\+\_\+internal\+\_\+index}} () \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Return the index of the internal data where the q\+\_\+internal degrees of freedom are stored. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a2b121fc589935b789d63731c5195adb5}{q\+\_\+edge\+\_\+index}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&j) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Return the nodal index at which the jth edge unknown is stored. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a6a76ba9fafcb226230340a6d1d931094}{q\+\_\+edge\+\_\+node\+\_\+number}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&j) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Return the number of the node where the jth edge unknown is stored. \end{DoxyCompactList}\item 
+Node $\ast$ \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a79dd2e88aa5c9b5ecc20240fc943f4f2}{edge\+\_\+flux\+\_\+node\+\_\+pt}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&edge)
+\begin{DoxyCompactList}\small\item\em Get pointer to node that stores the edge flux dofs for specified edge. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a155b8606a7c2602cc88ec15ae0a19a8f}{q\+\_\+edge}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&j) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Return the values of the j-\/th edge (flux) degree of freedom. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_aecff7a5e70e3567800d142f0fb24660e}{q\+\_\+edge}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&j) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Return the values of the j-\/th edge (flux) degree of freedom at time history level t. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_af21c0187d947dc5a59278a3dd5b2397f}{q\+\_\+internal}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&j) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Return the values of the internal degree of freedom. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a0fd7afe9fbe587b86fd77317194180b9}{q\+\_\+internal}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&j) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Return the value of the j-\/th internal degree of freedom at time history level t. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_ab70396f50ef5db1cc9162637a72ae8c2}{pin\+\_\+q\+\_\+edge\+\_\+value}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&j, \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} double \&value)
+\begin{DoxyCompactList}\small\item\em Pin the j-\/th edge (flux) degree of freedom and set it to specified value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_aadc0873c12a2d059f49b4a2d85ec054b}{set\+\_\+q\+\_\+edge}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&j, \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} double \&value)
+\begin{DoxyCompactList}\small\item\em Set the values of the j-\/th edge (flux) degree of freedom. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_aa6aa64af2580183c4e81a1466c6e467f}{set\+\_\+q\+\_\+edge}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&j, \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} double \&value)
+\begin{DoxyCompactList}\small\item\em Set the values of the j-\/th edge (flux) degree of freedom at time history level t. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a7c5a9c57e9cbbe808b42ebe9aa727014}{set\+\_\+q\+\_\+internal}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&j, \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} double \&value)
+\begin{DoxyCompactList}\small\item\em Set the values of the j-\/th internal degree of freedom. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a00e8333ce5109b945075ebe1b355c742}{set\+\_\+q\+\_\+internal}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&j, \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} double \&value)
+\begin{DoxyCompactList}\small\item\em Set the values of the j-\/th internal degree of freedom at time history level t. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a55279875613735471b7b925116e85292}{nq\+\_\+basis\+\_\+edge}} () \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Return the number of edge basis functions for flux q. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_adab98934a20e65055bdc477824c8c5ef}{nq\+\_\+basis\+\_\+internal}} () \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Return the number of internal basis functions for flux q. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a77621158dba7ea8d2095e4162c76583c}{get\+\_\+q\+\_\+basis\+\_\+local}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}}, \mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&q\+\_\+basis) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Returns the local form of the q basis at local coordinate s. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a9d5dc0246e71dce2e217a45754d05472}{get\+\_\+div\+\_\+q\+\_\+basis\+\_\+local}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}}, \mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&div\+\_\+q\+\_\+basis\+\_\+ds) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Returns the local form of the q basis and dbasis/ds at local coordinate s. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_abe8ce45bd70932c365623a1919c69e5d}{nedge\+\_\+flux\+\_\+interpolation\+\_\+point}} () \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Returns the number of flux\+\_\+interpolation points along each edge of the element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a2def17c7283248dc56338142077638d7}{edge\+\_\+flux\+\_\+interpolation\+\_\+point}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&edge, \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&j) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Returns the local coordinate of the jth flux\+\_\+interpolation point along specified edge. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a06f4ef6b5eeb141500e04e14ae673c39}{edge\+\_\+flux\+\_\+interpolation\+\_\+point\+\_\+global}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&edge, \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&j, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{namespaceoomph_a9d1d2da2b8bb8e73af72b5cadb8fe97c}{x}}) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Compute the global coordinates of the jth flux\+\_\+interpolation point along specified edge. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a8b9632f528a6ba2c049a218bc09364d1}{pin\+\_\+q\+\_\+internal\+\_\+value}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&j, \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} double \&q)
+\begin{DoxyCompactList}\small\item\em Pin the jth internal q value and set it to specified value. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_aaa12fb476f9f78e519f5fa96b065a439}{p\+\_\+local\+\_\+eqn}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&j) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Return the equation number of the j-\/th pressure degree of freedom. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a4fd508fc048ef38ab6cd288d58a84d13}{p\+\_\+value}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&j) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Return the jth pressure value. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_ae1fdf6e051bbc93b8c485f1d3f9fb9c6}{np\+\_\+basis}} () \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Return the total number of pressure basis functions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a12e958b84334c6e47e0511ff1f08f13d}{get\+\_\+p\+\_\+basis}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}}, \mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&p\+\_\+basis) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Return the pressure basis. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a8b8bc5b1b5234116a5129f0f9ef4d463}{pin\+\_\+p\+\_\+value}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&j, \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} double \&p)
+\begin{DoxyCompactList}\small\item\em Pin the jth pressure value and set to specified value. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Data}{Data}} $\ast$ \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_afeb335fd075557876f071052f9ce6ab1}{p\+\_\+data\+\_\+pt}} () \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Return pointer to the \mbox{\hyperlink{classoomph_1_1Data}{Data}} object that stores the pressure values. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a8156a72c0ba1887945532e528ff5173a}{set\+\_\+p\+\_\+value}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&j, \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} double \&value)
+\begin{DoxyCompactList}\small\item\em Set the jth pressure value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_ad06425b96b50c62a9e006ca7877cbb95}{scale\+\_\+basis}} (\mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&basis) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Scale the edge basis to allow arbitrary edge mappings. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} short \& \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a851621a4327e402633538576bdd958e6}{sign\+\_\+edge}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&n) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Accessor for the unit normal sign of edge n (const version) \end{DoxyCompactList}\item 
+short \& \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a695599d00e0a0b61e0519a032687a534}{sign\+\_\+edge}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&n)
+\begin{DoxyCompactList}\small\item\em Accessor for the unit normal sign of edge n. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_ab7754062a0e98148d1a1bdf153353772}{output}} (std\+::ostream \&outfile)
+\begin{DoxyCompactList}\small\item\em Output with default number of plot points. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a8a9f71d4757ccb3c1a172f080e2731ca}{output}} (std\+::ostream \&outfile, \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&Nplot)
+\begin{DoxyCompactList}\small\item\em Output FE representation of soln\+: x,y,u1,u2,div\+\_\+q,p at Nplot$^\wedge$\+DIM plot points. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a0ca2892eb086103a351bcd202f10f98d}{nvertex\+\_\+node}} () \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Number of vertex nodes in the element. \end{DoxyCompactList}\item 
+Node $\ast$ \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a7eafcc96ec32402ac9d5e0c89da77125}{vertex\+\_\+node\+\_\+pt}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&j) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Pointer to the j-\/th vertex node in the element. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_afc5e75420d95d3a70cb5f43aa32f9430}{nrecovery\+\_\+order}} ()
+\begin{DoxyCompactList}\small\item\em Recovery order for Z2 error estimator. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a2034c317479eb4d3a3e62c1196ed3138}{TAxisymmetric\+Poroelasticity\+Element}} ()
+\begin{DoxyCompactList}\small\item\em /////////////////////////////////////////////////////////////////////////// /////////////////////////////////////////////////////////////////////////// Lowest-\/order Raviart-\/\+Thomas based Darcy/axisym lin elast equation element /////////////////////////////////////////////////////////////////////////// \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_ae4ae81b49fb711b363836e57346671d9}{$\sim$\+TAxisymmetric\+Poroelasticity\+Element}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_aa2009997a759af30e486db772490ffa4}{nq\+\_\+basis\+\_\+edge}} () \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Return the number of edge basis functions for flux q. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a8514c3eaf9b116599ebe35843e34373f}{nq\+\_\+basis\+\_\+internal}} () \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Return the number of internal basis functions for flux q. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a128b5c997d91125f2b65520274568f2b}{get\+\_\+q\+\_\+basis\+\_\+local}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}}, \mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&q\+\_\+basis) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Compute the local form of the q basis at local coordinate s. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_ab441679b6aa6ec20486fb23aee9e2c80}{get\+\_\+div\+\_\+q\+\_\+basis\+\_\+local}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}}, \mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&div\+\_\+q\+\_\+basis\+\_\+ds) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Compute the local form of the q basis and dbasis/ds at local coordinate s. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_acd4d1c40b922904e04e28999eb5fb28f}{nedge\+\_\+flux\+\_\+interpolation\+\_\+point}} () \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Return the number of flux\+\_\+interpolation points along each edge of the element. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a0ce81542f828d07be3f0d6ecca0471ec}{np\+\_\+basis}} () \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Return the total number of pressure basis functions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a480096718751ad8f4d2ceb321e84701d}{get\+\_\+p\+\_\+basis}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}}, \mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&p\+\_\+basis) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Return the pressure basis. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a588c088e3a89b63f5878d4f174bc19b9}{TAxisymmetric\+Poroelasticity\+Element}} ()
+\begin{DoxyCompactList}\small\item\em //////////////////////////////////////////////////////////////////////// //////////////////////////////////////////////////////////////////////// Second-\/order\+Raviart-\/\+Thomas based Darcy/axisym lin elast equation element //////////////////////////////////////////////////////////////////////// \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_ab17aa9b74f54492302d814443e6a7212}{$\sim$\+TAxisymmetric\+Poroelasticity\+Element}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a8cb5b6d2aa7c1c5b0013934dee429995}{nq\+\_\+basis\+\_\+edge}} () \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Return the number of edge basis functions for flux q. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a42a143c622c2ad61c4ecbf7998da17c6}{nq\+\_\+basis\+\_\+internal}} () \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Return the number of internal basis functions for flux q. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_af98745ee4812d47d97b6695a82e4a403}{get\+\_\+q\+\_\+basis\+\_\+local}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}}, \mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&q\+\_\+basis) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Returns the local form of the q basis at local coordinate s. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a138a9d4ac957cda0434f7de467b7ecbe}{get\+\_\+div\+\_\+q\+\_\+basis\+\_\+local}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}}, \mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&div\+\_\+q\+\_\+basis\+\_\+ds) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Returns the local form of the q basis and dbasis/ds at local coordinate s. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a061e97b842af857c2f001e6cf52b3331}{nedge\+\_\+flux\+\_\+interpolation\+\_\+point}} () \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Returns the number of flux\+\_\+interpolation points along each edge of the element. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_ae4988eeb635e17360e5a25cf319e6acf}{np\+\_\+basis}} () \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Return the total number of pressure basis functions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_aa7a5194879f253b184a3082131fdc881}{get\+\_\+p\+\_\+basis}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}}, \mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&p\+\_\+basis) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Return the pressure basis. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_aac2d7977167e87f6e7c3e3f3fef4a60c}{shape\+\_\+basis\+\_\+test\+\_\+local}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}}, \mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&psi, \mbox{\hyperlink{classoomph_1_1DShape}{DShape}} \&dpsi, \mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&u\+\_\+basis, \mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&u\+\_\+test, \mbox{\hyperlink{classoomph_1_1DShape}{DShape}} \&du\+\_\+basis\+\_\+dx, \mbox{\hyperlink{classoomph_1_1DShape}{DShape}} \&du\+\_\+test\+\_\+dx, \mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&q\+\_\+basis, \mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&q\+\_\+test, \mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&p\+\_\+basis, \mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&p\+\_\+test, \mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&div\+\_\+q\+\_\+basis\+\_\+ds, \mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&div\+\_\+q\+\_\+test\+\_\+ds) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Returns the geometric basis, and the u, p and divergence basis functions and test functions at local coordinate s. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_acc7a872515a68044fd5f379ca683cab1}{shape\+\_\+basis\+\_\+test\+\_\+local\+\_\+at\+\_\+knot}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&ipt, \mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&psi, \mbox{\hyperlink{classoomph_1_1DShape}{DShape}} \&dpsi, \mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&u\+\_\+basis, \mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&u\+\_\+test, \mbox{\hyperlink{classoomph_1_1DShape}{DShape}} \&du\+\_\+basis\+\_\+dx, \mbox{\hyperlink{classoomph_1_1DShape}{DShape}} \&du\+\_\+test\+\_\+dx, \mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&q\+\_\+basis, \mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&q\+\_\+test, \mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&p\+\_\+basis, \mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&p\+\_\+test, \mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&div\+\_\+q\+\_\+basis\+\_\+ds, \mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&div\+\_\+q\+\_\+test\+\_\+ds) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Returns the geometric basis, and the u, p and divergence basis functions and test functions at integration point ipt. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_afa1c2a01bd17a61c86a672410a69f949}{Initial\+\_\+\+Nvalue}} \mbox{[}6\mbox{]}
+\begin{DoxyCompactList}\small\item\em The number of values stored at each node. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_af7991c7b1de732ad99def009ce2c8f5e}{Face\+\_\+index\+\_\+of\+\_\+edge\+\_\+flux}} \mbox{[}3\mbox{]}
+\begin{DoxyCompactList}\small\item\em Face index associated with edge flux degree of freedom. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a6ac5d1648ac4fa381194091361208670}{Q\+\_\+edge\+\_\+conv}} \mbox{[}3\mbox{]}
+\begin{DoxyCompactList}\small\item\em Conversion scheme from an edge degree of freedom to the node it\textquotesingle{}s stored at. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} double \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_ad85e114c40726205ee4dfa013f07cb0b}{Flux\+\_\+interpolation\+\_\+point}} \mbox{[}1\mbox{]}
+\begin{DoxyCompactList}\small\item\em The points along each edge where the fluxes are taken to be. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a4ac767242cdc990b9617e24ed82f9498}{Initial\+\_\+\+Nvalue}} \mbox{[}6\mbox{]}
+\begin{DoxyCompactList}\small\item\em The number of values stored at each node. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a1b9647b96c4416db7d2d13027b197647}{Face\+\_\+index\+\_\+of\+\_\+edge\+\_\+flux}} \mbox{[}3\mbox{]}
+\begin{DoxyCompactList}\small\item\em Face index associated with edge flux degree of freedom. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a0dcd9244044156ea10955d1386b50125}{Q\+\_\+edge\+\_\+conv}} \mbox{[}3\mbox{]}
+\begin{DoxyCompactList}\small\item\em Conversion scheme from an edge degree of freedom to the node it\textquotesingle{}s stored at. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} double \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a1e83a49d3d720f24a2d12d3e9f6e7036}{Flux\+\_\+interpolation\+\_\+point}} \mbox{[}2\mbox{]}
+\begin{DoxyCompactList}\small\item\em The points along each edge where the fluxes are taken to be. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a22ed2100966da5e73fd7d38d58bee36c}{Q\+\_\+internal\+\_\+data\+\_\+index}}
+\begin{DoxyCompactList}\small\item\em The internal data index where the internal q degrees of freedom are stored. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a439e9489d185eeae1b1085dde8ae0e7d}{P\+\_\+internal\+\_\+data\+\_\+index}}
+\begin{DoxyCompactList}\small\item\em The internal data index where the p degrees of freedom are stored. \end{DoxyCompactList}\item 
+std\+::vector$<$ short $>$ \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a19992fa82fa97f7f16aad3209d8bd8a0}{Sign\+\_\+edge}}
+\begin{DoxyCompactList}\small\item\em Unit normal signs associated with each edge to ensure inter-\/element continuity of the flux. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a518f29c851f4062f3ef1b94f0076a902}{Initial\+\_\+\+Nvalue}} \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em The number of values stored at each node. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_aeb45073b85caee99c4e18eb9de35503b}{Face\+\_\+index\+\_\+of\+\_\+edge\+\_\+flux}} \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Face index associated with edge flux degree of freedom. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_ae2a86834c98209802ce4e47997662012}{Q\+\_\+edge\+\_\+conv}} \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Conversion scheme from an edge degree of freedom to the node it\textquotesingle{}s stored at. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} double \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a84ede53b1b2d295bb379e43ed6f40782}{Flux\+\_\+interpolation\+\_\+point}} \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em The points along each edge where the fluxes are taken to be. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$unsigned ORDER$>$\newline
+class oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$}
+================================================================= Element which solves the Darcy/linear elasticity equations using TElements Geometrically the element is always a six noded triangle. We use the mid-\/side nodes to store edge-\/based flux degrees of freedom and internal data for the discontinuous pressure 
+
+\hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_autotoc_md0}{}\doxysubsection{and internal flux dofs.}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_autotoc_md0}
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00048}{48}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_aa05de51d7ccb8f104cb1015936e52754}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_aa05de51d7ccb8f104cb1015936e52754}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!TAxisymmetricPoroelasticityElement@{TAxisymmetricPoroelasticityElement}}
+\index{TAxisymmetricPoroelasticityElement@{TAxisymmetricPoroelasticityElement}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{TAxisymmetricPoroelasticityElement()}{TAxisymmetricPoroelasticityElement()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+\mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::\mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{TAxisymmetric\+Poroelasticity\+Element}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a7aa7d550317b1d4ed1d9c1122ea9ea8c}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a7aa7d550317b1d4ed1d9c1122ea9ea8c}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!````~TAxisymmetricPoroelasticityElement@{$\sim$TAxisymmetricPoroelasticityElement}}
+\index{````~TAxisymmetricPoroelasticityElement@{$\sim$TAxisymmetricPoroelasticityElement}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$TAxisymmetricPoroelasticityElement()}{~TAxisymmetricPoroelasticityElement()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+\mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::$\sim$\mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{TAxisymmetric\+Poroelasticity\+Element}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor. 
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a2034c317479eb4d3a3e62c1196ed3138}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a2034c317479eb4d3a3e62c1196ed3138}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!TAxisymmetricPoroelasticityElement@{TAxisymmetricPoroelasticityElement}}
+\index{TAxisymmetricPoroelasticityElement@{TAxisymmetricPoroelasticityElement}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{TAxisymmetricPoroelasticityElement()}{TAxisymmetricPoroelasticityElement()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ 0 $>$\+::\mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{TAxisymmetric\+Poroelasticity\+Element}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+/////////////////////////////////////////////////////////////////////////// /////////////////////////////////////////////////////////////////////////// Lowest-\/order Raviart-\/\+Thomas based Darcy/axisym lin elast equation element /////////////////////////////////////////////////////////////////////////// 
+
+Constructor. Order 0 elements have 1 pressure dof and no internal flux dofs 
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source_l00041}{41}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+cc}}.
+
+
+
+References \mbox{\hyperlink{elements_8cc_source_l00062}{oomph\+::\+Generalised\+Element\+::add\+\_\+internal\+\_\+data()}}, and \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00071}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::\+P\+\_\+internal\+\_\+data\+\_\+index}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_ae4ae81b49fb711b363836e57346671d9}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_ae4ae81b49fb711b363836e57346671d9}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!````~TAxisymmetricPoroelasticityElement@{$\sim$TAxisymmetricPoroelasticityElement}}
+\index{````~TAxisymmetricPoroelasticityElement@{$\sim$TAxisymmetricPoroelasticityElement}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$TAxisymmetricPoroelasticityElement()}{~TAxisymmetricPoroelasticityElement()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ 0 $>$\+::$\sim$\mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{TAxisymmetric\+Poroelasticity\+Element}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor. 
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source_l00051}{51}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+cc}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a588c088e3a89b63f5878d4f174bc19b9}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a588c088e3a89b63f5878d4f174bc19b9}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!TAxisymmetricPoroelasticityElement@{TAxisymmetricPoroelasticityElement}}
+\index{TAxisymmetricPoroelasticityElement@{TAxisymmetricPoroelasticityElement}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{TAxisymmetricPoroelasticityElement()}{TAxisymmetricPoroelasticityElement()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ 1 $>$\+::\mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{TAxisymmetric\+Poroelasticity\+Element}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+//////////////////////////////////////////////////////////////////////// //////////////////////////////////////////////////////////////////////// Second-\/order\+Raviart-\/\+Thomas based Darcy/axisym lin elast equation element //////////////////////////////////////////////////////////////////////// 
+
+Constructor. Order 1 elements have 3 pressure dofs and 2 internal velocity dofs 
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source_l00181}{181}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+cc}}.
+
+
+
+References \mbox{\hyperlink{elements_8cc_source_l00062}{oomph\+::\+Generalised\+Element\+::add\+\_\+internal\+\_\+data()}}, \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00071}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::\+P\+\_\+internal\+\_\+data\+\_\+index}}, and \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00068}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::\+Q\+\_\+internal\+\_\+data\+\_\+index}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_ab17aa9b74f54492302d814443e6a7212}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_ab17aa9b74f54492302d814443e6a7212}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!````~TAxisymmetricPoroelasticityElement@{$\sim$TAxisymmetricPoroelasticityElement}}
+\index{````~TAxisymmetricPoroelasticityElement@{$\sim$TAxisymmetricPoroelasticityElement}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$TAxisymmetricPoroelasticityElement()}{~TAxisymmetricPoroelasticityElement()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ 1 $>$\+::$\sim$\mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{TAxisymmetric\+Poroelasticity\+Element}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor. 
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source_l00193}{193}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+cc}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a2def17c7283248dc56338142077638d7}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a2def17c7283248dc56338142077638d7}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!edge\_flux\_interpolation\_point@{edge\_flux\_interpolation\_point}}
+\index{edge\_flux\_interpolation\_point@{edge\_flux\_interpolation\_point}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{edge\_flux\_interpolation\_point()}{edge\_flux\_interpolation\_point()}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::edge\+\_\+flux\+\_\+interpolation\+\_\+point (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{edge,  }\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Returns the local coordinate of the jth flux\+\_\+interpolation point along specified edge. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_aac5f4195f109013c5ca92a4542725dfb}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00376}{376}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00064}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::\+Flux\+\_\+interpolation\+\_\+point}}, \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_abe8ce45bd70932c365623a1919c69e5d}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::nedge\+\_\+flux\+\_\+interpolation\+\_\+point()}}, and \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00596}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::sign\+\_\+edge()}}.
+
+
+
+Referenced by \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00407}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::edge\+\_\+flux\+\_\+interpolation\+\_\+point\+\_\+global()}}, and \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00098}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::face\+\_\+local\+\_\+coordinate\+\_\+of\+\_\+flux\+\_\+interpolation\+\_\+point()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a06f4ef6b5eeb141500e04e14ae673c39}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a06f4ef6b5eeb141500e04e14ae673c39}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!edge\_flux\_interpolation\_point\_global@{edge\_flux\_interpolation\_point\_global}}
+\index{edge\_flux\_interpolation\_point\_global@{edge\_flux\_interpolation\_point\_global}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{edge\_flux\_interpolation\_point\_global()}{edge\_flux\_interpolation\_point\_global()}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::edge\+\_\+flux\+\_\+interpolation\+\_\+point\+\_\+global (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{edge,  }\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{j,  }\item[{\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{x }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Compute the global coordinates of the jth flux\+\_\+interpolation point along specified edge. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_a94eb24ad4a608057dd8601bbac14f241}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00407}{407}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00376}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::edge\+\_\+flux\+\_\+interpolation\+\_\+point()}}, \mbox{\hyperlink{classoomph_1_1FiniteElement_a40b7ab54112a2c6100da99ac801f7a06}{oomph\+::\+Finite\+Element\+::interpolated\+\_\+x()}}, \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_abe8ce45bd70932c365623a1919c69e5d}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::nedge\+\_\+flux\+\_\+interpolation\+\_\+point()}}, \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00061}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::\+Q\+\_\+edge\+\_\+conv}}, and \mbox{\hyperlink{pseudo__buckling__ring_8h_source_l00049}{oomph\+::x}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a79dd2e88aa5c9b5ecc20240fc943f4f2}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a79dd2e88aa5c9b5ecc20240fc943f4f2}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!edge\_flux\_node\_pt@{edge\_flux\_node\_pt}}
+\index{edge\_flux\_node\_pt@{edge\_flux\_node\_pt}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{edge\_flux\_node\_pt()}{edge\_flux\_node\_pt()}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+Node $\ast$ \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::edge\+\_\+flux\+\_\+node\+\_\+pt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{edge }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get pointer to node that stores the edge flux dofs for specified edge. 
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00245}{245}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l02180}{oomph\+::\+Finite\+Element\+::node\+\_\+pt()}}, and \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00061}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::\+Q\+\_\+edge\+\_\+conv}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a5c977c1abd1bf1a479a15491b0dbb0c2}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a5c977c1abd1bf1a479a15491b0dbb0c2}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!face\_index\_of\_edge@{face\_index\_of\_edge}}
+\index{face\_index\_of\_edge@{face\_index\_of\_edge}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{face\_index\_of\_edge()}{face\_index\_of\_edge()}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::face\+\_\+index\+\_\+of\+\_\+edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the face index associated with specified edge. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_a737af4275bd48577f6ea4ca7cef1f73c}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00091}{91}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_af7991c7b1de732ad99def009ce2c8f5e}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_af7991c7b1de732ad99def009ce2c8f5e}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!Face\_index\_of\_edge\_flux@{Face\_index\_of\_edge\_flux}}
+\index{Face\_index\_of\_edge\_flux@{Face\_index\_of\_edge\_flux}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{Face\_index\_of\_edge\_flux()}{Face\_index\_of\_edge\_flux()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ 0 $>$\+::Face\+\_\+index\+\_\+of\+\_\+edge\+\_\+flux\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Face index associated with edge flux degree of freedom. 
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source_l00150}{150}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+cc}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a1b9647b96c4416db7d2d13027b197647}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a1b9647b96c4416db7d2d13027b197647}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!Face\_index\_of\_edge\_flux@{Face\_index\_of\_edge\_flux}}
+\index{Face\_index\_of\_edge\_flux@{Face\_index\_of\_edge\_flux}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{Face\_index\_of\_edge\_flux()}{Face\_index\_of\_edge\_flux()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ 1 $>$\+::Face\+\_\+index\+\_\+of\+\_\+edge\+\_\+flux\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Face index associated with edge flux degree of freedom. 
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source_l00351}{351}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+cc}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_ac7f6238d6a5734895b6b04812873e66a}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_ac7f6238d6a5734895b6b04812873e66a}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!face\_index\_of\_q\_edge\_basis\_fct@{face\_index\_of\_q\_edge\_basis\_fct}}
+\index{face\_index\_of\_q\_edge\_basis\_fct@{face\_index\_of\_q\_edge\_basis\_fct}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{face\_index\_of\_q\_edge\_basis\_fct()}{face\_index\_of\_q\_edge\_basis\_fct()}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::face\+\_\+index\+\_\+of\+\_\+q\+\_\+edge\+\_\+basis\+\_\+fct (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the face index associated with j-\/th edge flux degree of freedom. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_a69ee55cdbcfc2db8593ff8f6ea8fd58d}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00127}{127}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00057}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::\+Face\+\_\+index\+\_\+of\+\_\+edge\+\_\+flux}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_affd83cf08ab80d7888634ff2c1f58c76}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_affd83cf08ab80d7888634ff2c1f58c76}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!face\_local\_coordinate\_of\_flux\_interpolation\_point@{face\_local\_coordinate\_of\_flux\_interpolation\_point}}
+\index{face\_local\_coordinate\_of\_flux\_interpolation\_point@{face\_local\_coordinate\_of\_flux\_interpolation\_point}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{face\_local\_coordinate\_of\_flux\_interpolation\_point()}{face\_local\_coordinate\_of\_flux\_interpolation\_point()}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::face\+\_\+local\+\_\+coordinate\+\_\+of\+\_\+flux\+\_\+interpolation\+\_\+point (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{edge,  }\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{n,  }\item[{\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Compute the face element coordinates of the nth flux interpolation point along specified edge. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_a5e84b1b9a6baa7b5fa83ad32c2734cfb}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00098}{98}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00376}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::edge\+\_\+flux\+\_\+interpolation\+\_\+point()}}, \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00061}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::\+Q\+\_\+edge\+\_\+conv}}, and \mbox{\hyperlink{cfortran_8h_source_l00568}{s}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_ad85e114c40726205ee4dfa013f07cb0b}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_ad85e114c40726205ee4dfa013f07cb0b}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!Flux\_interpolation\_point@{Flux\_interpolation\_point}}
+\index{Flux\_interpolation\_point@{Flux\_interpolation\_point}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{Flux\_interpolation\_point()}{Flux\_interpolation\_point()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} double \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ 0 $>$\+::Flux\+\_\+interpolation\+\_\+point\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The points along each edge where the fluxes are taken to be. 
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source_l00167}{167}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+cc}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a1e83a49d3d720f24a2d12d3e9f6e7036}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a1e83a49d3d720f24a2d12d3e9f6e7036}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!Flux\_interpolation\_point@{Flux\_interpolation\_point}}
+\index{Flux\_interpolation\_point@{Flux\_interpolation\_point}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{Flux\_interpolation\_point()}{Flux\_interpolation\_point()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} double \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ 1 $>$\+::Flux\+\_\+interpolation\+\_\+point\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The points along each edge where the fluxes are taken to be. 
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source_l00368}{368}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+cc}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_ab441679b6aa6ec20486fb23aee9e2c80}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_ab441679b6aa6ec20486fb23aee9e2c80}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!get\_div\_q\_basis\_local@{get\_div\_q\_basis\_local}}
+\index{get\_div\_q\_basis\_local@{get\_div\_q\_basis\_local}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{get\_div\_q\_basis\_local()}{get\_div\_q\_basis\_local()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ 0 $>$\+::get\+\_\+div\+\_\+q\+\_\+basis\+\_\+local (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{s,  }\item[{\mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&}]{div\+\_\+q\+\_\+basis\+\_\+ds }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Compute the local form of the q basis and dbasis/ds at local coordinate s. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_abe3e6e28eb58ae719a6180d0d57b1815}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source_l00095}{95}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+cc}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a138a9d4ac957cda0434f7de467b7ecbe}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a138a9d4ac957cda0434f7de467b7ecbe}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!get\_div\_q\_basis\_local@{get\_div\_q\_basis\_local}}
+\index{get\_div\_q\_basis\_local@{get\_div\_q\_basis\_local}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{get\_div\_q\_basis\_local()}{get\_div\_q\_basis\_local()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ 1 $>$\+::get\+\_\+div\+\_\+q\+\_\+basis\+\_\+local (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{s,  }\item[{\mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&}]{div\+\_\+q\+\_\+basis\+\_\+ds }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns the local form of the q basis and dbasis/ds at local coordinate s. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_abe3e6e28eb58ae719a6180d0d57b1815}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source_l00271}{271}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+cc}}.
+
+
+
+References \mbox{\hyperlink{cfortran_8h_source_l00568}{s}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a9d5dc0246e71dce2e217a45754d05472}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a9d5dc0246e71dce2e217a45754d05472}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!get\_div\_q\_basis\_local@{get\_div\_q\_basis\_local}}
+\index{get\_div\_q\_basis\_local@{get\_div\_q\_basis\_local}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{get\_div\_q\_basis\_local()}{get\_div\_q\_basis\_local()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::get\+\_\+div\+\_\+q\+\_\+basis\+\_\+local (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{s,  }\item[{\mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&}]{div\+\_\+q\+\_\+basis\+\_\+ds }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns the local form of the q basis and dbasis/ds at local coordinate s. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_abe3e6e28eb58ae719a6180d0d57b1815}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Referenced by \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00642}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::shape\+\_\+basis\+\_\+test\+\_\+local()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a480096718751ad8f4d2ceb321e84701d}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a480096718751ad8f4d2ceb321e84701d}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!get\_p\_basis@{get\_p\_basis}}
+\index{get\_p\_basis@{get\_p\_basis}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{get\_p\_basis()}{get\_p\_basis()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ 0 $>$\+::get\+\_\+p\+\_\+basis (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{s,  }\item[{\mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&}]{p\+\_\+basis }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Return the pressure basis. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_ae3a7d5fd68eb6c68770d7783013bda19}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source_l00131}{131}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+cc}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_aa7a5194879f253b184a3082131fdc881}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_aa7a5194879f253b184a3082131fdc881}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!get\_p\_basis@{get\_p\_basis}}
+\index{get\_p\_basis@{get\_p\_basis}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{get\_p\_basis()}{get\_p\_basis()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ 1 $>$\+::get\+\_\+p\+\_\+basis (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{s,  }\item[{\mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&}]{p\+\_\+basis }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Return the pressure basis. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_ae3a7d5fd68eb6c68770d7783013bda19}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source_l00330}{330}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+cc}}.
+
+
+
+References \mbox{\hyperlink{cfortran_8h_source_l00568}{s}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a12e958b84334c6e47e0511ff1f08f13d}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a12e958b84334c6e47e0511ff1f08f13d}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!get\_p\_basis@{get\_p\_basis}}
+\index{get\_p\_basis@{get\_p\_basis}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{get\_p\_basis()}{get\_p\_basis()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::get\+\_\+p\+\_\+basis (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{s,  }\item[{\mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&}]{p\+\_\+basis }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Return the pressure basis. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_ae3a7d5fd68eb6c68770d7783013bda19}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Referenced by \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00642}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::shape\+\_\+basis\+\_\+test\+\_\+local()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a128b5c997d91125f2b65520274568f2b}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a128b5c997d91125f2b65520274568f2b}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!get\_q\_basis\_local@{get\_q\_basis\_local}}
+\index{get\_q\_basis\_local@{get\_q\_basis\_local}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{get\_q\_basis\_local()}{get\_q\_basis\_local()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ 0 $>$\+::get\+\_\+q\+\_\+basis\+\_\+local (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{s,  }\item[{\mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&}]{q\+\_\+basis }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Compute the local form of the q basis at local coordinate s. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_afe94aaa6d3af8c997c760465b6930c27}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source_l00077}{77}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+cc}}.
+
+
+
+References \mbox{\hyperlink{cfortran_8h_source_l00568}{s}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_af98745ee4812d47d97b6695a82e4a403}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_af98745ee4812d47d97b6695a82e4a403}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!get\_q\_basis\_local@{get\_q\_basis\_local}}
+\index{get\_q\_basis\_local@{get\_q\_basis\_local}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{get\_q\_basis\_local()}{get\_q\_basis\_local()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ 1 $>$\+::get\+\_\+q\+\_\+basis\+\_\+local (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{s,  }\item[{\mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&}]{q\+\_\+basis }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns the local form of the q basis at local coordinate s. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_afe94aaa6d3af8c997c760465b6930c27}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source_l00219}{219}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+cc}}.
+
+
+
+References \mbox{\hyperlink{cfortran_8h_source_l00568}{s}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a77621158dba7ea8d2095e4162c76583c}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a77621158dba7ea8d2095e4162c76583c}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!get\_q\_basis\_local@{get\_q\_basis\_local}}
+\index{get\_q\_basis\_local@{get\_q\_basis\_local}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{get\_q\_basis\_local()}{get\_q\_basis\_local()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::get\+\_\+q\+\_\+basis\+\_\+local (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{s,  }\item[{\mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&}]{q\+\_\+basis }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns the local form of the q basis at local coordinate s. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_afe94aaa6d3af8c997c760465b6930c27}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Referenced by \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00642}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::shape\+\_\+basis\+\_\+test\+\_\+local()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_afa1c2a01bd17a61c86a672410a69f949}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_afa1c2a01bd17a61c86a672410a69f949}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!Initial\_Nvalue@{Initial\_Nvalue}}
+\index{Initial\_Nvalue@{Initial\_Nvalue}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{Initial\_Nvalue()}{Initial\_Nvalue()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ 0 $>$\+::Initial\+\_\+\+Nvalue\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The number of values stored at each node. 
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source_l00141}{141}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+cc}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a4ac767242cdc990b9617e24ed82f9498}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a4ac767242cdc990b9617e24ed82f9498}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!Initial\_Nvalue@{Initial\_Nvalue}}
+\index{Initial\_Nvalue@{Initial\_Nvalue}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{Initial\_Nvalue()}{Initial\_Nvalue()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ 1 $>$\+::Initial\+\_\+\+Nvalue\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The number of values stored at each node. 
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source_l00342}{342}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+cc}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_acd4d1c40b922904e04e28999eb5fb28f}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_acd4d1c40b922904e04e28999eb5fb28f}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!nedge\_flux\_interpolation\_point@{nedge\_flux\_interpolation\_point}}
+\index{nedge\_flux\_interpolation\_point@{nedge\_flux\_interpolation\_point}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{nedge\_flux\_interpolation\_point()}{nedge\_flux\_interpolation\_point()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ 0 $>$\+::nedge\+\_\+flux\+\_\+interpolation\+\_\+point (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Return the number of flux\+\_\+interpolation points along each edge of the element. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_a16d82c2d6bf7f84f6529f4182f83e6ef}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source_l00113}{113}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+cc}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a061e97b842af857c2f001e6cf52b3331}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a061e97b842af857c2f001e6cf52b3331}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!nedge\_flux\_interpolation\_point@{nedge\_flux\_interpolation\_point}}
+\index{nedge\_flux\_interpolation\_point@{nedge\_flux\_interpolation\_point}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{nedge\_flux\_interpolation\_point()}{nedge\_flux\_interpolation\_point()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ 1 $>$\+::nedge\+\_\+flux\+\_\+interpolation\+\_\+point (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns the number of flux\+\_\+interpolation points along each edge of the element. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_a16d82c2d6bf7f84f6529f4182f83e6ef}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source_l00312}{312}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+cc}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_abe8ce45bd70932c365623a1919c69e5d}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_abe8ce45bd70932c365623a1919c69e5d}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!nedge\_flux\_interpolation\_point@{nedge\_flux\_interpolation\_point}}
+\index{nedge\_flux\_interpolation\_point@{nedge\_flux\_interpolation\_point}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{nedge\_flux\_interpolation\_point()}{nedge\_flux\_interpolation\_point()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::nedge\+\_\+flux\+\_\+interpolation\+\_\+point (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns the number of flux\+\_\+interpolation points along each edge of the element. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_a16d82c2d6bf7f84f6529f4182f83e6ef}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Referenced by \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00376}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::edge\+\_\+flux\+\_\+interpolation\+\_\+point()}}, and \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00407}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::edge\+\_\+flux\+\_\+interpolation\+\_\+point\+\_\+global()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a0ce81542f828d07be3f0d6ecca0471ec}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a0ce81542f828d07be3f0d6ecca0471ec}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!np\_basis@{np\_basis}}
+\index{np\_basis@{np\_basis}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{np\_basis()}{np\_basis()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ 0 $>$\+::np\+\_\+basis (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Return the total number of pressure basis functions. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_a8a17486deaa1115a98608e76344aa67c}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source_l00122}{122}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+cc}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_ae4988eeb635e17360e5a25cf319e6acf}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_ae4988eeb635e17360e5a25cf319e6acf}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!np\_basis@{np\_basis}}
+\index{np\_basis@{np\_basis}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{np\_basis()}{np\_basis()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ 1 $>$\+::np\+\_\+basis (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Return the total number of pressure basis functions. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_a8a17486deaa1115a98608e76344aa67c}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source_l00321}{321}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+cc}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_ae1fdf6e051bbc93b8c485f1d3f9fb9c6}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_ae1fdf6e051bbc93b8c485f1d3f9fb9c6}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!np\_basis@{np\_basis}}
+\index{np\_basis@{np\_basis}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{np\_basis()}{np\_basis()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::np\+\_\+basis (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Return the total number of pressure basis functions. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_a8a17486deaa1115a98608e76344aa67c}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Referenced by \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00485}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::p\+\_\+local\+\_\+eqn()}}, \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00502}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::p\+\_\+value()}}, and \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00525}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::pin\+\_\+p\+\_\+value()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_aa2009997a759af30e486db772490ffa4}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_aa2009997a759af30e486db772490ffa4}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!nq\_basis\_edge@{nq\_basis\_edge}}
+\index{nq\_basis\_edge@{nq\_basis\_edge}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{nq\_basis\_edge()}{nq\_basis\_edge()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ 0 $>$\+::nq\+\_\+basis\+\_\+edge (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Return the number of edge basis functions for flux q. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_aa5141d30c6dc0d4209ae043ddcea3d2e}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source_l00059}{59}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+cc}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a8cb5b6d2aa7c1c5b0013934dee429995}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a8cb5b6d2aa7c1c5b0013934dee429995}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!nq\_basis\_edge@{nq\_basis\_edge}}
+\index{nq\_basis\_edge@{nq\_basis\_edge}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{nq\_basis\_edge()}{nq\_basis\_edge()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ 1 $>$\+::nq\+\_\+basis\+\_\+edge (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Return the number of edge basis functions for flux q. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_aa5141d30c6dc0d4209ae043ddcea3d2e}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source_l00201}{201}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+cc}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a55279875613735471b7b925116e85292}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a55279875613735471b7b925116e85292}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!nq\_basis\_edge@{nq\_basis\_edge}}
+\index{nq\_basis\_edge@{nq\_basis\_edge}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{nq\_basis\_edge()}{nq\_basis\_edge()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::nq\+\_\+basis\+\_\+edge (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Return the number of edge basis functions for flux q. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_aa5141d30c6dc0d4209ae043ddcea3d2e}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Referenced by \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00251}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+edge()}}, \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00210}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+edge\+\_\+index()}}, \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00151}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+edge\+\_\+local\+\_\+eqn()}}, \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00227}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+edge\+\_\+node\+\_\+number()}}, and \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00555}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::scale\+\_\+basis()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a8514c3eaf9b116599ebe35843e34373f}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a8514c3eaf9b116599ebe35843e34373f}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!nq\_basis\_internal@{nq\_basis\_internal}}
+\index{nq\_basis\_internal@{nq\_basis\_internal}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{nq\_basis\_internal()}{nq\_basis\_internal()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ 0 $>$\+::nq\+\_\+basis\+\_\+internal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Return the number of internal basis functions for flux q. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_afa7d0f89a144f2031959d750f7b3ebc1}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source_l00068}{68}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+cc}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a42a143c622c2ad61c4ecbf7998da17c6}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a42a143c622c2ad61c4ecbf7998da17c6}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!nq\_basis\_internal@{nq\_basis\_internal}}
+\index{nq\_basis\_internal@{nq\_basis\_internal}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{nq\_basis\_internal()}{nq\_basis\_internal()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ 1 $>$\+::nq\+\_\+basis\+\_\+internal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Return the number of internal basis functions for flux q. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_afa7d0f89a144f2031959d750f7b3ebc1}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source_l00210}{210}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+cc}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_adab98934a20e65055bdc477824c8c5ef}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_adab98934a20e65055bdc477824c8c5ef}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!nq\_basis\_internal@{nq\_basis\_internal}}
+\index{nq\_basis\_internal@{nq\_basis\_internal}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{nq\_basis\_internal()}{nq\_basis\_internal()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::nq\+\_\+basis\+\_\+internal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Return the number of internal basis functions for flux q. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_afa7d0f89a144f2031959d750f7b3ebc1}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Referenced by \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00467}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::pin\+\_\+q\+\_\+internal\+\_\+value()}}, \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00286}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+internal()}}, and \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00168}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+internal\+\_\+local\+\_\+eqn()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_afc5e75420d95d3a70cb5f43aa32f9430}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_afc5e75420d95d3a70cb5f43aa32f9430}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!nrecovery\_order@{nrecovery\_order}}
+\index{nrecovery\_order@{nrecovery\_order}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{nrecovery\_order()}{nrecovery\_order()}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::nrecovery\+\_\+order (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Recovery order for Z2 error estimator. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1ElementWithZ2ErrorEstimator_af39480835bd3e0f6b2f4f7a9a4044798}{oomph\+::\+Element\+With\+Z2\+Error\+Estimator}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00634}{634}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a0ca2892eb086103a351bcd202f10f98d}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a0ca2892eb086103a351bcd202f10f98d}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!nvertex\_node@{nvertex\_node}}
+\index{nvertex\_node@{nvertex\_node}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{nvertex\_node()}{nvertex\_node()}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::nvertex\+\_\+node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Number of vertex nodes in the element. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1FiniteElement_a45631a7aa50efc3123a921d114f84cba}{oomph\+::\+Finite\+Element}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00622}{622}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_ab7754062a0e98148d1a1bdf153353772}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_ab7754062a0e98148d1a1bdf153353772}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!output@{output}}
+\index{output@{output}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Output with default number of plot points. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_afb277eef2c340f6fa432eefa415aedf7}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00608}{608}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{axisym__poroelasticity__elements_8h_source_l01221}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations\+::output()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a8a9f71d4757ccb3c1a172f080e2731ca}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a8a9f71d4757ccb3c1a172f080e2731ca}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!output@{output}}
+\index{output@{output}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{output()}{output()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{Nplot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Output FE representation of soln\+: x,y,u1,u2,div\+\_\+q,p at Nplot$^\wedge$\+DIM plot points. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_af5dcc8768f5323427ebaf17cad67a64a}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00615}{615}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{axisym__poroelasticity__elements_8h_source_l01221}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations\+::output()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_afeb335fd075557876f071052f9ce6ab1}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_afeb335fd075557876f071052f9ce6ab1}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!p\_data\_pt@{p\_data\_pt}}
+\index{p\_data\_pt@{p\_data\_pt}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{p\_data\_pt()}{p\_data\_pt()}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+\mbox{\hyperlink{classoomph_1_1Data}{Data}} $\ast$ \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::p\+\_\+data\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return pointer to the \mbox{\hyperlink{classoomph_1_1Data}{Data}} object that stores the pressure values. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_a35a3d0c2717bbdadf78ce346eb086abc}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00543}{543}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l00622}{oomph\+::\+Generalised\+Element\+::internal\+\_\+data\+\_\+pt()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_aaa12fb476f9f78e519f5fa96b065a439}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_aaa12fb476f9f78e519f5fa96b065a439}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!p\_local\_eqn@{p\_local\_eqn}}
+\index{p\_local\_eqn@{p\_local\_eqn}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{p\_local\_eqn()}{p\_local\_eqn()}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+int \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::p\+\_\+local\+\_\+eqn (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the equation number of the j-\/th pressure degree of freedom. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_afb2d0c38f776d9182d2cf93b37206023}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00485}{485}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l00267}{oomph\+::\+Generalised\+Element\+::internal\+\_\+local\+\_\+eqn()}}, and \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_ae1fdf6e051bbc93b8c485f1d3f9fb9c6}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::np\+\_\+basis()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a4fd508fc048ef38ab6cd288d58a84d13}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a4fd508fc048ef38ab6cd288d58a84d13}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!p\_value@{p\_value}}
+\index{p\_value@{p\_value}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{p\_value()}{p\_value()}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+double \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::p\+\_\+value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the jth pressure value. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_aab0aa10f1a243bff20e540a3744c1c5b}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00502}{502}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l00622}{oomph\+::\+Generalised\+Element\+::internal\+\_\+data\+\_\+pt()}}, \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_ae1fdf6e051bbc93b8c485f1d3f9fb9c6}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::np\+\_\+basis()}}, and \mbox{\hyperlink{nodes_8h_source_l00293}{oomph\+::\+Data\+::value()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a8b8bc5b1b5234116a5129f0f9ef4d463}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a8b8bc5b1b5234116a5129f0f9ef4d463}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!pin\_p\_value@{pin\_p\_value}}
+\index{pin\_p\_value@{pin\_p\_value}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{pin\_p\_value()}{pin\_p\_value()}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::pin\+\_\+p\+\_\+value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{j,  }\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} double \&}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Pin the jth pressure value and set to specified value. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_aa38488da8fec869f377a39c5c0da4311}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00525}{525}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l00622}{oomph\+::\+Generalised\+Element\+::internal\+\_\+data\+\_\+pt()}}, \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_ae1fdf6e051bbc93b8c485f1d3f9fb9c6}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::np\+\_\+basis()}}, \mbox{\hyperlink{nodes_8h_source_l00385}{oomph\+::\+Data\+::pin()}}, and \mbox{\hyperlink{nodes_8h_source_l00271}{oomph\+::\+Data\+::set\+\_\+value()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_ab70396f50ef5db1cc9162637a72ae8c2}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_ab70396f50ef5db1cc9162637a72ae8c2}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!pin\_q\_edge\_value@{pin\_q\_edge\_value}}
+\index{pin\_q\_edge\_value@{pin\_q\_edge\_value}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{pin\_q\_edge\_value()}{pin\_q\_edge\_value()}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::pin\+\_\+q\+\_\+edge\+\_\+value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{j,  }\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} double \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Pin the j-\/th edge (flux) degree of freedom and set it to specified value. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_acf1c7d9fce77306a33838bfc55d899a3}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00321}{321}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l02180}{oomph\+::\+Finite\+Element\+::node\+\_\+pt()}}, \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00210}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+edge\+\_\+index()}}, and \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00227}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+edge\+\_\+node\+\_\+number()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a8b9632f528a6ba2c049a218bc09364d1}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a8b9632f528a6ba2c049a218bc09364d1}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!pin\_q\_internal\_value@{pin\_q\_internal\_value}}
+\index{pin\_q\_internal\_value@{pin\_q\_internal\_value}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{pin\_q\_internal\_value()}{pin\_q\_internal\_value()}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::pin\+\_\+q\+\_\+internal\+\_\+value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{j,  }\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} double \&}]{q }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Pin the jth internal q value and set it to specified value. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_a7d59c7c592e2c45e2cd7865295a36eed}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00467}{467}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l00622}{oomph\+::\+Generalised\+Element\+::internal\+\_\+data\+\_\+pt()}}, \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_adab98934a20e65055bdc477824c8c5ef}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::nq\+\_\+basis\+\_\+internal()}}, \mbox{\hyperlink{nodes_8h_source_l00385}{oomph\+::\+Data\+::pin()}}, \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00204}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+internal\+\_\+index()}}, and \mbox{\hyperlink{nodes_8h_source_l00271}{oomph\+::\+Data\+::set\+\_\+value()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a155b8606a7c2602cc88ec15ae0a19a8f}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a155b8606a7c2602cc88ec15ae0a19a8f}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!q\_edge@{q\_edge}}
+\index{q\_edge@{q\_edge}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{q\_edge()}{q\_edge()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+double \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::q\+\_\+edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the values of the j-\/th edge (flux) degree of freedom. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_adf0d3ac9623d62b353e44e82984cf01f}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00251}{251}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l02598}{oomph\+::\+Finite\+Element\+::nodal\+\_\+value()}}, \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a55279875613735471b7b925116e85292}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::nq\+\_\+basis\+\_\+edge()}}, \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00210}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+edge\+\_\+index()}}, and \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00227}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+edge\+\_\+node\+\_\+number()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_aecff7a5e70e3567800d142f0fb24660e}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_aecff7a5e70e3567800d142f0fb24660e}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!q\_edge@{q\_edge}}
+\index{q\_edge@{q\_edge}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{q\_edge()}{q\_edge()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+double \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::q\+\_\+edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{t,  }\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the values of the j-\/th edge (flux) degree of freedom at time history level t. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_a8e5f2e3dbc4711493ca9eb80a9ee3911}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00269}{269}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l02598}{oomph\+::\+Finite\+Element\+::nodal\+\_\+value()}}, \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a55279875613735471b7b925116e85292}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::nq\+\_\+basis\+\_\+edge()}}, \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00210}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+edge\+\_\+index()}}, \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00227}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+edge\+\_\+node\+\_\+number()}}, and \mbox{\hyperlink{cfortran_8h_source_l00568}{t}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a6ac5d1648ac4fa381194091361208670}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a6ac5d1648ac4fa381194091361208670}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!Q\_edge\_conv@{Q\_edge\_conv}}
+\index{Q\_edge\_conv@{Q\_edge\_conv}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{Q\_edge\_conv()}{Q\_edge\_conv()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ 0 $>$\+::Q\+\_\+edge\+\_\+conv\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Conversion scheme from an edge degree of freedom to the node it\textquotesingle{}s stored at. 
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source_l00158}{158}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+cc}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a0dcd9244044156ea10955d1386b50125}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a0dcd9244044156ea10955d1386b50125}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!Q\_edge\_conv@{Q\_edge\_conv}}
+\index{Q\_edge\_conv@{Q\_edge\_conv}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{Q\_edge\_conv()}{Q\_edge\_conv()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ 1 $>$\+::Q\+\_\+edge\+\_\+conv\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Conversion scheme from an edge degree of freedom to the node it\textquotesingle{}s stored at. 
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source_l00360}{360}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+cc}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a184b75afe1f4928ff0b7396d92644dc3}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a184b75afe1f4928ff0b7396d92644dc3}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!q\_edge\_data\_pt@{q\_edge\_data\_pt}}
+\index{q\_edge\_data\_pt@{q\_edge\_data\_pt}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{q\_edge\_data\_pt()}{q\_edge\_data\_pt()}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1Data}{Data}} $\ast$ $>$ \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::q\+\_\+edge\+\_\+data\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return vector of pointers to the \mbox{\hyperlink{classoomph_1_1Data}{Data}} objects that store the edge flux values. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_a59df53b3141f4671e520e60871e8f145}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00186}{186}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l02180}{oomph\+::\+Finite\+Element\+::node\+\_\+pt()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a2b121fc589935b789d63731c5195adb5}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a2b121fc589935b789d63731c5195adb5}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!q\_edge\_index@{q\_edge\_index}}
+\index{q\_edge\_index@{q\_edge\_index}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{q\_edge\_index()}{q\_edge\_index()}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::q\+\_\+edge\+\_\+index (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the nodal index at which the jth edge unknown is stored. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_a5dc540a1c4f63f5023d2688aa15c2614}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00210}{210}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a55279875613735471b7b925116e85292}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::nq\+\_\+basis\+\_\+edge()}}.
+
+
+
+Referenced by \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00321}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::pin\+\_\+q\+\_\+edge\+\_\+value()}}, \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00251}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+edge()}}, \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00151}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+edge\+\_\+local\+\_\+eqn()}}, and \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00328}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::set\+\_\+q\+\_\+edge()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_ac6fcfbad57e73d5f6bacff687a67df4b}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_ac6fcfbad57e73d5f6bacff687a67df4b}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!q\_edge\_local\_eqn@{q\_edge\_local\_eqn}}
+\index{q\_edge\_local\_eqn@{q\_edge\_local\_eqn}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{q\_edge\_local\_eqn()}{q\_edge\_local\_eqn()}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+int \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::q\+\_\+edge\+\_\+local\+\_\+eqn (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the equation number of the j-\/th edge (flux) degree of freedom. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_a2cc9733c35e65c880246b3b072abb263}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00151}{151}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l01432}{oomph\+::\+Finite\+Element\+::nodal\+\_\+local\+\_\+eqn()}}, \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a55279875613735471b7b925116e85292}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::nq\+\_\+basis\+\_\+edge()}}, \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00210}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+edge\+\_\+index()}}, and \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00227}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+edge\+\_\+node\+\_\+number()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a6a76ba9fafcb226230340a6d1d931094}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a6a76ba9fafcb226230340a6d1d931094}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!q\_edge\_node\_number@{q\_edge\_node\_number}}
+\index{q\_edge\_node\_number@{q\_edge\_node\_number}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{q\_edge\_node\_number()}{q\_edge\_node\_number()}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::q\+\_\+edge\+\_\+node\+\_\+number (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the number of the node where the jth edge unknown is stored. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_a3067ec7af1ffb4656b63f5921a9a6467}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00227}{227}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a55279875613735471b7b925116e85292}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::nq\+\_\+basis\+\_\+edge()}}, and \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00061}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::\+Q\+\_\+edge\+\_\+conv}}.
+
+
+
+Referenced by \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00321}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::pin\+\_\+q\+\_\+edge\+\_\+value()}}, \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00251}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+edge()}}, \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00151}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+edge\+\_\+local\+\_\+eqn()}}, and \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00328}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::set\+\_\+q\+\_\+edge()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_af21c0187d947dc5a59278a3dd5b2397f}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_af21c0187d947dc5a59278a3dd5b2397f}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!q\_internal@{q\_internal}}
+\index{q\_internal@{q\_internal}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{q\_internal()}{q\_internal()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+double \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::q\+\_\+internal (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the values of the internal degree of freedom. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_aa8e09704efd83dcc29b6d10c7d67fd0a}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00286}{286}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l00622}{oomph\+::\+Generalised\+Element\+::internal\+\_\+data\+\_\+pt()}}, \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_adab98934a20e65055bdc477824c8c5ef}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::nq\+\_\+basis\+\_\+internal()}}, \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00204}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+internal\+\_\+index()}}, and \mbox{\hyperlink{nodes_8h_source_l00293}{oomph\+::\+Data\+::value()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a0fd7afe9fbe587b86fd77317194180b9}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a0fd7afe9fbe587b86fd77317194180b9}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!q\_internal@{q\_internal}}
+\index{q\_internal@{q\_internal}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{q\_internal()}{q\_internal()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+double \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::q\+\_\+internal (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{t,  }\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the value of the j-\/th internal degree of freedom at time history level t. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_acd7198ede00dbfeacf2bc576b688f54b}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00304}{304}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l00622}{oomph\+::\+Generalised\+Element\+::internal\+\_\+data\+\_\+pt()}}, \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_adab98934a20e65055bdc477824c8c5ef}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::nq\+\_\+basis\+\_\+internal()}}, \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00204}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+internal\+\_\+index()}}, and \mbox{\hyperlink{nodes_8h_source_l00293}{oomph\+::\+Data\+::value()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a1ce56c532e1508ab38176a2205e4a52d}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a1ce56c532e1508ab38176a2205e4a52d}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!q\_internal\_data\_pt@{q\_internal\_data\_pt}}
+\index{q\_internal\_data\_pt@{q\_internal\_data\_pt}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{q\_internal\_data\_pt()}{q\_internal\_data\_pt()}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+\mbox{\hyperlink{classoomph_1_1Data}{Data}} $\ast$ \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::q\+\_\+internal\+\_\+data\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return pointer to the \mbox{\hyperlink{classoomph_1_1Data}{Data}} object that stores the internal flux values. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_aa8778579607a669de781a4b50c08fb05}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00197}{197}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l00622}{oomph\+::\+Generalised\+Element\+::internal\+\_\+data\+\_\+pt()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a53999a350be9bf4320a19750dd85e71b}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a53999a350be9bf4320a19750dd85e71b}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!q\_internal\_index@{q\_internal\_index}}
+\index{q\_internal\_index@{q\_internal\_index}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{q\_internal\_index()}{q\_internal\_index()}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::q\+\_\+internal\+\_\+index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the index of the internal data where the q\+\_\+internal degrees of freedom are stored. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_a0c4a88ea26b89ce26aac6a04c21496dd}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00204}{204}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00068}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::\+Q\+\_\+internal\+\_\+data\+\_\+index}}.
+
+
+
+Referenced by \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00467}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::pin\+\_\+q\+\_\+internal\+\_\+value()}}, \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00286}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+internal()}}, \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00168}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+internal\+\_\+local\+\_\+eqn()}}, and \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00342}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::set\+\_\+q\+\_\+internal()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_ae13e181da7a330ebe62cc51d50584942}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_ae13e181da7a330ebe62cc51d50584942}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!q\_internal\_local\_eqn@{q\_internal\_local\_eqn}}
+\index{q\_internal\_local\_eqn@{q\_internal\_local\_eqn}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{q\_internal\_local\_eqn()}{q\_internal\_local\_eqn()}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+int \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::q\+\_\+internal\+\_\+local\+\_\+eqn (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the equation number of the j-\/th internal degree of freedom. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_a310a9bba22acd741c86d3e67940b5935}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00168}{168}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l00267}{oomph\+::\+Generalised\+Element\+::internal\+\_\+local\+\_\+eqn()}}, \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_adab98934a20e65055bdc477824c8c5ef}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::nq\+\_\+basis\+\_\+internal()}}, and \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00204}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+internal\+\_\+index()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a4e741ac6c7cacf006e930b0793d6797f}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a4e741ac6c7cacf006e930b0793d6797f}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!required\_nvalue@{required\_nvalue}}
+\index{required\_nvalue@{required\_nvalue}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{required\_nvalue()}{required\_nvalue()}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::required\+\_\+nvalue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{n }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Number of values required at node n. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_a926fed18368bf5e4f4f52c6817c007b5}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00085}{85}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00054}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::\+Initial\+\_\+\+Nvalue}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_ad06425b96b50c62a9e006ca7877cbb95}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_ad06425b96b50c62a9e006ca7877cbb95}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!scale\_basis@{scale\_basis}}
+\index{scale\_basis@{scale\_basis}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{scale\_basis()}{scale\_basis()}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::scale\+\_\+basis (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&}]{basis }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Scale the edge basis to allow arbitrary edge mappings. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_a252e63649ec2c65c1d0b8c7f461a11c6}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00555}{555}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{shape_8h_source_l00265}{oomph\+::\+Shape\+::nindex2()}}, \mbox{\hyperlink{elements_8h_source_l02180}{oomph\+::\+Finite\+Element\+::node\+\_\+pt()}}, and \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a55279875613735471b7b925116e85292}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::nq\+\_\+basis\+\_\+edge()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a8156a72c0ba1887945532e528ff5173a}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a8156a72c0ba1887945532e528ff5173a}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!set\_p\_value@{set\_p\_value}}
+\index{set\_p\_value@{set\_p\_value}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{set\_p\_value()}{set\_p\_value()}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::set\+\_\+p\+\_\+value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{j,  }\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} double \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Set the jth pressure value. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_a9cd42073dd4fedcb98b578a1edbbb922}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00549}{549}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l00622}{oomph\+::\+Generalised\+Element\+::internal\+\_\+data\+\_\+pt()}}, and \mbox{\hyperlink{nodes_8h_source_l00271}{oomph\+::\+Data\+::set\+\_\+value()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_aadc0873c12a2d059f49b4a2d85ec054b}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_aadc0873c12a2d059f49b4a2d85ec054b}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!set\_q\_edge@{set\_q\_edge}}
+\index{set\_q\_edge@{set\_q\_edge}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{set\_q\_edge()}{set\_q\_edge()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::set\+\_\+q\+\_\+edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{j,  }\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} double \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Set the values of the j-\/th edge (flux) degree of freedom. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_a40f0037981afc44e18425f472e04cb73}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00328}{328}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l02180}{oomph\+::\+Finite\+Element\+::node\+\_\+pt()}}, \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00210}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+edge\+\_\+index()}}, and \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00227}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+edge\+\_\+node\+\_\+number()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_aa6aa64af2580183c4e81a1466c6e467f}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_aa6aa64af2580183c4e81a1466c6e467f}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!set\_q\_edge@{set\_q\_edge}}
+\index{set\_q\_edge@{set\_q\_edge}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{set\_q\_edge()}{set\_q\_edge()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::set\+\_\+q\+\_\+edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{t,  }\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{j,  }\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} double \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Set the values of the j-\/th edge (flux) degree of freedom at time history level t. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_a30a9883e688ff91b78407b2e42e92d95}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00335}{335}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l02180}{oomph\+::\+Finite\+Element\+::node\+\_\+pt()}}, \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00210}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+edge\+\_\+index()}}, \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00227}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+edge\+\_\+node\+\_\+number()}}, and \mbox{\hyperlink{cfortran_8h_source_l00568}{t}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a7c5a9c57e9cbbe808b42ebe9aa727014}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a7c5a9c57e9cbbe808b42ebe9aa727014}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!set\_q\_internal@{set\_q\_internal}}
+\index{set\_q\_internal@{set\_q\_internal}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{set\_q\_internal()}{set\_q\_internal()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::set\+\_\+q\+\_\+internal (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{j,  }\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} double \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Set the values of the j-\/th internal degree of freedom. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_a50d888d78b1115aa95226ddcb34d5969}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00342}{342}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l00622}{oomph\+::\+Generalised\+Element\+::internal\+\_\+data\+\_\+pt()}}, \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00204}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+internal\+\_\+index()}}, and \mbox{\hyperlink{nodes_8h_source_l00271}{oomph\+::\+Data\+::set\+\_\+value()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a00e8333ce5109b945075ebe1b355c742}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a00e8333ce5109b945075ebe1b355c742}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!set\_q\_internal@{set\_q\_internal}}
+\index{set\_q\_internal@{set\_q\_internal}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{set\_q\_internal()}{set\_q\_internal()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+void \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::set\+\_\+q\+\_\+internal (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{t,  }\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{j,  }\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} double \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Set the values of the j-\/th internal degree of freedom at time history level t. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_af63d9e9769c923b3f1184e80d3c62569}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00349}{349}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l00622}{oomph\+::\+Generalised\+Element\+::internal\+\_\+data\+\_\+pt()}}, \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00204}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+internal\+\_\+index()}}, and \mbox{\hyperlink{nodes_8h_source_l00271}{oomph\+::\+Data\+::set\+\_\+value()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_aac2d7977167e87f6e7c3e3f3fef4a60c}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_aac2d7977167e87f6e7c3e3f3fef4a60c}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!shape\_basis\_test\_local@{shape\_basis\_test\_local}}
+\index{shape\_basis\_test\_local@{shape\_basis\_test\_local}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{shape\_basis\_test\_local()}{shape\_basis\_test\_local()}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+double \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::shape\+\_\+basis\+\_\+test\+\_\+local (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{s,  }\item[{\mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&}]{psi,  }\item[{\mbox{\hyperlink{classoomph_1_1DShape}{DShape}} \&}]{dpsi,  }\item[{\mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&}]{u\+\_\+basis,  }\item[{\mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&}]{u\+\_\+test,  }\item[{\mbox{\hyperlink{classoomph_1_1DShape}{DShape}} \&}]{du\+\_\+basis\+\_\+dx,  }\item[{\mbox{\hyperlink{classoomph_1_1DShape}{DShape}} \&}]{du\+\_\+test\+\_\+dx,  }\item[{\mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&}]{q\+\_\+basis,  }\item[{\mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&}]{q\+\_\+test,  }\item[{\mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&}]{p\+\_\+basis,  }\item[{\mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&}]{p\+\_\+test,  }\item[{\mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&}]{div\+\_\+q\+\_\+basis\+\_\+ds,  }\item[{\mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&}]{div\+\_\+q\+\_\+test\+\_\+ds }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Returns the geometric basis, and the u, p and divergence basis functions and test functions at local coordinate s. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_a5514cde6de162cc6eb49fd9e5844500d}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00642}{642}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a9d5dc0246e71dce2e217a45754d05472}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::get\+\_\+div\+\_\+q\+\_\+basis\+\_\+local()}}, \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a12e958b84334c6e47e0511ff1f08f13d}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::get\+\_\+p\+\_\+basis()}}, \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement_a77621158dba7ea8d2095e4162c76583c}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::get\+\_\+q\+\_\+basis\+\_\+local()}}, \mbox{\hyperlink{axisym__poroelasticity__elements_8h_source_l00365}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations\+::nq\+\_\+basis()}}, and \mbox{\hyperlink{axisym__poroelasticity__elements_8cc_source_l00080}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations\+::transform\+\_\+basis()}}.
+
+
+
+Referenced by \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00681}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::shape\+\_\+basis\+\_\+test\+\_\+local\+\_\+at\+\_\+knot()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_acc7a872515a68044fd5f379ca683cab1}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_acc7a872515a68044fd5f379ca683cab1}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!shape\_basis\_test\_local\_at\_knot@{shape\_basis\_test\_local\_at\_knot}}
+\index{shape\_basis\_test\_local\_at\_knot@{shape\_basis\_test\_local\_at\_knot}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{shape\_basis\_test\_local\_at\_knot()}{shape\_basis\_test\_local\_at\_knot()}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+double \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::shape\+\_\+basis\+\_\+test\+\_\+local\+\_\+at\+\_\+knot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{ipt,  }\item[{\mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&}]{psi,  }\item[{\mbox{\hyperlink{classoomph_1_1DShape}{DShape}} \&}]{dpsi,  }\item[{\mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&}]{u\+\_\+basis,  }\item[{\mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&}]{u\+\_\+test,  }\item[{\mbox{\hyperlink{classoomph_1_1DShape}{DShape}} \&}]{du\+\_\+basis\+\_\+dx,  }\item[{\mbox{\hyperlink{classoomph_1_1DShape}{DShape}} \&}]{du\+\_\+test\+\_\+dx,  }\item[{\mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&}]{q\+\_\+basis,  }\item[{\mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&}]{q\+\_\+test,  }\item[{\mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&}]{p\+\_\+basis,  }\item[{\mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&}]{p\+\_\+test,  }\item[{\mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&}]{div\+\_\+q\+\_\+basis\+\_\+ds,  }\item[{\mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&}]{div\+\_\+q\+\_\+test\+\_\+ds }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Returns the geometric basis, and the u, p and divergence basis functions and test functions at integration point ipt. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_a3e0f7b110f60d59bc047d9686de47111}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00681}{681}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{elements_8h_source_l01968}{oomph\+::\+Finite\+Element\+::integral\+\_\+pt()}}, \mbox{\hyperlink{cfortran_8h_source_l00568}{s}}, and \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00642}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::shape\+\_\+basis\+\_\+test\+\_\+local()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a695599d00e0a0b61e0519a032687a534}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a695599d00e0a0b61e0519a032687a534}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!sign\_edge@{sign\_edge}}
+\index{sign\_edge@{sign\_edge}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{sign\_edge()}{sign\_edge()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+short \& \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::sign\+\_\+edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Accessor for the unit normal sign of edge n. 
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00602}{602}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00075}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::\+Sign\+\_\+edge}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a851621a4327e402633538576bdd958e6}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a851621a4327e402633538576bdd958e6}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!sign\_edge@{sign\_edge}}
+\index{sign\_edge@{sign\_edge}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{sign\_edge()}{sign\_edge()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} short \& \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::sign\+\_\+edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{n }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Accessor for the unit normal sign of edge n (const version) 
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00596}{596}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00075}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::\+Sign\+\_\+edge}}.
+
+
+
+Referenced by \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00376}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::edge\+\_\+flux\+\_\+interpolation\+\_\+point()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_adcfaa53074c4710fa4c4d34ce37d326c}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_adcfaa53074c4710fa4c4d34ce37d326c}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!u\_index\_axisym\_poroelasticity@{u\_index\_axisym\_poroelasticity}}
+\index{u\_index\_axisym\_poroelasticity@{u\_index\_axisym\_poroelasticity}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{u\_index\_axisym\_poroelasticity()}{u\_index\_axisym\_poroelasticity()}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::u\+\_\+index\+\_\+axisym\+\_\+poroelasticity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the nodal index of the j-\/th solid displacement unknown \mbox{[}0\+: r; 1\+: z\mbox{]}. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityEquations_a258196c8f66ba5eec329565fa66dfcc7}{oomph\+::\+Axisymmetric\+Poroelasticity\+Equations}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00134}{134}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a7eafcc96ec32402ac9d5e0c89da77125}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a7eafcc96ec32402ac9d5e0c89da77125}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!vertex\_node\_pt@{vertex\_node\_pt}}
+\index{vertex\_node\_pt@{vertex\_node\_pt}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{vertex\_node\_pt()}{vertex\_node\_pt()}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+Node $\ast$ \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::vertex\+\_\+node\+\_\+pt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Pointer to the j-\/th vertex node in the element. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1FiniteElement_ac8b551c9d6f1f8e30e8b18fe2f9ae072}{oomph\+::\+Finite\+Element}}.
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00628}{628}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_aeb45073b85caee99c4e18eb9de35503b}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_aeb45073b85caee99c4e18eb9de35503b}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!Face\_index\_of\_edge\_flux@{Face\_index\_of\_edge\_flux}}
+\index{Face\_index\_of\_edge\_flux@{Face\_index\_of\_edge\_flux}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{Face\_index\_of\_edge\_flux}{Face\_index\_of\_edge\_flux}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::Face\+\_\+index\+\_\+of\+\_\+edge\+\_\+flux\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Face index associated with edge flux degree of freedom. 
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00057}{57}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00127}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::face\+\_\+index\+\_\+of\+\_\+q\+\_\+edge\+\_\+basis\+\_\+fct()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a84ede53b1b2d295bb379e43ed6f40782}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a84ede53b1b2d295bb379e43ed6f40782}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!Flux\_interpolation\_point@{Flux\_interpolation\_point}}
+\index{Flux\_interpolation\_point@{Flux\_interpolation\_point}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{Flux\_interpolation\_point}{Flux\_interpolation\_point}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} double \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::Flux\+\_\+interpolation\+\_\+point\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+The points along each edge where the fluxes are taken to be. 
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00064}{64}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00376}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::edge\+\_\+flux\+\_\+interpolation\+\_\+point()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a518f29c851f4062f3ef1b94f0076a902}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a518f29c851f4062f3ef1b94f0076a902}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!Initial\_Nvalue@{Initial\_Nvalue}}
+\index{Initial\_Nvalue@{Initial\_Nvalue}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{Initial\_Nvalue}{Initial\_Nvalue}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::Initial\+\_\+\+Nvalue\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+The number of values stored at each node. 
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00054}{54}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00085}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::required\+\_\+nvalue()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a439e9489d185eeae1b1085dde8ae0e7d}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a439e9489d185eeae1b1085dde8ae0e7d}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!P\_internal\_data\_index@{P\_internal\_data\_index}}
+\index{P\_internal\_data\_index@{P\_internal\_data\_index}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{P\_internal\_data\_index}{P\_internal\_data\_index}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::P\+\_\+internal\+\_\+data\+\_\+index\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The internal data index where the p degrees of freedom are stored. 
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00071}{71}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source_l00041}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::\+TAxisymmetric\+Poroelasticity\+Element()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_ae2a86834c98209802ce4e47997662012}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_ae2a86834c98209802ce4e47997662012}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!Q\_edge\_conv@{Q\_edge\_conv}}
+\index{Q\_edge\_conv@{Q\_edge\_conv}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{Q\_edge\_conv}{Q\_edge\_conv}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::Q\+\_\+edge\+\_\+conv\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Conversion scheme from an edge degree of freedom to the node it\textquotesingle{}s stored at. 
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00061}{61}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00407}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::edge\+\_\+flux\+\_\+interpolation\+\_\+point\+\_\+global()}}, \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00245}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::edge\+\_\+flux\+\_\+node\+\_\+pt()}}, \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00098}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::face\+\_\+local\+\_\+coordinate\+\_\+of\+\_\+flux\+\_\+interpolation\+\_\+point()}}, and \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00227}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+edge\+\_\+node\+\_\+number()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a22ed2100966da5e73fd7d38d58bee36c}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a22ed2100966da5e73fd7d38d58bee36c}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!Q\_internal\_data\_index@{Q\_internal\_data\_index}}
+\index{Q\_internal\_data\_index@{Q\_internal\_data\_index}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{Q\_internal\_data\_index}{Q\_internal\_data\_index}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+unsigned \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::Q\+\_\+internal\+\_\+data\+\_\+index\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The internal data index where the internal q degrees of freedom are stored. 
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00068}{68}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00204}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::q\+\_\+internal\+\_\+index()}}, and \mbox{\hyperlink{Taxisym__poroelasticity__elements_8cc_source_l00181}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::\+TAxisymmetric\+Poroelasticity\+Element()}}.
+
+\mbox{\Hypertarget{classoomph_1_1TAxisymmetricPoroelasticityElement_a19992fa82fa97f7f16aad3209d8bd8a0}\label{classoomph_1_1TAxisymmetricPoroelasticityElement_a19992fa82fa97f7f16aad3209d8bd8a0}} 
+\index{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}!Sign\_edge@{Sign\_edge}}
+\index{Sign\_edge@{Sign\_edge}!oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$@{oomph::TAxisymmetricPoroelasticityElement$<$ ORDER $>$}}
+\doxysubsubsection{\texorpdfstring{Sign\_edge}{Sign\_edge}}
+{\footnotesize\ttfamily template$<$unsigned ORDER$>$ \\
+std\+::vector$<$short$>$ \mbox{\hyperlink{classoomph_1_1TAxisymmetricPoroelasticityElement}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element}}$<$ ORDER $>$\+::Sign\+\_\+edge\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Unit normal signs associated with each edge to ensure inter-\/element continuity of the flux. 
+
+
+
+Definition at line \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00075}{75}} of file \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{Taxisym__poroelasticity__elements_8h_source_l00596}{oomph\+::\+TAxisymmetric\+Poroelasticity\+Element$<$ ORDER $>$\+::sign\+\_\+edge()}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Taxisym__poroelasticity__elements_8h}{Taxisym\+\_\+poroelasticity\+\_\+elements.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,282 @@
+\hypertarget{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement}{}\doxysection{oomph\+::FSILinearised\+Axisym\+Poroelastic\+Traction\+Element\texorpdfstring{$<$}{<} POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT, NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement}\index{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$@{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$}}
+
+
+//////////////////////////////////////////////////////////////////// ////////////////////////////////////////////////////////////////////  
+
+
+
+
+{\ttfamily \#include $<$axisym\+\_\+poroelasticity\+\_\+face\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+::FSILinearised\+Axisym\+Poroelastic\+Traction\+Element\texorpdfstring{$<$}{<} POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT, NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.896287cm]{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} double \& \mbox{\hyperlink{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement_a84e32a5f8a1b64c2327df3d429c31bb8}{q}} () \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Return the ratio of the stress scales used to non-\/dimensionalise the fluid and poroelasticity equations. \end{DoxyCompactList}\item 
+double $\ast$\& \mbox{\hyperlink{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement_a6d07b3f37e039d9f85da4961c941a959}{q\+\_\+pt}} ()
+\begin{DoxyCompactList}\small\item\em Return a pointer the ratio of stress scales used to non-\/dimensionalise the fluid and poroelastic equations. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement_ace2d9e5b5f0fbea991a95b5e1c0f7b80}{get\+\_\+traction}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} double \&time, \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&intpt, \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{namespaceoomph_a9d1d2da2b8bb8e73af72b5cadb8fe97c}{x}}, \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&n, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityTractionElement_abb8e937540df8384b6129793497f1e50}{traction}})
+\begin{DoxyCompactList}\small\item\em Get the (combined) traction from the neighbouring Navier-\/\+Stokes bulk element\textquotesingle{}s stress. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement_a400115007925a62448e741cad2697472}{get\+\_\+pressure}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} double \&time, \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&intpt, \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{namespaceoomph_a9d1d2da2b8bb8e73af72b5cadb8fe97c}{x}}, \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&n, double \&\mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityTractionElement_a9d0a69336be18e1a62450c5c8872777b}{pressure}})
+\begin{DoxyCompactList}\small\item\em Get the pore fluid pressure from the neighbouring Navier-\/\+Stokes bulk element\textquotesingle{}s stress. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement_a476bd52349df91ba7a89ebbe1f9891a7}{FSILinearised\+Axisym\+Poroelastic\+Traction\+Element}} (\mbox{\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element}} $\ast$\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \&element\+\_\+pt, \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} int \&\mbox{\hyperlink{classoomph_1_1FaceElement_a14990bd081523c47cfe57e5ecf54dfe1}{face\+\_\+index}})
+\begin{DoxyCompactList}\small\item\em Constructor, which takes a \char`\"{}bulk\char`\"{} element and the value of the index and its limit. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement_ae2a2fb1ee26e98653ceebe2450f2c0a5}{FSILinearised\+Axisym\+Poroelastic\+Traction\+Element}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement_af571d66ac4dcf3cb0219426dea20131c}{output}} (std\+::ostream \&outfile, \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&n\+\_\+plot)
+\begin{DoxyCompactList}\small\item\em Output function -- overloaded version -- ignores n\+\_\+plot since fsi elements can only evaluate traction at \mbox{\hyperlink{classoomph_1_1Gauss}{Gauss}} points. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement_a98dbef42bb96b9d1f53184161e860a98}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian}} (\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&residuals, \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ \&\mbox{\hyperlink{classoomph_1_1FiniteElement_aa6c806dab803b82ba4f02cf806971af8}{jacobian}})
+\begin{DoxyCompactList}\small\item\em Fill in contribution from Jacobian. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double $\ast$ \mbox{\hyperlink{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement_a6444d2bd9be7d1e05a8253bd8b848a60}{Q\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em Pointer to the ratio, $ Q $, of the stress used to non-\/dimensionalise the fluid stresses to the stress used to non-\/dimensionalise the poroelastic stresses. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static double \mbox{\hyperlink{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement_aa210d70794a163cb3ffb5f335b0f1937}{Default\+\_\+\+Q\+\_\+\+Value}} = 1.\+0
+\begin{DoxyCompactList}\small\item\em Static default value for the ratio of stress scales used in the fluid and poroelasticity equations (default is 1.\+0) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT, class NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT$>$\newline
+class oomph\+::\+FSILinearised\+Axisym\+Poroelastic\+Traction\+Element$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT, NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$}
+//////////////////////////////////////////////////////////////////// //////////////////////////////////////////////////////////////////// 
+
+A class for elements that allow the imposition of an applied combined traction and pore fluid pressure in the poroelasticity equations. The geometrical information can be read from the Face\+Geometry$<$\+ELEMENT$>$ class and thus, we can be generic enough without the need to have a separate equations class. 
+
+Definition at line \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source_l00901}{901}} of file \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source}{axisym\+\_\+poroelasticity\+\_\+face\+\_\+elements.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement_a476bd52349df91ba7a89ebbe1f9891a7}\label{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement_a476bd52349df91ba7a89ebbe1f9891a7}} 
+\index{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$@{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$}!FSILinearisedAxisymPoroelasticTractionElement@{FSILinearisedAxisymPoroelasticTractionElement}}
+\index{FSILinearisedAxisymPoroelasticTractionElement@{FSILinearisedAxisymPoroelasticTractionElement}!oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$@{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$}}
+\doxysubsubsection{\texorpdfstring{FSILinearisedAxisymPoroelasticTractionElement()}{FSILinearisedAxisymPoroelasticTractionElement()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT , class NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$ \\
+\mbox{\hyperlink{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement}{oomph\+::\+FSILinearised\+Axisym\+Poroelastic\+Traction\+Element}}$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT, NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$\+::\mbox{\hyperlink{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement}{FSILinearised\+Axisym\+Poroelastic\+Traction\+Element}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element}} $\ast$\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \&}]{element\+\_\+pt,  }\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} int \&}]{face\+\_\+index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor, which takes a \char`\"{}bulk\char`\"{} element and the value of the index and its limit. 
+
+
+
+Definition at line \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source_l01042}{1042}} of file \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source}{axisym\+\_\+poroelasticity\+\_\+face\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{element__with__external__element_8h_source_l00178}{oomph\+::\+Element\+With\+External\+Element\+::set\+\_\+ninteraction()}}.
+
+\mbox{\Hypertarget{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement_ae2a2fb1ee26e98653ceebe2450f2c0a5}\label{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement_ae2a2fb1ee26e98653ceebe2450f2c0a5}} 
+\index{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$@{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$}!FSILinearisedAxisymPoroelasticTractionElement@{FSILinearisedAxisymPoroelasticTractionElement}}
+\index{FSILinearisedAxisymPoroelasticTractionElement@{FSILinearisedAxisymPoroelasticTractionElement}!oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$@{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$}}
+\doxysubsubsection{\texorpdfstring{FSILinearisedAxisymPoroelasticTractionElement()}{FSILinearisedAxisymPoroelasticTractionElement()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT , class NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$ \\
+\mbox{\hyperlink{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement}{oomph\+::\+FSILinearised\+Axisym\+Poroelastic\+Traction\+Element}}$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT, NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$\+::\mbox{\hyperlink{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement}{FSILinearised\+Axisym\+Poroelastic\+Traction\+Element}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor. 
+
+
+
+Definition at line \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source_l01054}{1054}} of file \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source}{axisym\+\_\+poroelasticity\+\_\+face\+\_\+elements.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement_a98dbef42bb96b9d1f53184161e860a98}\label{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement_a98dbef42bb96b9d1f53184161e860a98}} 
+\index{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$@{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$}!fill\_in\_contribution\_to\_jacobian@{fill\_in\_contribution\_to\_jacobian}}
+\index{fill\_in\_contribution\_to\_jacobian@{fill\_in\_contribution\_to\_jacobian}!oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$@{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$}}
+\doxysubsubsection{\texorpdfstring{fill\_in\_contribution\_to\_jacobian()}{fill\_in\_contribution\_to\_jacobian()}}
+{\footnotesize\ttfamily template$<$class POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT , class NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$ \\
+void \mbox{\hyperlink{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement}{oomph\+::\+FSILinearised\+Axisym\+Poroelastic\+Traction\+Element}}$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT, NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+jacobian (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{residuals,  }\item[{\mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ \&}]{jacobian }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Fill in contribution from Jacobian. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1GeneralisedElement_a6ae09fc0d68e4309ac1b03583d252845}{oomph\+::\+Generalised\+Element}}.
+
+
+
+Definition at line \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source_l01170}{1170}} of file \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source}{axisym\+\_\+poroelasticity\+\_\+face\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source_l00704}{oomph\+::\+Axisymmetric\+Poroelasticity\+Traction\+Element$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT $>$\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals\+\_\+axisym\+\_\+poroelasticity\+\_\+face()}}, \mbox{\hyperlink{element__with__external__element_8h_source_l00345}{oomph\+::\+Element\+With\+External\+Element\+::fill\+\_\+in\+\_\+jacobian\+\_\+from\+\_\+external\+\_\+interaction\+\_\+by\+\_\+fd()}}, and \mbox{\hyperlink{elements_8h_source_l01611}{oomph\+::\+Finite\+Element\+::jacobian}}.
+
+\mbox{\Hypertarget{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement_a400115007925a62448e741cad2697472}\label{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement_a400115007925a62448e741cad2697472}} 
+\index{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$@{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$}!get\_pressure@{get\_pressure}}
+\index{get\_pressure@{get\_pressure}!oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$@{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$}}
+\doxysubsubsection{\texorpdfstring{get\_pressure()}{get\_pressure()}}
+{\footnotesize\ttfamily template$<$class POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT , class NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$ \\
+void \mbox{\hyperlink{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement}{oomph\+::\+FSILinearised\+Axisym\+Poroelastic\+Traction\+Element}}$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT, NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$\+::get\+\_\+pressure (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} double \&}]{time,  }\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{intpt,  }\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{x,  }\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{n,  }\item[{double \&}]{pressure }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the pore fluid pressure from the neighbouring Navier-\/\+Stokes bulk element\textquotesingle{}s stress. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityTractionElement_a1b4adcf0b886054a3d51e0b2910ddbda}{oomph\+::\+Axisymmetric\+Poroelasticity\+Traction\+Element$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT $>$}}.
+
+
+
+Definition at line \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source_l01006}{1006}} of file \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source}{axisym\+\_\+poroelasticity\+\_\+face\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{element__with__external__element_8h_source_l00136}{oomph\+::\+Element\+With\+External\+Element\+::external\+\_\+element\+\_\+local\+\_\+coord()}}, \mbox{\hyperlink{element__with__external__element_8h_source_l00107}{oomph\+::\+Element\+With\+External\+Element\+::external\+\_\+element\+\_\+pt()}}, \mbox{\hyperlink{elements_8h_source_l02489}{oomph\+::\+Finite\+Element\+::nodal\+\_\+dimension()}}, \mbox{\hyperlink{elements_8cc_source_l06010}{oomph\+::\+Face\+Element\+::outer\+\_\+unit\+\_\+normal()}}, \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source_l00677}{oomph\+::\+Axisymmetric\+Poroelasticity\+Traction\+Element$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT $>$\+::pressure()}}, and \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source_l00920}{oomph\+::\+FSILinearised\+Axisym\+Poroelastic\+Traction\+Element$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT, NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$\+::q()}}.
+
+
+
+Referenced by \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source_l01059}{oomph\+::\+FSILinearised\+Axisym\+Poroelastic\+Traction\+Element$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT, NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$\+::output()}}.
+
+\mbox{\Hypertarget{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement_ace2d9e5b5f0fbea991a95b5e1c0f7b80}\label{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement_ace2d9e5b5f0fbea991a95b5e1c0f7b80}} 
+\index{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$@{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$}!get\_traction@{get\_traction}}
+\index{get\_traction@{get\_traction}!oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$@{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$}}
+\doxysubsubsection{\texorpdfstring{get\_traction()}{get\_traction()}}
+{\footnotesize\ttfamily template$<$class POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT , class NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$ \\
+void \mbox{\hyperlink{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement}{oomph\+::\+FSILinearised\+Axisym\+Poroelastic\+Traction\+Element}}$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT, NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$\+::get\+\_\+traction (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} double \&}]{time,  }\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{intpt,  }\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{x,  }\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{n,  }\item[{\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{traction }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the (combined) traction from the neighbouring Navier-\/\+Stokes bulk element\textquotesingle{}s stress. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1AxisymmetricPoroelasticityTractionElement_a0d996e2947fe74e991d1f382cfa5491d}{oomph\+::\+Axisymmetric\+Poroelasticity\+Traction\+Element$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT $>$}}.
+
+
+
+Definition at line \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source_l00934}{934}} of file \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source}{axisym\+\_\+poroelasticity\+\_\+face\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source_l00079}{oomph\+::\+Axisymmetric\+Poroelasticity\+Traction\+Element\+Helper\+::\+Allow\+\_\+gap\+\_\+in\+\_\+\+FSI}}, \mbox{\hyperlink{element__with__external__element_8h_source_l00136}{oomph\+::\+Element\+With\+External\+Element\+::external\+\_\+element\+\_\+local\+\_\+coord()}}, \mbox{\hyperlink{element__with__external__element_8h_source_l00107}{oomph\+::\+Element\+With\+External\+Element\+::external\+\_\+element\+\_\+pt()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{elements_8h_source_l01968}{oomph\+::\+Finite\+Element\+::integral\+\_\+pt()}}, \mbox{\hyperlink{classoomph_1_1FiniteElement_a40b7ab54112a2c6100da99ac801f7a06}{oomph\+::\+Finite\+Element\+::interpolated\+\_\+x()}}, \mbox{\hyperlink{elements_8h_source_l02489}{oomph\+::\+Finite\+Element\+::nodal\+\_\+dimension()}}, \mbox{\hyperlink{elements_8cc_source_l06010}{oomph\+::\+Face\+Element\+::outer\+\_\+unit\+\_\+normal()}}, \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source_l00920}{oomph\+::\+FSILinearised\+Axisym\+Poroelastic\+Traction\+Element$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT, NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$\+::q()}}, \mbox{\hyperlink{cfortran_8h_source_l00568}{s}}, and \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source_l00651}{oomph\+::\+Axisymmetric\+Poroelasticity\+Traction\+Element$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT $>$\+::traction()}}.
+
+
+
+Referenced by \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source_l01059}{oomph\+::\+FSILinearised\+Axisym\+Poroelastic\+Traction\+Element$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT, NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$\+::output()}}.
+
+\mbox{\Hypertarget{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement_af571d66ac4dcf3cb0219426dea20131c}\label{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement_af571d66ac4dcf3cb0219426dea20131c}} 
+\index{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$@{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$}!output@{output}}
+\index{output@{output}!oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$@{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$}}
+\doxysubsubsection{\texorpdfstring{output()}{output()}}
+{\footnotesize\ttfamily template$<$class POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT , class NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$ \\
+void \mbox{\hyperlink{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement}{oomph\+::\+FSILinearised\+Axisym\+Poroelastic\+Traction\+Element}}$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT, NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$\+::output (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile,  }\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{n\+\_\+plot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Output function -- overloaded version -- ignores n\+\_\+plot since fsi elements can only evaluate traction at \mbox{\hyperlink{classoomph_1_1Gauss}{Gauss}} points. 
+
+Calculate the FE representation of u
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1FiniteElement_afa9d9b2670f999b43e6679c9dd28c457}{oomph\+::\+Finite\+Element}}.
+
+
+
+Definition at line \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source_l01059}{1059}} of file \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source}{axisym\+\_\+poroelasticity\+\_\+face\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l04763}{oomph\+::\+Face\+Element\+::bulk\+\_\+element\+\_\+pt()}}, \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source_l01006}{oomph\+::\+FSILinearised\+Axisym\+Poroelastic\+Traction\+Element$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT, NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$\+::get\+\_\+pressure()}}, \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source_l00934}{oomph\+::\+FSILinearised\+Axisym\+Poroelastic\+Traction\+Element$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT, NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$\+::get\+\_\+traction()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{elements_8h_source_l01968}{oomph\+::\+Finite\+Element\+::integral\+\_\+pt()}}, \mbox{\hyperlink{classoomph_1_1FiniteElement_a40b7ab54112a2c6100da99ac801f7a06}{oomph\+::\+Finite\+Element\+::interpolated\+\_\+x()}}, \mbox{\hyperlink{elements_8cc_source_l06357}{oomph\+::\+Face\+Element\+::local\+\_\+coordinate\+\_\+in\+\_\+bulk()}}, \mbox{\hyperlink{elements_8h_source_l02489}{oomph\+::\+Finite\+Element\+::nodal\+\_\+dimension()}}, \mbox{\hyperlink{elements_8h_source_l02180}{oomph\+::\+Finite\+Element\+::node\+\_\+pt()}}, \mbox{\hyperlink{elements_8cc_source_l06010}{oomph\+::\+Face\+Element\+::outer\+\_\+unit\+\_\+normal()}}, \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source_l00677}{oomph\+::\+Axisymmetric\+Poroelasticity\+Traction\+Element$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT $>$\+::pressure()}}, \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source_l00920}{oomph\+::\+FSILinearised\+Axisym\+Poroelastic\+Traction\+Element$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT, NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$\+::q()}}, \mbox{\hyperlink{cfortran_8h_source_l00568}{s}}, \mbox{\hyperlink{elements_8h_source_l03166}{oomph\+::\+Finite\+Element\+::tecplot\+\_\+zone\+\_\+string()}}, \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source_l00651}{oomph\+::\+Axisymmetric\+Poroelasticity\+Traction\+Element$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT $>$\+::traction()}}, \mbox{\hyperlink{elements_8h_source_l03179}{oomph\+::\+Finite\+Element\+::write\+\_\+tecplot\+\_\+zone\+\_\+footer()}}, and \mbox{\hyperlink{pseudo__buckling__ring_8h_source_l00049}{oomph\+::x}}.
+
+\mbox{\Hypertarget{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement_a84e32a5f8a1b64c2327df3d429c31bb8}\label{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement_a84e32a5f8a1b64c2327df3d429c31bb8}} 
+\index{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$@{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$}!q@{q}}
+\index{q@{q}!oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$@{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$}}
+\doxysubsubsection{\texorpdfstring{q()}{q()}}
+{\footnotesize\ttfamily template$<$class POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT , class NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$ \\
+\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} double \& \mbox{\hyperlink{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement}{oomph\+::\+FSILinearised\+Axisym\+Poroelastic\+Traction\+Element}}$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT, NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$\+::q (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the ratio of the stress scales used to non-\/dimensionalise the fluid and poroelasticity equations. 
+
+
+
+Definition at line \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source_l00920}{920}} of file \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source}{axisym\+\_\+poroelasticity\+\_\+face\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source_l00910}{oomph\+::\+FSILinearised\+Axisym\+Poroelastic\+Traction\+Element$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT, NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$\+::\+Q\+\_\+pt}}.
+
+
+
+Referenced by \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source_l01006}{oomph\+::\+FSILinearised\+Axisym\+Poroelastic\+Traction\+Element$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT, NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$\+::get\+\_\+pressure()}}, \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source_l00934}{oomph\+::\+FSILinearised\+Axisym\+Poroelastic\+Traction\+Element$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT, NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$\+::get\+\_\+traction()}}, and \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source_l01059}{oomph\+::\+FSILinearised\+Axisym\+Poroelastic\+Traction\+Element$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT, NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$\+::output()}}.
+
+\mbox{\Hypertarget{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement_a6d07b3f37e039d9f85da4961c941a959}\label{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement_a6d07b3f37e039d9f85da4961c941a959}} 
+\index{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$@{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$}!q\_pt@{q\_pt}}
+\index{q\_pt@{q\_pt}!oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$@{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$}}
+\doxysubsubsection{\texorpdfstring{q\_pt()}{q\_pt()}}
+{\footnotesize\ttfamily template$<$class POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT , class NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$ \\
+double $\ast$\& \mbox{\hyperlink{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement}{oomph\+::\+FSILinearised\+Axisym\+Poroelastic\+Traction\+Element}}$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT, NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$\+::q\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return a pointer the ratio of stress scales used to non-\/dimensionalise the fluid and poroelastic equations. 
+
+
+
+Definition at line \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source_l00927}{927}} of file \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source}{axisym\+\_\+poroelasticity\+\_\+face\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source_l00910}{oomph\+::\+FSILinearised\+Axisym\+Poroelastic\+Traction\+Element$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT, NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$\+::\+Q\+\_\+pt}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement_aa210d70794a163cb3ffb5f335b0f1937}\label{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement_aa210d70794a163cb3ffb5f335b0f1937}} 
+\index{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$@{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$}!Default\_Q\_Value@{Default\_Q\_Value}}
+\index{Default\_Q\_Value@{Default\_Q\_Value}!oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$@{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$}}
+\doxysubsubsection{\texorpdfstring{Default\_Q\_Value}{Default\_Q\_Value}}
+{\footnotesize\ttfamily template$<$class POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT , class NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$ \\
+double \mbox{\hyperlink{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement}{oomph\+::\+FSILinearised\+Axisym\+Poroelastic\+Traction\+Element}}$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT, NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$\+::Default\+\_\+\+Q\+\_\+\+Value = 1.\+0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Static default value for the ratio of stress scales used in the fluid and poroelasticity equations (default is 1.\+0) 
+
+Static default value for the ratio of stress scales used in the fluid and solid equations (default is 1.\+0) 
+
+Definition at line \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source_l00914}{914}} of file \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source}{axisym\+\_\+poroelasticity\+\_\+face\+\_\+elements.\+h}}.
+
+\mbox{\Hypertarget{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement_a6444d2bd9be7d1e05a8253bd8b848a60}\label{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement_a6444d2bd9be7d1e05a8253bd8b848a60}} 
+\index{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$@{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$}!Q\_pt@{Q\_pt}}
+\index{Q\_pt@{Q\_pt}!oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$@{oomph::FSILinearisedAxisymPoroelasticTractionElement$<$ POROELASTICITY\_BULK\_ELEMENT, NAVIER\_STOKES\_BULK\_ELEMENT $>$}}
+\doxysubsubsection{\texorpdfstring{Q\_pt}{Q\_pt}}
+{\footnotesize\ttfamily template$<$class POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT , class NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$ \\
+double$\ast$ \mbox{\hyperlink{classoomph_1_1FSILinearisedAxisymPoroelasticTractionElement}{oomph\+::\+FSILinearised\+Axisym\+Poroelastic\+Traction\+Element}}$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT, NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$\+::Q\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Pointer to the ratio, $ Q $, of the stress used to non-\/dimensionalise the fluid stresses to the stress used to non-\/dimensionalise the poroelastic stresses. 
+
+
+
+Definition at line \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source_l00910}{910}} of file \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source}{axisym\+\_\+poroelasticity\+\_\+face\+\_\+elements.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source_l00920}{oomph\+::\+FSILinearised\+Axisym\+Poroelastic\+Traction\+Element$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT, NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$\+::q()}}, and \mbox{\hyperlink{axisym__poroelasticity__face__elements_8h_source_l00927}{oomph\+::\+FSILinearised\+Axisym\+Poroelastic\+Traction\+Element$<$ POROELASTICITY\+\_\+\+BULK\+\_\+\+ELEMENT, NAVIER\+\_\+\+STOKES\+\_\+\+BULK\+\_\+\+ELEMENT $>$\+::q\+\_\+pt()}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{axisym__poroelasticity__face__elements_8h}{axisym\+\_\+poroelasticity\+\_\+face\+\_\+elements.\+h}}\end{DoxyCompactItemize}

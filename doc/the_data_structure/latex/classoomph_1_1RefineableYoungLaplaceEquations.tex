@@ -1,0 +1,230 @@
+\hypertarget{classoomph_1_1RefineableYoungLaplaceEquations}{}\doxysection{oomph\+::Refineable\+Young\+Laplace\+Equations Class Reference}
+\label{classoomph_1_1RefineableYoungLaplaceEquations}\index{oomph::RefineableYoungLaplaceEquations@{oomph::RefineableYoungLaplaceEquations}}
+
+
+////////////////////////////////////////////////////////////////////////  
+
+
+
+
+{\ttfamily \#include $<$refineable\+\_\+young\+\_\+laplace\+\_\+elements.\+h$>$}
+
+Inheritance diagram for oomph\+::Refineable\+Young\+Laplace\+Equations\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.595442cm]{classoomph_1_1RefineableYoungLaplaceEquations}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1RefineableYoungLaplaceEquations_a2a063bf86fb20b2db8cc962947663da2}{Refineable\+Young\+Laplace\+Equations}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} int \&refine\+\_\+level=0)
+\begin{DoxyCompactList}\small\item\em Constructor\+: Pass refinement level to refineable element (default 0 = root) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1RefineableYoungLaplaceEquations_a1f7cc271b0c2446139e28b202a7306d7}{Refineable\+Young\+Laplace\+Equations}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1RefineableYoungLaplaceEquations}{Refineable\+Young\+Laplace\+Equations}} \&dummy)=delete
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1RefineableYoungLaplaceEquations_a46a5167ac955dd839ae43e7de535ee44}{operator=}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1RefineableYoungLaplaceEquations}{Refineable\+Young\+Laplace\+Equations}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1RefineableYoungLaplaceEquations_ae9a050a3b61cb89b54907a0efd9bcfab}{fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals}} (\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&residuals)
+\begin{DoxyCompactList}\small\item\em Compute element residual vector taking hanging nodes into account. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1RefineableYoungLaplaceEquations_aef39cb1a9e6f4b117b840211fa8570cc}{num\+\_\+\+Z2\+\_\+flux\+\_\+terms}} ()
+\begin{DoxyCompactList}\small\item\em Number of \textquotesingle{}flux\textquotesingle{} terms for Z2 error estimation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1RefineableYoungLaplaceEquations_ab8d8c6010331d8076a5d6369d331eb4d}{get\+\_\+\+Z2\+\_\+flux}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}}, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&flux)
+\begin{DoxyCompactList}\small\item\em Get \textquotesingle{}flux\textquotesingle{} for Z2 error recovery\+: Standard flux from Young\+Laplace equations. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1RefineableYoungLaplaceEquations_ab54a23095ee8aef3fe68542bdfa1400a}{get\+\_\+interpolated\+\_\+values}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}}, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&values)
+\begin{DoxyCompactList}\small\item\em Get the function value u in \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}. Note\+: Given the generality of the interface (this function is usually called from black-\/box documentation or interpolation routines), the values \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} sets its own size in here. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1RefineableYoungLaplaceEquations_a0fad7813f5ad8046353921f263c1af05}{get\+\_\+interpolated\+\_\+values}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}}, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&values)
+\begin{DoxyCompactList}\small\item\em Get the function value u in \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}. Note\+: Given the generality of the interface (this function is usually called from black-\/box documentation or interpolation routines), the values \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} sets its own size in here. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1RefineableYoungLaplaceEquations_a9c663f1cb9fec2a0d5ec263313741e74}{further\+\_\+build}} ()
+\begin{DoxyCompactList}\small\item\em Further build\+: Copy function pointers to spine and spine base functions from father. Kappa is passed across with set\+\_\+kappa(...) to ensure that it\textquotesingle{}s added to the element\textquotesingle{}s external \mbox{\hyperlink{classoomph_1_1Data}{Data}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+//////////////////////////////////////////////////////////////////////// 
+
+Refineable version of Young\+Laplace equations 
+
+Definition at line \mbox{\hyperlink{refineable__young__laplace__elements_8h_source_l00053}{53}} of file \mbox{\hyperlink{refineable__young__laplace__elements_8h_source}{refineable\+\_\+young\+\_\+laplace\+\_\+elements.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1RefineableYoungLaplaceEquations_a2a063bf86fb20b2db8cc962947663da2}\label{classoomph_1_1RefineableYoungLaplaceEquations_a2a063bf86fb20b2db8cc962947663da2}} 
+\index{oomph::RefineableYoungLaplaceEquations@{oomph::RefineableYoungLaplaceEquations}!RefineableYoungLaplaceEquations@{RefineableYoungLaplaceEquations}}
+\index{RefineableYoungLaplaceEquations@{RefineableYoungLaplaceEquations}!oomph::RefineableYoungLaplaceEquations@{oomph::RefineableYoungLaplaceEquations}}
+\doxysubsubsection{\texorpdfstring{RefineableYoungLaplaceEquations()}{RefineableYoungLaplaceEquations()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily oomph\+::\+Refineable\+Young\+Laplace\+Equations\+::\+Refineable\+Young\+Laplace\+Equations (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} int \&}]{refine\+\_\+level = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor\+: Pass refinement level to refineable element (default 0 = root) 
+
+
+
+Definition at line \mbox{\hyperlink{refineable__young__laplace__elements_8h_source_l00061}{61}} of file \mbox{\hyperlink{refineable__young__laplace__elements_8h_source}{refineable\+\_\+young\+\_\+laplace\+\_\+elements.\+h}}.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableYoungLaplaceEquations_a1f7cc271b0c2446139e28b202a7306d7}\label{classoomph_1_1RefineableYoungLaplaceEquations_a1f7cc271b0c2446139e28b202a7306d7}} 
+\index{oomph::RefineableYoungLaplaceEquations@{oomph::RefineableYoungLaplaceEquations}!RefineableYoungLaplaceEquations@{RefineableYoungLaplaceEquations}}
+\index{RefineableYoungLaplaceEquations@{RefineableYoungLaplaceEquations}!oomph::RefineableYoungLaplaceEquations@{oomph::RefineableYoungLaplaceEquations}}
+\doxysubsubsection{\texorpdfstring{RefineableYoungLaplaceEquations()}{RefineableYoungLaplaceEquations()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily oomph\+::\+Refineable\+Young\+Laplace\+Equations\+::\+Refineable\+Young\+Laplace\+Equations (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1RefineableYoungLaplaceEquations}{Refineable\+Young\+Laplace\+Equations}} \&}]{dummy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Broken copy constructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1RefineableYoungLaplaceEquations_ae9a050a3b61cb89b54907a0efd9bcfab}\label{classoomph_1_1RefineableYoungLaplaceEquations_ae9a050a3b61cb89b54907a0efd9bcfab}} 
+\index{oomph::RefineableYoungLaplaceEquations@{oomph::RefineableYoungLaplaceEquations}!fill\_in\_contribution\_to\_residuals@{fill\_in\_contribution\_to\_residuals}}
+\index{fill\_in\_contribution\_to\_residuals@{fill\_in\_contribution\_to\_residuals}!oomph::RefineableYoungLaplaceEquations@{oomph::RefineableYoungLaplaceEquations}}
+\doxysubsubsection{\texorpdfstring{fill\_in\_contribution\_to\_residuals()}{fill\_in\_contribution\_to\_residuals()}}
+{\footnotesize\ttfamily void oomph\+::\+Refineable\+Young\+Laplace\+Equations\+::fill\+\_\+in\+\_\+contribution\+\_\+to\+\_\+residuals (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{residuals }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Compute element residual vector taking hanging nodes into account. 
+
+\hypertarget{refineable_young_laplace_elements.cc_autotoc_md30}{}\doxysubsubsection{\char`\"{}\+Simple\char`\"{} case}\label{refineable_young_laplace_elements.cc_autotoc_md30}
+\hypertarget{refineable_young_laplace_elements.cc_autotoc_md31}{}\doxysubsubsection{Spine case}\label{refineable_young_laplace_elements.cc_autotoc_md31}
+Get the unnormalized normal
+
+Tmp storage
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1GeneralisedElement_a310c97f515e8504a48179c0e72c550d7}{oomph\+::\+Generalised\+Element}}.
+
+
+
+Definition at line \mbox{\hyperlink{refineable__young__laplace__elements_8cc_source_l00034}{34}} of file \mbox{\hyperlink{refineable__young__laplace__elements_8cc_source}{refineable\+\_\+young\+\_\+laplace\+\_\+elements.\+cc}}.
+
+
+
+References \mbox{\hyperlink{classoomph_1_1FiniteElement_a837c4849f68842295ab5e77c8ecb8b93}{oomph\+::\+Finite\+Element\+::dshape\+\_\+eulerian\+\_\+at\+\_\+knot()}}, \mbox{\hyperlink{elements_8h_source_l01968}{oomph\+::\+Finite\+Element\+::integral\+\_\+pt()}}, \mbox{\hyperlink{classoomph_1_1FiniteElement_a4407a4f0fb5bf5b883530742ee3153df}{oomph\+::\+Finite\+Element\+::interpolated\+\_\+zeta()}}, \mbox{\hyperlink{refineable__elements_8h_source_l00278}{oomph\+::\+Refineable\+Element\+::local\+\_\+hang\+\_\+eqn()}}, \mbox{\hyperlink{elements_8h_source_l02215}{oomph\+::\+Finite\+Element\+::nnode()}}, \mbox{\hyperlink{elements_8h_source_l02322}{oomph\+::\+Finite\+Element\+::nodal\+\_\+position()}}, \mbox{\hyperlink{elements_8h_source_l02180}{oomph\+::\+Finite\+Element\+::node\+\_\+pt()}}, \mbox{\hyperlink{error__estimator_8h_source_l00165}{oomph\+::u}}, and \mbox{\hyperlink{constitutive__laws_8h_source_l00142}{oomph\+::W}}.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableYoungLaplaceEquations_a9c663f1cb9fec2a0d5ec263313741e74}\label{classoomph_1_1RefineableYoungLaplaceEquations_a9c663f1cb9fec2a0d5ec263313741e74}} 
+\index{oomph::RefineableYoungLaplaceEquations@{oomph::RefineableYoungLaplaceEquations}!further\_build@{further\_build}}
+\index{further\_build@{further\_build}!oomph::RefineableYoungLaplaceEquations@{oomph::RefineableYoungLaplaceEquations}}
+\doxysubsubsection{\texorpdfstring{further\_build()}{further\_build()}}
+{\footnotesize\ttfamily void oomph\+::\+Refineable\+Young\+Laplace\+Equations\+::further\+\_\+build (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Further build\+: Copy function pointers to spine and spine base functions from father. Kappa is passed across with set\+\_\+kappa(...) to ensure that it\textquotesingle{}s added to the element\textquotesingle{}s external \mbox{\hyperlink{classoomph_1_1Data}{Data}}. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1RefineableElement_a26628ce36dfad028686adeb4694a9ef3}{oomph\+::\+Refineable\+Element}}.
+
+
+
+Definition at line \mbox{\hyperlink{refineable__young__laplace__elements_8h_source_l00146}{146}} of file \mbox{\hyperlink{refineable__young__laplace__elements_8h_source}{refineable\+\_\+young\+\_\+laplace\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{refineable__elements_8h_source_l00539}{oomph\+::\+Refineable\+Element\+::father\+\_\+element\+\_\+pt()}}.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableYoungLaplaceEquations_a0fad7813f5ad8046353921f263c1af05}\label{classoomph_1_1RefineableYoungLaplaceEquations_a0fad7813f5ad8046353921f263c1af05}} 
+\index{oomph::RefineableYoungLaplaceEquations@{oomph::RefineableYoungLaplaceEquations}!get\_interpolated\_values@{get\_interpolated\_values}}
+\index{get\_interpolated\_values@{get\_interpolated\_values}!oomph::RefineableYoungLaplaceEquations@{oomph::RefineableYoungLaplaceEquations}}
+\doxysubsubsection{\texorpdfstring{get\_interpolated\_values()}{get\_interpolated\_values()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Refineable\+Young\+Laplace\+Equations\+::get\+\_\+interpolated\+\_\+values (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} unsigned \&}]{t,  }\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{s,  }\item[{\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{values }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the function value u in \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}. Note\+: Given the generality of the interface (this function is usually called from black-\/box documentation or interpolation routines), the values \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} sets its own size in here. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1RefineableElement_ada6f0efe831ffefb1d2829ce01d45bfc}{oomph\+::\+Refineable\+Element}}.
+
+
+
+Definition at line \mbox{\hyperlink{refineable__young__laplace__elements_8h_source_l00126}{126}} of file \mbox{\hyperlink{refineable__young__laplace__elements_8h_source}{refineable\+\_\+young\+\_\+laplace\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{refineable__young__laplace__elements_8h_source_l00096}{get\+\_\+interpolated\+\_\+values()}}, \mbox{\hyperlink{cfortran_8h_source_l00568}{s}}, and \mbox{\hyperlink{cfortran_8h_source_l00568}{t}}.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableYoungLaplaceEquations_ab54a23095ee8aef3fe68542bdfa1400a}\label{classoomph_1_1RefineableYoungLaplaceEquations_ab54a23095ee8aef3fe68542bdfa1400a}} 
+\index{oomph::RefineableYoungLaplaceEquations@{oomph::RefineableYoungLaplaceEquations}!get\_interpolated\_values@{get\_interpolated\_values}}
+\index{get\_interpolated\_values@{get\_interpolated\_values}!oomph::RefineableYoungLaplaceEquations@{oomph::RefineableYoungLaplaceEquations}}
+\doxysubsubsection{\texorpdfstring{get\_interpolated\_values()}{get\_interpolated\_values()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Refineable\+Young\+Laplace\+Equations\+::get\+\_\+interpolated\+\_\+values (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{s,  }\item[{\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{values }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the function value u in \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}. Note\+: Given the generality of the interface (this function is usually called from black-\/box documentation or interpolation routines), the values \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} sets its own size in here. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1RefineableElement_ad9a4f92880668a2373326d8306365c43}{oomph\+::\+Refineable\+Element}}.
+
+
+
+Definition at line \mbox{\hyperlink{refineable__young__laplace__elements_8h_source_l00096}{96}} of file \mbox{\hyperlink{refineable__young__laplace__elements_8h_source}{refineable\+\_\+young\+\_\+laplace\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l02215}{oomph\+::\+Finite\+Element\+::nnode()}}, \mbox{\hyperlink{cfortran_8h_source_l00568}{s}}, \mbox{\hyperlink{classoomph_1_1FiniteElement_a58a25b6859ddd43b7bfe64a19fee5023}{oomph\+::\+Finite\+Element\+::shape()}}, and \mbox{\hyperlink{error__estimator_8h_source_l00165}{oomph\+::u}}.
+
+
+
+Referenced by \mbox{\hyperlink{refineable__young__laplace__elements_8h_source_l00126}{get\+\_\+interpolated\+\_\+values()}}.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableYoungLaplaceEquations_ab8d8c6010331d8076a5d6369d331eb4d}\label{classoomph_1_1RefineableYoungLaplaceEquations_ab8d8c6010331d8076a5d6369d331eb4d}} 
+\index{oomph::RefineableYoungLaplaceEquations@{oomph::RefineableYoungLaplaceEquations}!get\_Z2\_flux@{get\_Z2\_flux}}
+\index{get\_Z2\_flux@{get\_Z2\_flux}!oomph::RefineableYoungLaplaceEquations@{oomph::RefineableYoungLaplaceEquations}}
+\doxysubsubsection{\texorpdfstring{get\_Z2\_flux()}{get\_Z2\_flux()}}
+{\footnotesize\ttfamily void oomph\+::\+Refineable\+Young\+Laplace\+Equations\+::get\+\_\+\+Z2\+\_\+flux (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{s,  }\item[{\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{flux }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get \textquotesingle{}flux\textquotesingle{} for Z2 error recovery\+: Standard flux from Young\+Laplace equations. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1ElementWithZ2ErrorEstimator_a5688ff5f546d81771cabad82ca5a7556}{oomph\+::\+Element\+With\+Z2\+Error\+Estimator}}.
+
+
+
+Definition at line \mbox{\hyperlink{refineable__young__laplace__elements_8h_source_l00087}{87}} of file \mbox{\hyperlink{refineable__young__laplace__elements_8h_source}{refineable\+\_\+young\+\_\+laplace\+\_\+elements.\+h}}.
+
+
+
+References \mbox{\hyperlink{cfortran_8h_source_l00568}{s}}.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableYoungLaplaceEquations_aef39cb1a9e6f4b117b840211fa8570cc}\label{classoomph_1_1RefineableYoungLaplaceEquations_aef39cb1a9e6f4b117b840211fa8570cc}} 
+\index{oomph::RefineableYoungLaplaceEquations@{oomph::RefineableYoungLaplaceEquations}!num\_Z2\_flux\_terms@{num\_Z2\_flux\_terms}}
+\index{num\_Z2\_flux\_terms@{num\_Z2\_flux\_terms}!oomph::RefineableYoungLaplaceEquations@{oomph::RefineableYoungLaplaceEquations}}
+\doxysubsubsection{\texorpdfstring{num\_Z2\_flux\_terms()}{num\_Z2\_flux\_terms()}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Refineable\+Young\+Laplace\+Equations\+::num\+\_\+\+Z2\+\_\+flux\+\_\+terms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Number of \textquotesingle{}flux\textquotesingle{} terms for Z2 error estimation. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1ElementWithZ2ErrorEstimator_ae82c5728902e13da31be19c390fc28e3}{oomph\+::\+Element\+With\+Z2\+Error\+Estimator}}.
+
+
+
+Definition at line \mbox{\hyperlink{refineable__young__laplace__elements_8h_source_l00080}{80}} of file \mbox{\hyperlink{refineable__young__laplace__elements_8h_source}{refineable\+\_\+young\+\_\+laplace\+\_\+elements.\+h}}.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableYoungLaplaceEquations_a46a5167ac955dd839ae43e7de535ee44}\label{classoomph_1_1RefineableYoungLaplaceEquations_a46a5167ac955dd839ae43e7de535ee44}} 
+\index{oomph::RefineableYoungLaplaceEquations@{oomph::RefineableYoungLaplaceEquations}!operator=@{operator=}}
+\index{operator=@{operator=}!oomph::RefineableYoungLaplaceEquations@{oomph::RefineableYoungLaplaceEquations}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily void oomph\+::\+Refineable\+Young\+Laplace\+Equations\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1RefineableYoungLaplaceEquations}{Refineable\+Young\+Laplace\+Equations}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Broken assignment operator. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{refineable__young__laplace__elements_8h}{refineable\+\_\+young\+\_\+laplace\+\_\+elements.\+h}}\item 
+\mbox{\hyperlink{refineable__young__laplace__elements_8cc}{refineable\+\_\+young\+\_\+laplace\+\_\+elements.\+cc}}\end{DoxyCompactItemize}

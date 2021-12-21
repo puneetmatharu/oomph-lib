@@ -1,0 +1,150 @@
+\hypertarget{classoomph_1_1QuadMeshBase}{}\doxysection{oomph\+::Quad\+Mesh\+Base Class Reference}
+\label{classoomph_1_1QuadMeshBase}\index{oomph::QuadMeshBase@{oomph::QuadMeshBase}}
+
+
+//////////////////////////////////////////////////////////////////// ////////////////////////////////////////////////////////////////////  
+
+
+
+
+{\ttfamily \#include $<$quad\+\_\+mesh.\+h$>$}
+
+Inheritance diagram for oomph\+::Quad\+Mesh\+Base\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=8.974360cm]{classoomph_1_1QuadMeshBase}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1QuadMeshBase_a56c68363a134866e636f8aa4a8a29de9}{Quad\+Mesh\+Base}} ()
+\begin{DoxyCompactList}\small\item\em Constructor (empty) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1QuadMeshBase_a5ab7186bebce61ff1a9fe031e464e671}{Quad\+Mesh\+Base}} (const \mbox{\hyperlink{classoomph_1_1QuadMeshBase}{Quad\+Mesh\+Base}} \&node)=delete
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1QuadMeshBase_a02f5fb6139fb0bb02ebd951df8b65076}{operator=}} (const \mbox{\hyperlink{classoomph_1_1QuadMeshBase}{Quad\+Mesh\+Base}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1QuadMeshBase_abffed544c2e94b255a5a69e66c13b4a0}{$\sim$\+Quad\+Mesh\+Base}} ()
+\begin{DoxyCompactList}\small\item\em Destructor (empty) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1QuadMeshBase_ad1e5291285fbf34c62cbd45156dded2d}{setup\+\_\+boundary\+\_\+element\+\_\+info}} ()
+\begin{DoxyCompactList}\small\item\em Setup lookup schemes which establish whic elements are located next to mesh\textquotesingle{}s boundaries (wrapper to suppress doc). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1QuadMeshBase_ac61bda5612c87848bb640c8e24371a54}{setup\+\_\+boundary\+\_\+element\+\_\+info}} (std\+::ostream \&outfile)
+\begin{DoxyCompactList}\small\item\em Setup lookup schemes which establish whic elements are located next to mesh\textquotesingle{}s boundaries. Doc in outfile (if it\textquotesingle{}s open). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+//////////////////////////////////////////////////////////////////// //////////////////////////////////////////////////////////////////// 
+
+Base class for quad meshes (meshes made of 2D quad elements). 
+
+Definition at line \mbox{\hyperlink{quad__mesh_8h_source_l00056}{56}} of file \mbox{\hyperlink{quad__mesh_8h_source}{quad\+\_\+mesh.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1QuadMeshBase_a56c68363a134866e636f8aa4a8a29de9}\label{classoomph_1_1QuadMeshBase_a56c68363a134866e636f8aa4a8a29de9}} 
+\index{oomph::QuadMeshBase@{oomph::QuadMeshBase}!QuadMeshBase@{QuadMeshBase}}
+\index{QuadMeshBase@{QuadMeshBase}!oomph::QuadMeshBase@{oomph::QuadMeshBase}}
+\doxysubsubsection{\texorpdfstring{QuadMeshBase()}{QuadMeshBase()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily oomph\+::\+Quad\+Mesh\+Base\+::\+Quad\+Mesh\+Base (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor (empty) 
+
+
+
+Definition at line \mbox{\hyperlink{quad__mesh_8h_source_l00060}{60}} of file \mbox{\hyperlink{quad__mesh_8h_source}{quad\+\_\+mesh.\+h}}.
+
+\mbox{\Hypertarget{classoomph_1_1QuadMeshBase_a5ab7186bebce61ff1a9fe031e464e671}\label{classoomph_1_1QuadMeshBase_a5ab7186bebce61ff1a9fe031e464e671}} 
+\index{oomph::QuadMeshBase@{oomph::QuadMeshBase}!QuadMeshBase@{QuadMeshBase}}
+\index{QuadMeshBase@{QuadMeshBase}!oomph::QuadMeshBase@{oomph::QuadMeshBase}}
+\doxysubsubsection{\texorpdfstring{QuadMeshBase()}{QuadMeshBase()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily oomph\+::\+Quad\+Mesh\+Base\+::\+Quad\+Mesh\+Base (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classoomph_1_1QuadMeshBase}{Quad\+Mesh\+Base}} \&}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Broken copy constructor. 
+
+\mbox{\Hypertarget{classoomph_1_1QuadMeshBase_abffed544c2e94b255a5a69e66c13b4a0}\label{classoomph_1_1QuadMeshBase_abffed544c2e94b255a5a69e66c13b4a0}} 
+\index{oomph::QuadMeshBase@{oomph::QuadMeshBase}!````~QuadMeshBase@{$\sim$QuadMeshBase}}
+\index{````~QuadMeshBase@{$\sim$QuadMeshBase}!oomph::QuadMeshBase@{oomph::QuadMeshBase}}
+\doxysubsubsection{\texorpdfstring{$\sim$QuadMeshBase()}{~QuadMeshBase()}}
+{\footnotesize\ttfamily virtual oomph\+::\+Quad\+Mesh\+Base\+::$\sim$\+Quad\+Mesh\+Base (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destructor (empty) 
+
+
+
+Definition at line \mbox{\hyperlink{quad__mesh_8h_source_l00069}{69}} of file \mbox{\hyperlink{quad__mesh_8h_source}{quad\+\_\+mesh.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1QuadMeshBase_a02f5fb6139fb0bb02ebd951df8b65076}\label{classoomph_1_1QuadMeshBase_a02f5fb6139fb0bb02ebd951df8b65076}} 
+\index{oomph::QuadMeshBase@{oomph::QuadMeshBase}!operator=@{operator=}}
+\index{operator=@{operator=}!oomph::QuadMeshBase@{oomph::QuadMeshBase}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily void oomph\+::\+Quad\+Mesh\+Base\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classoomph_1_1QuadMeshBase}{Quad\+Mesh\+Base}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Broken assignment operator. 
+
+\mbox{\Hypertarget{classoomph_1_1QuadMeshBase_ad1e5291285fbf34c62cbd45156dded2d}\label{classoomph_1_1QuadMeshBase_ad1e5291285fbf34c62cbd45156dded2d}} 
+\index{oomph::QuadMeshBase@{oomph::QuadMeshBase}!setup\_boundary\_element\_info@{setup\_boundary\_element\_info}}
+\index{setup\_boundary\_element\_info@{setup\_boundary\_element\_info}!oomph::QuadMeshBase@{oomph::QuadMeshBase}}
+\doxysubsubsection{\texorpdfstring{setup\_boundary\_element\_info()}{setup\_boundary\_element\_info()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Quad\+Mesh\+Base\+::setup\+\_\+boundary\+\_\+element\+\_\+info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Setup lookup schemes which establish whic elements are located next to mesh\textquotesingle{}s boundaries (wrapper to suppress doc). 
+
+
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1Mesh_a6cc8bcd6b41209f0e9295cc993d9c6bb}{oomph\+::\+Mesh}}.
+
+
+
+Definition at line \mbox{\hyperlink{quad__mesh_8h_source_l00073}{73}} of file \mbox{\hyperlink{quad__mesh_8h_source}{quad\+\_\+mesh.\+h}}.
+
+
+
+References \mbox{\hyperlink{quad__mesh_8h_source_l00073}{setup\+\_\+boundary\+\_\+element\+\_\+info()}}.
+
+
+
+Referenced by \mbox{\hyperlink{channel__with__leaflet__mesh_8template_8cc_source_l00048}{oomph\+::\+Channel\+With\+Leaflet\+Mesh$<$ ELEMENT $>$\+::\+Channel\+With\+Leaflet\+Mesh()}}, \mbox{\hyperlink{collapsible__channel__mesh_8template_8cc_source_l00043}{oomph\+::\+Collapsible\+Channel\+Mesh$<$ ELEMENT $>$\+::\+Collapsible\+Channel\+Mesh()}}, \mbox{\hyperlink{fsi__driven__cavity__mesh_8template_8cc_source_l00041}{oomph\+::\+FSIDriven\+Cavity\+Mesh$<$ ELEMENT $>$\+::\+FSIDriven\+Cavity\+Mesh()}}, \mbox{\hyperlink{full__circle__mesh_8template_8cc_source_l00040}{oomph\+::\+Full\+Circle\+Mesh$<$ ELEMENT $>$\+::\+Full\+Circle\+Mesh()}}, \mbox{\hyperlink{quarter__circle__sector__mesh_8template_8cc_source_l00044}{oomph\+::\+Quarter\+Circle\+Sector\+Mesh$<$ ELEMENT $>$\+::\+Quarter\+Circle\+Sector\+Mesh()}}, and \mbox{\hyperlink{quad__mesh_8h_source_l00073}{setup\+\_\+boundary\+\_\+element\+\_\+info()}}.
+
+\mbox{\Hypertarget{classoomph_1_1QuadMeshBase_ac61bda5612c87848bb640c8e24371a54}\label{classoomph_1_1QuadMeshBase_ac61bda5612c87848bb640c8e24371a54}} 
+\index{oomph::QuadMeshBase@{oomph::QuadMeshBase}!setup\_boundary\_element\_info@{setup\_boundary\_element\_info}}
+\index{setup\_boundary\_element\_info@{setup\_boundary\_element\_info}!oomph::QuadMeshBase@{oomph::QuadMeshBase}}
+\doxysubsubsection{\texorpdfstring{setup\_boundary\_element\_info()}{setup\_boundary\_element\_info()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void oomph\+::\+Quad\+Mesh\+Base\+::setup\+\_\+boundary\+\_\+element\+\_\+info (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{outfile }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Setup lookup schemes which establish whic elements are located next to mesh\textquotesingle{}s boundaries. Doc in outfile (if it\textquotesingle{}s open). 
+
+Setup lookup schemes which establish which elements are located next to which boundaries (Doc to outfile if it\textquotesingle{}s open). 
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1Mesh_a413cbcbea4fb1111703da9ee97429640}{oomph\+::\+Mesh}}.
+
+
+
+Definition at line \mbox{\hyperlink{quad__mesh_8cc_source_l00037}{37}} of file \mbox{\hyperlink{quad__mesh_8cc_source}{quad\+\_\+mesh.\+cc}}.
+
+
+
+References \mbox{\hyperlink{mesh_8h_source_l00091}{oomph\+::\+Mesh\+::\+Boundary\+\_\+element\+\_\+pt}}, \mbox{\hyperlink{elements_8h_source_l02616}{oomph\+::\+Finite\+Element\+::dim()}}, \mbox{\hyperlink{oomph__utilities_8cc_source_l01212}{oomph\+::\+Leak\+Check\+Names\+::doc()}}, \mbox{\hyperlink{cfortran_8h_source_l00571}{e}}, \mbox{\hyperlink{mesh_8h_source_l00095}{oomph\+::\+Mesh\+::\+Face\+\_\+index\+\_\+at\+\_\+boundary}}, \mbox{\hyperlink{mesh_8h_source_l00473}{oomph\+::\+Mesh\+::finite\+\_\+element\+\_\+pt()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{mesh_8h_source_l00087}{oomph\+::\+Mesh\+::\+Lookup\+\_\+for\+\_\+elements\+\_\+next\+\_\+boundary\+\_\+is\+\_\+setup}}, \mbox{\hyperlink{mesh_8h_source_l00827}{oomph\+::\+Mesh\+::nboundary()}}, \mbox{\hyperlink{mesh_8h_source_l00590}{oomph\+::\+Mesh\+::nelement()}}, \mbox{\hyperlink{elements_8h_source_l02223}{oomph\+::\+Finite\+Element\+::nnode\+\_\+1d()}}, and \mbox{\hyperlink{elements_8h_source_l02180}{oomph\+::\+Finite\+Element\+::node\+\_\+pt()}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{quad__mesh_8h}{quad\+\_\+mesh.\+h}}\item 
+\mbox{\hyperlink{quad__mesh_8cc}{quad\+\_\+mesh.\+cc}}\end{DoxyCompactItemize}

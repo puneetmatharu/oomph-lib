@@ -1,0 +1,482 @@
+\hypertarget{classoomph_1_1DampedJacobi}{}\doxysection{oomph\+::Damped\+Jacobi\texorpdfstring{$<$}{<} MATRIX \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classoomph_1_1DampedJacobi}\index{oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}}
+
+
+//////////////////////////////////////////////////////////////////// ////////////////////////////////////////////////////////////////////  
+
+
+
+
+{\ttfamily \#include $<$iterative\+\_\+linear\+\_\+solver.\+h$>$}
+
+Inheritance diagram for oomph\+::Damped\+Jacobi\texorpdfstring{$<$}{<} MATRIX \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{classoomph_1_1DampedJacobi}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1DampedJacobi_aac608c2e9bd7a78eb8a9a2e70119fad6}{Damped\+Jacobi}} (const double \&omega=2.\+0/3.\+0)
+\begin{DoxyCompactList}\small\item\em Empty constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1DampedJacobi_a0ff17366e055670b3857d4443facf4a6}{$\sim$\+Damped\+Jacobi}} ()
+\begin{DoxyCompactList}\small\item\em Empty destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1DampedJacobi_a02ae8ed028832610de00f1d252064cb0}{Damped\+Jacobi}} (const \mbox{\hyperlink{classoomph_1_1DampedJacobi}{Damped\+Jacobi}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DampedJacobi_a4d0af182c44af837cea3225d61466d50}{operator=}} (const \mbox{\hyperlink{classoomph_1_1DampedJacobi}{Damped\+Jacobi}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DampedJacobi_a959c1fcafae700e8735f7100fd3670f1}{clean\+\_\+up\+\_\+memory}} ()
+\begin{DoxyCompactList}\small\item\em Cleanup data that\textquotesingle{}s stored for resolve (if any has been stored) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DampedJacobi_a8f136ac45998419c70708166b16a66e1}{smoother\+\_\+setup}} (\mbox{\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base}} $\ast$matrix\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Setup\+: Pass pointer to the matrix and store in cast form. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DampedJacobi_a5aa970c787a03bcd3127389617c64629}{extract\+\_\+diagonal\+\_\+entries}} (\mbox{\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base}} $\ast$matrix\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Function to extract the diagonal entries from the matrix. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DampedJacobi_af1e5baec4c87874bbd2a2834810f92ba}{smoother\+\_\+solve}} (const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&rhs, \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&solution)
+\begin{DoxyCompactList}\small\item\em The smoother\+\_\+solve function performs fixed number of iterations on the system A$\ast$result=rhs. The number of (smoothing) iterations is the same as the max. number of iterations in the underlying \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver}{Iterative\+Linear\+Solver}} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DampedJacobi_ace422835d94b7d465d08cc1f4df192ea}{solve}} (\mbox{\hyperlink{classoomph_1_1Problem}{Problem}} $\ast$const \&problem\+\_\+pt, \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&result)
+\begin{DoxyCompactList}\small\item\em Use damped Jacobi iteration as an \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver}{Iterative\+Linear\+Solver}}\+: This obtains the Jacobian matrix J and the residual vector r (needed for the Newton method) from the problem\textquotesingle{}s get\+\_\+jacobian function and returns the result of Jx=r. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DampedJacobi_afe13701a3101a01ae59334d688004a99}{solve}} (\mbox{\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base}} $\ast$const \&matrix\+\_\+pt, const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&rhs, \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&solution)
+\begin{DoxyCompactList}\small\item\em Linear-\/algebra-\/type solver\+: Takes pointer to a matrix and rhs vector and returns the solution of the linear system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DampedJacobi_a571fae40f40b528e76a0636f140010e7}{resolve}} (const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&rhs, \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&result)
+\begin{DoxyCompactList}\small\item\em Re-\/solve the system defined by the last assembled Jacobian and the rhs vector specified here. Solution is returned in the vector result. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1DampedJacobi_aa72fe9dcf19728a8b5a75f0cadb36013}{iterations}} () const
+\begin{DoxyCompactList}\small\item\em Number of iterations taken. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classoomph_1_1DampedJacobi_a8293439927a99030a1508f268be8a876}{solve\+\_\+helper}} (\mbox{\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base}} $\ast$const \&matrix\+\_\+pt, const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&rhs, \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&solution)
+\begin{DoxyCompactList}\small\item\em This is where the actual work is done -- different implementations for different matrix types. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+MATRIX $\ast$ \mbox{\hyperlink{classoomph_1_1DampedJacobi_ad436c17f8b797ac05913955cac2df1d9}{Matrix\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em Pointer to the matrix. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \mbox{\hyperlink{classoomph_1_1DampedJacobi_ac6474b25f5a309a19b417166951dfd31}{Matrix\+\_\+diagonal}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} containing the diagonal entries of A. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1DampedJacobi_a096e652907b8451205f909e0277de284}{Resolving}}
+\begin{DoxyCompactList}\small\item\em Boolean flag to indicate if the solve is done in re-\/solve mode, bypassing setup of matrix and preconditioner. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1DampedJacobi_a3f7d560d4c9566fe223de13a777f305d}{Matrix\+\_\+can\+\_\+be\+\_\+deleted}}
+\begin{DoxyCompactList}\small\item\em Boolean flag to indicate if the matrix pointed to be Matrix\+\_\+pt can be deleted. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1DampedJacobi_a432acfaf14b05f8c5b25e62aede36f3c}{Iterations}}
+\begin{DoxyCompactList}\small\item\em Number of iterations taken. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1DampedJacobi_a7d53a703568479f387f19a5e40837889}{Omega}}
+\begin{DoxyCompactList}\small\item\em Damping factor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename MATRIX$>$\newline
+class oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$}
+//////////////////////////////////////////////////////////////////// //////////////////////////////////////////////////////////////////// 
+
+Damped Jacobi \char`\"{}solver\char`\"{} templated by matrix type. The \char`\"{}solver\char`\"{} exists in many different incarnations\+: It\textquotesingle{}s an \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver}{Iterative\+Linear\+Solver}}, and a \mbox{\hyperlink{classoomph_1_1Smoother}{Smoother}}, all of which use the same basic iteration. 
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8h_source_l01001}{1001}} of file \mbox{\hyperlink{iterative__linear__solver_8h_source}{iterative\+\_\+linear\+\_\+solver.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1DampedJacobi_aac608c2e9bd7a78eb8a9a2e70119fad6}\label{classoomph_1_1DampedJacobi_aac608c2e9bd7a78eb8a9a2e70119fad6}} 
+\index{oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}!DampedJacobi@{DampedJacobi}}
+\index{DampedJacobi@{DampedJacobi}!oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{DampedJacobi()}{DampedJacobi()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+\mbox{\hyperlink{classoomph_1_1DampedJacobi}{oomph\+::\+Damped\+Jacobi}}$<$ MATRIX $>$\+::\mbox{\hyperlink{classoomph_1_1DampedJacobi}{Damped\+Jacobi}} (\begin{DoxyParamCaption}\item[{const double \&}]{omega = {\ttfamily 2.0~/~3.0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Empty constructor. 
+
+
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8h_source_l01005}{1005}} of file \mbox{\hyperlink{iterative__linear__solver_8h_source}{iterative\+\_\+linear\+\_\+solver.\+h}}.
+
+
+
+References \mbox{\hyperlink{iterative__linear__solver_8h_source_l01213}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::\+Omega}}.
+
+\mbox{\Hypertarget{classoomph_1_1DampedJacobi_a0ff17366e055670b3857d4443facf4a6}\label{classoomph_1_1DampedJacobi_a0ff17366e055670b3857d4443facf4a6}} 
+\index{oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}!````~DampedJacobi@{$\sim$DampedJacobi}}
+\index{````~DampedJacobi@{$\sim$DampedJacobi}!oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$DampedJacobi()}{~DampedJacobi()}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+\mbox{\hyperlink{classoomph_1_1DampedJacobi}{oomph\+::\+Damped\+Jacobi}}$<$ MATRIX $>$\+::$\sim$\mbox{\hyperlink{classoomph_1_1DampedJacobi}{Damped\+Jacobi}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Empty destructor. 
+
+
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8h_source_l01012}{1012}} of file \mbox{\hyperlink{iterative__linear__solver_8h_source}{iterative\+\_\+linear\+\_\+solver.\+h}}.
+
+
+
+References \mbox{\hyperlink{iterative__linear__solver_8h_source_l01025}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::clean\+\_\+up\+\_\+memory()}}.
+
+\mbox{\Hypertarget{classoomph_1_1DampedJacobi_a02ae8ed028832610de00f1d252064cb0}\label{classoomph_1_1DampedJacobi_a02ae8ed028832610de00f1d252064cb0}} 
+\index{oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}!DampedJacobi@{DampedJacobi}}
+\index{DampedJacobi@{DampedJacobi}!oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{DampedJacobi()}{DampedJacobi()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+\mbox{\hyperlink{classoomph_1_1DampedJacobi}{oomph\+::\+Damped\+Jacobi}}$<$ MATRIX $>$\+::\mbox{\hyperlink{classoomph_1_1DampedJacobi}{Damped\+Jacobi}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classoomph_1_1DampedJacobi}{Damped\+Jacobi}}$<$ MATRIX $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Broken copy constructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1DampedJacobi_a959c1fcafae700e8735f7100fd3670f1}\label{classoomph_1_1DampedJacobi_a959c1fcafae700e8735f7100fd3670f1}} 
+\index{oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}!clean\_up\_memory@{clean\_up\_memory}}
+\index{clean\_up\_memory@{clean\_up\_memory}!oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{clean\_up\_memory()}{clean\_up\_memory()}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+void \mbox{\hyperlink{classoomph_1_1DampedJacobi}{oomph\+::\+Damped\+Jacobi}}$<$ MATRIX $>$\+::clean\+\_\+up\+\_\+memory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Cleanup data that\textquotesingle{}s stored for resolve (if any has been stored) 
+
+
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1LinearSolver_a9d66f3262e80ca06a365f98216afd85f}{oomph\+::\+Linear\+Solver}}.
+
+
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8h_source_l01025}{1025}} of file \mbox{\hyperlink{iterative__linear__solver_8h_source}{iterative\+\_\+linear\+\_\+solver.\+h}}.
+
+
+
+References \mbox{\hyperlink{iterative__linear__solver_8h_source_l01207}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::\+Matrix\+\_\+can\+\_\+be\+\_\+deleted}}, and \mbox{\hyperlink{iterative__linear__solver_8h_source_l01196}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::\+Matrix\+\_\+pt}}.
+
+
+
+Referenced by \mbox{\hyperlink{iterative__linear__solver_8h_source_l01012}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::$\sim$\+Damped\+Jacobi()}}.
+
+\mbox{\Hypertarget{classoomph_1_1DampedJacobi_a5aa970c787a03bcd3127389617c64629}\label{classoomph_1_1DampedJacobi_a5aa970c787a03bcd3127389617c64629}} 
+\index{oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}!extract\_diagonal\_entries@{extract\_diagonal\_entries}}
+\index{extract\_diagonal\_entries@{extract\_diagonal\_entries}!oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{extract\_diagonal\_entries()}{extract\_diagonal\_entries()}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+void \mbox{\hyperlink{classoomph_1_1DampedJacobi}{oomph\+::\+Damped\+Jacobi}}$<$ MATRIX $>$\+::extract\+\_\+diagonal\+\_\+entries (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base}} $\ast$}]{matrix\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to extract the diagonal entries from the matrix. 
+
+
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8h_source_l01054}{1054}} of file \mbox{\hyperlink{iterative__linear__solver_8h_source}{iterative\+\_\+linear\+\_\+solver.\+h}}.
+
+
+
+References \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{iterative__linear__solver_8h_source_l01199}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::\+Matrix\+\_\+diagonal}}, and \mbox{\hyperlink{iterative__linear__solver_8h_source_l01196}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::\+Matrix\+\_\+pt}}.
+
+
+
+Referenced by \mbox{\hyperlink{iterative__linear__solver_8h_source_l01040}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::smoother\+\_\+setup()}}, and \mbox{\hyperlink{iterative__linear__solver_8h_source_l01130}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::solve()}}.
+
+\mbox{\Hypertarget{classoomph_1_1DampedJacobi_aa72fe9dcf19728a8b5a75f0cadb36013}\label{classoomph_1_1DampedJacobi_aa72fe9dcf19728a8b5a75f0cadb36013}} 
+\index{oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}!iterations@{iterations}}
+\index{iterations@{iterations}!oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{iterations()}{iterations()}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+unsigned \mbox{\hyperlink{classoomph_1_1DampedJacobi}{oomph\+::\+Damped\+Jacobi}}$<$ MATRIX $>$\+::iterations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Number of iterations taken. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_a5fe7f7b5e4847fdbd4f95d3875ec7a46}{oomph\+::\+Iterative\+Linear\+Solver}}.
+
+
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8h_source_l01182}{1182}} of file \mbox{\hyperlink{iterative__linear__solver_8h_source}{iterative\+\_\+linear\+\_\+solver.\+h}}.
+
+
+
+References \mbox{\hyperlink{iterative__linear__solver_8h_source_l01210}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::\+Iterations}}.
+
+\mbox{\Hypertarget{classoomph_1_1DampedJacobi_a4d0af182c44af837cea3225d61466d50}\label{classoomph_1_1DampedJacobi_a4d0af182c44af837cea3225d61466d50}} 
+\index{oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+void \mbox{\hyperlink{classoomph_1_1DampedJacobi}{oomph\+::\+Damped\+Jacobi}}$<$ MATRIX $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classoomph_1_1DampedJacobi}{Damped\+Jacobi}}$<$ MATRIX $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Broken assignment operator. 
+
+\mbox{\Hypertarget{classoomph_1_1DampedJacobi_a571fae40f40b528e76a0636f140010e7}\label{classoomph_1_1DampedJacobi_a571fae40f40b528e76a0636f140010e7}} 
+\index{oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}!resolve@{resolve}}
+\index{resolve@{resolve}!oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{resolve()}{resolve()}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+void \mbox{\hyperlink{classoomph_1_1DampedJacobi}{oomph\+::\+Damped\+Jacobi}}$<$ MATRIX $>$\+::resolve (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&}]{rhs,  }\item[{\mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&}]{result }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Re-\/solve the system defined by the last assembled Jacobian and the rhs vector specified here. Solution is returned in the vector result. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1LinearSolver_a3b310d08333033edc119b2a5bd7dcbfb}{oomph\+::\+Linear\+Solver}}.
+
+
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8h_source_l01160}{1160}} of file \mbox{\hyperlink{iterative__linear__solver_8h_source}{iterative\+\_\+linear\+\_\+solver.\+h}}.
+
+
+
+References \mbox{\hyperlink{iterative__linear__solver_8h_source_l01196}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::\+Matrix\+\_\+pt}}, \mbox{\hyperlink{iterative__linear__solver_8h_source_l01203}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::\+Resolving}}, and \mbox{\hyperlink{iterative__linear__solver_8cc_source_l01858}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::solve()}}.
+
+\mbox{\Hypertarget{classoomph_1_1DampedJacobi_a8f136ac45998419c70708166b16a66e1}\label{classoomph_1_1DampedJacobi_a8f136ac45998419c70708166b16a66e1}} 
+\index{oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}!smoother\_setup@{smoother\_setup}}
+\index{smoother\_setup@{smoother\_setup}!oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{smoother\_setup()}{smoother\_setup()}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+void \mbox{\hyperlink{classoomph_1_1DampedJacobi}{oomph\+::\+Damped\+Jacobi}}$<$ MATRIX $>$\+::smoother\+\_\+setup (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base}} $\ast$}]{matrix\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Setup\+: Pass pointer to the matrix and store in cast form. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1Smoother_a6eb7009ab3bebcccc83062cbe980bf91}{oomph\+::\+Smoother}}.
+
+
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8h_source_l01040}{1040}} of file \mbox{\hyperlink{iterative__linear__solver_8h_source}{iterative\+\_\+linear\+\_\+solver.\+h}}.
+
+
+
+References \mbox{\hyperlink{iterative__linear__solver_8h_source_l01054}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::extract\+\_\+diagonal\+\_\+entries()}}, \mbox{\hyperlink{iterative__linear__solver_8h_source_l01207}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::\+Matrix\+\_\+can\+\_\+be\+\_\+deleted}}, and \mbox{\hyperlink{iterative__linear__solver_8h_source_l01196}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::\+Matrix\+\_\+pt}}.
+
+\mbox{\Hypertarget{classoomph_1_1DampedJacobi_af1e5baec4c87874bbd2a2834810f92ba}\label{classoomph_1_1DampedJacobi_af1e5baec4c87874bbd2a2834810f92ba}} 
+\index{oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}!smoother\_solve@{smoother\_solve}}
+\index{smoother\_solve@{smoother\_solve}!oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{smoother\_solve()}{smoother\_solve()}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+void \mbox{\hyperlink{classoomph_1_1DampedJacobi}{oomph\+::\+Damped\+Jacobi}}$<$ MATRIX $>$\+::smoother\+\_\+solve (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&}]{rhs,  }\item[{\mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&}]{solution }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+The smoother\+\_\+solve function performs fixed number of iterations on the system A$\ast$result=rhs. The number of (smoothing) iterations is the same as the max. number of iterations in the underlying \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver}{Iterative\+Linear\+Solver}} class. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1Smoother_a94899c8d7bf84c068cda8d312d195bfe}{oomph\+::\+Smoother}}.
+
+
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8h_source_l01113}{1113}} of file \mbox{\hyperlink{iterative__linear__solver_8h_source}{iterative\+\_\+linear\+\_\+solver.\+h}}.
+
+
+
+References \mbox{\hyperlink{iterative__linear__solver_8h_source_l01196}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::\+Matrix\+\_\+pt}}, \mbox{\hyperlink{iterative__linear__solver_8cc_source_l01922}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::solve\+\_\+helper()}}, and \mbox{\hyperlink{iterative__linear__solver_8h_source_l00585}{oomph\+::\+Smoother\+::\+Use\+\_\+as\+\_\+smoother}}.
+
+\mbox{\Hypertarget{classoomph_1_1DampedJacobi_afe13701a3101a01ae59334d688004a99}\label{classoomph_1_1DampedJacobi_afe13701a3101a01ae59334d688004a99}} 
+\index{oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}!solve@{solve}}
+\index{solve@{solve}!oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{solve()}{solve()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+void \mbox{\hyperlink{classoomph_1_1DampedJacobi}{oomph\+::\+Damped\+Jacobi}}$<$ MATRIX $>$\+::solve (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base}} $\ast$const \&}]{matrix\+\_\+pt,  }\item[{const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&}]{rhs,  }\item[{\mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&}]{solution }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Linear-\/algebra-\/type solver\+: Takes pointer to a matrix and rhs vector and returns the solution of the linear system. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1LinearSolver_a546c09822d18191df14caed864c04c09}{oomph\+::\+Linear\+Solver}}.
+
+
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8h_source_l01130}{1130}} of file \mbox{\hyperlink{iterative__linear__solver_8h_source}{iterative\+\_\+linear\+\_\+solver.\+h}}.
+
+
+
+References \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00507}{oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::build\+\_\+distribution()}}, \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00457}{oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::distribution\+\_\+pt()}}, \mbox{\hyperlink{linear__solver_8h_source_l00073}{oomph\+::\+Linear\+Solver\+::\+Enable\+\_\+resolve}}, \mbox{\hyperlink{iterative__linear__solver_8h_source_l01054}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::extract\+\_\+diagonal\+\_\+entries()}}, \mbox{\hyperlink{iterative__linear__solver_8h_source_l01207}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::\+Matrix\+\_\+can\+\_\+be\+\_\+deleted}}, \mbox{\hyperlink{iterative__linear__solver_8h_source_l01196}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::\+Matrix\+\_\+pt}}, \mbox{\hyperlink{iterative__linear__solver_8h_source_l01203}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::\+Resolving}}, \mbox{\hyperlink{iterative__linear__solver_8cc_source_l01922}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::solve\+\_\+helper()}}, and \mbox{\hyperlink{iterative__linear__solver_8h_source_l00585}{oomph\+::\+Smoother\+::\+Use\+\_\+as\+\_\+smoother}}.
+
+\mbox{\Hypertarget{classoomph_1_1DampedJacobi_ace422835d94b7d465d08cc1f4df192ea}\label{classoomph_1_1DampedJacobi_ace422835d94b7d465d08cc1f4df192ea}} 
+\index{oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}!solve@{solve}}
+\index{solve@{solve}!oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{solve()}{solve()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+void \mbox{\hyperlink{classoomph_1_1DampedJacobi}{oomph\+::\+Damped\+Jacobi}}$<$ MATRIX $>$\+::solve (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1Problem}{Problem}} $\ast$const \&}]{problem\+\_\+pt,  }\item[{\mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&}]{result }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Use damped Jacobi iteration as an \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver}{Iterative\+Linear\+Solver}}\+: This obtains the Jacobian matrix J and the residual vector r (needed for the Newton method) from the problem\textquotesingle{}s get\+\_\+jacobian function and returns the result of Jx=r. 
+
+/////////////////////////////////////////////////////////////////// ///////////////////////////////////////////////////////////////////
+
+Solver\+: Takes pointer to problem and returns the results vector which contains the solution of the linear system defined by the problem\textquotesingle{}s fully assembled Jacobian and residual vector. 
+
+Implements \mbox{\hyperlink{classoomph_1_1LinearSolver_a15ce22542b74ed1826ea485edacbeb6e}{oomph\+::\+Linear\+Solver}}.
+
+
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8cc_source_l01858}{1858}} of file \mbox{\hyperlink{iterative__linear__solver_8cc_source}{iterative\+\_\+linear\+\_\+solver.\+cc}}.
+
+
+
+References \mbox{\hyperlink{oomph__definitions_8cc_source_l00086}{oomph\+::\+Terminate\+Helper\+::clean\+\_\+up\+\_\+memory()}}, \mbox{\hyperlink{problem_8h_source_l01246}{oomph\+::\+Problem\+::communicator\+\_\+pt()}}, \mbox{\hyperlink{namespaceoomph_ad835af913df4cbdc5648440f91b794ab}{oomph\+::f()}}, \mbox{\hyperlink{problem_8cc_source_l03890}{oomph\+::\+Problem\+::get\+\_\+jacobian()}}, \mbox{\hyperlink{problem_8h_source_l01674}{oomph\+::\+Problem\+::ndof()}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00319}{oomph\+::oomph\+\_\+info}}, and \mbox{\hyperlink{oomph__utilities_8cc_source_l01295}{oomph\+::\+Timing\+Helpers\+::timer()}}.
+
+
+
+Referenced by \mbox{\hyperlink{iterative__linear__solver_8h_source_l01160}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::resolve()}}.
+
+\mbox{\Hypertarget{classoomph_1_1DampedJacobi_a8293439927a99030a1508f268be8a876}\label{classoomph_1_1DampedJacobi_a8293439927a99030a1508f268be8a876}} 
+\index{oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}!solve\_helper@{solve\_helper}}
+\index{solve\_helper@{solve\_helper}!oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{solve\_helper()}{solve\_helper()}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+void \mbox{\hyperlink{classoomph_1_1DampedJacobi}{oomph\+::\+Damped\+Jacobi}}$<$ MATRIX $>$\+::solve\+\_\+helper (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base}} $\ast$const \&}]{matrix\+\_\+pt,  }\item[{const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&}]{rhs,  }\item[{\mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&}]{solution }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+This is where the actual work is done -- different implementations for different matrix types. 
+
+Linear-\/algebra-\/type solver\+: Takes pointer to a matrix and rhs vector and returns the solution of the linear system. 
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8cc_source_l01922}{1922}} of file \mbox{\hyperlink{iterative__linear__solver_8cc_source}{iterative\+\_\+linear\+\_\+solver.\+cc}}.
+
+
+
+References \mbox{\hyperlink{double__vector_8cc_source_l00035}{oomph\+::\+Double\+Vector\+::build()}}, \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00342}{oomph\+::\+Linear\+Algebra\+Distribution\+::built()}}, \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00457}{oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::distribution\+\_\+pt()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{double__vector_8cc_source_l00123}{oomph\+::\+Double\+Vector\+::initialise()}}, \mbox{\hyperlink{black__box__newton__solver_8cc_source_l00044}{oomph\+::\+Black\+Box\+FDNewton\+Solver\+::\+Max\+\_\+iter}}, \mbox{\hyperlink{classoomph_1_1DoubleMatrixBase_a78204eab557e0dc99618e41a28a5c092}{oomph\+::\+Double\+Matrix\+Base\+::multiply()}}, \mbox{\hyperlink{double__vector_8cc_source_l00867}{oomph\+::\+Double\+Vector\+::norm()}}, \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00463}{oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::nrow()}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00319}{oomph\+::oomph\+\_\+info}}, \mbox{\hyperlink{matrices_8h_source_l00326}{oomph\+::\+Double\+Matrix\+Base\+::residual()}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00286}{oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string()}}, \mbox{\hyperlink{oomph__utilities_8cc_source_l01295}{oomph\+::\+Timing\+Helpers\+::timer()}}, and \mbox{\hyperlink{pseudo__buckling__ring_8h_source_l00049}{oomph\+::x}}.
+
+
+
+Referenced by \mbox{\hyperlink{iterative__linear__solver_8h_source_l01113}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::smoother\+\_\+solve()}}, and \mbox{\hyperlink{iterative__linear__solver_8h_source_l01130}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::solve()}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1DampedJacobi_a432acfaf14b05f8c5b25e62aede36f3c}\label{classoomph_1_1DampedJacobi_a432acfaf14b05f8c5b25e62aede36f3c}} 
+\index{oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}!Iterations@{Iterations}}
+\index{Iterations@{Iterations}!oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{Iterations}{Iterations}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+unsigned \mbox{\hyperlink{classoomph_1_1DampedJacobi}{oomph\+::\+Damped\+Jacobi}}$<$ MATRIX $>$\+::Iterations\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Number of iterations taken. 
+
+
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8h_source_l01210}{1210}} of file \mbox{\hyperlink{iterative__linear__solver_8h_source}{iterative\+\_\+linear\+\_\+solver.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{iterative__linear__solver_8h_source_l01182}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::iterations()}}.
+
+\mbox{\Hypertarget{classoomph_1_1DampedJacobi_a3f7d560d4c9566fe223de13a777f305d}\label{classoomph_1_1DampedJacobi_a3f7d560d4c9566fe223de13a777f305d}} 
+\index{oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}!Matrix\_can\_be\_deleted@{Matrix\_can\_be\_deleted}}
+\index{Matrix\_can\_be\_deleted@{Matrix\_can\_be\_deleted}!oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{Matrix\_can\_be\_deleted}{Matrix\_can\_be\_deleted}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+bool \mbox{\hyperlink{classoomph_1_1DampedJacobi}{oomph\+::\+Damped\+Jacobi}}$<$ MATRIX $>$\+::Matrix\+\_\+can\+\_\+be\+\_\+deleted\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Boolean flag to indicate if the matrix pointed to be Matrix\+\_\+pt can be deleted. 
+
+
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8h_source_l01207}{1207}} of file \mbox{\hyperlink{iterative__linear__solver_8h_source}{iterative\+\_\+linear\+\_\+solver.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{iterative__linear__solver_8h_source_l01025}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::clean\+\_\+up\+\_\+memory()}}, \mbox{\hyperlink{iterative__linear__solver_8h_source_l01040}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::smoother\+\_\+setup()}}, and \mbox{\hyperlink{iterative__linear__solver_8h_source_l01130}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::solve()}}.
+
+\mbox{\Hypertarget{classoomph_1_1DampedJacobi_ac6474b25f5a309a19b417166951dfd31}\label{classoomph_1_1DampedJacobi_ac6474b25f5a309a19b417166951dfd31}} 
+\index{oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}!Matrix\_diagonal@{Matrix\_diagonal}}
+\index{Matrix\_diagonal@{Matrix\_diagonal}!oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{Matrix\_diagonal}{Matrix\_diagonal}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$double$>$ \mbox{\hyperlink{classoomph_1_1DampedJacobi}{oomph\+::\+Damped\+Jacobi}}$<$ MATRIX $>$\+::Matrix\+\_\+diagonal\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}} containing the diagonal entries of A. 
+
+
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8h_source_l01199}{1199}} of file \mbox{\hyperlink{iterative__linear__solver_8h_source}{iterative\+\_\+linear\+\_\+solver.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{iterative__linear__solver_8h_source_l01054}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::extract\+\_\+diagonal\+\_\+entries()}}.
+
+\mbox{\Hypertarget{classoomph_1_1DampedJacobi_ad436c17f8b797ac05913955cac2df1d9}\label{classoomph_1_1DampedJacobi_ad436c17f8b797ac05913955cac2df1d9}} 
+\index{oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}!Matrix\_pt@{Matrix\_pt}}
+\index{Matrix\_pt@{Matrix\_pt}!oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{Matrix\_pt}{Matrix\_pt}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+MATRIX$\ast$ \mbox{\hyperlink{classoomph_1_1DampedJacobi}{oomph\+::\+Damped\+Jacobi}}$<$ MATRIX $>$\+::Matrix\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to the matrix. 
+
+
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8h_source_l01196}{1196}} of file \mbox{\hyperlink{iterative__linear__solver_8h_source}{iterative\+\_\+linear\+\_\+solver.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{iterative__linear__solver_8h_source_l01025}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::clean\+\_\+up\+\_\+memory()}}, \mbox{\hyperlink{iterative__linear__solver_8h_source_l01054}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::extract\+\_\+diagonal\+\_\+entries()}}, \mbox{\hyperlink{iterative__linear__solver_8h_source_l01160}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::resolve()}}, \mbox{\hyperlink{iterative__linear__solver_8h_source_l01040}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::smoother\+\_\+setup()}}, \mbox{\hyperlink{iterative__linear__solver_8h_source_l01113}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::smoother\+\_\+solve()}}, and \mbox{\hyperlink{iterative__linear__solver_8h_source_l01130}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::solve()}}.
+
+\mbox{\Hypertarget{classoomph_1_1DampedJacobi_a7d53a703568479f387f19a5e40837889}\label{classoomph_1_1DampedJacobi_a7d53a703568479f387f19a5e40837889}} 
+\index{oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}!Omega@{Omega}}
+\index{Omega@{Omega}!oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{Omega}{Omega}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+double \mbox{\hyperlink{classoomph_1_1DampedJacobi}{oomph\+::\+Damped\+Jacobi}}$<$ MATRIX $>$\+::Omega\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Damping factor. 
+
+
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8h_source_l01213}{1213}} of file \mbox{\hyperlink{iterative__linear__solver_8h_source}{iterative\+\_\+linear\+\_\+solver.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{iterative__linear__solver_8h_source_l01005}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::\+Damped\+Jacobi()}}.
+
+\mbox{\Hypertarget{classoomph_1_1DampedJacobi_a096e652907b8451205f909e0277de284}\label{classoomph_1_1DampedJacobi_a096e652907b8451205f909e0277de284}} 
+\index{oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}!Resolving@{Resolving}}
+\index{Resolving@{Resolving}!oomph::DampedJacobi$<$ MATRIX $>$@{oomph::DampedJacobi$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{Resolving}{Resolving}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+bool \mbox{\hyperlink{classoomph_1_1DampedJacobi}{oomph\+::\+Damped\+Jacobi}}$<$ MATRIX $>$\+::Resolving\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Boolean flag to indicate if the solve is done in re-\/solve mode, bypassing setup of matrix and preconditioner. 
+
+
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8h_source_l01203}{1203}} of file \mbox{\hyperlink{iterative__linear__solver_8h_source}{iterative\+\_\+linear\+\_\+solver.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{iterative__linear__solver_8h_source_l01160}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::resolve()}}, and \mbox{\hyperlink{iterative__linear__solver_8h_source_l01130}{oomph\+::\+Damped\+Jacobi$<$ MATRIX $>$\+::solve()}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{iterative__linear__solver_8h}{iterative\+\_\+linear\+\_\+solver.\+h}}\item 
+\mbox{\hyperlink{iterative__linear__solver_8cc}{iterative\+\_\+linear\+\_\+solver.\+cc}}\end{DoxyCompactItemize}

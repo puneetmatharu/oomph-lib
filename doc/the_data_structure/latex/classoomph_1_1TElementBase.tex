@@ -1,0 +1,141 @@
+\hypertarget{classoomph_1_1TElementBase}{}\doxysection{oomph\+::TElement\+Base Class Reference}
+\label{classoomph_1_1TElementBase}\index{oomph::TElementBase@{oomph::TElementBase}}
+
+
+/////////////////////////////////////////////////////////////////// ///////////////////////////////////////////////////////////////////  
+
+
+
+
+{\ttfamily \#include $<$Telements.\+h$>$}
+
+Inheritance diagram for oomph\+::TElement\+Base\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.750842cm]{classoomph_1_1TElementBase}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1TElementBase_a22cb91376d755b08c248acbc4f721422}{TElement\+Base}} ()
+\begin{DoxyCompactList}\small\item\em Empty default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1TElementBase_a955707fc5b9ca0435f34266a5ed97137}{TElement\+Base}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1TElementBase}{TElement\+Base}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceoomph_1_1ElementGeometry_a86ff99972b0205d7524e294c58c1182a}{Element\+Geometry\+::\+Element\+Geometry}} \mbox{\hyperlink{classoomph_1_1TElementBase_a2dc9fee159f9f682e195bd6ebfd5f1b6}{element\+\_\+geometry}} () \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1TElementBase_aa13f1d631a3373f8981b748dd469ff8f}{local\+\_\+coord\+\_\+is\+\_\+valid}} (\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}})
+\begin{DoxyCompactList}\small\item\em Check whether the local coordinates are valid or not. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TElementBase_a0cce6b402f810f136ee04847727ca02a}{move\+\_\+local\+\_\+coord\+\_\+back\+\_\+into\+\_\+element}} (\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}}) \mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}}
+\begin{DoxyCompactList}\small\item\em Adjust local coordinates so that they\textquotesingle{}re located inside the element. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+/////////////////////////////////////////////////////////////////// /////////////////////////////////////////////////////////////////// 
+
+Empty base class for Telements (created so that we can use dynamic\+\_\+cast$<$$>$() to figure out if a an element is a Telement). 
+
+Definition at line \mbox{\hyperlink{Telements_8h_source_l01129}{1129}} of file \mbox{\hyperlink{Telements_8h_source}{Telements.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1TElementBase_a22cb91376d755b08c248acbc4f721422}\label{classoomph_1_1TElementBase_a22cb91376d755b08c248acbc4f721422}} 
+\index{oomph::TElementBase@{oomph::TElementBase}!TElementBase@{TElementBase}}
+\index{TElementBase@{TElementBase}!oomph::TElementBase@{oomph::TElementBase}}
+\doxysubsubsection{\texorpdfstring{TElementBase()}{TElementBase()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily oomph\+::\+TElement\+Base\+::\+TElement\+Base (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Empty default constructor. 
+
+
+
+Definition at line \mbox{\hyperlink{Telements_8h_source_l01133}{1133}} of file \mbox{\hyperlink{Telements_8h_source}{Telements.\+h}}.
+
+\mbox{\Hypertarget{classoomph_1_1TElementBase_a955707fc5b9ca0435f34266a5ed97137}\label{classoomph_1_1TElementBase_a955707fc5b9ca0435f34266a5ed97137}} 
+\index{oomph::TElementBase@{oomph::TElementBase}!TElementBase@{TElementBase}}
+\index{TElementBase@{TElementBase}!oomph::TElementBase@{oomph::TElementBase}}
+\doxysubsubsection{\texorpdfstring{TElementBase()}{TElementBase()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily oomph\+::\+TElement\+Base\+::\+TElement\+Base (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1TElementBase}{TElement\+Base}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Broken copy constructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1TElementBase_a2dc9fee159f9f682e195bd6ebfd5f1b6}\label{classoomph_1_1TElementBase_a2dc9fee159f9f682e195bd6ebfd5f1b6}} 
+\index{oomph::TElementBase@{oomph::TElementBase}!element\_geometry@{element\_geometry}}
+\index{element\_geometry@{element\_geometry}!oomph::TElementBase@{oomph::TElementBase}}
+\doxysubsubsection{\texorpdfstring{element\_geometry()}{element\_geometry()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceoomph_1_1ElementGeometry_a86ff99972b0205d7524e294c58c1182a}{Element\+Geometry\+::\+Element\+Geometry}} oomph\+::\+TElement\+Base\+::element\+\_\+geometry (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Broken assignment operator. 
+
+It\textquotesingle{}s a T element! 
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1FiniteElement_a66de72bbd8d710fd5f456c72433c34a7}{oomph\+::\+Finite\+Element}}.
+
+
+
+Definition at line \mbox{\hyperlink{Telements_8h_source_l01142}{1142}} of file \mbox{\hyperlink{Telements_8h_source}{Telements.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l01242}{oomph\+::\+Element\+Geometry\+::T}}.
+
+\mbox{\Hypertarget{classoomph_1_1TElementBase_aa13f1d631a3373f8981b748dd469ff8f}\label{classoomph_1_1TElementBase_aa13f1d631a3373f8981b748dd469ff8f}} 
+\index{oomph::TElementBase@{oomph::TElementBase}!local\_coord\_is\_valid@{local\_coord\_is\_valid}}
+\index{local\_coord\_is\_valid@{local\_coord\_is\_valid}!oomph::TElementBase@{oomph::TElementBase}}
+\doxysubsubsection{\texorpdfstring{local\_coord\_is\_valid()}{local\_coord\_is\_valid()}}
+{\footnotesize\ttfamily bool oomph\+::\+TElement\+Base\+::local\+\_\+coord\+\_\+is\+\_\+valid (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement_a9770e5512c9c7bcab17ddbdde169d588}{const}} \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Check whether the local coordinates are valid or not. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1FiniteElement_a9ae98c5b577d83303849ff57a9ae81f8}{oomph\+::\+Finite\+Element}}.
+
+
+
+Definition at line \mbox{\hyperlink{Telements_8h_source_l01148}{1148}} of file \mbox{\hyperlink{Telements_8h_source}{Telements.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l02616}{oomph\+::\+Finite\+Element\+::dim()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, and \mbox{\hyperlink{cfortran_8h_source_l00568}{s}}.
+
+\mbox{\Hypertarget{classoomph_1_1TElementBase_a0cce6b402f810f136ee04847727ca02a}\label{classoomph_1_1TElementBase_a0cce6b402f810f136ee04847727ca02a}} 
+\index{oomph::TElementBase@{oomph::TElementBase}!move\_local\_coord\_back\_into\_element@{move\_local\_coord\_back\_into\_element}}
+\index{move\_local\_coord\_back\_into\_element@{move\_local\_coord\_back\_into\_element}!oomph::TElementBase@{oomph::TElementBase}}
+\doxysubsubsection{\texorpdfstring{move\_local\_coord\_back\_into\_element()}{move\_local\_coord\_back\_into\_element()}}
+{\footnotesize\ttfamily void oomph\+::\+TElement\+Base\+::move\+\_\+local\+\_\+coord\+\_\+back\+\_\+into\+\_\+element (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Adjust local coordinates so that they\textquotesingle{}re located inside the element. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1FiniteElement_aa042b56813a8dd8ac0e1b19ae2bbe9d1}{oomph\+::\+Finite\+Element}}.
+
+
+
+Definition at line \mbox{\hyperlink{Telements_8h_source_l01175}{1175}} of file \mbox{\hyperlink{Telements_8h_source}{Telements.\+h}}.
+
+
+
+References \mbox{\hyperlink{elements_8h_source_l02616}{oomph\+::\+Finite\+Element\+::dim()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, and \mbox{\hyperlink{cfortran_8h_source_l00568}{s}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Telements_8h}{Telements.\+h}}\end{DoxyCompactItemize}

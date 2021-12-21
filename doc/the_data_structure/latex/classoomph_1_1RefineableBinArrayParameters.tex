@@ -1,0 +1,471 @@
+\hypertarget{classoomph_1_1RefineableBinArrayParameters}{}\doxysection{oomph\+::Refineable\+Bin\+Array\+Parameters Class Reference}
+\label{classoomph_1_1RefineableBinArrayParameters}\index{oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}}
+
+
+/////////////////////////////////////////////////////////////////////////// ///////////////////////////////////////////////////////////////////////////  
+
+
+
+
+{\ttfamily \#include $<$sample\+\_\+point\+\_\+parameters.\+h$>$}
+
+Inheritance diagram for oomph\+::Refineable\+Bin\+Array\+Parameters\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classoomph_1_1RefineableBinArrayParameters}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1RefineableBinArrayParameters_a818b4740e10aa5869981ce9f5bf1193e}{Refineable\+Bin\+Array\+Parameters}} (\mbox{\hyperlink{classoomph_1_1Mesh}{Mesh}} $\ast$\mbox{\hyperlink{classoomph_1_1SamplePointContainerParameters_a0f12913d8b02fc753d38236f617fb580}{mesh\+\_\+pt}})
+\begin{DoxyCompactList}\small\item\em Constructor\+: Pass mesh. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1RefineableBinArrayParameters_ac36f41c72e582ee1d9b808a9cae8774d}{Refineable\+Bin\+Array\+Parameters}} (const \mbox{\hyperlink{classoomph_1_1RefineableBinArrayParameters}{Refineable\+Bin\+Array\+Parameters}} \&data)=delete
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1RefineableBinArrayParameters_ab2eba4a4d33757c00ca263880fec6add}{operator=}} (const \mbox{\hyperlink{classoomph_1_1RefineableBinArrayParameters}{Refineable\+Bin\+Array\+Parameters}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1RefineableBinArrayParameters_afc0752c4b4731443b5ec6e960afa61ae}{$\sim$\+Refineable\+Bin\+Array\+Parameters}} ()
+\begin{DoxyCompactList}\small\item\em Empty destructor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1RefineableBinArrayParameters_a0e7008ab131125dd1ed4118f5953848a}{bin\+\_\+array\+\_\+is\+\_\+recursive}} () const
+\begin{DoxyCompactList}\small\item\em Is bin recursive? \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1RefineableBinArrayParameters_ac06c56e4dd074e6f133e0708dc7a1fb7}{enable\+\_\+bin\+\_\+array\+\_\+is\+\_\+recursive}} ()
+\begin{DoxyCompactList}\small\item\em Enable recursiveness. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1RefineableBinArrayParameters_ad2922f7c04fcc8a21aec0ab8c6a0651b}{disable\+\_\+bin\+\_\+array\+\_\+is\+\_\+recursive}} ()
+\begin{DoxyCompactList}\small\item\em Disable recursiveness. \end{DoxyCompactList}\item 
+unsigned \& \mbox{\hyperlink{classoomph_1_1RefineableBinArrayParameters_a47b77565c2451d5063e71895d7d2ec11}{depth}} ()
+\begin{DoxyCompactList}\small\item\em Variable which stores the Depth value of the bin\+\_\+array. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1RefineableBinArrayParameters_a198892de079e38ec6b7e3e39c878ffd5}{depth}} () const
+\begin{DoxyCompactList}\small\item\em Variable which stores the Depth value of the bin\+\_\+array. const version. \end{DoxyCompactList}\item 
+unsigned \& \mbox{\hyperlink{classoomph_1_1RefineableBinArrayParameters_a59744c6f2080d87e802cac5ed3108bac}{max\+\_\+depth}} ()
+\begin{DoxyCompactList}\small\item\em Max. depth value of the bin\+\_\+array. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1RefineableBinArrayParameters_a5e27c9afc435df8c4980349a12373c78}{max\+\_\+depth}} () const
+\begin{DoxyCompactList}\small\item\em Max. depth value of the bin\+\_\+array. const version. \end{DoxyCompactList}\item 
+unsigned \& \mbox{\hyperlink{classoomph_1_1RefineableBinArrayParameters_aeef443ba7cc6b4e787cca328377c18b6}{max\+\_\+number\+\_\+of\+\_\+sample\+\_\+point\+\_\+per\+\_\+bin}} ()
+\begin{DoxyCompactList}\small\item\em Maximum number of sample points in bin (before it\textquotesingle{}s subdivided recursively) \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1RefineableBinArrayParameters_a0a9b5ec5cb8b505a4166e9edacc2b964}{max\+\_\+number\+\_\+of\+\_\+sample\+\_\+point\+\_\+per\+\_\+bin}} () const
+\begin{DoxyCompactList}\small\item\em Maximum number of sample points in bin (before it\textquotesingle{}s subdivided recursively; const version. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRefineableBinArray}{Refineable\+Bin\+Array}} $\ast$\& \mbox{\hyperlink{classoomph_1_1RefineableBinArrayParameters_ac15f9c7bcc1e2b445cb024e45ceccde7}{root\+\_\+bin\+\_\+array\+\_\+pt}} ()
+\begin{DoxyCompactList}\small\item\em Pointer to root bin array. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRefineableBinArray}{Refineable\+Bin\+Array}} $\ast$ \mbox{\hyperlink{classoomph_1_1RefineableBinArrayParameters_a6dfd73a8dfcd0959446b1c403d54282e}{root\+\_\+bin\+\_\+array\+\_\+pt}} () const
+\begin{DoxyCompactList}\small\item\em Pointer to root bin array; const version. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static unsigned \mbox{\hyperlink{classoomph_1_1RefineableBinArrayParameters_a5de4867a1cd15e1e494cb53261f0b1a7}{Default\+\_\+max\+\_\+depth}}
+\begin{DoxyCompactList}\small\item\em Default value for max. depth. \end{DoxyCompactList}\item 
+static unsigned \mbox{\hyperlink{classoomph_1_1RefineableBinArrayParameters_a0e94143bc3bdbd74d8927ea7e9c5f234}{Default\+\_\+max\+\_\+number\+\_\+of\+\_\+sample\+\_\+point\+\_\+per\+\_\+bin}}
+\begin{DoxyCompactList}\small\item\em Default value for max. number of sample points before refinement. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classoomph_1_1RefineableBinArrayParameters_a1f0e523056c7a2aed792b0fabeb06bda}{Bin\+\_\+array\+\_\+is\+\_\+recursive}}
+\begin{DoxyCompactList}\small\item\em Variable which stores if the \mbox{\hyperlink{classRefineableBinArray}{Refineable\+Bin\+Array}} is recursive or not. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1RefineableBinArrayParameters_a298bbaa33862244e5c153c07da29636c}{Depth}}
+\begin{DoxyCompactList}\small\item\em Variable which stores the Depth value of the bin\+\_\+array. Useful for debugging and for preventing \char`\"{}infinite\char`\"{} recursion in case if there is a problem. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1RefineableBinArrayParameters_a31ec6c0f07ea4ce3b5d29ae3a9e8dc11}{Max\+\_\+depth}}
+\begin{DoxyCompactList}\small\item\em Max. depth value of the bin\+\_\+array. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1RefineableBinArrayParameters_ad6bec286a43785726d81c0bcadcb75be}{Max\+\_\+number\+\_\+of\+\_\+sample\+\_\+point\+\_\+per\+\_\+bin}}
+\begin{DoxyCompactList}\small\item\em Maximum number of sample points in bin (before its subdivided recursively. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRefineableBinArray}{Refineable\+Bin\+Array}} $\ast$ \mbox{\hyperlink{classoomph_1_1RefineableBinArrayParameters_ab4e2e5c03c4d3e725bd4f595b850bc2d}{Root\+\_\+bin\+\_\+array\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em Pointer to root bin array. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+/////////////////////////////////////////////////////////////////////////// /////////////////////////////////////////////////////////////////////////// 
+
+Helper object for dealing with the parameters used for the \mbox{\hyperlink{classRefineableBinArray}{Refineable\+Bin\+Array}} objects 
+
+Definition at line \mbox{\hyperlink{sample__point__parameters_8h_source_l00321}{321}} of file \mbox{\hyperlink{sample__point__parameters_8h_source}{sample\+\_\+point\+\_\+parameters.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1RefineableBinArrayParameters_a818b4740e10aa5869981ce9f5bf1193e}\label{classoomph_1_1RefineableBinArrayParameters_a818b4740e10aa5869981ce9f5bf1193e}} 
+\index{oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}!RefineableBinArrayParameters@{RefineableBinArrayParameters}}
+\index{RefineableBinArrayParameters@{RefineableBinArrayParameters}!oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}}
+\doxysubsubsection{\texorpdfstring{RefineableBinArrayParameters()}{RefineableBinArrayParameters()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily oomph\+::\+Refineable\+Bin\+Array\+Parameters\+::\+Refineable\+Bin\+Array\+Parameters (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1Mesh}{Mesh}} $\ast$}]{mesh\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor\+: Pass mesh. 
+
+
+
+Definition at line \mbox{\hyperlink{sample__point__parameters_8h_source_l00325}{325}} of file \mbox{\hyperlink{sample__point__parameters_8h_source}{sample\+\_\+point\+\_\+parameters.\+h}}.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableBinArrayParameters_ac36f41c72e582ee1d9b808a9cae8774d}\label{classoomph_1_1RefineableBinArrayParameters_ac36f41c72e582ee1d9b808a9cae8774d}} 
+\index{oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}!RefineableBinArrayParameters@{RefineableBinArrayParameters}}
+\index{RefineableBinArrayParameters@{RefineableBinArrayParameters}!oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}}
+\doxysubsubsection{\texorpdfstring{RefineableBinArrayParameters()}{RefineableBinArrayParameters()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily oomph\+::\+Refineable\+Bin\+Array\+Parameters\+::\+Refineable\+Bin\+Array\+Parameters (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classoomph_1_1RefineableBinArrayParameters}{Refineable\+Bin\+Array\+Parameters}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Broken copy constructor. 
+
+\mbox{\Hypertarget{classoomph_1_1RefineableBinArrayParameters_afc0752c4b4731443b5ec6e960afa61ae}\label{classoomph_1_1RefineableBinArrayParameters_afc0752c4b4731443b5ec6e960afa61ae}} 
+\index{oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}!````~RefineableBinArrayParameters@{$\sim$RefineableBinArrayParameters}}
+\index{````~RefineableBinArrayParameters@{$\sim$RefineableBinArrayParameters}!oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}}
+\doxysubsubsection{\texorpdfstring{$\sim$RefineableBinArrayParameters()}{~RefineableBinArrayParameters()}}
+{\footnotesize\ttfamily virtual oomph\+::\+Refineable\+Bin\+Array\+Parameters\+::$\sim$\+Refineable\+Bin\+Array\+Parameters (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Empty destructor. 
+
+
+
+Definition at line \mbox{\hyperlink{sample__point__parameters_8h_source_l00345}{345}} of file \mbox{\hyperlink{sample__point__parameters_8h_source}{sample\+\_\+point\+\_\+parameters.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1RefineableBinArrayParameters_a0e7008ab131125dd1ed4118f5953848a}\label{classoomph_1_1RefineableBinArrayParameters_a0e7008ab131125dd1ed4118f5953848a}} 
+\index{oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}!bin\_array\_is\_recursive@{bin\_array\_is\_recursive}}
+\index{bin\_array\_is\_recursive@{bin\_array\_is\_recursive}!oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}}
+\doxysubsubsection{\texorpdfstring{bin\_array\_is\_recursive()}{bin\_array\_is\_recursive()}}
+{\footnotesize\ttfamily bool oomph\+::\+Refineable\+Bin\+Array\+Parameters\+::bin\+\_\+array\+\_\+is\+\_\+recursive (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Is bin recursive? 
+
+
+
+Definition at line \mbox{\hyperlink{sample__point__parameters_8h_source_l00349}{349}} of file \mbox{\hyperlink{sample__point__parameters_8h_source}{sample\+\_\+point\+\_\+parameters.\+h}}.
+
+
+
+References \mbox{\hyperlink{sample__point__parameters_8h_source_l00427}{Bin\+\_\+array\+\_\+is\+\_\+recursive}}.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableBinArrayParameters_a47b77565c2451d5063e71895d7d2ec11}\label{classoomph_1_1RefineableBinArrayParameters_a47b77565c2451d5063e71895d7d2ec11}} 
+\index{oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}!depth@{depth}}
+\index{depth@{depth}!oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}}
+\doxysubsubsection{\texorpdfstring{depth()}{depth()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily unsigned \& oomph\+::\+Refineable\+Bin\+Array\+Parameters\+::depth (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Variable which stores the Depth value of the bin\+\_\+array. 
+
+
+
+Definition at line \mbox{\hyperlink{sample__point__parameters_8h_source_l00367}{367}} of file \mbox{\hyperlink{sample__point__parameters_8h_source}{sample\+\_\+point\+\_\+parameters.\+h}}.
+
+
+
+References \mbox{\hyperlink{sample__point__parameters_8h_source_l00432}{Depth}}.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableBinArrayParameters_a198892de079e38ec6b7e3e39c878ffd5}\label{classoomph_1_1RefineableBinArrayParameters_a198892de079e38ec6b7e3e39c878ffd5}} 
+\index{oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}!depth@{depth}}
+\index{depth@{depth}!oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}}
+\doxysubsubsection{\texorpdfstring{depth()}{depth()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Refineable\+Bin\+Array\+Parameters\+::depth (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Variable which stores the Depth value of the bin\+\_\+array. const version. 
+
+
+
+Definition at line \mbox{\hyperlink{sample__point__parameters_8h_source_l00374}{374}} of file \mbox{\hyperlink{sample__point__parameters_8h_source}{sample\+\_\+point\+\_\+parameters.\+h}}.
+
+
+
+References \mbox{\hyperlink{sample__point__parameters_8h_source_l00432}{Depth}}.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableBinArrayParameters_ad2922f7c04fcc8a21aec0ab8c6a0651b}\label{classoomph_1_1RefineableBinArrayParameters_ad2922f7c04fcc8a21aec0ab8c6a0651b}} 
+\index{oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}!disable\_bin\_array\_is\_recursive@{disable\_bin\_array\_is\_recursive}}
+\index{disable\_bin\_array\_is\_recursive@{disable\_bin\_array\_is\_recursive}!oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}}
+\doxysubsubsection{\texorpdfstring{disable\_bin\_array\_is\_recursive()}{disable\_bin\_array\_is\_recursive()}}
+{\footnotesize\ttfamily void oomph\+::\+Refineable\+Bin\+Array\+Parameters\+::disable\+\_\+bin\+\_\+array\+\_\+is\+\_\+recursive (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Disable recursiveness. 
+
+
+
+Definition at line \mbox{\hyperlink{sample__point__parameters_8h_source_l00361}{361}} of file \mbox{\hyperlink{sample__point__parameters_8h_source}{sample\+\_\+point\+\_\+parameters.\+h}}.
+
+
+
+References \mbox{\hyperlink{sample__point__parameters_8h_source_l00427}{Bin\+\_\+array\+\_\+is\+\_\+recursive}}.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableBinArrayParameters_ac06c56e4dd074e6f133e0708dc7a1fb7}\label{classoomph_1_1RefineableBinArrayParameters_ac06c56e4dd074e6f133e0708dc7a1fb7}} 
+\index{oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}!enable\_bin\_array\_is\_recursive@{enable\_bin\_array\_is\_recursive}}
+\index{enable\_bin\_array\_is\_recursive@{enable\_bin\_array\_is\_recursive}!oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}}
+\doxysubsubsection{\texorpdfstring{enable\_bin\_array\_is\_recursive()}{enable\_bin\_array\_is\_recursive()}}
+{\footnotesize\ttfamily void oomph\+::\+Refineable\+Bin\+Array\+Parameters\+::enable\+\_\+bin\+\_\+array\+\_\+is\+\_\+recursive (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Enable recursiveness. 
+
+
+
+Definition at line \mbox{\hyperlink{sample__point__parameters_8h_source_l00355}{355}} of file \mbox{\hyperlink{sample__point__parameters_8h_source}{sample\+\_\+point\+\_\+parameters.\+h}}.
+
+
+
+References \mbox{\hyperlink{sample__point__parameters_8h_source_l00427}{Bin\+\_\+array\+\_\+is\+\_\+recursive}}.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableBinArrayParameters_a59744c6f2080d87e802cac5ed3108bac}\label{classoomph_1_1RefineableBinArrayParameters_a59744c6f2080d87e802cac5ed3108bac}} 
+\index{oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}!max\_depth@{max\_depth}}
+\index{max\_depth@{max\_depth}!oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}}
+\doxysubsubsection{\texorpdfstring{max\_depth()}{max\_depth()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily unsigned \& oomph\+::\+Refineable\+Bin\+Array\+Parameters\+::max\+\_\+depth (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Max. depth value of the bin\+\_\+array. 
+
+
+
+Definition at line \mbox{\hyperlink{sample__point__parameters_8h_source_l00380}{380}} of file \mbox{\hyperlink{sample__point__parameters_8h_source}{sample\+\_\+point\+\_\+parameters.\+h}}.
+
+
+
+References \mbox{\hyperlink{sample__point__parameters_8h_source_l00435}{Max\+\_\+depth}}.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableBinArrayParameters_a5e27c9afc435df8c4980349a12373c78}\label{classoomph_1_1RefineableBinArrayParameters_a5e27c9afc435df8c4980349a12373c78}} 
+\index{oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}!max\_depth@{max\_depth}}
+\index{max\_depth@{max\_depth}!oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}}
+\doxysubsubsection{\texorpdfstring{max\_depth()}{max\_depth()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Refineable\+Bin\+Array\+Parameters\+::max\+\_\+depth (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Max. depth value of the bin\+\_\+array. const version. 
+
+
+
+Definition at line \mbox{\hyperlink{sample__point__parameters_8h_source_l00387}{387}} of file \mbox{\hyperlink{sample__point__parameters_8h_source}{sample\+\_\+point\+\_\+parameters.\+h}}.
+
+
+
+References \mbox{\hyperlink{sample__point__parameters_8h_source_l00435}{Max\+\_\+depth}}.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableBinArrayParameters_aeef443ba7cc6b4e787cca328377c18b6}\label{classoomph_1_1RefineableBinArrayParameters_aeef443ba7cc6b4e787cca328377c18b6}} 
+\index{oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}!max\_number\_of\_sample\_point\_per\_bin@{max\_number\_of\_sample\_point\_per\_bin}}
+\index{max\_number\_of\_sample\_point\_per\_bin@{max\_number\_of\_sample\_point\_per\_bin}!oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}}
+\doxysubsubsection{\texorpdfstring{max\_number\_of\_sample\_point\_per\_bin()}{max\_number\_of\_sample\_point\_per\_bin()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily unsigned \& oomph\+::\+Refineable\+Bin\+Array\+Parameters\+::max\+\_\+number\+\_\+of\+\_\+sample\+\_\+point\+\_\+per\+\_\+bin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Maximum number of sample points in bin (before it\textquotesingle{}s subdivided recursively) 
+
+
+
+Definition at line \mbox{\hyperlink{sample__point__parameters_8h_source_l00394}{394}} of file \mbox{\hyperlink{sample__point__parameters_8h_source}{sample\+\_\+point\+\_\+parameters.\+h}}.
+
+
+
+References \mbox{\hyperlink{sample__point__parameters_8h_source_l00439}{Max\+\_\+number\+\_\+of\+\_\+sample\+\_\+point\+\_\+per\+\_\+bin}}.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableBinArrayParameters_a0a9b5ec5cb8b505a4166e9edacc2b964}\label{classoomph_1_1RefineableBinArrayParameters_a0a9b5ec5cb8b505a4166e9edacc2b964}} 
+\index{oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}!max\_number\_of\_sample\_point\_per\_bin@{max\_number\_of\_sample\_point\_per\_bin}}
+\index{max\_number\_of\_sample\_point\_per\_bin@{max\_number\_of\_sample\_point\_per\_bin}!oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}}
+\doxysubsubsection{\texorpdfstring{max\_number\_of\_sample\_point\_per\_bin()}{max\_number\_of\_sample\_point\_per\_bin()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Refineable\+Bin\+Array\+Parameters\+::max\+\_\+number\+\_\+of\+\_\+sample\+\_\+point\+\_\+per\+\_\+bin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Maximum number of sample points in bin (before it\textquotesingle{}s subdivided recursively; const version. 
+
+
+
+Definition at line \mbox{\hyperlink{sample__point__parameters_8h_source_l00401}{401}} of file \mbox{\hyperlink{sample__point__parameters_8h_source}{sample\+\_\+point\+\_\+parameters.\+h}}.
+
+
+
+References \mbox{\hyperlink{sample__point__parameters_8h_source_l00439}{Max\+\_\+number\+\_\+of\+\_\+sample\+\_\+point\+\_\+per\+\_\+bin}}.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableBinArrayParameters_ab2eba4a4d33757c00ca263880fec6add}\label{classoomph_1_1RefineableBinArrayParameters_ab2eba4a4d33757c00ca263880fec6add}} 
+\index{oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}!operator=@{operator=}}
+\index{operator=@{operator=}!oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily void oomph\+::\+Refineable\+Bin\+Array\+Parameters\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classoomph_1_1RefineableBinArrayParameters}{Refineable\+Bin\+Array\+Parameters}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Broken assignment operator. 
+
+\mbox{\Hypertarget{classoomph_1_1RefineableBinArrayParameters_ac15f9c7bcc1e2b445cb024e45ceccde7}\label{classoomph_1_1RefineableBinArrayParameters_ac15f9c7bcc1e2b445cb024e45ceccde7}} 
+\index{oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}!root\_bin\_array\_pt@{root\_bin\_array\_pt}}
+\index{root\_bin\_array\_pt@{root\_bin\_array\_pt}!oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}}
+\doxysubsubsection{\texorpdfstring{root\_bin\_array\_pt()}{root\_bin\_array\_pt()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRefineableBinArray}{Refineable\+Bin\+Array}} $\ast$\& oomph\+::\+Refineable\+Bin\+Array\+Parameters\+::root\+\_\+bin\+\_\+array\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pointer to root bin array. 
+
+
+
+Definition at line \mbox{\hyperlink{sample__point__parameters_8h_source_l00407}{407}} of file \mbox{\hyperlink{sample__point__parameters_8h_source}{sample\+\_\+point\+\_\+parameters.\+h}}.
+
+
+
+References \mbox{\hyperlink{sample__point__parameters_8h_source_l00442}{Root\+\_\+bin\+\_\+array\+\_\+pt}}.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableBinArrayParameters_a6dfd73a8dfcd0959446b1c403d54282e}\label{classoomph_1_1RefineableBinArrayParameters_a6dfd73a8dfcd0959446b1c403d54282e}} 
+\index{oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}!root\_bin\_array\_pt@{root\_bin\_array\_pt}}
+\index{root\_bin\_array\_pt@{root\_bin\_array\_pt}!oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}}
+\doxysubsubsection{\texorpdfstring{root\_bin\_array\_pt()}{root\_bin\_array\_pt()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRefineableBinArray}{Refineable\+Bin\+Array}} $\ast$ oomph\+::\+Refineable\+Bin\+Array\+Parameters\+::root\+\_\+bin\+\_\+array\+\_\+pt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pointer to root bin array; const version. 
+
+
+
+Definition at line \mbox{\hyperlink{sample__point__parameters_8h_source_l00413}{413}} of file \mbox{\hyperlink{sample__point__parameters_8h_source}{sample\+\_\+point\+\_\+parameters.\+h}}.
+
+
+
+References \mbox{\hyperlink{sample__point__parameters_8h_source_l00442}{Root\+\_\+bin\+\_\+array\+\_\+pt}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1RefineableBinArrayParameters_a1f0e523056c7a2aed792b0fabeb06bda}\label{classoomph_1_1RefineableBinArrayParameters_a1f0e523056c7a2aed792b0fabeb06bda}} 
+\index{oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}!Bin\_array\_is\_recursive@{Bin\_array\_is\_recursive}}
+\index{Bin\_array\_is\_recursive@{Bin\_array\_is\_recursive}!oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}}
+\doxysubsubsection{\texorpdfstring{Bin\_array\_is\_recursive}{Bin\_array\_is\_recursive}}
+{\footnotesize\ttfamily bool oomph\+::\+Refineable\+Bin\+Array\+Parameters\+::\+Bin\+\_\+array\+\_\+is\+\_\+recursive\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Variable which stores if the \mbox{\hyperlink{classRefineableBinArray}{Refineable\+Bin\+Array}} is recursive or not. 
+
+
+
+Definition at line \mbox{\hyperlink{sample__point__parameters_8h_source_l00427}{427}} of file \mbox{\hyperlink{sample__point__parameters_8h_source}{sample\+\_\+point\+\_\+parameters.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{sample__point__parameters_8h_source_l00349}{bin\+\_\+array\+\_\+is\+\_\+recursive()}}, \mbox{\hyperlink{sample__point__parameters_8h_source_l00361}{disable\+\_\+bin\+\_\+array\+\_\+is\+\_\+recursive()}}, and \mbox{\hyperlink{sample__point__parameters_8h_source_l00355}{enable\+\_\+bin\+\_\+array\+\_\+is\+\_\+recursive()}}.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableBinArrayParameters_a5de4867a1cd15e1e494cb53261f0b1a7}\label{classoomph_1_1RefineableBinArrayParameters_a5de4867a1cd15e1e494cb53261f0b1a7}} 
+\index{oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}!Default\_max\_depth@{Default\_max\_depth}}
+\index{Default\_max\_depth@{Default\_max\_depth}!oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}}
+\doxysubsubsection{\texorpdfstring{Default\_max\_depth}{Default\_max\_depth}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Refineable\+Bin\+Array\+Parameters\+::\+Default\+\_\+max\+\_\+depth\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{    100}
+
+\end{DoxyCode}
+
+
+Default value for max. depth. 
+
+
+
+Definition at line \mbox{\hyperlink{sample__point__parameters_8h_source_l00419}{419}} of file \mbox{\hyperlink{sample__point__parameters_8h_source}{sample\+\_\+point\+\_\+parameters.\+h}}.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableBinArrayParameters_a0e94143bc3bdbd74d8927ea7e9c5f234}\label{classoomph_1_1RefineableBinArrayParameters_a0e94143bc3bdbd74d8927ea7e9c5f234}} 
+\index{oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}!Default\_max\_number\_of\_sample\_point\_per\_bin@{Default\_max\_number\_of\_sample\_point\_per\_bin}}
+\index{Default\_max\_number\_of\_sample\_point\_per\_bin@{Default\_max\_number\_of\_sample\_point\_per\_bin}!oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}}
+\doxysubsubsection{\texorpdfstring{Default\_max\_number\_of\_sample\_point\_per\_bin}{Default\_max\_number\_of\_sample\_point\_per\_bin}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Refineable\+Bin\+Array\+Parameters\+::\+Default\+\_\+max\+\_\+number\+\_\+of\+\_\+sample\+\_\+point\+\_\+per\+\_\+bin\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{      15}
+
+\end{DoxyCode}
+
+
+Default value for max. number of sample points before refinement. 
+
+
+
+Definition at line \mbox{\hyperlink{sample__point__parameters_8h_source_l00422}{422}} of file \mbox{\hyperlink{sample__point__parameters_8h_source}{sample\+\_\+point\+\_\+parameters.\+h}}.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableBinArrayParameters_a298bbaa33862244e5c153c07da29636c}\label{classoomph_1_1RefineableBinArrayParameters_a298bbaa33862244e5c153c07da29636c}} 
+\index{oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}!Depth@{Depth}}
+\index{Depth@{Depth}!oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}}
+\doxysubsubsection{\texorpdfstring{Depth}{Depth}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Refineable\+Bin\+Array\+Parameters\+::\+Depth\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Variable which stores the Depth value of the bin\+\_\+array. Useful for debugging and for preventing \char`\"{}infinite\char`\"{} recursion in case if there is a problem. 
+
+
+
+Definition at line \mbox{\hyperlink{sample__point__parameters_8h_source_l00432}{432}} of file \mbox{\hyperlink{sample__point__parameters_8h_source}{sample\+\_\+point\+\_\+parameters.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{sample__point__parameters_8h_source_l00367}{depth()}}.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableBinArrayParameters_a31ec6c0f07ea4ce3b5d29ae3a9e8dc11}\label{classoomph_1_1RefineableBinArrayParameters_a31ec6c0f07ea4ce3b5d29ae3a9e8dc11}} 
+\index{oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}!Max\_depth@{Max\_depth}}
+\index{Max\_depth@{Max\_depth}!oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}}
+\doxysubsubsection{\texorpdfstring{Max\_depth}{Max\_depth}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Refineable\+Bin\+Array\+Parameters\+::\+Max\+\_\+depth\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Max. depth value of the bin\+\_\+array. 
+
+
+
+Definition at line \mbox{\hyperlink{sample__point__parameters_8h_source_l00435}{435}} of file \mbox{\hyperlink{sample__point__parameters_8h_source}{sample\+\_\+point\+\_\+parameters.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{sample__point__parameters_8h_source_l00380}{max\+\_\+depth()}}.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableBinArrayParameters_ad6bec286a43785726d81c0bcadcb75be}\label{classoomph_1_1RefineableBinArrayParameters_ad6bec286a43785726d81c0bcadcb75be}} 
+\index{oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}!Max\_number\_of\_sample\_point\_per\_bin@{Max\_number\_of\_sample\_point\_per\_bin}}
+\index{Max\_number\_of\_sample\_point\_per\_bin@{Max\_number\_of\_sample\_point\_per\_bin}!oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}}
+\doxysubsubsection{\texorpdfstring{Max\_number\_of\_sample\_point\_per\_bin}{Max\_number\_of\_sample\_point\_per\_bin}}
+{\footnotesize\ttfamily unsigned oomph\+::\+Refineable\+Bin\+Array\+Parameters\+::\+Max\+\_\+number\+\_\+of\+\_\+sample\+\_\+point\+\_\+per\+\_\+bin\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Maximum number of sample points in bin (before its subdivided recursively. 
+
+
+
+Definition at line \mbox{\hyperlink{sample__point__parameters_8h_source_l00439}{439}} of file \mbox{\hyperlink{sample__point__parameters_8h_source}{sample\+\_\+point\+\_\+parameters.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{sample__point__parameters_8h_source_l00394}{max\+\_\+number\+\_\+of\+\_\+sample\+\_\+point\+\_\+per\+\_\+bin()}}.
+
+\mbox{\Hypertarget{classoomph_1_1RefineableBinArrayParameters_ab4e2e5c03c4d3e725bd4f595b850bc2d}\label{classoomph_1_1RefineableBinArrayParameters_ab4e2e5c03c4d3e725bd4f595b850bc2d}} 
+\index{oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}!Root\_bin\_array\_pt@{Root\_bin\_array\_pt}}
+\index{Root\_bin\_array\_pt@{Root\_bin\_array\_pt}!oomph::RefineableBinArrayParameters@{oomph::RefineableBinArrayParameters}}
+\doxysubsubsection{\texorpdfstring{Root\_bin\_array\_pt}{Root\_bin\_array\_pt}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRefineableBinArray}{Refineable\+Bin\+Array}}$\ast$ oomph\+::\+Refineable\+Bin\+Array\+Parameters\+::\+Root\+\_\+bin\+\_\+array\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to root bin array. 
+
+
+
+Definition at line \mbox{\hyperlink{sample__point__parameters_8h_source_l00442}{442}} of file \mbox{\hyperlink{sample__point__parameters_8h_source}{sample\+\_\+point\+\_\+parameters.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{sample__point__parameters_8h_source_l00407}{root\+\_\+bin\+\_\+array\+\_\+pt()}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{sample__point__parameters_8h}{sample\+\_\+point\+\_\+parameters.\+h}}\item 
+\mbox{\hyperlink{sample__point__parameters_8cc}{sample\+\_\+point\+\_\+parameters.\+cc}}\end{DoxyCompactItemize}

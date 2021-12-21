@@ -1,0 +1,378 @@
+\hypertarget{classoomph_1_1CG}{}\doxysection{oomph\+::CG\texorpdfstring{$<$}{<} MATRIX \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classoomph_1_1CG}\index{oomph::CG$<$ MATRIX $>$@{oomph::CG$<$ MATRIX $>$}}
+
+
+//////////////////////////////////////////////////////////////////////////// ////////////////////////////////////////////////////////////////////////////  
+
+
+
+
+{\ttfamily \#include $<$iterative\+\_\+linear\+\_\+solver.\+h$>$}
+
+Inheritance diagram for oomph\+::CG\texorpdfstring{$<$}{<} MATRIX \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classoomph_1_1CG}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1CG_a03da73843394af90b918f2d24ee2f3a1}{CG}} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1CG_a35c9254d858fbc3d8f7061c1bec289c5}{$\sim$\+CG}} ()
+\begin{DoxyCompactList}\small\item\em Destructor (cleanup storage) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1CG_a2c25904905edec0e3b7eae3a0288ff14}{CG}} (const \mbox{\hyperlink{classoomph_1_1CG}{CG}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1CG_a6112834c4d9e2c87e96aa1f9588fb280}{operator=}} (const \mbox{\hyperlink{classoomph_1_1CG}{CG}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1CG_a1116011340fabc5c5d2a97cea0cd5b72}{disable\+\_\+resolve}} ()
+\begin{DoxyCompactList}\small\item\em Overload disable resolve so that it cleans up memory too. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1CG_a3ae0fb5451136aec30defea2758c8c5d}{solve}} (\mbox{\hyperlink{classoomph_1_1Problem}{Problem}} $\ast$const \&problem\+\_\+pt, \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&result)
+\begin{DoxyCompactList}\small\item\em Solver\+: Takes pointer to problem and returns the results vector which contains the solution of the linear system defined by the problem\textquotesingle{}s fully assembled Jacobian and residual vector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1CG_a764dbdc8e63d9dfe0945015399a83c18}{solve}} (\mbox{\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base}} $\ast$const \&matrix\+\_\+pt, const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&rhs, \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&solution)
+\begin{DoxyCompactList}\small\item\em Linear-\/algebra-\/type solver\+: Takes pointer to a matrix and rhs vector and returns the solution of the linear system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1CG_a147e640c19c2159285da0b3b5c51af63}{resolve}} (const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&rhs, \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&result)
+\begin{DoxyCompactList}\small\item\em Re-\/solve the system defined by the last assembled Jacobian and the rhs vector specified here. Solution is returned in the vector result. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1CG_a17db796814dc11cb67eac960df85d5f7}{iterations}} () const
+\begin{DoxyCompactList}\small\item\em Number of iterations taken. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classoomph_1_1CG_adbb17880d5464362b9e7a1cfa52dffec}{solve\+\_\+helper}} (\mbox{\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base}} $\ast$const \&matrix\+\_\+pt, const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&rhs, \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&solution)
+\begin{DoxyCompactList}\small\item\em General interface to solve function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1CG_ab51014aac249e9998a002509c7a3088e}{clean\+\_\+up\+\_\+memory}} ()
+\begin{DoxyCompactList}\small\item\em Cleanup data that\textquotesingle{}s stored for resolve (if any has been stored) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned \mbox{\hyperlink{classoomph_1_1CG_a887d842b056091bcb8093f43a262d620}{Iterations}}
+\begin{DoxyCompactList}\small\item\em Number of iterations taken. \end{DoxyCompactList}\item 
+MATRIX $\ast$ \mbox{\hyperlink{classoomph_1_1CG_a988bdcfb0c84bc14369092547afa4938}{Matrix\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em Pointer to matrix. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1CG_abb0446c6424e75adff3b220acb61159e}{Resolving}}
+\begin{DoxyCompactList}\small\item\em Boolean flag to indicate if the solve is done in re-\/solve mode, bypassing setup of matrix and preconditioner. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1CG_aabb4b15b969d9e061411547b23bd4d9a}{Matrix\+\_\+can\+\_\+be\+\_\+deleted}}
+\begin{DoxyCompactList}\small\item\em Boolean flag to indicate if the matrix pointed to be Matrix\+\_\+pt can be deleted. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename MATRIX$>$\newline
+class oomph\+::\+CG$<$ MATRIX $>$}
+//////////////////////////////////////////////////////////////////////////// //////////////////////////////////////////////////////////////////////////// 
+
+The conjugate gradient method. 
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8h_source_l00283}{283}} of file \mbox{\hyperlink{iterative__linear__solver_8h_source}{iterative\+\_\+linear\+\_\+solver.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1CG_a03da73843394af90b918f2d24ee2f3a1}\label{classoomph_1_1CG_a03da73843394af90b918f2d24ee2f3a1}} 
+\index{oomph::CG$<$ MATRIX $>$@{oomph::CG$<$ MATRIX $>$}!CG@{CG}}
+\index{CG@{CG}!oomph::CG$<$ MATRIX $>$@{oomph::CG$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{CG()}{CG()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+\mbox{\hyperlink{classoomph_1_1CG}{oomph\+::\+CG}}$<$ MATRIX $>$\+::\mbox{\hyperlink{classoomph_1_1CG}{CG}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8h_source_l00287}{287}} of file \mbox{\hyperlink{iterative__linear__solver_8h_source}{iterative\+\_\+linear\+\_\+solver.\+h}}.
+
+\mbox{\Hypertarget{classoomph_1_1CG_a35c9254d858fbc3d8f7061c1bec289c5}\label{classoomph_1_1CG_a35c9254d858fbc3d8f7061c1bec289c5}} 
+\index{oomph::CG$<$ MATRIX $>$@{oomph::CG$<$ MATRIX $>$}!````~CG@{$\sim$CG}}
+\index{````~CG@{$\sim$CG}!oomph::CG$<$ MATRIX $>$@{oomph::CG$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$CG()}{~CG()}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+virtual \mbox{\hyperlink{classoomph_1_1CG}{oomph\+::\+CG}}$<$ MATRIX $>$\+::$\sim$\mbox{\hyperlink{classoomph_1_1CG}{CG}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destructor (cleanup storage) 
+
+
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8h_source_l00297}{297}} of file \mbox{\hyperlink{iterative__linear__solver_8h_source}{iterative\+\_\+linear\+\_\+solver.\+h}}.
+
+
+
+References \mbox{\hyperlink{iterative__linear__solver_8h_source_l00375}{oomph\+::\+CG$<$ MATRIX $>$\+::clean\+\_\+up\+\_\+memory()}}.
+
+\mbox{\Hypertarget{classoomph_1_1CG_a2c25904905edec0e3b7eae3a0288ff14}\label{classoomph_1_1CG_a2c25904905edec0e3b7eae3a0288ff14}} 
+\index{oomph::CG$<$ MATRIX $>$@{oomph::CG$<$ MATRIX $>$}!CG@{CG}}
+\index{CG@{CG}!oomph::CG$<$ MATRIX $>$@{oomph::CG$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{CG()}{CG()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+\mbox{\hyperlink{classoomph_1_1CG}{oomph\+::\+CG}}$<$ MATRIX $>$\+::\mbox{\hyperlink{classoomph_1_1CG}{CG}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classoomph_1_1CG}{CG}}$<$ MATRIX $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Broken copy constructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1CG_ab51014aac249e9998a002509c7a3088e}\label{classoomph_1_1CG_ab51014aac249e9998a002509c7a3088e}} 
+\index{oomph::CG$<$ MATRIX $>$@{oomph::CG$<$ MATRIX $>$}!clean\_up\_memory@{clean\_up\_memory}}
+\index{clean\_up\_memory@{clean\_up\_memory}!oomph::CG$<$ MATRIX $>$@{oomph::CG$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{clean\_up\_memory()}{clean\_up\_memory()}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+void \mbox{\hyperlink{classoomph_1_1CG}{oomph\+::\+CG}}$<$ MATRIX $>$\+::clean\+\_\+up\+\_\+memory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Cleanup data that\textquotesingle{}s stored for resolve (if any has been stored) 
+
+
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1LinearSolver_a9d66f3262e80ca06a365f98216afd85f}{oomph\+::\+Linear\+Solver}}.
+
+
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8h_source_l00375}{375}} of file \mbox{\hyperlink{iterative__linear__solver_8h_source}{iterative\+\_\+linear\+\_\+solver.\+h}}.
+
+
+
+References \mbox{\hyperlink{iterative__linear__solver_8h_source_l00396}{oomph\+::\+CG$<$ MATRIX $>$\+::\+Matrix\+\_\+can\+\_\+be\+\_\+deleted}}, and \mbox{\hyperlink{iterative__linear__solver_8h_source_l00388}{oomph\+::\+CG$<$ MATRIX $>$\+::\+Matrix\+\_\+pt}}.
+
+
+
+Referenced by \mbox{\hyperlink{iterative__linear__solver_8h_source_l00309}{oomph\+::\+CG$<$ MATRIX $>$\+::disable\+\_\+resolve()}}, and \mbox{\hyperlink{iterative__linear__solver_8h_source_l00297}{oomph\+::\+CG$<$ MATRIX $>$\+::$\sim$\+CG()}}.
+
+\mbox{\Hypertarget{classoomph_1_1CG_a1116011340fabc5c5d2a97cea0cd5b72}\label{classoomph_1_1CG_a1116011340fabc5c5d2a97cea0cd5b72}} 
+\index{oomph::CG$<$ MATRIX $>$@{oomph::CG$<$ MATRIX $>$}!disable\_resolve@{disable\_resolve}}
+\index{disable\_resolve@{disable\_resolve}!oomph::CG$<$ MATRIX $>$@{oomph::CG$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{disable\_resolve()}{disable\_resolve()}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+void \mbox{\hyperlink{classoomph_1_1CG}{oomph\+::\+CG}}$<$ MATRIX $>$\+::disable\+\_\+resolve (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Overload disable resolve so that it cleans up memory too. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1LinearSolver_ad61c63af94c5961830bd9807225a48d6}{oomph\+::\+Linear\+Solver}}.
+
+
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8h_source_l00309}{309}} of file \mbox{\hyperlink{iterative__linear__solver_8h_source}{iterative\+\_\+linear\+\_\+solver.\+h}}.
+
+
+
+References \mbox{\hyperlink{iterative__linear__solver_8h_source_l00375}{oomph\+::\+CG$<$ MATRIX $>$\+::clean\+\_\+up\+\_\+memory()}}, and \mbox{\hyperlink{linear__solver_8h_source_l00144}{oomph\+::\+Linear\+Solver\+::disable\+\_\+resolve()}}.
+
+\mbox{\Hypertarget{classoomph_1_1CG_a17db796814dc11cb67eac960df85d5f7}\label{classoomph_1_1CG_a17db796814dc11cb67eac960df85d5f7}} 
+\index{oomph::CG$<$ MATRIX $>$@{oomph::CG$<$ MATRIX $>$}!iterations@{iterations}}
+\index{iterations@{iterations}!oomph::CG$<$ MATRIX $>$@{oomph::CG$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{iterations()}{iterations()}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+unsigned \mbox{\hyperlink{classoomph_1_1CG}{oomph\+::\+CG}}$<$ MATRIX $>$\+::iterations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Number of iterations taken. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_a5fe7f7b5e4847fdbd4f95d3875ec7a46}{oomph\+::\+Iterative\+Linear\+Solver}}.
+
+
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8h_source_l00361}{361}} of file \mbox{\hyperlink{iterative__linear__solver_8h_source}{iterative\+\_\+linear\+\_\+solver.\+h}}.
+
+
+
+References \mbox{\hyperlink{iterative__linear__solver_8h_source_l00385}{oomph\+::\+CG$<$ MATRIX $>$\+::\+Iterations}}.
+
+\mbox{\Hypertarget{classoomph_1_1CG_a6112834c4d9e2c87e96aa1f9588fb280}\label{classoomph_1_1CG_a6112834c4d9e2c87e96aa1f9588fb280}} 
+\index{oomph::CG$<$ MATRIX $>$@{oomph::CG$<$ MATRIX $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!oomph::CG$<$ MATRIX $>$@{oomph::CG$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+void \mbox{\hyperlink{classoomph_1_1CG}{oomph\+::\+CG}}$<$ MATRIX $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classoomph_1_1CG}{CG}}$<$ MATRIX $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Broken assignment operator. 
+
+\mbox{\Hypertarget{classoomph_1_1CG_a147e640c19c2159285da0b3b5c51af63}\label{classoomph_1_1CG_a147e640c19c2159285da0b3b5c51af63}} 
+\index{oomph::CG$<$ MATRIX $>$@{oomph::CG$<$ MATRIX $>$}!resolve@{resolve}}
+\index{resolve@{resolve}!oomph::CG$<$ MATRIX $>$@{oomph::CG$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{resolve()}{resolve()}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+void \mbox{\hyperlink{classoomph_1_1CG}{oomph\+::\+CG}}$<$ MATRIX $>$\+::resolve (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&}]{rhs,  }\item[{\mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&}]{result }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Re-\/solve the system defined by the last assembled Jacobian and the rhs vector specified here. Solution is returned in the vector result. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1LinearSolver_a3b310d08333033edc119b2a5bd7dcbfb}{oomph\+::\+Linear\+Solver}}.
+
+
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8cc_source_l00922}{922}} of file \mbox{\hyperlink{iterative__linear__solver_8cc_source}{iterative\+\_\+linear\+\_\+solver.\+cc}}.
+
+\mbox{\Hypertarget{classoomph_1_1CG_a764dbdc8e63d9dfe0945015399a83c18}\label{classoomph_1_1CG_a764dbdc8e63d9dfe0945015399a83c18}} 
+\index{oomph::CG$<$ MATRIX $>$@{oomph::CG$<$ MATRIX $>$}!solve@{solve}}
+\index{solve@{solve}!oomph::CG$<$ MATRIX $>$@{oomph::CG$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{solve()}{solve()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+void \mbox{\hyperlink{classoomph_1_1CG}{oomph\+::\+CG}}$<$ MATRIX $>$\+::solve (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base}} $\ast$const \&}]{matrix\+\_\+pt,  }\item[{const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&}]{rhs,  }\item[{\mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&}]{solution }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Linear-\/algebra-\/type solver\+: Takes pointer to a matrix and rhs vector and returns the solution of the linear system. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1LinearSolver_a546c09822d18191df14caed864c04c09}{oomph\+::\+Linear\+Solver}}.
+
+
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8h_source_l00323}{323}} of file \mbox{\hyperlink{iterative__linear__solver_8h_source}{iterative\+\_\+linear\+\_\+solver.\+h}}.
+
+
+
+References \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00507}{oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::build\+\_\+distribution()}}, \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00457}{oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::distribution\+\_\+pt()}}, \mbox{\hyperlink{linear__solver_8h_source_l00073}{oomph\+::\+Linear\+Solver\+::\+Enable\+\_\+resolve}}, \mbox{\hyperlink{iterative__linear__solver_8h_source_l00396}{oomph\+::\+CG$<$ MATRIX $>$\+::\+Matrix\+\_\+can\+\_\+be\+\_\+deleted}}, \mbox{\hyperlink{iterative__linear__solver_8h_source_l00388}{oomph\+::\+CG$<$ MATRIX $>$\+::\+Matrix\+\_\+pt}}, \mbox{\hyperlink{iterative__linear__solver_8h_source_l00392}{oomph\+::\+CG$<$ MATRIX $>$\+::\+Resolving}}, and \mbox{\hyperlink{iterative__linear__solver_8cc_source_l00605}{oomph\+::\+CG$<$ MATRIX $>$\+::solve\+\_\+helper()}}.
+
+\mbox{\Hypertarget{classoomph_1_1CG_a3ae0fb5451136aec30defea2758c8c5d}\label{classoomph_1_1CG_a3ae0fb5451136aec30defea2758c8c5d}} 
+\index{oomph::CG$<$ MATRIX $>$@{oomph::CG$<$ MATRIX $>$}!solve@{solve}}
+\index{solve@{solve}!oomph::CG$<$ MATRIX $>$@{oomph::CG$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{solve()}{solve()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+void \mbox{\hyperlink{classoomph_1_1CG}{oomph\+::\+CG}}$<$ MATRIX $>$\+::solve (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1Problem}{Problem}} $\ast$const \&}]{problem\+\_\+pt,  }\item[{\mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&}]{result }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Solver\+: Takes pointer to problem and returns the results vector which contains the solution of the linear system defined by the problem\textquotesingle{}s fully assembled Jacobian and residual vector. 
+
+
+
+Implements \mbox{\hyperlink{classoomph_1_1LinearSolver_a15ce22542b74ed1826ea485edacbeb6e}{oomph\+::\+Linear\+Solver}}.
+
+
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8cc_source_l00950}{950}} of file \mbox{\hyperlink{iterative__linear__solver_8cc_source}{iterative\+\_\+linear\+\_\+solver.\+cc}}.
+
+
+
+References \mbox{\hyperlink{double__vector_8cc_source_l00035}{oomph\+::\+Double\+Vector\+::build()}}, \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00342}{oomph\+::\+Linear\+Algebra\+Distribution\+::built()}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00086}{oomph\+::\+Terminate\+Helper\+::clean\+\_\+up\+\_\+memory()}}, \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00457}{oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::distribution\+\_\+pt()}}, \mbox{\hyperlink{namespaceoomph_ad835af913df4cbdc5648440f91b794ab}{oomph\+::f()}}, \mbox{\hyperlink{problem_8cc_source_l03890}{oomph\+::\+Problem\+::get\+\_\+jacobian()}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00319}{oomph\+::oomph\+\_\+info}}, \mbox{\hyperlink{double__vector_8cc_source_l00164}{oomph\+::\+Double\+Vector\+::redistribute()}}, and \mbox{\hyperlink{oomph__utilities_8cc_source_l01295}{oomph\+::\+Timing\+Helpers\+::timer()}}.
+
+\mbox{\Hypertarget{classoomph_1_1CG_adbb17880d5464362b9e7a1cfa52dffec}\label{classoomph_1_1CG_adbb17880d5464362b9e7a1cfa52dffec}} 
+\index{oomph::CG$<$ MATRIX $>$@{oomph::CG$<$ MATRIX $>$}!solve\_helper@{solve\_helper}}
+\index{solve\_helper@{solve\_helper}!oomph::CG$<$ MATRIX $>$@{oomph::CG$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{solve\_helper()}{solve\_helper()}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+void \mbox{\hyperlink{classoomph_1_1CG}{oomph\+::\+CG}}$<$ MATRIX $>$\+::solve\+\_\+helper (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base}} $\ast$const \&}]{matrix\+\_\+pt,  }\item[{const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&}]{rhs,  }\item[{\mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&}]{solution }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+General interface to solve function. 
+
+/////////////////////////////////////////////////////////////////// ///////////////////////////////////////////////////////////////////
+
+Linear-\/algebra-\/type solver\+: Takes pointer to a matrix and rhs vector and returns the solution of the linear system. Algorithm and variable names based on \char`\"{}\+Matrix Computations, 2nd Ed.\char`\"{} Golub \& van Loan, John Hopkins University Press(1989), page 529. 
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8cc_source_l00605}{605}} of file \mbox{\hyperlink{iterative__linear__solver_8cc_source}{iterative\+\_\+linear\+\_\+solver.\+cc}}.
+
+
+
+References \mbox{\hyperlink{double__vector_8cc_source_l00035}{oomph\+::\+Double\+Vector\+::build()}}, \mbox{\hyperlink{double__vector_8h_source_l00154}{oomph\+::\+Double\+Vector\+::built()}}, \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00342}{oomph\+::\+Linear\+Algebra\+Distribution\+::built()}}, \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00329}{oomph\+::\+Linear\+Algebra\+Distribution\+::distributed()}}, \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00457}{oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::distribution\+\_\+pt()}}, \mbox{\hyperlink{double__vector_8cc_source_l00805}{oomph\+::\+Double\+Vector\+::dot()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{double__vector_8cc_source_l00123}{oomph\+::\+Double\+Vector\+::initialise()}}, \mbox{\hyperlink{black__box__newton__solver_8cc_source_l00044}{oomph\+::\+Black\+Box\+FDNewton\+Solver\+::\+Max\+\_\+iter}}, \mbox{\hyperlink{classoomph_1_1DoubleMatrixBase_a78204eab557e0dc99618e41a28a5c092}{oomph\+::\+Double\+Matrix\+Base\+::multiply()}}, \mbox{\hyperlink{classoomph_1_1DoubleMatrixBase_a253feffbf1db1976cdd86c6134c50abe}{oomph\+::\+Double\+Matrix\+Base\+::ncol()}}, \mbox{\hyperlink{double__vector_8cc_source_l00867}{oomph\+::\+Double\+Vector\+::norm()}}, \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00463}{oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::nrow()}}, \mbox{\hyperlink{classoomph_1_1DoubleMatrixBase_acdcd6e1ea2bf2380f1a2fa32c7829cb5}{oomph\+::\+Double\+Matrix\+Base\+::nrow()}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00319}{oomph\+::oomph\+\_\+info}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00286}{oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string()}}, \mbox{\hyperlink{oomph__utilities_8cc_source_l01295}{oomph\+::\+Timing\+Helpers\+::timer()}}, and \mbox{\hyperlink{pseudo__buckling__ring_8h_source_l00049}{oomph\+::x}}.
+
+
+
+Referenced by \mbox{\hyperlink{iterative__linear__solver_8h_source_l00323}{oomph\+::\+CG$<$ MATRIX $>$\+::solve()}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1CG_a887d842b056091bcb8093f43a262d620}\label{classoomph_1_1CG_a887d842b056091bcb8093f43a262d620}} 
+\index{oomph::CG$<$ MATRIX $>$@{oomph::CG$<$ MATRIX $>$}!Iterations@{Iterations}}
+\index{Iterations@{Iterations}!oomph::CG$<$ MATRIX $>$@{oomph::CG$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{Iterations}{Iterations}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+unsigned \mbox{\hyperlink{classoomph_1_1CG}{oomph\+::\+CG}}$<$ MATRIX $>$\+::Iterations\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Number of iterations taken. 
+
+
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8h_source_l00385}{385}} of file \mbox{\hyperlink{iterative__linear__solver_8h_source}{iterative\+\_\+linear\+\_\+solver.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{iterative__linear__solver_8h_source_l00361}{oomph\+::\+CG$<$ MATRIX $>$\+::iterations()}}.
+
+\mbox{\Hypertarget{classoomph_1_1CG_aabb4b15b969d9e061411547b23bd4d9a}\label{classoomph_1_1CG_aabb4b15b969d9e061411547b23bd4d9a}} 
+\index{oomph::CG$<$ MATRIX $>$@{oomph::CG$<$ MATRIX $>$}!Matrix\_can\_be\_deleted@{Matrix\_can\_be\_deleted}}
+\index{Matrix\_can\_be\_deleted@{Matrix\_can\_be\_deleted}!oomph::CG$<$ MATRIX $>$@{oomph::CG$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{Matrix\_can\_be\_deleted}{Matrix\_can\_be\_deleted}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+bool \mbox{\hyperlink{classoomph_1_1CG}{oomph\+::\+CG}}$<$ MATRIX $>$\+::Matrix\+\_\+can\+\_\+be\+\_\+deleted\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Boolean flag to indicate if the matrix pointed to be Matrix\+\_\+pt can be deleted. 
+
+
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8h_source_l00396}{396}} of file \mbox{\hyperlink{iterative__linear__solver_8h_source}{iterative\+\_\+linear\+\_\+solver.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{iterative__linear__solver_8h_source_l00375}{oomph\+::\+CG$<$ MATRIX $>$\+::clean\+\_\+up\+\_\+memory()}}, and \mbox{\hyperlink{iterative__linear__solver_8h_source_l00323}{oomph\+::\+CG$<$ MATRIX $>$\+::solve()}}.
+
+\mbox{\Hypertarget{classoomph_1_1CG_a988bdcfb0c84bc14369092547afa4938}\label{classoomph_1_1CG_a988bdcfb0c84bc14369092547afa4938}} 
+\index{oomph::CG$<$ MATRIX $>$@{oomph::CG$<$ MATRIX $>$}!Matrix\_pt@{Matrix\_pt}}
+\index{Matrix\_pt@{Matrix\_pt}!oomph::CG$<$ MATRIX $>$@{oomph::CG$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{Matrix\_pt}{Matrix\_pt}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+MATRIX$\ast$ \mbox{\hyperlink{classoomph_1_1CG}{oomph\+::\+CG}}$<$ MATRIX $>$\+::Matrix\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to matrix. 
+
+
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8h_source_l00388}{388}} of file \mbox{\hyperlink{iterative__linear__solver_8h_source}{iterative\+\_\+linear\+\_\+solver.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{iterative__linear__solver_8h_source_l00375}{oomph\+::\+CG$<$ MATRIX $>$\+::clean\+\_\+up\+\_\+memory()}}, and \mbox{\hyperlink{iterative__linear__solver_8h_source_l00323}{oomph\+::\+CG$<$ MATRIX $>$\+::solve()}}.
+
+\mbox{\Hypertarget{classoomph_1_1CG_abb0446c6424e75adff3b220acb61159e}\label{classoomph_1_1CG_abb0446c6424e75adff3b220acb61159e}} 
+\index{oomph::CG$<$ MATRIX $>$@{oomph::CG$<$ MATRIX $>$}!Resolving@{Resolving}}
+\index{Resolving@{Resolving}!oomph::CG$<$ MATRIX $>$@{oomph::CG$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{Resolving}{Resolving}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+bool \mbox{\hyperlink{classoomph_1_1CG}{oomph\+::\+CG}}$<$ MATRIX $>$\+::Resolving\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Boolean flag to indicate if the solve is done in re-\/solve mode, bypassing setup of matrix and preconditioner. 
+
+
+
+Definition at line \mbox{\hyperlink{iterative__linear__solver_8h_source_l00392}{392}} of file \mbox{\hyperlink{iterative__linear__solver_8h_source}{iterative\+\_\+linear\+\_\+solver.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{iterative__linear__solver_8h_source_l00323}{oomph\+::\+CG$<$ MATRIX $>$\+::solve()}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{iterative__linear__solver_8h}{iterative\+\_\+linear\+\_\+solver.\+h}}\item 
+\mbox{\hyperlink{iterative__linear__solver_8cc}{iterative\+\_\+linear\+\_\+solver.\+cc}}\end{DoxyCompactItemize}

@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>oomph-lib: oomph::QLinearWaveElement&lt; DIM, NNODE_1D &gt; Class Template Reference</title>
+<link rel="apple-touch-icon" sizes="57x57" href="../../figures/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="../../figures/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../../figures/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../../figures/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../../figures/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../../figures/apple-touch-icon-120x120.png">
+<link rel="icon" type="image/png" href="../../figures/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../figures/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../figures/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../figures/manifest.json">
+<link rel="mask-icon" href="../../figures/safari-pinned-tab.svg" color="#008000">
+<link rel="shortcut icon" href="../../figures/favicon.ico">
+<meta name="msapplication-TileColor" content="#00a300">
+<meta name="msapplication-config" content="../../figures/browserconfig.xml">
+<meta name="theme-color" content="#008000">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css">
+<!-- Doxygen css-->
+<!-- <link rel="stylesheet" type="text/css" href="doxygen.css"> -->
+<!-- Bootstrap -->
+<link href="../../css/bootstrap.css" rel="stylesheet">
+<!-- oomph-lib specific overrides -->
+<link rel="stylesheet" type="text/css" href="../../css/oomph_header.css">
+</head>
+<body>
+<nav class="navbar navbar-default">
+<div class="container">
+<div class="container-fluid">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="../../html/index.html"><img alt="oomph-lib" src="../../figures/oomph_logo.png"></a>
+  </div>
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">          
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li class="dropdown-header">Big picture</li>
+          <li><a href="../../../doc/intro/html/index.html">The finite element method</a></li>
+          <li><a href="../../../doc/the_data_structure/html/index.html">The data structure</a></li>
+          <li><a href="../../../doc/quick_guide/html/index.html">Not-so-quick guide</a></li>
+          <li><a href="../../../doc/optimisation/html/index.html">Optimisation</a></li>
+          <li><a href="../../../doc/order_of_action_functions/html/index.html">Order of action functions</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Example codes and tutorials</li>
+          <li><a href="../../../doc/example_code_list/html/index.html">List of example codes and tutorials</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#meshes">Meshing</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#solvers">Solvers</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#parallel">MPI parallel processing</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#visualisation">Post-processing/visualisation</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Other</li>
+          <li><a href="../../../doc/change_log/html/index.html">Change log</a></li>
+          <li><a href="../../../doc/creating_doc/html/index.html">Creating documentation</a></li>
+          <li><a href="../../../doc/coding_conventions/html/index.html">Coding conventions</a></li>
+          <li><a href="../../../doc/index/html/index.html">Index</a></li>
+          <li><a href="../../../doc/FAQ/html/index.html">FAQ</a></li>
+        </ul>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Installation<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../../../doc/the_distribution/html/index.html">Installation guide</a></li>
+            <li><a href="../../../doc/copyright/html/index.html">Copyright</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../../../doc/people/html/index.html">People</a></li>            
+            <li><a href="../../../doc/contact/html/index.html">Contact/Get involved</a></li>
+            <li><a href="../../../doc/publications/html/index.html">Publications</a></li>
+            <li><a href="../../../doc/acknowledgements/html/index.html">Acknowledgements</a></li>
+            <li><a href="../../../doc/picture_show/index.html">Picture show</a></li>
+          </ul>
+        </li>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right navbar-search">
+      <form class="navbar-form" role="search" action="../../../doc/search_results/html/index.html">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search" name="q">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Go</button>
+          </span>
+        </div><!-- /input-group -->
+       <!--<div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>-->
+      </form>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
+</div>
+</nav>
+<!-- Generated by Doxygen 1.9.2 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',false,false,'search.php','Search');
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceoomph.html">oomph</a></li><li class="navelem"><a class="el" href="classoomph_1_1QLinearWaveElement.html">QLinearWaveElement</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
+<a href="classoomph_1_1QLinearWaveElement-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">oomph::QLinearWaveElement&lt; DIM, NNODE_1D &gt; Class Template Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>//////////////////////////////////////////////////////////////////////// ////////////////////////////////////////////////////////////////////////  
+ <a href="classoomph_1_1QLinearWaveElement.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="linear__wave__elements_8h_source.html">linear_wave_elements.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for oomph::QLinearWaveElement&lt; DIM, NNODE_1D &gt;:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+ <div class="center">
+  <img src="classoomph_1_1QLinearWaveElement.png" usemap="#oomph::QLinearWaveElement_3C_20DIM_2C_20NNODE_5F1D_20_3E_map" alt=""/>
+  <map id="oomph::QLinearWaveElement_3C_20DIM_2C_20NNODE_5F1D_20_3E_map" name="oomph::QLinearWaveElement_3C_20DIM_2C_20NNODE_5F1D_20_3E_map">
+<area href="classoomph_1_1QElement.html" title="/////////////////////////////////////////////////////////////////////// /////////////////////////////..." alt="oomph::QElement&lt; DIM, NNODE_1D &gt;" shape="rect" coords="0,0,361,24"/>
+<area href="classoomph_1_1RefineableQLinearWaveElement.html" title="Refineable version of 2D QLinearWaveElement elements." alt="oomph::RefineableQLinearWaveElement&lt; DIM, NNODE_1D &gt;" shape="rect" coords="185,112,546,136"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ad87841cc70d3f2b6b1ce5ccbf4efbd22"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QLinearWaveElement.html#ad87841cc70d3f2b6b1ce5ccbf4efbd22">QLinearWaveElement</a> ()</td></tr>
+<tr class="memdesc:ad87841cc70d3f2b6b1ce5ccbf4efbd22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor: Call constructors for <a class="el" href="classoomph_1_1QElement.html" title="/////////////////////////////////////////////////////////////////////// /////////////////////////////...">QElement</a> and LinearWave equations.  <a href="classoomph_1_1QLinearWaveElement.html#ad87841cc70d3f2b6b1ce5ccbf4efbd22">More...</a><br /></td></tr>
+<tr class="separator:ad87841cc70d3f2b6b1ce5ccbf4efbd22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4479977649b62a6bcd6a1f9280a3741"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QLinearWaveElement.html#ae4479977649b62a6bcd6a1f9280a3741">QLinearWaveElement</a> (const <a class="el" href="classoomph_1_1QLinearWaveElement.html">QLinearWaveElement</a>&lt; DIM, NNODE_1D &gt; &amp;dummy)=delete</td></tr>
+<tr class="memdesc:ae4479977649b62a6bcd6a1f9280a3741"><td class="mdescLeft">&#160;</td><td class="mdescRight">Broken copy constructor.  <a href="classoomph_1_1QLinearWaveElement.html#ae4479977649b62a6bcd6a1f9280a3741">More...</a><br /></td></tr>
+<tr class="separator:ae4479977649b62a6bcd6a1f9280a3741"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1aff68bad7411d9fe32df137e3bfaf7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QLinearWaveElement.html#af1aff68bad7411d9fe32df137e3bfaf7">operator=</a> (const <a class="el" href="classoomph_1_1QLinearWaveElement.html">QLinearWaveElement</a>&lt; DIM, NNODE_1D &gt; &amp;)=delete</td></tr>
+<tr class="memdesc:af1aff68bad7411d9fe32df137e3bfaf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Broken assignment operator.  <a href="classoomph_1_1QLinearWaveElement.html#af1aff68bad7411d9fe32df137e3bfaf7">More...</a><br /></td></tr>
+<tr class="separator:af1aff68bad7411d9fe32df137e3bfaf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62c08bf0690b81184694b87424db4d46"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QLinearWaveElement.html#a62c08bf0690b81184694b87424db4d46">required_nvalue</a> (const unsigned &amp;n) const</td></tr>
+<tr class="memdesc:a62c08bf0690b81184694b87424db4d46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Required # of &lsquo;values&rsquo; (pinned or dofs) at node n.  <a href="classoomph_1_1QLinearWaveElement.html#a62c08bf0690b81184694b87424db4d46">More...</a><br /></td></tr>
+<tr class="separator:a62c08bf0690b81184694b87424db4d46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7176ab05b31f360cc7c774e857242d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QLinearWaveElement.html#ae7176ab05b31f360cc7c774e857242d9">output</a> (std::ostream &amp;outfile)</td></tr>
+<tr class="memdesc:ae7176ab05b31f360cc7c774e857242d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output function: x,y,u or x,y,z,u.  <a href="classoomph_1_1QLinearWaveElement.html#ae7176ab05b31f360cc7c774e857242d9">More...</a><br /></td></tr>
+<tr class="separator:ae7176ab05b31f360cc7c774e857242d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e44576ef363b7b9680a60da96b7687b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QLinearWaveElement.html#a4e44576ef363b7b9680a60da96b7687b">output</a> (std::ostream &amp;outfile, const unsigned &amp;n_plot)</td></tr>
+<tr class="memdesc:a4e44576ef363b7b9680a60da96b7687b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output function: x,y,u or x,y,z,u at n_plot^DIM plot points.  <a href="classoomph_1_1QLinearWaveElement.html#a4e44576ef363b7b9680a60da96b7687b">More...</a><br /></td></tr>
+<tr class="separator:a4e44576ef363b7b9680a60da96b7687b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b6c23f23a7f8e188241fe2698c7543d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QLinearWaveElement.html#a9b6c23f23a7f8e188241fe2698c7543d">output</a> (FILE *file_pt)</td></tr>
+<tr class="memdesc:a9b6c23f23a7f8e188241fe2698c7543d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output function: x,y,u or x,y,z,u.  <a href="classoomph_1_1QLinearWaveElement.html#a9b6c23f23a7f8e188241fe2698c7543d">More...</a><br /></td></tr>
+<tr class="separator:a9b6c23f23a7f8e188241fe2698c7543d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fe8053385a090049e459faa0e0cc3be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QLinearWaveElement.html#a4fe8053385a090049e459faa0e0cc3be">output</a> (FILE *file_pt, const unsigned &amp;n_plot)</td></tr>
+<tr class="memdesc:a4fe8053385a090049e459faa0e0cc3be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output function: x,y,u or x,y,z,u at n_plot^DIM plot points.  <a href="classoomph_1_1QLinearWaveElement.html#a4fe8053385a090049e459faa0e0cc3be">More...</a><br /></td></tr>
+<tr class="separator:a4fe8053385a090049e459faa0e0cc3be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af72b64dee3c8690aca4734d7f41515bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QLinearWaveElement.html#af72b64dee3c8690aca4734d7f41515bc">output_fct</a> (std::ostream &amp;outfile, const unsigned &amp;n_plot, <a class="el" href="classoomph_1_1FiniteElement.html#a690fd33af26cc3e84f39bba6d5a85202">FiniteElement::SteadyExactSolutionFctPt</a> exact_soln_pt)</td></tr>
+<tr class="memdesc:af72b64dee3c8690aca4734d7f41515bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output function for an exact solution: x,y,u_exact or x,y,z,u_exact at n_plot^DIM plot points.  <a href="classoomph_1_1QLinearWaveElement.html#af72b64dee3c8690aca4734d7f41515bc">More...</a><br /></td></tr>
+<tr class="separator:af72b64dee3c8690aca4734d7f41515bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af991bd517d135fe1320074b28ed84b02"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QLinearWaveElement.html#af991bd517d135fe1320074b28ed84b02">output_fct</a> (std::ostream &amp;outfile, const unsigned &amp;n_plot, const double &amp;time, <a class="el" href="classoomph_1_1FiniteElement.html#ad4ecf2b61b158a4b4d351a60d23c633e">FiniteElement::UnsteadyExactSolutionFctPt</a> exact_soln_pt)</td></tr>
+<tr class="memdesc:af991bd517d135fe1320074b28ed84b02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output function for a time-dependent exact solution. x,y,u_exact or x,y,z,u_exact at n_plot^DIM plot points (Calls the steady version)  <a href="classoomph_1_1QLinearWaveElement.html#af991bd517d135fe1320074b28ed84b02">More...</a><br /></td></tr>
+<tr class="separator:af991bd517d135fe1320074b28ed84b02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a97bfe7e067f0b8f3cf82b02ca1e7421e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QLinearWaveElement.html#a97bfe7e067f0b8f3cf82b02ca1e7421e">dshape_and_dtest_eulerian_lin_wave</a> (const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;<a class="el" href="cfortran_8h.html#ab7123126e4885ef647dd9c6e3807a21c">s</a>, <a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;psi, <a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;dpsidx, <a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;test, <a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;dtestdx) const</td></tr>
+<tr class="memdesc:a97bfe7e067f0b8f3cf82b02ca1e7421e"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classoomph_1_1Shape.html" title="A Class for shape functions. In simple cases, the shape functions have only one index that can be tho...">Shape</a>, test functions &amp; derivs. w.r.t. to global coords. Return Jacobian.  <a href="classoomph_1_1QLinearWaveElement.html#a97bfe7e067f0b8f3cf82b02ca1e7421e">More...</a><br /></td></tr>
+<tr class="separator:a97bfe7e067f0b8f3cf82b02ca1e7421e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96e8d0a3deace8fe691b5576607f1c0c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QLinearWaveElement.html#a96e8d0a3deace8fe691b5576607f1c0c">dshape_and_dtest_eulerian_at_knot_lin_wave</a> (const unsigned &amp;ipt, <a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;psi, <a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;dpsidx, <a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;test, <a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;dtestdx) const</td></tr>
+<tr class="memdesc:a96e8d0a3deace8fe691b5576607f1c0c"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classoomph_1_1Shape.html" title="A Class for shape functions. In simple cases, the shape functions have only one index that can be tho...">Shape</a>, test functions &amp; derivs. w.r.t. to global coords. at integration point ipt. Return Jacobian.  <a href="classoomph_1_1QLinearWaveElement.html#a96e8d0a3deace8fe691b5576607f1c0c">More...</a><br /></td></tr>
+<tr class="separator:a96e8d0a3deace8fe691b5576607f1c0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:aa76d9d6ad69c263d38cbe2a75691fbd4"><td class="memItemLeft" align="right" valign="top">const unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QLinearWaveElement.html#aa76d9d6ad69c263d38cbe2a75691fbd4">Initial_Nvalue</a> [4]</td></tr>
+<tr class="memdesc:aa76d9d6ad69c263d38cbe2a75691fbd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">2D LinearWave elements  <a href="classoomph_1_1QLinearWaveElement.html#aa76d9d6ad69c263d38cbe2a75691fbd4">More...</a><br /></td></tr>
+<tr class="separator:aa76d9d6ad69c263d38cbe2a75691fbd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32b3b8e189567a176b58f5c6d68ef5ed"><td class="memItemLeft" align="right" valign="top">const unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QLinearWaveElement.html#a32b3b8e189567a176b58f5c6d68ef5ed">Initial_Nvalue</a> [3]</td></tr>
+<tr class="separator:a32b3b8e189567a176b58f5c6d68ef5ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2af2246b42c100dd88283716ca48580"><td class="memItemLeft" align="right" valign="top">const unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QLinearWaveElement.html#ae2af2246b42c100dd88283716ca48580">Initial_Nvalue</a> [2]</td></tr>
+<tr class="separator:ae2af2246b42c100dd88283716ca48580"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7287f6aba907248d2f0ee71f4dbfb91a"><td class="memItemLeft" align="right" valign="top">const unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QLinearWaveElement.html#a7287f6aba907248d2f0ee71f4dbfb91a">Initial_Nvalue</a> [16]</td></tr>
+<tr class="separator:a7287f6aba907248d2f0ee71f4dbfb91a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac47ebbcd60bbbfff4268c7d22569efe1"><td class="memItemLeft" align="right" valign="top">const unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QLinearWaveElement.html#ac47ebbcd60bbbfff4268c7d22569efe1">Initial_Nvalue</a> [9]</td></tr>
+<tr class="separator:ac47ebbcd60bbbfff4268c7d22569efe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbcae91b32ac279db6ade03cf0e736e8"><td class="memItemLeft" align="right" valign="top">const unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QLinearWaveElement.html#afbcae91b32ac279db6ade03cf0e736e8">Initial_Nvalue</a> [4]</td></tr>
+<tr class="separator:afbcae91b32ac279db6ade03cf0e736e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94179db43ea96f4297a3c42e494c5945"><td class="memItemLeft" align="right" valign="top">const unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QLinearWaveElement.html#a94179db43ea96f4297a3c42e494c5945">Initial_Nvalue</a> [8]</td></tr>
+<tr class="separator:a94179db43ea96f4297a3c42e494c5945"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3b48281ac6934a3db36bf3db3b095ef"><td class="memItemLeft" align="right" valign="top">const unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QLinearWaveElement.html#ae3b48281ac6934a3db36bf3db3b095ef">Initial_Nvalue</a> [27]</td></tr>
+<tr class="separator:ae3b48281ac6934a3db36bf3db3b095ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acce75f65012a63394481a61080ecf83c"><td class="memItemLeft" align="right" valign="top">const unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QLinearWaveElement.html#acce75f65012a63394481a61080ecf83c">Initial_Nvalue</a> [64]</td></tr>
+<tr class="separator:acce75f65012a63394481a61080ecf83c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:aa8b8b5b3e5fa3ab646fc0ce814121712"><td class="memItemLeft" align="right" valign="top">static const unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1QLinearWaveElement.html#aa8b8b5b3e5fa3ab646fc0ce814121712">Initial_Nvalue</a> []</td></tr>
+<tr class="memdesc:aa8b8b5b3e5fa3ab646fc0ce814121712"><td class="mdescLeft">&#160;</td><td class="mdescRight">Static array of ints to hold number of variables at nodes: Initial_Nvalue[n].  <a href="classoomph_1_1QLinearWaveElement.html#aa8b8b5b3e5fa3ab646fc0ce814121712">More...</a><br /></td></tr>
+<tr class="separator:aa8b8b5b3e5fa3ab646fc0ce814121712"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;unsigned DIM, unsigned NNODE_1D&gt;<br />
+class oomph::QLinearWaveElement&lt; DIM, NNODE_1D &gt;</div><p >//////////////////////////////////////////////////////////////////////// //////////////////////////////////////////////////////////////////////// </p>
+<p ><a class="el" href="classoomph_1_1QLinearWaveElement.html" title="//////////////////////////////////////////////////////////////////////// ////////////////////////////...">QLinearWaveElement</a> elements are linear/quadrilateral/brick-shaped LinearWave elements with isoparametric interpolation for the function.</p>
+<p >Empty, just establishes the template parameters </p>
+
+<p class="definition">Definition at line <a class="el" href="linear__wave__elements_8h_source.html#l00401">401</a> of file <a class="el" href="linear__wave__elements_8h_source.html">linear_wave_elements.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ad87841cc70d3f2b6b1ce5ccbf4efbd22" name="ad87841cc70d3f2b6b1ce5ccbf4efbd22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad87841cc70d3f2b6b1ce5ccbf4efbd22">&#9670;&nbsp;</a></span>QLinearWaveElement() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoomph_1_1QLinearWaveElement.html">oomph::QLinearWaveElement</a>&lt; DIM, NNODE_1D &gt;::<a class="el" href="classoomph_1_1QLinearWaveElement.html">QLinearWaveElement</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor: Call constructors for <a class="el" href="classoomph_1_1QElement.html" title="/////////////////////////////////////////////////////////////////////// /////////////////////////////...">QElement</a> and LinearWave equations. </p>
+
+<p class="definition">Definition at line <a class="el" href="linear__wave__elements_8h_source.html#l00413">413</a> of file <a class="el" href="linear__wave__elements_8h_source.html">linear_wave_elements.h</a>.</p>
+
+</div>
+</div>
+<a id="ae4479977649b62a6bcd6a1f9280a3741" name="ae4479977649b62a6bcd6a1f9280a3741"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4479977649b62a6bcd6a1f9280a3741">&#9670;&nbsp;</a></span>QLinearWaveElement() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoomph_1_1QLinearWaveElement.html">oomph::QLinearWaveElement</a>&lt; DIM, NNODE_1D &gt;::<a class="el" href="classoomph_1_1QLinearWaveElement.html">QLinearWaveElement</a> </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classoomph_1_1QLinearWaveElement.html">QLinearWaveElement</a>&lt; DIM, NNODE_1D &gt; &amp;&#160;</td>
+          <td class="paramname"><em>dummy</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Broken copy constructor. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a96e8d0a3deace8fe691b5576607f1c0c" name="a96e8d0a3deace8fe691b5576607f1c0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96e8d0a3deace8fe691b5576607f1c0c">&#9670;&nbsp;</a></span>dshape_and_dtest_eulerian_at_knot_lin_wave()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classoomph_1_1QLinearWaveElement.html">oomph::QLinearWaveElement</a>&lt; DIM, NNODE_1D &gt;::dshape_and_dtest_eulerian_at_knot_lin_wave </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>ipt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;&#160;</td>
+          <td class="paramname"><em>psi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;&#160;</td>
+          <td class="paramname"><em>dpsidx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;&#160;</td>
+          <td class="paramname"><em>test</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;&#160;</td>
+          <td class="paramname"><em>dtestdx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classoomph_1_1Shape.html" title="A Class for shape functions. In simple cases, the shape functions have only one index that can be tho...">Shape</a>, test functions &amp; derivs. w.r.t. to global coords. at integration point ipt. Return Jacobian. </p>
+<p >Define the shape functions and test functions and derivatives w.r.t. global coordinates and return Jacobian of mapping.</p>
+<p >Galerkin: Test functions = shape functions </p>
+
+<p class="definition">Definition at line <a class="el" href="linear__wave__elements_8h_source.html#l00545">545</a> of file <a class="el" href="linear__wave__elements_8h_source.html">linear_wave_elements.h</a>.</p>
+
+</div>
+</div>
+<a id="a97bfe7e067f0b8f3cf82b02ca1e7421e" name="a97bfe7e067f0b8f3cf82b02ca1e7421e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97bfe7e067f0b8f3cf82b02ca1e7421e">&#9670;&nbsp;</a></span>dshape_and_dtest_eulerian_lin_wave()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classoomph_1_1QLinearWaveElement.html">oomph::QLinearWaveElement</a>&lt; DIM, NNODE_1D &gt;::dshape_and_dtest_eulerian_lin_wave </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;&#160;</td>
+          <td class="paramname"><em>psi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;&#160;</td>
+          <td class="paramname"><em>dpsidx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Shape.html">Shape</a> &amp;&#160;</td>
+          <td class="paramname"><em>test</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1DShape.html">DShape</a> &amp;&#160;</td>
+          <td class="paramname"><em>dtestdx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classoomph_1_1Shape.html" title="A Class for shape functions. In simple cases, the shape functions have only one index that can be tho...">Shape</a>, test functions &amp; derivs. w.r.t. to global coords. Return Jacobian. </p>
+<p >Define the shape functions and test functions and derivatives w.r.t. global coordinates and return Jacobian of mapping.</p>
+<p >Galerkin: Test functions = shape functions </p>
+
+<p class="definition">Definition at line <a class="el" href="linear__wave__elements_8h_source.html#l00513">513</a> of file <a class="el" href="linear__wave__elements_8h_source.html">linear_wave_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00603">i</a>, and <a class="el" href="cfortran_8h_source.html#l00568">s</a>.</p>
+
+</div>
+</div>
+<a id="a7287f6aba907248d2f0ee71f4dbfb91a" name="a7287f6aba907248d2f0ee71f4dbfb91a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7287f6aba907248d2f0ee71f4dbfb91a">&#9670;&nbsp;</a></span>Initial_Nvalue() <span class="overload">[1/9]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned <a class="el" href="classoomph_1_1QLinearWaveElement.html">oomph::QLinearWaveElement</a>&lt; 2, 4 &gt;::Initial_Nvalue</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="linear__wave__elements_8cc_source.html#l00048">48</a> of file <a class="el" href="linear__wave__elements_8cc_source.html">linear_wave_elements.cc</a>.</p>
+
+</div>
+</div>
+<a id="ae3b48281ac6934a3db36bf3db3b095ef" name="ae3b48281ac6934a3db36bf3db3b095ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3b48281ac6934a3db36bf3db3b095ef">&#9670;&nbsp;</a></span>Initial_Nvalue() <span class="overload">[2/9]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned <a class="el" href="classoomph_1_1QLinearWaveElement.html">oomph::QLinearWaveElement</a>&lt; 3, 3 &gt;::Initial_Nvalue</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="linear__wave__elements_8cc_source.html#l00060">60</a> of file <a class="el" href="linear__wave__elements_8cc_source.html">linear_wave_elements.cc</a>.</p>
+
+</div>
+</div>
+<a id="ae2af2246b42c100dd88283716ca48580" name="ae2af2246b42c100dd88283716ca48580"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2af2246b42c100dd88283716ca48580">&#9670;&nbsp;</a></span>Initial_Nvalue() <span class="overload">[3/9]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned <a class="el" href="classoomph_1_1QLinearWaveElement.html">oomph::QLinearWaveElement</a>&lt; 1, 2 &gt;::Initial_Nvalue</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="linear__wave__elements_8cc_source.html#l00045">45</a> of file <a class="el" href="linear__wave__elements_8cc_source.html">linear_wave_elements.cc</a>.</p>
+
+</div>
+</div>
+<a id="a32b3b8e189567a176b58f5c6d68ef5ed" name="a32b3b8e189567a176b58f5c6d68ef5ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32b3b8e189567a176b58f5c6d68ef5ed">&#9670;&nbsp;</a></span>Initial_Nvalue() <span class="overload">[4/9]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned <a class="el" href="classoomph_1_1QLinearWaveElement.html">oomph::QLinearWaveElement</a>&lt; 1, 3 &gt;::Initial_Nvalue</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="linear__wave__elements_8cc_source.html#l00043">43</a> of file <a class="el" href="linear__wave__elements_8cc_source.html">linear_wave_elements.cc</a>.</p>
+
+</div>
+</div>
+<a id="aa76d9d6ad69c263d38cbe2a75691fbd4" name="aa76d9d6ad69c263d38cbe2a75691fbd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa76d9d6ad69c263d38cbe2a75691fbd4">&#9670;&nbsp;</a></span>Initial_Nvalue() <span class="overload">[5/9]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned <a class="el" href="classoomph_1_1QLinearWaveElement.html">oomph::QLinearWaveElement</a>&lt; 1, 4 &gt;::Initial_Nvalue</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>2D LinearWave elements </p>
+
+<p class="definition">Definition at line <a class="el" href="linear__wave__elements_8cc_source.html#l00041">41</a> of file <a class="el" href="linear__wave__elements_8cc_source.html">linear_wave_elements.cc</a>.</p>
+
+</div>
+</div>
+<a id="afbcae91b32ac279db6ade03cf0e736e8" name="afbcae91b32ac279db6ade03cf0e736e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbcae91b32ac279db6ade03cf0e736e8">&#9670;&nbsp;</a></span>Initial_Nvalue() <span class="overload">[6/9]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned <a class="el" href="classoomph_1_1QLinearWaveElement.html">oomph::QLinearWaveElement</a>&lt; 2, 2 &gt;::Initial_Nvalue</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="linear__wave__elements_8cc_source.html#l00054">54</a> of file <a class="el" href="linear__wave__elements_8cc_source.html">linear_wave_elements.cc</a>.</p>
+
+</div>
+</div>
+<a id="acce75f65012a63394481a61080ecf83c" name="acce75f65012a63394481a61080ecf83c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acce75f65012a63394481a61080ecf83c">&#9670;&nbsp;</a></span>Initial_Nvalue() <span class="overload">[7/9]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned <a class="el" href="classoomph_1_1QLinearWaveElement.html">oomph::QLinearWaveElement</a>&lt; 3, 4 &gt;::Initial_Nvalue</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="linear__wave__elements_8cc_source.html#l00064">64</a> of file <a class="el" href="linear__wave__elements_8cc_source.html">linear_wave_elements.cc</a>.</p>
+
+</div>
+</div>
+<a id="a94179db43ea96f4297a3c42e494c5945" name="a94179db43ea96f4297a3c42e494c5945"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94179db43ea96f4297a3c42e494c5945">&#9670;&nbsp;</a></span>Initial_Nvalue() <span class="overload">[8/9]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned <a class="el" href="classoomph_1_1QLinearWaveElement.html">oomph::QLinearWaveElement</a>&lt; 3, 2 &gt;::Initial_Nvalue</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="linear__wave__elements_8cc_source.html#l00057">57</a> of file <a class="el" href="linear__wave__elements_8cc_source.html">linear_wave_elements.cc</a>.</p>
+
+</div>
+</div>
+<a id="ac47ebbcd60bbbfff4268c7d22569efe1" name="ac47ebbcd60bbbfff4268c7d22569efe1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac47ebbcd60bbbfff4268c7d22569efe1">&#9670;&nbsp;</a></span>Initial_Nvalue() <span class="overload">[9/9]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned <a class="el" href="classoomph_1_1QLinearWaveElement.html">oomph::QLinearWaveElement</a>&lt; 2, 3 &gt;::Initial_Nvalue</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="linear__wave__elements_8cc_source.html#l00051">51</a> of file <a class="el" href="linear__wave__elements_8cc_source.html">linear_wave_elements.cc</a>.</p>
+
+</div>
+</div>
+<a id="af1aff68bad7411d9fe32df137e3bfaf7" name="af1aff68bad7411d9fe32df137e3bfaf7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1aff68bad7411d9fe32df137e3bfaf7">&#9670;&nbsp;</a></span>operator=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classoomph_1_1QLinearWaveElement.html">oomph::QLinearWaveElement</a>&lt; DIM, NNODE_1D &gt;::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classoomph_1_1QLinearWaveElement.html">QLinearWaveElement</a>&lt; DIM, NNODE_1D &gt; &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Broken assignment operator. </p>
+
+</div>
+</div>
+<a id="a9b6c23f23a7f8e188241fe2698c7543d" name="a9b6c23f23a7f8e188241fe2698c7543d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b6c23f23a7f8e188241fe2698c7543d">&#9670;&nbsp;</a></span>output() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classoomph_1_1QLinearWaveElement.html">oomph::QLinearWaveElement</a>&lt; DIM, NNODE_1D &gt;::output </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>file_pt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Output function: x,y,u or x,y,z,u. </p>
+
+<p class="definition">Definition at line <a class="el" href="linear__wave__elements_8h_source.html#l00447">447</a> of file <a class="el" href="linear__wave__elements_8h_source.html">linear_wave_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="oomph__utilities_8cc_source.html#l00436">oomph::CommandLineArgs::output()</a>.</p>
+
+</div>
+</div>
+<a id="a4fe8053385a090049e459faa0e0cc3be" name="a4fe8053385a090049e459faa0e0cc3be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fe8053385a090049e459faa0e0cc3be">&#9670;&nbsp;</a></span>output() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classoomph_1_1QLinearWaveElement.html">oomph::QLinearWaveElement</a>&lt; DIM, NNODE_1D &gt;::output </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>file_pt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n_plot</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Output function: x,y,u or x,y,z,u at n_plot^DIM plot points. </p>
+
+<p class="definition">Definition at line <a class="el" href="linear__wave__elements_8h_source.html#l00454">454</a> of file <a class="el" href="linear__wave__elements_8h_source.html">linear_wave_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="oomph__utilities_8cc_source.html#l00436">oomph::CommandLineArgs::output()</a>.</p>
+
+</div>
+</div>
+<a id="ae7176ab05b31f360cc7c774e857242d9" name="ae7176ab05b31f360cc7c774e857242d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7176ab05b31f360cc7c774e857242d9">&#9670;&nbsp;</a></span>output() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classoomph_1_1QLinearWaveElement.html">oomph::QLinearWaveElement</a>&lt; DIM, NNODE_1D &gt;::output </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>outfile</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Output function: x,y,u or x,y,z,u. </p>
+
+<p class="definition">Definition at line <a class="el" href="linear__wave__elements_8h_source.html#l00433">433</a> of file <a class="el" href="linear__wave__elements_8h_source.html">linear_wave_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="oomph__utilities_8cc_source.html#l00436">oomph::CommandLineArgs::output()</a>.</p>
+
+</div>
+</div>
+<a id="a4e44576ef363b7b9680a60da96b7687b" name="a4e44576ef363b7b9680a60da96b7687b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e44576ef363b7b9680a60da96b7687b">&#9670;&nbsp;</a></span>output() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classoomph_1_1QLinearWaveElement.html">oomph::QLinearWaveElement</a>&lt; DIM, NNODE_1D &gt;::output </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>outfile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n_plot</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Output function: x,y,u or x,y,z,u at n_plot^DIM plot points. </p>
+
+<p class="definition">Definition at line <a class="el" href="linear__wave__elements_8h_source.html#l00440">440</a> of file <a class="el" href="linear__wave__elements_8h_source.html">linear_wave_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="oomph__utilities_8cc_source.html#l00436">oomph::CommandLineArgs::output()</a>.</p>
+
+</div>
+</div>
+<a id="af991bd517d135fe1320074b28ed84b02" name="af991bd517d135fe1320074b28ed84b02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af991bd517d135fe1320074b28ed84b02">&#9670;&nbsp;</a></span>output_fct() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classoomph_1_1QLinearWaveElement.html">oomph::QLinearWaveElement</a>&lt; DIM, NNODE_1D &gt;::output_fct </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>outfile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n_plot</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>time</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1FiniteElement.html#ad4ecf2b61b158a4b4d351a60d23c633e">FiniteElement::UnsteadyExactSolutionFctPt</a>&#160;</td>
+          <td class="paramname"><em>exact_soln_pt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Output function for a time-dependent exact solution. x,y,u_exact or x,y,z,u_exact at n_plot^DIM plot points (Calls the steady version) </p>
+
+<p class="definition">Definition at line <a class="el" href="linear__wave__elements_8h_source.html#l00473">473</a> of file <a class="el" href="linear__wave__elements_8h_source.html">linear_wave_elements.h</a>.</p>
+
+</div>
+</div>
+<a id="af72b64dee3c8690aca4734d7f41515bc" name="af72b64dee3c8690aca4734d7f41515bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af72b64dee3c8690aca4734d7f41515bc">&#9670;&nbsp;</a></span>output_fct() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classoomph_1_1QLinearWaveElement.html">oomph::QLinearWaveElement</a>&lt; DIM, NNODE_1D &gt;::output_fct </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>outfile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n_plot</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1FiniteElement.html#a690fd33af26cc3e84f39bba6d5a85202">FiniteElement::SteadyExactSolutionFctPt</a>&#160;</td>
+          <td class="paramname"><em>exact_soln_pt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Output function for an exact solution: x,y,u_exact or x,y,z,u_exact at n_plot^DIM plot points. </p>
+
+<p class="definition">Definition at line <a class="el" href="linear__wave__elements_8h_source.html#l00462">462</a> of file <a class="el" href="linear__wave__elements_8h_source.html">linear_wave_elements.h</a>.</p>
+
+</div>
+</div>
+<a id="a62c08bf0690b81184694b87424db4d46" name="a62c08bf0690b81184694b87424db4d46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62c08bf0690b81184694b87424db4d46">&#9670;&nbsp;</a></span>required_nvalue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned <a class="el" href="classoomph_1_1QLinearWaveElement.html">oomph::QLinearWaveElement</a>&lt; DIM, NNODE_1D &gt;::required_nvalue </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Required # of &lsquo;values&rsquo; (pinned or dofs) at node n. </p>
+
+<p class="definition">Definition at line <a class="el" href="linear__wave__elements_8h_source.html#l00426">426</a> of file <a class="el" href="linear__wave__elements_8h_source.html">linear_wave_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="linear__wave__elements_8h_source.html#l00407">oomph::QLinearWaveElement&lt; DIM, NNODE_1D &gt;::Initial_Nvalue</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="aa8b8b5b3e5fa3ab646fc0ce814121712" name="aa8b8b5b3e5fa3ab646fc0ce814121712"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8b8b5b3e5fa3ab646fc0ce814121712">&#9670;&nbsp;</a></span>Initial_Nvalue</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned DIM, unsigned NNODE_1D&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned <a class="el" href="classoomph_1_1QLinearWaveElement.html">oomph::QLinearWaveElement</a>&lt; DIM, NNODE_1D &gt;::Initial_Nvalue[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Static array of ints to hold number of variables at nodes: Initial_Nvalue[n]. </p>
+
+<p class="definition">Definition at line <a class="el" href="linear__wave__elements_8h_source.html#l00407">407</a> of file <a class="el" href="linear__wave__elements_8h_source.html">linear_wave_elements.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="linear__wave__elements_8h_source.html#l00426">oomph::QLinearWaveElement&lt; DIM, NNODE_1D &gt;::required_nvalue()</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="linear__wave__elements_8h_source.html">linear_wave_elements.h</a></li>
+</ul>
+</div><!-- contents -->
+
+    <!-- jQuery for Bootstrap and Doxygen -->
+    <script src="../../js/jquery-1.12.0.min.js"></script>
+    <!-- Minified boostrap plugins-->
+    <script src="../../js/bootstrap.js"></script>
+    <!-- Doxygen dependency to add powertips to source code-->
+    <script src="../../js/jquery.powertip.min.js"></script>
+    <!-- The  following script is generated by doxygen and hides/shows levels in 
+         the data structure lists and adds powertips to source code-->
+    <script src="../../js/dynsections.js" ></script>
+    <!-- add to Doxygen's class names so bootstrap css and js recognises them-->
+    <script type="text/javascript">
+    $(".contents").addClass("container");
+    $(".header").addClass("container");
+    $(".navpath").addClass("container");
+    $("#navrow3").addClass("container");
+    $("#navrow4").addClass("container");
+    $(".mlabel").addClass("label");
+    $(".mlabel").addClass("label-default");
+    $(".memitem").addClass("panel");
+    $(".memitem").addClass("panel-info");
+    $(".memproto").addClass("panel-heading");
+    $(".memdoc").addClass("panel-body");
+    </script>
+    <footer>
+      <div class="container">
+        <div class="text-muted" style="float:right;">Generated by <a href="http://www.doxygen.org/index.html">
+          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Tue Dec 21 2021 16:51:44
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

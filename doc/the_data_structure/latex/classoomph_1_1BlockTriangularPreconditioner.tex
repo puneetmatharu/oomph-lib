@@ -1,0 +1,289 @@
+\hypertarget{classoomph_1_1BlockTriangularPreconditioner}{}\doxysection{oomph\+::Block\+Triangular\+Preconditioner\texorpdfstring{$<$}{<} MATRIX \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classoomph_1_1BlockTriangularPreconditioner}\index{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$@{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$}}
+
+
+//////////////////////////////////////////////////////////////////////////// ////////////////////////////////////////////////////////////////////////////  
+
+
+
+
+{\ttfamily \#include $<$general\+\_\+purpose\+\_\+block\+\_\+preconditioners.\+h$>$}
+
+Inheritance diagram for oomph\+::Block\+Triangular\+Preconditioner\texorpdfstring{$<$}{<} MATRIX \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{classoomph_1_1BlockTriangularPreconditioner}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1BlockTriangularPreconditioner_a79e23b3f3765ee0b8bc0f8f98f531277}{Block\+Triangular\+Preconditioner}} ()
+\begin{DoxyCompactList}\small\item\em Constructor. (By default this preconditioner is upper triangular). \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1BlockTriangularPreconditioner_a021cfd0194fc0ffc622ba3387eb5daca}{$\sim$\+Block\+Triangular\+Preconditioner}} ()
+\begin{DoxyCompactList}\small\item\em Destructor -\/ delete the preconditioner matrices. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1BlockTriangularPreconditioner_aec59a3bb131cd924d3efa6873a187a0f}{clean\+\_\+up\+\_\+memory}} ()
+\begin{DoxyCompactList}\small\item\em clean up the memory \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1BlockTriangularPreconditioner_a8df4c0612fbd03204b2864e9249aca09}{Block\+Triangular\+Preconditioner}} (const \mbox{\hyperlink{classoomph_1_1BlockTriangularPreconditioner}{Block\+Triangular\+Preconditioner}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1BlockTriangularPreconditioner_a7ec7b128695154f5e0c50d852ab7c607}{operator=}} (const \mbox{\hyperlink{classoomph_1_1BlockTriangularPreconditioner}{Block\+Triangular\+Preconditioner}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1BlockTriangularPreconditioner_aede879082caa04a2de50c811ee6d7f5b}{preconditioner\+\_\+solve}} (const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&r, \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&z)
+\begin{DoxyCompactList}\small\item\em Apply preconditioner to r. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1BlockTriangularPreconditioner_a2d08f17f9ba08a5772cb32fabcd4f984}{setup}} ()
+\begin{DoxyCompactList}\small\item\em Setup the preconditioner. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1BlockTriangularPreconditioner_a570f6526506d6f62df87dffdd717ab21}{upper\+\_\+triangular}} ()
+\begin{DoxyCompactList}\small\item\em Use as an upper triangular preconditioner. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1BlockTriangularPreconditioner_aa87bdcf9f0cdcaa787786207bb6356b5}{lower\+\_\+triangular}} ()
+\begin{DoxyCompactList}\small\item\em Use as a lower triangular preconditioner. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ \mbox{\hyperlink{classoomph_1_1MatrixVectorProduct}{Matrix\+Vector\+Product}} $\ast$ $>$ \mbox{\hyperlink{classoomph_1_1BlockTriangularPreconditioner_a163b9d6b63c1117d4e784bc1e32d1975}{Off\+\_\+diagonal\+\_\+matrix\+\_\+vector\+\_\+products}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1Matrix}{Matrix}} of matrix vector product operators for the off diagonals. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1BlockTriangularPreconditioner_afdab4f2510ef81938b177c65609f6d39}{Upper\+\_\+triangular}}
+\begin{DoxyCompactList}\small\item\em Boolean indicating upper or lower triangular. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename MATRIX$>$\newline
+class oomph\+::\+Block\+Triangular\+Preconditioner$<$ MATRIX $>$}
+//////////////////////////////////////////////////////////////////////////// //////////////////////////////////////////////////////////////////////////// 
+
+General purpose block triangular preconditioner By default this is Upper triangular. By default \mbox{\hyperlink{classoomph_1_1SuperLUPreconditioner}{Super\+LUPreconditioner}} (or Super\+LUDist\+Preconditioner) is used to solve the subsidiary systems, but other preconditioners can be used by setting them using passing a pointer to a function of type Subsidiary\+Preconditioner\+Fct\+Pt to the method subsidiary\+\_\+preconditioner\+\_\+function\+\_\+pt(). 
+
+Definition at line \mbox{\hyperlink{general__purpose__block__preconditioners_8h_source_l00457}{457}} of file \mbox{\hyperlink{general__purpose__block__preconditioners_8h_source}{general\+\_\+purpose\+\_\+block\+\_\+preconditioners.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoomph_1_1BlockTriangularPreconditioner_a79e23b3f3765ee0b8bc0f8f98f531277}\label{classoomph_1_1BlockTriangularPreconditioner_a79e23b3f3765ee0b8bc0f8f98f531277}} 
+\index{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$@{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$}!BlockTriangularPreconditioner@{BlockTriangularPreconditioner}}
+\index{BlockTriangularPreconditioner@{BlockTriangularPreconditioner}!oomph::BlockTriangularPreconditioner$<$ MATRIX $>$@{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{BlockTriangularPreconditioner()}{BlockTriangularPreconditioner()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+\mbox{\hyperlink{classoomph_1_1BlockTriangularPreconditioner}{oomph\+::\+Block\+Triangular\+Preconditioner}}$<$ MATRIX $>$\+::\mbox{\hyperlink{classoomph_1_1BlockTriangularPreconditioner}{Block\+Triangular\+Preconditioner}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. (By default this preconditioner is upper triangular). 
+
+
+
+Definition at line \mbox{\hyperlink{general__purpose__block__preconditioners_8h_source_l00462}{462}} of file \mbox{\hyperlink{general__purpose__block__preconditioners_8h_source}{general\+\_\+purpose\+\_\+block\+\_\+preconditioners.\+h}}.
+
+
+
+References \mbox{\hyperlink{general__purpose__block__preconditioners_8h_source_l00526}{oomph\+::\+Block\+Triangular\+Preconditioner$<$ MATRIX $>$\+::\+Upper\+\_\+triangular}}.
+
+\mbox{\Hypertarget{classoomph_1_1BlockTriangularPreconditioner_a021cfd0194fc0ffc622ba3387eb5daca}\label{classoomph_1_1BlockTriangularPreconditioner_a021cfd0194fc0ffc622ba3387eb5daca}} 
+\index{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$@{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$}!````~BlockTriangularPreconditioner@{$\sim$BlockTriangularPreconditioner}}
+\index{````~BlockTriangularPreconditioner@{$\sim$BlockTriangularPreconditioner}!oomph::BlockTriangularPreconditioner$<$ MATRIX $>$@{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$BlockTriangularPreconditioner()}{~BlockTriangularPreconditioner()}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+virtual \mbox{\hyperlink{classoomph_1_1BlockTriangularPreconditioner}{oomph\+::\+Block\+Triangular\+Preconditioner}}$<$ MATRIX $>$\+::$\sim$\mbox{\hyperlink{classoomph_1_1BlockTriangularPreconditioner}{Block\+Triangular\+Preconditioner}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destructor -\/ delete the preconditioner matrices. 
+
+
+
+Definition at line \mbox{\hyperlink{general__purpose__block__preconditioners_8h_source_l00470}{470}} of file \mbox{\hyperlink{general__purpose__block__preconditioners_8h_source}{general\+\_\+purpose\+\_\+block\+\_\+preconditioners.\+h}}.
+
+
+
+References \mbox{\hyperlink{general__purpose__block__preconditioners_8h_source_l00476}{oomph\+::\+Block\+Triangular\+Preconditioner$<$ MATRIX $>$\+::clean\+\_\+up\+\_\+memory()}}.
+
+\mbox{\Hypertarget{classoomph_1_1BlockTriangularPreconditioner_a8df4c0612fbd03204b2864e9249aca09}\label{classoomph_1_1BlockTriangularPreconditioner_a8df4c0612fbd03204b2864e9249aca09}} 
+\index{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$@{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$}!BlockTriangularPreconditioner@{BlockTriangularPreconditioner}}
+\index{BlockTriangularPreconditioner@{BlockTriangularPreconditioner}!oomph::BlockTriangularPreconditioner$<$ MATRIX $>$@{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{BlockTriangularPreconditioner()}{BlockTriangularPreconditioner()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+\mbox{\hyperlink{classoomph_1_1BlockTriangularPreconditioner}{oomph\+::\+Block\+Triangular\+Preconditioner}}$<$ MATRIX $>$\+::\mbox{\hyperlink{classoomph_1_1BlockTriangularPreconditioner}{Block\+Triangular\+Preconditioner}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classoomph_1_1BlockTriangularPreconditioner}{Block\+Triangular\+Preconditioner}}$<$ MATRIX $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Broken copy constructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classoomph_1_1BlockTriangularPreconditioner_aec59a3bb131cd924d3efa6873a187a0f}\label{classoomph_1_1BlockTriangularPreconditioner_aec59a3bb131cd924d3efa6873a187a0f}} 
+\index{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$@{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$}!clean\_up\_memory@{clean\_up\_memory}}
+\index{clean\_up\_memory@{clean\_up\_memory}!oomph::BlockTriangularPreconditioner$<$ MATRIX $>$@{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{clean\_up\_memory()}{clean\_up\_memory()}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+virtual void \mbox{\hyperlink{classoomph_1_1BlockTriangularPreconditioner}{oomph\+::\+Block\+Triangular\+Preconditioner}}$<$ MATRIX $>$\+::clean\+\_\+up\+\_\+memory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+clean up the memory 
+
+
+
+Reimplemented from \mbox{\hyperlink{classoomph_1_1GeneralPurposeBlockPreconditioner_a3272742d3c7f86327d33c5647af874e6}{oomph\+::\+General\+Purpose\+Block\+Preconditioner$<$ MATRIX $>$}}.
+
+
+
+Definition at line \mbox{\hyperlink{general__purpose__block__preconditioners_8h_source_l00476}{476}} of file \mbox{\hyperlink{general__purpose__block__preconditioners_8h_source}{general\+\_\+purpose\+\_\+block\+\_\+preconditioners.\+h}}.
+
+
+
+References \mbox{\hyperlink{general__purpose__block__preconditioners_8h_source_l00112}{oomph\+::\+General\+Purpose\+Block\+Preconditioner$<$ MATRIX $>$\+::clean\+\_\+up\+\_\+memory()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, and \mbox{\hyperlink{general__purpose__block__preconditioners_8h_source_l00523}{oomph\+::\+Block\+Triangular\+Preconditioner$<$ MATRIX $>$\+::\+Off\+\_\+diagonal\+\_\+matrix\+\_\+vector\+\_\+products}}.
+
+
+
+Referenced by \mbox{\hyperlink{general__purpose__block__preconditioners_8h_source_l00470}{oomph\+::\+Block\+Triangular\+Preconditioner$<$ MATRIX $>$\+::$\sim$\+Block\+Triangular\+Preconditioner()}}.
+
+\mbox{\Hypertarget{classoomph_1_1BlockTriangularPreconditioner_aa87bdcf9f0cdcaa787786207bb6356b5}\label{classoomph_1_1BlockTriangularPreconditioner_aa87bdcf9f0cdcaa787786207bb6356b5}} 
+\index{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$@{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$}!lower\_triangular@{lower\_triangular}}
+\index{lower\_triangular@{lower\_triangular}!oomph::BlockTriangularPreconditioner$<$ MATRIX $>$@{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{lower\_triangular()}{lower\_triangular()}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+void \mbox{\hyperlink{classoomph_1_1BlockTriangularPreconditioner}{oomph\+::\+Block\+Triangular\+Preconditioner}}$<$ MATRIX $>$\+::lower\+\_\+triangular (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Use as a lower triangular preconditioner. 
+
+
+
+Definition at line \mbox{\hyperlink{general__purpose__block__preconditioners_8h_source_l00516}{516}} of file \mbox{\hyperlink{general__purpose__block__preconditioners_8h_source}{general\+\_\+purpose\+\_\+block\+\_\+preconditioners.\+h}}.
+
+
+
+References \mbox{\hyperlink{general__purpose__block__preconditioners_8h_source_l00526}{oomph\+::\+Block\+Triangular\+Preconditioner$<$ MATRIX $>$\+::\+Upper\+\_\+triangular}}.
+
+
+
+Referenced by \mbox{\hyperlink{pseudo__elastic__preconditioner_8cc_source_l00114}{oomph\+::\+Pseudo\+Elastic\+Preconditioner\+::setup()}}.
+
+\mbox{\Hypertarget{classoomph_1_1BlockTriangularPreconditioner_a7ec7b128695154f5e0c50d852ab7c607}\label{classoomph_1_1BlockTriangularPreconditioner_a7ec7b128695154f5e0c50d852ab7c607}} 
+\index{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$@{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!oomph::BlockTriangularPreconditioner$<$ MATRIX $>$@{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+void \mbox{\hyperlink{classoomph_1_1BlockTriangularPreconditioner}{oomph\+::\+Block\+Triangular\+Preconditioner}}$<$ MATRIX $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classoomph_1_1BlockTriangularPreconditioner}{Block\+Triangular\+Preconditioner}}$<$ MATRIX $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Broken assignment operator. 
+
+\mbox{\Hypertarget{classoomph_1_1BlockTriangularPreconditioner_aede879082caa04a2de50c811ee6d7f5b}\label{classoomph_1_1BlockTriangularPreconditioner_aede879082caa04a2de50c811ee6d7f5b}} 
+\index{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$@{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$}!preconditioner\_solve@{preconditioner\_solve}}
+\index{preconditioner\_solve@{preconditioner\_solve}!oomph::BlockTriangularPreconditioner$<$ MATRIX $>$@{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{preconditioner\_solve()}{preconditioner\_solve()}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+void \mbox{\hyperlink{classoomph_1_1BlockTriangularPreconditioner}{oomph\+::\+Block\+Triangular\+Preconditioner}}$<$ MATRIX $>$\+::preconditioner\+\_\+solve (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&}]{r,  }\item[{\mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&}]{z }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Apply preconditioner to r. 
+
+\mbox{\hyperlink{classoomph_1_1Preconditioner}{Preconditioner}} solve for the block triangular preconditioner. 
+
+Implements \mbox{\hyperlink{classoomph_1_1Preconditioner_ace1199369e4465cd2b9a34884bb64ec8}{oomph\+::\+Preconditioner}}.
+
+
+
+Definition at line \mbox{\hyperlink{general__purpose__block__preconditioners_8cc_source_l00451}{451}} of file \mbox{\hyperlink{general__purpose__block__preconditioners_8cc_source}{general\+\_\+purpose\+\_\+block\+\_\+preconditioners.\+cc}}.
+
+
+
+References \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00457}{oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::distribution\+\_\+pt()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, and \mbox{\hyperlink{oomph__utilities_8cc_source_l00243}{oomph\+::\+Cumulative\+Timings\+::start()}}.
+
+\mbox{\Hypertarget{classoomph_1_1BlockTriangularPreconditioner_a2d08f17f9ba08a5772cb32fabcd4f984}\label{classoomph_1_1BlockTriangularPreconditioner_a2d08f17f9ba08a5772cb32fabcd4f984}} 
+\index{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$@{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$}!setup@{setup}}
+\index{setup@{setup}!oomph::BlockTriangularPreconditioner$<$ MATRIX $>$@{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+void \mbox{\hyperlink{classoomph_1_1BlockTriangularPreconditioner}{oomph\+::\+Block\+Triangular\+Preconditioner}}$<$ MATRIX $>$\+::setup\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Setup the preconditioner. 
+
+setup for the block triangular preconditioner 
+
+Implements \mbox{\hyperlink{classoomph_1_1Preconditioner_af4886f4efe510e5c9b0eb19422943588}{oomph\+::\+Preconditioner}}.
+
+
+
+Definition at line \mbox{\hyperlink{general__purpose__block__preconditioners_8cc_source_l00297}{297}} of file \mbox{\hyperlink{general__purpose__block__preconditioners_8cc_source}{general\+\_\+purpose\+\_\+block\+\_\+preconditioners.\+cc}}.
+
+
+
+References \mbox{\hyperlink{oomph__definitions_8cc_source_l00086}{oomph\+::\+Terminate\+Helper\+::clean\+\_\+up\+\_\+memory()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00319}{oomph\+::oomph\+\_\+info}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00313}{oomph\+::oomph\+\_\+nullstream}}, \mbox{\hyperlink{oomph__definitions_8h_source_l00464}{oomph\+::\+Oomph\+Info\+::stream\+\_\+pt()}}, \mbox{\hyperlink{oomph__utilities_8cc_source_l01295}{oomph\+::\+Timing\+Helpers\+::timer()}}, and \mbox{\hyperlink{error__estimator_8h_source_l00165}{oomph\+::u}}.
+
+\mbox{\Hypertarget{classoomph_1_1BlockTriangularPreconditioner_a570f6526506d6f62df87dffdd717ab21}\label{classoomph_1_1BlockTriangularPreconditioner_a570f6526506d6f62df87dffdd717ab21}} 
+\index{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$@{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$}!upper\_triangular@{upper\_triangular}}
+\index{upper\_triangular@{upper\_triangular}!oomph::BlockTriangularPreconditioner$<$ MATRIX $>$@{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{upper\_triangular()}{upper\_triangular()}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+void \mbox{\hyperlink{classoomph_1_1BlockTriangularPreconditioner}{oomph\+::\+Block\+Triangular\+Preconditioner}}$<$ MATRIX $>$\+::upper\+\_\+triangular (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Use as an upper triangular preconditioner. 
+
+
+
+Definition at line \mbox{\hyperlink{general__purpose__block__preconditioners_8h_source_l00510}{510}} of file \mbox{\hyperlink{general__purpose__block__preconditioners_8h_source}{general\+\_\+purpose\+\_\+block\+\_\+preconditioners.\+h}}.
+
+
+
+References \mbox{\hyperlink{general__purpose__block__preconditioners_8h_source_l00526}{oomph\+::\+Block\+Triangular\+Preconditioner$<$ MATRIX $>$\+::\+Upper\+\_\+triangular}}.
+
+
+
+Referenced by \mbox{\hyperlink{pseudo__elastic__preconditioner_8cc_source_l00114}{oomph\+::\+Pseudo\+Elastic\+Preconditioner\+::setup()}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classoomph_1_1BlockTriangularPreconditioner_a163b9d6b63c1117d4e784bc1e32d1975}\label{classoomph_1_1BlockTriangularPreconditioner_a163b9d6b63c1117d4e784bc1e32d1975}} 
+\index{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$@{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$}!Off\_diagonal\_matrix\_vector\_products@{Off\_diagonal\_matrix\_vector\_products}}
+\index{Off\_diagonal\_matrix\_vector\_products@{Off\_diagonal\_matrix\_vector\_products}!oomph::BlockTriangularPreconditioner$<$ MATRIX $>$@{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{Off\_diagonal\_matrix\_vector\_products}{Off\_diagonal\_matrix\_vector\_products}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+\mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$\mbox{\hyperlink{classoomph_1_1MatrixVectorProduct}{Matrix\+Vector\+Product}}$\ast$$>$ \mbox{\hyperlink{classoomph_1_1BlockTriangularPreconditioner}{oomph\+::\+Block\+Triangular\+Preconditioner}}$<$ MATRIX $>$\+::Off\+\_\+diagonal\+\_\+matrix\+\_\+vector\+\_\+products\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\mbox{\hyperlink{classoomph_1_1Matrix}{Matrix}} of matrix vector product operators for the off diagonals. 
+
+
+
+Definition at line \mbox{\hyperlink{general__purpose__block__preconditioners_8h_source_l00523}{523}} of file \mbox{\hyperlink{general__purpose__block__preconditioners_8h_source}{general\+\_\+purpose\+\_\+block\+\_\+preconditioners.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{general__purpose__block__preconditioners_8h_source_l00476}{oomph\+::\+Block\+Triangular\+Preconditioner$<$ MATRIX $>$\+::clean\+\_\+up\+\_\+memory()}}.
+
+\mbox{\Hypertarget{classoomph_1_1BlockTriangularPreconditioner_afdab4f2510ef81938b177c65609f6d39}\label{classoomph_1_1BlockTriangularPreconditioner_afdab4f2510ef81938b177c65609f6d39}} 
+\index{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$@{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$}!Upper\_triangular@{Upper\_triangular}}
+\index{Upper\_triangular@{Upper\_triangular}!oomph::BlockTriangularPreconditioner$<$ MATRIX $>$@{oomph::BlockTriangularPreconditioner$<$ MATRIX $>$}}
+\doxysubsubsection{\texorpdfstring{Upper\_triangular}{Upper\_triangular}}
+{\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
+bool \mbox{\hyperlink{classoomph_1_1BlockTriangularPreconditioner}{oomph\+::\+Block\+Triangular\+Preconditioner}}$<$ MATRIX $>$\+::Upper\+\_\+triangular\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Boolean indicating upper or lower triangular. 
+
+
+
+Definition at line \mbox{\hyperlink{general__purpose__block__preconditioners_8h_source_l00526}{526}} of file \mbox{\hyperlink{general__purpose__block__preconditioners_8h_source}{general\+\_\+purpose\+\_\+block\+\_\+preconditioners.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{general__purpose__block__preconditioners_8h_source_l00462}{oomph\+::\+Block\+Triangular\+Preconditioner$<$ MATRIX $>$\+::\+Block\+Triangular\+Preconditioner()}}, \mbox{\hyperlink{general__purpose__block__preconditioners_8h_source_l00516}{oomph\+::\+Block\+Triangular\+Preconditioner$<$ MATRIX $>$\+::lower\+\_\+triangular()}}, and \mbox{\hyperlink{general__purpose__block__preconditioners_8h_source_l00510}{oomph\+::\+Block\+Triangular\+Preconditioner$<$ MATRIX $>$\+::upper\+\_\+triangular()}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{general__purpose__block__preconditioners_8h}{general\+\_\+purpose\+\_\+block\+\_\+preconditioners.\+h}}\item 
+\mbox{\hyperlink{general__purpose__block__preconditioners_8cc}{general\+\_\+purpose\+\_\+block\+\_\+preconditioners.\+cc}}\end{DoxyCompactItemize}

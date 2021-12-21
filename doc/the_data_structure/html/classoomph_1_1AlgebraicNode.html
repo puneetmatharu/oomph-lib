@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>oomph-lib: oomph::AlgebraicNode Class Reference</title>
+<link rel="apple-touch-icon" sizes="57x57" href="../../figures/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="../../figures/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../../figures/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../../figures/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../../figures/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../../figures/apple-touch-icon-120x120.png">
+<link rel="icon" type="image/png" href="../../figures/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../figures/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../figures/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../figures/manifest.json">
+<link rel="mask-icon" href="../../figures/safari-pinned-tab.svg" color="#008000">
+<link rel="shortcut icon" href="../../figures/favicon.ico">
+<meta name="msapplication-TileColor" content="#00a300">
+<meta name="msapplication-config" content="../../figures/browserconfig.xml">
+<meta name="theme-color" content="#008000">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css">
+<!-- Doxygen css-->
+<!-- <link rel="stylesheet" type="text/css" href="doxygen.css"> -->
+<!-- Bootstrap -->
+<link href="../../css/bootstrap.css" rel="stylesheet">
+<!-- oomph-lib specific overrides -->
+<link rel="stylesheet" type="text/css" href="../../css/oomph_header.css">
+</head>
+<body>
+<nav class="navbar navbar-default">
+<div class="container">
+<div class="container-fluid">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="../../html/index.html"><img alt="oomph-lib" src="../../figures/oomph_logo.png"></a>
+  </div>
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">          
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li class="dropdown-header">Big picture</li>
+          <li><a href="../../../doc/intro/html/index.html">The finite element method</a></li>
+          <li><a href="../../../doc/the_data_structure/html/index.html">The data structure</a></li>
+          <li><a href="../../../doc/quick_guide/html/index.html">Not-so-quick guide</a></li>
+          <li><a href="../../../doc/optimisation/html/index.html">Optimisation</a></li>
+          <li><a href="../../../doc/order_of_action_functions/html/index.html">Order of action functions</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Example codes and tutorials</li>
+          <li><a href="../../../doc/example_code_list/html/index.html">List of example codes and tutorials</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#meshes">Meshing</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#solvers">Solvers</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#parallel">MPI parallel processing</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#visualisation">Post-processing/visualisation</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Other</li>
+          <li><a href="../../../doc/change_log/html/index.html">Change log</a></li>
+          <li><a href="../../../doc/creating_doc/html/index.html">Creating documentation</a></li>
+          <li><a href="../../../doc/coding_conventions/html/index.html">Coding conventions</a></li>
+          <li><a href="../../../doc/index/html/index.html">Index</a></li>
+          <li><a href="../../../doc/FAQ/html/index.html">FAQ</a></li>
+        </ul>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Installation<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../../../doc/the_distribution/html/index.html">Installation guide</a></li>
+            <li><a href="../../../doc/copyright/html/index.html">Copyright</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../../../doc/people/html/index.html">People</a></li>            
+            <li><a href="../../../doc/contact/html/index.html">Contact/Get involved</a></li>
+            <li><a href="../../../doc/publications/html/index.html">Publications</a></li>
+            <li><a href="../../../doc/acknowledgements/html/index.html">Acknowledgements</a></li>
+            <li><a href="../../../doc/picture_show/index.html">Picture show</a></li>
+          </ul>
+        </li>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right navbar-search">
+      <form class="navbar-form" role="search" action="../../../doc/search_results/html/index.html">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search" name="q">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Go</button>
+          </span>
+        </div><!-- /input-group -->
+       <!--<div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>-->
+      </form>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
+</div>
+</nav>
+<!-- Generated by Doxygen 1.9.2 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',false,false,'search.php','Search');
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceoomph.html">oomph</a></li><li class="navelem"><a class="el" href="classoomph_1_1AlgebraicNode.html">AlgebraicNode</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
+<a href="classoomph_1_1AlgebraicNode-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">oomph::AlgebraicNode Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>////////////////////////////////////////////////////////////////////  
+ <a href="classoomph_1_1AlgebraicNode.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for oomph::AlgebraicNode:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+ <div class="center">
+  <img src="classoomph_1_1AlgebraicNode.png" alt=""/>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a7e421172a1063fc49f37559f23837763"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#a7e421172a1063fc49f37559f23837763">AlgebraicNode</a> ()</td></tr>
+<tr class="memdesc:a7e421172a1063fc49f37559f23837763"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default Constructor.  <a href="classoomph_1_1AlgebraicNode.html#a7e421172a1063fc49f37559f23837763">More...</a><br /></td></tr>
+<tr class="separator:a7e421172a1063fc49f37559f23837763"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88eb17187c750f1f1a04d0dd554dd9b5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#a88eb17187c750f1f1a04d0dd554dd9b5">AlgebraicNode</a> (const unsigned &amp;n_dim, const unsigned &amp;n_position_type, const unsigned &amp;initial_nvalue)</td></tr>
+<tr class="memdesc:a88eb17187c750f1f1a04d0dd554dd9b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for steady algebraic node of spatial dimension n_dim, with n_position_type generalised coordinates and with initial_nvalue dofs.  <a href="classoomph_1_1AlgebraicNode.html#a88eb17187c750f1f1a04d0dd554dd9b5">More...</a><br /></td></tr>
+<tr class="separator:a88eb17187c750f1f1a04d0dd554dd9b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab97ffb4a9663ce90e4d7788315ba31a1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#ab97ffb4a9663ce90e4d7788315ba31a1">AlgebraicNode</a> (<a class="el" href="classoomph_1_1TimeStepper.html">TimeStepper</a> *time_stepper_pt, const unsigned &amp;n_dim, const unsigned &amp;n_position_type, const unsigned &amp;initial_nvalue)</td></tr>
+<tr class="memdesc:ab97ffb4a9663ce90e4d7788315ba31a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for bog-standard algebraic node of spatial dimension n_dim, with n_position_type generalised coordinates, with initial_nvalue dofs and with time dependence.  <a href="classoomph_1_1AlgebraicNode.html#ab97ffb4a9663ce90e4d7788315ba31a1">More...</a><br /></td></tr>
+<tr class="separator:ab97ffb4a9663ce90e4d7788315ba31a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1fef20e4dd950f70003c3db5d289044"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#af1fef20e4dd950f70003c3db5d289044">~AlgebraicNode</a> ()</td></tr>
+<tr class="memdesc:af1fef20e4dd950f70003c3db5d289044"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor (empty)  <a href="classoomph_1_1AlgebraicNode.html#af1fef20e4dd950f70003c3db5d289044">More...</a><br /></td></tr>
+<tr class="separator:af1fef20e4dd950f70003c3db5d289044"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a699690273ec90c490b98c5d7ced2d007"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#a699690273ec90c490b98c5d7ced2d007">AlgebraicNode</a> (const <a class="el" href="classoomph_1_1AlgebraicNode.html">AlgebraicNode</a> &amp;)=delete</td></tr>
+<tr class="memdesc:a699690273ec90c490b98c5d7ced2d007"><td class="mdescLeft">&#160;</td><td class="mdescRight">Broken copy constructor.  <a href="classoomph_1_1AlgebraicNode.html#a699690273ec90c490b98c5d7ced2d007">More...</a><br /></td></tr>
+<tr class="separator:a699690273ec90c490b98c5d7ced2d007"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a754dc8fcac3382a07f60262c9792c84c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#a754dc8fcac3382a07f60262c9792c84c">node_update</a> (const bool &amp;update_all_time_levels_for_new_node=false)</td></tr>
+<tr class="memdesc:a754dc8fcac3382a07f60262c9792c84c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Broken assignment operator.  <a href="classoomph_1_1AlgebraicNode.html#a754dc8fcac3382a07f60262c9792c84c">More...</a><br /></td></tr>
+<tr class="separator:a754dc8fcac3382a07f60262c9792c84c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c9e49f378f2dc9e93e62e281bf58d27"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#a8c9e49f378f2dc9e93e62e281bf58d27">nnode_update_fcts</a> ()</td></tr>
+<tr class="memdesc:a8c9e49f378f2dc9e93e62e281bf58d27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of node update fcts.  <a href="classoomph_1_1AlgebraicNode.html#a8c9e49f378f2dc9e93e62e281bf58d27">More...</a><br /></td></tr>
+<tr class="separator:a8c9e49f378f2dc9e93e62e281bf58d27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8887f3a7c445b098835a7703c3a19bd2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#a8887f3a7c445b098835a7703c3a19bd2">node_update_fct_id</a> ()</td></tr>
+<tr class="memdesc:a8887f3a7c445b098835a7703c3a19bd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default (usually first if there are multiple ones) node update fct id.  <a href="classoomph_1_1AlgebraicNode.html#a8887f3a7c445b098835a7703c3a19bd2">More...</a><br /></td></tr>
+<tr class="separator:a8887f3a7c445b098835a7703c3a19bd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b910e50ee47113aa0256e46043b0f27"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#a6b910e50ee47113aa0256e46043b0f27">node_update_fct_id</a> (<a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; int &gt; &amp;id)</td></tr>
+<tr class="memdesc:a6b910e50ee47113aa0256e46043b0f27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return vector of node update fct ids (vector is resized to contain the correct number of entries). Somewhat costly to call as map needs to be copied into vector.  <a href="classoomph_1_1AlgebraicNode.html#a6b910e50ee47113aa0256e46043b0f27">More...</a><br /></td></tr>
+<tr class="separator:a6b910e50ee47113aa0256e46043b0f27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8db6dd23ac5f75d19d5eb1d083eeb38b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1AlgebraicMesh.html">AlgebraicMesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#a8db6dd23ac5f75d19d5eb1d083eeb38b">mesh_pt</a> ()</td></tr>
+<tr class="memdesc:a8db6dd23ac5f75d19d5eb1d083eeb38b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default (usually first) mesh that implements update function.  <a href="classoomph_1_1AlgebraicNode.html#a8db6dd23ac5f75d19d5eb1d083eeb38b">More...</a><br /></td></tr>
+<tr class="separator:a8db6dd23ac5f75d19d5eb1d083eeb38b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3d3a47acb5f2612e4cd47769392b546"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1AlgebraicMesh.html">AlgebraicMesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#ac3d3a47acb5f2612e4cd47769392b546">mesh_pt</a> (const int &amp;id)</td></tr>
+<tr class="memdesc:ac3d3a47acb5f2612e4cd47769392b546"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classoomph_1_1Mesh.html" title="A general mesh class.">Mesh</a> that implements the id-th node update function.  <a href="classoomph_1_1AlgebraicNode.html#ac3d3a47acb5f2612e4cd47769392b546">More...</a><br /></td></tr>
+<tr class="separator:ac3d3a47acb5f2612e4cd47769392b546"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e1fa66d3543da39a5e728d8af5c1734"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#a0e1fa66d3543da39a5e728d8af5c1734">ngeom_object</a> (const int &amp;id)</td></tr>
+<tr class="memdesc:a0e1fa66d3543da39a5e728d8af5c1734"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of geometric objects involved in id-th update function.  <a href="classoomph_1_1AlgebraicNode.html#a0e1fa66d3543da39a5e728d8af5c1734">More...</a><br /></td></tr>
+<tr class="separator:a0e1fa66d3543da39a5e728d8af5c1734"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10f49849e0942e68c6791810ffc6fb31"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#a10f49849e0942e68c6791810ffc6fb31">ngeom_object</a> () const</td></tr>
+<tr class="memdesc:a10f49849e0942e68c6791810ffc6fb31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of geometric objects involved in default (usually first) update function.  <a href="classoomph_1_1AlgebraicNode.html#a10f49849e0942e68c6791810ffc6fb31">More...</a><br /></td></tr>
+<tr class="separator:a10f49849e0942e68c6791810ffc6fb31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66d4b6382b4e364a464c7c19a7324200"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; <a class="el" href="classoomph_1_1GeomObject.html">GeomObject</a> * &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#a66d4b6382b4e364a464c7c19a7324200">vector_geom_object_pt</a> (const int &amp;id)</td></tr>
+<tr class="memdesc:a66d4b6382b4e364a464c7c19a7324200"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return vector of geometric objects involved in id-th update function.  <a href="classoomph_1_1AlgebraicNode.html#a66d4b6382b4e364a464c7c19a7324200">More...</a><br /></td></tr>
+<tr class="separator:a66d4b6382b4e364a464c7c19a7324200"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40c652e55675c70e39799c65fafcc2d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; <a class="el" href="classoomph_1_1GeomObject.html">GeomObject</a> * &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#a40c652e55675c70e39799c65fafcc2d9">vector_geom_object_pt</a> ()</td></tr>
+<tr class="memdesc:a40c652e55675c70e39799c65fafcc2d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return vector of geometric objects involved in default (usually first) update function.  <a href="classoomph_1_1AlgebraicNode.html#a40c652e55675c70e39799c65fafcc2d9">More...</a><br /></td></tr>
+<tr class="separator:a40c652e55675c70e39799c65fafcc2d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1adbe59a85f6de8fcb04b08be23181c3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1GeomObject.html">GeomObject</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#a1adbe59a85f6de8fcb04b08be23181c3">all_geom_object_pt</a> ()</td></tr>
+<tr class="memdesc:a1adbe59a85f6de8fcb04b08be23181c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the vector of all geometric objects.  <a href="classoomph_1_1AlgebraicNode.html#a1adbe59a85f6de8fcb04b08be23181c3">More...</a><br /></td></tr>
+<tr class="separator:a1adbe59a85f6de8fcb04b08be23181c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72a49e9a56c2bab91b1467547671fe65"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1GeomObject.html">GeomObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#a72a49e9a56c2bab91b1467547671fe65">geom_object_pt</a> (const unsigned &amp;<a class="el" href="cfortran_8h.html#adb50e893b86b3e55e751a42eab3cba82">i</a>)</td></tr>
+<tr class="memdesc:a72a49e9a56c2bab91b1467547671fe65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return pointer to i-th geometric object involved in default (usually first) update function.  <a href="classoomph_1_1AlgebraicNode.html#a72a49e9a56c2bab91b1467547671fe65">More...</a><br /></td></tr>
+<tr class="separator:a72a49e9a56c2bab91b1467547671fe65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18b508012bc638d85539568219865383"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#a18b508012bc638d85539568219865383">nref_value</a> (const int &amp;id)</td></tr>
+<tr class="memdesc:a18b508012bc638d85539568219865383"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of reference values involved in id-th update function.  <a href="classoomph_1_1AlgebraicNode.html#a18b508012bc638d85539568219865383">More...</a><br /></td></tr>
+<tr class="separator:a18b508012bc638d85539568219865383"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d5805d44950ad5783720ba7bb5a372a"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#a1d5805d44950ad5783720ba7bb5a372a">nref_value</a> ()</td></tr>
+<tr class="memdesc:a1d5805d44950ad5783720ba7bb5a372a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of reference values involved in default (usually first) update function.  <a href="classoomph_1_1AlgebraicNode.html#a1d5805d44950ad5783720ba7bb5a372a">More...</a><br /></td></tr>
+<tr class="separator:a1d5805d44950ad5783720ba7bb5a372a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4a4f8e238b9ee1abb2761800ecd1c4a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#ac4a4f8e238b9ee1abb2761800ecd1c4a">vector_ref_value</a> ()</td></tr>
+<tr class="memdesc:ac4a4f8e238b9ee1abb2761800ecd1c4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return vector of reference values involved in default (usually first) update function.  <a href="classoomph_1_1AlgebraicNode.html#ac4a4f8e238b9ee1abb2761800ecd1c4a">More...</a><br /></td></tr>
+<tr class="separator:ac4a4f8e238b9ee1abb2761800ecd1c4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcdd76bff197e1f392ff3023a57ba38f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#adcdd76bff197e1f392ff3023a57ba38f">vector_ref_value</a> (const int &amp;id)</td></tr>
+<tr class="memdesc:adcdd76bff197e1f392ff3023a57ba38f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return vector of reference values involved in id-th update function.  <a href="classoomph_1_1AlgebraicNode.html#adcdd76bff197e1f392ff3023a57ba38f">More...</a><br /></td></tr>
+<tr class="separator:adcdd76bff197e1f392ff3023a57ba38f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9658be0ccdb312e7cf0175663407f463"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#a9658be0ccdb312e7cf0175663407f463">ref_value</a> (const unsigned &amp;<a class="el" href="cfortran_8h.html#adb50e893b86b3e55e751a42eab3cba82">i</a>)</td></tr>
+<tr class="memdesc:a9658be0ccdb312e7cf0175663407f463"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return i-th reference value involved in default (usually first) update function.  <a href="classoomph_1_1AlgebraicNode.html#a9658be0ccdb312e7cf0175663407f463">More...</a><br /></td></tr>
+<tr class="separator:a9658be0ccdb312e7cf0175663407f463"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6bd268c80889507d92431a4638eb85c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#ac6bd268c80889507d92431a4638eb85c">add_node_update_info</a> (const int &amp;id, <a class="el" href="classoomph_1_1AlgebraicMesh.html">AlgebraicMesh</a> *<a class="el" href="classoomph_1_1AlgebraicNode.html#a8db6dd23ac5f75d19d5eb1d083eeb38b">mesh_pt</a>, const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; <a class="el" href="classoomph_1_1GeomObject.html">GeomObject</a> * &gt; &amp;<a class="el" href="classoomph_1_1AlgebraicNode.html#a72a49e9a56c2bab91b1467547671fe65">geom_object_pt</a>, const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;<a class="el" href="classoomph_1_1AlgebraicNode.html#a9658be0ccdb312e7cf0175663407f463">ref_value</a>, const bool &amp;called_from_constructor=false)</td></tr>
+<tr class="memdesc:ac6bd268c80889507d92431a4638eb85c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add algebraic update information for node: What's the ID of the mesh update function (typically used within the mesh) Which <a class="el" href="classoomph_1_1Mesh.html" title="A general mesh class.">Mesh</a> implements the update operation? Also, pass the vector of geometric objects and the vectors of reference values that are needed for the update operation. Negative values for ID are only allowed when called from node constructor, as indicated by the final argument which defaults to false.  <a href="classoomph_1_1AlgebraicNode.html#ac6bd268c80889507d92431a4638eb85c">More...</a><br /></td></tr>
+<tr class="separator:ac6bd268c80889507d92431a4638eb85c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6b0a1cf4dc041aa553f834b1ecd0a24"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#ae6b0a1cf4dc041aa553f834b1ecd0a24">add_node_update_info</a> (<a class="el" href="classoomph_1_1AlgebraicMesh.html">AlgebraicMesh</a> *<a class="el" href="classoomph_1_1AlgebraicNode.html#a8db6dd23ac5f75d19d5eb1d083eeb38b">mesh_pt</a>, const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; <a class="el" href="classoomph_1_1GeomObject.html">GeomObject</a> * &gt; &amp;<a class="el" href="classoomph_1_1AlgebraicNode.html#a72a49e9a56c2bab91b1467547671fe65">geom_object_pt</a>, const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;<a class="el" href="classoomph_1_1AlgebraicNode.html#a9658be0ccdb312e7cf0175663407f463">ref_value</a>)</td></tr>
+<tr class="memdesc:ae6b0a1cf4dc041aa553f834b1ecd0a24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add algebraic update information for node: Which <a class="el" href="classoomph_1_1Mesh.html" title="A general mesh class.">Mesh</a> implements the update operation? Also, pass the vector of geometric objects and the vectors of reference values that are needed for the update operation. We're assigning a default node update fct id of 0.  <a href="classoomph_1_1AlgebraicNode.html#ae6b0a1cf4dc041aa553f834b1ecd0a24">More...</a><br /></td></tr>
+<tr class="separator:ae6b0a1cf4dc041aa553f834b1ecd0a24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9de65e71efa3050187d41f05602accfe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#a9de65e71efa3050187d41f05602accfe">kill_node_update_info</a> (const int &amp;id=0)</td></tr>
+<tr class="memdesc:a9de65e71efa3050187d41f05602accfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Erase algebraic node update information for id-th node update function. Id defaults to 0.  <a href="classoomph_1_1AlgebraicNode.html#a9de65e71efa3050187d41f05602accfe">More...</a><br /></td></tr>
+<tr class="separator:a9de65e71efa3050187d41f05602accfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68b0fc5d9b38bb087f889424382a3ecd"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#a68b0fc5d9b38bb087f889424382a3ecd">self_test</a> ()</td></tr>
+<tr class="memdesc:a68b0fc5d9b38bb087f889424382a3ecd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform self test: If the node has multiple node update functions, check that they all give the same result. Return 1/0 for failure/success. (Failure if max. difference between the nodal positions for different update functions exceeds <a class="el" href="classoomph_1_1AlgebraicNode.html#a5696d589c11a229f402d68476c7fe435" title="What it says: Used in self-test to check if different node update functions produce the same result.">AlgebraicNode::Max_allowed_difference_between_node_update_fcts</a>.  <a href="classoomph_1_1AlgebraicNode.html#a68b0fc5d9b38bb087f889424382a3ecd">More...</a><br /></td></tr>
+<tr class="separator:a68b0fc5d9b38bb087f889424382a3ecd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a5f9d80a2826974b63376a4c58e0812fc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#a5f9d80a2826974b63376a4c58e0812fc">set_default_node_update</a> (const int &amp;id)</td></tr>
+<tr class="memdesc:a5f9d80a2826974b63376a4c58e0812fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make id-th node update function the default.  <a href="classoomph_1_1AlgebraicNode.html#a5f9d80a2826974b63376a4c58e0812fc">More...</a><br /></td></tr>
+<tr class="separator:a5f9d80a2826974b63376a4c58e0812fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a1262df39be34981b4c2336a8f8d2f8aa"><td class="memItemLeft" align="right" valign="top">std::map&lt; int, <a class="el" href="classoomph_1_1AlgebraicMesh.html">AlgebraicMesh</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#a1262df39be34981b4c2336a8f8d2f8aa">Mesh_pt</a></td></tr>
+<tr class="memdesc:a1262df39be34981b4c2336a8f8d2f8aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to mesh that performs the specified node update operation (Map because this node may only use the <a class="el" href="classoomph_1_1Mesh.html" title="A general mesh class.">Mesh</a>'s 116th node update fct. There's no point in wasting an entire vector for the non-existing entries)  <a href="classoomph_1_1AlgebraicNode.html#a1262df39be34981b4c2336a8f8d2f8aa">More...</a><br /></td></tr>
+<tr class="separator:a1262df39be34981b4c2336a8f8d2f8aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accde26f42fbd9b8be1234d8b7426cbcb"><td class="memItemLeft" align="right" valign="top">std::map&lt; int, <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; <a class="el" href="classoomph_1_1GeomObject.html">GeomObject</a> * &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#accde26f42fbd9b8be1234d8b7426cbcb">Geom_object_pt</a></td></tr>
+<tr class="memdesc:accde26f42fbd9b8be1234d8b7426cbcb"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classoomph_1_1Vector.html" title="A slight extension to the standard template vector class so that we can include &quot;graceful&quot; array rang...">Vector</a> of geometric objects that are involved in the specified node update operation. (Map because this node may only use the <a class="el" href="classoomph_1_1Mesh.html" title="A general mesh class.">Mesh</a>'s 116th node update fct. There's no point in wasting an entire vector for the non-existing entries)  <a href="classoomph_1_1AlgebraicNode.html#accde26f42fbd9b8be1234d8b7426cbcb">More...</a><br /></td></tr>
+<tr class="separator:accde26f42fbd9b8be1234d8b7426cbcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af453f7ba5efb85f1f08b1069c24278a6"><td class="memItemLeft" align="right" valign="top">std::map&lt; int, <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#af453f7ba5efb85f1f08b1069c24278a6">Ref_value</a></td></tr>
+<tr class="memdesc:af453f7ba5efb85f1f08b1069c24278a6"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classoomph_1_1Vector.html" title="A slight extension to the standard template vector class so that we can include &quot;graceful&quot; array rang...">Vector</a> of reference values that are required for the specified node update operation. (Map because this node may only use the <a class="el" href="classoomph_1_1Mesh.html" title="A general mesh class.">Mesh</a>'s 116th node update fct. There's no point in wasting an entire vector for the non-existing entries)  <a href="classoomph_1_1AlgebraicNode.html#af453f7ba5efb85f1f08b1069c24278a6">More...</a><br /></td></tr>
+<tr class="separator:af453f7ba5efb85f1f08b1069c24278a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8cb7e56e80f1c0f3e200562d2b1d39e"><td class="memItemLeft" align="right" valign="top">std::map&lt; int, <a class="el" href="classoomph_1_1AlgebraicMesh.html">AlgebraicMesh</a> * &gt;::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#ac8cb7e56e80f1c0f3e200562d2b1d39e">Default_it_mesh_pt</a></td></tr>
+<tr class="memdesc:ac8cb7e56e80f1c0f3e200562d2b1d39e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default iterator for mesh: This mesh performs the default update.  <a href="classoomph_1_1AlgebraicNode.html#ac8cb7e56e80f1c0f3e200562d2b1d39e">More...</a><br /></td></tr>
+<tr class="separator:ac8cb7e56e80f1c0f3e200562d2b1d39e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94d6c725f1d1fa8006503a0059a2baae"><td class="memItemLeft" align="right" valign="top">std::map&lt; int, <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; <a class="el" href="classoomph_1_1GeomObject.html">GeomObject</a> * &gt; &gt;::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#a94d6c725f1d1fa8006503a0059a2baae">Default_it_geom_object_pt</a></td></tr>
+<tr class="memdesc:a94d6c725f1d1fa8006503a0059a2baae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default iterator for vector of geom objects. These GeomObjects are involved in the default update.  <a href="classoomph_1_1AlgebraicNode.html#a94d6c725f1d1fa8006503a0059a2baae">More...</a><br /></td></tr>
+<tr class="separator:a94d6c725f1d1fa8006503a0059a2baae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a194589459f01a68a027b6c62a4fa5561"><td class="memItemLeft" align="right" valign="top">std::map&lt; int, <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &gt;::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#a194589459f01a68a027b6c62a4fa5561">Default_it_ref_value</a></td></tr>
+<tr class="memdesc:a194589459f01a68a027b6c62a4fa5561"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default iterator for vector of ref values. These reference values are involved in the default update.  <a href="classoomph_1_1AlgebraicNode.html#a194589459f01a68a027b6c62a4fa5561">More...</a><br /></td></tr>
+<tr class="separator:a194589459f01a68a027b6c62a4fa5561"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adba92e804261f449a9142920661c339a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#adba92e804261f449a9142920661c339a">Default_node_update_fct_id</a></td></tr>
+<tr class="memdesc:adba92e804261f449a9142920661c339a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default node update function ID.  <a href="classoomph_1_1AlgebraicNode.html#adba92e804261f449a9142920661c339a">More...</a><br /></td></tr>
+<tr class="separator:adba92e804261f449a9142920661c339a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:a5696d589c11a229f402d68476c7fe435"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#a5696d589c11a229f402d68476c7fe435">Max_allowed_difference_between_node_update_fcts</a></td></tr>
+<tr class="memdesc:a5696d589c11a229f402d68476c7fe435"><td class="mdescLeft">&#160;</td><td class="mdescRight">What it says: Used in self-test to check if different node update functions produce the same result.  <a href="classoomph_1_1AlgebraicNode.html#a5696d589c11a229f402d68476c7fe435">More...</a><br /></td></tr>
+<tr class="separator:a5696d589c11a229f402d68476c7fe435"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6d3b50db54114b5cf22f86c0ceed2f8"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#af6d3b50db54114b5cf22f86c0ceed2f8">Dummy_node_update_fct_id</a> = -100</td></tr>
+<tr class="memdesc:af6d3b50db54114b5cf22f86c0ceed2f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default (negative!) remesh fct id for nodes for which no remesh fct is defined.  <a href="classoomph_1_1AlgebraicNode.html#af6d3b50db54114b5cf22f86c0ceed2f8">More...</a><br /></td></tr>
+<tr class="separator:af6d3b50db54114b5cf22f86c0ceed2f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21f78f61150e308456db352907aa26c6"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classoomph_1_1AlgebraicMesh.html">AlgebraicMesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#a21f78f61150e308456db352907aa26c6">Dummy_mesh_pt</a> = &amp;<a class="el" href="classoomph_1_1AlgebraicNode.html#aa89c19c1d7c5e5efd1b501098491bf5c">AlgebraicNode::Dummy_mesh</a></td></tr>
+<tr class="memdesc:a21f78f61150e308456db352907aa26c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default dummy mesh to point to for nodes for which no remesh fct is defined.  <a href="classoomph_1_1AlgebraicNode.html#a21f78f61150e308456db352907aa26c6">More...</a><br /></td></tr>
+<tr class="separator:a21f78f61150e308456db352907aa26c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa89c19c1d7c5e5efd1b501098491bf5c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classoomph_1_1DummyAlgebraicMesh.html">DummyAlgebraicMesh</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#aa89c19c1d7c5e5efd1b501098491bf5c">Dummy_mesh</a></td></tr>
+<tr class="memdesc:aa89c19c1d7c5e5efd1b501098491bf5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Static Dummy mesh to which the pointer is addressed.  <a href="classoomph_1_1AlgebraicNode.html#aa89c19c1d7c5e5efd1b501098491bf5c">More...</a><br /></td></tr>
+<tr class="separator:aa89c19c1d7c5e5efd1b501098491bf5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74bfe556a50b852ee06245e6a374d5fc"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; <a class="el" href="classoomph_1_1GeomObject.html">GeomObject</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#a74bfe556a50b852ee06245e6a374d5fc">Dummy_geom_object_pt</a></td></tr>
+<tr class="memdesc:a74bfe556a50b852ee06245e6a374d5fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default dummy vector of geom objects to point to for nodes for which no remesh fct is defined.  <a href="classoomph_1_1AlgebraicNode.html#a74bfe556a50b852ee06245e6a374d5fc">More...</a><br /></td></tr>
+<tr class="separator:a74bfe556a50b852ee06245e6a374d5fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af73f0a803e1bdf2a7a1c7f1f4384df61"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AlgebraicNode.html#af73f0a803e1bdf2a7a1c7f1f4384df61">Dummy_ref_value</a></td></tr>
+<tr class="memdesc:af73f0a803e1bdf2a7a1c7f1f4384df61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default dummy vector of reference values to point to for nodes for which no remesh fct is defined.  <a href="classoomph_1_1AlgebraicNode.html#af73f0a803e1bdf2a7a1c7f1f4384df61">More...</a><br /></td></tr>
+<tr class="separator:af73f0a803e1bdf2a7a1c7f1f4384df61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >//////////////////////////////////////////////////////////////////// </p>
+<p >//////////////////////////////////////////////////////////////////// Algebraic nodes are nodes with an algebraic positional update function. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00054">54</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a7e421172a1063fc49f37559f23837763" name="a7e421172a1063fc49f37559f23837763"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e421172a1063fc49f37559f23837763">&#9670;&nbsp;</a></span>AlgebraicNode() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">oomph::AlgebraicNode::AlgebraicNode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default Constructor. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00058">58</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+</div>
+</div>
+<a id="a88eb17187c750f1f1a04d0dd554dd9b5" name="a88eb17187c750f1f1a04d0dd554dd9b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88eb17187c750f1f1a04d0dd554dd9b5">&#9670;&nbsp;</a></span>AlgebraicNode() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">oomph::AlgebraicNode::AlgebraicNode </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n_dim</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n_position_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>initial_nvalue</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor for steady algebraic node of spatial dimension n_dim, with n_position_type generalised coordinates and with initial_nvalue dofs. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00063">63</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="algebraic__elements_8h_source.html#l00280">add_node_update_info()</a>, <a class="el" href="oomph__utilities_8cc_source.html#l01195">oomph::LeakCheckNames::AlgebraicNode_build</a>, <a class="el" href="algebraic__elements_8h_source.html#l00486">Dummy_geom_object_pt</a>, <a class="el" href="algebraic__elements_8h_source.html#l00479">Dummy_mesh_pt</a>, <a class="el" href="algebraic__elements_8h_source.html#l00475">Dummy_node_update_fct_id</a>, and <a class="el" href="algebraic__elements_8h_source.html#l00490">Dummy_ref_value</a>.</p>
+
+</div>
+</div>
+<a id="ab97ffb4a9663ce90e4d7788315ba31a1" name="ab97ffb4a9663ce90e4d7788315ba31a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab97ffb4a9663ce90e4d7788315ba31a1">&#9670;&nbsp;</a></span>AlgebraicNode() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">oomph::AlgebraicNode::AlgebraicNode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1TimeStepper.html">TimeStepper</a> *&#160;</td>
+          <td class="paramname"><em>time_stepper_pt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n_dim</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>n_position_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>initial_nvalue</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor for bog-standard algebraic node of spatial dimension n_dim, with n_position_type generalised coordinates, with initial_nvalue dofs and with time dependence. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00085">85</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="algebraic__elements_8h_source.html#l00280">add_node_update_info()</a>, <a class="el" href="oomph__utilities_8cc_source.html#l01195">oomph::LeakCheckNames::AlgebraicNode_build</a>, <a class="el" href="algebraic__elements_8h_source.html#l00486">Dummy_geom_object_pt</a>, <a class="el" href="algebraic__elements_8h_source.html#l00479">Dummy_mesh_pt</a>, <a class="el" href="algebraic__elements_8h_source.html#l00475">Dummy_node_update_fct_id</a>, and <a class="el" href="algebraic__elements_8h_source.html#l00490">Dummy_ref_value</a>.</p>
+
+</div>
+</div>
+<a id="af1fef20e4dd950f70003c3db5d289044" name="af1fef20e4dd950f70003c3db5d289044"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1fef20e4dd950f70003c3db5d289044">&#9670;&nbsp;</a></span>~AlgebraicNode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual oomph::AlgebraicNode::~AlgebraicNode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Destructor (empty) </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00105">105</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="oomph__utilities_8cc_source.html#l01195">oomph::LeakCheckNames::AlgebraicNode_build</a>.</p>
+
+</div>
+</div>
+<a id="a699690273ec90c490b98c5d7ced2d007" name="a699690273ec90c490b98c5d7ced2d007"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a699690273ec90c490b98c5d7ced2d007">&#9670;&nbsp;</a></span>AlgebraicNode() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">oomph::AlgebraicNode::AlgebraicNode </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classoomph_1_1AlgebraicNode.html">AlgebraicNode</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Broken copy constructor. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae6b0a1cf4dc041aa553f834b1ecd0a24" name="ae6b0a1cf4dc041aa553f834b1ecd0a24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6b0a1cf4dc041aa553f834b1ecd0a24">&#9670;&nbsp;</a></span>add_node_update_info() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::AlgebraicNode::add_node_update_info </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1AlgebraicMesh.html">AlgebraicMesh</a> *&#160;</td>
+          <td class="paramname"><em>mesh_pt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; <a class="el" href="classoomph_1_1GeomObject.html">GeomObject</a> * &gt; &amp;&#160;</td>
+          <td class="paramname"><em>geom_object_pt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>ref_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Add algebraic update information for node: Which <a class="el" href="classoomph_1_1Mesh.html" title="A general mesh class.">Mesh</a> implements the update operation? Also, pass the vector of geometric objects and the vectors of reference values that are needed for the update operation. We're assigning a default node update fct id of 0. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00331">331</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="algebraic__elements_8h_source.html#l00456">Default_it_mesh_pt</a>, <a class="el" href="algebraic__elements_8h_source.html#l00479">Dummy_mesh_pt</a>, <a class="el" href="algebraic__elements_8h_source.html#l00475">Dummy_node_update_fct_id</a>, <a class="el" href="algebraic__elements_8h_source.html#l00229">geom_object_pt()</a>, <a class="el" href="algebraic__elements_8h_source.html#l00446">Geom_object_pt</a>, <a class="el" href="algebraic__elements_8h_source.html#l00365">kill_node_update_info()</a>, <a class="el" href="algebraic__elements_8h_source.html#l00170">mesh_pt()</a>, <a class="el" href="algebraic__elements_8h_source.html#l00439">Mesh_pt</a>, <a class="el" href="algebraic__elements_8h_source.html#l00267">ref_value()</a>, <a class="el" href="algebraic__elements_8h_source.html#l00453">Ref_value</a>, and <a class="el" href="algebraic__elements_8h_source.html#l00384">set_default_node_update()</a>.</p>
+
+</div>
+</div>
+<a id="ac6bd268c80889507d92431a4638eb85c" name="ac6bd268c80889507d92431a4638eb85c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6bd268c80889507d92431a4638eb85c">&#9670;&nbsp;</a></span>add_node_update_info() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::AlgebraicNode::add_node_update_info </td>
+          <td>(</td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1AlgebraicMesh.html">AlgebraicMesh</a> *&#160;</td>
+          <td class="paramname"><em>mesh_pt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; <a class="el" href="classoomph_1_1GeomObject.html">GeomObject</a> * &gt; &amp;&#160;</td>
+          <td class="paramname"><em>geom_object_pt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>ref_value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool &amp;&#160;</td>
+          <td class="paramname"><em>called_from_constructor</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Add algebraic update information for node: What's the ID of the mesh update function (typically used within the mesh) Which <a class="el" href="classoomph_1_1Mesh.html" title="A general mesh class.">Mesh</a> implements the update operation? Also, pass the vector of geometric objects and the vectors of reference values that are needed for the update operation. Negative values for ID are only allowed when called from node constructor, as indicated by the final argument which defaults to false. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00280">280</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="algebraic__elements_8h_source.html#l00456">Default_it_mesh_pt</a>, <a class="el" href="algebraic__elements_8h_source.html#l00479">Dummy_mesh_pt</a>, <a class="el" href="algebraic__elements_8h_source.html#l00475">Dummy_node_update_fct_id</a>, <a class="el" href="algebraic__elements_8h_source.html#l00229">geom_object_pt()</a>, <a class="el" href="algebraic__elements_8h_source.html#l00446">Geom_object_pt</a>, <a class="el" href="algebraic__elements_8h_source.html#l00365">kill_node_update_info()</a>, <a class="el" href="algebraic__elements_8h_source.html#l00170">mesh_pt()</a>, <a class="el" href="algebraic__elements_8h_source.html#l00439">Mesh_pt</a>, <a class="el" href="algebraic__elements_8h_source.html#l00267">ref_value()</a>, <a class="el" href="algebraic__elements_8h_source.html#l00453">Ref_value</a>, and <a class="el" href="algebraic__elements_8h_source.html#l00384">set_default_node_update()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="algebraic__elements_8h_source.html#l00063">AlgebraicNode()</a>, <a class="el" href="multi__domain_8template_8cc_source.html#l02068">oomph::Multi_domain_functions::construct_new_external_halo_master_node_helper()</a>, <a class="el" href="missing__masters_8template_8cc_source.html#l00251">oomph::Missing_masters_functions::construct_new_external_halo_master_node_helper()</a>, <a class="el" href="multi__domain_8cc_source.html#l01452">oomph::Multi_domain_functions::construct_new_external_halo_node_helper()</a>, <a class="el" href="missing__masters_8cc_source.html#l01298">oomph::Missing_masters_functions::construct_new_external_halo_node_helper()</a>, <a class="el" href="triangle__mesh_8template_8cc_source.html#l19416">oomph::RefineableTriangleMesh&lt; ELEMENT &gt;::construct_new_halo_node_helper()</a>, <a class="el" href="triangle__mesh_8template_8cc_source.html#l27905">oomph::RefineableTriangleMesh&lt; ELEMENT &gt;::construct_new_node_load_balance_helper()</a>, <a class="el" href="channel__with__leaflet__mesh_8template_8cc_source.html#l00242">oomph::AlgebraicChannelWithLeafletMesh&lt; ELEMENT &gt;::setup_algebraic_node_update()</a>, <a class="el" href="collapsible__channel__mesh_8template_8cc_source.html#l00324">oomph::AlgebraicCollapsibleChannelMesh&lt; ELEMENT &gt;::setup_algebraic_node_update()</a>, <a class="el" href="fsi__driven__cavity__mesh_8template_8cc_source.html#l00283">oomph::AlgebraicFSIDrivenCavityMesh&lt; ELEMENT &gt;::setup_algebraic_node_update()</a>, <a class="el" href="algebraic__elements_8cc_source.html#l00048">oomph::AlgebraicElementBase::setup_algebraic_node_update()</a>, <a class="el" href="channel__with__leaflet__mesh_8template_8cc_source.html#l00639">oomph::RefineableAlgebraicChannelWithLeafletMesh&lt; ELEMENT &gt;::update_node_update()</a>, <a class="el" href="collapsible__channel__mesh_8template_8cc_source.html#l00437">oomph::RefineableAlgebraicCollapsibleChannelMesh&lt; ELEMENT &gt;::update_node_update()</a>, <a class="el" href="cylinder__with__flag__mesh_8template_8cc_source.html#l01883">oomph::RefineableAlgebraicCylinderWithFlagMesh&lt; ELEMENT &gt;::update_node_update()</a>, <a class="el" href="fsi__driven__cavity__mesh_8template_8cc_source.html#l00388">oomph::RefineableAlgebraicFSIDrivenCavityMesh&lt; ELEMENT &gt;::update_node_update()</a>, <a class="el" href="quarter__circle__sector__mesh_8template_8cc_source.html#l01159">oomph::AlgebraicRefineableQuarterCircleSectorMesh&lt; ELEMENT &gt;::update_node_update_in_lower_right_box()</a>, <a class="el" href="quarter__tube__mesh_8template_8cc_source.html#l01288">oomph::AlgebraicRefineableQuarterTubeMesh&lt; ELEMENT &gt;::update_node_update_in_region()</a>, and <a class="el" href="quarter__circle__sector__mesh_8template_8cc_source.html#l01259">oomph::AlgebraicRefineableQuarterCircleSectorMesh&lt; ELEMENT &gt;::update_node_update_in_upper_left_box()</a>.</p>
+
+</div>
+</div>
+<a id="a1adbe59a85f6de8fcb04b08be23181c3" name="a1adbe59a85f6de8fcb04b08be23181c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1adbe59a85f6de8fcb04b08be23181c3">&#9670;&nbsp;</a></span>all_geom_object_pt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoomph_1_1GeomObject.html">GeomObject</a> ** oomph::AlgebraicNode::all_geom_object_pt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return the vector of all geometric objects. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00215">215</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="algebraic__elements_8h_source.html#l00460">Default_it_geom_object_pt</a>, and <a class="el" href="algebraic__elements_8h_source.html#l00192">ngeom_object()</a>.</p>
+
+</div>
+</div>
+<a id="a72a49e9a56c2bab91b1467547671fe65" name="a72a49e9a56c2bab91b1467547671fe65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72a49e9a56c2bab91b1467547671fe65">&#9670;&nbsp;</a></span>geom_object_pt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoomph_1_1GeomObject.html">GeomObject</a> * oomph::AlgebraicNode::geom_object_pt </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return pointer to i-th geometric object involved in default (usually first) update function. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00229">229</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="algebraic__elements_8h_source.html#l00460">Default_it_geom_object_pt</a>, and <a class="el" href="cfortran_8h_source.html#l00603">i</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="algebraic__elements_8h_source.html#l00280">add_node_update_info()</a>, <a class="el" href="missing__masters_8cc_source.html#l00658">oomph::Missing_masters_functions::get_required_master_nodal_information_helper()</a>, <a class="el" href="multi__domain_8cc_source.html#l01010">oomph::Multi_domain_functions::get_required_master_nodal_information_helper()</a>, <a class="el" href="missing__masters_8cc_source.html#l00436">oomph::Missing_masters_functions::get_required_nodal_information_helper()</a>, <a class="el" href="multi__domain_8cc_source.html#l00754">oomph::Multi_domain_functions::get_required_nodal_information_helper()</a>, <a class="el" href="triangle__mesh_8template_8cc_source.html#l18330">oomph::RefineableTriangleMesh&lt; ELEMENT &gt;::get_required_nodal_information_helper()</a>, <a class="el" href="triangle__mesh_8template_8cc_source.html#l26810">oomph::RefineableTriangleMesh&lt; ELEMENT &gt;::get_required_nodal_information_load_balance_helper()</a>, <a class="el" href="fish__mesh_8template_8cc_source.html#l00893">oomph::AlgebraicFishMesh&lt; ELEMENT &gt;::node_update_in_body()</a>, <a class="el" href="fish__mesh_8template_8cc_source.html#l00949">oomph::AlgebraicFishMesh&lt; ELEMENT &gt;::node_update_in_fin()</a>, <a class="el" href="quarter__circle__sector__mesh_8template_8cc_source.html#l01048">oomph::AlgebraicRefineableQuarterCircleSectorMesh&lt; ELEMENT &gt;::node_update_in_upper_left_box()</a>, and <a class="el" href="quarter__tube__mesh_8template_8cc_source.html#l01168">oomph::AlgebraicRefineableQuarterTubeMesh&lt; ELEMENT &gt;::node_update_upper_left_region()</a>.</p>
+
+</div>
+</div>
+<a id="a9de65e71efa3050187d41f05602accfe" name="a9de65e71efa3050187d41f05602accfe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9de65e71efa3050187d41f05602accfe">&#9670;&nbsp;</a></span>kill_node_update_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::AlgebraicNode::kill_node_update_info </td>
+          <td>(</td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>id</em> = <code>0</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Erase algebraic node update information for id-th node update function. Id defaults to 0. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00365">365</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="algebraic__elements_8h_source.html#l00446">Geom_object_pt</a>, <a class="el" href="algebraic__elements_8h_source.html#l00439">Mesh_pt</a>, and <a class="el" href="algebraic__elements_8h_source.html#l00453">Ref_value</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="algebraic__elements_8h_source.html#l00280">add_node_update_info()</a>, <a class="el" href="channel__with__leaflet__mesh_8template_8cc_source.html#l00639">oomph::RefineableAlgebraicChannelWithLeafletMesh&lt; ELEMENT &gt;::update_node_update()</a>, <a class="el" href="collapsible__channel__mesh_8template_8cc_source.html#l00437">oomph::RefineableAlgebraicCollapsibleChannelMesh&lt; ELEMENT &gt;::update_node_update()</a>, <a class="el" href="cylinder__with__flag__mesh_8template_8cc_source.html#l01883">oomph::RefineableAlgebraicCylinderWithFlagMesh&lt; ELEMENT &gt;::update_node_update()</a>, <a class="el" href="fsi__driven__cavity__mesh_8template_8cc_source.html#l00388">oomph::RefineableAlgebraicFSIDrivenCavityMesh&lt; ELEMENT &gt;::update_node_update()</a>, <a class="el" href="quarter__circle__sector__mesh_8template_8cc_source.html#l01159">oomph::AlgebraicRefineableQuarterCircleSectorMesh&lt; ELEMENT &gt;::update_node_update_in_lower_right_box()</a>, <a class="el" href="quarter__tube__mesh_8template_8cc_source.html#l01288">oomph::AlgebraicRefineableQuarterTubeMesh&lt; ELEMENT &gt;::update_node_update_in_region()</a>, and <a class="el" href="quarter__circle__sector__mesh_8template_8cc_source.html#l01259">oomph::AlgebraicRefineableQuarterCircleSectorMesh&lt; ELEMENT &gt;::update_node_update_in_upper_left_box()</a>.</p>
+
+</div>
+</div>
+<a id="a8db6dd23ac5f75d19d5eb1d083eeb38b" name="a8db6dd23ac5f75d19d5eb1d083eeb38b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8db6dd23ac5f75d19d5eb1d083eeb38b">&#9670;&nbsp;</a></span>mesh_pt() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoomph_1_1AlgebraicMesh.html">AlgebraicMesh</a> * oomph::AlgebraicNode::mesh_pt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default (usually first) mesh that implements update function. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00170">170</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="algebraic__elements_8h_source.html#l00456">Default_it_mesh_pt</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="algebraic__elements_8h_source.html#l00280">add_node_update_info()</a>, <a class="el" href="algebraic__elements_8cc_source.html#l00231">node_update()</a>, and <a class="el" href="algebraic__elements_8cc_source.html#l00048">oomph::AlgebraicElementBase::setup_algebraic_node_update()</a>.</p>
+
+</div>
+</div>
+<a id="ac3d3a47acb5f2612e4cd47769392b546" name="ac3d3a47acb5f2612e4cd47769392b546"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3d3a47acb5f2612e4cd47769392b546">&#9670;&nbsp;</a></span>mesh_pt() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoomph_1_1AlgebraicMesh.html">AlgebraicMesh</a> * oomph::AlgebraicNode::mesh_pt </td>
+          <td>(</td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classoomph_1_1Mesh.html" title="A general mesh class.">Mesh</a> that implements the id-th node update function. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00177">177</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="algebraic__elements_8h_source.html#l00439">Mesh_pt</a>.</p>
+
+</div>
+</div>
+<a id="a10f49849e0942e68c6791810ffc6fb31" name="a10f49849e0942e68c6791810ffc6fb31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10f49849e0942e68c6791810ffc6fb31">&#9670;&nbsp;</a></span>ngeom_object() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned oomph::AlgebraicNode::ngeom_object </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Number of geometric objects involved in default (usually first) update function. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00192">192</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="algebraic__elements_8h_source.html#l00460">Default_it_geom_object_pt</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="algebraic__elements_8h_source.html#l00215">all_geom_object_pt()</a>.</p>
+
+</div>
+</div>
+<a id="a0e1fa66d3543da39a5e728d8af5c1734" name="a0e1fa66d3543da39a5e728d8af5c1734"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e1fa66d3543da39a5e728d8af5c1734">&#9670;&nbsp;</a></span>ngeom_object() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned oomph::AlgebraicNode::ngeom_object </td>
+          <td>(</td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Number of geometric objects involved in id-th update function. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00184">184</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="algebraic__elements_8h_source.html#l00446">Geom_object_pt</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="missing__masters_8cc_source.html#l00658">oomph::Missing_masters_functions::get_required_master_nodal_information_helper()</a>, <a class="el" href="multi__domain_8cc_source.html#l01010">oomph::Multi_domain_functions::get_required_master_nodal_information_helper()</a>, <a class="el" href="missing__masters_8cc_source.html#l00436">oomph::Missing_masters_functions::get_required_nodal_information_helper()</a>, <a class="el" href="multi__domain_8cc_source.html#l00754">oomph::Multi_domain_functions::get_required_nodal_information_helper()</a>, <a class="el" href="triangle__mesh_8template_8cc_source.html#l18330">oomph::RefineableTriangleMesh&lt; ELEMENT &gt;::get_required_nodal_information_helper()</a>, and <a class="el" href="triangle__mesh_8template_8cc_source.html#l26810">oomph::RefineableTriangleMesh&lt; ELEMENT &gt;::get_required_nodal_information_load_balance_helper()</a>.</p>
+
+</div>
+</div>
+<a id="a8c9e49f378f2dc9e93e62e281bf58d27" name="a8c9e49f378f2dc9e93e62e281bf58d27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c9e49f378f2dc9e93e62e281bf58d27">&#9670;&nbsp;</a></span>nnode_update_fcts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned oomph::AlgebraicNode::nnode_update_fcts </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Number of node update fcts. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00136">136</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="algebraic__elements_8h_source.html#l00439">Mesh_pt</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="algebraic__elements_8cc_source.html#l00231">node_update()</a>, and <a class="el" href="algebraic__elements_8cc_source.html#l00297">self_test()</a>.</p>
+
+</div>
+</div>
+<a id="a754dc8fcac3382a07f60262c9792c84c" name="a754dc8fcac3382a07f60262c9792c84c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a754dc8fcac3382a07f60262c9792c84c">&#9670;&nbsp;</a></span>node_update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::AlgebraicNode::node_update </td>
+          <td>(</td>
+          <td class="paramtype">const bool &amp;&#160;</td>
+          <td class="paramname"><em>update_all_time_levels_for_new_node</em> = <code>false</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Broken assignment operator. </p>
+<p >Excute the node update function: Update the current (and if update_all_time_levels_for_new_node==true also the previous) nodal position. Also update the current nodal values if an auxiliary update function is defined. Note: updating of previous positions is only required (and should only be performed for) newly created AlgebraicNodes i.e. when this function is called from AlgebraicElementBase::setup_algebraic_node_update(...). We create the history of its nodal positions from the time-dependent version of the specific <a class="el" href="classoomph_1_1AlgebraicMesh.html" title="////////////////////////////////////////////////////////////////////">AlgebraicMesh</a>'s algebraic_node_update(...) function.</p>
+<p >Update the current nodal position, using the first (default) update function if there are multiple ones. If required perform the auxiliary update of nodal values. If update_all_time_levels_for_new_node==true, previous positions are also updated &ndash; as indicated by the name of this flag, this should only be done for newly created nodes, when this function is called from AlgebraicElementBase::setup_algebraic_node_update(...) </p>
+<p >Perform auxiliary update of function values?</p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8cc_source.html#l00231">231</a> of file <a class="el" href="algebraic__elements_8cc_source.html">algebraic_elements.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="classoomph_1_1AlgebraicMesh.html#ab01d6f93354f3c4e5c9d1f0a5885a65b">oomph::AlgebraicMesh::algebraic_node_update()</a>, <a class="el" href="algebraic__elements_8h_source.html#l00170">mesh_pt()</a>, <a class="el" href="algebraic__elements_8h_source.html#l00439">Mesh_pt</a>, <a class="el" href="algebraic__elements_8h_source.html#l00136">nnode_update_fcts()</a>, <a class="el" href="algebraic__elements_8cc_source.html#l00231">node_update()</a>, and <a class="el" href="cfortran_8h_source.html#l00568">t</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="refineable__mesh_8cc_source.html#l00926">oomph::TreeBasedRefineableMeshBase::adapt_mesh()</a>, <a class="el" href="mesh_8cc_source.html#l09190">oomph::Mesh::delete_all_external_storage()</a>, <a class="el" href="algebraic__elements_8h_source.html#l00653">oomph::AlgebraicMesh::node_update()</a>, <a class="el" href="algebraic__elements_8cc_source.html#l00231">node_update()</a>, <a class="el" href="refineable__mesh_8cc_source.html#l04433">oomph::TreeBasedRefineableMeshBase::p_adapt_mesh()</a>, <a class="el" href="algebraic__elements_8cc_source.html#l00297">self_test()</a>, and <a class="el" href="algebraic__elements_8cc_source.html#l00048">oomph::AlgebraicElementBase::setup_algebraic_node_update()</a>.</p>
+
+</div>
+</div>
+<a id="a8887f3a7c445b098835a7703c3a19bd2" name="a8887f3a7c445b098835a7703c3a19bd2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8887f3a7c445b098835a7703c3a19bd2">&#9670;&nbsp;</a></span>node_update_fct_id() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int oomph::AlgebraicNode::node_update_fct_id </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default (usually first if there are multiple ones) node update fct id. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00146">146</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="algebraic__elements_8h_source.html#l00467">Default_node_update_fct_id</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="channel__with__leaflet__mesh_8template_8cc_source.html#l00412">oomph::AlgebraicChannelWithLeafletMesh&lt; ELEMENT &gt;::algebraic_node_update()</a>, <a class="el" href="cylinder__with__flag__mesh_8template_8cc_source.html#l01344">oomph::AlgebraicCylinderWithFlagMesh&lt; ELEMENT &gt;::algebraic_node_update()</a>, <a class="el" href="fish__mesh_8template_8h_source.html#l00358">oomph::AlgebraicFishMesh&lt; ELEMENT &gt;::algebraic_node_update()</a>, <a class="el" href="quarter__circle__sector__mesh_8template_8h_source.html#l00527">oomph::AlgebraicRefineableQuarterCircleSectorMesh&lt; ELEMENT &gt;::algebraic_node_update()</a>, <a class="el" href="quarter__tube__mesh_8template_8h_source.html#l00551">oomph::AlgebraicRefineableQuarterTubeMesh&lt; ELEMENT &gt;::algebraic_node_update()</a>, <a class="el" href="missing__masters_8cc_source.html#l00658">oomph::Missing_masters_functions::get_required_master_nodal_information_helper()</a>, <a class="el" href="multi__domain_8cc_source.html#l01010">oomph::Multi_domain_functions::get_required_master_nodal_information_helper()</a>, <a class="el" href="missing__masters_8cc_source.html#l00436">oomph::Missing_masters_functions::get_required_nodal_information_helper()</a>, <a class="el" href="multi__domain_8cc_source.html#l00754">oomph::Multi_domain_functions::get_required_nodal_information_helper()</a>, <a class="el" href="triangle__mesh_8template_8cc_source.html#l18330">oomph::RefineableTriangleMesh&lt; ELEMENT &gt;::get_required_nodal_information_helper()</a>, <a class="el" href="triangle__mesh_8template_8cc_source.html#l26810">oomph::RefineableTriangleMesh&lt; ELEMENT &gt;::get_required_nodal_information_load_balance_helper()</a>, <a class="el" href="algebraic__elements_8cc_source.html#l00297">self_test()</a>, <a class="el" href="channel__with__leaflet__mesh_8template_8cc_source.html#l00639">oomph::RefineableAlgebraicChannelWithLeafletMesh&lt; ELEMENT &gt;::update_node_update()</a>, <a class="el" href="cylinder__with__flag__mesh_8template_8cc_source.html#l01883">oomph::RefineableAlgebraicCylinderWithFlagMesh&lt; ELEMENT &gt;::update_node_update()</a>, <a class="el" href="quarter__circle__sector__mesh_8template_8h_source.html#l00573">oomph::AlgebraicRefineableQuarterCircleSectorMesh&lt; ELEMENT &gt;::update_node_update()</a>, and <a class="el" href="quarter__tube__mesh_8template_8h_source.html#l00595">oomph::AlgebraicRefineableQuarterTubeMesh&lt; ELEMENT &gt;::update_node_update()</a>.</p>
+
+</div>
+</div>
+<a id="a6b910e50ee47113aa0256e46043b0f27" name="a6b910e50ee47113aa0256e46043b0f27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b910e50ee47113aa0256e46043b0f27">&#9670;&nbsp;</a></span>node_update_fct_id() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::AlgebraicNode::node_update_fct_id </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return vector of node update fct ids (vector is resized to contain the correct number of entries). Somewhat costly to call as map needs to be copied into vector. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00154">154</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="algebraic__elements_8h_source.html#l00439">Mesh_pt</a>.</p>
+
+</div>
+</div>
+<a id="a1d5805d44950ad5783720ba7bb5a372a" name="a1d5805d44950ad5783720ba7bb5a372a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d5805d44950ad5783720ba7bb5a372a">&#9670;&nbsp;</a></span>nref_value() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned oomph::AlgebraicNode::nref_value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Number of reference values involved in default (usually first) update function. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00243">243</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="algebraic__elements_8h_source.html#l00464">Default_it_ref_value</a>.</p>
+
+</div>
+</div>
+<a id="a18b508012bc638d85539568219865383" name="a18b508012bc638d85539568219865383"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18b508012bc638d85539568219865383">&#9670;&nbsp;</a></span>nref_value() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned oomph::AlgebraicNode::nref_value </td>
+          <td>(</td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Number of reference values involved in id-th update function. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00235">235</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="algebraic__elements_8h_source.html#l00453">Ref_value</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="missing__masters_8cc_source.html#l00658">oomph::Missing_masters_functions::get_required_master_nodal_information_helper()</a>, <a class="el" href="multi__domain_8cc_source.html#l01010">oomph::Multi_domain_functions::get_required_master_nodal_information_helper()</a>, <a class="el" href="missing__masters_8cc_source.html#l00436">oomph::Missing_masters_functions::get_required_nodal_information_helper()</a>, <a class="el" href="multi__domain_8cc_source.html#l00754">oomph::Multi_domain_functions::get_required_nodal_information_helper()</a>, <a class="el" href="triangle__mesh_8template_8cc_source.html#l18330">oomph::RefineableTriangleMesh&lt; ELEMENT &gt;::get_required_nodal_information_helper()</a>, <a class="el" href="triangle__mesh_8template_8cc_source.html#l26810">oomph::RefineableTriangleMesh&lt; ELEMENT &gt;::get_required_nodal_information_load_balance_helper()</a>, and <a class="el" href="algebraic__elements_8cc_source.html#l00048">oomph::AlgebraicElementBase::setup_algebraic_node_update()</a>.</p>
+
+</div>
+</div>
+<a id="a9658be0ccdb312e7cf0175663407f463" name="a9658be0ccdb312e7cf0175663407f463"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9658be0ccdb312e7cf0175663407f463">&#9670;&nbsp;</a></span>ref_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double oomph::AlgebraicNode::ref_value </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return i-th reference value involved in default (usually first) update function. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00267">267</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="algebraic__elements_8h_source.html#l00464">Default_it_ref_value</a>, and <a class="el" href="cfortran_8h_source.html#l00603">i</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="algebraic__elements_8h_source.html#l00280">add_node_update_info()</a>, <a class="el" href="missing__masters_8cc_source.html#l00658">oomph::Missing_masters_functions::get_required_master_nodal_information_helper()</a>, <a class="el" href="multi__domain_8cc_source.html#l01010">oomph::Multi_domain_functions::get_required_master_nodal_information_helper()</a>, <a class="el" href="missing__masters_8cc_source.html#l00436">oomph::Missing_masters_functions::get_required_nodal_information_helper()</a>, <a class="el" href="multi__domain_8cc_source.html#l00754">oomph::Multi_domain_functions::get_required_nodal_information_helper()</a>, <a class="el" href="triangle__mesh_8template_8cc_source.html#l18330">oomph::RefineableTriangleMesh&lt; ELEMENT &gt;::get_required_nodal_information_helper()</a>, <a class="el" href="triangle__mesh_8template_8cc_source.html#l26810">oomph::RefineableTriangleMesh&lt; ELEMENT &gt;::get_required_nodal_information_load_balance_helper()</a>, <a class="el" href="fish__mesh_8template_8cc_source.html#l00893">oomph::AlgebraicFishMesh&lt; ELEMENT &gt;::node_update_in_body()</a>, <a class="el" href="fish__mesh_8template_8cc_source.html#l00949">oomph::AlgebraicFishMesh&lt; ELEMENT &gt;::node_update_in_fin()</a>, and <a class="el" href="quarter__circle__sector__mesh_8template_8cc_source.html#l01048">oomph::AlgebraicRefineableQuarterCircleSectorMesh&lt; ELEMENT &gt;::node_update_in_upper_left_box()</a>.</p>
+
+</div>
+</div>
+<a id="a68b0fc5d9b38bb087f889424382a3ecd" name="a68b0fc5d9b38bb087f889424382a3ecd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68b0fc5d9b38bb087f889424382a3ecd">&#9670;&nbsp;</a></span>self_test()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned oomph::AlgebraicNode::self_test </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Perform self test: If the node has multiple node update functions, check that they all give the same result. Return 1/0 for failure/success. (Failure if max. difference between the nodal positions for different update functions exceeds <a class="el" href="classoomph_1_1AlgebraicNode.html#a5696d589c11a229f402d68476c7fe435" title="What it says: Used in self-test to check if different node update functions produce the same result.">AlgebraicNode::Max_allowed_difference_between_node_update_fcts</a>. </p>
+<p >Perform self test: If the node has multiple update functions, check that all update functions give the same result (with a tolerance of <a class="el" href="classoomph_1_1AlgebraicNode.html#a5696d589c11a229f402d68476c7fe435" title="What it says: Used in self-test to check if different node update functions produce the same result.">AlgebraicNode::Max_allowed_difference_between_node_update_fcts</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8cc_source.html#l00297">297</a> of file <a class="el" href="algebraic__elements_8cc_source.html">algebraic_elements.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="algebraic__elements_8h_source.html#l00471">Max_allowed_difference_between_node_update_fcts</a>, <a class="el" href="algebraic__elements_8h_source.html#l00136">nnode_update_fcts()</a>, <a class="el" href="algebraic__elements_8cc_source.html#l00231">node_update()</a>, <a class="el" href="algebraic__elements_8h_source.html#l00146">node_update_fct_id()</a>, <a class="el" href="oomph__definitions_8cc_source.html#l00319">oomph::oomph_info</a>, <a class="el" href="algebraic__elements_8h_source.html#l00384">set_default_node_update()</a>, and <a class="el" href="pseudo__buckling__ring_8h_source.html#l00049">oomph::x</a>.</p>
+
+</div>
+</div>
+<a id="a5f9d80a2826974b63376a4c58e0812fc" name="a5f9d80a2826974b63376a4c58e0812fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f9d80a2826974b63376a4c58e0812fc">&#9670;&nbsp;</a></span>set_default_node_update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::AlgebraicNode::set_default_node_update </td>
+          <td>(</td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Make id-th node update function the default. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00384">384</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="algebraic__elements_8h_source.html#l00460">Default_it_geom_object_pt</a>, <a class="el" href="algebraic__elements_8h_source.html#l00456">Default_it_mesh_pt</a>, <a class="el" href="algebraic__elements_8h_source.html#l00464">Default_it_ref_value</a>, <a class="el" href="algebraic__elements_8h_source.html#l00467">Default_node_update_fct_id</a>, <a class="el" href="algebraic__elements_8h_source.html#l00446">Geom_object_pt</a>, <a class="el" href="algebraic__elements_8h_source.html#l00439">Mesh_pt</a>, and <a class="el" href="algebraic__elements_8h_source.html#l00453">Ref_value</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="algebraic__elements_8h_source.html#l00280">add_node_update_info()</a>, and <a class="el" href="algebraic__elements_8cc_source.html#l00297">self_test()</a>.</p>
+
+</div>
+</div>
+<a id="a40c652e55675c70e39799c65fafcc2d9" name="a40c652e55675c70e39799c65fafcc2d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40c652e55675c70e39799c65fafcc2d9">&#9670;&nbsp;</a></span>vector_geom_object_pt() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; <a class="el" href="classoomph_1_1GeomObject.html">GeomObject</a> * &gt; &amp; oomph::AlgebraicNode::vector_geom_object_pt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return vector of geometric objects involved in default (usually first) update function. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00208">208</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="algebraic__elements_8h_source.html#l00460">Default_it_geom_object_pt</a>.</p>
+
+</div>
+</div>
+<a id="a66d4b6382b4e364a464c7c19a7324200" name="a66d4b6382b4e364a464c7c19a7324200"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66d4b6382b4e364a464c7c19a7324200">&#9670;&nbsp;</a></span>vector_geom_object_pt() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; <a class="el" href="classoomph_1_1GeomObject.html">GeomObject</a> * &gt; &amp; oomph::AlgebraicNode::vector_geom_object_pt </td>
+          <td>(</td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return vector of geometric objects involved in id-th update function. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00200">200</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="algebraic__elements_8h_source.html#l00446">Geom_object_pt</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="collapsible__channel__mesh_8template_8cc_source.html#l00242">oomph::AlgebraicCollapsibleChannelMesh&lt; ELEMENT &gt;::algebraic_node_update()</a>, <a class="el" href="fsi__driven__cavity__mesh_8template_8cc_source.html#l00201">oomph::AlgebraicFSIDrivenCavityMesh&lt; ELEMENT &gt;::algebraic_node_update()</a>, <a class="el" href="quarter__tube__mesh_8template_8cc_source.html#l00961">oomph::AlgebraicRefineableQuarterTubeMesh&lt; ELEMENT &gt;::node_update_central_region()</a>, <a class="el" href="channel__with__leaflet__mesh_8template_8cc_source.html#l00455">oomph::AlgebraicChannelWithLeafletMesh&lt; ELEMENT &gt;::node_update_I()</a>, <a class="el" href="cylinder__with__flag__mesh_8template_8cc_source.html#l01402">oomph::AlgebraicCylinderWithFlagMesh&lt; ELEMENT &gt;::node_update_I()</a>, <a class="el" href="channel__with__leaflet__mesh_8template_8cc_source.html#l00500">oomph::AlgebraicChannelWithLeafletMesh&lt; ELEMENT &gt;::node_update_II()</a>, <a class="el" href="cylinder__with__flag__mesh_8template_8cc_source.html#l01441">oomph::AlgebraicCylinderWithFlagMesh&lt; ELEMENT &gt;::node_update_II()</a>, <a class="el" href="cylinder__with__flag__mesh_8template_8cc_source.html#l01477">oomph::AlgebraicCylinderWithFlagMesh&lt; ELEMENT &gt;::node_update_III()</a>, <a class="el" href="quarter__circle__sector__mesh_8template_8cc_source.html#l00851">oomph::AlgebraicRefineableQuarterCircleSectorMesh&lt; ELEMENT &gt;::node_update_in_central_box()</a>, <a class="el" href="quarter__circle__sector__mesh_8template_8cc_source.html#l00940">oomph::AlgebraicRefineableQuarterCircleSectorMesh&lt; ELEMENT &gt;::node_update_in_lower_right_box()</a>, <a class="el" href="quarter__circle__sector__mesh_8template_8cc_source.html#l01048">oomph::AlgebraicRefineableQuarterCircleSectorMesh&lt; ELEMENT &gt;::node_update_in_upper_left_box()</a>, <a class="el" href="cylinder__with__flag__mesh_8template_8cc_source.html#l01523">oomph::AlgebraicCylinderWithFlagMesh&lt; ELEMENT &gt;::node_update_IV()</a>, <a class="el" href="cylinder__with__flag__mesh_8template_8cc_source.html#l01793">oomph::AlgebraicCylinderWithFlagMesh&lt; ELEMENT &gt;::node_update_IX()</a>, <a class="el" href="quarter__tube__mesh_8template_8cc_source.html#l01051">oomph::AlgebraicRefineableQuarterTubeMesh&lt; ELEMENT &gt;::node_update_lower_right_region()</a>, <a class="el" href="quarter__tube__mesh_8template_8cc_source.html#l01168">oomph::AlgebraicRefineableQuarterTubeMesh&lt; ELEMENT &gt;::node_update_upper_left_region()</a>, <a class="el" href="cylinder__with__flag__mesh_8template_8cc_source.html#l01571">oomph::AlgebraicCylinderWithFlagMesh&lt; ELEMENT &gt;::node_update_V()</a>, <a class="el" href="cylinder__with__flag__mesh_8template_8cc_source.html#l01620">oomph::AlgebraicCylinderWithFlagMesh&lt; ELEMENT &gt;::node_update_VI()</a>, <a class="el" href="cylinder__with__flag__mesh_8template_8cc_source.html#l01662">oomph::AlgebraicCylinderWithFlagMesh&lt; ELEMENT &gt;::node_update_VII()</a>, <a class="el" href="cylinder__with__flag__mesh_8template_8cc_source.html#l01707">oomph::AlgebraicCylinderWithFlagMesh&lt; ELEMENT &gt;::node_update_VIII()</a>, <a class="el" href="algebraic__elements_8cc_source.html#l00048">oomph::AlgebraicElementBase::setup_algebraic_node_update()</a>, <a class="el" href="channel__with__leaflet__mesh_8template_8cc_source.html#l00639">oomph::RefineableAlgebraicChannelWithLeafletMesh&lt; ELEMENT &gt;::update_node_update()</a>, <a class="el" href="collapsible__channel__mesh_8template_8cc_source.html#l00437">oomph::RefineableAlgebraicCollapsibleChannelMesh&lt; ELEMENT &gt;::update_node_update()</a>, <a class="el" href="cylinder__with__flag__mesh_8template_8cc_source.html#l01883">oomph::RefineableAlgebraicCylinderWithFlagMesh&lt; ELEMENT &gt;::update_node_update()</a>, <a class="el" href="fsi__driven__cavity__mesh_8template_8cc_source.html#l00388">oomph::RefineableAlgebraicFSIDrivenCavityMesh&lt; ELEMENT &gt;::update_node_update()</a>, <a class="el" href="quarter__circle__sector__mesh_8template_8cc_source.html#l01159">oomph::AlgebraicRefineableQuarterCircleSectorMesh&lt; ELEMENT &gt;::update_node_update_in_lower_right_box()</a>, <a class="el" href="quarter__tube__mesh_8template_8cc_source.html#l01288">oomph::AlgebraicRefineableQuarterTubeMesh&lt; ELEMENT &gt;::update_node_update_in_region()</a>, and <a class="el" href="quarter__circle__sector__mesh_8template_8cc_source.html#l01259">oomph::AlgebraicRefineableQuarterCircleSectorMesh&lt; ELEMENT &gt;::update_node_update_in_upper_left_box()</a>.</p>
+
+</div>
+</div>
+<a id="ac4a4f8e238b9ee1abb2761800ecd1c4a" name="ac4a4f8e238b9ee1abb2761800ecd1c4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4a4f8e238b9ee1abb2761800ecd1c4a">&#9670;&nbsp;</a></span>vector_ref_value() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp; oomph::AlgebraicNode::vector_ref_value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return vector of reference values involved in default (usually first) update function. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00251">251</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="algebraic__elements_8h_source.html#l00464">Default_it_ref_value</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="collapsible__channel__mesh_8template_8cc_source.html#l00242">oomph::AlgebraicCollapsibleChannelMesh&lt; ELEMENT &gt;::algebraic_node_update()</a>, <a class="el" href="fsi__driven__cavity__mesh_8template_8cc_source.html#l00201">oomph::AlgebraicFSIDrivenCavityMesh&lt; ELEMENT &gt;::algebraic_node_update()</a>, <a class="el" href="quarter__tube__mesh_8template_8cc_source.html#l00961">oomph::AlgebraicRefineableQuarterTubeMesh&lt; ELEMENT &gt;::node_update_central_region()</a>, <a class="el" href="channel__with__leaflet__mesh_8template_8cc_source.html#l00455">oomph::AlgebraicChannelWithLeafletMesh&lt; ELEMENT &gt;::node_update_I()</a>, <a class="el" href="cylinder__with__flag__mesh_8template_8cc_source.html#l01402">oomph::AlgebraicCylinderWithFlagMesh&lt; ELEMENT &gt;::node_update_I()</a>, <a class="el" href="channel__with__leaflet__mesh_8template_8cc_source.html#l00500">oomph::AlgebraicChannelWithLeafletMesh&lt; ELEMENT &gt;::node_update_II()</a>, <a class="el" href="cylinder__with__flag__mesh_8template_8cc_source.html#l01441">oomph::AlgebraicCylinderWithFlagMesh&lt; ELEMENT &gt;::node_update_II()</a>, <a class="el" href="channel__with__leaflet__mesh_8template_8cc_source.html#l00564">oomph::AlgebraicChannelWithLeafletMesh&lt; ELEMENT &gt;::node_update_III()</a>, <a class="el" href="cylinder__with__flag__mesh_8template_8cc_source.html#l01477">oomph::AlgebraicCylinderWithFlagMesh&lt; ELEMENT &gt;::node_update_III()</a>, <a class="el" href="quarter__circle__sector__mesh_8template_8cc_source.html#l00851">oomph::AlgebraicRefineableQuarterCircleSectorMesh&lt; ELEMENT &gt;::node_update_in_central_box()</a>, <a class="el" href="quarter__circle__sector__mesh_8template_8cc_source.html#l00940">oomph::AlgebraicRefineableQuarterCircleSectorMesh&lt; ELEMENT &gt;::node_update_in_lower_right_box()</a>, <a class="el" href="quarter__circle__sector__mesh_8template_8cc_source.html#l01048">oomph::AlgebraicRefineableQuarterCircleSectorMesh&lt; ELEMENT &gt;::node_update_in_upper_left_box()</a>, <a class="el" href="channel__with__leaflet__mesh_8template_8cc_source.html#l00598">oomph::AlgebraicChannelWithLeafletMesh&lt; ELEMENT &gt;::node_update_IV()</a>, <a class="el" href="cylinder__with__flag__mesh_8template_8cc_source.html#l01523">oomph::AlgebraicCylinderWithFlagMesh&lt; ELEMENT &gt;::node_update_IV()</a>, <a class="el" href="cylinder__with__flag__mesh_8template_8cc_source.html#l01793">oomph::AlgebraicCylinderWithFlagMesh&lt; ELEMENT &gt;::node_update_IX()</a>, <a class="el" href="quarter__tube__mesh_8template_8cc_source.html#l01051">oomph::AlgebraicRefineableQuarterTubeMesh&lt; ELEMENT &gt;::node_update_lower_right_region()</a>, <a class="el" href="quarter__tube__mesh_8template_8cc_source.html#l01168">oomph::AlgebraicRefineableQuarterTubeMesh&lt; ELEMENT &gt;::node_update_upper_left_region()</a>, <a class="el" href="cylinder__with__flag__mesh_8template_8cc_source.html#l01571">oomph::AlgebraicCylinderWithFlagMesh&lt; ELEMENT &gt;::node_update_V()</a>, <a class="el" href="cylinder__with__flag__mesh_8template_8cc_source.html#l01620">oomph::AlgebraicCylinderWithFlagMesh&lt; ELEMENT &gt;::node_update_VI()</a>, <a class="el" href="cylinder__with__flag__mesh_8template_8cc_source.html#l01662">oomph::AlgebraicCylinderWithFlagMesh&lt; ELEMENT &gt;::node_update_VII()</a>, <a class="el" href="cylinder__with__flag__mesh_8template_8cc_source.html#l01707">oomph::AlgebraicCylinderWithFlagMesh&lt; ELEMENT &gt;::node_update_VIII()</a>, <a class="el" href="algebraic__elements_8cc_source.html#l00048">oomph::AlgebraicElementBase::setup_algebraic_node_update()</a>, <a class="el" href="channel__with__leaflet__mesh_8template_8cc_source.html#l00639">oomph::RefineableAlgebraicChannelWithLeafletMesh&lt; ELEMENT &gt;::update_node_update()</a>, <a class="el" href="collapsible__channel__mesh_8template_8cc_source.html#l00437">oomph::RefineableAlgebraicCollapsibleChannelMesh&lt; ELEMENT &gt;::update_node_update()</a>, <a class="el" href="cylinder__with__flag__mesh_8template_8cc_source.html#l01883">oomph::RefineableAlgebraicCylinderWithFlagMesh&lt; ELEMENT &gt;::update_node_update()</a>, <a class="el" href="fsi__driven__cavity__mesh_8template_8cc_source.html#l00388">oomph::RefineableAlgebraicFSIDrivenCavityMesh&lt; ELEMENT &gt;::update_node_update()</a>, <a class="el" href="quarter__circle__sector__mesh_8template_8cc_source.html#l01159">oomph::AlgebraicRefineableQuarterCircleSectorMesh&lt; ELEMENT &gt;::update_node_update_in_lower_right_box()</a>, <a class="el" href="quarter__tube__mesh_8template_8cc_source.html#l01288">oomph::AlgebraicRefineableQuarterTubeMesh&lt; ELEMENT &gt;::update_node_update_in_region()</a>, and <a class="el" href="quarter__circle__sector__mesh_8template_8cc_source.html#l01259">oomph::AlgebraicRefineableQuarterCircleSectorMesh&lt; ELEMENT &gt;::update_node_update_in_upper_left_box()</a>.</p>
+
+</div>
+</div>
+<a id="adcdd76bff197e1f392ff3023a57ba38f" name="adcdd76bff197e1f392ff3023a57ba38f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcdd76bff197e1f392ff3023a57ba38f">&#9670;&nbsp;</a></span>vector_ref_value() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp; oomph::AlgebraicNode::vector_ref_value </td>
+          <td>(</td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return vector of reference values involved in id-th update function. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00259">259</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">References <a class="el" href="algebraic__elements_8h_source.html#l00453">Ref_value</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a94d6c725f1d1fa8006503a0059a2baae" name="a94d6c725f1d1fa8006503a0059a2baae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94d6c725f1d1fa8006503a0059a2baae">&#9670;&nbsp;</a></span>Default_it_geom_object_pt</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;int,<a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt;<a class="el" href="classoomph_1_1GeomObject.html">GeomObject</a>*&gt;&gt;::iterator oomph::AlgebraicNode::Default_it_geom_object_pt</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default iterator for vector of geom objects. These GeomObjects are involved in the default update. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00460">460</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="algebraic__elements_8h_source.html#l00215">all_geom_object_pt()</a>, <a class="el" href="algebraic__elements_8h_source.html#l00229">geom_object_pt()</a>, <a class="el" href="algebraic__elements_8h_source.html#l00192">ngeom_object()</a>, <a class="el" href="algebraic__elements_8h_source.html#l00384">set_default_node_update()</a>, and <a class="el" href="algebraic__elements_8h_source.html#l00208">vector_geom_object_pt()</a>.</p>
+
+</div>
+</div>
+<a id="ac8cb7e56e80f1c0f3e200562d2b1d39e" name="ac8cb7e56e80f1c0f3e200562d2b1d39e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8cb7e56e80f1c0f3e200562d2b1d39e">&#9670;&nbsp;</a></span>Default_it_mesh_pt</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;int,<a class="el" href="classoomph_1_1AlgebraicMesh.html">AlgebraicMesh</a>*&gt;::iterator oomph::AlgebraicNode::Default_it_mesh_pt</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default iterator for mesh: This mesh performs the default update. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00456">456</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="algebraic__elements_8h_source.html#l00280">add_node_update_info()</a>, <a class="el" href="algebraic__elements_8h_source.html#l00170">mesh_pt()</a>, and <a class="el" href="algebraic__elements_8h_source.html#l00384">set_default_node_update()</a>.</p>
+
+</div>
+</div>
+<a id="a194589459f01a68a027b6c62a4fa5561" name="a194589459f01a68a027b6c62a4fa5561"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a194589459f01a68a027b6c62a4fa5561">&#9670;&nbsp;</a></span>Default_it_ref_value</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;int,<a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt;double&gt;&gt;::iterator oomph::AlgebraicNode::Default_it_ref_value</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default iterator for vector of ref values. These reference values are involved in the default update. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00464">464</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="algebraic__elements_8h_source.html#l00243">nref_value()</a>, <a class="el" href="algebraic__elements_8h_source.html#l00267">ref_value()</a>, <a class="el" href="algebraic__elements_8h_source.html#l00384">set_default_node_update()</a>, and <a class="el" href="algebraic__elements_8h_source.html#l00251">vector_ref_value()</a>.</p>
+
+</div>
+</div>
+<a id="adba92e804261f449a9142920661c339a" name="adba92e804261f449a9142920661c339a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adba92e804261f449a9142920661c339a">&#9670;&nbsp;</a></span>Default_node_update_fct_id</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int oomph::AlgebraicNode::Default_node_update_fct_id</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default node update function ID. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00467">467</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="algebraic__elements_8h_source.html#l00146">node_update_fct_id()</a>, and <a class="el" href="algebraic__elements_8h_source.html#l00384">set_default_node_update()</a>.</p>
+
+</div>
+</div>
+<a id="a74bfe556a50b852ee06245e6a374d5fc" name="a74bfe556a50b852ee06245e6a374d5fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74bfe556a50b852ee06245e6a374d5fc">&#9670;&nbsp;</a></span>Dummy_geom_object_pt</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; <a class="el" href="classoomph_1_1GeomObject.html">GeomObject</a> * &gt; oomph::AlgebraicNode::Dummy_geom_object_pt</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default dummy vector of geom objects to point to for nodes for which no remesh fct is defined. </p>
+<p >Zero-sized default dummy vector of geom objects to point to for nodes for which no remesh fct is defined. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00486">486</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="algebraic__elements_8h_source.html#l00063">AlgebraicNode()</a>.</p>
+
+</div>
+</div>
+<a id="aa89c19c1d7c5e5efd1b501098491bf5c" name="aa89c19c1d7c5e5efd1b501098491bf5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa89c19c1d7c5e5efd1b501098491bf5c">&#9670;&nbsp;</a></span>Dummy_mesh</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoomph_1_1DummyAlgebraicMesh.html">DummyAlgebraicMesh</a> oomph::AlgebraicNode::Dummy_mesh</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Static Dummy mesh to which the pointer is addressed. </p>
+<p >Set the dummy mesh. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00482">482</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+</div>
+</div>
+<a id="a21f78f61150e308456db352907aa26c6" name="a21f78f61150e308456db352907aa26c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21f78f61150e308456db352907aa26c6">&#9670;&nbsp;</a></span>Dummy_mesh_pt</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoomph_1_1AlgebraicMesh.html">AlgebraicMesh</a> * oomph::AlgebraicNode::Dummy_mesh_pt = &amp;<a class="el" href="classoomph_1_1AlgebraicNode.html#aa89c19c1d7c5e5efd1b501098491bf5c">AlgebraicNode::Dummy_mesh</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default dummy mesh to point to for nodes for which no remesh fct is defined. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00479">479</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="algebraic__elements_8h_source.html#l00280">add_node_update_info()</a>, and <a class="el" href="algebraic__elements_8h_source.html#l00063">AlgebraicNode()</a>.</p>
+
+</div>
+</div>
+<a id="af6d3b50db54114b5cf22f86c0ceed2f8" name="af6d3b50db54114b5cf22f86c0ceed2f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6d3b50db54114b5cf22f86c0ceed2f8">&#9670;&nbsp;</a></span>Dummy_node_update_fct_id</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int oomph::AlgebraicNode::Dummy_node_update_fct_id = -100</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default (negative!) remesh fct id for nodes for which no remesh fct is defined. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00475">475</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="algebraic__elements_8h_source.html#l00280">add_node_update_info()</a>, and <a class="el" href="algebraic__elements_8h_source.html#l00063">AlgebraicNode()</a>.</p>
+
+</div>
+</div>
+<a id="af73f0a803e1bdf2a7a1c7f1f4384df61" name="af73f0a803e1bdf2a7a1c7f1f4384df61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af73f0a803e1bdf2a7a1c7f1f4384df61">&#9670;&nbsp;</a></span>Dummy_ref_value</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; oomph::AlgebraicNode::Dummy_ref_value</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default dummy vector of reference values to point to for nodes for which no remesh fct is defined. </p>
+<p >Zero-sized default dummy vector of reference values to point to for nodes for which no remesh fct is defined. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00490">490</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="algebraic__elements_8h_source.html#l00063">AlgebraicNode()</a>.</p>
+
+</div>
+</div>
+<a id="accde26f42fbd9b8be1234d8b7426cbcb" name="accde26f42fbd9b8be1234d8b7426cbcb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accde26f42fbd9b8be1234d8b7426cbcb">&#9670;&nbsp;</a></span>Geom_object_pt</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;int, <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt;<a class="el" href="classoomph_1_1GeomObject.html">GeomObject</a>*&gt; &gt; oomph::AlgebraicNode::Geom_object_pt</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classoomph_1_1Vector.html" title="A slight extension to the standard template vector class so that we can include &quot;graceful&quot; array rang...">Vector</a> of geometric objects that are involved in the specified node update operation. (Map because this node may only use the <a class="el" href="classoomph_1_1Mesh.html" title="A general mesh class.">Mesh</a>'s 116th node update fct. There's no point in wasting an entire vector for the non-existing entries) </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00446">446</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="algebraic__elements_8h_source.html#l00280">add_node_update_info()</a>, <a class="el" href="algebraic__elements_8h_source.html#l00365">kill_node_update_info()</a>, <a class="el" href="algebraic__elements_8h_source.html#l00184">ngeom_object()</a>, <a class="el" href="algebraic__elements_8h_source.html#l00384">set_default_node_update()</a>, and <a class="el" href="algebraic__elements_8h_source.html#l00200">vector_geom_object_pt()</a>.</p>
+
+</div>
+</div>
+<a id="a5696d589c11a229f402d68476c7fe435" name="a5696d589c11a229f402d68476c7fe435"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5696d589c11a229f402d68476c7fe435">&#9670;&nbsp;</a></span>Max_allowed_difference_between_node_update_fcts</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double oomph::AlgebraicNode::Max_allowed_difference_between_node_update_fcts</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">    1.0e-10</div>
+</div><!-- fragment -->
+<p>What it says: Used in self-test to check if different node update functions produce the same result. </p>
+<p >////////////////////////////////////////////////////////////////////</p>
+<p >//////////////////////////////////////////////////////////////////// Assign default value for test if different node update functions produce the same result. </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00471">471</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="algebraic__elements_8cc_source.html#l00297">self_test()</a>.</p>
+
+</div>
+</div>
+<a id="a1262df39be34981b4c2336a8f8d2f8aa" name="a1262df39be34981b4c2336a8f8d2f8aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1262df39be34981b4c2336a8f8d2f8aa">&#9670;&nbsp;</a></span>Mesh_pt</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;int, <a class="el" href="classoomph_1_1AlgebraicMesh.html">AlgebraicMesh</a>*&gt; oomph::AlgebraicNode::Mesh_pt</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pointer to mesh that performs the specified node update operation (Map because this node may only use the <a class="el" href="classoomph_1_1Mesh.html" title="A general mesh class.">Mesh</a>'s 116th node update fct. There's no point in wasting an entire vector for the non-existing entries) </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00439">439</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="algebraic__elements_8h_source.html#l00280">add_node_update_info()</a>, <a class="el" href="algebraic__elements_8h_source.html#l00365">kill_node_update_info()</a>, <a class="el" href="algebraic__elements_8h_source.html#l00177">mesh_pt()</a>, <a class="el" href="algebraic__elements_8h_source.html#l00136">nnode_update_fcts()</a>, <a class="el" href="algebraic__elements_8cc_source.html#l00231">node_update()</a>, <a class="el" href="algebraic__elements_8h_source.html#l00154">node_update_fct_id()</a>, and <a class="el" href="algebraic__elements_8h_source.html#l00384">set_default_node_update()</a>.</p>
+
+</div>
+</div>
+<a id="af453f7ba5efb85f1f08b1069c24278a6" name="af453f7ba5efb85f1f08b1069c24278a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af453f7ba5efb85f1f08b1069c24278a6">&#9670;&nbsp;</a></span>Ref_value</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;int, <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt;double&gt; &gt; oomph::AlgebraicNode::Ref_value</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classoomph_1_1Vector.html" title="A slight extension to the standard template vector class so that we can include &quot;graceful&quot; array rang...">Vector</a> of reference values that are required for the specified node update operation. (Map because this node may only use the <a class="el" href="classoomph_1_1Mesh.html" title="A general mesh class.">Mesh</a>'s 116th node update fct. There's no point in wasting an entire vector for the non-existing entries) </p>
+
+<p class="definition">Definition at line <a class="el" href="algebraic__elements_8h_source.html#l00453">453</a> of file <a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="algebraic__elements_8h_source.html#l00280">add_node_update_info()</a>, <a class="el" href="algebraic__elements_8h_source.html#l00365">kill_node_update_info()</a>, <a class="el" href="algebraic__elements_8h_source.html#l00235">nref_value()</a>, <a class="el" href="algebraic__elements_8h_source.html#l00384">set_default_node_update()</a>, and <a class="el" href="algebraic__elements_8h_source.html#l00259">vector_ref_value()</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li><a class="el" href="algebraic__elements_8h_source.html">algebraic_elements.h</a></li>
+<li><a class="el" href="algebraic__elements_8cc_source.html">algebraic_elements.cc</a></li>
+</ul>
+</div><!-- contents -->
+
+    <!-- jQuery for Bootstrap and Doxygen -->
+    <script src="../../js/jquery-1.12.0.min.js"></script>
+    <!-- Minified boostrap plugins-->
+    <script src="../../js/bootstrap.js"></script>
+    <!-- Doxygen dependency to add powertips to source code-->
+    <script src="../../js/jquery.powertip.min.js"></script>
+    <!-- The  following script is generated by doxygen and hides/shows levels in 
+         the data structure lists and adds powertips to source code-->
+    <script src="../../js/dynsections.js" ></script>
+    <!-- add to Doxygen's class names so bootstrap css and js recognises them-->
+    <script type="text/javascript">
+    $(".contents").addClass("container");
+    $(".header").addClass("container");
+    $(".navpath").addClass("container");
+    $("#navrow3").addClass("container");
+    $("#navrow4").addClass("container");
+    $(".mlabel").addClass("label");
+    $(".mlabel").addClass("label-default");
+    $(".memitem").addClass("panel");
+    $(".memitem").addClass("panel-info");
+    $(".memproto").addClass("panel-heading");
+    $(".memdoc").addClass("panel-body");
+    </script>
+    <footer>
+      <div class="container">
+        <div class="text-muted" style="float:right;">Generated by <a href="http://www.doxygen.org/index.html">
+          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Tue Dec 21 2021 16:49:27
+        </div>
+      </div>
+    </footer>
+</body>
+</html>
