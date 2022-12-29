@@ -30,16 +30,16 @@
 \begin{DoxyCode}{0}
 \DoxyCodeLine{[...]}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{preprocessor}{\#ifdef OOMPH\_HAS\_MPI}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#ifdef\ OOMPH\_HAS\_MPI}}
 \DoxyCodeLine{}
-\DoxyCodeLine{   std::cout << \textcolor{stringliteral}{"{}This code has been compiled with mpi support \(\backslash\)n "{}} }
-\DoxyCodeLine{             << \textcolor{stringliteral}{"{}and is running on "{}} << Communicator\_pt-\/>nproc() }
-\DoxyCodeLine{             << \textcolor{stringliteral}{"{} processors. "{}} << std::endl;}
+\DoxyCodeLine{\ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}This\ code\ has\ been\ compiled\ with\ mpi\ support\ \(\backslash\)n\ "{}}\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}and\ is\ running\ on\ "{}}\ <<\ Communicator\_pt-\/>nproc()\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ processors.\ "{}}\ <<\ std::endl;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{preprocessor}{\#else}}
 \DoxyCodeLine{}
-\DoxyCodeLine{   std::cout << \textcolor{stringliteral}{"{}This code has been compiled without mpi support"{}} }
-\DoxyCodeLine{             << std::endl;}
+\DoxyCodeLine{\ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}This\ code\ has\ been\ compiled\ without\ mpi\ support"{}}\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::endl;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{preprocessor}{\#endif}}
 \DoxyCodeLine{}
@@ -58,20 +58,20 @@
 ~\newline
  
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keywordtype}{int} main(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} **argv)}
-\DoxyCodeLine{  \{ }
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}\ **argv)}
+\DoxyCodeLine{\ \ \{\ }
 \DoxyCodeLine{}
-\DoxyCodeLine{    \textcolor{comment}{// Initialise oomph-\/lib's MPI       }}
-\DoxyCodeLine{    MPI\_Helpers::init(argc,argv);     }
-\DoxyCodeLine{  }
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Initialise\ oomph-\/lib's\ MPI\ \ \ \ \ \ \ }}
+\DoxyCodeLine{\ \ \ \ MPI\_Helpers::init(argc,argv);\ \ \ \ \ }
+\DoxyCodeLine{\ \ }
 \DoxyCodeLine{}
-\DoxyCodeLine{    \textcolor{comment}{// Normal "{}serial"{} code}}
-\DoxyCodeLine{    [...]  }
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Normal\ "{}serial"{}\ code}}
+\DoxyCodeLine{\ \ \ \ [...]\ \ }
 \DoxyCodeLine{}
-\DoxyCodeLine{    }
-\DoxyCodeLine{    \textcolor{comment}{// Shut down oomph-\/lib's MPI}}
-\DoxyCodeLine{    MPI\_Helpers::finalize();}
-\DoxyCodeLine{  \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Shut\ down\ oomph-\/lib's\ MPI}}
+\DoxyCodeLine{\ \ \ \ MPI\_Helpers::finalize();}
+\DoxyCodeLine{\ \ \}}
 
 \end{DoxyCode}
 ~\newline
@@ -87,7 +87,7 @@
 ~\newline
  
 \begin{DoxyCode}{0}
-\DoxyCodeLine{mpirun -\/np 4 ./parallel\_executable}
+\DoxyCodeLine{mpirun\ -\/np\ 4\ ./parallel\_executable}
 
 \end{DoxyCode}
  ~\newline
@@ -111,19 +111,19 @@
 \hypertarget{index_self_tests}{}\doxysubsection{How to include parallel demo codes into the self-\/tests}\label{index_self_tests}
 
 \begin{DoxyItemize}
-\item The configure flag {\ttfamily --with-\/mpi-\/self-\/tests} includes {\ttfamily oomph-\/lib\textquotesingle{}s} parallel demo driver codes into the self-\/tests executed when {\ttfamily make} {\ttfamily check} is run. The self-\/tests require the executable to be run on two processors and the command that spawns a two-\/processor parallel job on the target machine must be specified as an argument to the configure flag. For example, under \href{http://www.lam-mpi.org/}{\texttt{ LAM}} ~\newline
+\item The configure flag {\ttfamily -\/-\/with-\/mpi-\/self-\/tests} includes {\ttfamily oomph-\/lib\textquotesingle{}s} parallel demo driver codes into the self-\/tests executed when {\ttfamily make} {\ttfamily check} is run. The self-\/tests require the executable to be run on two processors and the command that spawns a two-\/processor parallel job on the target machine must be specified as an argument to the configure flag. For example, under \href{http://www.lam-mpi.org/}{\texttt{ LAM}} ~\newline
 ~\newline
  
 \begin{DoxyCode}{0}
-\DoxyCodeLine{-\/-\/with-\/mpi-\/\textcolor{keyword}{self}-\/tests=\textcolor{stringliteral}{"{}mpirun -\/np 2"{}}}
+\DoxyCodeLine{-\/-\/with-\/mpi-\/self-\/tests=\textcolor{stringliteral}{"{}mpirun\ -\/np\ 2"{}}}
 
 \end{DoxyCode}
  ~\newline
- Some self-\/tests are performed with a greater number of processors. To perform these tests as part of the {\ttfamily make} {\ttfamily test} procedure, add the configure flag {\ttfamily --with-\/mpi-\/self-\/tests-\/variablenp} to the configure options. Its argument has to specify how to spawn an mpi job on an arbitrary number of processors, using the placeholder {\ttfamily OOMPHNP} for the number of processors. E.\+g. ~\newline
+ Some self-\/tests are performed with a greater number of processors. To perform these tests as part of the {\ttfamily make} {\ttfamily test} procedure, add the configure flag {\ttfamily -\/-\/with-\/mpi-\/self-\/tests-\/variablenp} to the configure options. Its argument has to specify how to spawn an mpi job on an arbitrary number of processors, using the placeholder {\ttfamily OOMPHNP} for the number of processors. E.\+g. ~\newline
 ~\newline
  
 \begin{DoxyCode}{0}
-\DoxyCodeLine{-\/-\/with-\/mpi-\/\textcolor{keyword}{self}-\/tests-\/variablenp=\textcolor{stringliteral}{"{}mpirun -\/np OOMPHNP"{}}}
+\DoxyCodeLine{-\/-\/with-\/mpi-\/self-\/tests-\/variablenp=\textcolor{stringliteral}{"{}mpirun\ -\/np\ OOMPHNP"{}}}
 
 \end{DoxyCode}
  ~\newline
@@ -161,29 +161,29 @@ To address this problem, {\ttfamily oomph-\/lib\textquotesingle{}s} domain decom
   
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\textcolor{comment}{//==start\_of\_doc\_solution=================================================}}
-\DoxyCodeLine{\textcolor{comment}{/// Doc the solution}}
+\DoxyCodeLine{\textcolor{comment}{///\ Doc\ the\ solution}}
 \DoxyCodeLine{\textcolor{comment}{//========================================================================}}
-\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>}
-\DoxyCodeLine{\textcolor{keywordtype}{void} RefineableDrivenCavityProblem<ELEMENT>::doc\_solution(DocInfo\& doc\_info)}
-\DoxyCodeLine{\{ }
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class}\ ELEMENT>}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ RefineableDrivenCavityProblem<ELEMENT>::doc\_solution(DocInfo\&\ doc\_info)}
+\DoxyCodeLine{\{\ }
 \DoxyCodeLine{}
-\DoxyCodeLine{ ofstream some\_file;}
-\DoxyCodeLine{ \textcolor{keywordtype}{char} filename[100];}
+\DoxyCodeLine{\ ofstream\ some\_file;}
+\DoxyCodeLine{\ \textcolor{keywordtype}{char}\ filename[100];}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Number of plot points}}
-\DoxyCodeLine{ \textcolor{keywordtype}{unsigned} npts=5; }
+\DoxyCodeLine{\ \textcolor{comment}{//\ Number\ of\ plot\ points}}
+\DoxyCodeLine{\ \textcolor{keywordtype}{unsigned}\ npts=5;\ }
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Get current process rank}}
-\DoxyCodeLine{ \textcolor{keywordtype}{int} my\_rank=this-\/>communicator\_pt()-\/>my\_rank();}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Get\ current\ process\ rank}}
+\DoxyCodeLine{\ \textcolor{keywordtype}{int}\ my\_rank=this-\/>communicator\_pt()-\/>my\_rank();}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Output solution }}
-\DoxyCodeLine{ sprintf(filename,\textcolor{stringliteral}{"{}\%s/soln\%i\_on\_proc\%i.dat"{}},doc\_info.directory().c\_str(),}
-\DoxyCodeLine{         doc\_info.number(),my\_rank);}
-\DoxyCodeLine{ some\_file.open(filename);}
-\DoxyCodeLine{ mesh\_pt()-\/>output(some\_file,npts);}
-\DoxyCodeLine{ some\_file.close();}
-\DoxyCodeLine{ }
-\DoxyCodeLine{\} \textcolor{comment}{// end\_of\_doc\_solution}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Output\ solution\ }}
+\DoxyCodeLine{\ sprintf(filename,\textcolor{stringliteral}{"{}\%s/soln\%i\_on\_proc\%i.dat"{}},doc\_info.directory().c\_str(),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ doc\_info.number(),my\_rank);}
+\DoxyCodeLine{\ some\_file.open(filename);}
+\DoxyCodeLine{\ mesh\_pt()-\/>output(some\_file,npts);}
+\DoxyCodeLine{\ some\_file.close();}
+\DoxyCodeLine{\ }
+\DoxyCodeLine{\}\ \textcolor{comment}{//\ end\_of\_doc\_solution}}
 
 \end{DoxyCodeInclude}
  ~\newline
@@ -199,7 +199,7 @@ To address this problem, {\ttfamily oomph-\/lib\textquotesingle{}s} domain decom
 ~\newline
  
 \begin{DoxyCode}{0}
-\DoxyCodeLine{Mesh::disable\_output\_of halo\_elements()}
+\DoxyCodeLine{Mesh::disable\_output\_of\ halo\_elements()}
 
 \end{DoxyCode}
  ~\newline
@@ -244,7 +244,9 @@ After a problem has been distributed, further mesh refinement can be performed i
 
 {\bfseries{ Optional pruning of superfluous halo\mbox{[}ed\mbox{]} nodes and elements }}
 
-The parallel efficiency of the distributed mesh adaptation (in terms of the memory required to hold the partial meshes, and in terms of the CPU time required for their adaptation) is limited by the fact that each processor must adapt not only the $N_{\rm in \ charge}$ elements it is in charge of, but also its $N_{\rm halo}$ halo elements. We define the efficiency of the problem distribution as \[ e_{dist} = \frac{N_{\rm in \ charge}}{N_{\rm halo} + N_{\rm in \ charge}} \le 1, \] where the equality could only be achieved in the absence of any halo elements.
+The parallel efficiency of the distributed mesh adaptation (in terms of the memory required to hold the partial meshes, and in terms of the CPU time required for their adaptation) is limited by the fact that each processor must adapt not only the $N_{\rm in \ charge}$ elements it is in charge of, but also its $N_{\rm halo}$ halo elements. We define the efficiency of the problem distribution as  \[ e_{dist} = 
+  \frac{N_{\rm in \ charge}}{N_{\rm halo} + N_{\rm in \ charge}} 
+  \le 1, \] where the equality could only be achieved in the absence of any halo elements.
 
 When the mesh is first distributed, the halo layer has a depth of one element, but repeated mesh refinement can make the halo layers (the original halo elements and their sons) much thicker than a single-\/element layer. Thus, to a large extent, the efficiency is determined during the initial problem distribution and at that stage of the process it can only be improved by {\bfseries{(i)}} increasing the number of non-\/distributed initial mesh refinements; {\bfseries{(ii)}} reducing the number of processors. Since both options reduce the parallelism they are not desirable. It is possible, however, to improve the parallel efficiency by pruning superfluous halo\mbox{[}ed\mbox{]} elements after each mesh refinement by calling the function ~\newline
 ~\newline
@@ -377,7 +379,7 @@ Once a problem has been distributed, the function
 
 Details about the mesh distribution can be generated by calling 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{Mesh::doc\_mesh\_distribution(DocInfo\& doc\_info)}
+\DoxyCodeLine{Mesh::doc\_mesh\_distribution(DocInfo\&\ doc\_info)}
 
 \end{DoxyCode}
  which outputs the elements, nodes, halo(ed) elements, halo(ed) nodes, mesh, boundary elements and boundary nodes on each processor. This routine is automatically called when {\ttfamily Problem\+::distribute()} is called with a {\ttfamily Doc\+Info} object whose {\ttfamily Doc\+\_\+flag} is set to true (the default behaviour).
@@ -388,7 +390,7 @@ Parallel code can obviously fail in many more ways than a code that runs on a si
 
 Let\textquotesingle{}s assume you use \href{http://www.gnu.org/software/gdb/}{\texttt{ gdb}} as your debugger. To debug a serial code with \href{http://www.gnu.org/software/gdb/}{\texttt{ gdb}} you would load the executable {\ttfamily a.\+out} into the debugger using the command 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{gdb ./a.out}
+\DoxyCodeLine{gdb\ ./a.out}
 
 \end{DoxyCode}
  on the command line. Once inside \href{http://www.gnu.org/software/gdb/}{\texttt{ gdb}}, you run the code by typing \char`\"{}run\char`\"{}. If the code crashes, typing \char`\"{}where\char`\"{} will tell you in which line of the code the crash occurred, and it will also provide a traceback of the function calls that got you to this point.
@@ -397,16 +399,16 @@ To do this in parallel, we have to run each (parallel) instance of the code with
 \begin{DoxyItemize}
 \item A shell script {\ttfamily mpidbg} that must be executable, which contains\+: 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{mpirun \$1 \$2 -\/x DISPLAY rungdb.sh -\/x cmds.gdb}
+\DoxyCodeLine{mpirun\ \$1\ \$2\ -\/x\ DISPLAY\ rungdb.sh\ -\/x\ cmds.gdb}
 
 \end{DoxyCode}
 
 \item The executable file {\ttfamily rungdb.\+sh} must be in the same directory as {\ttfamily mpidbg} and contain the following 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{echo \textcolor{stringliteral}{"{}Running GDB on node `hostname`"{}}}
-\DoxyCodeLine{echo \$DISPLAY}
-\DoxyCodeLine{xterm -\/geometry 200x40 -\/e gdb \$*}
-\DoxyCodeLine{exit 0}
+\DoxyCodeLine{echo\ \textcolor{stringliteral}{"{}Running\ GDB\ on\ node\ `hostname`"{}}}
+\DoxyCodeLine{echo\ \$DISPLAY}
+\DoxyCodeLine{xterm\ -\/geometry\ 200x40\ -\/e\ gdb\ \$*}
+\DoxyCodeLine{exit\ 0}
 
 \end{DoxyCode}
 
@@ -415,7 +417,7 @@ To do this in parallel, we have to run each (parallel) instance of the code with
 
 Then, to run the debugger in parallel on 3 processors for the executable {\ttfamily a.\+out}, the command would be 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{mpidbg -\/np 3 ./a.out }
+\DoxyCodeLine{mpidbg\ -\/np\ 3\ ./a.out\ }
 
 \end{DoxyCode}
  Once the command is issued, an {\ttfamily xterm} window will be opened for each processor, and if a crash occurs on any processor, the usual \href{http://www.gnu.org/software/gdb/}{\texttt{ gdb}} commands ({\ttfamily back}, {\ttfamily up}, {\ttfamily down}, {\ttfamily quit} and so on) may be used within any of the {\ttfamily xterm} sessions where a crash has taken place.

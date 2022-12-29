@@ -57,7 +57,7 @@ unsigned \mbox{\hyperlink{classoomph_1_1RefineablePseudoSolidNodeUpdateElement_a
 unsigned \mbox{\hyperlink{classoomph_1_1RefineablePseudoSolidNodeUpdateElement_ab73207cdcfb40fbd04de408d4f9cc10d}{ninterpolating\+\_\+node}} (const int \&value\+\_\+id)
 \begin{DoxyCompactList}\small\item\em The number of pressure nodes is 2$^\wedge$\+DIM. The number of velocity nodes is the same as the number of geometric nodes. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1RefineablePseudoSolidNodeUpdateElement_a53c2c8918665b7bb190634cdefa5ea1c}{interpolating\+\_\+basis}} (const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}}, \mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&psi, const int \&value\+\_\+id) const
-\begin{DoxyCompactList}\small\item\em The basis interpolating the pressure is given by pshape(). / The basis interpolating the velocity is \mbox{\hyperlink{namespaceoomph_1_1OneDimLagrange_a117f8b892dc89989ecdad99ff261e120}{shape()}}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em The basis interpolating the pressure is given by pshape(). / The basis interpolating the velocity is shape(). \end{DoxyCompactList}\item 
 unsigned \mbox{\hyperlink{classoomph_1_1RefineablePseudoSolidNodeUpdateElement_a577241e74df25b8548f475bf4a9fffa7}{num\+\_\+\+Z2\+\_\+flux\+\_\+terms}} ()
 \begin{DoxyCompactList}\small\item\em Number of \textquotesingle{}flux\textquotesingle{} terms for Z2 error estimation\+: Error estimation is based on error in BASIC element. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1RefineablePseudoSolidNodeUpdateElement_acbe1e5ee654278e79ccc9bfa25ab7891}{get\+\_\+\+Z2\+\_\+flux}} (const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}}, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&flux)
@@ -113,7 +113,7 @@ Definition at line \mbox{\hyperlink{pseudosolid__node__update__elements_8h_sourc
 \index{RefineablePseudoSolidNodeUpdateElement@{RefineablePseudoSolidNodeUpdateElement}!oomph::RefineablePseudoSolidNodeUpdateElement$<$ BASIC, SOLID $>$@{oomph::RefineablePseudoSolidNodeUpdateElement$<$ BASIC, SOLID $>$}}
 \doxysubsubsection{\texorpdfstring{RefineablePseudoSolidNodeUpdateElement()}{RefineablePseudoSolidNodeUpdateElement()}}
 {\footnotesize\ttfamily template$<$class BASIC , class SOLID $>$ \\
-\mbox{\hyperlink{classoomph_1_1RefineablePseudoSolidNodeUpdateElement}{oomph\+::\+Refineable\+Pseudo\+Solid\+Node\+Update\+Element}}$<$ BASIC, SOLID $>$\+::\mbox{\hyperlink{classoomph_1_1RefineablePseudoSolidNodeUpdateElement}{Refineable\+Pseudo\+Solid\+Node\+Update\+Element}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{classoomph_1_1RefineablePseudoSolidNodeUpdateElement}{oomph\+::\+Refineable\+Pseudo\+Solid\+Node\+Update\+Element}}$<$ BASIC, SOLID $>$\+::\+Refineable\+Pseudo\+Solid\+Node\+Update\+Element (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -449,7 +449,7 @@ void \mbox{\hyperlink{classoomph_1_1RefineablePseudoSolidNodeUpdateElement}{oomp
 
 
 
-The basis interpolating the pressure is given by pshape(). / The basis interpolating the velocity is \mbox{\hyperlink{namespaceoomph_1_1OneDimLagrange_a117f8b892dc89989ecdad99ff261e120}{shape()}}. 
+The basis interpolating the pressure is given by pshape(). / The basis interpolating the velocity is shape(). 
 
 
 
@@ -647,10 +647,6 @@ Overload the output function\+: Use that of the BASIC element.
 
 Definition at line \mbox{\hyperlink{pseudosolid__node__update__elements_8h_source_l01389}{1389}} of file \mbox{\hyperlink{pseudosolid__node__update__elements_8h_source}{pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h}}.
 
-
-
-References \mbox{\hyperlink{oomph__utilities_8cc_source_l00436}{oomph\+::\+Command\+Line\+Args\+::output()}}.
-
 \mbox{\Hypertarget{classoomph_1_1RefineablePseudoSolidNodeUpdateElement_a9393711c3d4c4cf5a7142b9dd99d3baa}\label{classoomph_1_1RefineablePseudoSolidNodeUpdateElement_a9393711c3d4c4cf5a7142b9dd99d3baa}} 
 \index{oomph::RefineablePseudoSolidNodeUpdateElement$<$ BASIC, SOLID $>$@{oomph::RefineablePseudoSolidNodeUpdateElement$<$ BASIC, SOLID $>$}!output@{output}}
 \index{output@{output}!oomph::RefineablePseudoSolidNodeUpdateElement$<$ BASIC, SOLID $>$@{oomph::RefineablePseudoSolidNodeUpdateElement$<$ BASIC, SOLID $>$}}
@@ -665,10 +661,6 @@ Output function\+: Use that of the BASIC element.
 
 
 Definition at line \mbox{\hyperlink{pseudosolid__node__update__elements_8h_source_l01395}{1395}} of file \mbox{\hyperlink{pseudosolid__node__update__elements_8h_source}{pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h}}.
-
-
-
-References \mbox{\hyperlink{oomph__utilities_8cc_source_l00436}{oomph\+::\+Command\+Line\+Args\+::output()}}.
 
 \mbox{\Hypertarget{classoomph_1_1RefineablePseudoSolidNodeUpdateElement_a88f2bf6d044bc9b768afaba1368c0c18}\label{classoomph_1_1RefineablePseudoSolidNodeUpdateElement_a88f2bf6d044bc9b768afaba1368c0c18}} 
 \index{oomph::RefineablePseudoSolidNodeUpdateElement$<$ BASIC, SOLID $>$@{oomph::RefineablePseudoSolidNodeUpdateElement$<$ BASIC, SOLID $>$}!output@{output}}
@@ -685,10 +677,6 @@ Overload the output function\+: Use that of the BASIC element.
 
 Definition at line \mbox{\hyperlink{pseudosolid__node__update__elements_8h_source_l01377}{1377}} of file \mbox{\hyperlink{pseudosolid__node__update__elements_8h_source}{pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h}}.
 
-
-
-References \mbox{\hyperlink{oomph__utilities_8cc_source_l00436}{oomph\+::\+Command\+Line\+Args\+::output()}}.
-
 \mbox{\Hypertarget{classoomph_1_1RefineablePseudoSolidNodeUpdateElement_a41c401315754cb1d5f3f8b827215eaf4}\label{classoomph_1_1RefineablePseudoSolidNodeUpdateElement_a41c401315754cb1d5f3f8b827215eaf4}} 
 \index{oomph::RefineablePseudoSolidNodeUpdateElement$<$ BASIC, SOLID $>$@{oomph::RefineablePseudoSolidNodeUpdateElement$<$ BASIC, SOLID $>$}!output@{output}}
 \index{output@{output}!oomph::RefineablePseudoSolidNodeUpdateElement$<$ BASIC, SOLID $>$@{oomph::RefineablePseudoSolidNodeUpdateElement$<$ BASIC, SOLID $>$}}
@@ -703,10 +691,6 @@ Output function, plotting at n\+\_\+p points\+: Use that of the BASIC element.
 
 
 Definition at line \mbox{\hyperlink{pseudosolid__node__update__elements_8h_source_l01383}{1383}} of file \mbox{\hyperlink{pseudosolid__node__update__elements_8h_source}{pseudosolid\+\_\+node\+\_\+update\+\_\+elements.\+h}}.
-
-
-
-References \mbox{\hyperlink{oomph__utilities_8cc_source_l00436}{oomph\+::\+Command\+Line\+Args\+::output()}}.
 
 \mbox{\Hypertarget{classoomph_1_1RefineablePseudoSolidNodeUpdateElement_ac653ab28abf52506f54b1306272390ce}\label{classoomph_1_1RefineablePseudoSolidNodeUpdateElement_ac653ab28abf52506f54b1306272390ce}} 
 \index{oomph::RefineablePseudoSolidNodeUpdateElement$<$ BASIC, SOLID $>$@{oomph::RefineablePseudoSolidNodeUpdateElement$<$ BASIC, SOLID $>$}!rebuild\_from\_sons@{rebuild\_from\_sons}}

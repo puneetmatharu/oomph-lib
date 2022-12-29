@@ -58,11 +58,47 @@ Geom\+Object $\ast$ \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh_a05972ec4beb
 \begin{DoxyCompactList}\small\item\em Access function to the Geom\+Object for upper wall. \end{DoxyCompactList}\item 
 Geom\+Object $\ast$ \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh_afd987ee387d1b7d41a70b52ca19ee2d6}{straight\+\_\+wall\+\_\+pt}} ()
 \begin{DoxyCompactList}\small\item\em Access function to the Geom\+Object for the straight upper wall. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1RectangularQuadMesh}{oomph\+::\+Rectangular\+Quad\+Mesh$<$ ELEMENT $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_a1f906bca42da3d44765382013667e40d}{Rectangular\+Quad\+Mesh}} (const unsigned \&\mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_a8755801661f2cec616527ecc3a43fd60}{nx}}, const unsigned \&\mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_a189759f02bc92144e4abc24cb5bae5a8}{ny}}, const double \&lx, const double \&ly, Time\+Stepper $\ast$time\+\_\+stepper\+\_\+pt=\&Mesh\+::\+Default\+\_\+\+Time\+Stepper)
+\begin{DoxyCompactList}\small\item\em Simple constructor\+: nx\+: number of elements in x direction; ny\+: number of elements in y direction; lx, length of domain in x direction (0,lx); ly, length of domain in y direction (0,ly) Also pass pointer to timestepper (defaults to Steady) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_aea506679674e4fc5c43b62a53798d0be}{Rectangular\+Quad\+Mesh}} (const unsigned \&\mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_a8755801661f2cec616527ecc3a43fd60}{nx}}, const unsigned \&\mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_a189759f02bc92144e4abc24cb5bae5a8}{ny}}, const double \&xmin, const double \&xmax, const double \&ymin, const double \&ymax, Time\+Stepper $\ast$time\+\_\+stepper\+\_\+pt=\&Mesh\+::\+Default\+\_\+\+Time\+Stepper)
+\begin{DoxyCompactList}\small\item\em Constructor that allows the specification of minimum and maximum values of x and y coordinates. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_a40f120e00d682026e54593ca0f823535}{Rectangular\+Quad\+Mesh}} (const unsigned \&\mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_a8755801661f2cec616527ecc3a43fd60}{nx}}, const unsigned \&\mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_a189759f02bc92144e4abc24cb5bae5a8}{ny}}, const double \&lx, const double \&ly, const bool \&periodic\+\_\+in\+\_\+x, Time\+Stepper $\ast$time\+\_\+stepper\+\_\+pt=\&Mesh\+::\+Default\+\_\+\+Time\+Stepper)
+\begin{DoxyCompactList}\small\item\em Simple constructor\+: nx\+: number of elements in x direction; ny\+: number of elements in y direction; lx, length of domain in x direction (0,lx); ly, length of domain in y direction (0,ly) Boolean flag specifies if the mesh is periodic in the x-\/direction. Also pass pointer to timestepper (defaults to Steady) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_ac36869a7d72ec7524b18272657cb6167}{Rectangular\+Quad\+Mesh}} (const unsigned \&\mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_a8755801661f2cec616527ecc3a43fd60}{nx}}, const unsigned \&\mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_a189759f02bc92144e4abc24cb5bae5a8}{ny}}, const double \&xmin, const double \&xmax, const double \&ymin, const double \&ymax, const bool \&periodic\+\_\+in\+\_\+x, Time\+Stepper $\ast$time\+\_\+stepper\+\_\+pt=\&Mesh\+::\+Default\+\_\+\+Time\+Stepper)
+\begin{DoxyCompactList}\small\item\em Constructor that allows the specification of minimum and maximum values of x and y coordinates. Boolean flag specifies if the mesh is periodic in the x-\/direction. \end{DoxyCompactList}\item 
+const unsigned \& \mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_a8755801661f2cec616527ecc3a43fd60}{nx}} () const
+\begin{DoxyCompactList}\small\item\em Return number of elements in x direction. \end{DoxyCompactList}\item 
+const unsigned \& \mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_a189759f02bc92144e4abc24cb5bae5a8}{ny}} () const
+\begin{DoxyCompactList}\small\item\em Return number of elements in y direction. \end{DoxyCompactList}\item 
+const double \mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_ab311c3bec7f9f721bae1f93e0798ab2c}{x\+\_\+min}} () const
+\begin{DoxyCompactList}\small\item\em Return the minimum value of x coordinate. \end{DoxyCompactList}\item 
+const double \mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_a3449b36a5e4fc4728e517bd38d7b0cc6}{x\+\_\+max}} () const
+\begin{DoxyCompactList}\small\item\em Return the maximum value of x coordinate. \end{DoxyCompactList}\item 
+const double \mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_a1c493af1dae35746bed7a31e61b46c5b}{y\+\_\+min}} () const
+\begin{DoxyCompactList}\small\item\em Return the minimum value of y coordinate. \end{DoxyCompactList}\item 
+const double \mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_a7d4a00a545efc20451b00a9b8ad1e17d}{y\+\_\+max}} () const
+\begin{DoxyCompactList}\small\item\em Return the maximum value of y coordinate. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_ae1e1d67808d4efb6e16a3835162a4504}{element\+\_\+reorder}} ()
+\begin{DoxyCompactList}\small\item\em Reorder the elements\+: By default they are ordered in \char`\"{}horizontal\char`\"{} layers (increasing in x, then in y). This function changes this to an ordering in the vertical direction (y first, then x). This is more efficient if a frontal solver is used and the mesh has more elements in the x than the y direction. Can be overloaded in specific derived meshes. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_ad4c2f349cf201cb3107f0a4e5447c16f}{x\+\_\+spacing\+\_\+function}} (unsigned xelement, unsigned xnode, unsigned yelement, unsigned ynode)
+\begin{DoxyCompactList}\small\item\em Return the value of the x-\/coordinate at the node given by the local node number (xnode, ynode) in the element (xelement,yelement). The description is in a \char`\"{}psudeo\char`\"{} two-\/dimensional coordinate system, so the range of xelement is \mbox{[}0,Nx-\/1\mbox{]}, yelement is \mbox{[}0,Ny-\/1\mbox{]}, and that of xnode and ynode is \mbox{[}0,Np-\/1\mbox{]}. The default is to return nodes that are equally spaced in the x coodinate. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_ae78204de1f176cdf2e819673bd34e78a}{y\+\_\+spacing\+\_\+function}} (unsigned xelement, unsigned xnode, unsigned yelement, unsigned ynode)
+\begin{DoxyCompactList}\small\item\em Return the value of the y-\/coordinate at the node given by the local node number (xnode, ynode) in the element (xelement,yelement). The description is in a \char`\"{}psudeo\char`\"{} two-\/dimensional coordinate system, so the range of xelement is \mbox{[}0,Nx-\/1\mbox{]}, yelement is \mbox{[}0,Ny-\/1\mbox{]}, and that of xnode and ynode is \mbox{[}0,Np-\/1\mbox{]}. The default it to return nodes that are equally spaced in the y coordinate. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 virtual void \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh_a12eae5013f54ae04f9eb1cdffacf3955}{build\+\_\+channel\+\_\+spine\+\_\+mesh}} (Time\+Stepper $\ast$time\+\_\+stepper\+\_\+pt)
 \begin{DoxyCompactList}\small\item\em Helper function to actually build the channel-\/spine mesh (called from various constructors) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classoomph_1_1RectangularQuadMesh}{oomph\+::\+Rectangular\+Quad\+Mesh$<$ ELEMENT $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_afa579b413a2d8120e8228d840cb3582c}{build\+\_\+mesh}} (Time\+Stepper $\ast$time\+\_\+stepper\+\_\+pt=\&Mesh\+::\+Default\+\_\+\+Time\+Stepper)
+\begin{DoxyCompactList}\small\item\em Generic mesh construction function\+: contains all the hard work. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_aeda49fb3896e9e3aec328391b196a6bf}{Rectangular\+Quad\+Mesh}} (const unsigned \&\mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_a8755801661f2cec616527ecc3a43fd60}{nx}}, const unsigned \&\mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_a189759f02bc92144e4abc24cb5bae5a8}{ny}}, const double \&xmin, const double \&xmax, const double \&ymin, const double \&ymax, const bool \&periodic\+\_\+in\+\_\+x, const bool \&build, Time\+Stepper $\ast$time\+\_\+stepper\+\_\+pt=\&Mesh\+::\+Default\+\_\+\+Time\+Stepper)
+\begin{DoxyCompactList}\small\item\em Constructor that allows the specification of minimum and maximum values of x and y coordinates and does not build the mesh This is intend to be used in derived classes that overload the spacing functions. THis is scheduled to be changed, however. The reason why this MUST be done is because the virtual spacing functions cannot be called in the base constructur, because they will not have been overloaded yet!! \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -94,6 +130,25 @@ Geom\+Object $\ast$ \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh_adaa23badd05
 \begin{DoxyCompactList}\small\item\em Geom\+Object for upper wall. \end{DoxyCompactList}\item 
 Geom\+Object $\ast$ \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh_a34f4583f2aa944d5d1ff723f6a4123bf}{Straight\+\_\+wall\+\_\+pt}}
 \begin{DoxyCompactList}\small\item\em Geom\+Object for the straight upper wall. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1RectangularQuadMesh}{oomph\+::\+Rectangular\+Quad\+Mesh$<$ ELEMENT $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+unsigned \mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_a1b2c0a2d1f8399713033953c72d399ee}{Nx}}
+\begin{DoxyCompactList}\small\item\em Nx\+: number of elements in x-\/direction. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_a49a5ee7ef86ce837fb807eb6014a296d}{Ny}}
+\begin{DoxyCompactList}\small\item\em Ny\+: number of elements in y-\/direction. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_a92502c7536a6644ebffd806841cd4d98}{Np}}
+\begin{DoxyCompactList}\small\item\em Np\+: number of (linear) points in the element. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_af3aab508d077460545031e758396514a}{Xmin}}
+\begin{DoxyCompactList}\small\item\em Minimum value of x coordinate. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_ab8e4ddba0ce8315cf480cdd1f3447684}{Xmax}}
+\begin{DoxyCompactList}\small\item\em Maximum value of x coordinate. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_ade53fec7446044418ccba9f55d692adb}{Ymin}}
+\begin{DoxyCompactList}\small\item\em Minimum value of y coordinate. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_aacbacc3a0e6ea8508abb3140ba343ffa}{Ymax}}
+\begin{DoxyCompactList}\small\item\em Maximum value of y coordinate. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1RectangularQuadMesh_a83dd0ace2eb47449f5e30522f71d9f59}{Xperiodic}}
+\begin{DoxyCompactList}\small\item\em Boolean variable used to determine whether the mesh is periodic in the x-\/direction. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -111,7 +166,7 @@ Definition at line \mbox{\hyperlink{channel__spine__mesh_8template_8h_source_l00
 \index{ChannelSpineMesh@{ChannelSpineMesh}!oomph::ChannelSpineMesh$<$ ELEMENT $>$@{oomph::ChannelSpineMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{ChannelSpineMesh()}{ChannelSpineMesh()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-\mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::\mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{Channel\+Spine\+Mesh}} (\begin{DoxyParamCaption}\item[{const unsigned \&}]{nx0,  }\item[{const unsigned \&}]{nx1,  }\item[{const unsigned \&}]{nx2,  }\item[{const unsigned \&}]{ny,  }\item[{const double \&}]{lx0,  }\item[{const double \&}]{lx1,  }\item[{const double \&}]{lx2,  }\item[{const double \&}]{h,  }\item[{Geom\+Object $\ast$}]{wall\+\_\+pt,  }\item[{Time\+Stepper $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&Mesh\+:\+:Default\+\_\+TimeStepper} }\end{DoxyParamCaption})}
+\mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::\+Channel\+Spine\+Mesh (\begin{DoxyParamCaption}\item[{const unsigned \&}]{nx0,  }\item[{const unsigned \&}]{nx1,  }\item[{const unsigned \&}]{nx2,  }\item[{const unsigned \&}]{ny,  }\item[{const double \&}]{lx0,  }\item[{const double \&}]{lx1,  }\item[{const double \&}]{lx2,  }\item[{const double \&}]{h,  }\item[{Geom\+Object $\ast$}]{wall\+\_\+pt,  }\item[{Time\+Stepper $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&Mesh\+:\+:Default\+\_\+TimeStepper} }\end{DoxyParamCaption})}
 
 
 
@@ -132,7 +187,7 @@ References \mbox{\hyperlink{channel__spine__mesh_8template_8cc_source_l00153}{oo
 \index{ChannelSpineMesh@{ChannelSpineMesh}!oomph::ChannelSpineMesh$<$ ELEMENT $>$@{oomph::ChannelSpineMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{ChannelSpineMesh()}{ChannelSpineMesh()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-\mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::\mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{Channel\+Spine\+Mesh}} (\begin{DoxyParamCaption}\item[{const unsigned \&}]{nx0,  }\item[{const unsigned \&}]{nx1,  }\item[{const unsigned \&}]{nx2,  }\item[{const unsigned \&}]{ny,  }\item[{const double \&}]{lx0,  }\item[{const double \&}]{lx1,  }\item[{const double \&}]{lx2,  }\item[{const double \&}]{h,  }\item[{Geom\+Object $\ast$}]{wall\+\_\+pt,  }\item[{const bool \&}]{periodic\+\_\+in\+\_\+x,  }\item[{Time\+Stepper $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&Mesh\+:\+:Default\+\_\+TimeStepper} }\end{DoxyParamCaption})}
+\mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::\+Channel\+Spine\+Mesh (\begin{DoxyParamCaption}\item[{const unsigned \&}]{nx0,  }\item[{const unsigned \&}]{nx1,  }\item[{const unsigned \&}]{nx2,  }\item[{const unsigned \&}]{ny,  }\item[{const double \&}]{lx0,  }\item[{const double \&}]{lx1,  }\item[{const double \&}]{lx2,  }\item[{const double \&}]{h,  }\item[{Geom\+Object $\ast$}]{wall\+\_\+pt,  }\item[{const bool \&}]{periodic\+\_\+in\+\_\+x,  }\item[{Time\+Stepper $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&Mesh\+:\+:Default\+\_\+TimeStepper} }\end{DoxyParamCaption})}
 
 
 
@@ -528,7 +583,7 @@ References \mbox{\hyperlink{channel__spine__mesh_8template_8h_source_l00297}{oom
 \index{Centre\_element\_pt@{Centre\_element\_pt}!oomph::ChannelSpineMesh$<$ ELEMENT $>$@{oomph::ChannelSpineMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Centre\_element\_pt}{Centre\_element\_pt}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-Vector$<$Finite\+Element$\ast$$>$ \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::Centre\+\_\+element\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+Vector$<$Finite\+Element$\ast$$>$ \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::\+Centre\+\_\+element\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -547,7 +602,7 @@ Referenced by \mbox{\hyperlink{channel__spine__mesh_8template_8h_source_l00088}{
 \index{Left\_element\_pt@{Left\_element\_pt}!oomph::ChannelSpineMesh$<$ ELEMENT $>$@{oomph::ChannelSpineMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Left\_element\_pt}{Left\_element\_pt}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-Vector$<$Finite\+Element$\ast$$>$ \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::Left\+\_\+element\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+Vector$<$Finite\+Element$\ast$$>$ \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::\+Left\+\_\+element\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -566,7 +621,7 @@ Referenced by \mbox{\hyperlink{channel__spine__mesh_8template_8h_source_l00081}{
 \index{Lx0@{Lx0}!oomph::ChannelSpineMesh$<$ ELEMENT $>$@{oomph::ChannelSpineMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Lx0}{Lx0}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-double \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::Lx0\hspace{0.3cm}{\ttfamily [protected]}}
+double \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::\+Lx0\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -585,7 +640,7 @@ Referenced by \mbox{\hyperlink{channel__spine__mesh_8template_8h_source_l00156}{
 \index{Lx1@{Lx1}!oomph::ChannelSpineMesh$<$ ELEMENT $>$@{oomph::ChannelSpineMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Lx1}{Lx1}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-double \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::Lx1\hspace{0.3cm}{\ttfamily [protected]}}
+double \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::\+Lx1\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -604,7 +659,7 @@ Referenced by \mbox{\hyperlink{channel__spine__mesh_8template_8h_source_l00156}{
 \index{Lx2@{Lx2}!oomph::ChannelSpineMesh$<$ ELEMENT $>$@{oomph::ChannelSpineMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Lx2}{Lx2}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-double \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::Lx2\hspace{0.3cm}{\ttfamily [protected]}}
+double \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::\+Lx2\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -623,7 +678,7 @@ Referenced by \mbox{\hyperlink{channel__spine__mesh_8template_8h_source_l00156}{
 \index{Ncentre\_spine@{Ncentre\_spine}!oomph::ChannelSpineMesh$<$ ELEMENT $>$@{oomph::ChannelSpineMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Ncentre\_spine}{Ncentre\_spine}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-unsigned \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::Ncentre\+\_\+spine\hspace{0.3cm}{\ttfamily [protected]}}
+unsigned \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::\+Ncentre\+\_\+spine\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -642,7 +697,7 @@ Referenced by \mbox{\hyperlink{channel__spine__mesh_8template_8h_source_l00214}{
 \index{Nleft\_spine@{Nleft\_spine}!oomph::ChannelSpineMesh$<$ ELEMENT $>$@{oomph::ChannelSpineMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Nleft\_spine}{Nleft\_spine}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-unsigned \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::Nleft\+\_\+spine\hspace{0.3cm}{\ttfamily [protected]}}
+unsigned \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::\+Nleft\+\_\+spine\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -661,7 +716,7 @@ Referenced by \mbox{\hyperlink{channel__spine__mesh_8template_8h_source_l00214}{
 \index{Nright\_spine@{Nright\_spine}!oomph::ChannelSpineMesh$<$ ELEMENT $>$@{oomph::ChannelSpineMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Nright\_spine}{Nright\_spine}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-unsigned \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::Nright\+\_\+spine\hspace{0.3cm}{\ttfamily [protected]}}
+unsigned \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::\+Nright\+\_\+spine\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -680,7 +735,7 @@ Referenced by \mbox{\hyperlink{channel__spine__mesh_8template_8h_source_l00256}{
 \index{Nx0@{Nx0}!oomph::ChannelSpineMesh$<$ ELEMENT $>$@{oomph::ChannelSpineMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Nx0}{Nx0}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-unsigned \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::Nx0\hspace{0.3cm}{\ttfamily [protected]}}
+unsigned \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::\+Nx0\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -699,7 +754,7 @@ Referenced by \mbox{\hyperlink{channel__spine__mesh_8template_8h_source_l00156}{
 \index{Nx1@{Nx1}!oomph::ChannelSpineMesh$<$ ELEMENT $>$@{oomph::ChannelSpineMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Nx1}{Nx1}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-unsigned \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::Nx1\hspace{0.3cm}{\ttfamily [protected]}}
+unsigned \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::\+Nx1\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -718,7 +773,7 @@ Referenced by \mbox{\hyperlink{channel__spine__mesh_8template_8h_source_l00156}{
 \index{Nx2@{Nx2}!oomph::ChannelSpineMesh$<$ ELEMENT $>$@{oomph::ChannelSpineMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Nx2}{Nx2}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-unsigned \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::Nx2\hspace{0.3cm}{\ttfamily [protected]}}
+unsigned \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::\+Nx2\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -737,7 +792,7 @@ Referenced by \mbox{\hyperlink{channel__spine__mesh_8template_8h_source_l00156}{
 \index{Right\_element\_pt@{Right\_element\_pt}!oomph::ChannelSpineMesh$<$ ELEMENT $>$@{oomph::ChannelSpineMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Right\_element\_pt}{Right\_element\_pt}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-Vector$<$Finite\+Element$\ast$$>$ \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::Right\+\_\+element\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+Vector$<$Finite\+Element$\ast$$>$ \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::\+Right\+\_\+element\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -756,7 +811,7 @@ Referenced by \mbox{\hyperlink{channel__spine__mesh_8template_8h_source_l00119}{
 \index{Straight\_wall\_pt@{Straight\_wall\_pt}!oomph::ChannelSpineMesh$<$ ELEMENT $>$@{oomph::ChannelSpineMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Straight\_wall\_pt}{Straight\_wall\_pt}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-Geom\+Object$\ast$ \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::Straight\+\_\+wall\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+Geom\+Object$\ast$ \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::\+Straight\+\_\+wall\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -775,7 +830,7 @@ Referenced by \mbox{\hyperlink{channel__spine__mesh_8template_8cc_source_l00048}
 \index{Wall\_pt@{Wall\_pt}!oomph::ChannelSpineMesh$<$ ELEMENT $>$@{oomph::ChannelSpineMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Wall\_pt}{Wall\_pt}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-Geom\+Object$\ast$ \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::Wall\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+Geom\+Object$\ast$ \mbox{\hyperlink{classoomph_1_1ChannelSpineMesh}{oomph\+::\+Channel\+Spine\+Mesh}}$<$ ELEMENT $>$\+::\+Wall\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 

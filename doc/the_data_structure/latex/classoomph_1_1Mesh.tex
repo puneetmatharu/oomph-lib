@@ -400,11 +400,11 @@ void \mbox{\hyperlink{classoomph_1_1Mesh_a2bdff104c0cc1f2669f9f5cad4a2a1a9}{conv
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1Node}{Node}} $\ast$ $>$ $>$ \mbox{\hyperlink{classoomph_1_1Mesh_abbba08d3de5cccd78ee98afc7b2f61fc}{Boundary\+\_\+node\+\_\+pt}}
-\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of pointers to nodes on the boundaries\+: Boundary\+\_\+node\+\_\+pt(b,n). Note that this is private to force the use of the \mbox{\hyperlink{classoomph_1_1Mesh_a007b102ac8e42328872ad658d7110bfc}{add\+\_\+boundary\+\_\+node()}} function, which ensures that the reverse look-\/up schemes for the nodes are set up. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of pointers to nodes on the boundaries\+: \mbox{\hyperlink{classoomph_1_1Mesh_abbba08d3de5cccd78ee98afc7b2f61fc}{Boundary\+\_\+node\+\_\+pt(b,n)}}. Note that this is private to force the use of the \mbox{\hyperlink{classoomph_1_1Mesh_a007b102ac8e42328872ad658d7110bfc}{add\+\_\+boundary\+\_\+node()}} function, which ensures that the reverse look-\/up schemes for the nodes are set up. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classoomph_1_1Mesh_a37f6d27447f643a74694012b09350ce9}{Lookup\+\_\+for\+\_\+elements\+\_\+next\+\_\+boundary\+\_\+is\+\_\+setup}}
 \begin{DoxyCompactList}\small\item\em Flag to indicate that the lookup schemes for elements that are adjacent to the boundaries has been set up. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element}} $\ast$ $>$ $>$ \mbox{\hyperlink{classoomph_1_1Mesh_a266ac14a3e884f978c8605f7b5786e81}{Boundary\+\_\+element\+\_\+pt}}
-\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of pointers to elements on the boundaries\+: Boundary\+\_\+element\+\_\+pt(b,e) \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of pointers to elements on the boundaries\+: \mbox{\hyperlink{classoomph_1_1Mesh_a266ac14a3e884f978c8605f7b5786e81}{Boundary\+\_\+element\+\_\+pt(b,e)}} \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ int $>$ $>$ \mbox{\hyperlink{classoomph_1_1Mesh_a62adbe45fe65ff9cd329bb45d197347c}{Face\+\_\+index\+\_\+at\+\_\+boundary}}
 \begin{DoxyCompactList}\small\item\em For the e-\/th finite element on boundary b, this is the index of the face that lies along that boundary. \end{DoxyCompactList}\item 
 std\+::map$<$ unsigned, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$ $>$ $>$ \mbox{\hyperlink{classoomph_1_1Mesh_a6e01d05056ce7e2d38eb66a7af8d9174}{Root\+\_\+halo\+\_\+element\+\_\+pt}}
@@ -1464,7 +1464,7 @@ Definition at line \mbox{\hyperlink{mesh_8cc_source_l00711}{711}} of file \mbox{
 
 
 
-References \mbox{\hyperlink{mesh_8h_source_l00186}{Element\+\_\+pt}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{mesh_8h_source_l00183}{Node\+\_\+pt}}, and \mbox{\hyperlink{oomph__definitions_8cc_source_l00286}{oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string()}}.
+References \mbox{\hyperlink{mesh_8h_source_l00186}{Element\+\_\+pt}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, and \mbox{\hyperlink{mesh_8h_source_l00183}{Node\+\_\+pt}}.
 
 
 
@@ -1486,7 +1486,7 @@ Definition at line \mbox{\hyperlink{mesh_8cc_source_l00746}{746}} of file \mbox{
 
 
 
-References \mbox{\hyperlink{mesh_8h_source_l00186}{Element\+\_\+pt}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, and \mbox{\hyperlink{oomph__definitions_8cc_source_l00286}{oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string()}}.
+References \mbox{\hyperlink{mesh_8h_source_l00186}{Element\+\_\+pt}}, and \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}.
 
 
 
@@ -1669,7 +1669,7 @@ Definition at line \mbox{\hyperlink{mesh_8h_source_l00915}{915}} of file \mbox{\
 
 
 
-References \mbox{\hyperlink{mesh_8cc_source_l01088}{dump()}}, and \mbox{\hyperlink{oomph__definitions_8cc_source_l00286}{oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string()}}.
+References \mbox{\hyperlink{mesh_8cc_source_l01088}{dump()}}.
 
 \mbox{\Hypertarget{classoomph_1_1Mesh_af821b936768868ea5dd91495e9ae3bc0}\label{classoomph_1_1Mesh_af821b936768868ea5dd91495e9ae3bc0}} 
 \index{oomph::Mesh@{oomph::Mesh}!dump@{dump}}
@@ -2201,7 +2201,7 @@ Definition at line \mbox{\hyperlink{mesh_8cc_source_l00532}{532}} of file \mbox{
 
 
 
-References \mbox{\hyperlink{cfortran_8h_source_l00571}{e}}, \mbox{\hyperlink{mesh_8h_source_l00460}{element\+\_\+pt()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{mesh_8h_source_l00590}{nelement()}}, \mbox{\hyperlink{elements_8h_source_l02210}{oomph\+::\+Finite\+Element\+::nnode()}}, \mbox{\hyperlink{mesh_8h_source_l00596}{nnode()}}, \mbox{\hyperlink{mesh_8h_source_l02918}{oomph\+::\+Node\+Ordering\+::node\+\_\+global\+\_\+position\+\_\+comparison()}}, \mbox{\hyperlink{elements_8h_source_l02175}{oomph\+::\+Finite\+Element\+::node\+\_\+pt()}}, \mbox{\hyperlink{mesh_8h_source_l00436}{node\+\_\+pt()}}, and \mbox{\hyperlink{oomph__definitions_8cc_source_l00286}{oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string()}}.
+References \mbox{\hyperlink{cfortran_8h_source_l00571}{e}}, \mbox{\hyperlink{mesh_8h_source_l00460}{element\+\_\+pt()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{mesh_8h_source_l00590}{nelement()}}, \mbox{\hyperlink{elements_8h_source_l02210}{oomph\+::\+Finite\+Element\+::nnode()}}, \mbox{\hyperlink{mesh_8h_source_l00596}{nnode()}}, \mbox{\hyperlink{mesh_8h_source_l02918}{oomph\+::\+Node\+Ordering\+::node\+\_\+global\+\_\+position\+\_\+comparison()}}, \mbox{\hyperlink{elements_8h_source_l02175}{oomph\+::\+Finite\+Element\+::node\+\_\+pt()}}, and \mbox{\hyperlink{mesh_8h_source_l00436}{node\+\_\+pt()}}.
 
 
 
@@ -3459,7 +3459,7 @@ Definition at line \mbox{\hyperlink{mesh_8cc_source_l01130}{1130}} of file \mbox
 
 
 
-References \mbox{\hyperlink{cfortran_8h_source_l00571}{e}}, \mbox{\hyperlink{mesh_8h_source_l00460}{element\+\_\+pt()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{elements_8h_source_l00622}{oomph\+::\+Generalised\+Element\+::internal\+\_\+data\+\_\+pt()}}, \mbox{\hyperlink{mesh_8h_source_l00590}{nelement()}}, \mbox{\hyperlink{elements_8h_source_l00823}{oomph\+::\+Generalised\+Element\+::ninternal\+\_\+data()}}, \mbox{\hyperlink{mesh_8h_source_l00596}{nnode()}}, \mbox{\hyperlink{mesh_8h_source_l00436}{node\+\_\+pt()}}, \mbox{\hyperlink{nodes_8cc_source_l00672}{oomph\+::\+Data\+::read()}}, \mbox{\hyperlink{nodes_8cc_source_l01996}{oomph\+::\+Node\+::read()}}, \mbox{\hyperlink{nodes_8cc_source_l03490}{oomph\+::\+Solid\+Node\+::read()}}, \mbox{\hyperlink{mesh_8cc_source_l00508}{reorder\+\_\+nodes()}}, and \mbox{\hyperlink{oomph__definitions_8cc_source_l00286}{oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string()}}.
+References \mbox{\hyperlink{cfortran_8h_source_l00571}{e}}, \mbox{\hyperlink{mesh_8h_source_l00460}{element\+\_\+pt()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{elements_8h_source_l00622}{oomph\+::\+Generalised\+Element\+::internal\+\_\+data\+\_\+pt()}}, \mbox{\hyperlink{mesh_8h_source_l00590}{nelement()}}, \mbox{\hyperlink{elements_8h_source_l00823}{oomph\+::\+Generalised\+Element\+::ninternal\+\_\+data()}}, \mbox{\hyperlink{mesh_8h_source_l00596}{nnode()}}, \mbox{\hyperlink{mesh_8h_source_l00436}{node\+\_\+pt()}}, \mbox{\hyperlink{nodes_8cc_source_l00672}{oomph\+::\+Data\+::read()}}, \mbox{\hyperlink{nodes_8cc_source_l01996}{oomph\+::\+Node\+::read()}}, \mbox{\hyperlink{nodes_8cc_source_l03490}{oomph\+::\+Solid\+Node\+::read()}}, and \mbox{\hyperlink{mesh_8cc_source_l00508}{reorder\+\_\+nodes()}}.
 
 
 
@@ -4193,7 +4193,7 @@ Referenced by \mbox{\hyperlink{mesh_8h_source_l00565}{boundary\+\_\+coordinate\+
 
 
 
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of pointers to elements on the boundaries\+: Boundary\+\_\+element\+\_\+pt(b,e) 
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of pointers to elements on the boundaries\+: \mbox{\hyperlink{classoomph_1_1Mesh_a266ac14a3e884f978c8605f7b5786e81}{Boundary\+\_\+element\+\_\+pt(b,e)}} 
 
 
 
@@ -4211,7 +4211,7 @@ Referenced by \mbox{\hyperlink{mesh_8h_source_l00840}{boundary\+\_\+element\+\_\
 
 
 
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of pointers to nodes on the boundaries\+: Boundary\+\_\+node\+\_\+pt(b,n). Note that this is private to force the use of the \mbox{\hyperlink{classoomph_1_1Mesh_a007b102ac8e42328872ad658d7110bfc}{add\+\_\+boundary\+\_\+node()}} function, which ensures that the reverse look-\/up schemes for the nodes are set up. 
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of pointers to nodes on the boundaries\+: \mbox{\hyperlink{classoomph_1_1Mesh_abbba08d3de5cccd78ee98afc7b2f61fc}{Boundary\+\_\+node\+\_\+pt(b,n)}}. Note that this is private to force the use of the \mbox{\hyperlink{classoomph_1_1Mesh_a007b102ac8e42328872ad658d7110bfc}{add\+\_\+boundary\+\_\+node()}} function, which ensures that the reverse look-\/up schemes for the nodes are set up. 
 
 
 
@@ -4557,7 +4557,7 @@ Referenced by \mbox{\hyperlink{mesh_8h_source_l02133}{add\+\_\+shared\+\_\+node\
 {\bfseries Initial value\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{=}
-\DoxyCodeLine{    \textcolor{keyword}{false}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{false}}
 
 \end{DoxyCode}
 

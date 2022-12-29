@@ -3,19 +3,49 @@ This is the final and most complex problem in our series of demo codes for the u
 \begin{center} \tabulinesep=1mm
 \begin{longtabu}spread 0pt [c]{*{1}{|X[-1]}|}
 \hline
-\begin{center} {\bfseries{The two-\/dimensional unsteady heat equation with flux boundary conditions in a moving domain.}} \end{center}  Solve \[ \sum_{i=1}^2\frac{\partial^2 u}{\partial x_i^2} = \frac{\partial u}{\partial t} + f\left(x_1,x_2,t\right), \ \ \ \ \ \ \ \ \ \ (1) \] in the domain $ D $, bounded by the coordinate axes and the time-\/dependent ellipse \[ \mathbf{r}_{ellipse}(\xi,t) = \left( \begin{array}{c} \big(a+\hat{a}\sin(2\pi t/\hat{T})\big) \cos(\xi) \\ \big(b+\hat{b}\sin(2\pi t/\hat{T})\big) \sin(\xi) \end{array} \right), \ \ \ \ \ \ \ \ \ \ (2) \] subject to Neumann boundary conditions, \[ \left. \frac{\partial u}{\partial n}\right|_{\partial D_{Neumann}}= - \left. \frac{\partial u}{\partial x_2}\right|_{\partial D_{Neumann}}= g_0, \ \ \ \ \ \ \ \ \ \ (3) \] along the horizontal domain boundary $ \partial D_{Neumann} = \{ (x_1,x_2) | x_1 \in [0,1], x_2=0 \} $, and to Dirichlet boundary conditions, \[ \left. u\right|_{\partial D_{Dirichlet}}=h_0, \ \ \ \ \ \ \ \ \ \ (4) \] elsewhere.  
+\begin{center} {\bfseries{The two-\/dimensional unsteady heat equation with flux boundary conditions in a moving domain.}} \end{center}  Solve  \[
+\sum_{i=1}^2\frac{\partial^2 u}{\partial x_i^2} 
+= \frac{\partial u}{\partial t} + f\left(x_1,x_2,t\right),
+ \ \ \ \ \ \ \ \ \ \ (1)
+\] in the domain $ D $, bounded by the coordinate axes and the time-\/dependent ellipse  \[
+\mathbf{r}_{ellipse}(\xi,t) = 
+\left( \begin{array}{c}
+\big(a+\hat{a}\sin(2\pi t/\hat{T})\big) \cos(\xi) \\
+\big(b+\hat{b}\sin(2\pi t/\hat{T})\big) \sin(\xi)
+\end{array}
+ \right),
+ \ \ \ \ \ \ \ \ \ \ (2)
+\] subject to Neumann boundary conditions,  \[
+\left. \frac{\partial u}{\partial n}\right|_{\partial D_{Neumann}}=
+- \left. \frac{\partial u}{\partial x_2}\right|_{\partial D_{Neumann}}=
+g_0, 
+\ \ \ \ \ \ \ \ \ \ (3)
+\] along the horizontal domain boundary $ \partial D_{Neumann} = 
+\{ (x_1,x_2) | x_1 \in [0,1], x_2=0 \} $, and to Dirichlet boundary conditions,  \[
+\left. u\right|_{\partial D_{Dirichlet}}=h_0, 
+\ \ \ \ \ \ \ \ \ \ (4)
+\] elsewhere.  
 \begin{DoxyImage}
 \includegraphics[width=0.75\textwidth]{domain}
 \doxyfigcaption{Sketch of the time-\/dependent domain and the boundary conditions. }
 \end{DoxyImage}
- The initial conditions are given by \[ u(x_1,x_2,t=0)=k_0(x_1,x_2), \ \ \ \ \ \ \ \ \ \ (5) \] where the functions $ f, g_0, \ h_0$ and $ k_0$ are given.   \\\cline{1-1}
+ The initial conditions are given by  \[
+u(x_1,x_2,t=0)=k_0(x_1,x_2),
+\ \ \ \ \ \ \ \ \ \ (5)
+\] where the functions $ f, g_0, \ h_0$ and $ k_0$ are given.   \\\cline{1-1}
 \end{longtabu}
 ~\newline
  \end{center} 
 
-We choose the functions $ f, g_0, \ h_0$ and $ k_0$ so that \[ u_0(x_1,x_2,t) = \tanh\bigg[1-\alpha\bigg(\tan\Phi \big(x_1-\beta\tanh[ \gamma\cos\left(2\pi t\right)]\big)- x_2\bigg)\bigg] \ \ \ \ \ \ \ \ \ \ (6) \] is the exact solution.
+We choose the functions $ f, g_0, \ h_0$ and $ k_0$ so that  \[
+u_0(x_1,x_2,t) = \tanh\bigg[1-\alpha\bigg(\tan\Phi
+\big(x_1-\beta\tanh[ \gamma\cos\left(2\pi
+t\right)]\big)- x_2\bigg)\bigg]
+ \ \ \ \ \ \ \ \ \ \ (6)
+\] is the exact solution.
 
-The solution represents the \char`\"{}usual\char`\"{} tanh profile, whose steepness is controlled by the parameter $ \alpha $ so that for $ \alpha \gg 1 $ the solution approaches a step. The step is oriented at an angle $ \Phi $ against the $ x_1-$-\/axis and its position varies periodically. The parameter $ \beta $ controls the amplitude of the step\textquotesingle{}s lateral displacement, while $ \gamma $ determines the rate at which its position changes. For $ \gamma \gg 1$, the step remains stationary for most of the period and then translates rapidly parallel to the $ x_1-$-\/axis, making this a very challenging problem.
+The solution represents the \char`\"{}usual\char`\"{} tanh profile, whose steepness is controlled by the parameter $ \alpha $ so that for $ \alpha
+\gg 1 $ the solution approaches a step. The step is oriented at an angle $ \Phi $ against the $ x_1-$-\/axis and its position varies periodically. The parameter $ \beta $ controls the amplitude of the step\textquotesingle{}s lateral displacement, while $ \gamma $ determines the rate at which its position changes. For $ \gamma \gg 1$, the step remains stationary for most of the period and then translates rapidly parallel to the $ x_1-$-\/axis, making this a very challenging problem.
 
 \DoxyHorRuler{0}
  \DoxyHorRuler{0}
@@ -88,12 +118,12 @@ In two earlier examples, we commented on two undesirable features of the default
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\textcolor{keyword}{private}:}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{ /// Doc info object}}
-\DoxyCodeLine{\textcolor{comment}{} DocInfo Doc\_info;}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ Doc\ info\ object}}
+\DoxyCodeLine{\textcolor{comment}{}\ DocInfo\ Doc\_info;}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{ /// Suggestion for next timestep (stored to allow it to be written}}
-\DoxyCodeLine{\textcolor{comment}{ /// to (or read from) restart file)}}
-\DoxyCodeLine{\textcolor{comment}{} \textcolor{keywordtype}{double} Next\_dt;}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ Suggestion\ for\ next\ timestep\ (stored\ to\ allow\ it\ to\ be\ written}}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ to\ (or\ read\ from)\ restart\ file)}}
+\DoxyCodeLine{\textcolor{comment}{}\ \textcolor{keywordtype}{double}\ Next\_dt;}
 
 \end{DoxyCodeInclude}
  \mbox{[}We also provide a public access function, {\ttfamily double} {\ttfamily next\+\_\+dt()}, to the suggested next timestep; see \mbox{\hyperlink{index_no_pub}{Do NOT use public member data in any classes}} .\mbox{]}
@@ -104,23 +134,23 @@ We initialise the output label in the {\ttfamily Problem} constructor,
  
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\textcolor{comment}{//========start\_of\_constructor============================================}}
-\DoxyCodeLine{\textcolor{comment}{/// Constructor for UnsteadyHeat problem on deformable ellipse domain.}\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{/// Pass pointer to source function.}}
+\DoxyCodeLine{\textcolor{comment}{///\ Constructor\ for\ UnsteadyHeat\ problem\ on\ deformable\ ellipse\ domain.}\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{///\ Pass\ pointer\ to\ source\ function.}}
 \DoxyCodeLine{\textcolor{comment}{}\textcolor{comment}{//========================================================================}}
-\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class}\ ELEMENT>}
 \DoxyCodeLine{\mbox{\hyperlink{classRefineableUnsteadyHeatProblem_a894f3bd6c1c23c307a736de6898e4e98}{RefineableUnsteadyHeatProblem<ELEMENT>::RefineableUnsteadyHeatProblem}}(}
-\DoxyCodeLine{ UnsteadyHeatEquations<2>::UnsteadyHeatSourceFctPt source\_fct\_pt)}
-\DoxyCodeLine{ : Source\_fct\_pt(source\_fct\_pt)}
+\DoxyCodeLine{\ UnsteadyHeatEquations<2>::UnsteadyHeatSourceFctPt\ source\_fct\_pt)}
+\DoxyCodeLine{\ :\ Source\_fct\_pt(source\_fct\_pt)}
 \DoxyCodeLine{\{}
-\DoxyCodeLine{ }
-\DoxyCodeLine{ \textcolor{comment}{// Setup labels for output}}
-\DoxyCodeLine{ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\ }
+\DoxyCodeLine{\ \textcolor{comment}{//\ Setup\ labels\ for\ output}}
+\DoxyCodeLine{\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Output directory}}
-\DoxyCodeLine{ Doc\_info.set\_directory(\textcolor{stringliteral}{"{}RESLT"{}});}
-\DoxyCodeLine{ }
-\DoxyCodeLine{ \textcolor{comment}{// Output number}}
-\DoxyCodeLine{ Doc\_info.number()=0; }
+\DoxyCodeLine{\ \textcolor{comment}{//\ Output\ directory}}
+\DoxyCodeLine{\ Doc\_info.set\_directory(\textcolor{stringliteral}{"{}RESLT"{}});}
+\DoxyCodeLine{\ }
+\DoxyCodeLine{\ \textcolor{comment}{//\ Output\ number}}
+\DoxyCodeLine{\ Doc\_info.number()=0;\ }
 
 \end{DoxyCodeInclude}
  and set {\ttfamily Next\+\_\+dt} to the initial timestep when the initial condition is assigned in {\ttfamily set\+\_\+initial\+\_\+condition()}\+:
@@ -128,15 +158,15 @@ We initialise the output label in the {\ttfamily Problem} constructor,
  ~\newline
  
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{   \textcolor{comment}{// Choose initial timestep}}
-\DoxyCodeLine{   \textcolor{keywordtype}{double} dt0=0.005;}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Choose\ initial\ timestep}}
+\DoxyCodeLine{\ \ \ \textcolor{keywordtype}{double}\ dt0=0.005;}
 \DoxyCodeLine{}
-\DoxyCodeLine{   \textcolor{comment}{// Initialise timestep -\/-\/ also sets the weights for all timesteppers}}
-\DoxyCodeLine{   \textcolor{comment}{// in the problem.}}
-\DoxyCodeLine{   initialise\_dt(dt0);}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Initialise\ timestep\ -\/-\/\ also\ sets\ the\ weights\ for\ all\ timesteppers}}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ in\ the\ problem.}}
+\DoxyCodeLine{\ \ \ initialise\_dt(dt0);}
 \DoxyCodeLine{}
-\DoxyCodeLine{   \textcolor{comment}{// Use this as the first "{}suggested"{} timestep}}
-\DoxyCodeLine{   Next\_dt=dt0;}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Use\ this\ as\ the\ first\ "{}suggested"{}\ timestep}}
+\DoxyCodeLine{\ \ \ Next\_dt=dt0;}
 
 \end{DoxyCodeInclude}
 
@@ -146,32 +176,32 @@ We modify the timestepping loop so that the adaptive timestepper\textquotesingle
  ~\newline
  
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{ \textcolor{comment}{// Timestepping loop}}
-\DoxyCodeLine{ \textcolor{keywordflow}{while} (problem.time\_pt()-\/>time()<t\_max)}
-\DoxyCodeLine{  \{}
-\DoxyCodeLine{   \textcolor{comment}{// Take timestep with temporal and spatial adaptivity}}
-\DoxyCodeLine{   \textcolor{keywordtype}{double} dt\_new=}
-\DoxyCodeLine{   problem.doubly\_adaptive\_unsteady\_newton\_solve(dt,problem.epsilon\_t(),}
-\DoxyCodeLine{                                                 max\_adapt,first);}
-\DoxyCodeLine{   cout << \textcolor{stringliteral}{"{}Suggested new dt: "{}} << dt\_new << std::endl;}
-\DoxyCodeLine{   dt=dt\_new;}
-\DoxyCodeLine{   }
-\DoxyCodeLine{   \textcolor{comment}{// Store for restart}}
-\DoxyCodeLine{   problem.next\_dt()=dt\_new;}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Timestepping\ loop}}
+\DoxyCodeLine{\ \textcolor{keywordflow}{while}\ (problem.time\_pt()-\/>time()<t\_max)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Take\ timestep\ with\ temporal\ and\ spatial\ adaptivity}}
+\DoxyCodeLine{\ \ \ \textcolor{keywordtype}{double}\ dt\_new=}
+\DoxyCodeLine{\ \ \ problem.doubly\_adaptive\_unsteady\_newton\_solve(dt,problem.epsilon\_t(),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ max\_adapt,first);}
+\DoxyCodeLine{\ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Suggested\ new\ dt:\ "{}}\ <<\ dt\_new\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ dt=dt\_new;}
+\DoxyCodeLine{\ \ \ }
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Store\ for\ restart}}
+\DoxyCodeLine{\ \ \ problem.next\_dt()=dt\_new;}
 \DoxyCodeLine{}
-\DoxyCodeLine{   \textcolor{comment}{// Now we've done the first timestep -\/-\/ don't re-\/set the IC}}
-\DoxyCodeLine{   \textcolor{comment}{// in subsequent steps}}
-\DoxyCodeLine{   first=\textcolor{keyword}{false};}
-\DoxyCodeLine{   }
-\DoxyCodeLine{   \textcolor{comment}{// Reduce the number of spatial adaptations to one per }}
-\DoxyCodeLine{   \textcolor{comment}{// timestep -\/-\/ too scared that the interpolation error will }}
-\DoxyCodeLine{   \textcolor{comment}{// wipe out any further gains...}}
-\DoxyCodeLine{   max\_adapt=1;}
-\DoxyCodeLine{   }
-\DoxyCodeLine{   \textcolor{comment}{//Output solution}}
-\DoxyCodeLine{   problem.doc\_solution();}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Now\ we've\ done\ the\ first\ timestep\ -\/-\/\ don't\ re-\/set\ the\ IC}}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ in\ subsequent\ steps}}
+\DoxyCodeLine{\ \ \ first=\textcolor{keyword}{false};}
+\DoxyCodeLine{\ \ \ }
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Reduce\ the\ number\ of\ spatial\ adaptations\ to\ one\ per\ }}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ timestep\ -\/-\/\ too\ scared\ that\ the\ interpolation\ error\ will\ }}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ wipe\ out\ any\ further\ gains...}}
+\DoxyCodeLine{\ \ \ max\_adapt=1;}
+\DoxyCodeLine{\ \ \ }
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//Output\ solution}}
+\DoxyCodeLine{\ \ \ problem.doc\_solution();}
 \DoxyCodeLine{}
-\DoxyCodeLine{  \}}
+\DoxyCodeLine{\ \ \}}
 
 \end{DoxyCodeInclude}
  Since the {\ttfamily Problem} now has access to the {\ttfamily Doc\+Info} object (and therefore to the label that we use to identify the output files), and to the suggested next timestep, we write both to the restart file, adding brief comments behind the \char`\"{}raw\char`\"{} data.
@@ -180,22 +210,22 @@ We modify the timestepping loop so that the adaptive timestepper\textquotesingle
  
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\textcolor{comment}{//=======start\_of\_dump\_it=================================================}}
-\DoxyCodeLine{\textcolor{comment}{/// Dump the solution to disk}}
+\DoxyCodeLine{\textcolor{comment}{///\ Dump\ the\ solution\ to\ disk}}
 \DoxyCodeLine{\textcolor{comment}{//========================================================================}}
-\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>}
-\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{classRefineableUnsteadyHeatProblem_a1fb939c3f9c258fd49328bb1516ced98}{RefineableUnsteadyHeatProblem<ELEMENT>::dump\_it}}(ofstream\& dump\_file)}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class}\ ELEMENT>}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRefineableUnsteadyHeatProblem_a1fb939c3f9c258fd49328bb1516ced98}{RefineableUnsteadyHeatProblem<ELEMENT>::dump\_it}}(ofstream\&\ dump\_file)}
 \DoxyCodeLine{\{}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Write step number}}
-\DoxyCodeLine{ dump\_file << Doc\_info.number() << \textcolor{stringliteral}{"{} \# step number"{}} << std::endl;}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Write\ step\ number}}
+\DoxyCodeLine{\ dump\_file\ <<\ Doc\_info.number()\ <<\ \textcolor{stringliteral}{"{}\ \#\ step\ number"{}}\ <<\ std::endl;}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Write suggested next timestep}}
-\DoxyCodeLine{ dump\_file << Next\_dt << \textcolor{stringliteral}{"{} \# suggested next timestep"{}} << std::endl;}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Write\ suggested\ next\ timestep}}
+\DoxyCodeLine{\ dump\_file\ <<\ Next\_dt\ <<\ \textcolor{stringliteral}{"{}\ \#\ suggested\ next\ timestep"{}}\ <<\ std::endl;}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Dump the refinement pattern and the generic problem data}}
-\DoxyCodeLine{ Problem::dump(dump\_file);}
-\DoxyCodeLine{  }
-\DoxyCodeLine{\} \textcolor{comment}{// end of dump\_it}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Dump\ the\ refinement\ pattern\ and\ the\ generic\ problem\ data}}
+\DoxyCodeLine{\ Problem::dump(dump\_file);}
+\DoxyCodeLine{\ \ }
+\DoxyCodeLine{\}\ \textcolor{comment}{//\ end\ of\ dump\_it}}
 
 \end{DoxyCodeInclude}
 
@@ -206,37 +236,37 @@ These values are then read during the restart\+:
  
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\textcolor{comment}{//=========start\_of\_restart===============================================}}
-\DoxyCodeLine{\textcolor{comment}{/// Read solution from disk}}
+\DoxyCodeLine{\textcolor{comment}{///\ Read\ solution\ from\ disk}}
 \DoxyCodeLine{\textcolor{comment}{//========================================================================}}
-\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>}
-\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{classRefineableUnsteadyHeatProblem_af36fa71e72852367411e21b50b179625}{RefineableUnsteadyHeatProblem<ELEMENT>::restart}}(ifstream\& restart\_file)}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class}\ ELEMENT>}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRefineableUnsteadyHeatProblem_af36fa71e72852367411e21b50b179625}{RefineableUnsteadyHeatProblem<ELEMENT>::restart}}(ifstream\&\ restart\_file)}
 \DoxyCodeLine{\{}
-\DoxyCodeLine{ \textcolor{comment}{// Read line up to termination sign}}
-\DoxyCodeLine{ \textcolor{keywordtype}{string} input\_string;}
-\DoxyCodeLine{ getline(restart\_file,input\_string,\textcolor{charliteral}{'\#'});}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Read\ line\ up\ to\ termination\ sign}}
+\DoxyCodeLine{\ \textcolor{keywordtype}{string}\ input\_string;}
+\DoxyCodeLine{\ getline(restart\_file,input\_string,\textcolor{charliteral}{'\#'});}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Ignore rest of line}}
-\DoxyCodeLine{ restart\_file.ignore(80,\textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Ignore\ rest\ of\ line}}
+\DoxyCodeLine{\ restart\_file.ignore(80,\textcolor{charliteral}{'\(\backslash\)n'});}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Read in step number}}
-\DoxyCodeLine{ Doc\_info.number()=unsigned(atof(input\_string.c\_str()));}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Read\ in\ step\ number}}
+\DoxyCodeLine{\ Doc\_info.number()=unsigned(atof(input\_string.c\_str()));}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Increment number for next solution}}
-\DoxyCodeLine{ Doc\_info.number()++;}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Increment\ number\ for\ next\ solution}}
+\DoxyCodeLine{\ Doc\_info.number()++;}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Read line up to termination sign}}
-\DoxyCodeLine{ getline(restart\_file,input\_string,\textcolor{charliteral}{'\#'});}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Read\ line\ up\ to\ termination\ sign}}
+\DoxyCodeLine{\ getline(restart\_file,input\_string,\textcolor{charliteral}{'\#'});}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Ignore rest of line}}
-\DoxyCodeLine{ restart\_file.ignore(80,\textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Ignore\ rest\ of\ line}}
+\DoxyCodeLine{\ restart\_file.ignore(80,\textcolor{charliteral}{'\(\backslash\)n'});}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Read suggested next timestep}}
-\DoxyCodeLine{ Next\_dt=double(atof(input\_string.c\_str()));}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Read\ suggested\ next\ timestep}}
+\DoxyCodeLine{\ Next\_dt=double(atof(input\_string.c\_str()));}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Refine the mesh and read in the generic problem data}}
-\DoxyCodeLine{ Problem::read(restart\_file);}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Refine\ the\ mesh\ and\ read\ in\ the\ generic\ problem\ data}}
+\DoxyCodeLine{\ Problem::read(restart\_file);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\} \textcolor{comment}{// end of restart}}
+\DoxyCodeLine{\}\ \textcolor{comment}{//\ end\ of\ restart}}
 
 \end{DoxyCodeInclude}
  \mbox{[}The slightly clumsy read procedure is required to ensure that the comments that follow the \char`\"{}raw\char`\"{} data are ignored.\mbox{]}

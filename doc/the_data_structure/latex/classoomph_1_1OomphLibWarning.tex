@@ -20,6 +20,11 @@ Inheritance diagram for oomph\+::Oomph\+Lib\+Warning\+:\begin{figure}[H]
 \item 
 \mbox{\hyperlink{classoomph_1_1OomphLibWarning_ae85fe4479e40f450a797074549c09ed8}{Oomph\+Lib\+Warning}} (const std\+::string \&warning\+\_\+description, const std\+::string \&function\+\_\+name, const char $\ast$location)
 \begin{DoxyCompactList}\small\item\em Constructor requires the warning description and the function in which the warning occurred. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1OomphLibException}{oomph\+::\+Oomph\+Lib\+Exception}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classoomph_1_1OomphLibException_a92da7bc6b484044587ca2e8db4e1e507}{disable\+\_\+error\+\_\+message}} ()
+\begin{DoxyCompactList}\small\item\em Suppress issueing of the error message in destructor (useful if error is caught successfully!) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -35,6 +40,22 @@ static std\+::ostream $\ast$ \mbox{\hyperlink{classoomph_1_1OomphLibWarning_a9ef
 static unsigned \mbox{\hyperlink{classoomph_1_1OomphLibWarning_a9050b8bcb8654198a681483b9c3d5e27}{Output\+\_\+width}} = 70
 \begin{DoxyCompactList}\small\item\em Width of output. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classoomph_1_1OomphLibException}{oomph\+::\+Oomph\+Lib\+Exception}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1OomphLibException_a2bcc47316fcc96608e79bec5ab49f82b}{Oomph\+Lib\+Exception}} (const std\+::string \&error\+\_\+description, const std\+::string \&function\+\_\+name, const char $\ast$location, const std\+::string \&exception\+\_\+type, std\+::ostream \&exception\+\_\+stream, const unsigned \&output\+\_\+width, bool list\+\_\+trace\+\_\+back)
+\begin{DoxyCompactList}\small\item\em Constructor takes the error description, function name and a location string provided by the OOMPH\+\_\+\+EXCEPTION\+\_\+\+LOCATION macro and combines them into a standard header. The exception type will be the string \char`\"{}\+WARNING\char`\"{} or \char`\"{}\+ERROR\char`\"{} and the message is written to the exception\+\_\+stream, with a specified output\+\_\+width. Optionally provide a traceback of the function calls. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1OomphLibException_a0cc216d83aa854e965c3c8376d2c4d39}{$\sim$\+Oomph\+Lib\+Exception}} ()  throw ()
+\begin{DoxyCompactList}\small\item\em The destructor cannot throw an exception (C++ STL standard) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1OomphLibException}{oomph\+::\+Oomph\+Lib\+Exception}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream $\ast$ \mbox{\hyperlink{classoomph_1_1OomphLibException_ab9177b3f4d969f3e4d102487165103c7}{Exception\+\_\+stream\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em Exception stream to which we write message in destructor. \end{DoxyCompactList}\item 
+std\+::stringstream $\ast$ \mbox{\hyperlink{classoomph_1_1OomphLibException_a94df333a8bdcb4b89eeb516a64a3429e}{Exception\+\_\+stringstream\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em String stream that records the error message. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1OomphLibException_ac374cd3358bf26639860a6778779786d}{Suppress\+\_\+error\+\_\+message}}
+\begin{DoxyCompactList}\small\item\em Boolean to suppress issuing of the error message in destructor (useful if error is caught successfully!) \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}

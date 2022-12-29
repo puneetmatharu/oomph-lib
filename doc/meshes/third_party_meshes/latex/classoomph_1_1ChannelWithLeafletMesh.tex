@@ -24,6 +24,15 @@ virtual \mbox{\hyperlink{classoomph_1_1ChannelWithLeafletMesh_ad767dc06cf65becc2
 \begin{DoxyCompactList}\small\item\em Destructor \+: empty. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classoomph_1_1ChannelWithLeafletDomain}{Channel\+With\+Leaflet\+Domain}} $\ast$ \mbox{\hyperlink{classoomph_1_1ChannelWithLeafletMesh_a149962cb0c0385515c8ed872358c448f}{domain\+\_\+pt}} ()
 \begin{DoxyCompactList}\small\item\em Access function to domain. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1SimpleRectangularQuadMesh}{oomph\+::\+Simple\+Rectangular\+Quad\+Mesh$<$ ELEMENT $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1SimpleRectangularQuadMesh_a8224b55f7d99a36debacb3f4cc293407}{Simple\+Rectangular\+Quad\+Mesh}} (const unsigned \&Nx, const unsigned \&Ny, const double \&Lx, const double \&Ly, Time\+Stepper $\ast$time\+\_\+stepper\+\_\+pt=\&Mesh\+::\+Default\+\_\+\+Time\+Stepper)
+\begin{DoxyCompactList}\small\item\em Constructor\+: Pass number of elements in the horizontal and vertical directions, and the corresponding dimensions. Timestepper defaults to Steady. \end{DoxyCompactList}\item 
+const unsigned \& \mbox{\hyperlink{classoomph_1_1SimpleRectangularQuadMesh_a84f59d74c6d9038231fb138c29420ed7}{nx}} () const
+\begin{DoxyCompactList}\small\item\em Access function for number of elements in x directions. \end{DoxyCompactList}\item 
+const unsigned \& \mbox{\hyperlink{classoomph_1_1SimpleRectangularQuadMesh_a2fb0d63a354817c162e37507673e26e9}{ny}} () const
+\begin{DoxyCompactList}\small\item\em Access function for number of elements in y directions. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -48,7 +57,7 @@ Definition at line \mbox{\hyperlink{channel__with__leaflet__mesh_8template_8h_so
 \index{ChannelWithLeafletMesh@{ChannelWithLeafletMesh}!oomph::ChannelWithLeafletMesh$<$ ELEMENT $>$@{oomph::ChannelWithLeafletMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{ChannelWithLeafletMesh()}{ChannelWithLeafletMesh()}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-\mbox{\hyperlink{classoomph_1_1ChannelWithLeafletMesh}{oomph\+::\+Channel\+With\+Leaflet\+Mesh}}$<$ ELEMENT $>$\+::\mbox{\hyperlink{classoomph_1_1ChannelWithLeafletMesh}{Channel\+With\+Leaflet\+Mesh}} (\begin{DoxyParamCaption}\item[{Geom\+Object $\ast$}]{leaflet\+\_\+pt,  }\item[{const double \&}]{lleft,  }\item[{const double \&}]{lright,  }\item[{const double \&}]{hleaflet,  }\item[{const double \&}]{htot,  }\item[{const unsigned \&}]{nleft,  }\item[{const unsigned \&}]{nright,  }\item[{const unsigned \&}]{ny1,  }\item[{const unsigned \&}]{ny2,  }\item[{Time\+Stepper $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&Mesh\+:\+:Default\+\_\+TimeStepper} }\end{DoxyParamCaption})}
+\mbox{\hyperlink{classoomph_1_1ChannelWithLeafletMesh}{oomph\+::\+Channel\+With\+Leaflet\+Mesh}}$<$ ELEMENT $>$\+::\+Channel\+With\+Leaflet\+Mesh (\begin{DoxyParamCaption}\item[{Geom\+Object $\ast$}]{leaflet\+\_\+pt,  }\item[{const double \&}]{lleft,  }\item[{const double \&}]{lright,  }\item[{const double \&}]{hleaflet,  }\item[{const double \&}]{htot,  }\item[{const unsigned \&}]{nleft,  }\item[{const unsigned \&}]{nright,  }\item[{const unsigned \&}]{ny1,  }\item[{const unsigned \&}]{ny2,  }\item[{Time\+Stepper $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&Mesh\+:\+:Default\+\_\+TimeStepper} }\end{DoxyParamCaption})}
 
 
 
@@ -111,7 +120,7 @@ Referenced by \mbox{\hyperlink{channel__with__leaflet__mesh_8template_8h_source_
 \index{Domain\_pt@{Domain\_pt}!oomph::ChannelWithLeafletMesh$<$ ELEMENT $>$@{oomph::ChannelWithLeafletMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Domain\_pt}{Domain\_pt}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-\mbox{\hyperlink{classoomph_1_1ChannelWithLeafletDomain}{Channel\+With\+Leaflet\+Domain}}$\ast$ \mbox{\hyperlink{classoomph_1_1ChannelWithLeafletMesh}{oomph\+::\+Channel\+With\+Leaflet\+Mesh}}$<$ ELEMENT $>$\+::Domain\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+\mbox{\hyperlink{classoomph_1_1ChannelWithLeafletDomain}{Channel\+With\+Leaflet\+Domain}}$\ast$ \mbox{\hyperlink{classoomph_1_1ChannelWithLeafletMesh}{oomph\+::\+Channel\+With\+Leaflet\+Mesh}}$<$ ELEMENT $>$\+::\+Domain\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -130,7 +139,7 @@ Referenced by \mbox{\hyperlink{channel__with__leaflet__mesh_8template_8cc_source
 \index{Leaflet\_pt@{Leaflet\_pt}!oomph::ChannelWithLeafletMesh$<$ ELEMENT $>$@{oomph::ChannelWithLeafletMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Leaflet\_pt}{Leaflet\_pt}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-Geom\+Object$\ast$ \mbox{\hyperlink{classoomph_1_1ChannelWithLeafletMesh}{oomph\+::\+Channel\+With\+Leaflet\+Mesh}}$<$ ELEMENT $>$\+::Leaflet\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+Geom\+Object$\ast$ \mbox{\hyperlink{classoomph_1_1ChannelWithLeafletMesh}{oomph\+::\+Channel\+With\+Leaflet\+Mesh}}$<$ ELEMENT $>$\+::\+Leaflet\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 

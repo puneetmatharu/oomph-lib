@@ -26,6 +26,13 @@ void \mbox{\hyperlink{classoomph_1_1TimeHarmonicIsotropicElasticityTensor_a607f4
 \begin{DoxyCompactList}\small\item\em Update parameters\+: Specify values of the Poisson\textquotesingle{}s ratio and (optionally) Young\textquotesingle{}s modulus (interpreted as the ratio of the actual Young\textquotesingle{}s modulus to the Young\textquotesingle{}s modulus (or other reference stiffness) used to non-\/dimensionalise stresses and tractions in the governing equations). \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{classoomph_1_1TimeHarmonicIsotropicElasticityTensor_a23e7e1a4c9ad0563378e613adce3c635}{independent\+\_\+component}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
 \begin{DoxyCompactList}\small\item\em Overload the independent coefficient function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1TimeHarmonicElasticityTensor}{oomph\+::\+Time\+Harmonic\+Elasticity\+Tensor}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classoomph_1_1TimeHarmonicElasticityTensor_aa1813e96fe387cfb05ae97892a1fdd84}{$\sim$\+Time\+Harmonic\+Elasticity\+Tensor}} ()
+\begin{DoxyCompactList}\small\item\em Empty virtual Destructor. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1TimeHarmonicElasticityTensor_a9af7ee0d97cb9308092795098b775b11}{operator()}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}, const unsigned \&j, const unsigned \&k, const unsigned \&l) const
+\begin{DoxyCompactList}\small\item\em Return the appropriate independent component via the index translation scheme (const version). \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -42,6 +49,15 @@ double \mbox{\hyperlink{classoomph_1_1TimeHarmonicIsotropicElasticityTensor_afa7
 static const unsigned \mbox{\hyperlink{classoomph_1_1TimeHarmonicIsotropicElasticityTensor_a28d880860aa3de7cfc6ebc07ec0a5ee9}{Static\+Index}} \mbox{[}21\mbox{]}
 \begin{DoxyCompactList}\small\item\em Translation scheme for the isotropic elasticity tensor. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classoomph_1_1TimeHarmonicElasticityTensor}{oomph\+::\+Time\+Harmonic\+Elasticity\+Tensor}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual double \mbox{\hyperlink{classoomph_1_1TimeHarmonicElasticityTensor_a23ac2beedc3d47b22876faaacc0e27a0}{independent\+\_\+component}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Member function that returns the i-\/th independent component of the elasticity tensor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TimeHarmonicElasticityTensor_a825792d8631abc2a23ed5f12c445384c}{range\+\_\+check}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}, const unsigned \&j, const unsigned \&k, const unsigned \&l) const
+\begin{DoxyCompactList}\small\item\em Helper range checking function (Note that this only captures over-\/runs in 3D but errors are likely to be caught in evaluation of the stress and strain tensors anyway...) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1TimeHarmonicElasticityTensor_a1d0ac894717da5725d03a4d18594ef7b}{Time\+Harmonic\+Elasticity\+Tensor}} ()
+\begin{DoxyCompactList}\small\item\em Empty Constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -68,7 +84,7 @@ Definition at line \mbox{\hyperlink{time__harmonic__elasticity__tensor_8h_source
 
 
 
-References \mbox{\hyperlink{time__harmonic__elasticity__tensor_8h_source_l00149}{C}}, \mbox{\hyperlink{quadtree_8h_source_l00061}{oomph\+::\+Quad\+Tree\+Names\+::E}}, and \mbox{\hyperlink{time__harmonic__elasticity__tensor_8h_source_l00211}{set\+\_\+lame\+\_\+coefficients()}}.
+References \mbox{\hyperlink{time__harmonic__elasticity__tensor_8h_source_l00149}{C}}, and \mbox{\hyperlink{time__harmonic__elasticity__tensor_8h_source_l00211}{set\+\_\+lame\+\_\+coefficients()}}.
 
 \mbox{\Hypertarget{classoomph_1_1TimeHarmonicIsotropicElasticityTensor_a3d3e2187be7b2934ff064b3fbf040f6f}\label{classoomph_1_1TimeHarmonicIsotropicElasticityTensor_a3d3e2187be7b2934ff064b3fbf040f6f}} 
 \index{oomph::TimeHarmonicIsotropicElasticityTensor@{oomph::TimeHarmonicIsotropicElasticityTensor}!TimeHarmonicIsotropicElasticityTensor@{TimeHarmonicIsotropicElasticityTensor}}
@@ -86,7 +102,7 @@ Definition at line \mbox{\hyperlink{time__harmonic__elasticity__tensor_8h_source
 
 
 
-References \mbox{\hyperlink{time__harmonic__elasticity__tensor_8h_source_l00149}{C}}, \mbox{\hyperlink{quadtree_8h_source_l00061}{oomph\+::\+Quad\+Tree\+Names\+::E}}, and \mbox{\hyperlink{time__harmonic__elasticity__tensor_8h_source_l00211}{set\+\_\+lame\+\_\+coefficients()}}.
+References \mbox{\hyperlink{time__harmonic__elasticity__tensor_8h_source_l00149}{C}}, and \mbox{\hyperlink{time__harmonic__elasticity__tensor_8h_source_l00211}{set\+\_\+lame\+\_\+coefficients()}}.
 
 
 
@@ -147,7 +163,7 @@ Definition at line \mbox{\hyperlink{time__harmonic__elasticity__tensor_8h_source
 
 
 
-References \mbox{\hyperlink{time__harmonic__elasticity__tensor_8h_source_l00149}{C}}, \mbox{\hyperlink{quadtree_8h_source_l00061}{oomph\+::\+Quad\+Tree\+Names\+::E}}, and \mbox{\hyperlink{time__harmonic__elasticity__tensor_8h_source_l00211}{set\+\_\+lame\+\_\+coefficients()}}.
+References \mbox{\hyperlink{time__harmonic__elasticity__tensor_8h_source_l00149}{C}}, and \mbox{\hyperlink{time__harmonic__elasticity__tensor_8h_source_l00211}{set\+\_\+lame\+\_\+coefficients()}}.
 
 
 
@@ -174,8 +190,8 @@ Referenced by \mbox{\hyperlink{time__harmonic__elasticity__tensor_8h_source_l002
 
 {\bfseries Initial value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{= \{}
-\DoxyCodeLine{    1, 0, 2, 3, 0, 1, 0, 0, 2, 0, 0, 0, 3, 0, 0, 0, 0, 2, 3, 0, 1\}}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ 1,\ 0,\ 2,\ 3,\ 0,\ 1,\ 0,\ 0,\ 2,\ 0,\ 0,\ 0,\ 3,\ 0,\ 0,\ 0,\ 0,\ 2,\ 3,\ 0,\ 1\}}
 
 \end{DoxyCode}
 

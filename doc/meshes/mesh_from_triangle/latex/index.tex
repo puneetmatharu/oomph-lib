@@ -54,7 +54,7 @@ To create the mesh from a given input file the command is
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{./triangle filename.poly}
+\DoxyCodeLine{./triangle\ filename.poly}
 
 \end{DoxyCode}
 
@@ -63,7 +63,7 @@ If the domain contains a hole the argument {\ttfamily -\/pc} must be added, i.\+
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{./triangle -\/pc filename.poly }
+\DoxyCodeLine{./triangle\ -\/pc\ filename.poly\ }
 
 \end{DoxyCode}
 
@@ -96,31 +96,31 @@ To illustrate the procedure, we demonstrate how to generate a mesh for the recta
 
 The input file, {\ttfamily box\+\_\+hole.\+poly}, for this domain is\+: 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\# A box with eight points in 2D, no attributes,no boundary marker}
-\DoxyCodeLine{8 2 0 0}
-\DoxyCodeLine{\# Outer box has these vertices}
-\DoxyCodeLine{1 0 0 }
-\DoxyCodeLine{2 0 3 }
-\DoxyCodeLine{3 3 0 }
-\DoxyCodeLine{4 3 3 }
-\DoxyCodeLine{\# Inner square has these vertices:}
-\DoxyCodeLine{5 1 1 }
-\DoxyCodeLine{6 1 2 }
-\DoxyCodeLine{7 2 1 }
-\DoxyCodeLine{8 2 2 }
-\DoxyCodeLine{\# Eight segments with boundary markers.}
-\DoxyCodeLine{8 1 }
-\DoxyCodeLine{1 1 2 1      \# Outer box is boundary 1}
-\DoxyCodeLine{2 2 4 1      }
-\DoxyCodeLine{3 3 4 1      }
-\DoxyCodeLine{4 3 1 1      }
-\DoxyCodeLine{5 5 7 2      \# Inner box is boundary 2}
-\DoxyCodeLine{6 7 8 2 }
-\DoxyCodeLine{7 8 6 2}
-\DoxyCodeLine{8 6 5 2}
-\DoxyCodeLine{\# One hole in the middle of the inner square.}
+\DoxyCodeLine{\#\ A\ box\ with\ eight\ points\ in\ 2D,\ no\ attributes,no\ boundary\ marker}
+\DoxyCodeLine{8\ 2\ 0\ 0}
+\DoxyCodeLine{\#\ Outer\ box\ has\ these\ vertices}
+\DoxyCodeLine{1\ 0\ 0\ }
+\DoxyCodeLine{2\ 0\ 3\ }
+\DoxyCodeLine{3\ 3\ 0\ }
+\DoxyCodeLine{4\ 3\ 3\ }
+\DoxyCodeLine{\#\ Inner\ square\ has\ these\ vertices:}
+\DoxyCodeLine{5\ 1\ 1\ }
+\DoxyCodeLine{6\ 1\ 2\ }
+\DoxyCodeLine{7\ 2\ 1\ }
+\DoxyCodeLine{8\ 2\ 2\ }
+\DoxyCodeLine{\#\ Eight\ segments\ with\ boundary\ markers.}
+\DoxyCodeLine{8\ 1\ }
+\DoxyCodeLine{1\ 1\ 2\ 1\ \ \ \ \ \ \#\ Outer\ box\ is\ boundary\ 1}
+\DoxyCodeLine{2\ 2\ 4\ 1\ \ \ \ \ \ }
+\DoxyCodeLine{3\ 3\ 4\ 1\ \ \ \ \ \ }
+\DoxyCodeLine{4\ 3\ 1\ 1\ \ \ \ \ \ }
+\DoxyCodeLine{5\ 5\ 7\ 2\ \ \ \ \ \ \#\ Inner\ box\ is\ boundary\ 2}
+\DoxyCodeLine{6\ 7\ 8\ 2\ }
+\DoxyCodeLine{7\ 8\ 6\ 2}
+\DoxyCodeLine{8\ 6\ 5\ 2}
+\DoxyCodeLine{\#\ One\ hole\ in\ the\ middle\ of\ the\ inner\ square.}
 \DoxyCodeLine{1}
-\DoxyCodeLine{1 1.5 1.5 }
+\DoxyCodeLine{1\ 1.5\ 1.5\ }
 
 \end{DoxyCodeInclude}
 
@@ -143,42 +143,42 @@ When run as {\ttfamily  ./triangle -\/pc -\/a0.\+1 -\/q35 box\+\_\+hole.\+poly }
 
  
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{  \textcolor{comment}{//============start\_of\_triangle\_class===================================}}
-\DoxyCodeLine{\textcolor{comment}{  /// Triangle mesh build with the help of the scaffold mesh coming}\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{  /// from the triangle mesh generator Triangle.}}
-\DoxyCodeLine{\textcolor{comment}{  /// http://www.cs.cmu.edu/\string~quake/triangle.html}}
-\DoxyCodeLine{\textcolor{comment}{}  \textcolor{comment}{//======================================================================}}
-\DoxyCodeLine{  \textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>}
-\DoxyCodeLine{  \textcolor{keyword}{class }TriangleMesh : \textcolor{keyword}{public} \textcolor{keyword}{virtual} TriangleMeshBase}
-\DoxyCodeLine{  \{}
-\DoxyCodeLine{  \textcolor{keyword}{public}:\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{    /// Empty constructor}}
-\DoxyCodeLine{\textcolor{comment}{}    TriangleMesh()}
-\DoxyCodeLine{    \{}
-\DoxyCodeLine{\textcolor{preprocessor}{\#ifdef OOMPH\_HAS\_TRIANGLE\_LIB}}
-\DoxyCodeLine{      \textcolor{comment}{// Using this constructor no Triangulateio object is built}}
-\DoxyCodeLine{      Triangulateio\_exists = \textcolor{keyword}{false};}
-\DoxyCodeLine{      \textcolor{comment}{// By default allow the automatic creation of vertices along the}}
-\DoxyCodeLine{      \textcolor{comment}{// boundaries by Triangle}}
-\DoxyCodeLine{      this-\/>Allow\_automatic\_creation\_of\_vertices\_on\_boundaries = \textcolor{keyword}{true};}
-\DoxyCodeLine{\textcolor{preprocessor}{\#ifdef OOMPH\_HAS\_MPI}}
-\DoxyCodeLine{      \textcolor{comment}{// Initialize the flag to indicate this is the first time to}}
-\DoxyCodeLine{      \textcolor{comment}{// compute the holes left by the halo elements}}
-\DoxyCodeLine{      First\_time\_compute\_holes\_left\_by\_halo\_elements = \textcolor{keyword}{true};}
-\DoxyCodeLine{\textcolor{preprocessor}{\#endif }\textcolor{comment}{// \#ifdef OOMPH\_HAS\_MPI}}
+\DoxyCodeLine{\ \ \textcolor{comment}{//============start\_of\_triangle\_class===================================}}
+\DoxyCodeLine{\textcolor{comment}{\ \ ///\ Triangle\ mesh\ build\ with\ the\ help\ of\ the\ scaffold\ mesh\ coming}\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ ///\ from\ the\ triangle\ mesh\ generator\ Triangle.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ ///\ http://www.cs.cmu.edu/\string~quake/triangle.html}}
+\DoxyCodeLine{\textcolor{comment}{}\ \ \textcolor{comment}{//======================================================================}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ ELEMENT>}
+\DoxyCodeLine{\ \ \textcolor{keyword}{class\ }TriangleMesh\ :\ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ TriangleMeshBase}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{public}:\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ ///\ Empty\ constructor}}
+\DoxyCodeLine{\textcolor{comment}{}\ \ \ \ TriangleMesh()}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#ifdef\ OOMPH\_HAS\_TRIANGLE\_LIB}}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{comment}{//\ Using\ this\ constructor\ no\ Triangulateio\ object\ is\ built}}
+\DoxyCodeLine{\ \ \ \ \ \ Triangulateio\_exists\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{comment}{//\ By\ default\ allow\ the\ automatic\ creation\ of\ vertices\ along\ the}}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{comment}{//\ boundaries\ by\ Triangle}}
+\DoxyCodeLine{\ \ \ \ \ \ this-\/>Allow\_automatic\_creation\_of\_vertices\_on\_boundaries\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\textcolor{preprocessor}{\#ifdef\ OOMPH\_HAS\_MPI}}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{comment}{//\ Initialize\ the\ flag\ to\ indicate\ this\ is\ the\ first\ time\ to}}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{comment}{//\ compute\ the\ holes\ left\ by\ the\ halo\ elements}}
+\DoxyCodeLine{\ \ \ \ \ \ First\_time\_compute\_holes\_left\_by\_halo\_elements\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \#ifdef\ OOMPH\_HAS\_MPI}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{preprocessor}{\#endif}}
 \DoxyCodeLine{}
-\DoxyCodeLine{      \textcolor{comment}{// Mesh can only be built with 2D Telements.}}
-\DoxyCodeLine{      MeshChecker::assert\_geometric\_element<TElementGeometricBase, ELEMENT>(2);}
-\DoxyCodeLine{    \}}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{comment}{//\ Mesh\ can\ only\ be\ built\ with\ 2D\ Telements.}}
+\DoxyCodeLine{\ \ \ \ \ \ MeshChecker::assert\_geometric\_element<TElementGeometricBase,\ ELEMENT>(2);}
+\DoxyCodeLine{\ \ \ \ \}}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{    /// Constructor with the input files}}
-\DoxyCodeLine{\textcolor{comment}{}    TriangleMesh(}
-\DoxyCodeLine{      \textcolor{keyword}{const} std::string\& node\_file\_name,}
-\DoxyCodeLine{      \textcolor{keyword}{const} std::string\& element\_file\_name,}
-\DoxyCodeLine{      \textcolor{keyword}{const} std::string\& poly\_file\_name,}
-\DoxyCodeLine{      TimeStepper* time\_stepper\_pt = \&Mesh::Default\_TimeStepper,}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ ///\ Constructor\ with\ the\ input\ files}}
+\DoxyCodeLine{\textcolor{comment}{}\ \ \ \ TriangleMesh(}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ node\_file\_name,}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ element\_file\_name,}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ poly\_file\_name,}
+\DoxyCodeLine{\ \ \ \ \ \ TimeStepper*\ time\_stepper\_pt\ =\ \&Mesh::Default\_TimeStepper,}
 
 \end{DoxyCodeInclude}
  \DoxyHorRuler{0}
@@ -190,25 +190,25 @@ The code expects the names of {\ttfamily $\ast$}.{\ttfamily node}, $\ast$.{\ttfa
 
  
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{keywordtype}{int} \mbox{\hyperlink{mesh__from__triangle__poisson_8cc_a0ddf1224851353fc92bfbff6f499fa97}{main}}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char}* argv[])}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{mesh__from__triangle__navier__stokes_8cc_a0ddf1224851353fc92bfbff6f499fa97}{main}}(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}*\ argv[])}
 \DoxyCodeLine{\{}
-\DoxyCodeLine{ \textcolor{comment}{// Store command line arguments}}
-\DoxyCodeLine{ CommandLineArgs::setup(argc,argv);}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Store\ command\ line\ arguments}}
+\DoxyCodeLine{\ CommandLineArgs::setup(argc,argv);}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Check number of command line arguments: Need exactly two.}}
-\DoxyCodeLine{ \textcolor{keywordflow}{if} (argc!=4)}
-\DoxyCodeLine{  \{}
-\DoxyCodeLine{   std::string error\_message =}
-\DoxyCodeLine{    \textcolor{stringliteral}{"{}Wrong number of command line arguments.\(\backslash\)n"{}};}
-\DoxyCodeLine{   error\_message +=}
-\DoxyCodeLine{    \textcolor{stringliteral}{"{}Must specify the following file names  \(\backslash\)n"{}};}
-\DoxyCodeLine{   error\_message += }
-\DoxyCodeLine{    \textcolor{stringliteral}{"{}filename.node then filename.ele then filename.poly\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Check\ number\ of\ command\ line\ arguments:\ Need\ exactly\ two.}}
+\DoxyCodeLine{\ \textcolor{keywordflow}{if}\ (argc!=4)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ std::string\ error\_message\ =}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}Wrong\ number\ of\ command\ line\ arguments.\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \ error\_message\ +=}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}Must\ specify\ the\ following\ file\ names\ \ \(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \ error\_message\ +=\ }
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}filename.node\ then\ filename.ele\ then\ filename.poly\(\backslash\)n"{}};}
 \DoxyCodeLine{}
-\DoxyCodeLine{   \textcolor{keywordflow}{throw} OomphLibError(error\_message,}
-\DoxyCodeLine{                       OOMPH\_CURRENT\_FUNCTION,}
-\DoxyCodeLine{                       OOMPH\_EXCEPTION\_LOCATION);}
-\DoxyCodeLine{  \}}
+\DoxyCodeLine{\ \ \ \textcolor{keywordflow}{throw}\ OomphLibError(error\_message,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ OOMPH\_CURRENT\_FUNCTION,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ OOMPH\_EXCEPTION\_LOCATION);}
+\DoxyCodeLine{\ \ \}}
 
 \end{DoxyCodeInclude}
  The names of these files are then passed to the mesh constructor. Since the rest of the \href{../../../../demo_drivers/meshing/mesh_from_triangle/mesh_from_triangle_poisson.cc}{\texttt{ driver code }} is identical to that in the \href{../../../../doc/poisson/two_d_poisson/html/index.html}{\texttt{ corresponding example with a structured mesh}}, we do not provide a detailed listing but simply show the plot of the computed results, together with the tanh-\/shaped exact solution of the problem\+:

@@ -24,6 +24,15 @@ std\+::complex$<$ double $>$ \mbox{\hyperlink{classoomph_1_1BermudezPMLMappingAn
 \begin{DoxyCompactList}\small\item\em Overwrite the pure PML mapping coefficient function to return the mapping function proposed by Bermudez et al. \end{DoxyCompactList}\item 
 std\+::complex$<$ double $>$ \mbox{\hyperlink{classoomph_1_1BermudezPMLMappingAndTransformedCoordinate_a3664f16b314b4d72a82d5c0acc8a36de}{transformed\+\_\+coordinate}} (const double \&nu\+\_\+i, const double \&pml\+\_\+width\+\_\+i, const double \&pml\+\_\+inner\+\_\+boundary, const double \&k\+\_\+squared)
 \begin{DoxyCompactList}\small\item\em Overwrite the pure PML mapping coefficient function to return the transformed coordinate proposed by Bermudez et al. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1PMLMappingAndTransformedCoordinate}{oomph\+::\+PMLMapping\+And\+Transformed\+Coordinate}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1PMLMappingAndTransformedCoordinate_a48dcef4398f40ea5fea58153d5de74f0}{PMLMapping\+And\+Transformed\+Coordinate}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor (empty) \end{DoxyCompactList}\item 
+virtual std\+::complex$<$ double $>$ \mbox{\hyperlink{classoomph_1_1PMLMappingAndTransformedCoordinate_a4aa777dd66ec1e2c0bf15c68446148ac}{gamma}} (const double \&nu\+\_\+i, const double \&pml\+\_\+width\+\_\+i, const double \&k\+\_\+squared)=0
+\begin{DoxyCompactList}\small\item\em Pure virtual to return PML mapping gamma, where gamma is the $d\tilde x / d x$ as function of $\nu$ where $\nu = x - h$ where h is the vector from the origin to the start of the PML. \end{DoxyCompactList}\item 
+virtual std\+::complex$<$ double $>$ \mbox{\hyperlink{classoomph_1_1PMLMappingAndTransformedCoordinate_a462de87e501ec68731181d87c0faf473}{transformed\+\_\+coordinate}} (const double \&nu\+\_\+i, const double \&pml\+\_\+width\+\_\+i, const double \&pml\+\_\+inner\+\_\+boundary, const double \&k\+\_\+squared)=0
+\begin{DoxyCompactList}\small\item\em Pure virtual to return PML transformed coordinate, also known as $d\tilde x $ as function of $\nu$ where $\nu = x - h$ where h is the vector from the origin to the start of the PML. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}

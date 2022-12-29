@@ -41,7 +41,7 @@ We obviously try to avoid interface changes as much as possible as they may forc
 \begin{DoxyEnumerate}
 \item The previously chosen name turned out to be too ambiguous. For instance, the change from 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{Problem::actions\_before\_solve() }
+\DoxyCodeLine{Problem::actions\_before\_solve()\ }
 
 \end{DoxyCode}
  to 
@@ -68,12 +68,12 @@ We obviously try to avoid interface changes as much as possible as they may forc
 
 \item The order of the function arguments violated our own coding conventions. For instance, 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{FiniteElement::get\_x(Vector<double>\& s, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned}\& t,...) }
+\DoxyCodeLine{FiniteElement::get\_x(Vector<double>\&\ s,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\&\ t,...)\ }
 
 \end{DoxyCode}
  had to be changed to 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{FiniteElement::get\_x(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned}\& t, Vector<double>\& s,...) }
+\DoxyCodeLine{FiniteElement::get\_x(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\&\ t,\ Vector<double>\&\ s,...)\ }
 
 \end{DoxyCode}
  because the discrete \char`\"{}time\char`\"{} argument always comes first. ~\newline
@@ -87,24 +87,24 @@ Here is an example of a function in which the order of the two unsigned argument
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{comment}{// Function of two unsigned arguments whose order has changed}}
-\DoxyCodeLine{\textcolor{comment}{// since the previous release}}
-\DoxyCodeLine{\textcolor{keywordtype}{void} SomeClass::some\_function(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned}\& t, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned}\& i)}
+\DoxyCodeLine{\textcolor{comment}{//\ Function\ of\ two\ unsigned\ arguments\ whose\ order\ has\ changed}}
+\DoxyCodeLine{\textcolor{comment}{//\ since\ the\ previous\ release}}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ SomeClass::some\_function(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\&\ t,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\&\ i)}
 \DoxyCodeLine{\{}
 \DoxyCodeLine{}
-\DoxyCodeLine{  [...]}
+\DoxyCodeLine{\ \ [...]}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{preprocessor}{ \#ifdef WARN\_ABOUT\_SUBTLY\_CHANGED\_OOMPH\_INTERFACES}}
+\DoxyCodeLine{\textcolor{preprocessor}{\ \#ifdef\ WARN\_ABOUT\_SUBTLY\_CHANGED\_OOMPH\_INTERFACES}}
 \DoxyCodeLine{}
-\DoxyCodeLine{   \textcolor{comment}{// Throw an oomph-\/lib warning to alert the user to the change}}
-\DoxyCodeLine{   \textcolor{comment}{// in the order of the arguments}}
-\DoxyCodeLine{   OomphLibWarning(\textcolor{stringliteral}{"{}Warning: Order of interfaces has changed"{}},}
-\DoxyCodeLine{                   \textcolor{stringliteral}{"{}SomeClass::some\_function(...)"{}},}
-\DoxyCodeLine{                   OOMPH\_EXCEPTION\_LOCATION);}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Throw\ an\ oomph-\/lib\ warning\ to\ alert\ the\ user\ to\ the\ change}}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ in\ the\ order\ of\ the\ arguments}}
+\DoxyCodeLine{\ \ \ OomphLibWarning(\textcolor{stringliteral}{"{}Warning:\ Order\ of\ interfaces\ has\ changed"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}SomeClass::some\_function(...)"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ OOMPH\_EXCEPTION\_LOCATION);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{preprocessor}{ \#endif}}
+\DoxyCodeLine{\textcolor{preprocessor}{\ \#endif}}
 \DoxyCodeLine{}
-\DoxyCodeLine{  [...]}
+\DoxyCodeLine{\ \ [...]}
 \DoxyCodeLine{}
 \DoxyCodeLine{\}}
 
@@ -124,7 +124,7 @@ Obviously, you should only compile the library with {\ttfamily WARN\+\_\+\+ABOUT
 \item Upgraded all python scripts to python3. ~\newline
 ~\newline
 
-\item Included {\ttfamily CGAL}, {\ttfamily GMG}, {\ttfamily MPFR} and {\ttfamily Boost} into the third-\/party libraries that are shipped and automatically installed with {\ttfamily oomph-\/lib}. Existing installations can be used instead (via suitable flags in the configure options), but {\ttfamily oomph-\/lib} is only guaranteed to work with the versions provided. This functionality does not work on mac\+OS so mac\+OS users must add the {\ttfamily --enable-\/suppress-\/cgal-\/build} flag to their configuration options to ensure that this doesn\textquotesingle{}t break their build. ~\newline
+\item Included {\ttfamily CGAL}, {\ttfamily GMG}, {\ttfamily MPFR} and {\ttfamily Boost} into the third-\/party libraries that are shipped and automatically installed with {\ttfamily oomph-\/lib}. Existing installations can be used instead (via suitable flags in the configure options), but {\ttfamily oomph-\/lib} is only guaranteed to work with the versions provided. This functionality does not work on mac\+OS so mac\+OS users must add the {\ttfamily -\/-\/enable-\/suppress-\/cgal-\/build} flag to their configuration options to ensure that this doesn\textquotesingle{}t break their build. ~\newline
 ~\newline
  They are used for more efficient implementations of {\ttfamily locate\+\_\+zeta(...)} functionality. ~\newline
 ~\newline
@@ -298,7 +298,7 @@ Obviously, you should only compile the library with {\ttfamily WARN\+\_\+\+ABOUT
 \begin{DoxyItemize}
 \item 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{SolidFiniteElement::add\_jacobian\_for\_solid\_ic() }
+\DoxyCodeLine{SolidFiniteElement::add\_jacobian\_for\_solid\_ic()\ }
 
 \end{DoxyCode}
  becomes 
@@ -345,10 +345,10 @@ Obviously, you should only compile the library with {\ttfamily WARN\+\_\+\+ABOUT
 ~\newline
  
 \begin{DoxyCode}{0}
-\DoxyCodeLine{NavierStokesEquations<DIM>::get\_body\_force\_nst(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& time,}
-\DoxyCodeLine{                                               \textcolor{keyword}{const} Vector<double> \&s,}
-\DoxyCodeLine{                                               \textcolor{keyword}{const} Vector<double> \&x,}
-\DoxyCodeLine{                                               Vector<double> \&result)}
+\DoxyCodeLine{NavierStokesEquations<DIM>::get\_body\_force\_nst(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ time,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Vector<double>\ \&s,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Vector<double>\ \&x,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector<double>\ \&result)}
 
 \end{DoxyCode}
  ~\newline
@@ -357,11 +357,11 @@ Obviously, you should only compile the library with {\ttfamily WARN\+\_\+\+ABOUT
 ~\newline
  
 \begin{DoxyCode}{0}
-\DoxyCodeLine{NavierStokesEquations<DIM>::get\_body\_force\_nst(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& time,}
-\DoxyCodeLine{                                               \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned}\& ipt,}
-\DoxyCodeLine{                                               \textcolor{keyword}{const} Vector<double> \&s,}
-\DoxyCodeLine{                                               \textcolor{keyword}{const} Vector<double> \&x,}
-\DoxyCodeLine{                                               Vector<double> \&result)}
+\DoxyCodeLine{NavierStokesEquations<DIM>::get\_body\_force\_nst(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ time,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\&\ ipt,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Vector<double>\ \&s,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Vector<double>\ \&x,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector<double>\ \&result)}
 
 \end{DoxyCode}
  ~\newline
@@ -409,14 +409,14 @@ Obviously, you should only compile the library with {\ttfamily WARN\+\_\+\+ABOUT
 ~\newline
  
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keywordtype}{void} set\_f\_preconditioner(Preconditioner\& new\_f\_preconditioner)}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ set\_f\_preconditioner(Preconditioner\&\ new\_f\_preconditioner)}
 
 \end{DoxyCode}
  and ~\newline
 ~\newline
  
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keywordtype}{void} set\_p\_preconditioner(Preconditioner\& new\_f\_preconditioner)}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ set\_p\_preconditioner(Preconditioner\&\ new\_f\_preconditioner)}
 
 \end{DoxyCode}
  ~\newline
@@ -425,7 +425,7 @@ Obviously, you should only compile the library with {\ttfamily WARN\+\_\+\+ABOUT
 ~\newline
  
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keywordtype}{void} set\_f\_preconditioner(Preconditioner* new\_f\_preconditioner\_pt)}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ set\_f\_preconditioner(Preconditioner*\ new\_f\_preconditioner\_pt)}
 
 \end{DoxyCode}
  ~\newline
@@ -434,7 +434,7 @@ Obviously, you should only compile the library with {\ttfamily WARN\+\_\+\+ABOUT
 ~\newline
  
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keywordtype}{void} set\_p\_preconditioner(Preconditioner* new\_f\_preconditioner\_pt)}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ set\_p\_preconditioner(Preconditioner*\ new\_f\_preconditioner\_pt)}
 
 \end{DoxyCode}
  ~\newline
@@ -537,7 +537,7 @@ Obviously, you should only compile the library with {\ttfamily WARN\+\_\+\+ABOUT
 \end{DoxyItemize}~\newline
 ~\newline
 
-\item MPI capability is now fully integrated into the library (rather than being kept in a separate mpi directory/sub-\/library) but not yet complete (or documented). Segments of code that involve MPI calls are surrounded by {\ttfamily \#ifdef} {\ttfamily OOMPH\+\_\+\+HAS\+\_\+\+MPI} {\ttfamily }\mbox{[}...\mbox{]} {\ttfamily \#endif}. They are only compiled if the {\ttfamily --enable-\/\+MPI} flag is specified at the configure stage. ~\newline
+\item MPI capability is now fully integrated into the library (rather than being kept in a separate mpi directory/sub-\/library) but not yet complete (or documented). Segments of code that involve MPI calls are surrounded by {\ttfamily \#ifdef} {\ttfamily OOMPH\+\_\+\+HAS\+\_\+\+MPI} {\ttfamily }\mbox{[}...\mbox{]} {\ttfamily \#endif}. They are only compiled if the {\ttfamily -\/-\/enable-\/\+MPI} flag is specified at the configure stage. ~\newline
  ~\newline
 ~\newline
 
@@ -546,12 +546,12 @@ Obviously, you should only compile the library with {\ttfamily WARN\+\_\+\+ABOUT
 
 \item {\ttfamily oomph-\/lib\textquotesingle{}s} build script, {\ttfamily autogen}.{\ttfamily sh} now allows for parallel compilation. This can lead to considerable speedups on multicore processors that are now widely available. To build {\ttfamily oomph-\/lib} in parallel, using up four threads run {\ttfamily autogen}.{\ttfamily sh} as follows 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{./autogen.sh -\/-\/jobs=4 }
+\DoxyCodeLine{./autogen.sh\ -\/-\/jobs=4\ }
 
 \end{DoxyCode}
  or (if you are re-\/building) 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{./autogen.sh -\/-\/jobs=4 -\/-\/rebuild}
+\DoxyCodeLine{./autogen.sh\ -\/-\/jobs=4\ -\/-\/rebuild}
 
 \end{DoxyCode}
  ~\newline

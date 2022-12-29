@@ -32,6 +32,19 @@ const double \& \mbox{\hyperlink{classoomph_1_1DeviatoricIsotropicElasticityTens
 \begin{DoxyCompactList}\small\item\em Accessor function for the first lame parameter. \end{DoxyCompactList}\item 
 const double \& \mbox{\hyperlink{classoomph_1_1DeviatoricIsotropicElasticityTensor_a40f828fa68cbacfaa4abad018dd96bce}{mu}} () const
 \begin{DoxyCompactList}\small\item\em Accessor function for the second lame parameter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1ElasticityTensor}{oomph\+::\+Elasticity\+Tensor}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classoomph_1_1ElasticityTensor_a33d3d0462cfe9c230444ceb27db744d8}{$\sim$\+Elasticity\+Tensor}} ()
+\begin{DoxyCompactList}\small\item\em Empty virtual Destructor. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1ElasticityTensor_a60e0ebb9f03c21d11aa874dfdf5437ae}{operator()}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}, const unsigned \&j, const unsigned \&k, const unsigned \&l) const
+\begin{DoxyCompactList}\small\item\em Return the appropriate independent component via the index translation scheme (const version). \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1ElasticityTensor_ab68e4386f02f9e39095d879e4ec96df5}{set\+\_\+value}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}, const unsigned \&j, const unsigned \&k, const unsigned \&l, const double \&value)
+\begin{DoxyCompactList}\small\item\em Allow the values to be set (virtual function that must be overloaded if values can be set directly. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1ElasticityTensor_a33d3d0462cfe9c230444ceb27db744d8}{$\sim$\+Elasticity\+Tensor}} ()
+\begin{DoxyCompactList}\small\item\em Empty virtual Destructor. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1ElasticityTensor_a60e0ebb9f03c21d11aa874dfdf5437ae}{operator()}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}, const unsigned \&j, const unsigned \&k, const unsigned \&l) const
+\begin{DoxyCompactList}\small\item\em Return the appropriate independent component via the index translation scheme (const version). \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -52,6 +65,26 @@ double \mbox{\hyperlink{classoomph_1_1DeviatoricIsotropicElasticityTensor_aafe9b
 static const unsigned \mbox{\hyperlink{classoomph_1_1DeviatoricIsotropicElasticityTensor_a073434d42a9e9f9520abe64c3e720337}{Static\+Index}} \mbox{[}21\mbox{]}
 \begin{DoxyCompactList}\small\item\em Translation scheme for the deviatoric isotropic elasticity tensor. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classoomph_1_1ElasticityTensor}{oomph\+::\+Elasticity\+Tensor}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual double \mbox{\hyperlink{classoomph_1_1ElasticityTensor_a84b2a9b7a447cf88b2d6b98b5e6e7bd5}{independent\+\_\+component}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Member function that returns the i-\/th independent component of the elasticity tensor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1ElasticityTensor_ace883403848c5a394cf9cb07861361d1}{range\+\_\+check}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}, const unsigned \&j, const unsigned \&k, const unsigned \&l) const
+\begin{DoxyCompactList}\small\item\em Helper range checking function (Note that this only captures over-\/runs in 3D but errors are likely to be caught in evaluation of the stress and strain tensors anyway...) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1ElasticityTensor_a94feb893f8c4180307e18aa341c046b1}{Elasticity\+Tensor}} ()
+\begin{DoxyCompactList}\small\item\em Empty Constructor. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classoomph_1_1ElasticityTensor_a84b2a9b7a447cf88b2d6b98b5e6e7bd5}{independent\+\_\+component}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Member function that returns the i-\/th independent component of the elasticity tensor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1ElasticityTensor_ace883403848c5a394cf9cb07861361d1}{range\+\_\+check}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}, const unsigned \&j, const unsigned \&k, const unsigned \&l) const
+\begin{DoxyCompactList}\small\item\em Helper range checking function (Note that this only captures over-\/runs in 3D but errors are likely to be caught in evaluation of the stress and strain tensors anyway...) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1ElasticityTensor_a94feb893f8c4180307e18aa341c046b1}{Elasticity\+Tensor}} ()
+\begin{DoxyCompactList}\small\item\em Empty Constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1ElasticityTensor}{oomph\+::\+Elasticity\+Tensor}}}
+\begin{DoxyCompactItemize}
+\item 
+static const unsigned \mbox{\hyperlink{classoomph_1_1ElasticityTensor_a6be831fdf71155ccbab14287d30587f1}{Index}} \mbox{[}3\mbox{]}\mbox{[}3\mbox{]}\mbox{[}3\mbox{]}\mbox{[}3\mbox{]}
+\begin{DoxyCompactList}\small\item\em Translation table from the four indices to the corresponding independent component. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -78,7 +111,7 @@ Definition at line \mbox{\hyperlink{poroelasticity_2elasticity__tensor_8h_source
 
 
 
-References \mbox{\hyperlink{poroelasticity_2elasticity__tensor_8h_source_l00226}{C}}, \mbox{\hyperlink{quadtree_8h_source_l00061}{oomph\+::\+Quad\+Tree\+Names\+::E}}, \mbox{\hyperlink{poroelasticity_2elasticity__tensor_8h_source_l00300}{lambda()}}, \mbox{\hyperlink{poroelasticity_2elasticity__tensor_8h_source_l00306}{mu()}}, and \mbox{\hyperlink{poroelasticity_2elasticity__tensor_8h_source_l00313}{set\+\_\+lame\+\_\+coefficients()}}.
+References \mbox{\hyperlink{poroelasticity_2elasticity__tensor_8h_source_l00226}{C}}, \mbox{\hyperlink{poroelasticity_2elasticity__tensor_8h_source_l00300}{lambda()}}, \mbox{\hyperlink{poroelasticity_2elasticity__tensor_8h_source_l00306}{mu()}}, and \mbox{\hyperlink{poroelasticity_2elasticity__tensor_8h_source_l00313}{set\+\_\+lame\+\_\+coefficients()}}.
 
 \mbox{\Hypertarget{classoomph_1_1DeviatoricIsotropicElasticityTensor_a4f3edce9cd91008468599fb24b950707}\label{classoomph_1_1DeviatoricIsotropicElasticityTensor_a4f3edce9cd91008468599fb24b950707}} 
 \index{oomph::DeviatoricIsotropicElasticityTensor@{oomph::DeviatoricIsotropicElasticityTensor}!DeviatoricIsotropicElasticityTensor@{DeviatoricIsotropicElasticityTensor}}
@@ -96,7 +129,7 @@ Definition at line \mbox{\hyperlink{poroelasticity_2elasticity__tensor_8h_source
 
 
 
-References \mbox{\hyperlink{poroelasticity_2elasticity__tensor_8h_source_l00226}{C}}, \mbox{\hyperlink{quadtree_8h_source_l00061}{oomph\+::\+Quad\+Tree\+Names\+::E}}, \mbox{\hyperlink{poroelasticity_2elasticity__tensor_8h_source_l00300}{lambda()}}, \mbox{\hyperlink{poroelasticity_2elasticity__tensor_8h_source_l00306}{mu()}}, and \mbox{\hyperlink{poroelasticity_2elasticity__tensor_8h_source_l00313}{set\+\_\+lame\+\_\+coefficients()}}.
+References \mbox{\hyperlink{poroelasticity_2elasticity__tensor_8h_source_l00226}{C}}, \mbox{\hyperlink{poroelasticity_2elasticity__tensor_8h_source_l00300}{lambda()}}, \mbox{\hyperlink{poroelasticity_2elasticity__tensor_8h_source_l00306}{mu()}}, and \mbox{\hyperlink{poroelasticity_2elasticity__tensor_8h_source_l00313}{set\+\_\+lame\+\_\+coefficients()}}.
 
 \mbox{\Hypertarget{classoomph_1_1DeviatoricIsotropicElasticityTensor_a09fec2c25d55c5603723f2ab2531f78a}\label{classoomph_1_1DeviatoricIsotropicElasticityTensor_a09fec2c25d55c5603723f2ab2531f78a}} 
 \index{oomph::DeviatoricIsotropicElasticityTensor@{oomph::DeviatoricIsotropicElasticityTensor}!DeviatoricIsotropicElasticityTensor@{DeviatoricIsotropicElasticityTensor}}
@@ -114,7 +147,7 @@ Definition at line \mbox{\hyperlink{poroelasticity_2elasticity__tensor_8h_source
 
 
 
-References \mbox{\hyperlink{poroelasticity_2elasticity__tensor_8h_source_l00226}{C}}, \mbox{\hyperlink{quadtree_8h_source_l00061}{oomph\+::\+Quad\+Tree\+Names\+::E}}, \mbox{\hyperlink{poroelasticity_2elasticity__tensor_8h_source_l00300}{lambda()}}, \mbox{\hyperlink{poroelasticity_2elasticity__tensor_8h_source_l00306}{mu()}}, and \mbox{\hyperlink{poroelasticity_2elasticity__tensor_8h_source_l00313}{set\+\_\+lame\+\_\+coefficients()}}.
+References \mbox{\hyperlink{poroelasticity_2elasticity__tensor_8h_source_l00226}{C}}, \mbox{\hyperlink{poroelasticity_2elasticity__tensor_8h_source_l00300}{lambda()}}, \mbox{\hyperlink{poroelasticity_2elasticity__tensor_8h_source_l00306}{mu()}}, and \mbox{\hyperlink{poroelasticity_2elasticity__tensor_8h_source_l00313}{set\+\_\+lame\+\_\+coefficients()}}.
 
 \mbox{\Hypertarget{classoomph_1_1DeviatoricIsotropicElasticityTensor_aeed1da3ce892934b38ce4fda23c7f21c}\label{classoomph_1_1DeviatoricIsotropicElasticityTensor_aeed1da3ce892934b38ce4fda23c7f21c}} 
 \index{oomph::DeviatoricIsotropicElasticityTensor@{oomph::DeviatoricIsotropicElasticityTensor}!DeviatoricIsotropicElasticityTensor@{DeviatoricIsotropicElasticityTensor}}
@@ -274,8 +307,8 @@ Referenced by \mbox{\hyperlink{poroelasticity_2elasticity__tensor_8h_source_l003
 
 {\bfseries Initial value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{= \{}
-\DoxyCodeLine{    1, 0, 0, 2, 0, 1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 1\}}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ 1,\ 0,\ 0,\ 2,\ 0,\ 1,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 2,\ 0,\ 0,\ 0,\ 0,\ 0,\ 2,\ 0,\ 1\}}
 
 \end{DoxyCode}
 

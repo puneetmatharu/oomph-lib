@@ -48,6 +48,16 @@ then the out\+\_\+vector is
 
 \mbox{[}a0 (on p0) a1\mbox{]} (on p0) \mbox{[}b0\mbox{]} (on p1) b1\mbox{]} (on p1),
 
+Communication is required between processors. The sum of the global number of rows in the in vectors must equal to the global number of rows in the out vector. This condition must be met if one is to supply an out vector with a distribution, otherwise we can let the function generate the out vector distribution itself.
+
+The rows of the out vector is seen \char`\"{}as it is\char`\"{} in the in vectors. For example, if we have Double\+Vectors with distributions A and B, distributed across two processors (p0 and p1),
+
+A\+: \mbox{[}a0\mbox{]} (on p0) B\+: \mbox{[}b0\mbox{]} (on p0) \mbox{[}a1\mbox{]} (on p1) \mbox{[}b1\mbox{]} (on P1),
+
+then the out\+\_\+vector is
+
+\mbox{[}a0 (on p0) a1\mbox{]} (on p0) \mbox{[}b0\mbox{]} (on p1) b1\mbox{]} (on p1),
+
 Communication is required between processors. The sum of the global number of rows in the in vectors must equal to the global number of rows in the out vector. This condition must be met if one is to supply an out vector with a distribution, otherwise we can let the function generate the out vector distribution itself. 
 
 Definition at line \mbox{\hyperlink{double__vector_8cc_source_l00993}{993}} of file \mbox{\hyperlink{double__vector_8cc_source}{double\+\_\+vector.\+cc}}.
@@ -128,7 +138,7 @@ References \mbox{\hyperlink{double__vector_8cc_source_l00035}{oomph\+::\+Double\
 
 
 
-Referenced by \mbox{\hyperlink{double__vector_8cc_source_l02039}{concatenate\+\_\+without\+\_\+communication()}}, \mbox{\hyperlink{block__preconditioner_8cc_source_l04186}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::get\+\_\+block\+\_\+vector()}}, \mbox{\hyperlink{block__preconditioner_8cc_source_l02939}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::get\+\_\+block\+\_\+vectors()}}, and \mbox{\hyperlink{block__preconditioner_8cc_source_l05671}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::get\+\_\+dof\+\_\+level\+\_\+block()}}.
+Referenced by \mbox{\hyperlink{double__vector_8cc_source_l02039}{concatenate\+\_\+without\+\_\+communication()}}, \mbox{\hyperlink{block__preconditioner_8cc_source_l04186}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::get\+\_\+block\+\_\+vector()}}, and \mbox{\hyperlink{block__preconditioner_8cc_source_l02939}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::get\+\_\+block\+\_\+vectors()}}.
 
 \mbox{\Hypertarget{namespaceoomph_1_1DoubleVectorHelpers_a568db46f65c1d234ac6f96ab54fafe60}\label{namespaceoomph_1_1DoubleVectorHelpers_a568db46f65c1d234ac6f96ab54fafe60}} 
 \index{oomph::DoubleVectorHelpers@{oomph::DoubleVectorHelpers}!concatenate\_without\_communication@{concatenate\_without\_communication}}
@@ -203,6 +213,12 @@ References \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, and \mbox{\hyperlink
 
 
 Split a \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} into the out Double\+Vectors. \mbox{\hyperlink{classoomph_1_1Data}{Data}} stays on its current processor, no data is sent between processors. This results in our vectors which are a permutation of the in vector. 
+
+Let vec\+\_\+A be the in \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}, and let vec\+\_\+B and vec\+\_\+C be the out vectors. Then the splitting of vec\+\_\+A is depicted below\+: vec\+\_\+A\+: \mbox{[}a0 (on p0) a1\mbox{]} (on p0) \mbox{[}a2 (on p1) a3\mbox{]} (on p1)
+
+vec\+\_\+B\+: \mbox{[}a0\mbox{]} (on p0) vec\+\_\+C\+: \mbox{[}a1\mbox{]} (on p0) \mbox{[}a2\mbox{]} (on p1) \mbox{[}a3\mbox{]} (on p1).
+
+This means that the distribution of the in vector MUST be a concatenation of the out vector distributions, refer to Linear\+Algebra\+Distribution\+Helpers\+::concatenate(...) to concatenate distributions.
 
 Let vec\+\_\+A be the in \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}, and let vec\+\_\+B and vec\+\_\+C be the out vectors. Then the splitting of vec\+\_\+A is depicted below\+: vec\+\_\+A\+: \mbox{[}a0 (on p0) a1\mbox{]} (on p0) \mbox{[}a2 (on p1) a3\mbox{]} (on p1)
 

@@ -46,6 +46,114 @@ void \mbox{\hyperlink{classoomph_1_1DoubleVectorWithHaloEntries_a7165745d3397b6e
 \begin{DoxyCompactList}\small\item\em Access function for halo scheme (const version) \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1DoubleVectorWithHaloEntries_a1aab1a84c6a82a755fdc3c6b27ce49d7}{build\+\_\+halo\+\_\+scheme}} (\mbox{\hyperlink{classoomph_1_1DoubleVectorHaloScheme}{Double\+Vector\+Halo\+Scheme}} $\ast$const \&\mbox{\hyperlink{classoomph_1_1DoubleVectorWithHaloEntries_a7d753121acddfdc4b29d04812b91b5ec}{halo\+\_\+scheme\+\_\+pt}})
 \begin{DoxyCompactList}\small\item\em Construct the halo scheme and storage for the halo data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1DoubleVector}{oomph\+::\+Double\+Vector}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1DoubleVector_a786d26f4034f2ae10c9d26542642661f}{Double\+Vector}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for an uninitialized \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1DoubleVector_a21f824524cd7bc779af3cbdbfe1d3ef8}{Double\+Vector}} (const \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} $\ast$const \&dist\+\_\+pt, const double \&v=0.\+0)
+\begin{DoxyCompactList}\small\item\em Constructor. Assembles a \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} with a prescribed distribution. Additionally every entry can be set (with argument v -\/ defaults to 0). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1DoubleVector_a29d22a13eeaa61d5467d5cfa37e1f38f}{Double\+Vector}} (const \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} \&dist, const double \&v=0.\+0)
+\begin{DoxyCompactList}\small\item\em Constructor. Assembles a \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} with a prescribed distribution. Additionally every entry can be set (with argument v -\/ defaults to 0). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1DoubleVector_a53441aa63f3acfa65dc4556ffa0b5573}{$\sim$\+Double\+Vector}} ()
+\begin{DoxyCompactList}\small\item\em Destructor -\/ just calls this-\/\texorpdfstring{$>$}{>}\mbox{\hyperlink{classoomph_1_1DoubleVector_af1677445056759263b1b076966e7bfae}{clear()}} to delete the distribution and data. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1DoubleVector_af547ee3b90c4a5598b655ed57ed78b2f}{Double\+Vector}} (const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&new\+\_\+vector)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DoubleVector_ab5f56f41d86a18bba358912b1c4f2dac}{operator=}} (const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&old\+\_\+vector)
+\begin{DoxyCompactList}\small\item\em assignment operator \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DoubleVector_a7bcc94c157d6853a0f0502e8a76ed380}{build}} (const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&old\+\_\+vector)
+\begin{DoxyCompactList}\small\item\em Just copys the argument \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DoubleVector_ad22d075ba35995e26f40209de1b25746}{build}} (const \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} \&dist, const double \&v)
+\begin{DoxyCompactList}\small\item\em Assembles a \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} with distribution dist, if v is specified each element is set to v, otherwise each element is set to 0.\+0. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DoubleVector_a84d5a0b2335fb1af865c84f8f25421e9}{build}} (const \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} $\ast$const \&dist\+\_\+pt, const double \&v)
+\begin{DoxyCompactList}\small\item\em Assembles a \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} with distribution dist, if v is specified each element is set to v, otherwise each element is set to 0.\+0. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DoubleVector_a73332fc4a200a32d7281ceb548375d8a}{build}} (const \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} \&dist, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&v)
+\begin{DoxyCompactList}\small\item\em Assembles a \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} with a distribution dist and coefficients taken from the vector v. Note. The vector v MUST be of length \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a7569556f14fd68b28508920e89bd5eee}{nrow()}} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DoubleVector_a4e6219936d6b23265b46dd3a25acb7c8}{build}} (const \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} $\ast$const \&dist\+\_\+pt, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&v)
+\begin{DoxyCompactList}\small\item\em Assembles a \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} with a distribution dist and coefficients taken from the vector v. Note. The vector v MUST be of length \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a7569556f14fd68b28508920e89bd5eee}{nrow()}} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DoubleVector_a180c1057a29f4ed721da46040a619ecd}{initialise}} (const double \&v)
+\begin{DoxyCompactList}\small\item\em initialise the whole vector with value v \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DoubleVector_ae3ce2b88e72d8b084e9be8e9af10c487}{initialise}} (const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ v)
+\begin{DoxyCompactList}\small\item\em initialise the vector with coefficient from the vector v. Note\+: The vector v must be of length \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DoubleVector_af1677445056759263b1b076966e7bfae}{clear}} ()
+\begin{DoxyCompactList}\small\item\em wipes the \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1DoubleVector_aae402d422ec4344a4a45cdb7659b7161}{built}} () const
+\item 
+void \mbox{\hyperlink{classoomph_1_1DoubleVector_a4715c8cf47f9fc56d95889343d1a3b82}{set\+\_\+external\+\_\+values}} (const \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} $\ast$const \&dist\+\_\+pt, double $\ast$external\+\_\+values, bool delete\+\_\+external\+\_\+values)
+\begin{DoxyCompactList}\small\item\em Allows are external data to be used by this vector. WARNING\+: The size of the external data must correspond to the \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} dist\+\_\+pt argument. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DoubleVector_a0626a448c259a12bd2b7d50f92da91e3}{set\+\_\+external\+\_\+values}} (double $\ast$external\+\_\+values, bool delete\+\_\+external\+\_\+values)
+\begin{DoxyCompactList}\small\item\em Allows are external data to be used by this vector. WARNING\+: The size of the external data must correspond to the distribution of this vector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DoubleVector_a9396b861977c16606d8eca39056976c8}{redistribute}} (const \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} $\ast$const \&dist\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em The contents of the vector are redistributed to match the new distribution. In a non-\/\+MPI rebuild this method works, but does nothing. {\bfseries{NOTE}} 1\+: The current distribution and the new distribution must have the same number of global rows. {\bfseries{NOTE}} 2\+: The current distribution and the new distribution must have the same Communicator. \end{DoxyCompactList}\item 
+double \& \mbox{\hyperlink{classoomph_1_1DoubleVector_acea3779324129da50076341bf6644d25}{operator\mbox{[}$\,$\mbox{]}}} (int \mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})
+\begin{DoxyCompactList}\small\item\em \mbox{[}\mbox{]} access function to the (local) values of this vector \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1DoubleVector_a4da2f710fccabe5a5349d8a5238b36cc}{operator==}} (const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&v)
+\begin{DoxyCompactList}\small\item\em == operator \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DoubleVector_a2724cce5d107b7e6535d9ae071d6d603}{operator+=}} (const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&v)
+\begin{DoxyCompactList}\small\item\em += operator with another vector \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DoubleVector_aaeb013d502cff3ee0b7e036945ece1ea}{operator-\/=}} (const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&v)
+\begin{DoxyCompactList}\small\item\em -\/= operator with another vector \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DoubleVector_a691d884622e4221e61436f2bc457c6e2}{operator$\ast$=}} (const double \&d)
+\begin{DoxyCompactList}\small\item\em multiply by a double \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DoubleVector_ab3cb62619709401a0e8f4bc4bee9dff3}{operator/=}} (const double \&d)
+\begin{DoxyCompactList}\small\item\em divide by a double \end{DoxyCompactList}\item 
+const double \& \mbox{\hyperlink{classoomph_1_1DoubleVector_a54cec3cc3e28f6781c28c0dbcfcffa3e}{operator\mbox{[}$\,$\mbox{]}}} (int \mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em \mbox{[}\mbox{]} access function to the (local) values of this vector \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1DoubleVector_a4c176b562f503701d65882a930d5b8f5}{max}} () const
+\begin{DoxyCompactList}\small\item\em returns the maximum coefficient \end{DoxyCompactList}\item 
+double $\ast$ \mbox{\hyperlink{classoomph_1_1DoubleVector_ae3484a5eb4cb663e09640806ef1bf05a}{values\+\_\+pt}} ()
+\begin{DoxyCompactList}\small\item\em access function to the underlying values \end{DoxyCompactList}\item 
+double $\ast$ \mbox{\hyperlink{classoomph_1_1DoubleVector_a1e2a19113e346db74e6fe34e0e945022}{values\+\_\+pt}} () const
+\begin{DoxyCompactList}\small\item\em access function to the underlying values (const version) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DoubleVector_aa258eab026007d7f02847b6e5ef3d1dc}{output}} (std\+::ostream \&outfile, const int \&output\+\_\+precision=-\/1) const
+\begin{DoxyCompactList}\small\item\em output the global contents of the vector \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DoubleVector_ab236e5a906d16e8c7edc6b9acafa23e4}{output}} (std\+::string filename, const int \&output\+\_\+precision=-\/1) const
+\begin{DoxyCompactList}\small\item\em output the global contents of the vector \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DoubleVector_a2cdcd660a9a90868ba1f837095403649}{output\+\_\+local\+\_\+values}} (std\+::ostream \&outfile, const int \&output\+\_\+precision=-\/1) const
+\begin{DoxyCompactList}\small\item\em output the local contents of the vector \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DoubleVector_a1cbc454999c271e7cb476f7c5c76ce72}{output\+\_\+local\+\_\+values}} (std\+::string filename, const int \&output\+\_\+precision=-\/1) const
+\begin{DoxyCompactList}\small\item\em output the local contents of the vector \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DoubleVector_afc5d6ab2c9ba7a0f307cc419a331df70}{output\+\_\+local\+\_\+values\+\_\+with\+\_\+offset}} (std\+::ostream \&outfile, const int \&output\+\_\+precision=-\/1) const
+\begin{DoxyCompactList}\small\item\em output the local contents of the vector \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DoubleVector_aa9f03b47d00fe70e4f5e4f2474b48bf4}{output\+\_\+local\+\_\+values\+\_\+with\+\_\+offset}} (std\+::string filename, const int \&output\+\_\+precision=-\/1) const
+\begin{DoxyCompactList}\small\item\em output the local contents of the vector \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1DoubleVector_abd20e2e394c8e08749ed34c7228c8506}{dot}} (const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&vec) const
+\begin{DoxyCompactList}\small\item\em compute the dot product of this vector with the vector vec. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1DoubleVector_a9ac9245cac87ddcdb70cfcd697553a55}{norm}} () const
+\begin{DoxyCompactList}\small\item\em compute the 2 norm of this vector \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1DoubleVector_abe25ba0bd83ba1e963103c4ad95328cc}{norm}} (const \mbox{\hyperlink{classoomph_1_1CRDoubleMatrix}{CRDouble\+Matrix}} $\ast$matrix\+\_\+pt) const
+\begin{DoxyCompactList}\small\item\em compute the A-\/norm using the matrix at matrix\+\_\+pt \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject}{oomph\+::\+Distributable\+Linear\+Algebra\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_ac9492d59cff9d9b0098712ae72989cd3}{Distributable\+Linear\+Algebra\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor -\/ create a distribution. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a7522391265c46e6c748fd660eae66f5e}{Distributable\+Linear\+Algebra\+Object}} (const \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject}{Distributable\+Linear\+Algebra\+Object}} \&matrix)=delete
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_ada5f539f36451c06e69de79bb129521b}{operator=}} (const \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject}{Distributable\+Linear\+Algebra\+Object}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a4038de53b5737dc625411e7848d21dad}{$\sim$\+Distributable\+Linear\+Algebra\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} $\ast$ \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_abfa9cf25494c796d62b15bad586fab47}{distribution\+\_\+pt}} () const
+\begin{DoxyCompactList}\small\item\em access to the \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a7569556f14fd68b28508920e89bd5eee}{nrow}} () const
+\begin{DoxyCompactList}\small\item\em access function to the number of global rows. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a9bd7e1d242c69a28da85a804a7717fce}{nrow\+\_\+local}} () const
+\begin{DoxyCompactList}\small\item\em access function for the num of local rows on this processor. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a21e966b025edec79067b41d7f1f25220}{nrow\+\_\+local}} (const unsigned \&p) const
+\begin{DoxyCompactList}\small\item\em access function for the num of local rows on this processor. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_ab00a3919b8634c698749f14a4d92947d}{first\+\_\+row}} () const
+\begin{DoxyCompactList}\small\item\em access function for the first row on this processor \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a4266c1d18d8e102bad3f4aec26c9b7cf}{first\+\_\+row}} (const unsigned \&p) const
+\begin{DoxyCompactList}\small\item\em access function for the first row on this processor \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a5505731e7e73d7e4251c67c7adec6bf5}{distributed}} () const
+\begin{DoxyCompactList}\small\item\em distribution is serial or distributed \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a8c35baa65e335043f62954c92c090a5a}{distribution\+\_\+built}} () const
+\begin{DoxyCompactList}\small\item\em if the communicator\+\_\+pt is null then the distribution is not setup then false is returned, otherwise return true \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_ac5340bac40b9559b0378037b57005203}{build\+\_\+distribution}} (const \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} $\ast$const dist\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em setup the distribution of this distributable linear algebra object \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_adad20ac61a61d907f823da7694b50616}{build\+\_\+distribution}} (const \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} \&dist)
+\begin{DoxyCompactList}\small\item\em setup the distribution of this distributable linear algebra object \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -54,6 +162,11 @@ void \mbox{\hyperlink{classoomph_1_1DoubleVectorWithHaloEntries_a1aab1a84c6a82a7
 \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \mbox{\hyperlink{classoomph_1_1DoubleVectorWithHaloEntries_ac2b04ca1db09db85401e0d59a225856b}{Halo\+\_\+value}}
 \begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of the halo values. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject}{oomph\+::\+Distributable\+Linear\+Algebra\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a30742aa2ac9abcfa037179f2d28ff43a}{clear\+\_\+distribution}} ()
+\begin{DoxyCompactList}\small\item\em clear the distribution of this distributable linear algebra object \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}

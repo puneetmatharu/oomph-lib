@@ -14,7 +14,7 @@ Inheritance diagram for Poisson\+Problem\texorpdfstring{$<$}{<} ELEMENT \texorpd
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classPoissonProblem_a80765a4c029f9659b631a80c583b58cc}{Poisson\+Problem}} (Poisson\+Equations$<$ 2 $>$\+::Poisson\+Source\+Fct\+Pt source\+\_\+fct\+\_\+pt, const string \&node\+\_\+file\+\_\+name, const string \&element\+\_\+file\+\_\+name, const string \&poly\+\_\+file\+\_\+name)
+\mbox{\hyperlink{classPoissonProblem_a80765a4c029f9659b631a80c583b58cc}{Poisson\+Problem}} (Poisson\+Equations$<$ 2 $>$\+::\+Poisson\+Source\+Fct\+Pt source\+\_\+fct\+\_\+pt, const string \&node\+\_\+file\+\_\+name, const string \&element\+\_\+file\+\_\+name, const string \&poly\+\_\+file\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Constructor\+: Pass pointer to source function and names of two triangle input files. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classPoissonProblem_ac247e42d2d292200617f4b9db7ed1ab8}{$\sim$\+Poisson\+Problem}} ()
 \begin{DoxyCompactList}\small\item\em Destructor (empty) \end{DoxyCompactList}\item 
@@ -33,7 +33,7 @@ void \mbox{\hyperlink{classPoissonProblem_aab6f503fa242f687bb8452527bb7688f}{doc
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-Poisson\+Equations$<$ 2 $>$\+::Poisson\+Source\+Fct\+Pt \mbox{\hyperlink{classPoissonProblem_a32b954cca3c38175d0816f92e1c0da46}{Source\+\_\+fct\+\_\+pt}}
+Poisson\+Equations$<$ 2 $>$\+::\+Poisson\+Source\+Fct\+Pt \mbox{\hyperlink{classPoissonProblem_a32b954cca3c38175d0816f92e1c0da46}{Source\+\_\+fct\+\_\+pt}}
 \begin{DoxyCompactList}\small\item\em Pointer to source function. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{Refineable\+Triangle\+Mesh}}$<$ ELEMENT $>$ $\ast$ \mbox{\hyperlink{classPoissonProblem_a4f4561d2155399268d45b2f86a61389a}{Bulk\+\_\+mesh\+\_\+pt}}
 \begin{DoxyCompactList}\small\item\em Pointer to the bulk mesh. \end{DoxyCompactList}\item 
@@ -56,7 +56,7 @@ Definition at line \mbox{\hyperlink{mesh__from__triangle__poisson_8cc_source_l00
 \index{PoissonProblem@{PoissonProblem}!PoissonProblem$<$ ELEMENT $>$@{PoissonProblem$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{PoissonProblem()}{PoissonProblem()}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-\mbox{\hyperlink{classPoissonProblem}{Poisson\+Problem}}$<$ ELEMENT $>$\+::\mbox{\hyperlink{classPoissonProblem}{Poisson\+Problem}} (\begin{DoxyParamCaption}\item[{Poisson\+Equations$<$ 2 $>$\+::Poisson\+Source\+Fct\+Pt}]{source\+\_\+fct\+\_\+pt,  }\item[{const string \&}]{node\+\_\+file\+\_\+name,  }\item[{const string \&}]{element\+\_\+file\+\_\+name,  }\item[{const string \&}]{poly\+\_\+file\+\_\+name }\end{DoxyParamCaption})}
+\mbox{\hyperlink{classPoissonProblem}{Poisson\+Problem}}$<$ ELEMENT $>$\mbox{\hyperlink{classPoissonProblem}{\+::\+Poisson\+Problem}} (\begin{DoxyParamCaption}\item[{Poisson\+Equations$<$ 2 $>$\+::\+Poisson\+Source\+Fct\+Pt}]{source\+\_\+fct\+\_\+pt,  }\item[{const string \&}]{node\+\_\+file\+\_\+name,  }\item[{const string \&}]{element\+\_\+file\+\_\+name,  }\item[{const string \&}]{poly\+\_\+file\+\_\+name }\end{DoxyParamCaption})}
 
 
 
@@ -202,7 +202,7 @@ Definition at line \mbox{\hyperlink{mesh__from__triangle__poisson_8cc_source_l00
 \index{Bulk\_mesh\_pt@{Bulk\_mesh\_pt}!PoissonProblem$<$ ELEMENT $>$@{PoissonProblem$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Bulk\_mesh\_pt}{Bulk\_mesh\_pt}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{Refineable\+Triangle\+Mesh}}$<$ELEMENT$>$$\ast$ \mbox{\hyperlink{classPoissonProblem}{Poisson\+Problem}}$<$ ELEMENT $>$\+::Bulk\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{Refineable\+Triangle\+Mesh}}$<$ELEMENT$>$$\ast$ \mbox{\hyperlink{classPoissonProblem}{Poisson\+Problem}}$<$ ELEMENT $>$\+::\+Bulk\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -240,7 +240,7 @@ Referenced by \mbox{\hyperlink{mesh__from__triangle__poisson_8cc_source_l00179}{
 \index{Source\_fct\_pt@{Source\_fct\_pt}!PoissonProblem$<$ ELEMENT $>$@{PoissonProblem$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Source\_fct\_pt}{Source\_fct\_pt}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-Poisson\+Equations$<$2$>$\+::Poisson\+Source\+Fct\+Pt \mbox{\hyperlink{classPoissonProblem}{Poisson\+Problem}}$<$ ELEMENT $>$\+::Source\+\_\+fct\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+Poisson\+Equations$<$2$>$\+::\+Poisson\+Source\+Fct\+Pt \mbox{\hyperlink{classPoissonProblem}{Poisson\+Problem}}$<$ ELEMENT $>$\+::\+Source\+\_\+fct\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

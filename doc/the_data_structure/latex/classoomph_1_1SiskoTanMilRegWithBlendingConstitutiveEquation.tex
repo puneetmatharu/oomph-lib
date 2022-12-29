@@ -34,6 +34,17 @@ double \mbox{\hyperlink{classoomph_1_1SiskoTanMilRegWithBlendingConstitutiveEqua
 \begin{DoxyCompactList}\small\item\em Viscosity ratio as a fct of strain rate invariant. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{classoomph_1_1SiskoTanMilRegWithBlendingConstitutiveEquation_a66579b2c9c19b7ca3168fe58202e8591}{dviscosity\+\_\+dinvariant}} (const double \&second\+\_\+invariant\+\_\+of\+\_\+rate\+\_\+of\+\_\+strain\+\_\+tensor)
 \begin{DoxyCompactList}\small\item\em Deriv of viscosity w.\+r.\+t. strain rate invariant. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1GeneralisedNewtonianConstitutiveEquation}{oomph\+::\+Generalised\+Newtonian\+Constitutive\+Equation$<$ DIM $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1GeneralisedNewtonianConstitutiveEquation_a4b84eb3626aaed2f77f6dc96258f7e01}{Generalised\+Newtonian\+Constitutive\+Equation}} ()
+\begin{DoxyCompactList}\small\item\em Empty constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1GeneralisedNewtonianConstitutiveEquation_af85f107604d04e8fdaf03e8274c485e6}{$\sim$\+Generalised\+Newtonian\+Constitutive\+Equation}} ()
+\begin{DoxyCompactList}\small\item\em Empty virtual destructor. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classoomph_1_1GeneralisedNewtonianConstitutiveEquation_a3e6d811786e39ca3c3a9b1c46249442f}{viscosity}} (const double \&second\+\_\+invariant\+\_\+of\+\_\+rate\+\_\+of\+\_\+strain\+\_\+tensor)=0
+\begin{DoxyCompactList}\small\item\em Function implementing the constitutive model Input\+: second invariant of the rate of strain Output\+: the viscosity For Newtonian behaviour this returns 1. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classoomph_1_1GeneralisedNewtonianConstitutiveEquation_ad0164e6ca57cc986048346e12c4d353a}{dviscosity\+\_\+dinvariant}} (const double \&second\+\_\+invariant\+\_\+of\+\_\+rate\+\_\+of\+\_\+strain\+\_\+tensor)=0
+\begin{DoxyCompactList}\small\item\em Function returning the derivative of the viscosity w.\+r.\+t. the second invariant of the rate of strain tensor For Newtonian behaviour this returns 0.\+0. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -60,7 +71,7 @@ Definition at line \mbox{\hyperlink{generalised__newtonian__constitutive__models
 \index{SiskoTanMilRegWithBlendingConstitutiveEquation@{SiskoTanMilRegWithBlendingConstitutiveEquation}!oomph::SiskoTanMilRegWithBlendingConstitutiveEquation$<$ DIM $>$@{oomph::SiskoTanMilRegWithBlendingConstitutiveEquation$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{SiskoTanMilRegWithBlendingConstitutiveEquation()}{SiskoTanMilRegWithBlendingConstitutiveEquation()}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-\mbox{\hyperlink{classoomph_1_1SiskoTanMilRegWithBlendingConstitutiveEquation}{oomph\+::\+Sisko\+Tan\+Mil\+Reg\+With\+Blending\+Constitutive\+Equation}}$<$ DIM $>$\+::\mbox{\hyperlink{classoomph_1_1SiskoTanMilRegWithBlendingConstitutiveEquation}{Sisko\+Tan\+Mil\+Reg\+With\+Blending\+Constitutive\+Equation}} (\begin{DoxyParamCaption}\item[{double $\ast$}]{alpha\+\_\+pt,  }\item[{double $\ast$}]{flow\+\_\+index\+\_\+pt,  }\item[{double $\ast$}]{critical\+\_\+second\+\_\+invariant\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{classoomph_1_1SiskoTanMilRegWithBlendingConstitutiveEquation}{oomph\+::\+Sisko\+Tan\+Mil\+Reg\+With\+Blending\+Constitutive\+Equation}}$<$ DIM $>$\+::\+Sisko\+Tan\+Mil\+Reg\+With\+Blending\+Constitutive\+Equation (\begin{DoxyParamCaption}\item[{double $\ast$}]{alpha\+\_\+pt,  }\item[{double $\ast$}]{flow\+\_\+index\+\_\+pt,  }\item[{double $\ast$}]{critical\+\_\+second\+\_\+invariant\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -236,7 +247,7 @@ References \mbox{\hyperlink{generalised__newtonian__constitutive__models_8h_sour
 \index{Alpha\_pt@{Alpha\_pt}!oomph::SiskoTanMilRegWithBlendingConstitutiveEquation$<$ DIM $>$@{oomph::SiskoTanMilRegWithBlendingConstitutiveEquation$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{Alpha\_pt}{Alpha\_pt}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-double$\ast$ \mbox{\hyperlink{classoomph_1_1SiskoTanMilRegWithBlendingConstitutiveEquation}{oomph\+::\+Sisko\+Tan\+Mil\+Reg\+With\+Blending\+Constitutive\+Equation}}$<$ DIM $>$\+::Alpha\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+double$\ast$ \mbox{\hyperlink{classoomph_1_1SiskoTanMilRegWithBlendingConstitutiveEquation}{oomph\+::\+Sisko\+Tan\+Mil\+Reg\+With\+Blending\+Constitutive\+Equation}}$<$ DIM $>$\+::\+Alpha\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -255,7 +266,7 @@ Referenced by \mbox{\hyperlink{generalised__newtonian__constitutive__models_8h_s
 \index{Critical\_second\_invariant\_pt@{Critical\_second\_invariant\_pt}!oomph::SiskoTanMilRegWithBlendingConstitutiveEquation$<$ DIM $>$@{oomph::SiskoTanMilRegWithBlendingConstitutiveEquation$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{Critical\_second\_invariant\_pt}{Critical\_second\_invariant\_pt}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-double$\ast$ \mbox{\hyperlink{classoomph_1_1SiskoTanMilRegWithBlendingConstitutiveEquation}{oomph\+::\+Sisko\+Tan\+Mil\+Reg\+With\+Blending\+Constitutive\+Equation}}$<$ DIM $>$\+::Critical\+\_\+second\+\_\+invariant\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+double$\ast$ \mbox{\hyperlink{classoomph_1_1SiskoTanMilRegWithBlendingConstitutiveEquation}{oomph\+::\+Sisko\+Tan\+Mil\+Reg\+With\+Blending\+Constitutive\+Equation}}$<$ DIM $>$\+::\+Critical\+\_\+second\+\_\+invariant\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -274,7 +285,7 @@ Referenced by \mbox{\hyperlink{generalised__newtonian__constitutive__models_8h_s
 \index{Flow\_index\_pt@{Flow\_index\_pt}!oomph::SiskoTanMilRegWithBlendingConstitutiveEquation$<$ DIM $>$@{oomph::SiskoTanMilRegWithBlendingConstitutiveEquation$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{Flow\_index\_pt}{Flow\_index\_pt}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-double$\ast$ \mbox{\hyperlink{classoomph_1_1SiskoTanMilRegWithBlendingConstitutiveEquation}{oomph\+::\+Sisko\+Tan\+Mil\+Reg\+With\+Blending\+Constitutive\+Equation}}$<$ DIM $>$\+::Flow\+\_\+index\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+double$\ast$ \mbox{\hyperlink{classoomph_1_1SiskoTanMilRegWithBlendingConstitutiveEquation}{oomph\+::\+Sisko\+Tan\+Mil\+Reg\+With\+Blending\+Constitutive\+Equation}}$<$ DIM $>$\+::\+Flow\+\_\+index\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

@@ -30,6 +30,21 @@ virtual \mbox{\hyperlink{classoomph_1_1DummyErrorEstimator_ac379252c48c85e03d9a5
 \begin{DoxyCompactList}\small\item\em Empty virtual destructor. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classoomph_1_1DummyErrorEstimator_a471038816556f1af7602cadbbb21d8fb}{get\+\_\+element\+\_\+errors}} (\mbox{\hyperlink{classoomph_1_1Mesh}{Mesh}} $\ast$\&mesh\+\_\+pt, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&elemental\+\_\+error, \mbox{\hyperlink{classoomph_1_1DocInfo}{Doc\+Info}} \&doc\+\_\+info)
 \begin{DoxyCompactList}\small\item\em Compute the elemental error measures for a given mesh and store them in a vector. Doc errors etc. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1ErrorEstimator}{oomph\+::\+Error\+Estimator}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1ErrorEstimator_a43b3800b6695fe3fd13241b0530a0d0c}{Error\+Estimator}} ()
+\begin{DoxyCompactList}\small\item\em Default empty constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1ErrorEstimator_a643d7d4ec8782a158577feb1ff2b47cb}{Error\+Estimator}} (const \mbox{\hyperlink{classoomph_1_1ErrorEstimator}{Error\+Estimator}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1ErrorEstimator_afce4303c8d969e87ee38133dd98bc381}{operator=}} (const \mbox{\hyperlink{classoomph_1_1ErrorEstimator}{Error\+Estimator}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1ErrorEstimator_a57ddd866184d95a75f024353ca936b5b}{$\sim$\+Error\+Estimator}} ()
+\begin{DoxyCompactList}\small\item\em Empty virtual destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1ErrorEstimator_a3b12c5d2579360a08b6b6298cea8b142}{get\+\_\+element\+\_\+errors}} (\mbox{\hyperlink{classoomph_1_1Mesh}{Mesh}} $\ast$\&mesh\+\_\+pt, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&elemental\+\_\+error)
+\begin{DoxyCompactList}\small\item\em Compute the elemental error-\/measures for a given mesh and store them in a vector. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1ErrorEstimator_a77e85262d309d6e7da0ca71e98b7afff}{get\+\_\+element\+\_\+errors}} (\mbox{\hyperlink{classoomph_1_1Mesh}{Mesh}} $\ast$\&mesh\+\_\+pt, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&elemental\+\_\+error, \mbox{\hyperlink{classoomph_1_1DocInfo}{Doc\+Info}} \&doc\+\_\+info)=0
+\begin{DoxyCompactList}\small\item\em Compute the elemental error measures for a given mesh and store them in a vector. Doc errors etc. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 

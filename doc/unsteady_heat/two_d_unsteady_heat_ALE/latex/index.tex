@@ -3,21 +3,53 @@ In this example we consider the solution of the unsteady heat equation in a doma
 \begin{center} \tabulinesep=1mm
 \begin{longtabu}spread 0pt [c]{*{1}{|X[-1]}|}
 \hline
-\begin{center} {\bfseries{The two-\/dimensional unsteady heat equation with flux boundary conditions in a moving domain.}} \end{center}  Solve \[ \sum_{i=1}^2\frac{\partial^2 u}{\partial x_i^2} = \frac{\partial u}{\partial t} + f\left(x_1,x_2,t\right), \ \ \ \ \ \ \ \ \ \ (1) \] in the domain $ D $ , bounded by the coordinate axes and the time-\/dependent ellipse \[ \mathbf{r}_{ellipse}(\xi,t) = \left( \begin{array}{c} \big( a+\hat{a}\sin(2\pi t/\hat{T}) \big) \cos(\xi) \\ \big( b+\hat{b}\sin(2\pi t/\hat{T}) \big) \sin(\xi) \end{array} \right), \ \ \ \ \ \ \ \ \ \ (2) \] subject to Neumann boundary conditions, \[ \left. \frac{\partial u}{\partial n}\right|_{\partial D_{Neumann}}= - \left. \frac{\partial u}{\partial x_2}\right|_{\partial D_{Neumann}}= g_0, \ \ \ \ \ \ \ \ \ \ (3) \] along the horizontal domain boundary $ \partial D_{Neumann} = \{ (x_1,x_2) | x_1 \in [0,1], x_2=0 \} $ , and to Dirichlet boundary conditions, \[ \left. u\right|_{\partial D_{Dirichlet}}=h_0, \ \ \ \ \ \ \ \ \ \ (4) \] elsewhere.  
+\begin{center} {\bfseries{The two-\/dimensional unsteady heat equation with flux boundary conditions in a moving domain.}} \end{center}  Solve  \[
+\sum_{i=1}^2\frac{\partial^2 u}{\partial x_i^2} 
+= \frac{\partial u}{\partial t} + f\left(x_1,x_2,t\right),
+ \ \ \ \ \ \ \ \ \ \ (1)
+\] in the domain $ D $ , bounded by the coordinate axes and the time-\/dependent ellipse  \[
+\mathbf{r}_{ellipse}(\xi,t) = 
+\left(
+\begin{array}{c}
+\big( a+\hat{a}\sin(2\pi t/\hat{T}) \big) \cos(\xi) \\
+\big( b+\hat{b}\sin(2\pi t/\hat{T}) \big) \sin(\xi)
+\end{array}
+\right),
+ \ \ \ \ \ \ \ \ \ \ (2)
+\] subject to Neumann boundary conditions,  \[
+\left. \frac{\partial u}{\partial n}\right|_{\partial D_{Neumann}}=
+- \left. \frac{\partial u}{\partial x_2}\right|_{\partial D_{Neumann}}=
+g_0, 
+\ \ \ \ \ \ \ \ \ \ (3)
+\] along the horizontal domain boundary $ \partial D_{Neumann} = 
+\{ (x_1,x_2) | x_1 \in [0,1], x_2=0 \} $ , and to Dirichlet boundary conditions,  \[
+\left. u\right|_{\partial D_{Dirichlet}}=h_0, 
+\ \ \ \ \ \ \ \ \ \ (4)
+\] elsewhere.  
 \begin{DoxyImage}
 \includegraphics[width=0.75\textwidth]{domain}
 \doxyfigcaption{Sketch of the time-\/dependent domain and the boundary conditions. }
 \end{DoxyImage}
- The initial conditions are given by \[ u(x_1,x_2,t=0)=k_0(x_1,x_2), \ \ \ \ \ \ \ \ \ \ (5) \] where the functions $ f, g_0, \ h_0 $ and $ k_0 $ are given.   \\\cline{1-1}
+ The initial conditions are given by  \[
+u(x_1,x_2,t=0)=k_0(x_1,x_2),
+\ \ \ \ \ \ \ \ \ \ (5)
+\] where the functions $ f, g_0, \ h_0 $ and $ k_0 $ are given.   \\\cline{1-1}
 \end{longtabu}
 ~\newline
  \end{center} 
 
-We choose the functions $ f, g_0, \ h_0 $ and $ k_0 $ so that \[ u_0(x_1,x_2,t) = \tanh\bigg[ 1-\alpha\bigg( \tan\Phi \big(x_1-\beta\tanh[ \gamma\cos\left(2\pi t\right)]\big)- x_2\bigg)\bigg] \ \ \ \ \ \ \ \ \ \ (6) \] is the exact solution.
+We choose the functions $ f, g_0, \ h_0 $ and $ k_0 $ so that  \[
+u_0(x_1,x_2,t) = \tanh\bigg[ 1-\alpha\bigg( \tan\Phi
+\big(x_1-\beta\tanh[ \gamma\cos\left(2\pi
+t\right)]\big)- x_2\bigg)\bigg]
+ \ \ \ \ \ \ \ \ \ \ (6)
+\] is the exact solution.
 
-The solution represents the \char`\"{}usual\char`\"{} tanh profile, whose steepness is controlled by the parameter $ \alpha $ so that for $ \alpha \gg 1 $ the solution approaches a step. The step is oriented at an angle $ \Phi $ against the $ x_1- $ axis and its position varies periodically. The parameter $ \beta $ controls the amplitude of the step\textquotesingle{}s lateral displacement, while $ \gamma $ determines the rate at which its position changes. For $ \gamma \gg 1 $ , the step remains stationary for most of the period and then translates rapidly parallel to the $ x_1- $ axis, making this a very challenging problem.
+The solution represents the \char`\"{}usual\char`\"{} tanh profile, whose steepness is controlled by the parameter $ \alpha $ so that for $ \alpha
+\gg 1 $ the solution approaches a step. The step is oriented at an angle $ \Phi $ against the $ x_1- $ axis and its position varies periodically. The parameter $ \beta $ controls the amplitude of the step\textquotesingle{}s lateral displacement, while $ \gamma $ determines the rate at which its position changes. For $ \gamma \gg 1 $ , the step remains stationary for most of the period and then translates rapidly parallel to the $ x_1- $ axis, making this a very challenging problem.
 
-The figure below shows a snapshot of the \href{../figures/step_soln.avi}{\texttt{ animated solution}}, obtained from the spatially adaptive simulation discussed below, for the parameter values $ \alpha=10, \ \Phi=45^o, \ \beta=-0.3, \ \gamma=5. $
+The figure below shows a snapshot of the \href{../figures/step_soln.avi}{\texttt{ animated solution}}, obtained from the spatially adaptive simulation discussed below, for the parameter values $ \alpha=10, \ 
+\Phi=45^o, \ \beta=-0.3, \ \gamma=5. $
 
  
 \begin{DoxyImage}
@@ -38,10 +70,33 @@ The mesh adaptation in response to the translation of the step can be seen more 
 \DoxyHorRuler{0}
  \DoxyHorRuler{0}
 \hypertarget{index_ale}{}\doxysection{Background\+: ALE methods and the evaluation of time-\/derivatives in moving domains}\label{index_ale}
-{\ttfamily oomph-\/lib\textquotesingle{}s} {\ttfamily Unsteady\+Heat\+Equations}, the equation class that forms the basis for the isoparametric {\ttfamily QUnsteady\+Heat\+Elements}, is based on the Arbitrary Lagrangian Eulerian (ALE) formulation of the weak form of the governing PDE, (1). Within each element, the solution is represented by interpolation between the element\textquotesingle{}s $ N_{node}^{(E)} $ nodal values $ U_j^{(E)}(t) \ (i=1,..., N_{node}^{(E)})$ , i.\+e. \[ u = \sum_{j=1}^{N_{node}^{(E)}} U_j^{(E)}(t) \ \psi_{j}(s_1,s_2), \ \ \ \ \ \ \ \ \ \ (7) \] where $ s_1 $ and $ s_2 $ are the element\textquotesingle{}s two local coordinates. The mapping between the local and global (Eulerian) coordinates is based on the interpolation between the nodal coordinates, \[ x_i(s_1,s_2) = \sum_{j=1}^{N_{node}^{(E)}} X_{ij}^{(E)}(t) \ \psi_{j}(s_1,s_2), \ \ \ \ (i=1,2) \ \ \ \ \ \ (8) \] where $ X_{ij}^{(E)}(t) $ is the i-\/th global (Eulerian) coordinate of node j in the element. In moving-\/domain problems, where the nodal positions vary as function of time, the time-\/derivative of the nodal value, $ dU_j(t)/dt $ , represents the rate-\/of-\/change of $ u $ at the moving node, rather than the time-\/derivative of $ u $ at a fixed Eulerian position, ~\newline
+{\ttfamily oomph-\/lib\textquotesingle{}s} {\ttfamily Unsteady\+Heat\+Equations}, the equation class that forms the basis for the isoparametric {\ttfamily QUnsteady\+Heat\+Elements}, is based on the Arbitrary Lagrangian Eulerian (ALE) formulation of the weak form of the governing PDE, (1). Within each element, the solution is represented by interpolation between the element\textquotesingle{}s $ N_{node}^{(E)} $ nodal values $ U_j^{(E)}(t) \ 
+(i=1,..., N_{node}^{(E)})$ , i.\+e.  \[
+u = \sum_{j=1}^{N_{node}^{(E)}} U_j^{(E)}(t) \  \psi_{j}(s_1,s_2),
+\ \ \ \ \ \ \ \ \ \ (7)
+\] where $ s_1 $ and $ s_2 $ are the element\textquotesingle{}s two local coordinates. The mapping between the local and global (Eulerian) coordinates is based on the interpolation between the nodal coordinates,  \[
+x_i(s_1,s_2) = \sum_{j=1}^{N_{node}^{(E)}} X_{ij}^{(E)}(t) \  
+\psi_{j}(s_1,s_2),
+\ \ \ \ (i=1,2) \ \ \ \ \ \  (8)
+\] where $ X_{ij}^{(E)}(t) $ is the i-\/th global (Eulerian) coordinate of node j in the element. In moving-\/domain problems, where the nodal positions vary as function of time, the time-\/derivative of the nodal value, $ dU_j(t)/dt $ , represents the rate-\/of-\/change of $ u $ at the moving node, rather than the time-\/derivative of $ u $ at a fixed Eulerian position, ~\newline
  $ \partial u/\partial t, $ the quantity required in the PDE, (1).
 
-The rate of change of $ u $ at a moving node, $ dU_j(t)/dt $ , may also be expressed by the material derivative, \[ \left. \frac{D u}{Dt}\right|_{\mbox{\small node} \ j} = \frac{\partial u}{\partial t} + \sum_{i=1}^2 v_{ij} \ \frac{\partial u}{\partial x_i} \] where \[ v_{ij} = \frac{dX_{ij}^{(E)}}{dt} \] is the i-\/th velocity component of node j, often referred to as the \char`\"{}mesh velocity\char`\"{}. The rate of change of $ u $ , experienced at the (fixed) spatial position that coincides with the current position of node j is therefore given by \[ \frac{\partial u}{\partial t} = \frac{d U_j^{(E)}}{dt} - \sum_{i=1}^2 \left( \frac{dX_{ij}^{(E)}}{dt} \ \sum_{k=1}^{N_{node}^{(E)}} U_k^{(E)} \ \frac{\partial \psi_{k}}{\partial x_i} \right) . \] This is the form in which the time-\/derivative in (1) is implemented in {\ttfamily oomph-\/lib\textquotesingle{}s} unsteady heat elements. The mesh velocity is determined automatically, using the {\ttfamily Node\textquotesingle{}s} positional {\ttfamily Time\+Stepper} and the history values of the nodal positions. \mbox{[}By default, the positional {\ttfamily Time\+Stepper} is the same as the {\ttfamily Time\+Stepper} used for the evaluation of the time-\/derivatives of the nodal values; a different one may be assigned with the access function {\ttfamily Node\+::position\+\_\+time\+\_\+stepper\+\_\+pt()}.\mbox{]} This is why it is important to initialise the \char`\"{}previous nodal positions\char`\"{} in computations on fixed meshes, as demonstrated in the \href{../../two_d_unsteady_heat/html/index.html}{\texttt{ exercise in our earlier example\+:}} The previous nodal positions are initialised to zero when a {\ttfamily Node} is first created. Therefore, if the previous positions are not overwritten with the actual nodal positions, the positional {\ttfamily Time\+Stepper} would compute non-\/zero mesh velocities, even though the {\ttfamily Nodes} are stationary.
+The rate of change of $ u $ at a moving node, $ dU_j(t)/dt $ , may also be expressed by the material derivative,  \[
+\left. \frac{D u}{Dt}\right|_{\mbox{\small node} \ j} =  
+\frac{\partial u}{\partial t}
++ \sum_{i=1}^2 v_{ij} \ \frac{\partial u}{\partial x_i}
+\] where  \[
+v_{ij} =  \frac{dX_{ij}^{(E)}}{dt}
+\] is the i-\/th velocity component of node j, often referred to as the \char`\"{}mesh velocity\char`\"{}. The rate of change of $ u $ , experienced at the (fixed) spatial position that coincides with the current position of node j is therefore given by  \[
+\frac{\partial u}{\partial t} =
+\frac{d U_j^{(E)}}{dt}
+- \sum_{i=1}^2 
+\left( 
+\frac{dX_{ij}^{(E)}}{dt}
+\ \sum_{k=1}^{N_{node}^{(E)}} U_k^{(E)} \
+\frac{\partial \psi_{k}}{\partial x_i}
+\right) .
+\] This is the form in which the time-\/derivative in (1) is implemented in {\ttfamily oomph-\/lib\textquotesingle{}s} unsteady heat elements. The mesh velocity is determined automatically, using the {\ttfamily Node\textquotesingle{}s} positional {\ttfamily Time\+Stepper} and the history values of the nodal positions. \mbox{[}By default, the positional {\ttfamily Time\+Stepper} is the same as the {\ttfamily Time\+Stepper} used for the evaluation of the time-\/derivatives of the nodal values; a different one may be assigned with the access function {\ttfamily Node\+::position\+\_\+time\+\_\+stepper\+\_\+pt()}.\mbox{]} This is why it is important to initialise the \char`\"{}previous nodal positions\char`\"{} in computations on fixed meshes, as demonstrated in the \href{../../two_d_unsteady_heat/html/index.html}{\texttt{ exercise in our earlier example\+:}} The previous nodal positions are initialised to zero when a {\ttfamily Node} is first created. Therefore, if the previous positions are not overwritten with the actual nodal positions, the positional {\ttfamily Time\+Stepper} would compute non-\/zero mesh velocities, even though the {\ttfamily Nodes} are stationary.
 
 {\ttfamily oomph-\/lib\textquotesingle{}s} unsteady Newton solvers automatically advance the time-\/history of the nodal positions when computing a new timestep. Performing computations on moving meshes is therefore extremely straightforward\+: The only task to be performed by the \char`\"{}user\char`\"{} is to update the nodal positions before a new timestep is taken. This is best done in the function {\ttfamily Problem\+::actions\+\_\+before\+\_\+implicit\+\_\+timestep()}.
 
@@ -62,61 +117,61 @@ As discussed above, we will incorporate the time-\/dependence of the moving curv
  
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\textcolor{comment}{//============start\_of\_MyEllipse===========================================}}
-\DoxyCodeLine{\textcolor{comment}{/// Oscillating ellipse}\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{/// \(\backslash\)f[ x = (a + \(\backslash\)widehat\{a\} \(\backslash\)sin(2\(\backslash\)Pi t/T)) \(\backslash\)cos(\(\backslash\)xi)  \(\backslash\)f]}}
-\DoxyCodeLine{\textcolor{comment}{/// \(\backslash\)f[ y = (b + \(\backslash\)widehat\{b\} \(\backslash\)sin(2\(\backslash\)Pi t/T)) \(\backslash\)sin(\(\backslash\)xi)  \(\backslash\)f]}}
+\DoxyCodeLine{\textcolor{comment}{///\ Oscillating\ ellipse}\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{///\ \(\backslash\)f[\ x\ =\ (a\ +\ \(\backslash\)widehat\{a\}\ \(\backslash\)sin(2\(\backslash\)Pi\ t/T))\ \(\backslash\)cos(\(\backslash\)xi)\ \ \(\backslash\)f]}}
+\DoxyCodeLine{\textcolor{comment}{///\ \(\backslash\)f[\ y\ =\ (b\ +\ \(\backslash\)widehat\{b\}\ \(\backslash\)sin(2\(\backslash\)Pi\ t/T))\ \(\backslash\)sin(\(\backslash\)xi)\ \ \(\backslash\)f]}}
 \DoxyCodeLine{\textcolor{comment}{}\textcolor{comment}{//=========================================================================}}
-\DoxyCodeLine{\textcolor{keyword}{class }\mbox{\hyperlink{classMyEllipse}{MyEllipse}} : \textcolor{keyword}{public} GeomObject}
+\DoxyCodeLine{\textcolor{keyword}{class\ }\mbox{\hyperlink{classMyEllipse}{MyEllipse}}\ :\ \textcolor{keyword}{public}\ GeomObject}
 \DoxyCodeLine{\{}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{keyword}{public}:}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{ /// Constructor:  Pass half axes, amplitudes of their variation, period}}
-\DoxyCodeLine{\textcolor{comment}{ /// of oscillation and pointer to time object.}}
-\DoxyCodeLine{\textcolor{comment}{} \mbox{\hyperlink{classMyEllipse_aaa00984813af171e611e420eb3433653}{MyEllipse}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& a, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& b, }
-\DoxyCodeLine{           \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& a\_hat, \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& b\_hat, }
-\DoxyCodeLine{           \textcolor{keyword}{const} \textcolor{keywordtype}{double}\& period, Time* time\_pt) : }
-\DoxyCodeLine{  GeomObject(1,2), \mbox{\hyperlink{classMyEllipse_aa2a0efd0a39f9d4fc307a6ff011682ed}{A}}(a), \mbox{\hyperlink{classMyEllipse_a8f991996b9040fe94b942eab7e51f0af}{B}}(b), \mbox{\hyperlink{classMyEllipse_a653e71cf296cdc86cc595d16f18004dd}{A\_hat}}(a\_hat), \mbox{\hyperlink{classMyEllipse_a39d06488447d80f16b80ed8915edf3e3}{B\_hat}}(b\_hat), }
-\DoxyCodeLine{  \mbox{\hyperlink{classMyEllipse_ab098069ab23bbbd8f30b0da3523dc87f}{T}}(period), \mbox{\hyperlink{classMyEllipse_abc1c4c863a599ce87bdff1abb9971953}{Time\_pt}}(time\_pt) \{\}}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ Constructor:\ \ Pass\ half\ axes,\ amplitudes\ of\ their\ variation,\ period}}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ of\ oscillation\ and\ pointer\ to\ time\ object.}}
+\DoxyCodeLine{\textcolor{comment}{}\ \mbox{\hyperlink{classMyEllipse}{MyEllipse}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ a,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ b,\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ a\_hat,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ b\_hat,\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ period,\ Time*\ time\_pt)\ :\ }
+\DoxyCodeLine{\ \ GeomObject(1,2),\ \mbox{\hyperlink{classMyEllipse_aa2a0efd0a39f9d4fc307a6ff011682ed}{A}}(a),\ \mbox{\hyperlink{classMyEllipse_a8f991996b9040fe94b942eab7e51f0af}{B}}(b),\ \mbox{\hyperlink{classMyEllipse_a653e71cf296cdc86cc595d16f18004dd}{A\_hat}}(a\_hat),\ \mbox{\hyperlink{classMyEllipse_a39d06488447d80f16b80ed8915edf3e3}{B\_hat}}(b\_hat),\ }
+\DoxyCodeLine{\ \ \mbox{\hyperlink{classMyEllipse_ab098069ab23bbbd8f30b0da3523dc87f}{T}}(period),\ \mbox{\hyperlink{classMyEllipse_abc1c4c863a599ce87bdff1abb9971953}{Time\_pt}}(time\_pt)\ \{\}}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{ /// Destructor: Empty}}
-\DoxyCodeLine{\textcolor{comment}{} \textcolor{keyword}{virtual} \mbox{\hyperlink{classMyEllipse_ac2f2d3fb269c57fb26b4db6d9a0c7c05}{\string~MyEllipse}}() \{\}}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ Destructor:\ Empty}}
+\DoxyCodeLine{\textcolor{comment}{}\ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classMyEllipse_ac2f2d3fb269c57fb26b4db6d9a0c7c05}{\string~MyEllipse}}()\ \{\}}
 
 \end{DoxyCodeInclude}
  The \char`\"{}steady\char`\"{} version of the {\ttfamily position(...)} function must return the position vector to the point on the {\ttfamily Geom\+Object}, identified by its intrinsic coordinate {\ttfamily xi}, and evaluated at the current value of the continuous time, which we extract from {\ttfamily Time\+::time()}\+: 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{comment}{ /// Current position vector to material point at }}
-\DoxyCodeLine{\textcolor{comment}{ /// Lagrangian coordinate xi }}
-\DoxyCodeLine{ \textcolor{keywordtype}{void} position(\textcolor{keyword}{const} Vector<double>\& xi, Vector<double>\& r)\textcolor{keyword}{ const}}
-\DoxyCodeLine{\textcolor{keyword}{  }\{}
-\DoxyCodeLine{   \textcolor{comment}{// Get current time:}}
-\DoxyCodeLine{   \textcolor{keywordtype}{double} time=Time\_pt-\/>time();}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ Current\ position\ vector\ to\ material\ point\ at\ }}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ Lagrangian\ coordinate\ xi\ }}
+\DoxyCodeLine{\ \textcolor{keywordtype}{void}\ position(\textcolor{keyword}{const}\ Vector<double>\&\ xi,\ Vector<double>\&\ r)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\textcolor{keyword}{\ \ }\{}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Get\ current\ time:}}
+\DoxyCodeLine{\ \ \ \textcolor{keywordtype}{double}\ time=Time\_pt-\/>time();}
 \DoxyCodeLine{}
-\DoxyCodeLine{   \textcolor{comment}{// Position vector}}
-\DoxyCodeLine{   r[0] = (A+A\_hat*sin(2.0*MathematicalConstants::Pi*time/T))*cos(xi[0]);}
-\DoxyCodeLine{   r[1] = (B+B\_hat*sin(2.0*MathematicalConstants::Pi*time/T))*sin(xi[0]);}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Position\ vector}}
+\DoxyCodeLine{\ \ \ r[0]\ =\ (A+A\_hat*sin(2.0*MathematicalConstants::Pi*time/T))*cos(xi[0]);}
+\DoxyCodeLine{\ \ \ r[1]\ =\ (B+B\_hat*sin(2.0*MathematicalConstants::Pi*time/T))*sin(xi[0]);}
 \DoxyCodeLine{}
-\DoxyCodeLine{  \} \textcolor{comment}{// end of position(...)}}
+\DoxyCodeLine{\ \ \}\ \textcolor{comment}{//\ end\ of\ position(...)}}
 
 \end{DoxyCodeInclude}
 
 
 The \char`\"{}time-\/dependent\char`\"{} version of the {\ttfamily position(...)} function must return the position vector to the {\ttfamily Geom\+Object}, evaluated at the {\ttfamily t} -\/ th previous timestep. The value of the continuous time at that timestep is available from from {\ttfamily Time\+::time(t)}\+: 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{comment}{ /// Parametrised position on object: r(xi). Evaluated at}}
-\DoxyCodeLine{\textcolor{comment}{ /// previous time level. t=0: current time; t>0: previous}\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{ /// time level.}}
-\DoxyCodeLine{\textcolor{comment}{} \textcolor{keywordtype}{void} position(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned}\& t, \textcolor{keyword}{const} Vector<double>\& xi,}
-\DoxyCodeLine{               Vector<double>\& r)\textcolor{keyword}{ const}}
-\DoxyCodeLine{\textcolor{keyword}{  }\{}
-\DoxyCodeLine{   \textcolor{comment}{// Get current time:}}
-\DoxyCodeLine{   \textcolor{keywordtype}{double} time=Time\_pt-\/>time(t);}
-\DoxyCodeLine{   }
-\DoxyCodeLine{   \textcolor{comment}{// Position vector}}
-\DoxyCodeLine{   r[0] = (A+A\_hat*sin(2.0*MathematicalConstants::Pi*time/T))*cos(xi[0]);}
-\DoxyCodeLine{   r[1] = (B+B\_hat*sin(2.0*MathematicalConstants::Pi*time/T))*sin(xi[0]);}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ Parametrised\ position\ on\ object:\ r(xi).\ Evaluated\ at}}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ previous\ time\ level.\ t=0:\ current\ time;\ t>0:\ previous}\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ time\ level.}}
+\DoxyCodeLine{\textcolor{comment}{}\ \textcolor{keywordtype}{void}\ position(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\&\ t,\ \textcolor{keyword}{const}\ Vector<double>\&\ xi,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector<double>\&\ r)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\textcolor{keyword}{\ \ }\{}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Get\ current\ time:}}
+\DoxyCodeLine{\ \ \ \textcolor{keywordtype}{double}\ time=Time\_pt-\/>time(t);}
+\DoxyCodeLine{\ \ \ }
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Position\ vector}}
+\DoxyCodeLine{\ \ \ r[0]\ =\ (A+A\_hat*sin(2.0*MathematicalConstants::Pi*time/T))*cos(xi[0]);}
+\DoxyCodeLine{\ \ \ r[1]\ =\ (B+B\_hat*sin(2.0*MathematicalConstants::Pi*time/T))*sin(xi[0]);}
 \DoxyCodeLine{}
-\DoxyCodeLine{  \} \textcolor{comment}{// end of position(...)}}
+\DoxyCodeLine{\ \ \}\ \textcolor{comment}{//\ end\ of\ position(...)}}
 
 \end{DoxyCodeInclude}
  We omit the code that defines the private member data.
@@ -138,36 +193,36 @@ The {\ttfamily Problem} constructor is identical to the fixed-\/mesh version in 
 
  
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{ \textcolor{comment}{// Setup mesh}}
-\DoxyCodeLine{ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Setup\ mesh}}
+\DoxyCodeLine{\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Build geometric object that forms the curvilinear domain boundary:}}
-\DoxyCodeLine{ \textcolor{comment}{// an oscillating ellipse}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Build\ geometric\ object\ that\ forms\ the\ curvilinear\ domain\ boundary:}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ an\ oscillating\ ellipse}}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Half axes}}
-\DoxyCodeLine{ \textcolor{keywordtype}{double} a=1.0;}
-\DoxyCodeLine{ \textcolor{keywordtype}{double} b=1.0;}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Half\ axes}}
+\DoxyCodeLine{\ \textcolor{keywordtype}{double}\ a=1.0;}
+\DoxyCodeLine{\ \textcolor{keywordtype}{double}\ b=1.0;}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Variations of half axes}}
-\DoxyCodeLine{ \textcolor{keywordtype}{double} a\_hat= 0.1;}
-\DoxyCodeLine{ \textcolor{keywordtype}{double} b\_hat=-\/0.1;}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Variations\ of\ half\ axes}}
+\DoxyCodeLine{\ \textcolor{keywordtype}{double}\ a\_hat=\ 0.1;}
+\DoxyCodeLine{\ \textcolor{keywordtype}{double}\ b\_hat=-\/0.1;}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Period of the oscillation}}
-\DoxyCodeLine{ \textcolor{keywordtype}{double} period=1.0;}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Period\ of\ the\ oscillation}}
+\DoxyCodeLine{\ \textcolor{keywordtype}{double}\ period=1.0;}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Create GeomObject}}
-\DoxyCodeLine{ Boundary\_pt=\textcolor{keyword}{new} \mbox{\hyperlink{classMyEllipse}{MyEllipse}}(a,b,a\_hat,b\_hat,period,Problem::time\_pt()); }
+\DoxyCodeLine{\ \textcolor{comment}{//\ Create\ GeomObject}}
+\DoxyCodeLine{\ Boundary\_pt=\textcolor{keyword}{new}\ \mbox{\hyperlink{classMyEllipse}{MyEllipse}}(a,b,a\_hat,b\_hat,period,Problem::time\_pt());\ }
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Start and end coordinates of curvilinear domain boundary on ellipse}}
-\DoxyCodeLine{ \textcolor{keywordtype}{double} xi\_lo=0.0;}
-\DoxyCodeLine{ \textcolor{keywordtype}{double} xi\_hi=MathematicalConstants::Pi/2.0;}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Start\ and\ end\ coordinates\ of\ curvilinear\ domain\ boundary\ on\ ellipse}}
+\DoxyCodeLine{\ \textcolor{keywordtype}{double}\ xi\_lo=0.0;}
+\DoxyCodeLine{\ \textcolor{keywordtype}{double}\ xi\_hi=MathematicalConstants::Pi/2.0;}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Now create the bulk mesh. Separating line between the two }}
-\DoxyCodeLine{ \textcolor{comment}{// elements next to the curvilinear boundary is located half-\/way}}
-\DoxyCodeLine{ \textcolor{comment}{// along the boundary.}}
-\DoxyCodeLine{ \textcolor{keywordtype}{double} fract\_mid=0.5;}
-\DoxyCodeLine{ Bulk\_mesh\_pt = \textcolor{keyword}{new} RefineableQuarterCircleSectorMesh<ELEMENT>(}
-\DoxyCodeLine{  Boundary\_pt,xi\_lo,fract\_mid,xi\_hi,time\_stepper\_pt());}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Now\ create\ the\ bulk\ mesh.\ Separating\ line\ between\ the\ two\ }}
+\DoxyCodeLine{\ \textcolor{comment}{//\ elements\ next\ to\ the\ curvilinear\ boundary\ is\ located\ half-\/way}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ along\ the\ boundary.}}
+\DoxyCodeLine{\ \textcolor{keywordtype}{double}\ fract\_mid=0.5;}
+\DoxyCodeLine{\ Bulk\_mesh\_pt\ =\ \textcolor{keyword}{new}\ RefineableQuarterCircleSectorMesh<ELEMENT>(}
+\DoxyCodeLine{\ \ Boundary\_pt,xi\_lo,fract\_mid,xi\_hi,time\_stepper\_pt());}
 
 \end{DoxyCodeInclude}
 
@@ -179,15 +234,15 @@ As discussed above, the addition of a single line to {\ttfamily Problem\+::actio
 
  
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{comment}{//=========start of actions\_before\_implicit\_timestep===============================}}
-\DoxyCodeLine{\textcolor{comment}{/// Actions before timestep: Update the domain shape, then set the }\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{/// boundary conditions for the current time.}}
+\DoxyCodeLine{\textcolor{comment}{//=========start\ of\ actions\_before\_implicit\_timestep===============================}}
+\DoxyCodeLine{\textcolor{comment}{///\ Actions\ before\ timestep:\ Update\ the\ domain\ shape,\ then\ set\ the\ }\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{///\ boundary\ conditions\ for\ the\ current\ time.}}
 \DoxyCodeLine{\textcolor{comment}{}\textcolor{comment}{//========================================================================}}
-\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>}
-\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{classRefineableUnsteadyHeatProblem_ac754f1313cd6d684c149443beb5bcf9e}{RefineableUnsteadyHeatProblem<ELEMENT>::actions\_before\_implicit\_timestep}}()}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class}\ ELEMENT>}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRefineableUnsteadyHeatProblem_ac754f1313cd6d684c149443beb5bcf9e}{RefineableUnsteadyHeatProblem<ELEMENT>::actions\_before\_implicit\_timestep}}()}
 \DoxyCodeLine{\{}
-\DoxyCodeLine{ \textcolor{comment}{// Update the domain shape}}
-\DoxyCodeLine{ Bulk\_mesh\_pt-\/>node\_update();}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Update\ the\ domain\ shape}}
+\DoxyCodeLine{\ Bulk\_mesh\_pt-\/>node\_update();}
 
 \end{DoxyCodeInclude}
  The rest of this function is identical to the that in the \href{../../two_d_unsteady_heat/html/index.html}{\texttt{ fixed-\/domain version}} and updates the nodal values on the Dirichlet boundaries according to the values given by the exact solution.
@@ -201,43 +256,43 @@ This is achieved with a few minor changes to the previous version of this functi
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{   \textcolor{comment}{// Loop over current \& previous timesteps (in outer loop because}}
-\DoxyCodeLine{   \textcolor{comment}{// the mesh also moves!)}}
-\DoxyCodeLine{   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} itime=nprev\_steps;itime>=0;itime-\/-\/)}
-\DoxyCodeLine{    \{}
-\DoxyCodeLine{     \textcolor{keywordtype}{double} time=prev\_time[itime];}
-\DoxyCodeLine{     }
-\DoxyCodeLine{     \textcolor{comment}{// Set global time (because this is how the geometric object refers }}
-\DoxyCodeLine{     \textcolor{comment}{// to continous time }}
-\DoxyCodeLine{     time\_pt()-\/>time()=time;}
-\DoxyCodeLine{     }
-\DoxyCodeLine{     cout << \textcolor{stringliteral}{"{}setting IC at time ="{}} << time << std::endl;}
-\DoxyCodeLine{     }
-\DoxyCodeLine{     \textcolor{comment}{// Update the mesh for this value of the continuous time}}
-\DoxyCodeLine{     \textcolor{comment}{// (The wall object reads the continous time from the same}}
-\DoxyCodeLine{     \textcolor{comment}{// global time object)}}
-\DoxyCodeLine{     Bulk\_mesh\_pt-\/>node\_update(); }
-\DoxyCodeLine{     }
-\DoxyCodeLine{     \textcolor{comment}{// Loop over the nodes to set initial guess everywhere}}
-\DoxyCodeLine{     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} jnod=0;jnod<num\_nod;jnod++)}
-\DoxyCodeLine{      \{}
-\DoxyCodeLine{       \textcolor{comment}{// Get nodal coordinates}}
-\DoxyCodeLine{       x[0]=Bulk\_mesh\_pt-\/>node\_pt(jnod)-\/>x(0);}
-\DoxyCodeLine{       x[1]=Bulk\_mesh\_pt-\/>node\_pt(jnod)-\/>x(1);}
-\DoxyCodeLine{       }
-\DoxyCodeLine{       \textcolor{comment}{// Get intial solution}}
-\DoxyCodeLine{       \mbox{\hyperlink{namespaceTanhSolnForUnsteadyHeat_a36857bbdec45f44018772de70558db7d}{TanhSolnForUnsteadyHeat::get\_exact\_u}}(time,x,soln);}
-\DoxyCodeLine{       }
-\DoxyCodeLine{       \textcolor{comment}{// Assign solution}}
-\DoxyCodeLine{       Bulk\_mesh\_pt-\/>node\_pt(jnod)-\/>set\_value(itime,0,soln[0]);}
-\DoxyCodeLine{       }
-\DoxyCodeLine{       \textcolor{comment}{// Loop over coordinate directions}}
-\DoxyCodeLine{       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i=0;i<2;i++)}
-\DoxyCodeLine{        \{}
-\DoxyCodeLine{         Bulk\_mesh\_pt-\/>node\_pt(jnod)-\/>x(itime,i)=x[i];}
-\DoxyCodeLine{        \}}
-\DoxyCodeLine{      \} }
-\DoxyCodeLine{    \} \textcolor{comment}{// end of loop over previous timesteps}}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Loop\ over\ current\ \&\ previous\ timesteps\ (in\ outer\ loop\ because}}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ the\ mesh\ also\ moves!)}}
+\DoxyCodeLine{\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ itime=nprev\_steps;itime>=0;itime-\/-\/)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordtype}{double}\ time=prev\_time[itime];}
+\DoxyCodeLine{\ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \textcolor{comment}{//\ Set\ global\ time\ (because\ this\ is\ how\ the\ geometric\ object\ refers\ }}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{comment}{//\ to\ continous\ time\ }}
+\DoxyCodeLine{\ \ \ \ \ time\_pt()-\/>time()=time;}
+\DoxyCodeLine{\ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}setting\ IC\ at\ time\ ="{}}\ <<\ time\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \textcolor{comment}{//\ Update\ the\ mesh\ for\ this\ value\ of\ the\ continuous\ time}}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{comment}{//\ (The\ wall\ object\ reads\ the\ continous\ time\ from\ the\ same}}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{comment}{//\ global\ time\ object)}}
+\DoxyCodeLine{\ \ \ \ \ Bulk\_mesh\_pt-\/>node\_update();\ }
+\DoxyCodeLine{\ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \textcolor{comment}{//\ Loop\ over\ the\ nodes\ to\ set\ initial\ guess\ everywhere}}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ jnod=0;jnod<num\_nod;jnod++)}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ nodal\ coordinates}}
+\DoxyCodeLine{\ \ \ \ \ \ \ x[0]=Bulk\_mesh\_pt-\/>node\_pt(jnod)-\/>x(0);}
+\DoxyCodeLine{\ \ \ \ \ \ \ x[1]=Bulk\_mesh\_pt-\/>node\_pt(jnod)-\/>x(1);}
+\DoxyCodeLine{\ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ intial\ solution}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \mbox{\hyperlink{namespaceTanhSolnForUnsteadyHeat_a36857bbdec45f44018772de70558db7d}{TanhSolnForUnsteadyHeat::get\_exact\_u}}(time,x,soln);}
+\DoxyCodeLine{\ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \textcolor{comment}{//\ Assign\ solution}}
+\DoxyCodeLine{\ \ \ \ \ \ \ Bulk\_mesh\_pt-\/>node\_pt(jnod)-\/>set\_value(itime,0,soln[0]);}
+\DoxyCodeLine{\ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \textcolor{comment}{//\ Loop\ over\ coordinate\ directions}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ i=0;i<2;i++)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ Bulk\_mesh\_pt-\/>node\_pt(jnod)-\/>x(itime,i)=x[i];}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \}\ }
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{comment}{//\ end\ of\ loop\ over\ previous\ timesteps}}
 
 \end{DoxyCodeInclude}
 

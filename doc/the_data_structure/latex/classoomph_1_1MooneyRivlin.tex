@@ -30,6 +30,23 @@ void \mbox{\hyperlink{classoomph_1_1MooneyRivlin_a01ff4e87c76813d6a9e528bd896a2b
 \begin{DoxyCompactList}\small\item\em Return the derivatives of the strain energy function with respect to the strain invariants. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classoomph_1_1MooneyRivlin_ad5cd489e1bc8f4cfe1f147135ffe21af}{requires\+\_\+incompressibility\+\_\+constraint}} ()
 \begin{DoxyCompactList}\small\item\em Pure virtual function in which the user must declare if the constitutive equation requires an incompressible formulation in which the volume constraint is enforced explicitly. Used as a sanity check in PARANOID mode. True. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1StrainEnergyFunction}{oomph\+::\+Strain\+Energy\+Function}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1StrainEnergyFunction_a027b9babcedcefb3fd06a6deace8f6b6}{Strain\+Energy\+Function}} ()
+\begin{DoxyCompactList}\small\item\em Constructor takes no arguments. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1StrainEnergyFunction_a755d306f96fc59147c6cb148456e364e}{$\sim$\+Strain\+Energy\+Function}} ()
+\begin{DoxyCompactList}\small\item\em Empty virtual destructor. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classoomph_1_1StrainEnergyFunction_a76cadaefaa89b93793c893f1302bd68a}{W}} (const \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ \&gamma)
+\begin{DoxyCompactList}\small\item\em Return the strain energy in terms of the strain tensor. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classoomph_1_1StrainEnergyFunction_a99df34610d4542568f65c568ae3a908f}{W}} (const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&I)
+\begin{DoxyCompactList}\small\item\em Return the strain energy in terms of the strain invariants. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1StrainEnergyFunction_a467a3b01986940aba8c8aff2715bf086}{derivative}} (const \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ \&gamma, \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ \&d\+Wdgamma)
+\begin{DoxyCompactList}\small\item\em Return the derivatives of the strain energy function with respect to the components of the strain tensor (default is to use finite differences). \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1StrainEnergyFunction_a81ca7bb14cce217ffac9d308dba39756}{derivatives}} (\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&I, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&d\+WdI)
+\begin{DoxyCompactList}\small\item\em Return the derivatives of the strain energy function with respect to the strain invariants. Default version is to use finite differences. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classoomph_1_1StrainEnergyFunction_a312fe03c070f5c45a99ae4e186936147}{requires\+\_\+incompressibility\+\_\+constraint}} ()=0
+\begin{DoxyCompactList}\small\item\em Pure virtual function in which the user must declare if the constitutive equation requires an incompressible formulation in which the volume constraint is enforced explicitly. Used as a sanity check in PARANOID mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -158,7 +175,7 @@ Definition at line \mbox{\hyperlink{constitutive__laws_8h_source_l00163}{163}} o
 
 
 
-References \mbox{\hyperlink{constitutive__laws_8h_source_l00190}{C1\+\_\+pt}}, \mbox{\hyperlink{constitutive__laws_8h_source_l00193}{C2\+\_\+pt}}, and \mbox{\hyperlink{namespaceoomph_1_1MathematicalConstants_a609ab3b897b174e49ddf7a19fd95f2ef}{oomph\+::\+Mathematical\+Constants\+::\+I()}}.
+References \mbox{\hyperlink{constitutive__laws_8h_source_l00190}{C1\+\_\+pt}}, and \mbox{\hyperlink{constitutive__laws_8h_source_l00193}{C2\+\_\+pt}}.
 
 
 

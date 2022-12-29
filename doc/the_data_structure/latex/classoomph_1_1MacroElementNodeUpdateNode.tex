@@ -44,6 +44,296 @@ unsigned \mbox{\hyperlink{classoomph_1_1MacroElementNodeUpdateNode_abf17a352b005
 \begin{DoxyCompactList}\small\item\em Return all geometric objects that affect the node update. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1MacroElementNodeUpdateNode_ad12704b416585f4e34433f4df6bb22b5}{set\+\_\+node\+\_\+update\+\_\+info}} (\mbox{\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element}} $\ast$\mbox{\hyperlink{classoomph_1_1MacroElementNodeUpdateNode_aee127758a6c511cff9df4004d98744e6}{node\+\_\+update\+\_\+element\+\_\+pt}}, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{classoomph_1_1MacroElementNodeUpdateNode_a3d35930906d84df365606f7350b83a94}{s\+\_\+in\+\_\+node\+\_\+update\+\_\+element}}, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1GeomObject}{Geom\+Object}} $\ast$ $>$ \&\mbox{\hyperlink{classoomph_1_1MacroElementNodeUpdateNode_a98f0d4267cc0924aea844e208c1bf23f}{geom\+\_\+object\+\_\+pt}})
 \begin{DoxyCompactList}\small\item\em Set node update information for node\+: Pass the pointer to the element that performs the update operation, the vector containing the node\textquotesingle{}s local coordinates in that element and the vector of (pointers to) the geometric objects that affect the node update. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1Node}{oomph\+::\+Node}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1Node_af40c4014b1d7f30ed2142330fa5f1e68}{Node}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Node_aca6c40f3a7bb1943b413a466d32c6970}{Node}} (const unsigned \&n\+\_\+dim, const unsigned \&n\+\_\+position\+\_\+type, const unsigned \&initial\+\_\+n\+\_\+value, const bool \&allocate\+\_\+x\+\_\+position=true)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1Steady}{Steady}} constructor, for a \mbox{\hyperlink{classoomph_1_1Node}{Node}} of spatial dimension n\+\_\+dim. Allocates storage for initial\+\_\+n\+\_\+value values. NPosition\+\_\+type is the number of coordinate types needed in the mapping between local and global coordinates (e.\+g. 1 for Lagrange-\/type elements; 2 for 1D Hermite elements; 4 for 2D Hermite elements, etc). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Node_a8a7c3c5e13ba0f434028ed2f93268a6e}{Node}} (\mbox{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper}} $\ast$const \&\mbox{\hyperlink{classoomph_1_1Data_a065d7bffcec82bf4d4bd7b41f9aa80b3}{time\+\_\+stepper\+\_\+pt}}, const unsigned \&n\+\_\+dim, const unsigned \&n\+\_\+position\+\_\+type, const unsigned \&initial\+\_\+n\+\_\+value, const bool \&allocate\+\_\+x\+\_\+position=true)
+\begin{DoxyCompactList}\small\item\em Unsteady constructor for a node of spatial dimension n\+\_\+dim. Allocates storage for initial\+\_\+n\+\_\+value values with history values as required by the timestepper. n\+\_\+position\+\_\+type\+: \# of coordinate types needed in the mapping between local and global coordinates (e.\+g. 1 for Lagrange-\/type elements; 2 for 1D Hermite elements; 4 for 2D Hermite elements). \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1Node_afa67d364de717efb1bb8e2b61fc4a29f}{$\sim$\+Node}} ()
+\begin{DoxyCompactList}\small\item\em Destructor\+: Clean up the memory allocated for nodal position. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Node_ac77b41f698e71edde232ec9e7c3977ed}{Node}} (const \mbox{\hyperlink{classoomph_1_1Node}{Node}} \&node)=delete
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Node_a183f5f5b57987580a2cda286c3920a01}{operator=}} (const \mbox{\hyperlink{classoomph_1_1Node}{Node}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1Node_aee6f2b7a46fc9d875c6736895d7fc095}{nposition\+\_\+type}} () const
+\begin{DoxyCompactList}\small\item\em Number of coordinate types needed in the mapping between local and global coordinates. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper}} $\ast$\& \mbox{\hyperlink{classoomph_1_1Node_a32b32940186f9d1e2abc5d4bedb6ff0d}{position\+\_\+time\+\_\+stepper\+\_\+pt}} ()
+\begin{DoxyCompactList}\small\item\em Return a pointer to the position timestepper. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper}} $\ast$const \& \mbox{\hyperlink{classoomph_1_1Node_aa4268bb2e9200e43641794588a71e8b1}{position\+\_\+time\+\_\+stepper\+\_\+pt}} () const
+\begin{DoxyCompactList}\small\item\em Return a pointer to the position timestepper (const version). \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Node_a15d3962d66d92de44e32edc9c5c2fedf}{set\+\_\+position\+\_\+time\+\_\+stepper}} (\mbox{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper}} $\ast$const \&\mbox{\hyperlink{classoomph_1_1Node_a32b32940186f9d1e2abc5d4bedb6ff0d}{position\+\_\+time\+\_\+stepper\+\_\+pt}}, const bool \&preserve\+\_\+existing\+\_\+data)
+\begin{DoxyCompactList}\small\item\em Set a new position timestepper be resizing the appropriate storage. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classoomph_1_1Node_ab5d4bea7ffc69a82fde5720a2a6d784c}{does\+\_\+pointer\+\_\+correspond\+\_\+to\+\_\+position\+\_\+data}} (double $\ast$const \&parameter\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Check whether the pointer parameter\+\_\+pt addresses position data values. It never does for a standard node, because the positions are not data. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Node_a5f727227a1c8fdc7d5d422492b98cefd}{assign\+\_\+eqn\+\_\+numbers}} (unsigned long \&global\+\_\+ndof, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $\ast$ $>$ \&dof\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Assign global equation numbers; increment global number of unknowns, global\+\_\+ndof; and add any new dofs to the dof\+\_\+pt. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1Node_a786c96a8e46eb27a03b2b31f629d41b3}{ndim}} () const
+\begin{DoxyCompactList}\small\item\em Return (Eulerian) spatial dimension of the node. \end{DoxyCompactList}\item 
+double \& \mbox{\hyperlink{classoomph_1_1Node_ab76b4773a65b349f143539e07b6e15e2}{x}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})
+\begin{DoxyCompactList}\small\item\em Return the i-\/th nodal coordinate. \end{DoxyCompactList}\item 
+const double \& \mbox{\hyperlink{classoomph_1_1Node_a8c8ecf7bc9e59312f6b2fb954ae803a0}{x}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Return the i-\/th nodal coordinate (const version). \end{DoxyCompactList}\item 
+double \& \mbox{\hyperlink{classoomph_1_1Node_ad568bbadd1c5526b3d2a831eb0ed2e69}{x}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})
+\begin{DoxyCompactList}\small\item\em Return the position x(i) at previous timestep t (t=0\+: present; t\texorpdfstring{$>$}{>}0 previous timestep). \end{DoxyCompactList}\item 
+const double \& \mbox{\hyperlink{classoomph_1_1Node_aa1c472e7c6f3212e1b3a61499653e294}{x}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Return the position x(i) at previous timestep t (t=0\+: present; t\texorpdfstring{$>$}{>}0 previous timestep) (const version) \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1Node_adecc64794ab05dfd0f1d53459fa42a93}{dx\+\_\+dt}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Return the i-\/th component of nodal velocity\+: dx/dt. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1Node_aa38adade14db8ea5b5f1015ebe657d31}{dx\+\_\+dt}} (const unsigned \&j, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Return the i-\/th component of j-\/th derivative of nodal position\+: d$^\wedge$jx/dt$^\wedge$j. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1Node}{Node}} $\ast$ \mbox{\hyperlink{classoomph_1_1Node_a5de5f4fa9259b44f527d90e474471563}{copied\+\_\+node\+\_\+pt}} () const
+\begin{DoxyCompactList}\small\item\em Return pointer to copied node (null if the current node is not a copy -- always the case here; it\textquotesingle{}s overloaded for boundary nodes) \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classoomph_1_1Node_a80fe9192b35baa5321e8d0ffba4b8b8a}{position\+\_\+is\+\_\+a\+\_\+copy}} () const
+\begin{DoxyCompactList}\small\item\em Return whether any position coordinate has been copied (always false) \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classoomph_1_1Node_a0e1ad244c2b109fb54a2fa6430d6ad5b}{position\+\_\+is\+\_\+a\+\_\+copy}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Return whether the position coordinate i has been copied (always false) \end{DoxyCompactList}\item 
+double \& \mbox{\hyperlink{classoomph_1_1Node_af7fdc0dfda495d69bd31c790ee77da73}{x\+\_\+gen}} (const unsigned \&k, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})
+\begin{DoxyCompactList}\small\item\em Reference to the generalised position x(k,i). `Type'\+: k; Coordinate direction\+: i. \end{DoxyCompactList}\item 
+const double \& \mbox{\hyperlink{classoomph_1_1Node_a1c397ca5356be0e32da91f6550e051e6}{x\+\_\+gen}} (const unsigned \&k, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Reference to the generalised position x(k,i). `Type'\+: k; Coordinate direction\+: i (const version). \end{DoxyCompactList}\item 
+double \& \mbox{\hyperlink{classoomph_1_1Node_a79e9ffd9c2eb7772265fa436e52a2128}{x\+\_\+gen}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, const unsigned \&k, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})
+\begin{DoxyCompactList}\small\item\em Reference to the generalised position x(k,i) at the previous timestep \mbox{[}t=0\+: present\mbox{]}. `Type'\+: k; Coordinate direction\+: i. \end{DoxyCompactList}\item 
+const double \& \mbox{\hyperlink{classoomph_1_1Node_a429a21d4ad1817021a4c476c0624a612}{x\+\_\+gen}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, const unsigned \&k, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Reference to the generalised position x(k,i) at the previous timestep \mbox{[}t=0\+: present\mbox{]}. `Type'\+: k; Coordinate direction\+: i. (const version) \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1Node_a03ddcfc8146b7b54f2a3ee5fdf00fa3b}{dx\+\_\+gen\+\_\+dt}} (const unsigned \&k, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em i-\/th component of time derivative (velocity) of the generalised position, dx(k,i)/dt. `Type'\+: k; Coordinate direction\+: i. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1Node_af9f1c9522857a0cb5ee04ef111865be2}{dx\+\_\+gen\+\_\+dt}} (const unsigned \&j, const unsigned \&k, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em i-\/th component of j-\/th time derivative (velocity) of the generalised position, d$^\wedge$jx(k,i)/dt$^\wedge$j. `Type'\+: k; Coordinate direction\+: i. \end{DoxyCompactList}\item 
+double $\ast$ \mbox{\hyperlink{classoomph_1_1Node_a378852d9ffea1a7a5c842b186187bc3f}{x\+\_\+pt}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})
+\begin{DoxyCompactList}\small\item\em Direct access to the i-\/th coordinate at time level t (t=0\+: present; t\texorpdfstring{$>$}{>}0\+: previous) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Node_a103b12afe541e9bbe5c0790c1c0efe55}{copy}} (\mbox{\hyperlink{classoomph_1_1Node}{Node}} $\ast$orig\+\_\+node\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Copy all nodal data from specified \mbox{\hyperlink{classoomph_1_1Node}{Node}} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Node_acd8bb142619d639d9bbfe813d0ba08df}{dump}} (std\+::ostream \&dump\+\_\+file) const
+\begin{DoxyCompactList}\small\item\em Dump nodal position and associated data to file for restart. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Node_a4a4bfedfe5c4278f91e4c0ba9d3e3549}{read}} (std\+::ifstream \&restart\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Read nodal position and associated data from file for restart. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Node_a3f0d0e77ba866ce8ad3c5c012b647080}{pin\+\_\+all}} ()
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{classoomph_1_1Node_a3f0d0e77ba866ce8ad3c5c012b647080}{pin\+\_\+all()}} function must be overloaded by Solid\+Nodes, so we put the virtual interface here to avoid virtual functions in \mbox{\hyperlink{classoomph_1_1Data}{Data}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Node_a8ef38470acf00f344c9567bcc9cbd000}{unpin\+\_\+all}} ()
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{classoomph_1_1Node_a8ef38470acf00f344c9567bcc9cbd000}{unpin\+\_\+all()}} function must be overloaded by \mbox{\hyperlink{classoomph_1_1SolidNode}{Solid\+Node}}, so we put the virtual interface here to avoid virtual functions in \mbox{\hyperlink{classoomph_1_1Data}{Data}}. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1Node_aaa5ff8bea22ee29dfad3e631ae454961}{hang\+\_\+code}} ()
+\begin{DoxyCompactList}\small\item\em Code that encapsulates the hanging status of the node (incl. the geometric hanging status) as $  \sum_{i=-1}{nval-1} Node::is_hanging(i) 2^{i+1} $. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1HangInfo}{Hang\+Info}} $\ast$const \& \mbox{\hyperlink{classoomph_1_1Node_afefa22db8b28e783b8647e3577ee01d9}{hanging\+\_\+pt}} () const
+\begin{DoxyCompactList}\small\item\em Return pointer to hanging node data (this refers to the geometric hanging node status) (const version). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1HangInfo}{Hang\+Info}} $\ast$const \& \mbox{\hyperlink{classoomph_1_1Node_a9926ea92eaaccce9d9ac0df48e99ae27}{hanging\+\_\+pt}} (const int \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Return pointer to hanging node data for value i (const version) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1Node_af0e6237dfafad62cf427ff5013ddcfef}{is\+\_\+hanging}} () const
+\begin{DoxyCompactList}\small\item\em Test whether the node is geometrically hanging. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1Node_a55991f57a3f949774da64c6947fef9b2}{is\+\_\+hanging}} (const int \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Test whether the i-\/th value is hanging. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Node_a98b3e63390c43196db9429f32319b0ca}{set\+\_\+hanging\+\_\+pt}} (\mbox{\hyperlink{classoomph_1_1HangInfo}{Hang\+Info}} $\ast$const \&hang\+\_\+pt, const int \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})
+\begin{DoxyCompactList}\small\item\em Set the hanging data for the i-\/th value. (hang\+\_\+pt=0 to make non-\/hanging) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Node_a2517b670b4494f5421f5ec0d92cf8bb0}{set\+\_\+nonhanging}} ()
+\begin{DoxyCompactList}\small\item\em Label node as non-\/hanging node by removing all hanging node data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Node_ae6598da29d403889020ccd47a2c07cc4}{resize}} (const unsigned \&n\+\_\+value)
+\begin{DoxyCompactList}\small\item\em Resize the number of equations. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Node_a8758650a2e6d7312ad070bb8ce327c4b}{constrain\+\_\+positions}} ()
+\begin{DoxyCompactList}\small\item\em Constrain the positions when the node is made hanging Empty virtual function that is overloaded in Solid\+Nodes. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Node_ac23aaa36891269f3c9a832618f0c8c2c}{unconstrain\+\_\+positions}} ()
+\begin{DoxyCompactList}\small\item\em Unconstrain the positions when the node is made non-\/hanging Empty virtual function that is overloaded in Solid\+Nodes. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Node_aeb07848c19b83fd8b9690b8fcc200d56}{make\+\_\+periodic}} (\mbox{\hyperlink{classoomph_1_1Node}{Node}} $\ast$const \&node\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Make the node periodic by copying the values from node\+\_\+pt. Note that the coordinates will always remain independent, even though this may lead to (a little) unrequired information being stored. Broken virtual (only implemented in Boundary\+Nodes) \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Node_a7b074cf3b864be50411fd9a34fde9d03}{make\+\_\+periodic\+\_\+nodes}} (const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1Node}{Node}} $\ast$ $>$ \&periodic\+\_\+nodes\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Make the nodes passed in the vector periodic\+\_\+nodes share the same data as this node. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Node_a33092a3d51285282ae8ec8e702d1cbf5}{get\+\_\+boundaries\+\_\+pt}} (std\+::set$<$ unsigned $>$ $\ast$\&boundaries\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Return a pointer to set of mesh boundaries that this node occupies; this will be overloaded by Boundary\+Nodes. The default behaviour is that the \mbox{\hyperlink{classoomph_1_1Node}{Node}} does not lie on any boundaries so the pointer to the set of boundaries is NULL. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classoomph_1_1Node_a2ca215e42116ee8a2acc7d6a35e37788}{is\+\_\+on\+\_\+boundary}} () const
+\begin{DoxyCompactList}\small\item\em Test whether the \mbox{\hyperlink{classoomph_1_1Node}{Node}} lies on a boundary. The \char`\"{}bulk\char`\"{} \mbox{\hyperlink{classoomph_1_1Node}{Node}} cannot lie on a boundary, so return false. This will be overloaded by Boundary\+Nodes. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classoomph_1_1Node_ad1341e137f63f0c4df88844957665cc9}{is\+\_\+on\+\_\+boundary}} (const unsigned \&b) const
+\begin{DoxyCompactList}\small\item\em Test whether the node lies on mesh boundary b. The \char`\"{}bulk\char`\"{} \mbox{\hyperlink{classoomph_1_1Node}{Node}} cannot lie on a boundary, so return false. This will be overloaded by Boundary\+Nodes. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Node_a915ee24c67747f5e377014b024b9083f}{add\+\_\+to\+\_\+boundary}} (const unsigned \&b)
+\begin{DoxyCompactList}\small\item\em Broken interface for adding the node to the mesh boundary b Essentially here for error reporting. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Node_a68d4703f8c8aa9f504ec2111dc1908f4}{remove\+\_\+from\+\_\+boundary}} (const unsigned \&b)
+\begin{DoxyCompactList}\small\item\em Broken interface for removing the node from the mesh boundary b Here to provide error reporting. \end{DoxyCompactList}\item 
+virtual unsigned \mbox{\hyperlink{classoomph_1_1Node_a245b0e182ca0877bda9bbcb978807273}{ncoordinates\+\_\+on\+\_\+boundary}} (const unsigned \&b)
+\begin{DoxyCompactList}\small\item\em Get the number of boundary coordinates on mesh boundary b. Broken virtual interface provides run-\/time error checking. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classoomph_1_1Node_aa7f4a0c93bc405bb7ac9577c38bf0437}{boundary\+\_\+coordinates\+\_\+have\+\_\+been\+\_\+set\+\_\+up}} ()
+\begin{DoxyCompactList}\small\item\em Have boundary coordinates been set up? Broken virtual interface provides run-\/time error checking. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Node_abc8b7dc78cc1d0aab34eeaf856e21ea8}{get\+\_\+coordinates\+\_\+on\+\_\+boundary}} (const unsigned \&b, const unsigned \&k, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&boundary\+\_\+zeta)
+\begin{DoxyCompactList}\small\item\em Return the vector of the k-\/th generalised boundary coordinates on mesh boundary b. Broken virtual interface provides run-\/time error checking. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Node_a94c19e165ab4e88aabbfa27443c530b7}{set\+\_\+coordinates\+\_\+on\+\_\+boundary}} (const unsigned \&b, const unsigned \&k, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&boundary\+\_\+zeta)
+\begin{DoxyCompactList}\small\item\em Set the vector of the k-\/th generalised boundary coordinates on mesh boundary b. Broken virtual interface provides run-\/time error checking. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Node_a6db0c3e8349aa231c3c56cdbfb720e1c}{get\+\_\+coordinates\+\_\+on\+\_\+boundary}} (const unsigned \&b, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&boundary\+\_\+zeta)
+\begin{DoxyCompactList}\small\item\em Return the vector of coordinates on mesh boundary b Broken virtual interface provides run-\/time error checking. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Node_a089465d789baa423cd30b3a792ad1e9e}{set\+\_\+coordinates\+\_\+on\+\_\+boundary}} (const unsigned \&b, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&boundary\+\_\+zeta)
+\begin{DoxyCompactList}\small\item\em Set the vector of coordinates on mesh boundary b Broken virtual interface provides run-\/time error checking. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Node_a2f19488a7967f963b073b93dc12728ab}{set\+\_\+obsolete}} ()
+\begin{DoxyCompactList}\small\item\em Mark node as obsolete. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Node_a6dfc895be93214f4a880c1e9e7a3b4a6}{set\+\_\+non\+\_\+obsolete}} ()
+\begin{DoxyCompactList}\small\item\em Mark node as non-\/obsolete. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1Node_a2b1ff7b3b709fbf575ff27983483d9a2}{is\+\_\+obsolete}} ()
+\begin{DoxyCompactList}\small\item\em Test whether node is obsolete. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1Node_abc9f54df56cbe8eedc6f1595c7d7f11e}{raw\+\_\+value}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Return the i-\/th value stored at the \mbox{\hyperlink{classoomph_1_1Node}{Node}}. This interface does NOT take the hanging status of the \mbox{\hyperlink{classoomph_1_1Node}{Node}} into account. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1Node_aec4e3050f0b7b85ef2ffb11a12c64214}{raw\+\_\+value}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Return the i-\/th value at time level t (t=0\+: present, t\texorpdfstring{$>$}{>}0\+: previous). This interface does NOT take the hanging status of the \mbox{\hyperlink{classoomph_1_1Node}{Node}} into account. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1Node_afcc5cdba40bca251826ae5bee5ca15b4}{value}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Return i-\/th value (dofs or pinned) at this node either directly or via hanging node representation. Note that this REDFINES the interface in \mbox{\hyperlink{classoomph_1_1Data}{Data}} Thus, the present function will be called provided that it is accessed through a pointer to a node i.\+e. Node$\ast$ node\+\_\+pt-\/\texorpdfstring{$>$}{>}\mbox{\hyperlink{classoomph_1_1Node_afcc5cdba40bca251826ae5bee5ca15b4}{value()}} will take hanging information into account. If a pointer to a \mbox{\hyperlink{classoomph_1_1Node}{Node}} has been explicitly down-\/cast to a pointer to \mbox{\hyperlink{classoomph_1_1Data}{Data}} then the \char`\"{}wrong\char`\"{} (\mbox{\hyperlink{classoomph_1_1Data}{Data}}) version of the function will be called. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1Node_a9865f3f77710b04934c1ca07510453b8}{value}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Return i-\/th value at time level t (t=0\+: present, t\texorpdfstring{$>$}{>}0\+: previous) either directly or via hanging node representation. Note that this REDEFINES the interface in \mbox{\hyperlink{classoomph_1_1Data}{Data}} Thus, the present function will be called provided that it is accessed through a pointer to a node i.\+e. Node$\ast$ node\+\_\+pt-\/\texorpdfstring{$>$}{>}\mbox{\hyperlink{classoomph_1_1Node_afcc5cdba40bca251826ae5bee5ca15b4}{value()}} will take hanging information into account. If a pointer to a \mbox{\hyperlink{classoomph_1_1Node}{Node}} has been explicitly down-\/cast to a pointer to \mbox{\hyperlink{classoomph_1_1Data}{Data}} then the \char`\"{}wrong\char`\"{} (\mbox{\hyperlink{classoomph_1_1Data}{Data}}) version of the function will be called. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Node_a3c9b6bdba6c5e33d2bb6b0a4799598ef}{value}} (\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&values) const
+\begin{DoxyCompactList}\small\item\em Compute \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of values for the \mbox{\hyperlink{classoomph_1_1Data}{Data}} value taking the hanging node status into account. Note that this REDEFINES the interface in \mbox{\hyperlink{classoomph_1_1Data}{Data}} Thus, the present function will be called provided that it is accessed through a pointer to a node i.\+e. Node$\ast$ node\+\_\+pt-\/\texorpdfstring{$>$}{>}\mbox{\hyperlink{classoomph_1_1Node_afcc5cdba40bca251826ae5bee5ca15b4}{value()}} will take hanging information into account. If a pointer to a \mbox{\hyperlink{classoomph_1_1Node}{Node}} has been explicitly down-\/cast to a pointer to \mbox{\hyperlink{classoomph_1_1Data}{Data}} then the \char`\"{}wrong\char`\"{} (\mbox{\hyperlink{classoomph_1_1Data}{Data}}) version of the function will be called. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \mbox{\hyperlink{classoomph_1_1Node_a70ff07a3c51974732c00b6a602d6572b}{value}} () const
+\begin{DoxyCompactList}\small\item\em Return vector of values calculated using value(vector). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Node_a8537fa95092b7d136a5a81a7b6f72bfc}{value}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&values) const
+\begin{DoxyCompactList}\small\item\em Compute \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of values (dofs or pinned) in this data at time level t (t=0\+: present; t\texorpdfstring{$>$}{>}0\+: previous). This interface explicitly takes the hanging status into account. Thus, the present function will be called provided that it is accessed through a pointer to a node i.\+e. Node$\ast$ node\+\_\+pt-\/\texorpdfstring{$>$}{>}\mbox{\hyperlink{classoomph_1_1Node_afcc5cdba40bca251826ae5bee5ca15b4}{value()}} will take hanging information into account. If a pointer to a \mbox{\hyperlink{classoomph_1_1Node}{Node}} has been explicitly down-\/cast to a pointer to \mbox{\hyperlink{classoomph_1_1Data}{Data}} then the \char`\"{}wrong\char`\"{} (\mbox{\hyperlink{classoomph_1_1Data}{Data}}) version of the function will be called. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Node_a61c3ad6b319e4d2cce38dc8faae1bfae}{position}} (\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&pos) const
+\begin{DoxyCompactList}\small\item\em Compute \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of nodal positions either directly or via hanging node representation. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \mbox{\hyperlink{classoomph_1_1Node_a1351c8994e1b6e4aef6e69e5bdea872e}{position}} () const
+\begin{DoxyCompactList}\small\item\em Return vector of position of node at current time. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Node_abc8756948b04cb82f9f32a44ef9c69f9}{position}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&pos) const
+\begin{DoxyCompactList}\small\item\em Compute \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of nodal position at time level t (t=0\+: current; t\texorpdfstring{$>$}{>}0\+: previous timestep), either directly or via hanging node representation. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1Node_a05963e00bfc7dd92399a5b2230f77032}{position}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Return i-\/th nodal coordinate either directly or via hanging node representation. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1Node_a9110f050f09e803c37a4dde741ec249f}{position}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Return i-\/th nodal coordinate at time level t (t=0\+: current; t\texorpdfstring{$>$}{>}0\+: previous time level), either directly or via hanging node representation. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1Node_aa8974c69837b6909158054ecb70a64e2}{position\+\_\+gen}} (const unsigned \&k, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Return generalised nodal coordinate either directly or via hanging node representation. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1Node_a56eb5caa6b0cbf91983e1a550de52d9f}{position\+\_\+gen}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, const unsigned \&k, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Return generalised nodal coordinate at time level t (t=0\+: current; t\texorpdfstring{$>$}{>}0\+: previous time level), either directly or via hanging node representation. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1Node_ad3d37ea1c80500645fa32cc43f1f29ce}{dposition\+\_\+dt}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Return the i-\/th component of nodal velocity\+: dx/dt, either directly or via hanging node representation. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1Node_a93be34f3311eaaabc026bd1df86b4cf1}{dposition\+\_\+dt}} (const unsigned \&j, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Return the i-\/th component of j-\/th derivative of nodal position\+: d$^\wedge$jx/dt$^\wedge$j either directly or via hanging node representation. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1Node_af99eb195bbe21b6e380681f2167fbfb5}{dposition\+\_\+gen\+\_\+dt}} (const unsigned \&k, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em i-\/th component of time derivative (velocity) of the generalised position, dx(k,i)/dt. `Type'\+: k; Coordinate direction\+: i. This function uses the hanging node representation if necessary. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1Node_ae2528428e2fd8fedf035a54e63cee692}{dposition\+\_\+gen\+\_\+dt}} (const unsigned \&j, const unsigned \&k, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em i-\/th component of j-\/th time derivative (velocity) of the generalised position, d$^\wedge$jx(k,i)/dt$^\wedge$j. `Type'\+: k; Coordinate direction\+: i. This function uses the hanging node representation if necessary \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Node_aecf8c979266300d3609de2b4ddfa3cc8}{node\+\_\+update}} (const bool \&update\+\_\+all\+\_\+time\+\_\+levels\+\_\+for\+\_\+new\+\_\+node=false)
+\begin{DoxyCompactList}\small\item\em Interface for functions that update the nodal position using algebraic remeshing strategies. The interface is common to Spine\+Nodes, Algebraic\+Nodes and Macro\+Element\+Node\+Update\+Nodes. The default is that the node does not \char`\"{}update itself\char`\"{} i.\+e. it is fixed in space. When implemented, this function should also execute the \mbox{\hyperlink{classoomph_1_1Node}{Node}}\textquotesingle{}s auxiliary node update function (if any). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Node_a638898508d6adc170afb1a2a203ac707}{set\+\_\+auxiliary\+\_\+node\+\_\+update\+\_\+fct\+\_\+pt}} (\mbox{\hyperlink{classoomph_1_1Node_afcc4cc3e1e48964baf23fa44c98293a9}{Aux\+Node\+Update\+Fct\+Pt}} aux\+\_\+node\+\_\+update\+\_\+fct\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Set pointer to auxiliary update function -- this can be used to update any nodal values following the update of the nodal position. This is needed e.\+g. to update the no-\/slip condition on moving boundaries. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1Node_ad5fe8ac9dcb705612903bc6945926375}{has\+\_\+auxiliary\+\_\+node\+\_\+update\+\_\+fct\+\_\+pt}} ()
+\begin{DoxyCompactList}\small\item\em Boolean to indicate if node has a pointer to and auxiliary update function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Node_a6c287aa85c19f2d37ed7952ece5c76dd}{perform\+\_\+auxiliary\+\_\+node\+\_\+update\+\_\+fct}} ()
+\begin{DoxyCompactList}\small\item\em Execute auxiliary update function (if any) -- this can be used to update any nodal values following the update of the nodal position. This is needed e.\+g. to update the no-\/slip condition on moving boundaries. \end{DoxyCompactList}\item 
+virtual unsigned \mbox{\hyperlink{classoomph_1_1Node_ad20302b7992437075d3ca42390b39f24}{ngeom\+\_\+data}} () const
+\begin{DoxyCompactList}\small\item\em Return the number of geometric data that affect the nodal position. The default value is zero (node is stationary) \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1Data}{Data}} $\ast$$\ast$ \mbox{\hyperlink{classoomph_1_1Node_a74cb27c26a1c9a21d9a3ecf655b2efb1}{all\+\_\+geom\+\_\+data\+\_\+pt}} ()
+\begin{DoxyCompactList}\small\item\em Return a pointer to an array of all (geometric) data that affect the nodal position. The default value is zero (node is stationary) \end{DoxyCompactList}\item 
+virtual unsigned \mbox{\hyperlink{classoomph_1_1Node_a2c0fb79493f94d2ce19736737ebf5447}{ngeom\+\_\+object}} () const
+\begin{DoxyCompactList}\small\item\em Return the number of geometric objects that affect the nodal position. The default value is zero (node is stationary) \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1GeomObject}{Geom\+Object}} $\ast$$\ast$ \mbox{\hyperlink{classoomph_1_1Node_a3aa7050d81ace38d73d37279beaa5577}{all\+\_\+geom\+\_\+object\+\_\+pt}} ()
+\begin{DoxyCompactList}\small\item\em Return a pointer to an array of all (geometric) objects that affect the nodal position. The default value is zero (node is stationary) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Node_a8b65b015c5365f99de179cd893955e9a}{output}} (std\+::ostream \&outfile)
+\begin{DoxyCompactList}\small\item\em Output nodal position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Node_a11400682e1fd2851777234a779e8bf8d}{add\+\_\+values\+\_\+to\+\_\+vector}} (\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&vector\+\_\+of\+\_\+values)
+\begin{DoxyCompactList}\small\item\em Add all data and time history values to the vector. Overloaded to add the position information as well. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Node_accb033ab8ed4f96331014f7c4cd131f9}{read\+\_\+values\+\_\+from\+\_\+vector}} (const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&vector\+\_\+of\+\_\+values, unsigned \&index)
+\begin{DoxyCompactList}\small\item\em Read all data and time history values from the vector starting from index. On return the index will be set the value at the end of the data that has been read in Overload to also read the position information. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1Data}{oomph\+::\+Data}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Data_a409e3140829def2b1e738a24cc1f48bb}{clear\+\_\+copied\+\_\+pointers}} ()
+\begin{DoxyCompactList}\small\item\em Helper function that should be overloaded derived classes that contain copies of data. The function must unset (NULL out) the internal pointers to the copied data. This is used when destructing data to ensure that all pointers remain valid. The default implementation throws an error because \mbox{\hyperlink{classoomph_1_1Data}{Data}} cannot be a copy. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Data_acbecfbd1dd3af51da9facdd897b64e74}{Data}} ()
+\begin{DoxyCompactList}\small\item\em Default\+: Just set pointer to (steady) timestepper. No storage for values is allocated. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Data_a352ab3876876780d366866704a29dbb0}{Data}} (const unsigned \&initial\+\_\+n\+\_\+value)
+\begin{DoxyCompactList}\small\item\em Default constructor for steady problems\+: assign memory for initial\+\_\+n\+\_\+value values. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Data_afe56d22d0dba308e33191e922993c5ee}{Data}} (\mbox{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper}} $\ast$const \&\mbox{\hyperlink{classoomph_1_1Data_a065d7bffcec82bf4d4bd7b41f9aa80b3}{time\+\_\+stepper\+\_\+pt}}, const unsigned \&initial\+\_\+n\+\_\+value, const bool \&allocate\+\_\+storage=true)
+\begin{DoxyCompactList}\small\item\em Constructor for unsteady problems\+: assign memory for initial\+\_\+n\+\_\+value values and any memory required by the Timestepper for the storage of history values. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Data_ab35d30d1817db503265d59956a4ee02b}{Data}} (const \mbox{\hyperlink{classoomph_1_1Data}{Data}} \&data)=delete
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Data_aeff1a35c9b9a48753a63b52c1d9959e2}{operator=}} (const \mbox{\hyperlink{classoomph_1_1Data}{Data}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1Data_a91d15d22184e0488123d856ea4c455f8}{$\sim$\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Destructor, deallocates memory assigned for data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Data_acd22fabfb127ff4ea37a5bc60c61b414}{set\+\_\+time\+\_\+stepper}} (\mbox{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper}} $\ast$const \&\mbox{\hyperlink{classoomph_1_1Data_a065d7bffcec82bf4d4bd7b41f9aa80b3}{time\+\_\+stepper\+\_\+pt}}, const bool \&preserve\+\_\+existing\+\_\+data)
+\begin{DoxyCompactList}\small\item\em Set a new timestepper by resizing the appropriate storage. If already assigned the equation numbering will not be altered. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper}} $\ast$\& \mbox{\hyperlink{classoomph_1_1Data_a065d7bffcec82bf4d4bd7b41f9aa80b3}{time\+\_\+stepper\+\_\+pt}} ()
+\begin{DoxyCompactList}\small\item\em Return the pointer to the timestepper. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper}} $\ast$const \& \mbox{\hyperlink{classoomph_1_1Data_a96f920e3d9d7560d3b6207bbd98f40f2}{time\+\_\+stepper\+\_\+pt}} () const
+\begin{DoxyCompactList}\small\item\em Return the pointer to the timestepper (const version). \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classoomph_1_1Data_a736feee0f95ab3d542c70db6ca7ab233}{is\+\_\+a\+\_\+copy}} () const
+\begin{DoxyCompactList}\small\item\em Return a boolean to indicate whether the \mbox{\hyperlink{classoomph_1_1Data}{Data}} objact contains any copied values. A base \mbox{\hyperlink{classoomph_1_1Data}{Data}} object can never be a copy so the default implementation always returns false. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classoomph_1_1Data_ae31cff2285588c40cd33fac0cabcc371}{is\+\_\+a\+\_\+copy}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Return flag to indicate whether the i-\/th value is a copy. A base \mbox{\hyperlink{classoomph_1_1Data}{Data}} object can never be a copy so the default implementation always returns false. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Data_a7289ca322725c6fd493970a19474b382}{set\+\_\+value}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}, const double \&value\+\_\+)
+\begin{DoxyCompactList}\small\item\em Set the i-\/th stored data value to specified value. The only reason that we require an explicit set function is because we redefine \mbox{\hyperlink{classoomph_1_1Data_a9383101536882db34e618cbe30dba2da}{value()}} in the \mbox{\hyperlink{classoomph_1_1Node}{Node}} class to interpolate the values for nodes that are hanging and so we cannot return a reference to the value in this case. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Data_a39c1ab8b0a45af29101c606b965bed07}{set\+\_\+value}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}, const double \&value\+\_\+)
+\begin{DoxyCompactList}\small\item\em Set the t-\/th history value of the i-\/th stored data value to specified value. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1Data_a9383101536882db34e618cbe30dba2da}{value}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Return i-\/th stored value. This function is not virtual so that it can be inlined. This means that if we have an explicit pointer to a \mbox{\hyperlink{classoomph_1_1Data}{Data}} object Data$\ast$ data\+\_\+pt-\/\texorpdfstring{$>$}{>}\mbox{\hyperlink{classoomph_1_1Data_a9383101536882db34e618cbe30dba2da}{value()}} always returns the \char`\"{}raw\char`\"{} stored value. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1Data_a3fad35eda2f9e1c69f163f1cd4d104ea}{value}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Return i-\/th value at time level t (t=0\+: present, t\texorpdfstring{$>$}{>}0\+: previous) This function is not virtual so that it can be inlined. This means that if we have an explicit pointer to a \mbox{\hyperlink{classoomph_1_1Data}{Data}} object Data$\ast$ data\+\_\+pt-\/\texorpdfstring{$>$}{>}\mbox{\hyperlink{classoomph_1_1Data_a9383101536882db34e618cbe30dba2da}{value()}} always returns to the \char`\"{}raw\char`\"{} stored value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Data_a0a28f485ac3508c1cc37d3e0b7e86efe}{value}} (\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&values) const
+\begin{DoxyCompactList}\small\item\em Compute \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of values for the \mbox{\hyperlink{classoomph_1_1Data}{Data}} value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Data_a15ab0a61bc348ba1b8b73d096a1bc70f}{value}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&values) const
+\begin{DoxyCompactList}\small\item\em Compute \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of values (dofs or pinned) in this data at time level t (t=0\+: present; t\texorpdfstring{$>$}{>}0\+: previous). \end{DoxyCompactList}\item 
+double $\ast$ \mbox{\hyperlink{classoomph_1_1Data_af545f88ca20583f0c1b66e4da6076aa3}{value\+\_\+pt}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Return the pointer to the i-\/the stored value. Typically this is required when direct access to the stored value is required, e.\+g. when writing functions that return a reference to a variable that is stored in a \mbox{\hyperlink{classoomph_1_1Data}{Data}} object. \end{DoxyCompactList}\item 
+double $\ast$ \mbox{\hyperlink{classoomph_1_1Data_a8246a9dbef20661ddd37d133130d407f}{value\+\_\+pt}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Return the pointer to the i-\/th stored value, or any of its history values (const version). Typically this is required when direct access to the stored value is required, e.\+g. when writing functions that return a reference to a variable that is stored in a \mbox{\hyperlink{classoomph_1_1Data}{Data}} object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1Data_a1f001b88764d62579e0ed8d53f9d359f}{does\+\_\+pointer\+\_\+correspond\+\_\+to\+\_\+value}} (double $\ast$const \&parameter\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Check whether the pointer parameter\+\_\+pt addresses internal data values. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Data_a57889a9db7ca009434f0268173fcf3f8}{copy}} (\mbox{\hyperlink{classoomph_1_1Data}{Data}} $\ast$orig\+\_\+data\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Copy \mbox{\hyperlink{classoomph_1_1Data}{Data}} values from specified \mbox{\hyperlink{classoomph_1_1Data}{Data}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Data_a87fa5ba80f2e6f0d0fb9658b9b358c05}{dump}} (std\+::ostream \&dump\+\_\+file) const
+\begin{DoxyCompactList}\small\item\em Dump the data object to a file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Data_ad520cff679734b7654b1638ada2c728a}{read}} (std\+::ifstream \&restart\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Read data object from a file. \end{DoxyCompactList}\item 
+long $\ast$ \mbox{\hyperlink{classoomph_1_1Data_a35c8b361ab32cfb8602890b177f6044f}{eqn\+\_\+number\+\_\+pt}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})
+\begin{DoxyCompactList}\small\item\em Return the pointer to the equation number of the i-\/th stored variable. \end{DoxyCompactList}\item 
+long \& \mbox{\hyperlink{classoomph_1_1Data_ab6845db69833c541766d9a073b023fc4}{eqn\+\_\+number}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})
+\begin{DoxyCompactList}\small\item\em Return the equation number of the i-\/th stored variable. \end{DoxyCompactList}\item 
+long \mbox{\hyperlink{classoomph_1_1Data_a0181614ab39e3b02d28acba40bb33cb2}{eqn\+\_\+number}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Return the equation number of the i-\/th stored variable. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Data_a422231c58e423f0b43822827aa334d79}{pin}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})
+\begin{DoxyCompactList}\small\item\em Pin the i-\/th stored variable. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Data_a4e5cb031bf8eceb8f97c2c4fbd74cb05}{unpin}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})
+\begin{DoxyCompactList}\small\item\em Unpin the i-\/th stored variable. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Data_a16277ea5b41cd9b09739b21a379d7eb4}{pin\+\_\+all}} ()
+\begin{DoxyCompactList}\small\item\em Pin all the stored variables. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Data_a590a3262e33167e464bb5d34c90a88ef}{unpin\+\_\+all}} ()
+\begin{DoxyCompactList}\small\item\em Unpin all the stored variables. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1Data_aedd0c445396ddcd650c814d17fef77dc}{is\+\_\+pinned}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Test whether the i-\/th variable is pinned (1\+: true; 0\+: false). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1Data_a46bcce858da1ca61069329fda4876171}{is\+\_\+segregated\+\_\+solve\+\_\+pinned}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})
+\begin{DoxyCompactList}\small\item\em Test whether the i-\/th variable is temporaily pinned for a segregated solve. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Data_a210c28ac93988dd8dbbbd944f6138c35}{constrain}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})
+\begin{DoxyCompactList}\small\item\em Constrain the i-\/th stored variable when making hanging data If the data is already pinned leave it along, otherwise mark as constrained (hanging) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Data_accb670734a29a841e9ead16b703626ce}{unconstrain}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})
+\begin{DoxyCompactList}\small\item\em Unconstrain the i-\/th stored variable when make the data nonhanging. Only unconstrain if it was actually constrained (hanging) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Data_ab8a322d75fc3e744cc6c9e945232ff4e}{constrain\+\_\+all}} ()
+\begin{DoxyCompactList}\small\item\em Constrain all the stored variables when the data is made hanging. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Data_a5e6a0d030f5e3230908f8a5eaf607082}{unconstrain\+\_\+all}} ()
+\begin{DoxyCompactList}\small\item\em Unconstrain all the stored variables when the data is made nonhanging. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1Data_ac3169455e25c1dc8fd2d3de458c5e101}{is\+\_\+constrained}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})
+\begin{DoxyCompactList}\small\item\em Test whether the i-\/th variable is constrained (1\+: true; 0\+: false). \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1Data_ae43b63b56afb8574db6da68f85802f80}{self\+\_\+test}} ()
+\begin{DoxyCompactList}\small\item\em Self-\/test\+: Have all values been classified as pinned/unpinned? Return 0 if OK. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1Data_a7e67fc78a2e8a2fd6eb75bd292d42ff8}{nvalue}} () const
+\begin{DoxyCompactList}\small\item\em Return number of values stored in data object (incl pinned ones). \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1Data_a9752205c5fb3bb886200b3fae9181e94}{ntstorage}} () const
+\begin{DoxyCompactList}\small\item\em Return total number of doubles stored per value to record time history of each value (one for steady problems). \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Data_a98412724efd3d51925de1a24341f7f41}{assign\+\_\+eqn\+\_\+numbers}} (unsigned long \&global\+\_\+ndof, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $\ast$ $>$ \&dof\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Assign global equation numbers; increment global number of unknowns, global\+\_\+ndof; and add any new dofs to the dof\+\_\+pt. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Data_a2dae16e2dcff9a40029f834c83364df5}{describe\+\_\+dofs}} (std\+::ostream \&out, const std\+::string \&current\+\_\+string) const
+\begin{DoxyCompactList}\small\item\em Function to describe the dofs of the \mbox{\hyperlink{classoomph_1_1Node}{Node}}. The ostream specifies the output stream to which the description is written; the string stores the currently assembled output that is ultimately written to the output stream by Data\+::describe\+\_\+dofs(...); it is typically built up incrementally as we descend through the call hierarchy of this function when called from Problem\+::describe\+\_\+dofs(...) \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Data_ac68583834c9bef47f5c37c890960e186}{resize}} (const unsigned \&n\+\_\+value)
+\begin{DoxyCompactList}\small\item\em Change (increase) the number of values that may be stored. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Data_a314ae9723424aa30d1275ab213d38936}{add\+\_\+value\+\_\+pt\+\_\+to\+\_\+map}} (std\+::map$<$ unsigned, double $\ast$ $>$ \&map\+\_\+of\+\_\+value\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Add pointers to all unpinned and unconstrained data to a map indexed by (global) equation number. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Data_ac96b285ae3f1ce549807072b652573bf}{set\+\_\+halo}} (const unsigned \&\mbox{\hyperlink{classoomph_1_1Data_ae8ef6f90c536b83bd393dbc87920741e}{non\+\_\+halo\+\_\+proc\+\_\+\+ID}})
+\begin{DoxyCompactList}\small\item\em Label the node as halo and specify processor that holds non-\/halo counterpart. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Data_ab2c485e220d3cf13647d251c509f5136}{set\+\_\+nonhalo}} ()
+\begin{DoxyCompactList}\small\item\em Label the node as not being a halo. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1Data_a6227d2775850d6cf482d8af0afc50f5c}{is\+\_\+halo}} () const
+\begin{DoxyCompactList}\small\item\em Is this \mbox{\hyperlink{classoomph_1_1Data}{Data}} a halo? \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classoomph_1_1Data_ae8ef6f90c536b83bd393dbc87920741e}{non\+\_\+halo\+\_\+proc\+\_\+\+ID}} ()
+\begin{DoxyCompactList}\small\item\em ID of processor ID that holds non-\/halo counterpart of halo node; negative if not a halo. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Data_a6c40a2fbaf44f976d71d9768e1c9ccfa}{add\+\_\+values\+\_\+to\+\_\+vector}} (\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&vector\+\_\+of\+\_\+values)
+\begin{DoxyCompactList}\small\item\em Add all data and time history values to the vector in the internal storage order. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Data_a6b8bc02debd1bce8e1bfc68cd9a54695}{read\+\_\+values\+\_\+from\+\_\+vector}} (const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&vector\+\_\+of\+\_\+values, unsigned \&index)
+\begin{DoxyCompactList}\small\item\em Read all data and time history values from the vector starting from index. On return the index will be set to the value at the end of the data that has been read in. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Data_a1d3f7c4200506d11fea3c647fe498f5d}{add\+\_\+eqn\+\_\+numbers\+\_\+to\+\_\+vector}} (\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ long $>$ \&vector\+\_\+of\+\_\+eqn\+\_\+numbers)
+\begin{DoxyCompactList}\small\item\em Add all equation numbers to the vector in the internal storage order. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Data_ae958e52df6ede2a08f957db4ee685ca7}{read\+\_\+eqn\+\_\+numbers\+\_\+from\+\_\+vector}} (const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ long $>$ \&vector\+\_\+of\+\_\+eqn\+\_\+numbers, unsigned \&index)
+\begin{DoxyCompactList}\small\item\em Read all equation numbers from the vector starting from index. On return the index will be set to the value at the end of the data that has been read in. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -54,6 +344,68 @@ void \mbox{\hyperlink{classoomph_1_1MacroElementNodeUpdateNode_ad12704b416585f4e
 \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1GeomObject}{Geom\+Object}} $\ast$ $>$ \mbox{\hyperlink{classoomph_1_1MacroElementNodeUpdateNode_ab387f86ea45654eacc37c5f69127dc02}{Geom\+\_\+object\+\_\+pt}}
 \begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of geometric objects that are involved in the node update operation. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Public Types inherited from \mbox{\hyperlink{classoomph_1_1Node}{oomph\+::\+Node}}}
+\begin{DoxyCompactItemize}
+\item 
+typedef void($\ast$ \mbox{\hyperlink{classoomph_1_1Node_afcc4cc3e1e48964baf23fa44c98293a9}{Aux\+Node\+Update\+Fct\+Pt}}) (\mbox{\hyperlink{classoomph_1_1Node}{Node}} $\ast$)
+\begin{DoxyCompactList}\small\item\em Function pointer to auxiliary node update function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classoomph_1_1Node}{oomph\+::\+Node}}}
+\begin{DoxyCompactItemize}
+\item 
+static unsigned \mbox{\hyperlink{classoomph_1_1Node_a4c2238b9aeac6cf2236ec3e03f34736e}{No\+\_\+independent\+\_\+position}} = 10
+\begin{DoxyCompactList}\small\item\em Static \char`\"{}\+Magic number\char`\"{} used to indicate that there is no independent position in a periodic node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classoomph_1_1Data}{oomph\+::\+Data}}}
+\begin{DoxyCompactItemize}
+\item 
+static long \mbox{\hyperlink{classoomph_1_1Data_a3f351624d334f1babf55170d539b36fa}{Is\+\_\+pinned}} = -\/1
+\begin{DoxyCompactList}\small\item\em Static \char`\"{}\+Magic number\char`\"{} used in place of the equation number to indicate that the value is pinned. \end{DoxyCompactList}\item 
+static long \mbox{\hyperlink{classoomph_1_1Data_ad83f76cbcd76d8ed96aca53dd04d5abf}{Is\+\_\+segregated\+\_\+solve\+\_\+pinned}} = -\/3
+\begin{DoxyCompactList}\small\item\em Static \char`\"{}\+Magic number\char`\"{} used in place of the equation number to indicate that the value is pinned, but only for the duration of a segregated solve. \end{DoxyCompactList}\item 
+static long \mbox{\hyperlink{classoomph_1_1Data_ac56011da9a923069793ecc3cb54f5e20}{Is\+\_\+unclassified}} = -\/10
+\begin{DoxyCompactList}\small\item\em Static \char`\"{}\+Magic number\char`\"{} used in place of the equation number to denote a value that hasn\textquotesingle{}t been classified as pinned or free. \end{DoxyCompactList}\item 
+static long \mbox{\hyperlink{classoomph_1_1Data_a71225ddbb54744f6fe662af5a5520ab8}{Is\+\_\+constrained}} = -\/2
+\begin{DoxyCompactList}\small\item\em Static \char`\"{}\+Magic number\char`\"{} used in place of the equation number to indicate that the value is constrained because it is associated with non-\/conforming element boundaries --- a hanging node --- (and is therefore pinned) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classoomph_1_1Node}{oomph\+::\+Node}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classoomph_1_1Node_a58e9d5a62ae31a6512bfa7ef897cf3c6}{x\+\_\+gen\+\_\+range\+\_\+check}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, const unsigned \&k, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Private function to check that the arguemnts to the position functions are in range. \end{DoxyCompactList}\item 
+double $\ast$ \mbox{\hyperlink{classoomph_1_1Node_a00055230af0bde1de96cc1a1c68c4324}{x\+\_\+position\+\_\+pt}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})
+\begin{DoxyCompactList}\small\item\em Direct access to the pointer to the i-\/th stored coordinate data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classoomph_1_1Data}{oomph\+::\+Data}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Data_afd33533f3ddf61bc34106a4dc72de541}{reset\+\_\+copied\+\_\+pointers}} ()
+\begin{DoxyCompactList}\small\item\em Helper function that should be overloaded in derived classes that can contain copies of \mbox{\hyperlink{classoomph_1_1Data}{Data}}. The function must reset the internal pointers to the copied data. This is used when resizing data to ensure that all the pointers remain valid. The default implementation throws an error beacause \mbox{\hyperlink{classoomph_1_1Data}{Data}} cannot be a copy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1Node}{oomph\+::\+Node}}}
+\begin{DoxyCompactItemize}
+\item 
+double $\ast$$\ast$ \mbox{\hyperlink{classoomph_1_1Node_a908941e709ac28995147ab090f2cbf90}{X\+\_\+position}}
+\begin{DoxyCompactList}\small\item\em Array of pointers to the data holding the Eulerian positions. The storage format must be the same as the internal data storage so that we can implement the functions \mbox{\hyperlink{classoomph_1_1Node_ab76b4773a65b349f143539e07b6e15e2}{x()}} in generality here without the need for virtual functions. The first index will be a flat array of position types and coordinates and the second will be the number of time history values at each position type. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper}} $\ast$ \mbox{\hyperlink{classoomph_1_1Node_a8cf734873ab29a412289f8ac2d3be348}{Position\+\_\+time\+\_\+stepper\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em Pointer to the timestepper associated with the position data. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1HangInfo}{Hang\+Info}} $\ast$$\ast$ \mbox{\hyperlink{classoomph_1_1Node_a9621d9d4dda3ebfe9578c180c5251484}{Hanging\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em C-\/style array of pointers to hanging node info. It\textquotesingle{}s set to NULL if the node isn\textquotesingle{}t hanging. The first entry (0) is the geometric hanging node data. The remaining entries correspond to the hanging data for the other values stored at the node. Usually, these entries will be the same as the geometric hanging node data represented by Hanging\+\_\+pt\mbox{[}0\mbox{]}, but this is not necessarily the case; e.\+g. the pressure in Taylor Hood has different hanging node data from the velocities. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1Node_aa8ce049e9f9de38fa20d886a5c6b8116}{Ndim}}
+\begin{DoxyCompactList}\small\item\em Eulerian dimension of the node. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1Node_aa5419b3f46cb65976e1e1311eed9419d}{Nposition\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Number of coordinate types used in the mapping between local and global coordinates (e.\+g. 1 for Lagrange-\/type elements; 2 for 1D Hermite elements; 4 for 2D Hermite elements, etc). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1Node_ae25c446374781036779c46bd8c1a2d74}{Obsolete}}
+\begin{DoxyCompactList}\small\item\em Flag to indicate that the \mbox{\hyperlink{classoomph_1_1Node}{Node}} has become obsolete --- usually during mesh refinement process. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Node_afcc4cc3e1e48964baf23fa44c98293a9}{Aux\+Node\+Update\+Fct\+Pt}} \mbox{\hyperlink{classoomph_1_1Node_a8bfd206ba303b6d446f59974719b24b6}{Aux\+\_\+node\+\_\+update\+\_\+fct\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em Pointer to auxiliary update function -- this can be used to update any nodal values following the update of the nodal position. This is needed e.\+g. to update the no-\/slip condition on moving boundaries. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1Data}{oomph\+::\+Data}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1Data}{Data}} $\ast$$\ast$ \mbox{\hyperlink{classoomph_1_1Data_a4e1e4a227baddb8f075761c48b06f4af}{Copy\+\_\+of\+\_\+data\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em C-\/style array of any \mbox{\hyperlink{classoomph_1_1Data}{Data}} objects that contain copies of the current \mbox{\hyperlink{classoomph_1_1Data}{Data}} object\textquotesingle{}s data values. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1Data_a7e8dbdf96bf78658e85c1d7f81ff10dd}{Ncopies}}
+\begin{DoxyCompactList}\small\item\em Number of \mbox{\hyperlink{classoomph_1_1Data}{Data}} that contain copies of this \mbox{\hyperlink{classoomph_1_1Data}{Data}} object\textquotesingle{}s values. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1Data}{oomph\+::\+Data}}}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper}} $\ast$ \mbox{\hyperlink{classoomph_1_1Data_a05936a16f5fca1612ad3f47b4e87d267}{Default\+\_\+static\+\_\+time\+\_\+stepper\+\_\+pt}} = new \mbox{\hyperlink{classoomph_1_1Steady}{Steady}}$<$0$>$()
+\begin{DoxyCompactList}\small\item\em Default (static) timestepper used in steady problems. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}

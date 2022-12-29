@@ -100,12 +100,238 @@ void \mbox{\hyperlink{classoomph_1_1HypreSolver_a892df4a9377dfa5ec978a74badb6142
 \begin{DoxyCompactList}\small\item\em Function to resolve a linear system using the existing solver data, allowing a solve with a new right hand side vector. This function must be used after a call to solve(...) with enable\+\_\+resolve set to true. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1HypreSolver_a5c1a57f1f74c0748a47c1629635ee0fc}{clean\+\_\+up\+\_\+memory}} ()
 \begin{DoxyCompactList}\small\item\em Function deletes all solver data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1LinearSolver}{oomph\+::\+Linear\+Solver}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1LinearSolver_a6e7e8728f36c888f052e49df8624b8ca}{Linear\+Solver}} ()
+\begin{DoxyCompactList}\small\item\em Empty constructor, initialise the member data. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1LinearSolver_a6c4dba96b243e3e9be1ef6bdb9440d23}{Linear\+Solver}} (const \mbox{\hyperlink{classoomph_1_1LinearSolver}{Linear\+Solver}} \&dummy)=delete
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1LinearSolver_a0b342cfa595300cb8227665382929e8b}{operator=}} (const \mbox{\hyperlink{classoomph_1_1LinearSolver}{Linear\+Solver}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1LinearSolver_a9cc9b2c9a239777c4f9b15f26bb324a0}{$\sim$\+Linear\+Solver}} ()
+\begin{DoxyCompactList}\small\item\em Empty virtual destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1LinearSolver_abeb9ef9127e927bf6df75d03645d6a81}{enable\+\_\+doc\+\_\+time}} ()
+\begin{DoxyCompactList}\small\item\em Enable documentation of solve times. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1LinearSolver_a91ffe51f3de82dad1a110c099f256d73}{disable\+\_\+doc\+\_\+time}} ()
+\begin{DoxyCompactList}\small\item\em Disable documentation of solve times. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1LinearSolver_a451ce3af5db82f9edbddf8f417597248}{is\+\_\+doc\+\_\+time\+\_\+enabled}} () const
+\begin{DoxyCompactList}\small\item\em Is documentation of solve times enabled? \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1LinearSolver_ae1e4d34a7e2b1537d36153f87e8a62a6}{is\+\_\+resolve\+\_\+enabled}} () const
+\begin{DoxyCompactList}\small\item\em Boolean flag indicating if resolves are enabled. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1LinearSolver_a3000ebd9becb3468d8a6a821a9cc0cd9}{enable\+\_\+resolve}} ()
+\begin{DoxyCompactList}\small\item\em Enable resolve (i.\+e. store matrix and/or LU decomposition, say) Virtual so it can be overloaded to perform additional tasks. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1LinearSolver_ad61c63af94c5961830bd9807225a48d6}{disable\+\_\+resolve}} ()
+\begin{DoxyCompactList}\small\item\em Disable resolve (i.\+e. store matrix and/or LU decomposition, say) This function simply resets an internal flag. It\textquotesingle{}s virtual so it can be overloaded to perform additional tasks such as cleaning up memory that is only required for the resolve. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1LinearSolver_a15ce22542b74ed1826ea485edacbeb6e}{solve}} (\mbox{\hyperlink{classoomph_1_1Problem}{Problem}} $\ast$const \&problem\+\_\+pt, \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&result)=0
+\begin{DoxyCompactList}\small\item\em Solver\+: Takes pointer to problem and returns the results vector which contains the solution of the linear system defined by the problem\textquotesingle{}s fully assembled Jacobian and residual vector. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1LinearSolver_a546c09822d18191df14caed864c04c09}{solve}} (\mbox{\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base}} $\ast$const \&matrix\+\_\+pt, const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&rhs, \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&result)
+\begin{DoxyCompactList}\small\item\em Linear-\/algebra-\/type solver\+: Takes pointer to a matrix and rhs vector and returns the solution of the linear system. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1LinearSolver_a1f7a2ee2cd18d3dafc20a61ca2f52dbb}{solve}} (\mbox{\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base}} $\ast$const \&matrix\+\_\+pt, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&rhs, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&result)
+\begin{DoxyCompactList}\small\item\em Linear-\/algebra-\/type solver\+: Takes pointer to a matrix and rhs vector and returns the solution of the linear system. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1LinearSolver_a8e970813a1583f6105ee2d677d3e45f3}{solve\+\_\+transpose}} (\mbox{\hyperlink{classoomph_1_1Problem}{Problem}} $\ast$const \&problem\+\_\+pt, \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&result)
+\begin{DoxyCompactList}\small\item\em Solver\+: Takes pointer to problem and returns the results vector which contains the solution of the linear system defined by the problem\textquotesingle{}s fully assembled Jacobian and residual vector (broken virtual). \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1LinearSolver_a600b4d06d85c238bdd6bd33f05d69c44}{solve\+\_\+transpose}} (\mbox{\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base}} $\ast$const \&matrix\+\_\+pt, const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&rhs, \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&result)
+\begin{DoxyCompactList}\small\item\em Linear-\/algebra-\/type solver\+: Takes pointer to a matrix and rhs vector and returns the solution of the linear system. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1LinearSolver_a499b738758451f94df398d8d2556ae76}{solve\+\_\+transpose}} (\mbox{\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base}} $\ast$const \&matrix\+\_\+pt, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&rhs, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&result)
+\begin{DoxyCompactList}\small\item\em Linear-\/algebra-\/type solver\+: Takes pointer to a matrix and rhs vector and returns the solution of the linear system. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1LinearSolver_a3b310d08333033edc119b2a5bd7dcbfb}{resolve}} (const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&rhs, \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&result)
+\begin{DoxyCompactList}\small\item\em Resolve the system defined by the last assembled jacobian and the rhs vector. Solution is returned in the vector result. (broken virtual) \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1LinearSolver_acf539c2dd415e22e597fade4c0ca4022}{resolve\+\_\+transpose}} (const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&rhs, \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&result)
+\begin{DoxyCompactList}\small\item\em Solver\+: Resolve the system defined by the last assembled jacobian and the rhs vector. Solution is returned in the vector result. (broken virtual) \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1LinearSolver_a9d66f3262e80ca06a365f98216afd85f}{clean\+\_\+up\+\_\+memory}} ()
+\begin{DoxyCompactList}\small\item\em Empty virtual function that can be overloaded in specific linear solvers to clean up any memory that may have been allocated (e.\+g. when preparing for a re-\/solve). \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classoomph_1_1LinearSolver_a0fedfb9d9855d0e998c0e32140bc56d4}{jacobian\+\_\+setup\+\_\+time}} () const
+\begin{DoxyCompactList}\small\item\em returns the time taken to assemble the Jacobian matrix and residual vector (needs to be overloaded for each solver) \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classoomph_1_1LinearSolver_a3c66f77db812a9c196478c7e2f77ef09}{linear\+\_\+solver\+\_\+solution\+\_\+time}} () const
+\begin{DoxyCompactList}\small\item\em return the time taken to solve the linear system (needs to be overloaded for each linear solver) \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1LinearSolver_a37f1f8b8c6d45115e649739abd5d2f5d}{enable\+\_\+computation\+\_\+of\+\_\+gradient}} ()
+\begin{DoxyCompactList}\small\item\em function to enable the computation of the gradient required for the globally convergent Newton method \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1LinearSolver_a8bc045e20074cb9b45ab3f304d037fc6}{disable\+\_\+computation\+\_\+of\+\_\+gradient}} ()
+\begin{DoxyCompactList}\small\item\em function to disable the computation of the gradient required for the globally convergent Newton method \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1LinearSolver_aceef502cbdf826cdf6aa31f5803982e0}{reset\+\_\+gradient}} ()
+\begin{DoxyCompactList}\small\item\em function to reset the size of the gradient before each Newton solve \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1LinearSolver_a6733411e85f0a1d6d82200c802481681}{get\+\_\+gradient}} (\mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&gradient)
+\begin{DoxyCompactList}\small\item\em function to access the gradient, provided it has been computed \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject}{oomph\+::\+Distributable\+Linear\+Algebra\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_ac9492d59cff9d9b0098712ae72989cd3}{Distributable\+Linear\+Algebra\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor -\/ create a distribution. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a7522391265c46e6c748fd660eae66f5e}{Distributable\+Linear\+Algebra\+Object}} (const \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject}{Distributable\+Linear\+Algebra\+Object}} \&matrix)=delete
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_ada5f539f36451c06e69de79bb129521b}{operator=}} (const \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject}{Distributable\+Linear\+Algebra\+Object}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a4038de53b5737dc625411e7848d21dad}{$\sim$\+Distributable\+Linear\+Algebra\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} $\ast$ \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_abfa9cf25494c796d62b15bad586fab47}{distribution\+\_\+pt}} () const
+\begin{DoxyCompactList}\small\item\em access to the \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a7569556f14fd68b28508920e89bd5eee}{nrow}} () const
+\begin{DoxyCompactList}\small\item\em access function to the number of global rows. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a9bd7e1d242c69a28da85a804a7717fce}{nrow\+\_\+local}} () const
+\begin{DoxyCompactList}\small\item\em access function for the num of local rows on this processor. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a21e966b025edec79067b41d7f1f25220}{nrow\+\_\+local}} (const unsigned \&p) const
+\begin{DoxyCompactList}\small\item\em access function for the num of local rows on this processor. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_ab00a3919b8634c698749f14a4d92947d}{first\+\_\+row}} () const
+\begin{DoxyCompactList}\small\item\em access function for the first row on this processor \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a4266c1d18d8e102bad3f4aec26c9b7cf}{first\+\_\+row}} (const unsigned \&p) const
+\begin{DoxyCompactList}\small\item\em access function for the first row on this processor \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a5505731e7e73d7e4251c67c7adec6bf5}{distributed}} () const
+\begin{DoxyCompactList}\small\item\em distribution is serial or distributed \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a8c35baa65e335043f62954c92c090a5a}{distribution\+\_\+built}} () const
+\begin{DoxyCompactList}\small\item\em if the communicator\+\_\+pt is null then the distribution is not setup then false is returned, otherwise return true \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_ac5340bac40b9559b0378037b57005203}{build\+\_\+distribution}} (const \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} $\ast$const dist\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em setup the distribution of this distributable linear algebra object \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_adad20ac61a61d907f823da7694b50616}{build\+\_\+distribution}} (const \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} \&dist)
+\begin{DoxyCompactList}\small\item\em setup the distribution of this distributable linear algebra object \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1HypreInterface}{oomph\+::\+Hypre\+Interface}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1HypreInterface_a411f8026204716846b34eec5a1296d28}{Hypre\+Interface}} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1HypreInterface_a713e74ad0f84ae06be5c7daa87337ecf}{$\sim$\+Hypre\+Interface}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1HypreInterface_a25217cef5216d81c59a3de62062da226}{Hypre\+Interface}} (const \mbox{\hyperlink{classoomph_1_1HypreInterface}{Hypre\+Interface}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1HypreInterface_a50bd66edf8ceed2eb9514548dee84602}{operator=}} (const \mbox{\hyperlink{classoomph_1_1HypreInterface}{Hypre\+Interface}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1HypreInterface_a281c9cf1e254871a957dbf46698cd518}{enable\+\_\+hypre\+\_\+error\+\_\+messages}} ()
+\begin{DoxyCompactList}\small\item\em Turn on the hypre error messages. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1HypreInterface_a5123a1836f5d9f68bc6736829132b5a5}{disable\+\_\+hypre\+\_\+error\+\_\+messages}} ()
+\begin{DoxyCompactList}\small\item\em Turn off hypre error messages. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1HypreInterface_a976554ee58a357435c047f78a1539434}{existing\+\_\+solver}} ()
+\begin{DoxyCompactList}\small\item\em Function to return value of which solver (if any) is currently stored. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1HypreInterface_a49751f00702cd3176ee61c4b226424eb}{existing\+\_\+preconditioner}} ()
+\begin{DoxyCompactList}\small\item\em Function return value of which preconditioner (if any) is stored. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 bool \mbox{\hyperlink{classoomph_1_1HypreSolver_a79047c84718f95a88ba3c41e1d3963e7}{Delete\+\_\+matrix}}
 \begin{DoxyCompactList}\small\item\em Hypre copies matrix data from oomph-\/lib\textquotesingle{}s \mbox{\hyperlink{classoomph_1_1CRDoubleMatrix}{CRDouble\+Matrix}} or Distributed\+CRDouble\+Matrix into its own data structures, doubling the memory requirements for the matrix. As far as the Hypre solvers are concerned the oomph-\/lib matrix is no longer required and could be deleted to save memory. However, this will not be the expected behaviour and therefore needs to be requested explicitly by the user by changing this flag from false (its default) to true. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Public Types inherited from \mbox{\hyperlink{classoomph_1_1HypreInterface}{oomph\+::\+Hypre\+Interface}}}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classoomph_1_1HypreInterface_a6326c42293c21c62a189c4bfee03e2ab}{Hypre\+\_\+method\+\_\+types}} \{ \newline
+\mbox{\hyperlink{classoomph_1_1HypreInterface_a6326c42293c21c62a189c4bfee03e2aba7adc4138b84c25731697dba47341d805}{CG}}
+, \mbox{\hyperlink{classoomph_1_1HypreInterface_a6326c42293c21c62a189c4bfee03e2aba4a50dcf26660a375d89af0e317fdcc45}{GMRES}}
+, \mbox{\hyperlink{classoomph_1_1HypreInterface_a6326c42293c21c62a189c4bfee03e2aba226997dd74514b0f51fd1cdc2bb181eb}{Bi\+CGStab}}
+, \mbox{\hyperlink{classoomph_1_1HypreInterface_a6326c42293c21c62a189c4bfee03e2abad4c3fefcba30744c942639c43a4cc061}{Boomer\+AMG}}
+, \newline
+\mbox{\hyperlink{classoomph_1_1HypreInterface_a6326c42293c21c62a189c4bfee03e2abad818656a893f66dd2da6c5afa4bc002d}{Euclid}}
+, \mbox{\hyperlink{classoomph_1_1HypreInterface_a6326c42293c21c62a189c4bfee03e2aba48b74bf516629dfb5d39c0136c09f165}{Para\+Sails}}
+, \mbox{\hyperlink{classoomph_1_1HypreInterface_a6326c42293c21c62a189c4bfee03e2abaa67e521db30caa2fccc6c1a8cbb06fe5}{None}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumerated flag to define which Hypre methods are used CAREFUL\+: DON\textquotesingle{}T CHANGE THE ORDER OF THESE! \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes inherited from \mbox{\hyperlink{classoomph_1_1HypreInterface}{oomph\+::\+Hypre\+Interface}}}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classoomph_1_1HypreInterface_a79fa8ccf580df282a6a2955e3d5327ae}{AMGEuclid\+Smoother\+\_\+use\+\_\+block\+\_\+jacobi}}
+\item 
+bool \mbox{\hyperlink{classoomph_1_1HypreInterface_a3570de904e329445f987481d61821b0f}{AMGEuclid\+Smoother\+\_\+use\+\_\+row\+\_\+scaling}}
+\item 
+bool \mbox{\hyperlink{classoomph_1_1HypreInterface_a4ead069d2811580d1f7a743a0c5569b1}{AMGEuclid\+Smoother\+\_\+use\+\_\+ilut}}
+\item 
+unsigned \mbox{\hyperlink{classoomph_1_1HypreInterface_a3677d64e347986f0693acb90ab9510fb}{AMGEuclid\+Smoother\+\_\+level}}
+\item 
+double \mbox{\hyperlink{classoomph_1_1HypreInterface_a0dab8a5b8cc96e3d1c38960735f3fbee}{AMGEuclid\+Smoother\+\_\+drop\+\_\+tol}}
+\item 
+unsigned \mbox{\hyperlink{classoomph_1_1HypreInterface_a75e69886d00203474a4eea60c751fa39}{AMGEuclid\+Smoother\+\_\+print\+\_\+level}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject}{oomph\+::\+Distributable\+Linear\+Algebra\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a30742aa2ac9abcfa037179f2d28ff43a}{clear\+\_\+distribution}} ()
+\begin{DoxyCompactList}\small\item\em clear the distribution of this distributable linear algebra object \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classoomph_1_1HypreInterface}{oomph\+::\+Hypre\+Interface}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classoomph_1_1HypreInterface_a989fc83bc47f7b4fb8a753b16a26a012}{hypre\+\_\+clean\+\_\+up\+\_\+memory}} ()
+\begin{DoxyCompactList}\small\item\em Function deletes all solver data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1HypreInterface_aebc23d169937d5e6a5b492710843ae7b}{hypre\+\_\+matrix\+\_\+setup}} (\mbox{\hyperlink{classoomph_1_1CRDoubleMatrix}{CRDouble\+Matrix}} $\ast$matrix\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Function which sets values of First\+\_\+global\+\_\+row, Last\+\_\+global\+\_\+row and other partitioning data and creates the distributed Hypre matrix (stored in Matrix\+\_\+ij/\+Matrix\+\_\+par) from the \mbox{\hyperlink{classoomph_1_1CRDoubleMatrix}{CRDouble\+Matrix}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1HypreInterface_afeddc250f9c56ac94e8c013c23a69deb}{hypre\+\_\+solver\+\_\+setup}} ()
+\begin{DoxyCompactList}\small\item\em Sets up the data required for to use as an oomph-\/lib \mbox{\hyperlink{classoomph_1_1LinearSolver}{Linear\+Solver}} or \mbox{\hyperlink{classoomph_1_1Preconditioner}{Preconditioner}}. This must be called after the Hypre matrix has been generated using hypre\+\_\+matrix\+\_\+setup(...). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1HypreInterface_a5cdd3f8621333e94d8a1004611bc6793}{hypre\+\_\+solve}} (const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&rhs, \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&solution)
+\begin{DoxyCompactList}\small\item\em Helper function performs a solve if any solver exists. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1LinearSolver}{oomph\+::\+Linear\+Solver}}}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classoomph_1_1LinearSolver_a5f5e7e7a44ff0897b0e4cd9524000edc}{Enable\+\_\+resolve}}
+\begin{DoxyCompactList}\small\item\em Boolean that indicates whether the matrix (or its factors, in the case of direct solver) should be stored so that the resolve function can be used. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1LinearSolver_a536e41b50b3f3464ca9cb4a5776acc19}{Doc\+\_\+time}}
+\begin{DoxyCompactList}\small\item\em Boolean flag that indicates whether the time taken. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1LinearSolver_aef857e4c0c16e8b342a14493e558bb15}{Compute\+\_\+gradient}}
+\begin{DoxyCompactList}\small\item\em flag that indicates whether the gradient required for the globally convergent Newton method should be computed or not \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1LinearSolver_a9fd3bf9a5a94dcc23b7d903f99535e72}{Gradient\+\_\+has\+\_\+been\+\_\+computed}}
+\begin{DoxyCompactList}\small\item\em flag that indicates whether the gradient was computed or not \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \mbox{\hyperlink{classoomph_1_1LinearSolver_ad38255ae12611787a857cc5c90ffa9f8}{Gradient\+\_\+for\+\_\+glob\+\_\+conv\+\_\+newton\+\_\+solve}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} storing the gradient for the globally convergent Newton method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1HypreInterface}{oomph\+::\+Hypre\+Interface}}}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classoomph_1_1HypreInterface_a011667f822e82fc40fde8ab5f2bd4d57}{Output\+\_\+info}}
+\begin{DoxyCompactList}\small\item\em Flag is true to output info and results of timings. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1HypreInterface_abca9f624ee43955c6607a62b50128614}{Max\+\_\+iter}}
+\begin{DoxyCompactList}\small\item\em Maximum number of iterations used in solver. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1HypreInterface_aa32a993d324c6b198726064299a4e924}{Tolerance}}
+\begin{DoxyCompactList}\small\item\em Tolerance used to terminate solver. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1HypreInterface_ae2a79282191b4430ef6631df9fc8c947}{Hypre\+\_\+method}}
+\begin{DoxyCompactList}\small\item\em Hypre method flag. Valid values are specified in enumeration. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1HypreInterface_a5694f23f49b16ca978e6bcb629c7ab27}{Internal\+\_\+preconditioner}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1Preconditioner}{Preconditioner}} method flag used with Hypre\textquotesingle{}s PCG, \mbox{\hyperlink{classoomph_1_1GMRES}{GMRES}} and \mbox{\hyperlink{classoomph_1_1BiCGStab}{Bi\+CGStab}} in solve(...) or resolve(...). Valid values are Boomer\+AMG, Euclid, Para\+Sails or None (all enumerated above), for any other value no preconditioner is set. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1HypreInterface_ad1e2b0066abfccd0c489227c208c0f74}{AMG\+\_\+print\+\_\+level}}
+\begin{DoxyCompactList}\small\item\em Used to set the Hypre printing level for AMG 0\+: no printout 1\+: print setup information 2\+: print solve information 3\+: print setup and solve information. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1HypreInterface_adf57ef35573b468881617d8cae4643c9}{AMG\+\_\+max\+\_\+levels}}
+\begin{DoxyCompactList}\small\item\em Maximum number of levels used in AMG. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1HypreInterface_af3d118bd7fa11c89ec5fb39dc2f0d218}{AMG\+\_\+max\+\_\+row\+\_\+sum}}
+\begin{DoxyCompactList}\small\item\em Parameter to identify diagonally dominant parts of the matrix in AMG. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1HypreInterface_aa4bac4203fb7ec08f5a9fc7cf3f47161}{AMG\+\_\+using\+\_\+simple\+\_\+smoothing}}
+\begin{DoxyCompactList}\small\item\em Flag to determine whether simple smoothers (determined by the AMG\+\_\+simple\+\_\+smoother flag) or complex smoothers (determined by the AMG\+\_\+complex\+\_\+smoother flag are used in AMG. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1HypreInterface_ac2671434b9202b17d9ecff0a7787f83c}{AMG\+\_\+simple\+\_\+smoother}}
+\begin{DoxyCompactList}\small\item\em Simple smoothing methods used in Boomer\+AMG. Relaxation types include\+: 0 = Jacobi 1 = Gauss-\/\+Seidel, sequential (very slow in parallel!) 2 = Gauss-\/\+Seidel, interior points in parallel, boundary sequential (slow in parallel!) 3 = hybrid Gauss-\/\+Seidel or SOR, forward solve 4 = hybrid Gauss-\/\+Seidel or SOR, backward solve 6 = hybrid symmetric Gauss-\/\+Seidel or SSOR To use these methods set AMG\+\_\+using\+\_\+simple\+\_\+smoothing to true. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1HypreInterface_a7e4d8eeb1fb32cb7ada7c273edbf070e}{AMG\+\_\+complex\+\_\+smoother}}
+\begin{DoxyCompactList}\small\item\em Complex smoothing methods used in Boomer\+AMG. Relaxation types are\+: 6 = Schwarz 7 = Pilut 8 = Para\+Sails 9 = Euclid To use these methods set AMG\+\_\+using\+\_\+simple\+\_\+smoothing to false. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1HypreInterface_a968f16488385d717c96993883cf4a680}{AMG\+\_\+smoother\+\_\+iterations}}
+\begin{DoxyCompactList}\small\item\em The number of smoother iterations to apply. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1HypreInterface_abdf7a5f5744201ae75368c2b07f662bc}{AMG\+\_\+damping}}
+\begin{DoxyCompactList}\small\item\em Damping factor for Boomer\+AMG smoothed Jacobi or hybrid SOR. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1HypreInterface_a1e87cc2c06ff1391b293e636b19236ea}{AMG\+\_\+strength}}
+\begin{DoxyCompactList}\small\item\em Connection strength threshold parameter for Boomer\+AMG. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1HypreInterface_a8fa7abd65dec3d2318a36d8fddb96a46}{AMG\+\_\+truncation}}
+\begin{DoxyCompactList}\small\item\em Interpolation truncation factor for Boomer\+AMG. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1HypreInterface_a0a75db2a70cfd31653be6681abccffbf}{AMG\+\_\+coarsening}}
+\begin{DoxyCompactList}\small\item\em AMG coarsening strategy. Coarsening types include\+: 0 = CLJP (parallel coarsening using independent sets) 1 = classical RS with no boundary treatment (not recommended in parallel) 3 = modified RS with 3rd pass to add C points on the boundaries 6 = Falgout (uses 1 then CLJP using interior coarse points as first independent set) 8 = PMIS (parallel coarsening using independent sets -\/ lower complexities than 0, maybe also slower convergence) 10= HMIS (one pass RS on each processor then PMIS on interior coarse points as first independent set) 11= One pass RS on each processor (not recommended) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classoomph_1_1HypreInterface_a3cdba8c59c318125fbb367207f1082b6}{Para\+Sails\+\_\+symmetry}}
+\begin{DoxyCompactList}\small\item\em Para\+Sails symmetry flag, used to inform Para\+Sails of Symmetry of definitenss of problem and type of Para\+Sails preconditioner\+: 0 = nonsymmetric and/or indefinite problem, nonsymmetric preconditioner 1 = SPD problem, and SPD (factored preconditioner) 2 = nonsymmetric, definite problem and SDP (factored preconditoner) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classoomph_1_1HypreInterface_a313c9638a579d912e3f570b21db611f4}{Para\+Sails\+\_\+nlevel}}
+\begin{DoxyCompactList}\small\item\em Para\+Sails nlevel parameter. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1HypreInterface_a8deadae96f1791b9f2552505cc68af2d}{Para\+Sails\+\_\+thresh}}
+\begin{DoxyCompactList}\small\item\em Para\+Sails thresh parameter. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1HypreInterface_a34ee95ad2f64b9d4fb0b0951a64c357a}{Para\+Sails\+\_\+filter}}
+\begin{DoxyCompactList}\small\item\em Para\+Sails filter parameter. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1HypreInterface_af91bb7e92785e510c04cdb0c11ef99cf}{Euclid\+\_\+droptol}}
+\begin{DoxyCompactList}\small\item\em Euclid drop tolerance for ILU(k) and ILUT factorization. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1HypreInterface_a16a2f90a3e7fcdb2909d400d82b90286}{Euclid\+\_\+row\+Scale}}
+\begin{DoxyCompactList}\small\item\em Flag to switch on Euclid row scaling. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1HypreInterface_afe6e93b2655b578090a5d9abb91c2e22}{Euclid\+\_\+using\+\_\+\+ILUT}}
+\begin{DoxyCompactList}\small\item\em Flag to determine if ILUT (if true) or ILU(k) is used in Euclid. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1HypreInterface_a1405f23d6ffdf4afe2839434a3f738e0}{Euclid\+\_\+using\+\_\+\+BJ}}
+\begin{DoxyCompactList}\small\item\em Flag to determine if Block Jacobi is used instead of PILU. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classoomph_1_1HypreInterface_a0ae9320b5116bb330ddd1096d20f556e}{Euclid\+\_\+level}}
+\begin{DoxyCompactList}\small\item\em Euclid level parameter for ILU(k) factorization. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1HypreInterface_adc83c27b78ac44ccdba2a85191e474c1}{Euclid\+\_\+print\+\_\+level}}
+\begin{DoxyCompactList}\small\item\em Flag to set the level of printing from Euclid when the Euclid destructor is called 0\+: no printing (default) 1\+: prints summary of runtime settings and timings 2\+: as 1 plus prints memory usage. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1HypreInterface_a901fbdfa98992faf1cdae4d2d1ac9a2b}{Krylov\+\_\+print\+\_\+level}}
+\begin{DoxyCompactList}\small\item\em Used to set the Hypre printing level for the Krylov subspace solvers. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1HypreInterface_aa0570d52546893f0767060c6efcd4090}{Hypre\+\_\+error\+\_\+messages}}
+\begin{DoxyCompactList}\small\item\em Flag to determine if non-\/zero values of the Hypre error flag plus Hypre error messages are output to screen at various points in the solve function, i.\+e. after\+: \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1HypreInterface_a0117cae635c9242ccfd9ad7153511c07}{Delete\+\_\+input\+\_\+data}}
+\begin{DoxyCompactList}\small\item\em Internal flag which is true when hypre\+\_\+setup or hypre\+\_\+solve can delete input matrix. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1HypreInterface_a3e1fd87d247b737001fb366bf4a7081f}{Using\+\_\+distributed\+\_\+rhs}}
+\begin{DoxyCompactList}\small\item\em Internal flag which tell the solver if the rhs \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} is distributed or not. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1HypreInterface_a1bc7fe7e11b5c08cc768969b9e1f8641}{Returning\+\_\+distributed\+\_\+solution}}
+\begin{DoxyCompactList}\small\item\em Internal flag which tell the solver if the solution \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} to be returned is distributed or not. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}

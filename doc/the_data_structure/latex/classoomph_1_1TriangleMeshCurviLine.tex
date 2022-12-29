@@ -52,6 +52,125 @@ bool \mbox{\hyperlink{classoomph_1_1TriangleMeshCurviLine_a040f5978d5efa810b0b96
 \begin{DoxyCompactList}\small\item\em Returns the connection points vector. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurviLine_a3605aa21fbdec5f73b1baf842fdb4611}{add\+\_\+connection\+\_\+point}} (const double \&z\+\_\+value, const double \&tol=1.\+0e-\/12)
 \begin{DoxyCompactList}\small\item\em Add the connection point (z\+\_\+value) to the connection points that receive the curviline. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection}{oomph\+::\+Triangle\+Mesh\+Curve\+Section}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a7ea6757c0c67d0b225f33f137cf4c98d}{Triangle\+Mesh\+Curve\+Section}} ()
+\begin{DoxyCompactList}\small\item\em Empty constructor. Initialises the curve section as non connected. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a4d723c6ea8d102f865e26d8362e9ad92}{$\sim$\+Triangle\+Mesh\+Curve\+Section}} ()
+\begin{DoxyCompactList}\small\item\em Empty destructor. \end{DoxyCompactList}\item 
+virtual unsigned \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a52af59a9a4f1b6adb35e5645ab8feb45}{nsegment}} () const =0
+\begin{DoxyCompactList}\small\item\em Number of segments that this part of the boundary is to be represented by. This corresponds to the number of straight-\/line segments in triangle representation. \end{DoxyCompactList}\item 
+virtual unsigned \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a2e6d22017ce7abe7e84e3f16360f5444}{boundary\+\_\+id}} () const =0
+\begin{DoxyCompactList}\small\item\em Boundary id. \end{DoxyCompactList}\item 
+virtual unsigned \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a106d1f0e203e8e17c8296419be284c16}{boundary\+\_\+chunk}} () const =0
+\begin{DoxyCompactList}\small\item\em Boundary chunk (Used when a boundary is represented by more than one polyline. \end{DoxyCompactList}\item 
+virtual unsigned \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a491d849e8147152c10d55c8ca6c3d63d}{nvertex}} () const =0
+\begin{DoxyCompactList}\small\item\em Number of vertices. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a140b0bb85d7bf85cc025e19e996d5c53}{output}} (std\+::ostream \&outfile, const unsigned \&n\+\_\+sample=50)=0
+\begin{DoxyCompactList}\small\item\em Output the curve\+\_\+section. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_ab16b55ff3346ea87b00a49ead7562cc2}{enable\+\_\+refinement\+\_\+tolerance}} (const double \&tolerance=0.\+08)
+\begin{DoxyCompactList}\small\item\em Enable refinement of curve section to create a better representation of curvilinear boundaries (e.\+g. in free-\/surface problems). See tutorial for interpretation of the optional argument which specifies the refinement tolerance. It defaults to 0.\+08 and the smaller the number the finer the surface representation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a3ebe8f25753aefe11af4aa8081644462}{set\+\_\+refinement\+\_\+tolerance}} (const double \&tolerance)
+\begin{DoxyCompactList}\small\item\em Set tolerance for refinement of curve sections to create a better representation of curvilinear boundaries (e.\+g. in free-\/surface problems). See tutorial for interpretation of the refinement tolerance. (The smaller the number the finer the surface representation). If set to a negative value, we\textquotesingle{}re switching off refinement -- equivalent to calling disable\+\_\+polyline\+\_\+refinement() \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a77470b1ea748cef82a3ffebfd568fe7d}{refinement\+\_\+tolerance}} ()
+\begin{DoxyCompactList}\small\item\em Get tolerance for refinement of curve sections to create a better representation of curvilinear boundaries (e.\+g. in free-\/surface problems). See tutorial for interpretation. If it\textquotesingle{}s negative refinement is disabled. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a88a139cf580b5cd694dd2a69ef372a0d}{disable\+\_\+refinement\+\_\+tolerance}} ()
+\begin{DoxyCompactList}\small\item\em Disable refinement of curve section. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_ac01b9768242eee89888b3cf1960ab226}{enable\+\_\+unrefinement\+\_\+tolerance}} (const double \&tolerance=0.\+04)
+\begin{DoxyCompactList}\small\item\em Enable unrefinement of curve sections to avoid unnecessarily large numbers of elements on of curvilinear boundaries (e.\+g. in free-\/surface problems). See tutorial for interpretation of the optional argument which specifies the unrefinement tolerance. It defaults to 0.\+04 and the larger the number the more agressive we are when removing unnecessary vertices on gently curved polylines. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a2e586bbd0adf5f5f9b5cb4ed4300614a}{set\+\_\+unrefinement\+\_\+tolerance}} (const double \&tolerance)
+\begin{DoxyCompactList}\small\item\em Set tolerance for unrefinement of curve sections to avoid unnecessarily large numbers of elements on of curvilinear boundaries (e.\+g. in free-\/surface problems). See tutorial for interpretation of the optional argument which specifies the unrefinement tolerance. It defaults to 0.\+04 and the larger the number the more agressive we are when removing unnecessary vertices on gently curved polylines. If set to a negative value, we\textquotesingle{}re switching off unrefinement -- equivalent to calling disable\+\_\+curve\+\_\+section\+\_\+unrefinement() \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a15fbe0b2d7ed1ed7a8e8f0ae10669e26}{unrefinement\+\_\+tolerance}} ()
+\begin{DoxyCompactList}\small\item\em Get tolerance for unrefinement of curve section to create a better representation of curvilinear boundaries (e.\+g. in free-\/surface problems). See tutorial for interpretation. If it\textquotesingle{}s negative unrefinement is disabled. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a9b79446585f07f7c375c64874f847287}{disable\+\_\+unrefinement\+\_\+tolerance}} ()
+\begin{DoxyCompactList}\small\item\em Disable unrefinement of curve sections. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a5bb05bb4547fd20b4cfc1c0c5253bc0f}{set\+\_\+maximum\+\_\+length}} (const double \&\mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_aee6ab6dbfd4e2f63da41bb8f66a43f53}{maximum\+\_\+length}})
+\begin{DoxyCompactList}\small\item\em Allows to specify the maximum distance between two vertices that define the associated polyline of the curve section, it only takes effect on the unrefinement and refinement steps. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_afcf00be8498fb9b47a69b18d20fca6a1}{disable\+\_\+use\+\_\+maximum\+\_\+length}} ()
+\begin{DoxyCompactList}\small\item\em Disables the use of the maximum length criteria on the unrefinement or refinement steps. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_aee6ab6dbfd4e2f63da41bb8f66a43f53}{maximum\+\_\+length}} ()
+\begin{DoxyCompactList}\small\item\em Gets access to the maximum length variable. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a08c60883b595a52280c486badf8a4210}{initial\+\_\+vertex\+\_\+coordinate}} (\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&vertex)=0
+\begin{DoxyCompactList}\small\item\em Get first vertex coordinates. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_aa5bbea1d7c1157f25d3b93101ac4b80f}{final\+\_\+vertex\+\_\+coordinate}} (\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&vertex)=0
+\begin{DoxyCompactList}\small\item\em Get last vertex coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a32e53dc2a830784397230e92f73f6191}{connect\+\_\+initial\+\_\+vertex\+\_\+to\+\_\+polyline}} (\mbox{\hyperlink{classoomph_1_1TriangleMeshPolyLine}{Triangle\+Mesh\+Poly\+Line}} $\ast$polyline\+\_\+pt, const unsigned \&vertex\+\_\+number, const double \&tolerance\+\_\+for\+\_\+connection=1.\+0e-\/14)
+\begin{DoxyCompactList}\small\item\em Connects the initial vertex of the curve section to a desired target polyline by specifying the vertex number. There is a checking which verifies that the initial vertex is close enough to the destination vertex on the target polyline by no more than the specified tolerance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a55d06c515fd1e7f6a3729b2efda06c38}{connect\+\_\+final\+\_\+vertex\+\_\+to\+\_\+polyline}} (\mbox{\hyperlink{classoomph_1_1TriangleMeshPolyLine}{Triangle\+Mesh\+Poly\+Line}} $\ast$polyline\+\_\+pt, const unsigned \&vertex\+\_\+number, const double \&tolerance\+\_\+for\+\_\+connection=1.\+0e-\/14)
+\begin{DoxyCompactList}\small\item\em Connects the final vertex of the curve section to a desired target polyline by specifying the vertex number. There is a checking which verifies that the final vertex is close enough to the destination vertex on the target polyline by no more than the specified tolerance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_acda559ecf86d962ed1d1594e3588a87c}{connect\+\_\+initial\+\_\+vertex\+\_\+to\+\_\+curviline}} (\mbox{\hyperlink{classoomph_1_1TriangleMeshCurviLine}{Triangle\+Mesh\+Curvi\+Line}} $\ast$curviline\+\_\+pt, const double \&s\+\_\+value, const double \&tolerance\+\_\+for\+\_\+connection=1.\+0e-\/14)
+\begin{DoxyCompactList}\small\item\em Connects the initial vertex of the curve section to a desired target curviline by specifying the s value (intrinsic value on the geometric object of the curviline) where to connect on the target curviline. There is a checking which verifies that the initial vertex and the coordinates on the given s value are close enough by no more than the given tolerance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_af052734eb3a34089c6ba2c9cfb937bf3}{connect\+\_\+final\+\_\+vertex\+\_\+to\+\_\+curviline}} (\mbox{\hyperlink{classoomph_1_1TriangleMeshCurviLine}{Triangle\+Mesh\+Curvi\+Line}} $\ast$curviline\+\_\+pt, const double \&s\+\_\+value, const double \&tolerance\+\_\+for\+\_\+connection=1.\+0e-\/14)
+\begin{DoxyCompactList}\small\item\em Connects the final vertex of the curve section to a desired target curviline by specifying the s value (intrinsic value on the geometric object of the curviline) where to connect on the target curviline. There is a checking which verifies that the final vertex and the coordinates on the given s value are close enough by no more than the given tolerance. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_aaab51c1395c75a85bf761e09ddcd1b28}{is\+\_\+initial\+\_\+vertex\+\_\+connected}} () const
+\begin{DoxyCompactList}\small\item\em Test whether initial vertex is connected or not. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_ab3294da2b5f14d38e19f2b64684f3074}{set\+\_\+initial\+\_\+vertex\+\_\+connected}} ()
+\begin{DoxyCompactList}\small\item\em Sets the initial vertex as connected. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a6175f89dbb33a53d596e9374857cbefb}{unset\+\_\+initial\+\_\+vertex\+\_\+connected}} ()
+\begin{DoxyCompactList}\small\item\em Sets the initial vertex as non connected. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_ade6528a99d26583c05a5fd44e21d1ec4}{suspend\+\_\+initial\+\_\+vertex\+\_\+connected}} ()
+\begin{DoxyCompactList}\small\item\em Set the initial vertex connection as suspended, it will be resumed when the method to resume the connections is called This method is only used in a distributed context, when the boundary to connect is no longer part of the domain in the processor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a34923cad75967b4efa95ad6e1ea3c72e}{resume\+\_\+initial\+\_\+vertex\+\_\+connected}} ()
+\begin{DoxyCompactList}\small\item\em Resumes the initial vertex connection, it may be that after load balancing the boundary to which the connection was suspended be part of the domain. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a937df77a1a0d3bf60f0a52ab3c0e268d}{is\+\_\+final\+\_\+vertex\+\_\+connected}} () const
+\begin{DoxyCompactList}\small\item\em Test whether final vertex is connected or not. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_abcdf60aacf4153498fe4dfa0821691d7}{set\+\_\+final\+\_\+vertex\+\_\+connected}} ()
+\begin{DoxyCompactList}\small\item\em Sets the final vertex as connected. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_ac44effdfc3a04ba90668e7f3f54b248a}{unset\+\_\+final\+\_\+vertex\+\_\+connected}} ()
+\begin{DoxyCompactList}\small\item\em Sets the final vertex as non connected. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a379677086ad13d5cd7d0c5c669a37e2f}{suspend\+\_\+final\+\_\+vertex\+\_\+connected}} ()
+\begin{DoxyCompactList}\small\item\em Set the final vertex connection as suspended, it will be resumed when the method to resume the connections is called This method is only used in a distributed context, when the boundary to connect is no longer part of the domain in the processor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a3c6277b6c1a1c6a5a6a7d234c4afc101}{resume\+\_\+final\+\_\+vertex\+\_\+connected}} ()
+\begin{DoxyCompactList}\small\item\em Resumes the final vertex connection, it may be that after load balancing the boundary to which the connection was suspended be part of the domain. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_aa20f1e54ff6f0f1ef0c550e0a2d119bb}{initial\+\_\+vertex\+\_\+connected\+\_\+bnd\+\_\+id}} () const
+\begin{DoxyCompactList}\small\item\em Gets the id to which the initial end is connected. \end{DoxyCompactList}\item 
+unsigned \& \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a8bcc5fdc8b54c6e907146cd6c6c240c2}{initial\+\_\+vertex\+\_\+connected\+\_\+bnd\+\_\+id}} ()
+\begin{DoxyCompactList}\small\item\em Sets the id to which the initial end is connected. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a3c379a3eca49b36ece255290afea43fb}{initial\+\_\+vertex\+\_\+connected\+\_\+n\+\_\+vertex}} () const
+\begin{DoxyCompactList}\small\item\em Gets the vertex number to which the initial end is connected. \end{DoxyCompactList}\item 
+unsigned \& \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a49d3a52a67390d96d00aed71b8fe32d7}{initial\+\_\+vertex\+\_\+connected\+\_\+n\+\_\+vertex}} ()
+\begin{DoxyCompactList}\small\item\em Sets the vertex number to which the initial end is connected. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_ae2c3f9b3c2e2594bea76360c99805790}{initial\+\_\+vertex\+\_\+connected\+\_\+n\+\_\+chunk}} () const
+\begin{DoxyCompactList}\small\item\em Gets the boundary chunk to which the initial end is connected. \end{DoxyCompactList}\item 
+unsigned \& \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_ade896eb380c847f2539d82cb8586d92c}{initial\+\_\+vertex\+\_\+connected\+\_\+n\+\_\+chunk}} ()
+\begin{DoxyCompactList}\small\item\em Sets the boundary chunk to which the initial end is connected. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_af1acd60f443c9ef93df9994587ebfcad}{final\+\_\+vertex\+\_\+connected\+\_\+bnd\+\_\+id}} () const
+\begin{DoxyCompactList}\small\item\em Gets the id to which the final end is connected. \end{DoxyCompactList}\item 
+unsigned \& \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a565c680722bd0309732092f7a04f6d97}{final\+\_\+vertex\+\_\+connected\+\_\+bnd\+\_\+id}} ()
+\begin{DoxyCompactList}\small\item\em Sets the id to which the final end is connected. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a6fa5fb8407dfe3f0d6624ceb0ac822a5}{final\+\_\+vertex\+\_\+connected\+\_\+n\+\_\+vertex}} () const
+\begin{DoxyCompactList}\small\item\em Sets the vertex number to which the final end is connected. \end{DoxyCompactList}\item 
+unsigned \& \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a48ca8c8f62c82a544dd70a89cc4e19ef}{final\+\_\+vertex\+\_\+connected\+\_\+n\+\_\+vertex}} ()
+\begin{DoxyCompactList}\small\item\em Gets the vertex number to which the final end is connected. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a5a313270409b3ea9abde6ed7c6c65568}{final\+\_\+vertex\+\_\+connected\+\_\+n\+\_\+chunk}} () const
+\begin{DoxyCompactList}\small\item\em Gets the boundary chunk to which the final end is connected. \end{DoxyCompactList}\item 
+unsigned \& \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_aa0f2bb0546c4c93431e3e95bb98ed1c7}{final\+\_\+vertex\+\_\+connected\+\_\+n\+\_\+chunk}} ()
+\begin{DoxyCompactList}\small\item\em Sets the boundary chunk to which the final end is connected. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a0ab0172007e3e875ff0875a30de76dac}{is\+\_\+initial\+\_\+vertex\+\_\+connected\+\_\+to\+\_\+curviline}} () const
+\begin{DoxyCompactList}\small\item\em Test whether the initial vertex is connected to a curviline. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_ad594045d620e693b982612987e417092}{set\+\_\+initial\+\_\+vertex\+\_\+connected\+\_\+to\+\_\+curviline}} ()
+\begin{DoxyCompactList}\small\item\em Sets the initial vertex as connected to a curviline. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_afe70e0361f462012910e958253fdcb91}{unset\+\_\+initial\+\_\+vertex\+\_\+connected\+\_\+to\+\_\+curviline}} ()
+\begin{DoxyCompactList}\small\item\em Sets the initial vertex as non connected to a curviline. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a8c02d1fa4b159f23cb76b3ec98cb4c69}{is\+\_\+final\+\_\+vertex\+\_\+connected\+\_\+to\+\_\+curviline}} () const
+\begin{DoxyCompactList}\small\item\em Test whether the final vertex is connected to a curviline. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_af14d50cd734c6dc02c7fa0314dfadf68}{set\+\_\+final\+\_\+vertex\+\_\+connected\+\_\+to\+\_\+curviline}} ()
+\begin{DoxyCompactList}\small\item\em Sets the final vertex as connected to a curviline. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a169b20e7458f2ca0a7d64f35e475cecf}{unset\+\_\+final\+\_\+vertex\+\_\+connected\+\_\+to\+\_\+curviline}} ()
+\begin{DoxyCompactList}\small\item\em Sets the final vertex as non connected to a curviline. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_adca140a1a261a98649d1af4a5d3e6cb8}{initial\+\_\+s\+\_\+connection\+\_\+value}} () const
+\begin{DoxyCompactList}\small\item\em Gets the s value to which the initial end is connected. \end{DoxyCompactList}\item 
+double \& \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a232961445555e3196d441f512852d2b1}{initial\+\_\+s\+\_\+connection\+\_\+value}} ()
+\begin{DoxyCompactList}\small\item\em Sets the s value to which the initial end is connected. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a221faf0fec4d8b67dede9a90ce15fc41}{final\+\_\+s\+\_\+connection\+\_\+value}} () const
+\begin{DoxyCompactList}\small\item\em Gets the s value to which the final end is connected. \end{DoxyCompactList}\item 
+double \& \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a04f2aeae72d7ca741eb2294f953d7a46}{final\+\_\+s\+\_\+connection\+\_\+value}} ()
+\begin{DoxyCompactList}\small\item\em Sets the s value to which the final end is connected. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a353eb1cc152ccc922c92c584b0bbe1bc}{tolerance\+\_\+for\+\_\+s\+\_\+connection}} () const
+\begin{DoxyCompactList}\small\item\em Gets the tolerance value for connections among curvilines. \end{DoxyCompactList}\item 
+double \& \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_aa13ef01cf032e11f69661ef5c4bb03ee}{tolerance\+\_\+for\+\_\+s\+\_\+connection}} ()
+\begin{DoxyCompactList}\small\item\em Sets the tolerance value for connections among curvilines. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -72,6 +191,39 @@ unsigned \mbox{\hyperlink{classoomph_1_1TriangleMeshCurviLine_aa526197f2a3eb9d7c
 \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \mbox{\hyperlink{classoomph_1_1TriangleMeshCurviLine_a33be954c8f4d0a0cd0243deac7ae10da}{Connection\+\_\+points\+\_\+pt}}
 \begin{DoxyCompactList}\small\item\em Stores the information for connections received on the curviline. Used when converting to polyline. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection}{oomph\+::\+Triangle\+Mesh\+Curve\+Section}}}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a6f831c694ed3f3e64259c2aef6833fe1}{Initial\+\_\+vertex\+\_\+connected}}
+\begin{DoxyCompactList}\small\item\em Used for stating if the initial end is connected to another boundary. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a1569f7a60d4f68916a13b177e746a58d}{Final\+\_\+vertex\+\_\+connected}}
+\begin{DoxyCompactList}\small\item\em Used for stating if the final end is connected to another boundary. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a7daa8be52f85035581f4f7a7a3653457}{Initial\+\_\+vertex\+\_\+connected\+\_\+suspended}}
+\begin{DoxyCompactList}\small\item\em Indicates if the connection is suspended because the boundary to connect is no longer part of the domain (only used in a distributed context) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a0732c70f8c0516c4019cc231fc5be050}{Final\+\_\+vertex\+\_\+connected\+\_\+suspended}}
+\begin{DoxyCompactList}\small\item\em Indicates if the connection is suspended because the boundary to connect is no longer part of the domain (only used in a distributed context) \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_afb52c283347f6032971b1eb34be7c1cf}{Initial\+\_\+vertex\+\_\+connected\+\_\+bnd\+\_\+id}}
+\begin{DoxyCompactList}\small\item\em Stores the id to which the initial end is connected. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a7a9bd3a85377bd49b2bd6588d6d4f128}{Initial\+\_\+vertex\+\_\+connected\+\_\+n\+\_\+vertex}}
+\begin{DoxyCompactList}\small\item\em Stores the vertex number used for connection with the initial end. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a3b4ca3434467d9890d03633fada52ecf}{Initial\+\_\+vertex\+\_\+connected\+\_\+n\+\_\+chunk}}
+\begin{DoxyCompactList}\small\item\em Stores the chunk number of the boundary to which is connected th initial end. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a3679139caa6192ae3dddcb242ea00fe9}{Final\+\_\+vertex\+\_\+connected\+\_\+bnd\+\_\+id}}
+\begin{DoxyCompactList}\small\item\em Stores the id to which the initial end is connected. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a21d4f42b1f294a237d34302bfecdf63a}{Final\+\_\+vertex\+\_\+connected\+\_\+n\+\_\+vertex}}
+\begin{DoxyCompactList}\small\item\em Stores the vertex number used for connection with the final end. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_abbac30e1ecc538c1af17f40184cfe681}{Final\+\_\+vertex\+\_\+connected\+\_\+n\+\_\+chunk}}
+\begin{DoxyCompactList}\small\item\em Stores the chunk number of the boundary to which is connected th initial end. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a079f9af667c7cb344b53e6a2dcb95f95}{Initial\+\_\+vertex\+\_\+connected\+\_\+to\+\_\+curviline}}
+\begin{DoxyCompactList}\small\item\em States if the initial vertex is connected to a curviline. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a2a3fa2e4744437410d3a0df32a6d533b}{Final\+\_\+vertex\+\_\+connected\+\_\+to\+\_\+curviline}}
+\begin{DoxyCompactList}\small\item\em States if the final vertex is connected to a curviline. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a2b32da41a8d74257d372e7ebb720d384}{Initial\+\_\+s\+\_\+connection\+\_\+value}}
+\begin{DoxyCompactList}\small\item\em Stores the s value used for connecting the initial end with a curviline. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a353c5ea574d6dbceaec36eb541325236}{Final\+\_\+s\+\_\+connection\+\_\+value}}
+\begin{DoxyCompactList}\small\item\em Stores the s value used for connecting the final end with a curviline. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection_a9776c1484d720242d6293a7a6aa57eda}{Tolerance\+\_\+for\+\_\+s\+\_\+connection}}
+\begin{DoxyCompactList}\small\item\em Tolerance used for connecting the ends to a curviline. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}

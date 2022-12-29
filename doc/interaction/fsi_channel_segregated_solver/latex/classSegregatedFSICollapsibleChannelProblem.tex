@@ -28,7 +28,86 @@ void \mbox{\hyperlink{classSegregatedFSICollapsibleChannelProblem_a0f7364ea880f2
 \begin{DoxyCompactList}\small\item\em Document the solution. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classSegregatedFSICollapsibleChannelProblem_a9a6b0dfeda9eb0d4c50e195768c93e37}{steady\+\_\+run}} ()
 \begin{DoxyCompactList}\small\item\em Perform a steady run. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classFSICollapsibleChannelProblem}{FSICollapsible\+Channel\+Problem$<$ ELEMENT $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classFSICollapsibleChannelProblem_a74efdd9ed027ab0ca5cf59ec8da6b95c}{FSICollapsible\+Channel\+Problem}} (const unsigned \&nup, const unsigned \&ncollapsible, const unsigned \&ndown, const unsigned \&ny, const double \&lup, const double \&lcollapsible, const double \&ldown, const double \&ly, const bool \&displ\+\_\+control, const bool \&steady\+\_\+flag)
+\begin{DoxyCompactList}\small\item\em Constructor\+: The arguments are the number of elements and the lengths of the domain. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classFSICollapsibleChannelProblem_abe33aaaae15ea3eb10885527a1d1ad9a}{$\sim$\+FSICollapsible\+Channel\+Problem}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classFSICollapsibleChannelProblem_a299ba7d5819e7871eae7e331d1abab8b}{steady\+\_\+run}} ()
+\begin{DoxyCompactList}\small\item\em Steady run; virtual so it can be overloaded in derived problem classes. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classFSICollapsibleChannelProblem_ae4f2b3abaf5e2dfc35489548d5a72edc}{unsteady\+\_\+run}} (const double \&dt=0.\+1)
+\begin{DoxyCompactList}\small\item\em Unsteady run; virtual so it can be overloaded in derived problem classes. Specify timestep or use default of 0.\+1. \end{DoxyCompactList}\item 
+Algebraic\+Collapsible\+Channel\+Mesh$<$ ELEMENT $>$ $\ast$ \mbox{\hyperlink{classFSICollapsibleChannelProblem_ae9ad9667460168fa74f8ec8e3ab9e988}{bulk\+\_\+mesh\+\_\+pt}} ()
+\begin{DoxyCompactList}\small\item\em Access function for the specific bulk (fluid) mesh. \end{DoxyCompactList}\item 
+One\+DLagrangian\+Mesh$<$ FSIHermite\+Beam\+Element $>$ $\ast$ \mbox{\hyperlink{classFSICollapsibleChannelProblem_aec24d3eb06747f8429cf14857aed29a1}{wall\+\_\+mesh\+\_\+pt}} ()
+\begin{DoxyCompactList}\small\item\em Access function for the wall mesh. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classFSICollapsibleChannelProblem_ad10b2d12be052c6b1bc5005dc27cd229}{actions\+\_\+before\+\_\+newton\+\_\+solve}} ()
+\begin{DoxyCompactList}\small\item\em Actions before solve. Reset counter for number of Newton iterations. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classFSICollapsibleChannelProblem_a49780267c05f4c6ecbed11bfc6b9956b}{actions\+\_\+after\+\_\+newton\+\_\+solve}} ()
+\begin{DoxyCompactList}\small\item\em Update the problem after solve (empty) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classFSICollapsibleChannelProblem_ace5343d2e6e6e0480d077d4f17365288}{actions\+\_\+before\+\_\+newton\+\_\+convergence\+\_\+check}} ()
+\begin{DoxyCompactList}\small\item\em Update before checking Newton convergence\+: Update the nodal positions in the fluid mesh in response to possible changes in the wall shape. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classFSICollapsibleChannelProblem_a6541733e0d9e8e09bda489d6ce567ecb}{doc\+\_\+solution\+\_\+steady}} (Doc\+Info \&doc\+\_\+info, ofstream \&trace\+\_\+file, const double \&cpu, const unsigned \&niter)
+\begin{DoxyCompactList}\small\item\em Doc the steady solution. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classFSICollapsibleChannelProblem_aa9c8f2c34cea9b43e1496cc63b1f496c}{doc\+\_\+solution\+\_\+unsteady}} (Doc\+Info \&doc\+\_\+info, ofstream \&trace\+\_\+file, const double \&cpu, const unsigned \&niter)
+\begin{DoxyCompactList}\small\item\em Doc the unsteady solution. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classFSICollapsibleChannelProblem_afdd6752cb134fd09ee8830158ed557b2}{set\+\_\+initial\+\_\+condition}} ()
+\begin{DoxyCompactList}\small\item\em Apply initial conditions. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classFSICollapsibleChannelProblem}{FSICollapsible\+Channel\+Problem$<$ ELEMENT $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classFSICollapsibleChannelProblem_a2a947a11c11090b39d2bc4439fb96e36}{dump\+\_\+it}} (ofstream \&dump\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Dump problem to disk to allow for restart. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classFSICollapsibleChannelProblem_a2ee280c8cccc90baae4b0b6744be9efe}{restart}} (ifstream \&restart\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Read problem for restart from specified restart file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classFSICollapsibleChannelProblem}{FSICollapsible\+Channel\+Problem$<$ ELEMENT $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+unsigned \mbox{\hyperlink{classFSICollapsibleChannelProblem_a22a5ea767bf0c437b78ed4e37b7a4818}{Nup}}
+\begin{DoxyCompactList}\small\item\em Number of elements in the x direction in the upstream part of the channel. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classFSICollapsibleChannelProblem_a3fb9656feb1c32045f4fdbd74f91258f}{Ncollapsible}}
+\begin{DoxyCompactList}\small\item\em Number of elements in the x direction in the collapsible part of the channel. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classFSICollapsibleChannelProblem_a64c0aa974b39527ef22e352a4f22b156}{Ndown}}
+\begin{DoxyCompactList}\small\item\em Number of elements in the x direction in the downstream part of the channel. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classFSICollapsibleChannelProblem_a536804b714fd0033f3028ff1c6032918}{Ny}}
+\begin{DoxyCompactList}\small\item\em Number of elements across the channel. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classFSICollapsibleChannelProblem_a7b8288e57097875d247bda6201b1bfcf}{Lup}}
+\begin{DoxyCompactList}\small\item\em x-\/length in the upstream part of the channel \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classFSICollapsibleChannelProblem_ae6ce3834d06f0fb75db945a782ff0108}{Lcollapsible}}
+\begin{DoxyCompactList}\small\item\em x-\/length in the collapsible part of the channel \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classFSICollapsibleChannelProblem_a0964686847cc64f2a77a866187aec626}{Ldown}}
+\begin{DoxyCompactList}\small\item\em x-\/length in the downstream part of the channel \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classFSICollapsibleChannelProblem_adb381270408cea69b7290ff2aeb5928f}{Ly}}
+\begin{DoxyCompactList}\small\item\em Transverse length. \end{DoxyCompactList}\item 
+Algebraic\+Collapsible\+Channel\+Mesh$<$ ELEMENT $>$ $\ast$ \mbox{\hyperlink{classFSICollapsibleChannelProblem_a74c09286f4ad4242c37b6ea16c069fae}{Bulk\+\_\+mesh\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em Pointer to the \char`\"{}bulk\char`\"{} mesh. \end{DoxyCompactList}\item 
+Mesh $\ast$ \mbox{\hyperlink{classFSICollapsibleChannelProblem_acf74b392297104d704004124b8dfc7bb}{Displ\+\_\+control\+\_\+mesh\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em Pointer to the mesh that contains the displacement control element. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classFSICollapsibleChannelProblem_afc33ee9a23af728b98ed73623b65e1ac}{Displ\+\_\+control}}
+\begin{DoxyCompactList}\small\item\em Use displacement control? \end{DoxyCompactList}\item 
+One\+DLagrangian\+Mesh$<$ FSIHermite\+Beam\+Element $>$ $\ast$ \mbox{\hyperlink{classFSICollapsibleChannelProblem_a071b5cc9f660fdaccf1bf1e256320bfa}{Wall\+\_\+mesh\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em Pointer to the \char`\"{}wall\char`\"{} mesh. \end{DoxyCompactList}\item 
+Node $\ast$ \mbox{\hyperlink{classFSICollapsibleChannelProblem_a4f37708b6caa6d79bff16b444c2e19ff}{Left\+\_\+node\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em Pointer to the left control node. \end{DoxyCompactList}\item 
+Node $\ast$ \mbox{\hyperlink{classFSICollapsibleChannelProblem_a5ab75d4a593a35fb12d1e016ae3e41c4}{Right\+\_\+node\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em Pointer to right control node. \end{DoxyCompactList}\item 
+Node $\ast$ \mbox{\hyperlink{classFSICollapsibleChannelProblem_a377285ce93d55b9c6035737796da1bbf}{Wall\+\_\+node\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em Pointer to control node on the wall. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classFSICollapsibleChannelProblem_a7f21548c86e387a26a55062ef50ea416}{Steady\+\_\+flag}}
+\begin{DoxyCompactList}\small\item\em Flag for steady run. \end{DoxyCompactList}\item 
+Geom\+Object $\ast$ \mbox{\hyperlink{classFSICollapsibleChannelProblem_a0af9dba0fa399669d099b67b8c6906fa}{Ctrl\+\_\+geom\+\_\+obj\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em Pointer to Geom\+Object at which displacement control is applied (or at which wall displacement is monitored in unsteady runs) \end{DoxyCompactList}\item 
+Vector$<$ double $>$ \mbox{\hyperlink{classFSICollapsibleChannelProblem_a203ee0ecb406f97e62b6e7facb8119b5}{S\+\_\+displ\+\_\+ctrl}}
+\begin{DoxyCompactList}\small\item\em Vector of local coordinates of displacement control point in Ctrl\+\_\+geom\+\_\+obj\+\_\+pt. \end{DoxyCompactList}\item 
+Mesh\+As\+Geom\+Object $\ast$ \mbox{\hyperlink{classFSICollapsibleChannelProblem_a1fc8d15ea0d359e0df8a677415b77dc3}{Wall\+\_\+geom\+\_\+object\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em Pointer to geometric object (one Lagrangian, two Eulerian coordinates) that will be built from the wall mesh. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classFSICollapsibleChannelProblem_a72b19fe66f2c9019ee2da6987a09995c}{Newton\+\_\+iter}}
+\begin{DoxyCompactList}\small\item\em Counter for Newton iterations. \end{DoxyCompactList}\item 
+Doc\+Info \mbox{\hyperlink{classFSICollapsibleChannelProblem_a31ea75b732e42eec45f333a26d6cb2ac}{Doc\+\_\+info}}
+\begin{DoxyCompactList}\small\item\em Doc\+Info object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -48,7 +127,7 @@ Definition at line \mbox{\hyperlink{simple__segregated__driver_8cc_source_l00086
 \index{SegregatedFSICollapsibleChannelProblem@{SegregatedFSICollapsibleChannelProblem}!SegregatedFSICollapsibleChannelProblem$<$ ELEMENT $>$@{SegregatedFSICollapsibleChannelProblem$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{SegregatedFSICollapsibleChannelProblem()}{SegregatedFSICollapsibleChannelProblem()}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-\mbox{\hyperlink{classSegregatedFSICollapsibleChannelProblem}{Segregated\+FSICollapsible\+Channel\+Problem}}$<$ ELEMENT $>$\+::\mbox{\hyperlink{classSegregatedFSICollapsibleChannelProblem}{Segregated\+FSICollapsible\+Channel\+Problem}} (\begin{DoxyParamCaption}\item[{const unsigned \&}]{nup,  }\item[{const unsigned \&}]{ncollapsible,  }\item[{const unsigned \&}]{ndown,  }\item[{const unsigned \&}]{ny,  }\item[{const double \&}]{lup,  }\item[{const double \&}]{lcollapsible,  }\item[{const double \&}]{ldown,  }\item[{const double \&}]{ly,  }\item[{const bool \&}]{displ\+\_\+control,  }\item[{const bool \&}]{steady\+\_\+flag }\end{DoxyParamCaption})}
+\mbox{\hyperlink{classSegregatedFSICollapsibleChannelProblem}{Segregated\+FSICollapsible\+Channel\+Problem}}$<$ ELEMENT $>$\mbox{\hyperlink{classSegregatedFSICollapsibleChannelProblem}{\+::\+Segregated\+FSICollapsible\+Channel\+Problem}} (\begin{DoxyParamCaption}\item[{const unsigned \&}]{nup,  }\item[{const unsigned \&}]{ncollapsible,  }\item[{const unsigned \&}]{ndown,  }\item[{const unsigned \&}]{ny,  }\item[{const double \&}]{lup,  }\item[{const double \&}]{lcollapsible,  }\item[{const double \&}]{ldown,  }\item[{const double \&}]{ly,  }\item[{const bool \&}]{displ\+\_\+control,  }\item[{const bool \&}]{steady\+\_\+flag }\end{DoxyParamCaption})}
 
 
 

@@ -24,6 +24,17 @@ double \mbox{\hyperlink{classoomph_1_1NewtonianConstitutiveEquation_a28c8373040e
 \begin{DoxyCompactList}\small\item\em in the Newtonian case the viscosity is constant \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{classoomph_1_1NewtonianConstitutiveEquation_aa4160d3707e40c7478047f5800733225}{dviscosity\+\_\+dinvariant}} (const double \&second\+\_\+invariant\+\_\+of\+\_\+rate\+\_\+of\+\_\+strain\+\_\+tensor)
 \begin{DoxyCompactList}\small\item\em the derivative w.\+r.\+t. I2 is zero \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1GeneralisedNewtonianConstitutiveEquation}{oomph\+::\+Generalised\+Newtonian\+Constitutive\+Equation$<$ DIM $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1GeneralisedNewtonianConstitutiveEquation_a4b84eb3626aaed2f77f6dc96258f7e01}{Generalised\+Newtonian\+Constitutive\+Equation}} ()
+\begin{DoxyCompactList}\small\item\em Empty constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1GeneralisedNewtonianConstitutiveEquation_af85f107604d04e8fdaf03e8274c485e6}{$\sim$\+Generalised\+Newtonian\+Constitutive\+Equation}} ()
+\begin{DoxyCompactList}\small\item\em Empty virtual destructor. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classoomph_1_1GeneralisedNewtonianConstitutiveEquation_a3e6d811786e39ca3c3a9b1c46249442f}{viscosity}} (const double \&second\+\_\+invariant\+\_\+of\+\_\+rate\+\_\+of\+\_\+strain\+\_\+tensor)=0
+\begin{DoxyCompactList}\small\item\em Function implementing the constitutive model Input\+: second invariant of the rate of strain Output\+: the viscosity For Newtonian behaviour this returns 1. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classoomph_1_1GeneralisedNewtonianConstitutiveEquation_ad0164e6ca57cc986048346e12c4d353a}{dviscosity\+\_\+dinvariant}} (const double \&second\+\_\+invariant\+\_\+of\+\_\+rate\+\_\+of\+\_\+strain\+\_\+tensor)=0
+\begin{DoxyCompactList}\small\item\em Function returning the derivative of the viscosity w.\+r.\+t. the second invariant of the rate of strain tensor For Newtonian behaviour this returns 0.\+0. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -46,7 +57,7 @@ Definition at line \mbox{\hyperlink{generalised__newtonian__constitutive__models
 \index{NewtonianConstitutiveEquation@{NewtonianConstitutiveEquation}!oomph::NewtonianConstitutiveEquation$<$ DIM $>$@{oomph::NewtonianConstitutiveEquation$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{NewtonianConstitutiveEquation()}{NewtonianConstitutiveEquation()}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-\mbox{\hyperlink{classoomph_1_1NewtonianConstitutiveEquation}{oomph\+::\+Newtonian\+Constitutive\+Equation}}$<$ DIM $>$\+::\mbox{\hyperlink{classoomph_1_1NewtonianConstitutiveEquation}{Newtonian\+Constitutive\+Equation}} (\begin{DoxyParamCaption}\item[{const double \&}]{viscosity\+\_\+ratio = {\ttfamily 1.0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{classoomph_1_1NewtonianConstitutiveEquation}{oomph\+::\+Newtonian\+Constitutive\+Equation}}$<$ DIM $>$\+::\+Newtonian\+Constitutive\+Equation (\begin{DoxyParamCaption}\item[{const double \&}]{viscosity\+\_\+ratio = {\ttfamily 1.0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -109,7 +120,7 @@ References \mbox{\hyperlink{generalised__newtonian__constitutive__models_8h_sour
 \index{Viscosity\_ratio@{Viscosity\_ratio}!oomph::NewtonianConstitutiveEquation$<$ DIM $>$@{oomph::NewtonianConstitutiveEquation$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{Viscosity\_ratio}{Viscosity\_ratio}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-double \mbox{\hyperlink{classoomph_1_1NewtonianConstitutiveEquation}{oomph\+::\+Newtonian\+Constitutive\+Equation}}$<$ DIM $>$\+::Viscosity\+\_\+ratio\hspace{0.3cm}{\ttfamily [private]}}
+double \mbox{\hyperlink{classoomph_1_1NewtonianConstitutiveEquation}{oomph\+::\+Newtonian\+Constitutive\+Equation}}$<$ DIM $>$\+::\+Viscosity\+\_\+ratio\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

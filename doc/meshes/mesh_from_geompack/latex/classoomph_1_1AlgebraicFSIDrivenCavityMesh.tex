@@ -26,12 +26,37 @@ void \mbox{\hyperlink{classoomph_1_1AlgebraicFSIDrivenCavityMesh_a56c72b78935e84
 \begin{DoxyCompactList}\small\item\em Update nodal position at time level t (t=0\+: present; t\texorpdfstring{$>$}{>}0\+: previous) \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1AlgebraicFSIDrivenCavityMesh_a87d34d6cf84c62a9049773451c664176}{update\+\_\+node\+\_\+update}} (Algebraic\+Node $\ast$\&node\+\_\+pt)
 \begin{DoxyCompactList}\small\item\em Update the node-\/udate data after mesh adaptation. Empty -- no update of node update required as this is non-\/refineable mesh. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1FSIDrivenCavityMesh}{oomph\+::\+FSIDriven\+Cavity\+Mesh$<$ ELEMENT $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1FSIDrivenCavityMesh_af227477a1de5faf56352d21913a91feb}{FSIDriven\+Cavity\+Mesh}} (const unsigned \&\mbox{\hyperlink{classoomph_1_1SimpleRectangularQuadMesh_a84f59d74c6d9038231fb138c29420ed7}{nx}}, const unsigned \&\mbox{\hyperlink{classoomph_1_1SimpleRectangularQuadMesh_a2fb0d63a354817c162e37507673e26e9}{ny}}, const double \&lx, const double \&ly, const double \&gap\+\_\+fraction, Geom\+Object $\ast$wall\+\_\+pt, Time\+Stepper $\ast$time\+\_\+stepper\+\_\+pt=\&Mesh\+::\+Default\+\_\+\+Time\+Stepper)
+\begin{DoxyCompactList}\small\item\em Constructor\+: Pass number of elements, number of elements, fractional height of the gap above the moving wall, pointer to Geom\+Object that defines the collapsible segment and pointer to Time\+Stepper (defaults to the default timestepper, Steady). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1SimpleRectangularQuadMesh}{oomph\+::\+Simple\+Rectangular\+Quad\+Mesh$<$ ELEMENT $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1SimpleRectangularQuadMesh_a8224b55f7d99a36debacb3f4cc293407}{Simple\+Rectangular\+Quad\+Mesh}} (const unsigned \&Nx, const unsigned \&Ny, const double \&Lx, const double \&Ly, Time\+Stepper $\ast$time\+\_\+stepper\+\_\+pt=\&Mesh\+::\+Default\+\_\+\+Time\+Stepper)
+\begin{DoxyCompactList}\small\item\em Constructor\+: Pass number of elements in the horizontal and vertical directions, and the corresponding dimensions. Timestepper defaults to Steady. \end{DoxyCompactList}\item 
+const unsigned \& \mbox{\hyperlink{classoomph_1_1SimpleRectangularQuadMesh_a84f59d74c6d9038231fb138c29420ed7}{nx}} () const
+\begin{DoxyCompactList}\small\item\em Access function for number of elements in x directions. \end{DoxyCompactList}\item 
+const unsigned \& \mbox{\hyperlink{classoomph_1_1SimpleRectangularQuadMesh_a2fb0d63a354817c162e37507673e26e9}{ny}} () const
+\begin{DoxyCompactList}\small\item\em Access function for number of elements in y directions. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classoomph_1_1AlgebraicFSIDrivenCavityMesh_a7f6b7c3dae1c61c2cdb0cbd229173114}{setup\+\_\+algebraic\+\_\+node\+\_\+update}} ()
 \begin{DoxyCompactList}\small\item\em Function to setup the algebraic node update. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1FSIDrivenCavityMesh}{oomph\+::\+FSIDriven\+Cavity\+Mesh$<$ ELEMENT $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+unsigned \mbox{\hyperlink{classoomph_1_1FSIDrivenCavityMesh_a179f742e7bb521e8943107be3005d49b}{Nx}}
+\begin{DoxyCompactList}\small\item\em Number of elements in x direction. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1FSIDrivenCavityMesh_af80a5662c2f61ebe49caba4ab08886b9}{Ny}}
+\begin{DoxyCompactList}\small\item\em Number of elements in y direction. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1FSIDrivenCavityMesh_ad95b3650cfa765b1ac6a0f131d407b23}{Gap\+\_\+fraction}}
+\begin{DoxyCompactList}\small\item\em Fraction of the gap next to moving lid, relative to the height of the domain. \end{DoxyCompactList}\item 
+Geom\+Object $\ast$ \mbox{\hyperlink{classoomph_1_1FSIDrivenCavityMesh_a4f05e03a223ac1f8370bdd39c56a5638}{Wall\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em Pointer to geometric object that represents the moving wall. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -59,7 +84,7 @@ Definition at line \mbox{\hyperlink{fsi__driven__cavity__mesh_8template_8h_sourc
 \index{AlgebraicFSIDrivenCavityMesh@{AlgebraicFSIDrivenCavityMesh}!oomph::AlgebraicFSIDrivenCavityMesh$<$ ELEMENT $>$@{oomph::AlgebraicFSIDrivenCavityMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{AlgebraicFSIDrivenCavityMesh()}{AlgebraicFSIDrivenCavityMesh()}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-\mbox{\hyperlink{classoomph_1_1AlgebraicFSIDrivenCavityMesh}{oomph\+::\+Algebraic\+FSIDriven\+Cavity\+Mesh}}$<$ ELEMENT $>$\+::\mbox{\hyperlink{classoomph_1_1AlgebraicFSIDrivenCavityMesh}{Algebraic\+FSIDriven\+Cavity\+Mesh}} (\begin{DoxyParamCaption}\item[{const unsigned \&}]{nx,  }\item[{const unsigned \&}]{ny,  }\item[{const double \&}]{lx,  }\item[{const double \&}]{ly,  }\item[{const double \&}]{gap\+\_\+fraction,  }\item[{Geom\+Object $\ast$}]{wall\+\_\+pt,  }\item[{Time\+Stepper $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&Mesh\+:\+:Default\+\_\+TimeStepper} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{classoomph_1_1AlgebraicFSIDrivenCavityMesh}{oomph\+::\+Algebraic\+FSIDriven\+Cavity\+Mesh}}$<$ ELEMENT $>$\+::\+Algebraic\+FSIDriven\+Cavity\+Mesh (\begin{DoxyParamCaption}\item[{const unsigned \&}]{nx,  }\item[{const unsigned \&}]{ny,  }\item[{const double \&}]{lx,  }\item[{const double \&}]{ly,  }\item[{const double \&}]{gap\+\_\+fraction,  }\item[{Geom\+Object $\ast$}]{wall\+\_\+pt,  }\item[{Time\+Stepper $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&Mesh\+:\+:Default\+\_\+TimeStepper} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 

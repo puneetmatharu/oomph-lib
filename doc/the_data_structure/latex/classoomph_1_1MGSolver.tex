@@ -99,6 +99,137 @@ void \mbox{\hyperlink{classoomph_1_1MGSolver_a403ac19c2fceb11768d1d1426f70ef6a}{
 \begin{DoxyCompactList}\small\item\em Given the son type of the element and the local coordinate s of a given node in the son element, return the local coordinate s in its father element. 2D case. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1MGSolver_a1de2d3013acb7401751a0daf7872889e}{level\+\_\+up\+\_\+local\+\_\+coord\+\_\+of\+\_\+node}} (const int \&son\+\_\+type, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}})
 \begin{DoxyCompactList}\small\item\em Given the son type of the element and the local coordinate s of a given node in the son element, return the local coordinate s in its father element. 3D case. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver}{oomph\+::\+Iterative\+Linear\+Solver}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_a77f4a929d741d4996f02d2c2b75670cd}{Iterative\+Linear\+Solver}} ()
+\begin{DoxyCompactList}\small\item\em Constructor\+: Set (default) trivial preconditioner and set defaults for tolerance and max. number of iterations. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_ac6a4aa16ecb477418b49ee1efb3279b0}{Iterative\+Linear\+Solver}} (const \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver}{Iterative\+Linear\+Solver}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_abc48956500beae92fec8807842f5d5de}{operator=}} (const \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver}{Iterative\+Linear\+Solver}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_a655eb19872606c2d05e8ee87a4fb6bc5}{$\sim$\+Iterative\+Linear\+Solver}} ()
+\begin{DoxyCompactList}\small\item\em Destructor (empty) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Preconditioner}{Preconditioner}} $\ast$\& \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_ad4ae617ce8304f17bd42f4dc39813e22}{preconditioner\+\_\+pt}} ()
+\begin{DoxyCompactList}\small\item\em Access function to preconditioner. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Preconditioner}{Preconditioner}} $\ast$const \& \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_ad5c3f3218779658f3233fa04f78aec8c}{preconditioner\+\_\+pt}} () const
+\begin{DoxyCompactList}\small\item\em Access function to preconditioner (const version) \end{DoxyCompactList}\item 
+double \& \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_a7be3c4ea16f1fc9b397e7c87eae253d8}{tolerance}} ()
+\begin{DoxyCompactList}\small\item\em Access to convergence tolerance. \end{DoxyCompactList}\item 
+unsigned \& \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_a6ad71be9573148c533d17b2f26e8c4cb}{max\+\_\+iter}} ()
+\begin{DoxyCompactList}\small\item\em Access to max. number of iterations. \end{DoxyCompactList}\item 
+virtual unsigned \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_a5fe7f7b5e4847fdbd4f95d3875ec7a46}{iterations}} () const =0
+\begin{DoxyCompactList}\small\item\em Number of iterations taken. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_a57419aaa61fde5b7f802454a4ec396cd}{enable\+\_\+doc\+\_\+convergence\+\_\+history}} ()
+\begin{DoxyCompactList}\small\item\em Enable documentation of the convergence history. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_a7a5b846d3df565490022348a53bbf511}{disable\+\_\+doc\+\_\+convergence\+\_\+history}} ()
+\begin{DoxyCompactList}\small\item\em Disable documentation of the convergence history. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_a1c5e176ff2c767f2dc2168f9789f9c8f}{open\+\_\+convergence\+\_\+history\+\_\+file\+\_\+stream}} (const std\+::string \&file\+\_\+name, const std\+::string \&zone\+\_\+title=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Write convergence history into file with specified filename (automatically switches on doc). Optional second argument is a string that can be used (as a zone title) to identify what case we\textquotesingle{}re running (e.\+g. what combination of linear solver and preconditioner or parameter values are used). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_a27ef8fa59ce805c221a577c6b9bb56c7}{close\+\_\+convergence\+\_\+history\+\_\+file\+\_\+stream}} ()
+\begin{DoxyCompactList}\small\item\em Close convergence history output stream. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_aed10c606a26c8084e1fa482f3409f9b3}{jacobian\+\_\+setup\+\_\+time}} () const
+\begin{DoxyCompactList}\small\item\em returns the time taken to assemble the jacobian matrix and residual vector \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_a65544b6c2090d3d019f48e047e338352}{linear\+\_\+solver\+\_\+solution\+\_\+time}} () const
+\begin{DoxyCompactList}\small\item\em return the time taken to solve the linear system \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_a87eb959944a3e8efa467d60aed43a0d3}{preconditioner\+\_\+setup\+\_\+time}} () const
+\begin{DoxyCompactList}\small\item\em returns the the time taken to setup the preconditioner \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_a448830993c9046443cfa7479901cc307}{enable\+\_\+setup\+\_\+preconditioner\+\_\+before\+\_\+solve}} ()
+\begin{DoxyCompactList}\small\item\em Setup the preconditioner before the solve. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_adbbfd63d0da5f82abc6cd1143fa5a9b0}{disable\+\_\+setup\+\_\+preconditioner\+\_\+before\+\_\+solve}} ()
+\begin{DoxyCompactList}\small\item\em Don\textquotesingle{}t set up the preconditioner before the solve. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_a68983fd17ca417843b9ba3f810dbdc99}{enable\+\_\+error\+\_\+after\+\_\+max\+\_\+iter}} ()
+\begin{DoxyCompactList}\small\item\em Throw an error if we don\textquotesingle{}t converge within max\+\_\+iter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_a4b6ee927fcefefee7271798a6ed6f5af}{disable\+\_\+error\+\_\+after\+\_\+max\+\_\+iter}} ()
+\begin{DoxyCompactList}\small\item\em Don\textquotesingle{}t throw an error if we don\textquotesingle{}t converge within max\+\_\+iter (default). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_a5992bf9fde252add8d3be2970093905b}{enable\+\_\+iterative\+\_\+solver\+\_\+as\+\_\+preconditioner}} ()
+\begin{DoxyCompactList}\small\item\em Enables the iterative solver be used as preconditioner (when calling the solve method it bypass the setup solver method -- currently only used by Trilinos solver ---) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_a96b5e3f30fd7bdc9b52a22cdac02a570}{disable\+\_\+iterative\+\_\+solver\+\_\+as\+\_\+preconditioner}} ()
+\begin{DoxyCompactList}\small\item\em Disables the iterative solver be used as preconditioner (when calling the solve method it bypass the setup solver method -- currently only used by Trilinos solver ---) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1LinearSolver}{oomph\+::\+Linear\+Solver}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1LinearSolver_a6e7e8728f36c888f052e49df8624b8ca}{Linear\+Solver}} ()
+\begin{DoxyCompactList}\small\item\em Empty constructor, initialise the member data. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1LinearSolver_a6c4dba96b243e3e9be1ef6bdb9440d23}{Linear\+Solver}} (const \mbox{\hyperlink{classoomph_1_1LinearSolver}{Linear\+Solver}} \&dummy)=delete
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1LinearSolver_a0b342cfa595300cb8227665382929e8b}{operator=}} (const \mbox{\hyperlink{classoomph_1_1LinearSolver}{Linear\+Solver}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1LinearSolver_a9cc9b2c9a239777c4f9b15f26bb324a0}{$\sim$\+Linear\+Solver}} ()
+\begin{DoxyCompactList}\small\item\em Empty virtual destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1LinearSolver_abeb9ef9127e927bf6df75d03645d6a81}{enable\+\_\+doc\+\_\+time}} ()
+\begin{DoxyCompactList}\small\item\em Enable documentation of solve times. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1LinearSolver_a91ffe51f3de82dad1a110c099f256d73}{disable\+\_\+doc\+\_\+time}} ()
+\begin{DoxyCompactList}\small\item\em Disable documentation of solve times. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1LinearSolver_a451ce3af5db82f9edbddf8f417597248}{is\+\_\+doc\+\_\+time\+\_\+enabled}} () const
+\begin{DoxyCompactList}\small\item\em Is documentation of solve times enabled? \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1LinearSolver_ae1e4d34a7e2b1537d36153f87e8a62a6}{is\+\_\+resolve\+\_\+enabled}} () const
+\begin{DoxyCompactList}\small\item\em Boolean flag indicating if resolves are enabled. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1LinearSolver_a3000ebd9becb3468d8a6a821a9cc0cd9}{enable\+\_\+resolve}} ()
+\begin{DoxyCompactList}\small\item\em Enable resolve (i.\+e. store matrix and/or LU decomposition, say) Virtual so it can be overloaded to perform additional tasks. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1LinearSolver_ad61c63af94c5961830bd9807225a48d6}{disable\+\_\+resolve}} ()
+\begin{DoxyCompactList}\small\item\em Disable resolve (i.\+e. store matrix and/or LU decomposition, say) This function simply resets an internal flag. It\textquotesingle{}s virtual so it can be overloaded to perform additional tasks such as cleaning up memory that is only required for the resolve. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1LinearSolver_a15ce22542b74ed1826ea485edacbeb6e}{solve}} (\mbox{\hyperlink{classoomph_1_1Problem}{Problem}} $\ast$const \&problem\+\_\+pt, \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&result)=0
+\begin{DoxyCompactList}\small\item\em Solver\+: Takes pointer to problem and returns the results vector which contains the solution of the linear system defined by the problem\textquotesingle{}s fully assembled Jacobian and residual vector. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1LinearSolver_a546c09822d18191df14caed864c04c09}{solve}} (\mbox{\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base}} $\ast$const \&matrix\+\_\+pt, const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&rhs, \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&result)
+\begin{DoxyCompactList}\small\item\em Linear-\/algebra-\/type solver\+: Takes pointer to a matrix and rhs vector and returns the solution of the linear system. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1LinearSolver_a1f7a2ee2cd18d3dafc20a61ca2f52dbb}{solve}} (\mbox{\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base}} $\ast$const \&matrix\+\_\+pt, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&rhs, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&result)
+\begin{DoxyCompactList}\small\item\em Linear-\/algebra-\/type solver\+: Takes pointer to a matrix and rhs vector and returns the solution of the linear system. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1LinearSolver_a8e970813a1583f6105ee2d677d3e45f3}{solve\+\_\+transpose}} (\mbox{\hyperlink{classoomph_1_1Problem}{Problem}} $\ast$const \&problem\+\_\+pt, \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&result)
+\begin{DoxyCompactList}\small\item\em Solver\+: Takes pointer to problem and returns the results vector which contains the solution of the linear system defined by the problem\textquotesingle{}s fully assembled Jacobian and residual vector (broken virtual). \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1LinearSolver_a600b4d06d85c238bdd6bd33f05d69c44}{solve\+\_\+transpose}} (\mbox{\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base}} $\ast$const \&matrix\+\_\+pt, const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&rhs, \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&result)
+\begin{DoxyCompactList}\small\item\em Linear-\/algebra-\/type solver\+: Takes pointer to a matrix and rhs vector and returns the solution of the linear system. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1LinearSolver_a499b738758451f94df398d8d2556ae76}{solve\+\_\+transpose}} (\mbox{\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base}} $\ast$const \&matrix\+\_\+pt, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&rhs, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&result)
+\begin{DoxyCompactList}\small\item\em Linear-\/algebra-\/type solver\+: Takes pointer to a matrix and rhs vector and returns the solution of the linear system. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1LinearSolver_a3b310d08333033edc119b2a5bd7dcbfb}{resolve}} (const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&rhs, \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&result)
+\begin{DoxyCompactList}\small\item\em Resolve the system defined by the last assembled jacobian and the rhs vector. Solution is returned in the vector result. (broken virtual) \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1LinearSolver_acf539c2dd415e22e597fade4c0ca4022}{resolve\+\_\+transpose}} (const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&rhs, \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&result)
+\begin{DoxyCompactList}\small\item\em Solver\+: Resolve the system defined by the last assembled jacobian and the rhs vector. Solution is returned in the vector result. (broken virtual) \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1LinearSolver_a9d66f3262e80ca06a365f98216afd85f}{clean\+\_\+up\+\_\+memory}} ()
+\begin{DoxyCompactList}\small\item\em Empty virtual function that can be overloaded in specific linear solvers to clean up any memory that may have been allocated (e.\+g. when preparing for a re-\/solve). \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classoomph_1_1LinearSolver_a0fedfb9d9855d0e998c0e32140bc56d4}{jacobian\+\_\+setup\+\_\+time}} () const
+\begin{DoxyCompactList}\small\item\em returns the time taken to assemble the Jacobian matrix and residual vector (needs to be overloaded for each solver) \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classoomph_1_1LinearSolver_a3c66f77db812a9c196478c7e2f77ef09}{linear\+\_\+solver\+\_\+solution\+\_\+time}} () const
+\begin{DoxyCompactList}\small\item\em return the time taken to solve the linear system (needs to be overloaded for each linear solver) \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1LinearSolver_a37f1f8b8c6d45115e649739abd5d2f5d}{enable\+\_\+computation\+\_\+of\+\_\+gradient}} ()
+\begin{DoxyCompactList}\small\item\em function to enable the computation of the gradient required for the globally convergent Newton method \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1LinearSolver_a8bc045e20074cb9b45ab3f304d037fc6}{disable\+\_\+computation\+\_\+of\+\_\+gradient}} ()
+\begin{DoxyCompactList}\small\item\em function to disable the computation of the gradient required for the globally convergent Newton method \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1LinearSolver_aceef502cbdf826cdf6aa31f5803982e0}{reset\+\_\+gradient}} ()
+\begin{DoxyCompactList}\small\item\em function to reset the size of the gradient before each Newton solve \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1LinearSolver_a6733411e85f0a1d6d82200c802481681}{get\+\_\+gradient}} (\mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&gradient)
+\begin{DoxyCompactList}\small\item\em function to access the gradient, provided it has been computed \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject}{oomph\+::\+Distributable\+Linear\+Algebra\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_ac9492d59cff9d9b0098712ae72989cd3}{Distributable\+Linear\+Algebra\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor -\/ create a distribution. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a7522391265c46e6c748fd660eae66f5e}{Distributable\+Linear\+Algebra\+Object}} (const \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject}{Distributable\+Linear\+Algebra\+Object}} \&matrix)=delete
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_ada5f539f36451c06e69de79bb129521b}{operator=}} (const \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject}{Distributable\+Linear\+Algebra\+Object}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a4038de53b5737dc625411e7848d21dad}{$\sim$\+Distributable\+Linear\+Algebra\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} $\ast$ \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_abfa9cf25494c796d62b15bad586fab47}{distribution\+\_\+pt}} () const
+\begin{DoxyCompactList}\small\item\em access to the \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a7569556f14fd68b28508920e89bd5eee}{nrow}} () const
+\begin{DoxyCompactList}\small\item\em access function to the number of global rows. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a9bd7e1d242c69a28da85a804a7717fce}{nrow\+\_\+local}} () const
+\begin{DoxyCompactList}\small\item\em access function for the num of local rows on this processor. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a21e966b025edec79067b41d7f1f25220}{nrow\+\_\+local}} (const unsigned \&p) const
+\begin{DoxyCompactList}\small\item\em access function for the num of local rows on this processor. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_ab00a3919b8634c698749f14a4d92947d}{first\+\_\+row}} () const
+\begin{DoxyCompactList}\small\item\em access function for the first row on this processor \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a4266c1d18d8e102bad3f4aec26c9b7cf}{first\+\_\+row}} (const unsigned \&p) const
+\begin{DoxyCompactList}\small\item\em access function for the first row on this processor \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a5505731e7e73d7e4251c67c7adec6bf5}{distributed}} () const
+\begin{DoxyCompactList}\small\item\em distribution is serial or distributed \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a8c35baa65e335043f62954c92c090a5a}{distribution\+\_\+built}} () const
+\begin{DoxyCompactList}\small\item\em if the communicator\+\_\+pt is null then the distribution is not setup then false is returned, otherwise return true \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_ac5340bac40b9559b0378037b57005203}{build\+\_\+distribution}} (const \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} $\ast$const dist\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em setup the distribution of this distributable linear algebra object \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_adad20ac61a61d907f823da7694b50616}{build\+\_\+distribution}} (const \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} \&dist)
+\begin{DoxyCompactList}\small\item\em setup the distribution of this distributable linear algebra object \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -106,6 +237,11 @@ void \mbox{\hyperlink{classoomph_1_1MGSolver_a70f1090e0673b8f9c4b87080adff0e2f}{
 \begin{DoxyCompactList}\small\item\em Do the actual solve -- this is called through the pure virtual solve function in the \mbox{\hyperlink{classoomph_1_1LinearSolver}{Linear\+Solver}} base class. The function is stored as protected to allow the \mbox{\hyperlink{classoomph_1_1MGPreconditioner}{MGPreconditioner}} derived class to use the solver. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1MGSolver_ad31f3a5daa8edec01ab20c92e5fcca54}{modify\+\_\+restriction\+\_\+matrices}} ()
 \begin{DoxyCompactList}\small\item\em Normalise the rows of the restriction matrices to avoid amplifications when projecting to the coarser level. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject}{oomph\+::\+Distributable\+Linear\+Algebra\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a30742aa2ac9abcfa037179f2d28ff43a}{clear\+\_\+distribution}} ()
+\begin{DoxyCompactList}\small\item\em clear the distribution of this distributable linear algebra object \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -121,6 +257,46 @@ bool \mbox{\hyperlink{classoomph_1_1MGSolver_a0cd765279d8e8f3929cc253fd00ba9eb}{
 \begin{DoxyCompactList}\small\item\em If this is set to true then all output from the solver is suppressed. This is protected member data so that the multigrid preconditioner knows whether or not to restore the stream pointer. \end{DoxyCompactList}\item 
 std\+::ostream $\ast$ \mbox{\hyperlink{classoomph_1_1MGSolver_a5184053b6d2a717a6d6865c76acef14b}{Stream\+\_\+pt}}
 \begin{DoxyCompactList}\small\item\em Pointer to the output stream -- defaults to std\+::cout. This is protected member data to allow the preconditioner to restore normal output if everything was chosen to be suppressed by the user. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver}{oomph\+::\+Iterative\+Linear\+Solver}}}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_aeb0fbe103e721196232260230abb1997}{Doc\+\_\+convergence\+\_\+history}}
+\begin{DoxyCompactList}\small\item\em Flag indicating if the convergence history is to be documented. \end{DoxyCompactList}\item 
+std\+::ofstream \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_ad4d6766bec67399c29392e6540b91dd9}{Output\+\_\+file\+\_\+stream}}
+\begin{DoxyCompactList}\small\item\em Output file stream for convergence history. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_a46dd6b0243c734a77afce3c44cf4597d}{Tolerance}}
+\begin{DoxyCompactList}\small\item\em Convergence tolerance. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_a9bdc42768d009b093fd7bc23647dc989}{Max\+\_\+iter}}
+\begin{DoxyCompactList}\small\item\em Maximum number of iterations. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Preconditioner}{Preconditioner}} $\ast$ \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_a55111d8d76589944d81d13b5e15f7248}{Preconditioner\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em Pointer to the preconditioner. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_a82a12e45c78e910b46e9d0935beb8f0d}{Jacobian\+\_\+setup\+\_\+time}}
+\begin{DoxyCompactList}\small\item\em Jacobian setup time. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_ab90d7e7780e709946dd0540a146186b5}{Solution\+\_\+time}}
+\begin{DoxyCompactList}\small\item\em linear solver solution time \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_a8022e90c9c7c720a0bacf9d090c81a10}{Preconditioner\+\_\+setup\+\_\+time}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1Preconditioner}{Preconditioner}} setup time. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_af0344cc8a3a850f160973f1d44bf20f2}{Setup\+\_\+preconditioner\+\_\+before\+\_\+solve}}
+\begin{DoxyCompactList}\small\item\em indicates whether the preconditioner should be setup before solve. Default = true; \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_a76284ada37aafb9ab39836907569c7b2}{Throw\+\_\+error\+\_\+after\+\_\+max\+\_\+iter}}
+\begin{DoxyCompactList}\small\item\em Should we throw an error instead of just returning when we hit the max iterations? \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_a10af0af774e98543b7ecd6a563018ff8}{Use\+\_\+iterative\+\_\+solver\+\_\+as\+\_\+preconditioner}}
+\begin{DoxyCompactList}\small\item\em Use the iterative solver as preconditioner. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_a18f24e4d07f783ddd1f6a8153f39024a}{First\+\_\+time\+\_\+solve\+\_\+when\+\_\+used\+\_\+as\+\_\+preconditioner}}
+\begin{DoxyCompactList}\small\item\em When the iterative solver is used a preconditioner then we call the setup of solver method only once (the first time the solve method is called) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1LinearSolver}{oomph\+::\+Linear\+Solver}}}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classoomph_1_1LinearSolver_a5f5e7e7a44ff0897b0e4cd9524000edc}{Enable\+\_\+resolve}}
+\begin{DoxyCompactList}\small\item\em Boolean that indicates whether the matrix (or its factors, in the case of direct solver) should be stored so that the resolve function can be used. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1LinearSolver_a536e41b50b3f3464ca9cb4a5776acc19}{Doc\+\_\+time}}
+\begin{DoxyCompactList}\small\item\em Boolean flag that indicates whether the time taken. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1LinearSolver_aef857e4c0c16e8b342a14493e558bb15}{Compute\+\_\+gradient}}
+\begin{DoxyCompactList}\small\item\em flag that indicates whether the gradient required for the globally convergent Newton method should be computed or not \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1LinearSolver_a9fd3bf9a5a94dcc23b7d903f99535e72}{Gradient\+\_\+has\+\_\+been\+\_\+computed}}
+\begin{DoxyCompactList}\small\item\em flag that indicates whether the gradient was computed or not \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \mbox{\hyperlink{classoomph_1_1LinearSolver_ad38255ae12611787a857cc5c90ffa9f8}{Gradient\+\_\+for\+\_\+glob\+\_\+conv\+\_\+newton\+\_\+solve}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} storing the gradient for the globally convergent Newton method. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -172,6 +348,11 @@ bool \mbox{\hyperlink{classoomph_1_1MGSolver_af7b6c7e1c4e047f8c5a7c83e5b8169c7}{
 unsigned \mbox{\hyperlink{classoomph_1_1MGSolver_a29bdc90613e9759bd3fdff47a0c7c45a}{V\+\_\+cycle\+\_\+counter}}
 \begin{DoxyCompactList}\small\item\em Pointer to counter for V-\/cycles. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver}{oomph\+::\+Iterative\+Linear\+Solver}}}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classoomph_1_1IdentityPreconditioner}{Identity\+Preconditioner}} \mbox{\hyperlink{classoomph_1_1IterativeLinearSolver_a8393d99578cbee0fdb937ddec34be74c}{Default\+\_\+preconditioner}}
+\begin{DoxyCompactList}\small\item\em Default preconditioner\+: The base class for preconditioners is a fully functional (if trivial!) preconditioner. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -189,7 +370,7 @@ Definition at line \mbox{\hyperlink{geometric__multigrid_8h_source_l00089}{89}} 
 \index{PostSmootherFactoryFctPt@{PostSmootherFactoryFctPt}!oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{PostSmootherFactoryFctPt}{PostSmootherFactoryFctPt}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-typedef \mbox{\hyperlink{classoomph_1_1Smoother}{Smoother}} $\ast$($\ast$ \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::Post\+Smoother\+Factory\+Fct\+Pt) ()}
+typedef \mbox{\hyperlink{classoomph_1_1Smoother}{Smoother}} $\ast$($\ast$ \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::\+Post\+Smoother\+Factory\+Fct\+Pt) ()}
 
 
 
@@ -204,7 +385,7 @@ Definition at line \mbox{\hyperlink{geometric__multigrid_8h_source_l00098}{98}} 
 \index{PreSmootherFactoryFctPt@{PreSmootherFactoryFctPt}!oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{PreSmootherFactoryFctPt}{PreSmootherFactoryFctPt}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-typedef \mbox{\hyperlink{classoomph_1_1Smoother}{Smoother}} $\ast$($\ast$ \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::Pre\+Smoother\+Factory\+Fct\+Pt) ()}
+typedef \mbox{\hyperlink{classoomph_1_1Smoother}{Smoother}} $\ast$($\ast$ \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::\+Pre\+Smoother\+Factory\+Fct\+Pt) ()}
 
 
 
@@ -222,7 +403,7 @@ Definition at line \mbox{\hyperlink{geometric__multigrid_8h_source_l00094}{94}} 
 \index{MGSolver@{MGSolver}!oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{MGSolver()}{MGSolver()}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-\mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::\mbox{\hyperlink{classoomph_1_1MGSolver}{MGSolver}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1MGProblem}{MGProblem}} $\ast$}]{mg\+\_\+problem\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::\+MGSolver (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1MGProblem}{MGProblem}} $\ast$}]{mg\+\_\+problem\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -439,7 +620,7 @@ Definition at line \mbox{\hyperlink{geometric__multigrid_8h_source_l00826}{826}}
 
 
 
-References \mbox{\hyperlink{oomph__definitions_8cc_source_l00086}{oomph\+::\+Terminate\+Helper\+::clean\+\_\+up\+\_\+memory()}}, \mbox{\hyperlink{elements_8h_source_l02611}{oomph\+::\+Finite\+Element\+::dim()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00319}{oomph\+::oomph\+\_\+info}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00286}{oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string()}}, and \mbox{\hyperlink{oomph__utilities_8cc_source_l01295}{oomph\+::\+Timing\+Helpers\+::timer()}}.
+References \mbox{\hyperlink{elements_8h_source_l02611}{oomph\+::\+Finite\+Element\+::dim()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00319}{oomph\+::oomph\+\_\+info}}, and \mbox{\hyperlink{oomph__utilities_8cc_source_l01295}{oomph\+::\+Timing\+Helpers\+::timer()}}.
 
 
 
@@ -496,7 +677,7 @@ Definition at line \mbox{\hyperlink{geometric__multigrid_8h_source_l00420}{420}}
 
 
 
-References \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00335}{oomph\+::\+Linear\+Algebra\+Distribution\+::communicator\+\_\+pt()}}, \mbox{\hyperlink{geometric__multigrid_8h_source_l00679}{oomph\+::\+MGSolver$<$ DIM $>$\+::\+Interpolation\+\_\+matrices\+\_\+storage\+\_\+pt}}, \mbox{\hyperlink{geometric__multigrid_8h_source_l00673}{oomph\+::\+MGSolver$<$ DIM $>$\+::\+Mg\+\_\+hierarchy}}, \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00463}{oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::nrow()}}, and \mbox{\hyperlink{oomph__definitions_8cc_source_l00286}{oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string()}}.
+References \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00335}{oomph\+::\+Linear\+Algebra\+Distribution\+::communicator\+\_\+pt()}}, \mbox{\hyperlink{geometric__multigrid_8h_source_l00679}{oomph\+::\+MGSolver$<$ DIM $>$\+::\+Interpolation\+\_\+matrices\+\_\+storage\+\_\+pt}}, \mbox{\hyperlink{geometric__multigrid_8h_source_l00673}{oomph\+::\+MGSolver$<$ DIM $>$\+::\+Mg\+\_\+hierarchy}}, and \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00463}{oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::nrow()}}.
 
 \mbox{\Hypertarget{classoomph_1_1MGSolver_a25fbe00e277a8fba8c7f54902b92c417}\label{classoomph_1_1MGSolver_a25fbe00e277a8fba8c7f54902b92c417}} 
 \index{oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}!interpolation\_self\_test@{interpolation\_self\_test}}
@@ -512,10 +693,6 @@ Make a self-\/test to make sure that the interpolation matrices are doing the sa
 Function which implements a self-\/test to interpolate a vector up all of levels of the MG hierarchy and outputs the restricted vectors to file. 
 
 Definition at line \mbox{\hyperlink{geometric__multigrid_8h_source_l02344}{2344}} of file \mbox{\hyperlink{geometric__multigrid_8h_source}{geometric\+\_\+multigrid.\+h}}.
-
-
-
-References \mbox{\hyperlink{oomph__definitions_8cc_source_l00286}{oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string()}}.
 
 \mbox{\Hypertarget{classoomph_1_1MGSolver_ace1b91d44c67c990259807ee746a6363}\label{classoomph_1_1MGSolver_ace1b91d44c67c990259807ee746a6363}} 
 \index{oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}!iterations@{iterations}}
@@ -792,10 +969,6 @@ Function which implements a self-\/test to restrict the residual vector down all
 
 Definition at line \mbox{\hyperlink{geometric__multigrid_8h_source_l02307}{2307}} of file \mbox{\hyperlink{geometric__multigrid_8h_source}{geometric\+\_\+multigrid.\+h}}.
 
-
-
-References \mbox{\hyperlink{oomph__definitions_8cc_source_l00286}{oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string()}}.
-
 \mbox{\Hypertarget{classoomph_1_1MGSolver_a88efa5f110e824947f50306e3b56e07b}\label{classoomph_1_1MGSolver_a88efa5f110e824947f50306e3b56e07b}} 
 \index{oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}!self\_test@{self\_test}}
 \index{self\_test@{self\_test}!oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}}
@@ -813,7 +986,7 @@ Definition at line \mbox{\hyperlink{geometric__multigrid_8h_source_l02135}{2135}
 
 
 
-References \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00335}{oomph\+::\+Linear\+Algebra\+Distribution\+::communicator\+\_\+pt()}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00319}{oomph\+::oomph\+\_\+info}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00286}{oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string()}}, and \mbox{\hyperlink{oomph__utilities_8cc_source_l01295}{oomph\+::\+Timing\+Helpers\+::timer()}}.
+References \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00335}{oomph\+::\+Linear\+Algebra\+Distribution\+::communicator\+\_\+pt()}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00319}{oomph\+::oomph\+\_\+info}}, and \mbox{\hyperlink{oomph__utilities_8cc_source_l01295}{oomph\+::\+Timing\+Helpers\+::timer()}}.
 
 \mbox{\Hypertarget{classoomph_1_1MGSolver_a451bf822bb1b42c8cdd8ed3fbb3a7be4}\label{classoomph_1_1MGSolver_a451bf822bb1b42c8cdd8ed3fbb3a7be4}} 
 \index{oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}!set\_post\_smoother\_factory\_function@{set\_post\_smoother\_factory\_function}}
@@ -965,7 +1138,7 @@ Definition at line \mbox{\hyperlink{geometric__multigrid_8h_source_l01180}{1180}
 
 
 
-References \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00171}{oomph\+::\+Linear\+Algebra\+Distribution\+::clear()}}, \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00335}{oomph\+::\+Linear\+Algebra\+Distribution\+::communicator\+\_\+pt()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00319}{oomph\+::oomph\+\_\+info}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00286}{oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string()}}, and \mbox{\hyperlink{oomph__utilities_8cc_source_l01295}{oomph\+::\+Timing\+Helpers\+::timer()}}.
+References \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00171}{oomph\+::\+Linear\+Algebra\+Distribution\+::clear()}}, \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00335}{oomph\+::\+Linear\+Algebra\+Distribution\+::communicator\+\_\+pt()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00319}{oomph\+::oomph\+\_\+info}}, and \mbox{\hyperlink{oomph__utilities_8cc_source_l01295}{oomph\+::\+Timing\+Helpers\+::timer()}}.
 
 \mbox{\Hypertarget{classoomph_1_1MGSolver_a9b3674f92da65b8cacada47325107804}\label{classoomph_1_1MGSolver_a9b3674f92da65b8cacada47325107804}} 
 \index{oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}!setup\_smoothers@{setup\_smoothers}}
@@ -984,7 +1157,7 @@ Definition at line \mbox{\hyperlink{geometric__multigrid_8h_source_l01360}{1360}
 
 
 
-References \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00335}{oomph\+::\+Linear\+Algebra\+Distribution\+::communicator\+\_\+pt()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00319}{oomph\+::oomph\+\_\+info}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00286}{oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string()}}, \mbox{\hyperlink{oomph__utilities_8cc_source_l01295}{oomph\+::\+Timing\+Helpers\+::timer()}}, and \mbox{\hyperlink{iterative__linear__solver_8h_source_l00107}{oomph\+::\+Iterative\+Linear\+Solver\+::tolerance()}}.
+References \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00335}{oomph\+::\+Linear\+Algebra\+Distribution\+::communicator\+\_\+pt()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00319}{oomph\+::oomph\+\_\+info}}, \mbox{\hyperlink{oomph__utilities_8cc_source_l01295}{oomph\+::\+Timing\+Helpers\+::timer()}}, and \mbox{\hyperlink{iterative__linear__solver_8h_source_l00107}{oomph\+::\+Iterative\+Linear\+Solver\+::tolerance()}}.
 
 \mbox{\Hypertarget{classoomph_1_1MGSolver_a332a6b1028732481a4954fa0a9337a80}\label{classoomph_1_1MGSolver_a332a6b1028732481a4954fa0a9337a80}} 
 \index{oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}!setup\_transfer\_matrices@{setup\_transfer\_matrices}}
@@ -1036,7 +1209,7 @@ References \mbox{\hyperlink{geometric__multigrid_8h_source_l00826}{oomph\+::\+MG
 \index{Doc\_everything@{Doc\_everything}!oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{Doc\_everything}{Doc\_everything}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-bool \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::Doc\+\_\+everything\hspace{0.3cm}{\ttfamily [private]}}
+bool \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::\+Doc\+\_\+everything\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -1055,7 +1228,7 @@ Referenced by \mbox{\hyperlink{geometric__multigrid_8h_source_l00148}{oomph\+::\
 \index{Has\_been\_setup@{Has\_been\_setup}!oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{Has\_been\_setup}{Has\_been\_setup}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-bool \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::Has\+\_\+been\+\_\+setup\hspace{0.3cm}{\ttfamily [private]}}
+bool \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::\+Has\+\_\+been\+\_\+setup\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -1074,7 +1247,7 @@ Referenced by \mbox{\hyperlink{geometric__multigrid_8h_source_l00148}{oomph\+::\
 \index{Has\_been\_solved@{Has\_been\_solved}!oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{Has\_been\_solved}{Has\_been\_solved}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-bool \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::Has\+\_\+been\+\_\+solved\hspace{0.3cm}{\ttfamily [private]}}
+bool \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::\+Has\+\_\+been\+\_\+solved\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -1093,7 +1266,7 @@ Referenced by \mbox{\hyperlink{geometric__multigrid_8h_source_l00509}{oomph\+::\
 \index{Interpolation\_matrices\_storage\_pt@{Interpolation\_matrices\_storage\_pt}!oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{Interpolation\_matrices\_storage\_pt}{Interpolation\_matrices\_storage\_pt}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1CRDoubleMatrix}{CRDouble\+Matrix}}$\ast$$>$ \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::Interpolation\+\_\+matrices\+\_\+storage\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1CRDoubleMatrix}{CRDouble\+Matrix}}$\ast$$>$ \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::\+Interpolation\+\_\+matrices\+\_\+storage\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -1112,7 +1285,7 @@ Referenced by \mbox{\hyperlink{geometric__multigrid_8h_source_l00148}{oomph\+::\
 \index{Interpolation\_self\_test\_vectors\_storage@{Interpolation\_self\_test\_vectors\_storage}!oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{Interpolation\_self\_test\_vectors\_storage}{Interpolation\_self\_test\_vectors\_storage}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}}$>$ \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::Interpolation\+\_\+self\+\_\+test\+\_\+vectors\+\_\+storage\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}}$>$ \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::\+Interpolation\+\_\+self\+\_\+test\+\_\+vectors\+\_\+storage\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -1127,7 +1300,7 @@ Definition at line \mbox{\hyperlink{geometric__multigrid_8h_source_l00693}{693}}
 \index{Mg\_hierarchy@{Mg\_hierarchy}!oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{Mg\_hierarchy}{Mg\_hierarchy}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1MGProblem}{MGProblem}}$\ast$$>$ \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::Mg\+\_\+hierarchy\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1MGProblem}{MGProblem}}$\ast$$>$ \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::\+Mg\+\_\+hierarchy\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -1146,7 +1319,7 @@ Referenced by \mbox{\hyperlink{geometric__multigrid_8h_source_l00148}{oomph\+::\
 \index{Mg\_matrices\_storage\_pt@{Mg\_matrices\_storage\_pt}!oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{Mg\_matrices\_storage\_pt}{Mg\_matrices\_storage\_pt}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1CRDoubleMatrix}{CRDouble\+Matrix}}$\ast$$>$ \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::Mg\+\_\+matrices\+\_\+storage\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1CRDoubleMatrix}{CRDouble\+Matrix}}$\ast$$>$ \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::\+Mg\+\_\+matrices\+\_\+storage\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -1165,7 +1338,7 @@ Referenced by \mbox{\hyperlink{geometric__multigrid_8h_source_l00148}{oomph\+::\
 \index{Mg\_problem\_pt@{Mg\_problem\_pt}!oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{Mg\_problem\_pt}{Mg\_problem\_pt}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-\mbox{\hyperlink{classoomph_1_1MGProblem}{MGProblem}}$\ast$ \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::Mg\+\_\+problem\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+\mbox{\hyperlink{classoomph_1_1MGProblem}{MGProblem}}$\ast$ \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::\+Mg\+\_\+problem\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -1184,7 +1357,7 @@ Referenced by \mbox{\hyperlink{geometric__multigrid_8h_source_l00118}{oomph\+::\
 \index{Nlevel@{Nlevel}!oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{Nlevel}{Nlevel}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-unsigned \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::Nlevel\hspace{0.3cm}{\ttfamily [private]}}
+unsigned \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::\+Nlevel\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -1203,7 +1376,7 @@ Referenced by \mbox{\hyperlink{geometric__multigrid_8h_source_l00148}{oomph\+::\
 \index{Npost\_smooth@{Npost\_smooth}!oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{Npost\_smooth}{Npost\_smooth}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-unsigned \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::Npost\+\_\+smooth\hspace{0.3cm}{\ttfamily [private]}}
+unsigned \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::\+Npost\+\_\+smooth\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -1222,7 +1395,7 @@ Referenced by \mbox{\hyperlink{geometric__multigrid_8h_source_l00328}{oomph\+::\
 \index{Npre\_smooth@{Npre\_smooth}!oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{Npre\_smooth}{Npre\_smooth}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-unsigned \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::Npre\+\_\+smooth\hspace{0.3cm}{\ttfamily [private]}}
+unsigned \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::\+Npre\+\_\+smooth\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -1241,7 +1414,7 @@ Referenced by \mbox{\hyperlink{geometric__multigrid_8h_source_l00336}{oomph\+::\
 \index{Nvcycle@{Nvcycle}!oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{Nvcycle}{Nvcycle}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-unsigned \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::Nvcycle\hspace{0.3cm}{\ttfamily [protected]}}
+unsigned \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::\+Nvcycle\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -1260,7 +1433,7 @@ Referenced by \mbox{\hyperlink{geometric__multigrid_8h_source_l00602}{oomph\+::\
 \index{Post\_smoother\_factory\_function\_pt@{Post\_smoother\_factory\_function\_pt}!oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{Post\_smoother\_factory\_function\_pt}{Post\_smoother\_factory\_function\_pt}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-\mbox{\hyperlink{classoomph_1_1MGSolver_a0a46fa180d8a32f54272fc98e28001cf}{Post\+Smoother\+Factory\+Fct\+Pt}} \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::Post\+\_\+smoother\+\_\+factory\+\_\+function\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1MGSolver_a0a46fa180d8a32f54272fc98e28001cf}{Post\+Smoother\+Factory\+Fct\+Pt}} \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::\+Post\+\_\+smoother\+\_\+factory\+\_\+function\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -1279,7 +1452,7 @@ Referenced by \mbox{\hyperlink{geometric__multigrid_8h_source_l00109}{oomph\+::\
 \index{Post\_smoothers\_storage\_pt@{Post\_smoothers\_storage\_pt}!oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{Post\_smoothers\_storage\_pt}{Post\_smoothers\_storage\_pt}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1Smoother}{Smoother}}$\ast$$>$ \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::Post\+\_\+smoothers\+\_\+storage\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1Smoother}{Smoother}}$\ast$$>$ \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::\+Post\+\_\+smoothers\+\_\+storage\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -1298,7 +1471,7 @@ Referenced by \mbox{\hyperlink{geometric__multigrid_8h_source_l00148}{oomph\+::\
 \index{Pre\_smoother\_factory\_function\_pt@{Pre\_smoother\_factory\_function\_pt}!oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{Pre\_smoother\_factory\_function\_pt}{Pre\_smoother\_factory\_function\_pt}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-\mbox{\hyperlink{classoomph_1_1MGSolver_a60aa316ebfc000491554e28dbfbebc10}{Pre\+Smoother\+Factory\+Fct\+Pt}} \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::Pre\+\_\+smoother\+\_\+factory\+\_\+function\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1MGSolver_a60aa316ebfc000491554e28dbfbebc10}{Pre\+Smoother\+Factory\+Fct\+Pt}} \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::\+Pre\+\_\+smoother\+\_\+factory\+\_\+function\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -1317,7 +1490,7 @@ Referenced by \mbox{\hyperlink{geometric__multigrid_8h_source_l00101}{oomph\+::\
 \index{Pre\_smoothers\_storage\_pt@{Pre\_smoothers\_storage\_pt}!oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{Pre\_smoothers\_storage\_pt}{Pre\_smoothers\_storage\_pt}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1Smoother}{Smoother}}$\ast$$>$ \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::Pre\+\_\+smoothers\+\_\+storage\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1Smoother}{Smoother}}$\ast$$>$ \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::\+Pre\+\_\+smoothers\+\_\+storage\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -1336,7 +1509,7 @@ Referenced by \mbox{\hyperlink{geometric__multigrid_8h_source_l00148}{oomph\+::\
 \index{Residual\_mg\_vectors\_storage@{Residual\_mg\_vectors\_storage}!oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{Residual\_mg\_vectors\_storage}{Residual\_mg\_vectors\_storage}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}}$>$ \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::Residual\+\_\+mg\+\_\+vectors\+\_\+storage\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}}$>$ \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::\+Residual\+\_\+mg\+\_\+vectors\+\_\+storage\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -1355,7 +1528,7 @@ Referenced by \mbox{\hyperlink{geometric__multigrid_8h_source_l00348}{oomph\+::\
 \index{Restriction\_matrices\_storage\_pt@{Restriction\_matrices\_storage\_pt}!oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{Restriction\_matrices\_storage\_pt}{Restriction\_matrices\_storage\_pt}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1CRDoubleMatrix}{CRDouble\+Matrix}}$\ast$$>$ \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::Restriction\+\_\+matrices\+\_\+storage\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1CRDoubleMatrix}{CRDouble\+Matrix}}$\ast$$>$ \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::\+Restriction\+\_\+matrices\+\_\+storage\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -1374,7 +1547,7 @@ Referenced by \mbox{\hyperlink{geometric__multigrid_8h_source_l00148}{oomph\+::\
 \index{Restriction\_self\_test\_vectors\_storage@{Restriction\_self\_test\_vectors\_storage}!oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{Restriction\_self\_test\_vectors\_storage}{Restriction\_self\_test\_vectors\_storage}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}}$>$ \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::Restriction\+\_\+self\+\_\+test\+\_\+vectors\+\_\+storage\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}}$>$ \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::\+Restriction\+\_\+self\+\_\+test\+\_\+vectors\+\_\+storage\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -1389,7 +1562,7 @@ Definition at line \mbox{\hyperlink{geometric__multigrid_8h_source_l00698}{698}}
 \index{Rhs\_mg\_vectors\_storage@{Rhs\_mg\_vectors\_storage}!oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{Rhs\_mg\_vectors\_storage}{Rhs\_mg\_vectors\_storage}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}}$>$ \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::Rhs\+\_\+mg\+\_\+vectors\+\_\+storage\hspace{0.3cm}{\ttfamily [protected]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}}$>$ \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::\+Rhs\+\_\+mg\+\_\+vectors\+\_\+storage\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -1408,7 +1581,7 @@ Referenced by \mbox{\hyperlink{geometric__multigrid_8h_source_l00392}{oomph\+::\
 \index{Stream\_pt@{Stream\_pt}!oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{Stream\_pt}{Stream\_pt}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-std\+::ostream$\ast$ \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::Stream\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+std\+::ostream$\ast$ \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::\+Stream\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -1427,7 +1600,7 @@ Referenced by \mbox{\hyperlink{geometric__multigrid_8h_source_l00256}{oomph\+::\
 \index{Suppress\_all\_output@{Suppress\_all\_output}!oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{Suppress\_all\_output}{Suppress\_all\_output}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-bool \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::Suppress\+\_\+all\+\_\+output\hspace{0.3cm}{\ttfamily [protected]}}
+bool \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::\+Suppress\+\_\+all\+\_\+output\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -1446,7 +1619,7 @@ Referenced by \mbox{\hyperlink{geometric__multigrid_8h_source_l00256}{oomph\+::\
 \index{Suppress\_v\_cycle\_output@{Suppress\_v\_cycle\_output}!oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{Suppress\_v\_cycle\_output}{Suppress\_v\_cycle\_output}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-bool \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::Suppress\+\_\+v\+\_\+cycle\+\_\+output\hspace{0.3cm}{\ttfamily [protected]}}
+bool \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::\+Suppress\+\_\+v\+\_\+cycle\+\_\+output\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -1465,7 +1638,7 @@ Referenced by \mbox{\hyperlink{geometric__multigrid_8h_source_l00256}{oomph\+::\
 \index{V\_cycle\_counter@{V\_cycle\_counter}!oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{V\_cycle\_counter}{V\_cycle\_counter}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-unsigned \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::V\+\_\+cycle\+\_\+counter\hspace{0.3cm}{\ttfamily [private]}}
+unsigned \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::\+V\+\_\+cycle\+\_\+counter\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -1484,7 +1657,7 @@ Referenced by \mbox{\hyperlink{geometric__multigrid_8h_source_l00595}{oomph\+::\
 \index{X\_mg\_vectors\_storage@{X\_mg\_vectors\_storage}!oomph::MGSolver$<$ DIM $>$@{oomph::MGSolver$<$ DIM $>$}}
 \doxysubsubsection{\texorpdfstring{X\_mg\_vectors\_storage}{X\_mg\_vectors\_storage}}
 {\footnotesize\ttfamily template$<$unsigned DIM$>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}}$>$ \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::X\+\_\+mg\+\_\+vectors\+\_\+storage\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}}$>$ \mbox{\hyperlink{classoomph_1_1MGSolver}{oomph\+::\+MGSolver}}$<$ DIM $>$\+::\+X\+\_\+mg\+\_\+vectors\+\_\+storage\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

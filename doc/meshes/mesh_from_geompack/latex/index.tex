@@ -26,7 +26,7 @@ As an example we demonstrate how to use \href{http://members.shaw.ca/bjoe/}{\tex
 
 The desired mesh characteristics are defined in the file \href{../../../../demo_drivers/meshing/mesh_from_geompack/box_hole.m2}{\texttt{ box\+\_\+hole.\+m2}} which specifies that the final mesh should contain approximately 200 elements. When processed with the command 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{./geompack++ box\_hole.m2 error.log}
+\DoxyCodeLine{./geompack++\ box\_hole.m2\ error.log}
 
 \end{DoxyCode}
  \href{http://members.shaw.ca/bjoe/}{\texttt{ {\ttfamily Geompack++ }}} creates the output file \href{../../../../demo_drivers/meshing/mesh_from_geompack/box_hole.mh2}{\texttt{ box\+\_\+hole.\+mh2.}}
@@ -46,21 +46,21 @@ Here is a sketch of the resulting discretisation, as displayed by {\ttfamily geo
 
  
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{  \textcolor{comment}{//=========start\_of\_geompackquadmesh\_class================================}}
-\DoxyCodeLine{\textcolor{comment}{  /// Quadrilateral mesh generator; Uses input from Geompack++.}\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{  /// See: http://members.shaw.ca/bjoe/}}
-\DoxyCodeLine{\textcolor{comment}{  /// Currently only for four-\/noded quads -\/-\/ extension to higher-\/order}}
-\DoxyCodeLine{\textcolor{comment}{  /// quads should be trivial (see the corresponding classes for}}
-\DoxyCodeLine{\textcolor{comment}{  /// triangular meshes).}}
-\DoxyCodeLine{\textcolor{comment}{}  \textcolor{comment}{//========================================================================}}
-\DoxyCodeLine{  \textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>}
-\DoxyCodeLine{  \textcolor{keyword}{class }GeompackQuadMesh : \textcolor{keyword}{public} Mesh}
-\DoxyCodeLine{  \{}
-\DoxyCodeLine{  \textcolor{keyword}{public}:\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{    /// Constructor with the input files}}
-\DoxyCodeLine{\textcolor{comment}{}    GeompackQuadMesh(\textcolor{keyword}{const} std::string\& mesh\_file\_name,}
-\DoxyCodeLine{                     \textcolor{keyword}{const} std::string\& curve\_file\_name,}
-\DoxyCodeLine{                     TimeStepper* time\_stepper\_pt = \&Mesh::Default\_TimeStepper)}
+\DoxyCodeLine{\ \ \textcolor{comment}{//=========start\_of\_geompackquadmesh\_class================================}}
+\DoxyCodeLine{\textcolor{comment}{\ \ ///\ Quadrilateral\ mesh\ generator;\ Uses\ input\ from\ Geompack++.}\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ ///\ See:\ http://members.shaw.ca/bjoe/}}
+\DoxyCodeLine{\textcolor{comment}{\ \ ///\ Currently\ only\ for\ four-\/noded\ quads\ -\/-\/\ extension\ to\ higher-\/order}}
+\DoxyCodeLine{\textcolor{comment}{\ \ ///\ quads\ should\ be\ trivial\ (see\ the\ corresponding\ classes\ for}}
+\DoxyCodeLine{\textcolor{comment}{\ \ ///\ triangular\ meshes).}}
+\DoxyCodeLine{\textcolor{comment}{}\ \ \textcolor{comment}{//========================================================================}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ ELEMENT>}
+\DoxyCodeLine{\ \ \textcolor{keyword}{class\ }GeompackQuadMesh\ :\ \textcolor{keyword}{public}\ Mesh}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{public}:\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ ///\ Constructor\ with\ the\ input\ files}}
+\DoxyCodeLine{\textcolor{comment}{}\ \ \ \ GeompackQuadMesh(\textcolor{keyword}{const}\ std::string\&\ mesh\_file\_name,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ curve\_file\_name,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TimeStepper*\ time\_stepper\_pt\ =\ \&Mesh::Default\_TimeStepper)}
 
 \end{DoxyCodeInclude}
  The driver code \href{../../../../demo_drivers/meshing/mesh_from_geompack/mesh_from_geompack_poisson.cc}{\texttt{ mesh\+\_\+from\+\_\+geompack\+\_\+poisson.\+cc}} demonstrates the use of this mesh for the solution of a 2D Poisson problem in the \char`\"{}rectangular domain with a hole\char`\"{}, described in the previous section.
@@ -69,25 +69,25 @@ The code expects the names of {\ttfamily $\ast$}.{\ttfamily mh2} and $\ast$.{\tt
 
  
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{keywordtype}{int} \mbox{\hyperlink{mesh__from__geompack__poisson_8cc_a0ddf1224851353fc92bfbff6f499fa97}{main}}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char}* argv[])}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{convert__geom__file_8cc_a0ddf1224851353fc92bfbff6f499fa97}{main}}(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}*\ argv[])}
 \DoxyCodeLine{\{}
-\DoxyCodeLine{\textcolor{comment}{// Store command line arguments}}
-\DoxyCodeLine{ CommandLineArgs::setup(argc,argv);}
+\DoxyCodeLine{\textcolor{comment}{//\ Store\ command\ line\ arguments}}
+\DoxyCodeLine{\ CommandLineArgs::setup(argc,argv);}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Check number of command line arguments: Need exactly two.}}
-\DoxyCodeLine{ \textcolor{keywordflow}{if} (argc!=3)}
-\DoxyCodeLine{  \{}
-\DoxyCodeLine{   std::string error\_message =}
-\DoxyCodeLine{    \textcolor{stringliteral}{"{}Wrong number of command line arguments.\(\backslash\)n"{}};}
-\DoxyCodeLine{   error\_message +=}
-\DoxyCodeLine{    \textcolor{stringliteral}{"{}Must specify the following file names  \(\backslash\)n"{}};}
-\DoxyCodeLine{   error\_message += }
-\DoxyCodeLine{    \textcolor{stringliteral}{"{}filename.mh2 then filename.cs2\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Check\ number\ of\ command\ line\ arguments:\ Need\ exactly\ two.}}
+\DoxyCodeLine{\ \textcolor{keywordflow}{if}\ (argc!=3)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ std::string\ error\_message\ =}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}Wrong\ number\ of\ command\ line\ arguments.\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \ error\_message\ +=}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}Must\ specify\ the\ following\ file\ names\ \ \(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \ error\_message\ +=\ }
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}filename.mh2\ then\ filename.cs2\(\backslash\)n"{}};}
 \DoxyCodeLine{}
-\DoxyCodeLine{   \textcolor{keywordflow}{throw} OomphLibError(error\_message,}
-\DoxyCodeLine{                       OOMPH\_CURRENT\_FUNCTION,}
-\DoxyCodeLine{                       OOMPH\_EXCEPTION\_LOCATION);}
-\DoxyCodeLine{  \}}
+\DoxyCodeLine{\ \ \ \textcolor{keywordflow}{throw}\ OomphLibError(error\_message,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ OOMPH\_CURRENT\_FUNCTION,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ OOMPH\_EXCEPTION\_LOCATION);}
+\DoxyCodeLine{\ \ \}}
 
 \end{DoxyCodeInclude}
  The names of these files are then passed to the mesh constructor. Since the rest of the \href{../../../../demo_drivers/meshing/mesh_from_geompack/mesh_from_geompack_poisson.cc}{\texttt{ driver code }} is identical to that in the \href{../../../../doc/poisson/two_d_poisson/html/index.html}{\texttt{ corresponding example with a structured mesh}}, we do not provide a detailed code listing but simply show the plot of the computed results, together with the tanh-\/shaped exact solution of the problem\+:

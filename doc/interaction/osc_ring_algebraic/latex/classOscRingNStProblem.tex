@@ -111,7 +111,7 @@ Definition at line \mbox{\hyperlink{osc__ring__alg_8cc_source_l00085}{85}} of fi
 \index{OscRingNStProblem@{OscRingNStProblem}!OscRingNStProblem$<$ ELEMENT $>$@{OscRingNStProblem$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{OscRingNStProblem()}{OscRingNStProblem()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-\mbox{\hyperlink{classOscRingNStProblem}{Osc\+Ring\+NSt\+Problem}}$<$ ELEMENT $>$\+::\mbox{\hyperlink{classOscRingNStProblem}{Osc\+Ring\+NSt\+Problem}} (\begin{DoxyParamCaption}\item[{const double \&}]{dt,  }\item[{Finite\+Element\+::\+Unsteady\+Exact\+Solution\+Fct\+Pt}]{IC\+\_\+fct\+\_\+pt }\end{DoxyParamCaption})}
+\mbox{\hyperlink{classOscRingNStProblem}{Osc\+Ring\+NSt\+Problem}}$<$ ELEMENT $>$\mbox{\hyperlink{classOscRingNStProblem}{\+::\+Osc\+Ring\+NSt\+Problem}} (\begin{DoxyParamCaption}\item[{const double \&}]{dt,  }\item[{Finite\+Element\+::\+Unsteady\+Exact\+Solution\+Fct\+Pt}]{IC\+\_\+fct\+\_\+pt }\end{DoxyParamCaption})}
 
 
 
@@ -145,7 +145,7 @@ Definition at line \mbox{\hyperlink{osc__ring__alg_8cc_source_l00096}{96}} of fi
 \index{OscRingNStProblem@{OscRingNStProblem}!OscRingNStProblem$<$ ELEMENT $>$@{OscRingNStProblem$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{OscRingNStProblem()}{OscRingNStProblem()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-\mbox{\hyperlink{classOscRingNStProblem}{Osc\+Ring\+NSt\+Problem}}$<$ ELEMENT $>$\+::\mbox{\hyperlink{classOscRingNStProblem}{Osc\+Ring\+NSt\+Problem}} (\begin{DoxyParamCaption}\item[{const double \&}]{dt,  }\item[{Finite\+Element\+::\+Unsteady\+Exact\+Solution\+Fct\+Pt}]{IC\+\_\+fct\+\_\+pt }\end{DoxyParamCaption})}
+\mbox{\hyperlink{classOscRingNStProblem}{Osc\+Ring\+NSt\+Problem}}$<$ ELEMENT $>$\mbox{\hyperlink{classOscRingNStProblem}{\+::\+Osc\+Ring\+NSt\+Problem}} (\begin{DoxyParamCaption}\item[{const double \&}]{dt,  }\item[{Finite\+Element\+::\+Unsteady\+Exact\+Solution\+Fct\+Pt}]{IC\+\_\+fct\+\_\+pt }\end{DoxyParamCaption})}
 
 
 
@@ -446,6 +446,8 @@ Set initial condition (incl previous timesteps) according to specified function.
 
 Set initial condition\+: Assign previous and current values of the velocity from the velocity field specified via the function pointer.
 
+Values are assigned so that the velocities and accelerations are correct for current time.
+
 Values are assigned so that the velocities and accelerations are correct for current time. 
 
 Definition at line \mbox{\hyperlink{osc__ring__alg_8cc_source_l00400}{400}} of file \mbox{\hyperlink{osc__ring__alg_8cc_source}{osc\+\_\+ring\+\_\+alg.\+cc}}.
@@ -571,7 +573,7 @@ Write header for trace file.
 \index{Fluid\_mesh\_pt@{Fluid\_mesh\_pt}!OscRingNStProblem$<$ ELEMENT $>$@{OscRingNStProblem$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Fluid\_mesh\_pt}{Fluid\_mesh\_pt}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-Algebraic\+Refineable\+Quarter\+Circle\+Sector\+Mesh$<$ELEMENT$>$$\ast$ \mbox{\hyperlink{classOscRingNStProblem}{Osc\+Ring\+NSt\+Problem}}$<$ ELEMENT $>$\+::Fluid\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+Algebraic\+Refineable\+Quarter\+Circle\+Sector\+Mesh$<$ELEMENT$>$$\ast$ \mbox{\hyperlink{classOscRingNStProblem}{Osc\+Ring\+NSt\+Problem}}$<$ ELEMENT $>$\+::\+Fluid\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -590,7 +592,7 @@ Referenced by \mbox{\hyperlink{osc__ring__alg_8cc_source_l00163}{Osc\+Ring\+NSt\
 \index{Fluid\_mesh\_pt@{Fluid\_mesh\_pt}!OscRingNStProblem$<$ ELEMENT $>$@{OscRingNStProblem$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Fluid\_mesh\_pt}{Fluid\_mesh\_pt}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-Macro\+Element\+Node\+Update\+Refineable\+Quarter\+Circle\+Sector\+Mesh$<$ELEMENT$>$$\ast$ \mbox{\hyperlink{classOscRingNStProblem}{Osc\+Ring\+NSt\+Problem}}$<$ ELEMENT $>$\+::Fluid\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+Macro\+Element\+Node\+Update\+Refineable\+Quarter\+Circle\+Sector\+Mesh$<$ELEMENT$>$$\ast$ \mbox{\hyperlink{classOscRingNStProblem}{Osc\+Ring\+NSt\+Problem}}$<$ ELEMENT $>$\+::\+Fluid\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -605,7 +607,7 @@ Definition at line \mbox{\hyperlink{osc__ring__macro_8cc_source_l00185}{185}} of
 \index{IC\_Fct\_pt@{IC\_Fct\_pt}!OscRingNStProblem$<$ ELEMENT $>$@{OscRingNStProblem$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{IC\_Fct\_pt}{IC\_Fct\_pt}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-Finite\+Element\+::\+Unsteady\+Exact\+Solution\+Fct\+Pt \mbox{\hyperlink{classOscRingNStProblem}{Osc\+Ring\+NSt\+Problem}}$<$ ELEMENT $>$\+::IC\+\_\+\+Fct\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+Finite\+Element\+::\+Unsteady\+Exact\+Solution\+Fct\+Pt \mbox{\hyperlink{classOscRingNStProblem}{Osc\+Ring\+NSt\+Problem}}$<$ ELEMENT $>$\+::\+IC\+\_\+\+Fct\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -620,7 +622,7 @@ Definition at line \mbox{\hyperlink{osc__ring__alg_8cc_source_l00180}{180}} of f
 \index{Sarah\_veloc\_trace\_node\_pt@{Sarah\_veloc\_trace\_node\_pt}!OscRingNStProblem$<$ ELEMENT $>$@{OscRingNStProblem$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Sarah\_veloc\_trace\_node\_pt}{Sarah\_veloc\_trace\_node\_pt}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-Node $\ast$ \mbox{\hyperlink{classOscRingNStProblem}{Osc\+Ring\+NSt\+Problem}}$<$ ELEMENT $>$\+::Sarah\+\_\+veloc\+\_\+trace\+\_\+node\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+Node $\ast$ \mbox{\hyperlink{classOscRingNStProblem}{Osc\+Ring\+NSt\+Problem}}$<$ ELEMENT $>$\+::\+Sarah\+\_\+veloc\+\_\+trace\+\_\+node\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -639,7 +641,7 @@ Referenced by \mbox{\hyperlink{osc__ring__alg_8cc_source_l00209}{Osc\+Ring\+NSt\
 \index{Trace\_file@{Trace\_file}!OscRingNStProblem$<$ ELEMENT $>$@{OscRingNStProblem$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Trace\_file}{Trace\_file}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-ofstream \mbox{\hyperlink{classOscRingNStProblem}{Osc\+Ring\+NSt\+Problem}}$<$ ELEMENT $>$\+::Trace\+\_\+file\hspace{0.3cm}{\ttfamily [private]}}
+ofstream \mbox{\hyperlink{classOscRingNStProblem}{Osc\+Ring\+NSt\+Problem}}$<$ ELEMENT $>$\+::\+Trace\+\_\+file\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -654,7 +656,7 @@ Definition at line \mbox{\hyperlink{osc__ring__alg_8cc_source_l00192}{192}} of f
 \index{Veloc\_trace\_node\_pt@{Veloc\_trace\_node\_pt}!OscRingNStProblem$<$ ELEMENT $>$@{OscRingNStProblem$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Veloc\_trace\_node\_pt}{Veloc\_trace\_node\_pt}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-Node $\ast$ \mbox{\hyperlink{classOscRingNStProblem}{Osc\+Ring\+NSt\+Problem}}$<$ ELEMENT $>$\+::Veloc\+\_\+trace\+\_\+node\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+Node $\ast$ \mbox{\hyperlink{classOscRingNStProblem}{Osc\+Ring\+NSt\+Problem}}$<$ ELEMENT $>$\+::\+Veloc\+\_\+trace\+\_\+node\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -673,7 +675,7 @@ Referenced by \mbox{\hyperlink{osc__ring__alg_8cc_source_l00209}{Osc\+Ring\+NSt\
 \index{Wall\_mesh\_pt@{Wall\_mesh\_pt}!OscRingNStProblem$<$ ELEMENT $>$@{OscRingNStProblem$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Wall\_mesh\_pt}{Wall\_mesh\_pt}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-Mesh $\ast$ \mbox{\hyperlink{classOscRingNStProblem}{Osc\+Ring\+NSt\+Problem}}$<$ ELEMENT $>$\+::Wall\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+Mesh $\ast$ \mbox{\hyperlink{classOscRingNStProblem}{Osc\+Ring\+NSt\+Problem}}$<$ ELEMENT $>$\+::\+Wall\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -692,7 +694,7 @@ Referenced by \mbox{\hyperlink{osc__ring__alg_8cc_source_l00209}{Osc\+Ring\+NSt\
 \index{Wall\_pt@{Wall\_pt}!OscRingNStProblem$<$ ELEMENT $>$@{OscRingNStProblem$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Wall\_pt}{Wall\_pt}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-Geom\+Object $\ast$ \mbox{\hyperlink{classOscRingNStProblem}{Osc\+Ring\+NSt\+Problem}}$<$ ELEMENT $>$\+::Wall\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+Geom\+Object $\ast$ \mbox{\hyperlink{classOscRingNStProblem}{Osc\+Ring\+NSt\+Problem}}$<$ ELEMENT $>$\+::\+Wall\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

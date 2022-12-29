@@ -50,28 +50,28 @@ class oomph\+::\+Quarter\+Circle\+Sector\+Mesh$<$ ELEMENT $>$}
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{                     -\/-\/-\/\_\_\_}
-\DoxyCodeLine{                    |      -\/-\/-\/\_\_\_\_}
-\DoxyCodeLine{                    |              -\/   BOUNDARY 1}
-\DoxyCodeLine{                    |               /}
-\DoxyCodeLine{                    |     [2]      /  |}
-\DoxyCodeLine{                    |             /     |}
-\DoxyCodeLine{                    | N          /        |}
-\DoxyCodeLine{                    | |\_ E      /          |}
-\DoxyCodeLine{     BOUNDARY 2     |-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/           |}
-\DoxyCodeLine{                    |          |    [1]    |}
-\DoxyCodeLine{                    |   [0]    |           |  \string^}
-\DoxyCodeLine{                    |          |           | / \(\backslash\)  direction of}
-\DoxyCodeLine{                    | N        |    N      |  |   Lagrangian}
-\DoxyCodeLine{                    | |\_ E     |    |\_ E   |  |   coordinate}
-\DoxyCodeLine{                    |\_\_\_\_\_\_\_\_\_\_|\_\_\_\_\_\_\_\_\_\_\_|  |   along wall GeomObject}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/-\/-\/\_\_\_}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ \ \ \ \ \ -\/-\/-\/\_\_\_\_}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ \ \ BOUNDARY\ 1}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ /}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ \ \ \ \ [2]\ \ \ \ \ \ /\ \ |}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ \ \ \ \ \ \ \ \ \ \ \ \ /\ \ \ \ \ |}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ N\ \ \ \ \ \ \ \ \ \ /\ \ \ \ \ \ \ \ |}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ |\_\ E\ \ \ \ \ \ /\ \ \ \ \ \ \ \ \ \ |}
+\DoxyCodeLine{\ \ \ \ \ BOUNDARY\ 2\ \ \ \ \ |-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ \ \ \ \ \ \ \ \ \ \ |}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ \ \ \ \ \ \ \ \ \ |\ \ \ \ [1]\ \ \ \ |}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ \ \ [0]\ \ \ \ |\ \ \ \ \ \ \ \ \ \ \ |\ \ \string^}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ \ \ \ \ \ \ \ \ \ |\ \ \ \ \ \ \ \ \ \ \ |\ /\ \(\backslash\)\ \ direction\ of}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ N\ \ \ \ \ \ \ \ |\ \ \ \ N\ \ \ \ \ \ |\ \ |\ \ \ Lagrangian}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ |\_\ E\ \ \ \ \ |\ \ \ \ |\_\ E\ \ \ |\ \ |\ \ \ coordinate}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\_\_\_\_\_\_\_\_\_\_|\_\_\_\_\_\_\_\_\_\_\_|\ \ |\ \ \ along\ wall\ GeomObject}
 \DoxyCodeLine{}
-\DoxyCodeLine{                         BOUNDARY 0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BOUNDARY\ 0}
 \DoxyCodeLine{}
-\DoxyCodeLine{Within the elements (MacroElements), the local coordinates}
-\DoxyCodeLine{are such that the (E)astern direction coincides with the positive}
-\DoxyCodeLine{s\_0 direction,  \textcolor{keywordflow}{while} the (N)orther direction coincides with the positive}
-\DoxyCodeLine{s\_1 direction.}
+\DoxyCodeLine{Within\ the\ elements\ (MacroElements),\ the\ local\ coordinates}
+\DoxyCodeLine{are\ such\ that\ the\ (E)astern\ direction\ coincides\ with\ the\ positive}
+\DoxyCodeLine{s\_0\ direction,\ \ \textcolor{keywordflow}{while}\ the\ (N)orther\ direction\ coincides\ with\ the\ positive}
+\DoxyCodeLine{s\_1\ direction.}
 
 \end{DoxyCode}
 
@@ -88,7 +88,7 @@ Definition at line \mbox{\hyperlink{quarter__circle__sector__mesh_8template_8h_s
 \index{QuarterCircleSectorMesh@{QuarterCircleSectorMesh}!oomph::QuarterCircleSectorMesh$<$ ELEMENT $>$@{oomph::QuarterCircleSectorMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{QuarterCircleSectorMesh()}{QuarterCircleSectorMesh()}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-\mbox{\hyperlink{classoomph_1_1QuarterCircleSectorMesh}{oomph\+::\+Quarter\+Circle\+Sector\+Mesh}}$<$ ELEMENT $>$\+::\mbox{\hyperlink{classoomph_1_1QuarterCircleSectorMesh}{Quarter\+Circle\+Sector\+Mesh}} (\begin{DoxyParamCaption}\item[{Geom\+Object $\ast$}]{wall\+\_\+pt,  }\item[{const double \&}]{xi\+\_\+lo,  }\item[{const double \&}]{fract\+\_\+mid,  }\item[{const double \&}]{xi\+\_\+hi,  }\item[{Time\+Stepper $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&Mesh\+:\+:Default\+\_\+TimeStepper} }\end{DoxyParamCaption})}
+\mbox{\hyperlink{classoomph_1_1QuarterCircleSectorMesh}{oomph\+::\+Quarter\+Circle\+Sector\+Mesh}}$<$ ELEMENT $>$\+::\+Quarter\+Circle\+Sector\+Mesh (\begin{DoxyParamCaption}\item[{Geom\+Object $\ast$}]{wall\+\_\+pt,  }\item[{const double \&}]{xi\+\_\+lo,  }\item[{const double \&}]{fract\+\_\+mid,  }\item[{const double \&}]{xi\+\_\+hi,  }\item[{Time\+Stepper $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&Mesh\+:\+:Default\+\_\+TimeStepper} }\end{DoxyParamCaption})}
 
 
 
@@ -193,7 +193,7 @@ Referenced by \mbox{\hyperlink{quarter__circle__sector__mesh_8template_8h_source
 \index{Domain\_pt@{Domain\_pt}!oomph::QuarterCircleSectorMesh$<$ ELEMENT $>$@{oomph::QuarterCircleSectorMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Domain\_pt}{Domain\_pt}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-\mbox{\hyperlink{classoomph_1_1QuarterCircleSectorDomain}{Quarter\+Circle\+Sector\+Domain}}$\ast$ \mbox{\hyperlink{classoomph_1_1QuarterCircleSectorMesh}{oomph\+::\+Quarter\+Circle\+Sector\+Mesh}}$<$ ELEMENT $>$\+::Domain\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+\mbox{\hyperlink{classoomph_1_1QuarterCircleSectorDomain}{Quarter\+Circle\+Sector\+Domain}}$\ast$ \mbox{\hyperlink{classoomph_1_1QuarterCircleSectorMesh}{oomph\+::\+Quarter\+Circle\+Sector\+Mesh}}$<$ ELEMENT $>$\+::\+Domain\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -212,7 +212,7 @@ Referenced by \mbox{\hyperlink{quarter__circle__sector__mesh_8template_8h_source
 \index{Fract\_mid@{Fract\_mid}!oomph::QuarterCircleSectorMesh$<$ ELEMENT $>$@{oomph::QuarterCircleSectorMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Fract\_mid}{Fract\_mid}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-double \mbox{\hyperlink{classoomph_1_1QuarterCircleSectorMesh}{oomph\+::\+Quarter\+Circle\+Sector\+Mesh}}$<$ ELEMENT $>$\+::Fract\+\_\+mid\hspace{0.3cm}{\ttfamily [protected]}}
+double \mbox{\hyperlink{classoomph_1_1QuarterCircleSectorMesh}{oomph\+::\+Quarter\+Circle\+Sector\+Mesh}}$<$ ELEMENT $>$\+::\+Fract\+\_\+mid\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -231,7 +231,7 @@ Referenced by \mbox{\hyperlink{quarter__circle__sector__mesh_8template_8cc_sourc
 \index{Wall\_pt@{Wall\_pt}!oomph::QuarterCircleSectorMesh$<$ ELEMENT $>$@{oomph::QuarterCircleSectorMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Wall\_pt}{Wall\_pt}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-Geom\+Object$\ast$ \mbox{\hyperlink{classoomph_1_1QuarterCircleSectorMesh}{oomph\+::\+Quarter\+Circle\+Sector\+Mesh}}$<$ ELEMENT $>$\+::Wall\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+Geom\+Object$\ast$ \mbox{\hyperlink{classoomph_1_1QuarterCircleSectorMesh}{oomph\+::\+Quarter\+Circle\+Sector\+Mesh}}$<$ ELEMENT $>$\+::\+Wall\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -250,7 +250,7 @@ Referenced by \mbox{\hyperlink{quarter__circle__sector__mesh_8template_8h_source
 \index{Xi\_hi@{Xi\_hi}!oomph::QuarterCircleSectorMesh$<$ ELEMENT $>$@{oomph::QuarterCircleSectorMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Xi\_hi}{Xi\_hi}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-double \mbox{\hyperlink{classoomph_1_1QuarterCircleSectorMesh}{oomph\+::\+Quarter\+Circle\+Sector\+Mesh}}$<$ ELEMENT $>$\+::Xi\+\_\+hi\hspace{0.3cm}{\ttfamily [protected]}}
+double \mbox{\hyperlink{classoomph_1_1QuarterCircleSectorMesh}{oomph\+::\+Quarter\+Circle\+Sector\+Mesh}}$<$ ELEMENT $>$\+::\+Xi\+\_\+hi\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -269,7 +269,7 @@ Referenced by \mbox{\hyperlink{quarter__circle__sector__mesh_8template_8cc_sourc
 \index{Xi\_lo@{Xi\_lo}!oomph::QuarterCircleSectorMesh$<$ ELEMENT $>$@{oomph::QuarterCircleSectorMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Xi\_lo}{Xi\_lo}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-double \mbox{\hyperlink{classoomph_1_1QuarterCircleSectorMesh}{oomph\+::\+Quarter\+Circle\+Sector\+Mesh}}$<$ ELEMENT $>$\+::Xi\+\_\+lo\hspace{0.3cm}{\ttfamily [protected]}}
+double \mbox{\hyperlink{classoomph_1_1QuarterCircleSectorMesh}{oomph\+::\+Quarter\+Circle\+Sector\+Mesh}}$<$ ELEMENT $>$\+::\+Xi\+\_\+lo\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 

@@ -48,6 +48,66 @@ void \mbox{\hyperlink{classoomph_1_1TriangleMeshPolygon_a359ed1b0c4a0dfd06572207
 \begin{DoxyCompactList}\small\item\em Set the polygon to be fixed. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1TriangleMeshPolygon_a850096fb1d02794a3103102341db4ff8}{set\+\_\+unfixed}} ()
 \begin{DoxyCompactList}\small\item\em Set the polygon to be allowed to move (default) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1TriangleMeshClosedCurve}{oomph\+::\+Triangle\+Mesh\+Closed\+Curve}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1TriangleMeshClosedCurve_a386426ae1bbb2092eabeb33508c03850}{Triangle\+Mesh\+Closed\+Curve}} (const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection}{Triangle\+Mesh\+Curve\+Section}} $\ast$ $>$ \&\mbox{\hyperlink{classoomph_1_1TriangleMeshCurve_a5117e31d2e1e658154e58b371db37001}{curve\+\_\+section\+\_\+pt}}, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&internal\+\_\+point\+\_\+pt=\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$(0), const bool \&\mbox{\hyperlink{classoomph_1_1TriangleMeshClosedCurve_a5d48fa39b4cde1ba1bdba129a1587f2f}{is\+\_\+internal\+\_\+point\+\_\+fixed}}=false)
+\begin{DoxyCompactList}\small\item\em Constructor prototype. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1TriangleMeshClosedCurve_adfdc8f86bd3cddd2c126acae7385a3af}{$\sim$\+Triangle\+Mesh\+Closed\+Curve}} ()
+\begin{DoxyCompactList}\small\item\em Empty destructor. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TriangleMeshClosedCurve_a439e4085f7e220364bbe9bc8040ec72f}{nvertices}} () const
+\begin{DoxyCompactList}\small\item\em Number of vertices. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TriangleMeshClosedCurve_a6d8c26d0ecfaf5abff2f68fedf158612}{nsegments}} () const
+\begin{DoxyCompactList}\small\item\em Total number of segments. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshClosedCurve_a246d71ca0cb2dbc9d2c9ad6976f84ba6}{output}} (std\+::ostream \&outfile, const unsigned \&n\+\_\+sample=50)
+\begin{DoxyCompactList}\small\item\em Output each sub-\/boundary at n\+\_\+sample (default\+: 50) points. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \mbox{\hyperlink{classoomph_1_1TriangleMeshClosedCurve_a620892c10a5f2e827b43246bbfe84d47}{internal\+\_\+point}} () const
+\begin{DoxyCompactList}\small\item\em Coordinates of the internal point. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \& \mbox{\hyperlink{classoomph_1_1TriangleMeshClosedCurve_a512129755c4e86545856d0c2c25e6dcb}{internal\+\_\+point}} ()
+\begin{DoxyCompactList}\small\item\em Coordinates of the internal point. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshClosedCurve_ac1fe434733d736fba44e580b35dadd10}{fix\+\_\+internal\+\_\+point}} ()
+\begin{DoxyCompactList}\small\item\em Fix the internal point (i.\+e. do not allow our automatic machinery to update it) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshClosedCurve_a6e05f2fb46166a64f00e5a3a6d7d7a0f}{unfix\+\_\+internal\+\_\+point}} ()
+\begin{DoxyCompactList}\small\item\em Unfix the internal point (i.\+e. allow our automatic machinery to update it) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1TriangleMeshClosedCurve_a5d48fa39b4cde1ba1bdba129a1587f2f}{is\+\_\+internal\+\_\+point\+\_\+fixed}} () const
+\begin{DoxyCompactList}\small\item\em Test whether the internal point is fixed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1TriangleMeshCurve}{oomph\+::\+Triangle\+Mesh\+Curve}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1TriangleMeshCurve_a7cdea154c00eeb59e0bd06589796ba28}{Triangle\+Mesh\+Curve}} (const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection}{Triangle\+Mesh\+Curve\+Section}} $\ast$ $>$ \&\mbox{\hyperlink{classoomph_1_1TriangleMeshCurve_a5117e31d2e1e658154e58b371db37001}{curve\+\_\+section\+\_\+pt}})
+\begin{DoxyCompactList}\small\item\em Empty constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1TriangleMeshCurve_aa7fc18e6612c6f82775c3320175acb45}{$\sim$\+Triangle\+Mesh\+Curve}} ()
+\begin{DoxyCompactList}\small\item\em Empty destructor. \end{DoxyCompactList}\item 
+virtual unsigned \mbox{\hyperlink{classoomph_1_1TriangleMeshCurve_acf002aab11af44361b39729d067efbe2}{nvertices}} () const =0
+\begin{DoxyCompactList}\small\item\em Number of vertices. \end{DoxyCompactList}\item 
+virtual unsigned \mbox{\hyperlink{classoomph_1_1TriangleMeshCurve_abb1f60baf8d94f54f409ae51417e2568}{nsegments}} () const =0
+\begin{DoxyCompactList}\small\item\em Total number of segments. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TriangleMeshCurve_ad5094b69c9f72db4b079d71c3c9f1ea8}{max\+\_\+boundary\+\_\+id}} ()
+\begin{DoxyCompactList}\small\item\em Return max boundary id of associated curves. \end{DoxyCompactList}\item 
+virtual unsigned \mbox{\hyperlink{classoomph_1_1TriangleMeshCurve_af0b316414dd4a848b8bdfe314e5200ea}{ncurve\+\_\+section}} () const
+\begin{DoxyCompactList}\small\item\em Number of constituent curves. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurve_aa5ff31ffc3b930d6e342d3f73d37f5c9}{enable\+\_\+polyline\+\_\+refinement}} (const double \&tolerance=0.\+08)
+\begin{DoxyCompactList}\small\item\em Enable refinement of polylines to create a better representation of curvilinear boundaries (e.\+g. in free-\/surface problems). See tutorial for interpretation of the optional argument which specifies the refinement tolerance. It defaults to 0.\+08 and the smaller the number the finer the surface representation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurve_a161683c0c65fa9be9495f1b22a7a2500}{set\+\_\+polyline\+\_\+refinement\+\_\+tolerance}} (const double \&tolerance)
+\begin{DoxyCompactList}\small\item\em Set tolerance for refinement of polylines to create a better representation of curvilinear boundaries (e.\+g. in free-\/surface problems). See tutorial for interpretation of the refinement tolerance. (The smaller the number the finer the surface representation). If set to a negative value, we\textquotesingle{}re switching off refinement -- equivalent to calling \mbox{\hyperlink{classoomph_1_1TriangleMeshCurve_a840a3a0c871907660d4ebe571cf36960}{disable\+\_\+polyline\+\_\+refinement()}} \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1TriangleMeshCurve_acca896e38e84ed0f7431f21572880781}{polyline\+\_\+refinement\+\_\+tolerance}} ()
+\begin{DoxyCompactList}\small\item\em Get tolerance for refinement of polylines to create a better representation of curvilinear boundaries (e.\+g. in free-\/surface problems). See tutorial for interpretation. If it\textquotesingle{}s negative refinement is disabled. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurve_a840a3a0c871907660d4ebe571cf36960}{disable\+\_\+polyline\+\_\+refinement}} ()
+\begin{DoxyCompactList}\small\item\em Disable refinement of polylines. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurve_ad43caa6186da5d77772dc43521d2fad5}{enable\+\_\+polyline\+\_\+unrefinement}} (const double \&tolerance=0.\+04)
+\begin{DoxyCompactList}\small\item\em Enable unrefinement of polylines to avoid unnecessarily large numbers of elements on of curvilinear boundaries (e.\+g. in free-\/surface problems). See tutorial for interpretation of the optional argument which specifies the unrefinement tolerance. It defaults to 0.\+04 and the larger the number the more agressive we are when removing unnecessary vertices on gently curved polylines. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurve_a2174126b383c657bf7c7bc24028844bd}{set\+\_\+polyline\+\_\+unrefinement\+\_\+tolerance}} (const double \&tolerance)
+\begin{DoxyCompactList}\small\item\em Set tolerance for unrefinement of polylines to avoid unnecessarily large numbers of elements on of curvilinear boundaries (e.\+g. in free-\/surface problems). See tutorial for interpretation of the optional argument which specifies the unrefinement tolerance. It defaults to 0.\+04 and the larger the number the more agressive we are when removing unnecessary vertices on gently curved polylines. If set to a negative value, we\textquotesingle{}re switching off unrefinement -- equivalent to calling \mbox{\hyperlink{classoomph_1_1TriangleMeshCurve_a43036d1d42da58555ebe9b9ad2036a9c}{disable\+\_\+polyline\+\_\+unrefinement()}} \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1TriangleMeshCurve_a9c134821bab203824f06994db321a840}{polyline\+\_\+unrefinement\+\_\+tolerance}} ()
+\begin{DoxyCompactList}\small\item\em Get tolerance for unrefinement of polylines to create a better representation of curvilinear boundaries (e.\+g. in free-\/surface problems). See tutorial for interpretation. If it\textquotesingle{}s negative unrefinement is disabled. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurve_a43036d1d42da58555ebe9b9ad2036a9c}{disable\+\_\+polyline\+\_\+unrefinement}} ()
+\begin{DoxyCompactList}\small\item\em Disable unrefinement of polylines. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1TriangleMeshCurve_a7d40afc7e879fde0319b153a141915df}{output}} (std\+::ostream \&outfile, const unsigned \&n\+\_\+sample=50)=0
+\begin{DoxyCompactList}\small\item\em Output each sub-\/boundary at n\+\_\+sample (default\+: 50) points. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection}{Triangle\+Mesh\+Curve\+Section}} $\ast$ \mbox{\hyperlink{classoomph_1_1TriangleMeshCurve_a5117e31d2e1e658154e58b371db37001}{curve\+\_\+section\+\_\+pt}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Pointer to i-\/th constituent curve section. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection}{Triangle\+Mesh\+Curve\+Section}} $\ast$\& \mbox{\hyperlink{classoomph_1_1TriangleMeshCurve_aed6d972fa047028a7ba713e3d472ae20}{curve\+\_\+section\+\_\+pt}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})
+\begin{DoxyCompactList}\small\item\em Pointer to i-\/th constituent curve section. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -55,6 +115,18 @@ bool \mbox{\hyperlink{classoomph_1_1TriangleMeshPolygon_ad5f0494a9cda7d7e122eacb
 \begin{DoxyCompactList}\small\item\em Is re-\/distribution of polyline segments between different boundaries during adaptation enabled? (Default\+: false) \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classoomph_1_1TriangleMeshPolygon_a703de438e3b14d533433833b7d0aea1a}{Can\+\_\+update\+\_\+configuration}}
 \begin{DoxyCompactList}\small\item\em Boolean flag to indicate whether the polygon can update its own reference configuration after it has moved i.\+e. if it is upgraded to a rigid body rather than being a free surface (default false) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1TriangleMeshClosedCurve}{oomph\+::\+Triangle\+Mesh\+Closed\+Curve}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \mbox{\hyperlink{classoomph_1_1TriangleMeshClosedCurve_a4f54902fa364f654bb9d88c442b2caba}{Internal\+\_\+point\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of vertex coordinates. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1TriangleMeshClosedCurve_a66151b7e98cf4871932a6ede46b02e55}{Is\+\_\+internal\+\_\+point\+\_\+fixed}}
+\begin{DoxyCompactList}\small\item\em Indicate whether the internal point should be updated automatically. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1TriangleMeshCurve}{oomph\+::\+Triangle\+Mesh\+Curve}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1TriangleMeshCurveSection}{Triangle\+Mesh\+Curve\+Section}} $\ast$ $>$ \mbox{\hyperlink{classoomph_1_1TriangleMeshCurve_a5834ebf68c639d6d2b2b8260da5270fe}{Curve\+\_\+section\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of curve sections. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 

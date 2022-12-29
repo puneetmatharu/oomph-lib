@@ -32,6 +32,14 @@ as opposed to \mbox{[}a0 (on p0) a1\mbox{]} (on p0) \mbox{[}b0 (on p1) b1\mbox{]
 
 Note (1)\+: The out\+\_\+distribution may not be uniformly distributed even if the in\+\_\+distributions are uniform distributions. Try this out with two distributions of global rows 3 and 5, uniformly distributed across two processors. Compare this against a distribution of global row 8 distributed across two processors.
 
+Note (2)\+: There is no equivalent function which takes a \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} objects (as opposed to pointers), there should not be one since we do not want to invoke the assignment operator when creating the \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} objects.
+
+then the out\+\_\+distribution is \mbox{[}a0 (on p0) b0\mbox{]} (on p0) \mbox{[}a1 (on p1) b1\mbox{]} (on p1),
+
+as opposed to \mbox{[}a0 (on p0) a1\mbox{]} (on p0) \mbox{[}b0 (on p1) b1\mbox{]} (on p1).
+
+Note (1)\+: The out\+\_\+distribution may not be uniformly distributed even if the in\+\_\+distributions are uniform distributions. Try this out with two distributions of global rows 3 and 5, uniformly distributed across two processors. Compare this against a distribution of global row 8 distributed across two processors.
+
 Note (2)\+: There is no equivalent function which takes a \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} objects (as opposed to pointers), there should not be one since we do not want to invoke the assignment operator when creating the \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} objects. 
 
 Definition at line \mbox{\hyperlink{linear__algebra__distribution_8cc_source_l00367}{367}} of file \mbox{\hyperlink{linear__algebra__distribution_8cc_source}{linear\+\_\+algebra\+\_\+distribution.\+cc}}.

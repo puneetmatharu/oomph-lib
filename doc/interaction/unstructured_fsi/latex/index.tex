@@ -18,11 +18,15 @@ The figure below shows a sketch of the problem. A 2D channel is partly obstructe
 \end{DoxyImage}
 
 
-As usual, we solve the problem in non-\/dimensional form. For this purpose we non-\/dimensionalise all lengths on some reference length $ {\cal L} $ and use the average inflow velocity, $ {\cal U}$, to non-\/dimensionalise the velocities in the Navier-\/\+Stokes equations. As discussed in the \href{../../../navier_stokes/unstructured_fluid/html/index.html\#reynolds}{\texttt{ single-\/physics fluids tutorial,}} the Reynolds number of the flow is then given by \[ Re = \frac{\rho {\cal U} {\cal L}}{\mu} \ , \] where $ \rho $ and $ \mu $ are the fluid density and viscosity, respectively. {\ttfamily oomph-\/lib\textquotesingle{}s} Navier Stokes elements non-\/dimensionalise the fluid stresses, and in particular the pressure, on the viscous scale, $ \mu {\cal U}/{\cal L} $.
+As usual, we solve the problem in non-\/dimensional form. For this purpose we non-\/dimensionalise all lengths on some reference length $ {\cal L} $ and use the average inflow velocity, $ {\cal U}$, to non-\/dimensionalise the velocities in the Navier-\/\+Stokes equations. As discussed in the \href{../../../navier_stokes/unstructured_fluid/html/index.html\#reynolds}{\texttt{ single-\/physics fluids tutorial,}} the Reynolds number of the flow is then given by  \[
+Re = \frac{\rho {\cal U} {\cal L}}{\mu} \ ,
+\] where $ \rho $ and $ \mu $ are the fluid density and viscosity, respectively. {\ttfamily oomph-\/lib\textquotesingle{}s} Navier Stokes elements non-\/dimensionalise the fluid stresses, and in particular the pressure, on the viscous scale, $ \mu {\cal U}/{\cal L} $.
 
 We assume that the solid\textquotesingle{}s constitutive equation is given by {\ttfamily oomph-\/lib\textquotesingle{}s} generalised Hookean constitutive law and non-\/dimensionalise the solid-\/mechanics stresses and tractions with Young\textquotesingle{}s modulus $ E $.
 
-The FSI interaction parameter $ Q $ which represents the ratio of the (viscous) fluid stress scale to the reference stress used to non-\/dimensionalise the solid stresses is therefore given by \[ Q = \frac{\mu {\cal U}}{{\cal L} E} \ . \]
+The FSI interaction parameter $ Q $ which represents the ratio of the (viscous) fluid stress scale to the reference stress used to non-\/dimensionalise the solid stresses is therefore given by  \[
+Q = \frac{\mu {\cal U}}{{\cal L} E} \ .
+\]
 
 \DoxyHorRuler{0}
  \DoxyHorRuler{0}
@@ -78,15 +82,15 @@ As usual we define the various problem parameters in a global namespace. We defi
  
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\textcolor{comment}{//==start\_of\_namespace==============================}}
-\DoxyCodeLine{\textcolor{comment}{/// Namespace for physical parameters}}
+\DoxyCodeLine{\textcolor{comment}{///\ Namespace\ for\ physical\ parameters}}
 \DoxyCodeLine{\textcolor{comment}{//==================================================}}
-\DoxyCodeLine{\textcolor{keyword}{namespace }\mbox{\hyperlink{namespaceGlobal__Parameters}{Global\_Parameters}}}
+\DoxyCodeLine{\textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceGlobal__Parameters}{Global\_Parameters}}}
 \DoxyCodeLine{\{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{ /// Reynolds number}}
-\DoxyCodeLine{\textcolor{comment}{} \textcolor{keywordtype}{double} \mbox{\hyperlink{namespaceGlobal__Parameters_a9d72e94a9305c6a310940a6a427ebe06}{Re}}=0.0; }
+\DoxyCodeLine{\textcolor{comment}{\ ///\ Reynolds\ number}}
+\DoxyCodeLine{\textcolor{comment}{}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespaceGlobal__Parameters_a9d72e94a9305c6a310940a6a427ebe06}{Re}}=0.0;\ }
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{ /// FSI parameter}}
-\DoxyCodeLine{\textcolor{comment}{} \textcolor{keywordtype}{double} \mbox{\hyperlink{namespaceGlobal__Parameters_a7814fddf663e56168174a42d2cd6b4c1}{Q}}=0.0;}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ FSI\ parameter}}
+\DoxyCodeLine{\textcolor{comment}{}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespaceGlobal__Parameters_a7814fddf663e56168174a42d2cd6b4c1}{Q}}=0.0;}
 
 \end{DoxyCodeInclude}
  We define the gravitational body force that acts (only!) on the solid ~\newline
@@ -95,17 +99,17 @@ As usual we define the various problem parameters in a global namespace. We defi
 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{ /// Non-\/dim gravity}}
-\DoxyCodeLine{\textcolor{comment}{} \textcolor{keywordtype}{double} \mbox{\hyperlink{namespaceGlobal__Parameters_a335000b5db4206486a116ae0468d2d0c}{Gravity}}=0.0;}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ Non-\/dim\ gravity}}
+\DoxyCodeLine{\textcolor{comment}{}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespaceGlobal__Parameters_a335000b5db4206486a116ae0468d2d0c}{Gravity}}=0.0;}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{ /// Non-\/dimensional gravity as body force}}
-\DoxyCodeLine{\textcolor{comment}{} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespaceGlobal__Parameters_a200109847bf4cc26da4d00e8d68d569e}{gravity}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& time, }
-\DoxyCodeLine{              \textcolor{keyword}{const} Vector<double> \&xi, }
-\DoxyCodeLine{              Vector<double> \&b)}
-\DoxyCodeLine{ \{}
-\DoxyCodeLine{  b[0]=0.0;}
-\DoxyCodeLine{  b[1]=-\/\mbox{\hyperlink{namespaceGlobal__Parameters_a335000b5db4206486a116ae0468d2d0c}{Gravity}};}
-\DoxyCodeLine{ \}}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ Non-\/dimensional\ gravity\ as\ body\ force}}
+\DoxyCodeLine{\textcolor{comment}{}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceGlobal__Parameters_a200109847bf4cc26da4d00e8d68d569e}{gravity}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ time,\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Vector<double>\ \&xi,\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector<double>\ \&b)}
+\DoxyCodeLine{\ \{}
+\DoxyCodeLine{\ \ b[0]=0.0;}
+\DoxyCodeLine{\ \ b[1]=-\/\mbox{\hyperlink{namespaceGlobal__Parameters_a335000b5db4206486a116ae0468d2d0c}{Gravity}};}
+\DoxyCodeLine{\ \}}
 
 \end{DoxyCodeInclude}
  and provide a pointer to the constitutive equation for the solid. For simplicity, this constitutive equation will also be used for the (pseudo-\/)solid elements that determine the deformation of the fluid mesh. In general, the constitutive law used to control the deformation of the fluid mesh need not have any physical basis, it is more important that the elements do not become too deformed during the mesh motion.
@@ -113,11 +117,11 @@ As usual we define the various problem parameters in a global namespace. We defi
 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{ /// Pseudo-\/solid Poisson ratio}}
-\DoxyCodeLine{\textcolor{comment}{} \textcolor{keywordtype}{double} \mbox{\hyperlink{namespaceGlobal__Parameters_a20fccdcfa2c15ad8b951b9ada3bb1661}{Nu}}=0.3;}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ Pseudo-\/solid\ Poisson\ ratio}}
+\DoxyCodeLine{\textcolor{comment}{}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespaceGlobal__Parameters_a20fccdcfa2c15ad8b951b9ada3bb1661}{Nu}}=0.3;}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{ /// Constitutive law for the solid (and pseudo-\/solid) mechanics}}
-\DoxyCodeLine{\textcolor{comment}{} ConstitutiveLaw *\mbox{\hyperlink{namespaceGlobal__Parameters_adbd1f040f375c96fe56b3f475f7dbec2}{Constitutive\_law\_pt}}=0;}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ Constitutive\ law\ for\ the\ solid\ (and\ pseudo-\/solid)\ mechanics}}
+\DoxyCodeLine{\textcolor{comment}{}\ ConstitutiveLaw\ *\mbox{\hyperlink{namespaceGlobal__Parameters_adbd1f040f375c96fe56b3f475f7dbec2}{Constitutive\_law\_pt}}=0;}
 
 \end{DoxyCodeInclude}
  Finally, we provide a helper function that will be used to establish whether a node is located on the FSI boundary when the mesh is in its undeformed configuration. This function uses a simple \char`\"{}brute force\char`\"{} approach. It is required because currently our \href{http://en.wikipedia.org/wiki/Xfig}{\texttt{ xfig}}-\/based mesh generation procedures do not allow us to associate fractional parts of a polygonal domain boundary as belonging to different mesh boundaries. Hence, such boundaries have to be identified a posteriori in the driver code. Although similar in form, equivalent helper functions must be (re-\/)written for different domain geometries.
@@ -125,37 +129,37 @@ As usual we define the various problem parameters in a global namespace. We defi
 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{ /// Boolean to identify if node is on fsi boundary}}
-\DoxyCodeLine{\textcolor{comment}{} \textcolor{keywordtype}{bool} \mbox{\hyperlink{namespaceGlobal__Parameters_a655abf819eb3045dac883f2b7073ba22}{is\_on\_fsi\_boundary}}(Node* nod\_pt)}
-\DoxyCodeLine{ \{}
-\DoxyCodeLine{  \textcolor{keywordflow}{if} (}
-\DoxyCodeLine{   (}
-\DoxyCodeLine{    \textcolor{comment}{// Is it a boundary node?}}
-\DoxyCodeLine{    \textcolor{keyword}{dynamic\_cast<}BoundaryNodeBase*\textcolor{keyword}{>}(nod\_pt)!=0)\&\&}
-\DoxyCodeLine{   (}
-\DoxyCodeLine{    \textcolor{comment}{// Horizontal extent of main immersed obstacle}}
-\DoxyCodeLine{    (  (nod\_pt-\/>x(0)>1.6)\&\&(nod\_pt-\/>x(0)<4.75)\&\&}
-\DoxyCodeLine{       \textcolor{comment}{// Vertical extent of main immersed obstacle}}
-\DoxyCodeLine{       (nod\_pt-\/>x(1)>0.1125)\&\&(nod\_pt-\/>x(1)<2.8) ) ||}
-\DoxyCodeLine{    \textcolor{comment}{// Two nodes on the bottom wall are below y=0.3}}
-\DoxyCodeLine{    (  (nod\_pt-\/>x(1)<0.3)\&\&}
-\DoxyCodeLine{       \textcolor{comment}{// ...and bracketed in these two x-\/ranges}}
-\DoxyCodeLine{       (  ( (nod\_pt-\/>x(0)>3.0)\&\&(nod\_pt-\/>x(0)<3.1) ) ||}
-\DoxyCodeLine{          ( (nod\_pt-\/>x(0)<4.6)\&\&(nod\_pt-\/>x(0)>4.5) )   ) }
-\DoxyCodeLine{     )}
-\DoxyCodeLine{    )}
-\DoxyCodeLine{   )}
-\DoxyCodeLine{   \{}
-\DoxyCodeLine{    \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
-\DoxyCodeLine{   \}}
-\DoxyCodeLine{  \textcolor{keywordflow}{else}}
-\DoxyCodeLine{   \{}
-\DoxyCodeLine{    \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
-\DoxyCodeLine{   \}}
-\DoxyCodeLine{ \}}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ Boolean\ to\ identify\ if\ node\ is\ on\ fsi\ boundary}}
+\DoxyCodeLine{\textcolor{comment}{}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespaceGlobal__Parameters_a655abf819eb3045dac883f2b7073ba22}{is\_on\_fsi\_boundary}}(Node*\ nod\_pt)}
+\DoxyCodeLine{\ \{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{if}\ (}
+\DoxyCodeLine{\ \ \ (}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Is\ it\ a\ boundary\ node?}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{dynamic\_cast<}BoundaryNodeBase*\textcolor{keyword}{>}(nod\_pt)!=0)\&\&}
+\DoxyCodeLine{\ \ \ (}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Horizontal\ extent\ of\ main\ immersed\ obstacle}}
+\DoxyCodeLine{\ \ \ \ (\ \ (nod\_pt-\/>x(0)>1.6)\&\&(nod\_pt-\/>x(0)<4.75)\&\&}
+\DoxyCodeLine{\ \ \ \ \ \ \ \textcolor{comment}{//\ Vertical\ extent\ of\ main\ immersed\ obstacle}}
+\DoxyCodeLine{\ \ \ \ \ \ \ (nod\_pt-\/>x(1)>0.1125)\&\&(nod\_pt-\/>x(1)<2.8)\ )\ ||}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Two\ nodes\ on\ the\ bottom\ wall\ are\ below\ y=0.3}}
+\DoxyCodeLine{\ \ \ \ (\ \ (nod\_pt-\/>x(1)<0.3)\&\&}
+\DoxyCodeLine{\ \ \ \ \ \ \ \textcolor{comment}{//\ ...and\ bracketed\ in\ these\ two\ x-\/ranges}}
+\DoxyCodeLine{\ \ \ \ \ \ \ (\ \ (\ (nod\_pt-\/>x(0)>3.0)\&\&(nod\_pt-\/>x(0)<3.1)\ )\ ||}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ (\ (nod\_pt-\/>x(0)<4.6)\&\&(nod\_pt-\/>x(0)>4.5)\ )\ \ \ )\ }
+\DoxyCodeLine{\ \ \ \ \ )}
+\DoxyCodeLine{\ \ \ \ )}
+\DoxyCodeLine{\ \ \ )}
+\DoxyCodeLine{\ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\ \ \ \}}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\ \ \ \}}
+\DoxyCodeLine{\ \}}
 \DoxyCodeLine{}
 \DoxyCodeLine{}
-\DoxyCodeLine{\} \textcolor{comment}{// end\_of\_namespace}}
+\DoxyCodeLine{\}\ \textcolor{comment}{//\ end\_of\_namespace}}
 
 \end{DoxyCodeInclude}
  \DoxyHorRuler{0}
@@ -167,11 +171,11 @@ Following the procedure discussed in the corresponding \href{../../../solid/unst
 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\textcolor{comment}{//========start\_solid\_mesh=================================================}}
-\DoxyCodeLine{\textcolor{comment}{/// Triangle-\/based mesh upgraded to become a solid mesh}}
+\DoxyCodeLine{\textcolor{comment}{///\ Triangle-\/based\ mesh\ upgraded\ to\ become\ a\ solid\ mesh}}
 \DoxyCodeLine{\textcolor{comment}{//=========================================================================}}
-\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>}
-\DoxyCodeLine{\textcolor{keyword}{class }\mbox{\hyperlink{classMySolidTriangleMesh}{MySolidTriangleMesh}} : \textcolor{keyword}{public} \textcolor{keyword}{virtual} TriangleMesh<ELEMENT>, }
-\DoxyCodeLine{                          \textcolor{keyword}{public} \textcolor{keyword}{virtual} SolidMesh }
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class}\ ELEMENT>}
+\DoxyCodeLine{\textcolor{keyword}{class\ }\mbox{\hyperlink{classMySolidTriangleMesh}{MySolidTriangleMesh}}\ :\ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ TriangleMesh<ELEMENT>,\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ SolidMesh\ }
 \DoxyCodeLine{\{}
 
 \end{DoxyCodeInclude}
@@ -179,43 +183,43 @@ Following the procedure discussed in the corresponding \href{../../../solid/unst
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{ }
+\DoxyCodeLine{\ }
 \DoxyCodeLine{\textcolor{keyword}{public}:}
-\DoxyCodeLine{ \textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{ /// Constructor: }}
-\DoxyCodeLine{\textcolor{comment}{} \mbox{\hyperlink{classMySolidTriangleMesh}{MySolidTriangleMesh}}(\textcolor{keyword}{const} std::string\& node\_file\_name,}
-\DoxyCodeLine{                     \textcolor{keyword}{const} std::string\& element\_file\_name,}
-\DoxyCodeLine{                     \textcolor{keyword}{const} std::string\& poly\_file\_name,}
-\DoxyCodeLine{                     TimeStepper* time\_stepper\_pt=}
-\DoxyCodeLine{                     \&Mesh::Default\_TimeStepper) :}
-\DoxyCodeLine{  TriangleMesh<ELEMENT>(node\_file\_name,element\_file\_name,}
-\DoxyCodeLine{                        poly\_file\_name, time\_stepper\_pt)}
-\DoxyCodeLine{  \{}
-\DoxyCodeLine{   \textcolor{comment}{//Assign the Lagrangian coordinates}}
-\DoxyCodeLine{   set\_lagrangian\_nodal\_coordinates();}
+\DoxyCodeLine{\ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ Constructor:\ }}
+\DoxyCodeLine{\textcolor{comment}{}\ \mbox{\hyperlink{classMySolidTriangleMesh}{MySolidTriangleMesh}}(\textcolor{keyword}{const}\ std::string\&\ node\_file\_name,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ element\_file\_name,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ poly\_file\_name,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TimeStepper*\ time\_stepper\_pt=}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&Mesh::Default\_TimeStepper)\ :}
+\DoxyCodeLine{\ \ TriangleMesh<ELEMENT>(node\_file\_name,element\_file\_name,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ poly\_file\_name,\ time\_stepper\_pt)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//Assign\ the\ Lagrangian\ coordinates}}
+\DoxyCodeLine{\ \ \ set\_lagrangian\_nodal\_coordinates();}
 \DoxyCodeLine{}
-\DoxyCodeLine{   \textcolor{comment}{// Identify special boundaries}}
-\DoxyCodeLine{   set\_nboundary(3);}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Identify\ special\ boundaries}}
+\DoxyCodeLine{\ \ \ set\_nboundary(3);}
 \DoxyCodeLine{}
-\DoxyCodeLine{   \textcolor{keywordtype}{unsigned} n\_node=this-\/>nnode();}
-\DoxyCodeLine{   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} j=0;j<n\_node;j++)}
-\DoxyCodeLine{    \{}
-\DoxyCodeLine{     Node* nod\_pt=this-\/>node\_pt(j);}
+\DoxyCodeLine{\ \ \ \textcolor{keywordtype}{unsigned}\ n\_node=this-\/>nnode();}
+\DoxyCodeLine{\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ j=0;j<n\_node;j++)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ Node*\ nod\_pt=this-\/>node\_pt(j);}
 \DoxyCodeLine{}
-\DoxyCodeLine{     \textcolor{comment}{// Boundary 1 is lower boundary}}
-\DoxyCodeLine{     \textcolor{keywordflow}{if} (nod\_pt-\/>x(1)<0.15)}
-\DoxyCodeLine{      \{}
-\DoxyCodeLine{       this-\/>remove\_boundary\_node(0,nod\_pt);}
-\DoxyCodeLine{       this-\/>add\_boundary\_node(1,nod\_pt);}
-\DoxyCodeLine{      \}}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{comment}{//\ Boundary\ 1\ is\ lower\ boundary}}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordflow}{if}\ (nod\_pt-\/>x(1)<0.15)}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ this-\/>remove\_boundary\_node(0,nod\_pt);}
+\DoxyCodeLine{\ \ \ \ \ \ \ this-\/>add\_boundary\_node(1,nod\_pt);}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
 \DoxyCodeLine{}
-\DoxyCodeLine{     \textcolor{comment}{// Boundary 2 is FSI interface}}
-\DoxyCodeLine{     \textcolor{keywordflow}{if} (\mbox{\hyperlink{namespaceGlobal__Parameters_a655abf819eb3045dac883f2b7073ba22}{Global\_Parameters::is\_on\_fsi\_boundary}}(nod\_pt))}
-\DoxyCodeLine{      \{}
-\DoxyCodeLine{       this-\/>remove\_boundary\_node(0,nod\_pt);}
-\DoxyCodeLine{       this-\/>add\_boundary\_node(2,nod\_pt);}
-\DoxyCodeLine{      \}}
-\DoxyCodeLine{    \}\textcolor{comment}{// done boundary assignment}}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{comment}{//\ Boundary\ 2\ is\ FSI\ interface}}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{namespaceGlobal__Parameters_a655abf819eb3045dac883f2b7073ba22}{Global\_Parameters::is\_on\_fsi\_boundary}}(nod\_pt))}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ this-\/>remove\_boundary\_node(0,nod\_pt);}
+\DoxyCodeLine{\ \ \ \ \ \ \ this-\/>add\_boundary\_node(2,nod\_pt);}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}\textcolor{comment}{//\ done\ boundary\ assignment}}
 
 \end{DoxyCodeInclude}
 
@@ -225,16 +229,16 @@ Finally, we identify the elements that are located next to the newly created dom
 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{}
-\DoxyCodeLine{   \textcolor{comment}{// Identify the elements next to the newly created boundaries}}
-\DoxyCodeLine{   TriangleMesh<ELEMENT>::setup\_boundary\_element\_info();}
-\DoxyCodeLine{   }
-\DoxyCodeLine{   \textcolor{comment}{// Setup boundary coordinates for boundaries 1 and 2}}
-\DoxyCodeLine{   this-\/>\textcolor{keyword}{template} setup\_boundary\_coordinates<ELEMENT>(1);}
-\DoxyCodeLine{   this-\/>\textcolor{keyword}{template} setup\_boundary\_coordinates<ELEMENT>(2);}
-\DoxyCodeLine{  \}}
-\DoxyCodeLine{ \textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{ /// Empty Destructor}}
-\DoxyCodeLine{\textcolor{comment}{} \textcolor{keyword}{virtual} \mbox{\hyperlink{classMySolidTriangleMesh}{\string~MySolidTriangleMesh}}() \{ \}}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Identify\ the\ elements\ next\ to\ the\ newly\ created\ boundaries}}
+\DoxyCodeLine{\ \ \ TriangleMesh<ELEMENT>::setup\_boundary\_element\_info();}
+\DoxyCodeLine{\ \ \ }
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Setup\ boundary\ coordinates\ for\ boundaries\ 1\ and\ 2}}
+\DoxyCodeLine{\ \ \ this-\/>\textcolor{keyword}{template}\ setup\_boundary\_coordinates<ELEMENT>(1);}
+\DoxyCodeLine{\ \ \ this-\/>\textcolor{keyword}{template}\ setup\_boundary\_coordinates<ELEMENT>(2);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ Empty\ Destructor}}
+\DoxyCodeLine{\textcolor{comment}{}\ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classMySolidTriangleMesh}{\string~MySolidTriangleMesh}}()\ \{\ \}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\};}
 
@@ -247,26 +251,26 @@ The creation of the fluid mesh follows the same process but uses the mesh create
 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\textcolor{comment}{//======================start\_fluid\_mesh===================================}}
-\DoxyCodeLine{\textcolor{comment}{/// Triangle-\/based mesh upgraded to become a pseudo-\/solid mesh}}
+\DoxyCodeLine{\textcolor{comment}{///\ Triangle-\/based\ mesh\ upgraded\ to\ become\ a\ pseudo-\/solid\ mesh}}
 \DoxyCodeLine{\textcolor{comment}{//=========================================================================}}
-\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>}
-\DoxyCodeLine{\textcolor{keyword}{class }\mbox{\hyperlink{classFluidTriangleMesh}{FluidTriangleMesh}} : \textcolor{keyword}{public} \textcolor{keyword}{virtual} TriangleMesh<ELEMENT>,}
-\DoxyCodeLine{                          \textcolor{keyword}{public} \textcolor{keyword}{virtual} SolidMesh }
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class}\ ELEMENT>}
+\DoxyCodeLine{\textcolor{keyword}{class\ }\mbox{\hyperlink{classFluidTriangleMesh}{FluidTriangleMesh}}\ :\ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ TriangleMesh<ELEMENT>,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ SolidMesh\ }
 \DoxyCodeLine{\{}
-\DoxyCodeLine{ }
+\DoxyCodeLine{\ }
 \DoxyCodeLine{\textcolor{keyword}{public}:}
-\DoxyCodeLine{ \textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{ /// Constructor}}
-\DoxyCodeLine{\textcolor{comment}{} \mbox{\hyperlink{classFluidTriangleMesh_ab86c8fd8ee699923f5a4b199981d8c76}{FluidTriangleMesh}}(\textcolor{keyword}{const} std::string\& node\_file\_name,}
-\DoxyCodeLine{                   \textcolor{keyword}{const} std::string\& element\_file\_name,}
-\DoxyCodeLine{                   \textcolor{keyword}{const} std::string\& poly\_file\_name,}
-\DoxyCodeLine{                   TimeStepper* time\_stepper\_pt=}
-\DoxyCodeLine{                   \&Mesh::Default\_TimeStepper) :}
-\DoxyCodeLine{  TriangleMesh<ELEMENT>(node\_file\_name,element\_file\_name,}
-\DoxyCodeLine{                        poly\_file\_name, time\_stepper\_pt)}
-\DoxyCodeLine{  \{}
-\DoxyCodeLine{   \textcolor{comment}{//Assign the Lagrangian coordinates}}
-\DoxyCodeLine{   set\_lagrangian\_nodal\_coordinates();}
+\DoxyCodeLine{\ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ Constructor}}
+\DoxyCodeLine{\textcolor{comment}{}\ \mbox{\hyperlink{classFluidTriangleMesh}{FluidTriangleMesh}}(\textcolor{keyword}{const}\ std::string\&\ node\_file\_name,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ element\_file\_name,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ poly\_file\_name,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TimeStepper*\ time\_stepper\_pt=}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&Mesh::Default\_TimeStepper)\ :}
+\DoxyCodeLine{\ \ TriangleMesh<ELEMENT>(node\_file\_name,element\_file\_name,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ poly\_file\_name,\ time\_stepper\_pt)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//Assign\ the\ Lagrangian\ coordinates}}
+\DoxyCodeLine{\ \ \ set\_lagrangian\_nodal\_coordinates();}
 
 \end{DoxyCodeInclude}
  The fluid problem requires the identification of three additional boundaries\+: The inflow boundary (boundary 1), the outflow boundary (boundary 2) and the FSI boundary (boundary 3).
@@ -274,48 +278,48 @@ The creation of the fluid mesh follows the same process but uses the mesh create
 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{}
-\DoxyCodeLine{   \textcolor{comment}{// Identify special boundaries}}
-\DoxyCodeLine{   this-\/>set\_nboundary(4);}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Identify\ special\ boundaries}}
+\DoxyCodeLine{\ \ \ this-\/>set\_nboundary(4);}
 \DoxyCodeLine{}
-\DoxyCodeLine{   \textcolor{keywordtype}{unsigned} n\_node=this-\/>nnode();}
-\DoxyCodeLine{   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} j=0;j<n\_node;j++)}
-\DoxyCodeLine{    \{}
-\DoxyCodeLine{     Node* nod\_pt=this-\/>node\_pt(j);}
+\DoxyCodeLine{\ \ \ \textcolor{keywordtype}{unsigned}\ n\_node=this-\/>nnode();}
+\DoxyCodeLine{\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ j=0;j<n\_node;j++)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ Node*\ nod\_pt=this-\/>node\_pt(j);}
 \DoxyCodeLine{}
-\DoxyCodeLine{     \textcolor{comment}{// Boundary 1 is left (inflow) boundary}}
-\DoxyCodeLine{     \textcolor{keywordflow}{if} (nod\_pt-\/>x(0)<0.226)}
-\DoxyCodeLine{      \{}
-\DoxyCodeLine{       this-\/>remove\_boundary\_node(0,nod\_pt);}
-\DoxyCodeLine{       this-\/>add\_boundary\_node(1,nod\_pt);}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{comment}{//\ Boundary\ 1\ is\ left\ (inflow)\ boundary}}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordflow}{if}\ (nod\_pt-\/>x(0)<0.226)}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ this-\/>remove\_boundary\_node(0,nod\_pt);}
+\DoxyCodeLine{\ \ \ \ \ \ \ this-\/>add\_boundary\_node(1,nod\_pt);}
 \DoxyCodeLine{}
-\DoxyCodeLine{       \textcolor{comment}{// Add overlapping nodes back to boundary 0}}
-\DoxyCodeLine{       \textcolor{keywordflow}{if} (nod\_pt-\/>x(1)<0.2) this-\/>add\_boundary\_node(0,nod\_pt);}
-\DoxyCodeLine{       \textcolor{keywordflow}{if} (nod\_pt-\/>x(1)>4.06) this-\/>add\_boundary\_node(0,nod\_pt);}
-\DoxyCodeLine{      \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \textcolor{comment}{//\ Add\ overlapping\ nodes\ back\ to\ boundary\ 0}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nod\_pt-\/>x(1)<0.2)\ this-\/>add\_boundary\_node(0,nod\_pt);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nod\_pt-\/>x(1)>4.06)\ this-\/>add\_boundary\_node(0,nod\_pt);}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
 \DoxyCodeLine{}
-\DoxyCodeLine{     \textcolor{comment}{// Boundary 2 is right (outflow) boundary}}
-\DoxyCodeLine{     \textcolor{keywordflow}{if} (nod\_pt-\/>x(0)>8.28)}
-\DoxyCodeLine{      \{}
-\DoxyCodeLine{       this-\/>remove\_boundary\_node(0,nod\_pt);}
-\DoxyCodeLine{       this-\/>add\_boundary\_node(2,nod\_pt);}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{comment}{//\ Boundary\ 2\ is\ right\ (outflow)\ boundary}}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordflow}{if}\ (nod\_pt-\/>x(0)>8.28)}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ this-\/>remove\_boundary\_node(0,nod\_pt);}
+\DoxyCodeLine{\ \ \ \ \ \ \ this-\/>add\_boundary\_node(2,nod\_pt);}
 \DoxyCodeLine{}
-\DoxyCodeLine{       \textcolor{comment}{// Add overlapping nodes back to boundary 0}}
-\DoxyCodeLine{       \textcolor{keywordflow}{if} (nod\_pt-\/>x(1)<0.2) this-\/>add\_boundary\_node(0,nod\_pt);}
-\DoxyCodeLine{       \textcolor{keywordflow}{if} (nod\_pt-\/>x(1)>4.06) this-\/>add\_boundary\_node(0,nod\_pt);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \textcolor{comment}{//\ Add\ overlapping\ nodes\ back\ to\ boundary\ 0}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nod\_pt-\/>x(1)<0.2)\ this-\/>add\_boundary\_node(0,nod\_pt);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nod\_pt-\/>x(1)>4.06)\ this-\/>add\_boundary\_node(0,nod\_pt);}
 \DoxyCodeLine{}
-\DoxyCodeLine{      \}}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
 \DoxyCodeLine{}
-\DoxyCodeLine{     \textcolor{comment}{// Boundary 3 is FSI boundary}}
-\DoxyCodeLine{     \textcolor{keywordflow}{if} (\mbox{\hyperlink{namespaceGlobal__Parameters_a655abf819eb3045dac883f2b7073ba22}{Global\_Parameters::is\_on\_fsi\_boundary}}(nod\_pt))}
-\DoxyCodeLine{      \{}
-\DoxyCodeLine{       this-\/>remove\_boundary\_node(0,nod\_pt);}
-\DoxyCodeLine{       this-\/>add\_boundary\_node(3,nod\_pt);}
-\DoxyCodeLine{       }
-\DoxyCodeLine{       \textcolor{comment}{//If it's below y=0.2 it's also on boundary 0 so stick it back on}}
-\DoxyCodeLine{       \textcolor{keywordflow}{if} (nod\_pt-\/>x(1)<0.2) this-\/>add\_boundary\_node(0,nod\_pt);}
-\DoxyCodeLine{      \}}
-\DoxyCodeLine{    \}}
-\DoxyCodeLine{   TriangleMesh<ELEMENT>::setup\_boundary\_element\_info();}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{comment}{//\ Boundary\ 3\ is\ FSI\ boundary}}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{namespaceGlobal__Parameters_a655abf819eb3045dac883f2b7073ba22}{Global\_Parameters::is\_on\_fsi\_boundary}}(nod\_pt))}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ this-\/>remove\_boundary\_node(0,nod\_pt);}
+\DoxyCodeLine{\ \ \ \ \ \ \ this-\/>add\_boundary\_node(3,nod\_pt);}
+\DoxyCodeLine{\ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \textcolor{comment}{//If\ it's\ below\ y=0.2\ it's\ also\ on\ boundary\ 0\ so\ stick\ it\ back\ on}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nod\_pt-\/>x(1)<0.2)\ this-\/>add\_boundary\_node(0,nod\_pt);}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ TriangleMesh<ELEMENT>::setup\_boundary\_element\_info();}
 
 \end{DoxyCodeInclude}
  We create boundary coordinates along the three newly-\/created mesh boundaries and document the process for the FSI boundary (boundary 3). See \mbox{\hyperlink{index_go_wrong}{What can go wrong?}} for a more detailed discussion of the output created here. ~\newline
@@ -323,27 +327,27 @@ The creation of the fluid mesh follows the same process but uses the mesh create
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{   }
-\DoxyCodeLine{   \textcolor{comment}{// Open a file to doc the FaceElements that are used to}}
-\DoxyCodeLine{   \textcolor{comment}{// create the boundary coordinates. The elements must}}
-\DoxyCodeLine{   \textcolor{comment}{// form a simply-\/connected line. This may not work}}
-\DoxyCodeLine{   \textcolor{comment}{// if the mesh is too coarse so that, e.g. an element}}
-\DoxyCodeLine{   \textcolor{comment}{// that goes through the interior has endpoints that are}}
-\DoxyCodeLine{   \textcolor{comment}{// both located on the same boundary. Outputting the}}
-\DoxyCodeLine{   \textcolor{comment}{// FaceElements can help identify such cases.}}
-\DoxyCodeLine{   ofstream some\_file(\textcolor{stringliteral}{"{}RESLT/boundary\_generation\_test.dat"{}});}
-\DoxyCodeLine{   }
-\DoxyCodeLine{   \textcolor{comment}{// Setup boundary coordinates for boundaries 1, 2 and 3}}
-\DoxyCodeLine{   this-\/>\textcolor{keyword}{template} setup\_boundary\_coordinates<ELEMENT>(1);}
-\DoxyCodeLine{   this-\/>\textcolor{keyword}{template} setup\_boundary\_coordinates<ELEMENT>(2);}
-\DoxyCodeLine{   this-\/>\textcolor{keyword}{template} setup\_boundary\_coordinates<ELEMENT>(3,some\_file);}
+\DoxyCodeLine{\ \ \ }
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Open\ a\ file\ to\ doc\ the\ FaceElements\ that\ are\ used\ to}}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ create\ the\ boundary\ coordinates.\ The\ elements\ must}}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ form\ a\ simply-\/connected\ line.\ This\ may\ not\ work}}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ if\ the\ mesh\ is\ too\ coarse\ so\ that,\ e.g.\ an\ element}}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ that\ goes\ through\ the\ interior\ has\ endpoints\ that\ are}}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ both\ located\ on\ the\ same\ boundary.\ Outputting\ the}}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ FaceElements\ can\ help\ identify\ such\ cases.}}
+\DoxyCodeLine{\ \ \ ofstream\ some\_file(\textcolor{stringliteral}{"{}RESLT/boundary\_generation\_test.dat"{}});}
+\DoxyCodeLine{\ \ \ }
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Setup\ boundary\ coordinates\ for\ boundaries\ 1,\ 2\ and\ 3}}
+\DoxyCodeLine{\ \ \ this-\/>\textcolor{keyword}{template}\ setup\_boundary\_coordinates<ELEMENT>(1);}
+\DoxyCodeLine{\ \ \ this-\/>\textcolor{keyword}{template}\ setup\_boundary\_coordinates<ELEMENT>(2);}
+\DoxyCodeLine{\ \ \ this-\/>\textcolor{keyword}{template}\ setup\_boundary\_coordinates<ELEMENT>(3,some\_file);}
 \DoxyCodeLine{}
-\DoxyCodeLine{   \textcolor{comment}{// Close it again}}
-\DoxyCodeLine{   some\_file.close();}
-\DoxyCodeLine{  \}}
-\DoxyCodeLine{ \textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{ /// Empty Destructor}}
-\DoxyCodeLine{\textcolor{comment}{} \textcolor{keyword}{virtual} \mbox{\hyperlink{classFluidTriangleMesh}{\string~FluidTriangleMesh}}() \{ \}}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Close\ it\ again}}
+\DoxyCodeLine{\ \ \ some\_file.close();}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ Empty\ Destructor}}
+\DoxyCodeLine{\textcolor{comment}{}\ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classFluidTriangleMesh}{\string~FluidTriangleMesh}}()\ \{\ \}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\};}
 
@@ -358,82 +362,82 @@ We specify an output directory and instantiate the constitutive equation for the
  
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\textcolor{comment}{//==start\_of\_main======================================================}}
-\DoxyCodeLine{\textcolor{comment}{/// Driver for unstructured fsi problem}}
+\DoxyCodeLine{\textcolor{comment}{///\ Driver\ for\ unstructured\ fsi\ problem}}
 \DoxyCodeLine{\textcolor{comment}{//=====================================================================}}
-\DoxyCodeLine{\textcolor{keywordtype}{int} \mbox{\hyperlink{unstructured__two__d__fsi_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{unstructured__two__d__fsi_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()}
 \DoxyCodeLine{\{}
-\DoxyCodeLine{ \textcolor{comment}{// Label for output}}
-\DoxyCodeLine{ DocInfo doc\_info;}
-\DoxyCodeLine{ }
-\DoxyCodeLine{ \textcolor{comment}{// Set output directory}}
-\DoxyCodeLine{ doc\_info.set\_directory(\textcolor{stringliteral}{"{}RESLT"{}});}
-\DoxyCodeLine{ }
-\DoxyCodeLine{ \textcolor{comment}{//Create the constitutive law}}
-\DoxyCodeLine{ \mbox{\hyperlink{namespaceGlobal__Parameters_adbd1f040f375c96fe56b3f475f7dbec2}{Global\_Parameters::Constitutive\_law\_pt}} = \textcolor{keyword}{new} GeneralisedHookean(}
-\DoxyCodeLine{  \&\mbox{\hyperlink{namespaceGlobal__Parameters_a20fccdcfa2c15ad8b951b9ada3bb1661}{Global\_Parameters::Nu}});}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Label\ for\ output}}
+\DoxyCodeLine{\ DocInfo\ doc\_info;}
+\DoxyCodeLine{\ }
+\DoxyCodeLine{\ \textcolor{comment}{//\ Set\ output\ directory}}
+\DoxyCodeLine{\ doc\_info.set\_directory(\textcolor{stringliteral}{"{}RESLT"{}});}
+\DoxyCodeLine{\ }
+\DoxyCodeLine{\ \textcolor{comment}{//Create\ the\ constitutive\ law}}
+\DoxyCodeLine{\ \mbox{\hyperlink{namespaceGlobal__Parameters_adbd1f040f375c96fe56b3f475f7dbec2}{Global\_Parameters::Constitutive\_law\_pt}}\ =\ \textcolor{keyword}{new}\ GeneralisedHookean(}
+\DoxyCodeLine{\ \ \&\mbox{\hyperlink{namespaceGlobal__Parameters_a20fccdcfa2c15ad8b951b9ada3bb1661}{Global\_Parameters::Nu}});}
 
 \end{DoxyCodeInclude}
  We create the {\ttfamily Problem} object and output the domain boundaries and the initial guess for the solution.
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{ }
-\DoxyCodeLine{ \textcolor{comment}{// Build the problem with triangular Taylor Hood for fluid and solid}}
-\DoxyCodeLine{ \mbox{\hyperlink{classUnstructuredFSIProblem}{UnstructuredFSIProblem}}<}
-\DoxyCodeLine{ PseudoSolidNodeUpdateElement<TTaylorHoodElement<2>, TPVDElement<2,3> >, }
-\DoxyCodeLine{  TPVDElement<2,3> > problem;}
+\DoxyCodeLine{\ }
+\DoxyCodeLine{\ \textcolor{comment}{//\ Build\ the\ problem\ with\ triangular\ Taylor\ Hood\ for\ fluid\ and\ solid}}
+\DoxyCodeLine{\ \mbox{\hyperlink{classUnstructuredFSIProblem}{UnstructuredFSIProblem}}<}
+\DoxyCodeLine{\ PseudoSolidNodeUpdateElement<TTaylorHoodElement<2>,\ TPVDElement<2,3>\ >,\ }
+\DoxyCodeLine{\ \ TPVDElement<2,3>\ >\ problem;}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Output boundaries }}
-\DoxyCodeLine{ problem.\mbox{\hyperlink{classUnstructuredFSIProblem_a920c8629e5516bf916edd340d445100f}{fluid\_mesh\_pt}}()-\/>output\_boundaries(\textcolor{stringliteral}{"{}RESLT/fluid\_boundaries.dat"{}});}
-\DoxyCodeLine{ problem.solid\_mesh\_pt()-\/>output\_boundaries(\textcolor{stringliteral}{"{}RESLT/solid\_boundaries.dat"{}});}
-\DoxyCodeLine{ }
-\DoxyCodeLine{ \textcolor{comment}{// Output the initial guess for the solution}}
-\DoxyCodeLine{ problem.doc\_solution(doc\_info);}
-\DoxyCodeLine{ doc\_info.number()++;}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Output\ boundaries\ }}
+\DoxyCodeLine{\ problem.\mbox{\hyperlink{classUnstructuredFSIProblem_a920c8629e5516bf916edd340d445100f}{fluid\_mesh\_pt}}()-\/>output\_boundaries(\textcolor{stringliteral}{"{}RESLT/fluid\_boundaries.dat"{}});}
+\DoxyCodeLine{\ problem.solid\_mesh\_pt()-\/>output\_boundaries(\textcolor{stringliteral}{"{}RESLT/solid\_boundaries.dat"{}});}
+\DoxyCodeLine{\ }
+\DoxyCodeLine{\ \textcolor{comment}{//\ Output\ the\ initial\ guess\ for\ the\ solution}}
+\DoxyCodeLine{\ problem.doc\_solution(doc\_info);}
+\DoxyCodeLine{\ doc\_info.number()++;}
 
 \end{DoxyCodeInclude}
  Finally, we perform a two-\/stage parameter study. We start by solving the problem at zero Reynolds number with the FSI parameter $ Q $ set to zero.
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{ }
-\DoxyCodeLine{ \textcolor{comment}{// Parameter study}}
-\DoxyCodeLine{ \mbox{\hyperlink{namespaceGlobal__Parameters_a335000b5db4206486a116ae0468d2d0c}{Global\_Parameters::Gravity}}=2.0e-\/4;}
-\DoxyCodeLine{ \textcolor{keywordtype}{double} q\_increment=1.0e-\/6;}
+\DoxyCodeLine{\ }
+\DoxyCodeLine{\ \textcolor{comment}{//\ Parameter\ study}}
+\DoxyCodeLine{\ \mbox{\hyperlink{namespaceGlobal__Parameters_a335000b5db4206486a116ae0468d2d0c}{Global\_Parameters::Gravity}}=2.0e-\/4;}
+\DoxyCodeLine{\ \textcolor{keywordtype}{double}\ q\_increment=1.0e-\/6;}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Solve the problem at zero Re and Q}}
-\DoxyCodeLine{ problem.newton\_solve();}
-\DoxyCodeLine{ }
-\DoxyCodeLine{ \textcolor{comment}{// Output the solution}}
-\DoxyCodeLine{ problem.doc\_solution(doc\_info);}
-\DoxyCodeLine{ doc\_info.number()++;}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Solve\ the\ problem\ at\ zero\ Re\ and\ Q}}
+\DoxyCodeLine{\ problem.newton\_solve();}
+\DoxyCodeLine{\ }
+\DoxyCodeLine{\ \textcolor{comment}{//\ Output\ the\ solution}}
+\DoxyCodeLine{\ problem.doc\_solution(doc\_info);}
+\DoxyCodeLine{\ doc\_info.number()++;}
 
 \end{DoxyCodeInclude}
  Next we re-\/solve the problem at finite Reynolds number, before slowly increasing the strength of the fluid-\/structure interaction.
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{ }
-\DoxyCodeLine{ \textcolor{comment}{// Bump up Re}}
-\DoxyCodeLine{ \mbox{\hyperlink{namespaceGlobal__Parameters_a9d72e94a9305c6a310940a6a427ebe06}{Global\_Parameters::Re}}=10.0;}
+\DoxyCodeLine{\ }
+\DoxyCodeLine{\ \textcolor{comment}{//\ Bump\ up\ Re}}
+\DoxyCodeLine{\ \mbox{\hyperlink{namespaceGlobal__Parameters_a9d72e94a9305c6a310940a6a427ebe06}{Global\_Parameters::Re}}=10.0;}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Now do proper parameter study with increase in Q}}
-\DoxyCodeLine{ \textcolor{keywordtype}{unsigned} nstep=2; \textcolor{comment}{// 10;}}
-\DoxyCodeLine{ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i=0;i<nstep;i++)}
-\DoxyCodeLine{  \{}
-\DoxyCodeLine{   \textcolor{comment}{// Solve the problem}}
-\DoxyCodeLine{   problem.newton\_solve();}
-\DoxyCodeLine{   }
-\DoxyCodeLine{   \textcolor{comment}{// Output the solution}}
-\DoxyCodeLine{   problem.doc\_solution(doc\_info);}
-\DoxyCodeLine{   doc\_info.number()++;}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Now\ do\ proper\ parameter\ study\ with\ increase\ in\ Q}}
+\DoxyCodeLine{\ \textcolor{keywordtype}{unsigned}\ nstep=2;\ \textcolor{comment}{//\ 10;}}
+\DoxyCodeLine{\ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ i=0;i<nstep;i++)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Solve\ the\ problem}}
+\DoxyCodeLine{\ \ \ problem.newton\_solve();}
+\DoxyCodeLine{\ \ \ }
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Output\ the\ solution}}
+\DoxyCodeLine{\ \ \ problem.doc\_solution(doc\_info);}
+\DoxyCodeLine{\ \ \ doc\_info.number()++;}
 \DoxyCodeLine{}
-\DoxyCodeLine{   \textcolor{comment}{// Bump up Q}}
-\DoxyCodeLine{   \mbox{\hyperlink{namespaceGlobal__Parameters_a7814fddf663e56168174a42d2cd6b4c1}{Global\_Parameters::Q}}+=q\_increment;}
-\DoxyCodeLine{  \}}
-\DoxyCodeLine{ }
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Bump\ up\ Q}}
+\DoxyCodeLine{\ \ \ \mbox{\hyperlink{namespaceGlobal__Parameters_a7814fddf663e56168174a42d2cd6b4c1}{Global\_Parameters::Q}}+=q\_increment;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ }
 \DoxyCodeLine{}
-\DoxyCodeLine{\} \textcolor{comment}{// end\_of\_main}}
+\DoxyCodeLine{\}\ \textcolor{comment}{//\ end\_of\_main}}
 
 \end{DoxyCodeInclude}
 
@@ -446,34 +450,34 @@ The {\ttfamily Problem} class has the usual members, with access functions to th
  
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\textcolor{comment}{//==start\_of\_problem\_class============================================}}
-\DoxyCodeLine{\textcolor{comment}{/// Unstructured FSI Problem}}
+\DoxyCodeLine{\textcolor{comment}{///\ Unstructured\ FSI\ Problem}}
 \DoxyCodeLine{\textcolor{comment}{//====================================================================}}
-\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class} FLUID\_ELEMENT, \textcolor{keyword}{class} SOLID\_ELEMENT>}
-\DoxyCodeLine{\textcolor{keyword}{class }\mbox{\hyperlink{classUnstructuredFSIProblem}{UnstructuredFSIProblem}} : \textcolor{keyword}{public} Problem}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class}\ FLUID\_ELEMENT,\ \textcolor{keyword}{class}\ SOLID\_ELEMENT>}
+\DoxyCodeLine{\textcolor{keyword}{class\ }\mbox{\hyperlink{classUnstructuredFSIProblem}{UnstructuredFSIProblem}}\ :\ \textcolor{keyword}{public}\ Problem}
 \DoxyCodeLine{\{}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{keyword}{public}:}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{ /// Constructor}}
-\DoxyCodeLine{\textcolor{comment}{} \mbox{\hyperlink{classUnstructuredFSIProblem_a6a31fd839e0215ef1312942cf7284bd2}{UnstructuredFSIProblem}}();}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ Constructor}}
+\DoxyCodeLine{\textcolor{comment}{}\ \mbox{\hyperlink{classUnstructuredFSIProblem_a6a31fd839e0215ef1312942cf7284bd2}{UnstructuredFSIProblem}}();}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{ /// Destructor (empty)}}
-\DoxyCodeLine{\textcolor{comment}{} \mbox{\hyperlink{classUnstructuredFSIProblem_a976a81e0dee902f6713bd8ca4d79d000}{\string~UnstructuredFSIProblem}}()\{\}}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ Destructor\ (empty)}}
+\DoxyCodeLine{\textcolor{comment}{}\ \mbox{\hyperlink{classUnstructuredFSIProblem_a976a81e0dee902f6713bd8ca4d79d000}{\string~UnstructuredFSIProblem}}()\{\}}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{ /// Access function for the fluid mesh}}
-\DoxyCodeLine{\textcolor{comment}{} \mbox{\hyperlink{classFluidTriangleMesh}{FluidTriangleMesh<FLUID\_ELEMENT>}}*\& \mbox{\hyperlink{classUnstructuredFSIProblem_a920c8629e5516bf916edd340d445100f}{fluid\_mesh\_pt}}() }
-\DoxyCodeLine{  \{}
-\DoxyCodeLine{   \textcolor{keywordflow}{return} \mbox{\hyperlink{classUnstructuredFSIProblem_a33c3b4cd9923f8b25368ff20e4810b2c}{Fluid\_mesh\_pt}};}
-\DoxyCodeLine{  \}}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ Access\ function\ for\ the\ fluid\ mesh}}
+\DoxyCodeLine{\textcolor{comment}{}\ \mbox{\hyperlink{classFluidTriangleMesh}{FluidTriangleMesh<FLUID\_ELEMENT>}}*\&\ \mbox{\hyperlink{classUnstructuredFSIProblem_a920c8629e5516bf916edd340d445100f}{fluid\_mesh\_pt}}()\ }
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classUnstructuredFSIProblem_a33c3b4cd9923f8b25368ff20e4810b2c}{Fluid\_mesh\_pt}};}
+\DoxyCodeLine{\ \ \}}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{ /// Access function for the solid mesh}}
-\DoxyCodeLine{\textcolor{comment}{} \mbox{\hyperlink{classMySolidTriangleMesh}{MySolidTriangleMesh<SOLID\_ELEMENT>}}*\& \mbox{\hyperlink{classUnstructuredFSIProblem_a3aeaaac80eca8d12a97bd7d268bccdb0}{solid\_mesh\_pt}}() }
-\DoxyCodeLine{  \{}
-\DoxyCodeLine{   \textcolor{keywordflow}{return} \mbox{\hyperlink{classUnstructuredFSIProblem_aeb164665366e237ca311e448466d7c9d}{Solid\_mesh\_pt}};}
-\DoxyCodeLine{  \}}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ Access\ function\ for\ the\ solid\ mesh}}
+\DoxyCodeLine{\textcolor{comment}{}\ \mbox{\hyperlink{classMySolidTriangleMesh}{MySolidTriangleMesh<SOLID\_ELEMENT>}}*\&\ \mbox{\hyperlink{classUnstructuredFSIProblem_a3aeaaac80eca8d12a97bd7d268bccdb0}{solid\_mesh\_pt}}()\ }
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classUnstructuredFSIProblem_aeb164665366e237ca311e448466d7c9d}{Solid\_mesh\_pt}};}
+\DoxyCodeLine{\ \ \}}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{ /// Doc the solution}}
-\DoxyCodeLine{\textcolor{comment}{} \textcolor{keywordtype}{void} \mbox{\hyperlink{classUnstructuredFSIProblem_a15f581318b505de07f50bd570da8c8d0}{doc\_solution}}(DocInfo\& doc\_info);}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ Doc\ the\ solution}}
+\DoxyCodeLine{\textcolor{comment}{}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUnstructuredFSIProblem_a15f581318b505de07f50bd570da8c8d0}{doc\_solution}}(DocInfo\&\ doc\_info);}
 
 \end{DoxyCodeInclude}
  The class provides two private helper functions\+: one to create the {\ttfamily Face\+Elements} that apply the fluid traction to the solid and one to create the {\ttfamily Face\+Elements} that use Lagrange multipliers to deform the fluid mesh according to the motion of the solid boundary.
@@ -483,12 +487,12 @@ The {\ttfamily Problem} class has the usual members, with access functions to th
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{keyword}{private}:}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{ /// Create FSI traction elements}}
-\DoxyCodeLine{\textcolor{comment}{} \textcolor{keywordtype}{void} create\_fsi\_traction\_elements();}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ Create\ FSI\ traction\ elements}}
+\DoxyCodeLine{\textcolor{comment}{}\ \textcolor{keywordtype}{void}\ create\_fsi\_traction\_elements();}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{ /// Create elements that enforce prescribed boundary motion}}
-\DoxyCodeLine{\textcolor{comment}{ /// for the pseudo-\/solid fluid mesh by Lagrange multipliers}}
-\DoxyCodeLine{\textcolor{comment}{} \textcolor{keywordtype}{void} create\_lagrange\_multiplier\_elements();}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ Create\ elements\ that\ enforce\ prescribed\ boundary\ motion}}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ for\ the\ pseudo-\/solid\ fluid\ mesh\ by\ Lagrange\ multipliers}}
+\DoxyCodeLine{\textcolor{comment}{}\ \textcolor{keywordtype}{void}\ create\_lagrange\_multiplier\_elements();}
 
 \end{DoxyCodeInclude}
  Another private helper function is provided to document the boundary parametrisation of the solid\textquotesingle{}s FSI interface\+:
@@ -496,32 +500,32 @@ The {\ttfamily Problem} class has the usual members, with access functions to th
 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{ /// Sanity check: Doc boundary coordinates from solid side}}
-\DoxyCodeLine{\textcolor{comment}{} \textcolor{keywordtype}{void} doc\_solid\_boundary\_coordinates();}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ Sanity\ check:\ Doc\ boundary\ coordinates\ from\ solid\ side}}
+\DoxyCodeLine{\textcolor{comment}{}\ \textcolor{keywordtype}{void}\ doc\_solid\_boundary\_coordinates();}
 
 \end{DoxyCodeInclude}
  The private member data includes pointers to the various meshes and a {\ttfamily Geom\+Object} representation of the FSI boundary.
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{ \textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{ /// Fluid mesh}}
-\DoxyCodeLine{\textcolor{comment}{} \mbox{\hyperlink{classFluidTriangleMesh}{FluidTriangleMesh<FLUID\_ELEMENT>}}* Fluid\_mesh\_pt;}
+\DoxyCodeLine{\ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ Fluid\ mesh}}
+\DoxyCodeLine{\textcolor{comment}{}\ \mbox{\hyperlink{classFluidTriangleMesh}{FluidTriangleMesh<FLUID\_ELEMENT>}}*\ Fluid\_mesh\_pt;}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{ /// Solid mesh}}
-\DoxyCodeLine{\textcolor{comment}{} \mbox{\hyperlink{classMySolidTriangleMesh}{MySolidTriangleMesh<SOLID\_ELEMENT>}}* Solid\_mesh\_pt;}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ Solid\ mesh}}
+\DoxyCodeLine{\textcolor{comment}{}\ \mbox{\hyperlink{classMySolidTriangleMesh}{MySolidTriangleMesh<SOLID\_ELEMENT>}}*\ Solid\_mesh\_pt;}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{ /// Pointers to mesh of Lagrange multiplier elements}}
-\DoxyCodeLine{\textcolor{comment}{} SolidMesh* Lagrange\_multiplier\_mesh\_pt;}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ Pointers\ to\ mesh\ of\ Lagrange\ multiplier\ elements}}
+\DoxyCodeLine{\textcolor{comment}{}\ SolidMesh*\ Lagrange\_multiplier\_mesh\_pt;}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{ /// Vector of pointers to mesh of FSI traction elements}}
-\DoxyCodeLine{\textcolor{comment}{} SolidMesh* Traction\_mesh\_pt;}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ Vector\ of\ pointers\ to\ mesh\ of\ FSI\ traction\ elements}}
+\DoxyCodeLine{\textcolor{comment}{}\ SolidMesh*\ Traction\_mesh\_pt;}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{ /// GeomObject incarnation of fsi boundary in solid mesh}}
-\DoxyCodeLine{\textcolor{comment}{} MeshAsGeomObject* }
-\DoxyCodeLine{ Solid\_fsi\_boundary\_pt;}
+\DoxyCodeLine{\textcolor{comment}{\ ///\ GeomObject\ incarnation\ of\ fsi\ boundary\ in\ solid\ mesh}}
+\DoxyCodeLine{\textcolor{comment}{}\ MeshAsGeomObject*\ }
+\DoxyCodeLine{\ Solid\_fsi\_boundary\_pt;}
 \DoxyCodeLine{}
-\DoxyCodeLine{\}; }
+\DoxyCodeLine{\};\ }
 
 \end{DoxyCodeInclude}
 
@@ -534,22 +538,22 @@ We start by building the fluid mesh, using the files created by \href{http://www
 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\textcolor{comment}{//==start\_of\_constructor==================================================}}
-\DoxyCodeLine{\textcolor{comment}{/// Constructor for unstructured FSI problem.}}
+\DoxyCodeLine{\textcolor{comment}{///\ Constructor\ for\ unstructured\ FSI\ problem.}}
 \DoxyCodeLine{\textcolor{comment}{//========================================================================}}
-\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class} FLUID\_ELEMENT, \textcolor{keyword}{class} SOLID\_ELEMENT>}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class}\ FLUID\_ELEMENT,\ \textcolor{keyword}{class}\ SOLID\_ELEMENT>}
 \DoxyCodeLine{\mbox{\hyperlink{classUnstructuredFSIProblem_a6a31fd839e0215ef1312942cf7284bd2}{UnstructuredFSIProblem<FLUID\_ELEMENT,SOLID\_ELEMENT>::UnstructuredFSIProblem}}()}
-\DoxyCodeLine{\{ }
+\DoxyCodeLine{\{\ }
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Fluid mesh}}
-\DoxyCodeLine{ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Fluid\ mesh}}
+\DoxyCodeLine{\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{//Create fluid mesh}}
-\DoxyCodeLine{ \textcolor{keywordtype}{string} fluid\_node\_file\_name=\textcolor{stringliteral}{"{}fluid.fig.1.node"{}};}
-\DoxyCodeLine{ \textcolor{keywordtype}{string} fluid\_element\_file\_name=\textcolor{stringliteral}{"{}fluid.fig.1.ele"{}};}
-\DoxyCodeLine{ \textcolor{keywordtype}{string} fluid\_poly\_file\_name=\textcolor{stringliteral}{"{}fluid.fig.1.poly"{}}; }
-\DoxyCodeLine{ Fluid\_mesh\_pt = \textcolor{keyword}{new} \mbox{\hyperlink{classFluidTriangleMesh}{FluidTriangleMesh<FLUID\_ELEMENT>}}(fluid\_node\_file\_name,}
-\DoxyCodeLine{                                                      fluid\_element\_file\_name,}
-\DoxyCodeLine{                                                      fluid\_poly\_file\_name);}
+\DoxyCodeLine{\ \textcolor{comment}{//Create\ fluid\ mesh}}
+\DoxyCodeLine{\ \textcolor{keywordtype}{string}\ fluid\_node\_file\_name=\textcolor{stringliteral}{"{}fluid.fig.1.node"{}};}
+\DoxyCodeLine{\ \textcolor{keywordtype}{string}\ fluid\_element\_file\_name=\textcolor{stringliteral}{"{}fluid.fig.1.ele"{}};}
+\DoxyCodeLine{\ \textcolor{keywordtype}{string}\ fluid\_poly\_file\_name=\textcolor{stringliteral}{"{}fluid.fig.1.poly"{}};\ }
+\DoxyCodeLine{\ Fluid\_mesh\_pt\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classFluidTriangleMesh}{FluidTriangleMesh<FLUID\_ELEMENT>}}(fluid\_node\_file\_name,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fluid\_element\_file\_name,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fluid\_poly\_file\_name);}
 
 \end{DoxyCodeInclude}
 
@@ -558,47 +562,47 @@ Next, we apply the boundary conditions for the fluid and the pseudo-\/solid equa
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{ }
-\DoxyCodeLine{ \textcolor{comment}{// Doc pinned solid nodes}}
-\DoxyCodeLine{ std::ofstream pseudo\_solid\_bc\_file(\textcolor{stringliteral}{"{}pinned\_pseudo\_solid\_nodes.dat"{}});}
+\DoxyCodeLine{\ }
+\DoxyCodeLine{\ \textcolor{comment}{//\ Doc\ pinned\ solid\ nodes}}
+\DoxyCodeLine{\ std::ofstream\ pseudo\_solid\_bc\_file(\textcolor{stringliteral}{"{}pinned\_pseudo\_solid\_nodes.dat"{}});}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Set the boundary conditions for fluid problem: All nodes are}}
-\DoxyCodeLine{ \textcolor{comment}{// free by default -\/-\/ just pin the ones that have Dirichlet conditions}}
-\DoxyCodeLine{ \textcolor{comment}{// here. }}
-\DoxyCodeLine{ \textcolor{keywordtype}{unsigned} nbound=Fluid\_mesh\_pt-\/>nboundary();}
-\DoxyCodeLine{ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} ibound=0;ibound<nbound;ibound++)}
-\DoxyCodeLine{  \{}
-\DoxyCodeLine{   \textcolor{keywordtype}{unsigned} num\_nod=Fluid\_mesh\_pt-\/>nboundary\_node(ibound);}
-\DoxyCodeLine{   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} inod=0;inod<num\_nod;inod++)}
-\DoxyCodeLine{    \{}
-\DoxyCodeLine{     \textcolor{comment}{// Pin velocity everywhere apart from outlet where we}}
-\DoxyCodeLine{     \textcolor{comment}{// have parallel outflow}}
-\DoxyCodeLine{     \textcolor{keywordflow}{if} (ibound!=2)}
-\DoxyCodeLine{      \{}
-\DoxyCodeLine{       Fluid\_mesh\_pt-\/>boundary\_node\_pt(ibound,inod)-\/>pin(0); }
-\DoxyCodeLine{      \}}
-\DoxyCodeLine{     Fluid\_mesh\_pt-\/>boundary\_node\_pt(ibound,inod)-\/>pin(1); }
+\DoxyCodeLine{\ \textcolor{comment}{//\ Set\ the\ boundary\ conditions\ for\ fluid\ problem:\ All\ nodes\ are}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ free\ by\ default\ -\/-\/\ just\ pin\ the\ ones\ that\ have\ Dirichlet\ conditions}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ here.\ }}
+\DoxyCodeLine{\ \textcolor{keywordtype}{unsigned}\ nbound=Fluid\_mesh\_pt-\/>nboundary();}
+\DoxyCodeLine{\ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ ibound=0;ibound<nbound;ibound++)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \textcolor{keywordtype}{unsigned}\ num\_nod=Fluid\_mesh\_pt-\/>nboundary\_node(ibound);}
+\DoxyCodeLine{\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ inod=0;inod<num\_nod;inod++)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{comment}{//\ Pin\ velocity\ everywhere\ apart\ from\ outlet\ where\ we}}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{comment}{//\ have\ parallel\ outflow}}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordflow}{if}\ (ibound!=2)}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ Fluid\_mesh\_pt-\/>boundary\_node\_pt(ibound,inod)-\/>pin(0);\ }
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ Fluid\_mesh\_pt-\/>boundary\_node\_pt(ibound,inod)-\/>pin(1);\ }
 \DoxyCodeLine{}
-\DoxyCodeLine{     \textcolor{comment}{// Pin pseudo-\/solid positions everywhere apart from boundary 3, }}
-\DoxyCodeLine{     \textcolor{comment}{// the fsi boundary }}
-\DoxyCodeLine{     \textcolor{keywordflow}{if} ((ibound==0)||(ibound==1)||(ibound==2))}
-\DoxyCodeLine{      \{}
-\DoxyCodeLine{       \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<2;i++)}
-\DoxyCodeLine{        \{}
-\DoxyCodeLine{         \textcolor{comment}{// Pin the node}}
-\DoxyCodeLine{         SolidNode* nod\_pt=Fluid\_mesh\_pt-\/>boundary\_node\_pt(ibound,inod);}
-\DoxyCodeLine{         nod\_pt-\/>pin\_position(i);}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{comment}{//\ Pin\ pseudo-\/solid\ positions\ everywhere\ apart\ from\ boundary\ 3,\ }}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{comment}{//\ the\ fsi\ boundary\ }}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordflow}{if}\ ((ibound==0)||(ibound==1)||(ibound==2))}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ i=0;i<2;i++)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Pin\ the\ node}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ SolidNode*\ nod\_pt=Fluid\_mesh\_pt-\/>boundary\_node\_pt(ibound,inod);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ nod\_pt-\/>pin\_position(i);}
 \DoxyCodeLine{}
-\DoxyCodeLine{         \textcolor{comment}{// Doc it as pinned}}
-\DoxyCodeLine{         pseudo\_solid\_bc\_file << nod\_pt-\/>x(i) << \textcolor{stringliteral}{"{} "{}};}
-\DoxyCodeLine{        \}}
-\DoxyCodeLine{       pseudo\_solid\_bc\_file << std::endl;}
-\DoxyCodeLine{      \}}
-\DoxyCodeLine{    \}}
-\DoxyCodeLine{  \} \textcolor{comment}{// end loop over boundaries}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Doc\ it\ as\ pinned}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ pseudo\_solid\_bc\_file\ <<\ nod\_pt-\/>x(i)\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ pseudo\_solid\_bc\_file\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}\ \textcolor{comment}{//\ end\ loop\ over\ boundaries}}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Close}}
-\DoxyCodeLine{ pseudo\_solid\_bc\_file.close();}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Close}}
+\DoxyCodeLine{\ pseudo\_solid\_bc\_file.close();}
 
 \end{DoxyCodeInclude}
  We complete the build of the elements by specifying the Reynolds number and the constitutive equation used in the pseudo-\/solid mesh deformation.
@@ -606,23 +610,23 @@ Next, we apply the boundary conditions for the fluid and the pseudo-\/solid equa
 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{}
-\DoxyCodeLine{ }
-\DoxyCodeLine{ \textcolor{comment}{// Complete the build of the fluid elements so they are fully functional}}
-\DoxyCodeLine{ \textcolor{keywordtype}{unsigned} n\_element = Fluid\_mesh\_pt-\/>nelement();}
-\DoxyCodeLine{ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} e=0;e<n\_element;e++)}
-\DoxyCodeLine{  \{}
-\DoxyCodeLine{   \textcolor{comment}{// Upcast from GeneralisedElement to the present element}}
-\DoxyCodeLine{   FLUID\_ELEMENT* el\_pt = }
-\DoxyCodeLine{    \textcolor{keyword}{dynamic\_cast<}FLUID\_ELEMENT*\textcolor{keyword}{>}(Fluid\_mesh\_pt-\/>element\_pt(e));}
-\DoxyCodeLine{   }
-\DoxyCodeLine{   \textcolor{comment}{//Set the Reynolds number}}
-\DoxyCodeLine{   el\_pt-\/>re\_pt() = \&\mbox{\hyperlink{namespaceGlobal__Parameters_a9d72e94a9305c6a310940a6a427ebe06}{Global\_Parameters::Re}};}
-\DoxyCodeLine{   }
-\DoxyCodeLine{   \textcolor{comment}{// Set the constitutive law for pseudo-\/elastic mesh deformation}}
-\DoxyCodeLine{   el\_pt-\/>constitutive\_law\_pt() =}
-\DoxyCodeLine{    \mbox{\hyperlink{namespaceGlobal__Parameters_adbd1f040f375c96fe56b3f475f7dbec2}{Global\_Parameters::Constitutive\_law\_pt}};}
-\DoxyCodeLine{   }
-\DoxyCodeLine{  \} \textcolor{comment}{// end loop over elements}}
+\DoxyCodeLine{\ }
+\DoxyCodeLine{\ \textcolor{comment}{//\ Complete\ the\ build\ of\ the\ fluid\ elements\ so\ they\ are\ fully\ functional}}
+\DoxyCodeLine{\ \textcolor{keywordtype}{unsigned}\ n\_element\ =\ Fluid\_mesh\_pt-\/>nelement();}
+\DoxyCodeLine{\ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ e=0;e<n\_element;e++)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Upcast\ from\ GeneralisedElement\ to\ the\ present\ element}}
+\DoxyCodeLine{\ \ \ FLUID\_ELEMENT*\ el\_pt\ =\ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{dynamic\_cast<}FLUID\_ELEMENT*\textcolor{keyword}{>}(Fluid\_mesh\_pt-\/>element\_pt(e));}
+\DoxyCodeLine{\ \ \ }
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//Set\ the\ Reynolds\ number}}
+\DoxyCodeLine{\ \ \ el\_pt-\/>re\_pt()\ =\ \&\mbox{\hyperlink{namespaceGlobal__Parameters_a9d72e94a9305c6a310940a6a427ebe06}{Global\_Parameters::Re}};}
+\DoxyCodeLine{\ \ \ }
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Set\ the\ constitutive\ law\ for\ pseudo-\/elastic\ mesh\ deformation}}
+\DoxyCodeLine{\ \ \ el\_pt-\/>constitutive\_law\_pt()\ =}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{namespaceGlobal__Parameters_adbd1f040f375c96fe56b3f475f7dbec2}{Global\_Parameters::Constitutive\_law\_pt}};}
+\DoxyCodeLine{\ \ \ }
+\DoxyCodeLine{\ \ \}\ \textcolor{comment}{//\ end\ loop\ over\ elements}}
 
 \end{DoxyCodeInclude}
  Finally, we impose a Poiseuille profile at the inflow boundary (boundary 1) and assign the equation numbers.
@@ -631,54 +635,54 @@ Next, we apply the boundary conditions for the fluid and the pseudo-\/solid equa
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Apply fluid boundary conditions: Poiseuille at inflow}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Apply\ fluid\ boundary\ conditions:\ Poiseuille\ at\ inflow}}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Find max. and min y-\/coordinate at inflow}}
-\DoxyCodeLine{ \textcolor{keywordtype}{unsigned} ibound=1;}
-\DoxyCodeLine{ \textcolor{comment}{//Initialise both to the y-\/coordinate of the first boundary node}}
-\DoxyCodeLine{ \textcolor{keywordtype}{double} y\_min=fluid\_mesh\_pt()-\/>boundary\_node\_pt(ibound,0)-\/>x(1);;}
-\DoxyCodeLine{ \textcolor{keywordtype}{double} y\_max=y\_min;}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Find\ max.\ and\ min\ y-\/coordinate\ at\ inflow}}
+\DoxyCodeLine{\ \textcolor{keywordtype}{unsigned}\ ibound=1;}
+\DoxyCodeLine{\ \textcolor{comment}{//Initialise\ both\ to\ the\ y-\/coordinate\ of\ the\ first\ boundary\ node}}
+\DoxyCodeLine{\ \textcolor{keywordtype}{double}\ y\_min=fluid\_mesh\_pt()-\/>boundary\_node\_pt(ibound,0)-\/>x(1);;}
+\DoxyCodeLine{\ \textcolor{keywordtype}{double}\ y\_max=y\_min;}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{//Loop over the rest of the boundary nodes}}
-\DoxyCodeLine{ \textcolor{keywordtype}{unsigned} num\_nod= fluid\_mesh\_pt()-\/>nboundary\_node(ibound);}
-\DoxyCodeLine{ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} inod=1;inod<num\_nod;inod++)}
-\DoxyCodeLine{  \{}
-\DoxyCodeLine{   \textcolor{keywordtype}{double} y=fluid\_mesh\_pt()-\/>boundary\_node\_pt(ibound,inod)-\/>x(1);}
-\DoxyCodeLine{   \textcolor{keywordflow}{if} (y>y\_max)}
-\DoxyCodeLine{    \{}
-\DoxyCodeLine{     y\_max=y;}
-\DoxyCodeLine{    \}}
-\DoxyCodeLine{   \textcolor{keywordflow}{if} (y<y\_min)}
-\DoxyCodeLine{    \{}
-\DoxyCodeLine{     y\_min=y;}
-\DoxyCodeLine{    \}}
-\DoxyCodeLine{  \}}
-\DoxyCodeLine{ \textcolor{keywordtype}{double} y\_mid=0.5*(y\_min+y\_max);}
-\DoxyCodeLine{ }
-\DoxyCodeLine{ \textcolor{comment}{// Loop over all boundaries}}
-\DoxyCodeLine{ \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} n\_boundary = fluid\_mesh\_pt()-\/>nboundary();}
-\DoxyCodeLine{ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} ibound=0;ibound<n\_boundary;ibound++)}
-\DoxyCodeLine{  \{}
-\DoxyCodeLine{   \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} num\_nod= fluid\_mesh\_pt()-\/>nboundary\_node(ibound);}
-\DoxyCodeLine{   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} inod=0;inod<num\_nod;inod++)}
-\DoxyCodeLine{    \{}
-\DoxyCodeLine{     \textcolor{comment}{// Parabolic inflow at the left boundary (boundary 1)}}
-\DoxyCodeLine{     \textcolor{keywordflow}{if} (ibound==1)}
-\DoxyCodeLine{      \{}
-\DoxyCodeLine{       \textcolor{keywordtype}{double} y=fluid\_mesh\_pt()-\/>boundary\_node\_pt(ibound,inod)-\/>x(1);}
-\DoxyCodeLine{       \textcolor{keywordtype}{double} veloc=1.5/(y\_max-\/y\_min)*}
-\DoxyCodeLine{        (y-\/y\_min)*(y\_max-\/y)/((y\_mid-\/y\_min)*(y\_max-\/y\_mid));}
-\DoxyCodeLine{       fluid\_mesh\_pt()-\/>boundary\_node\_pt(ibound,inod)-\/>set\_value(0,veloc);}
-\DoxyCodeLine{       fluid\_mesh\_pt()-\/>boundary\_node\_pt(ibound,inod)-\/>set\_value(1,0.0);}
-\DoxyCodeLine{      \}}
-\DoxyCodeLine{     \textcolor{comment}{// Zero flow elsewhere }}
-\DoxyCodeLine{     \textcolor{keywordflow}{else}}
-\DoxyCodeLine{      \{}
-\DoxyCodeLine{       fluid\_mesh\_pt()-\/>boundary\_node\_pt(ibound,inod)-\/>set\_value(0,0.0);}
-\DoxyCodeLine{       fluid\_mesh\_pt()-\/>boundary\_node\_pt(ibound,inod)-\/>set\_value(1,0.0);}
-\DoxyCodeLine{      \}}
-\DoxyCodeLine{    \}}
-\DoxyCodeLine{  \} \textcolor{comment}{// end Poiseuille}}
+\DoxyCodeLine{\ \textcolor{comment}{//Loop\ over\ the\ rest\ of\ the\ boundary\ nodes}}
+\DoxyCodeLine{\ \textcolor{keywordtype}{unsigned}\ num\_nod=\ fluid\_mesh\_pt()-\/>nboundary\_node(ibound);}
+\DoxyCodeLine{\ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ inod=1;inod<num\_nod;inod++)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \textcolor{keywordtype}{double}\ y=fluid\_mesh\_pt()-\/>boundary\_node\_pt(ibound,inod)-\/>x(1);}
+\DoxyCodeLine{\ \ \ \textcolor{keywordflow}{if}\ (y>y\_max)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ y\_max=y;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \textcolor{keywordflow}{if}\ (y<y\_min)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ y\_min=y;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \textcolor{keywordtype}{double}\ y\_mid=0.5*(y\_min+y\_max);}
+\DoxyCodeLine{\ }
+\DoxyCodeLine{\ \textcolor{comment}{//\ Loop\ over\ all\ boundaries}}
+\DoxyCodeLine{\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ n\_boundary\ =\ fluid\_mesh\_pt()-\/>nboundary();}
+\DoxyCodeLine{\ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ ibound=0;ibound<n\_boundary;ibound++)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ num\_nod=\ fluid\_mesh\_pt()-\/>nboundary\_node(ibound);}
+\DoxyCodeLine{\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ inod=0;inod<num\_nod;inod++)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{comment}{//\ Parabolic\ inflow\ at\ the\ left\ boundary\ (boundary\ 1)}}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordflow}{if}\ (ibound==1)}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ y=fluid\_mesh\_pt()-\/>boundary\_node\_pt(ibound,inod)-\/>x(1);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ veloc=1.5/(y\_max-\/y\_min)*}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (y-\/y\_min)*(y\_max-\/y)/((y\_mid-\/y\_min)*(y\_max-\/y\_mid));}
+\DoxyCodeLine{\ \ \ \ \ \ \ fluid\_mesh\_pt()-\/>boundary\_node\_pt(ibound,inod)-\/>set\_value(0,veloc);}
+\DoxyCodeLine{\ \ \ \ \ \ \ fluid\_mesh\_pt()-\/>boundary\_node\_pt(ibound,inod)-\/>set\_value(1,0.0);}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{comment}{//\ Zero\ flow\ elsewhere\ }}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ fluid\_mesh\_pt()-\/>boundary\_node\_pt(ibound,inod)-\/>set\_value(0,0.0);}
+\DoxyCodeLine{\ \ \ \ \ \ \ fluid\_mesh\_pt()-\/>boundary\_node\_pt(ibound,inod)-\/>set\_value(1,0.0);}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}\ \textcolor{comment}{//\ end\ Poiseuille}}
 
 \end{DoxyCodeInclude}
 
@@ -687,18 +691,18 @@ Next, we create the solid mesh, using the files created by \href{http://www.cs.c
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{ }
-\DoxyCodeLine{ }
-\DoxyCodeLine{ \textcolor{comment}{// Solid mesh}}
-\DoxyCodeLine{ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{ }
-\DoxyCodeLine{ \textcolor{comment}{//Create solid mesh}}
-\DoxyCodeLine{ \textcolor{keywordtype}{string} solid\_node\_file\_name=\textcolor{stringliteral}{"{}solid.fig.1.node"{}};}
-\DoxyCodeLine{ \textcolor{keywordtype}{string} solid\_element\_file\_name=\textcolor{stringliteral}{"{}solid.fig.1.ele"{}};}
-\DoxyCodeLine{ \textcolor{keywordtype}{string} solid\_poly\_file\_name=\textcolor{stringliteral}{"{}solid.fig.1.poly"{}}; }
-\DoxyCodeLine{ Solid\_mesh\_pt = \textcolor{keyword}{new} \mbox{\hyperlink{classMySolidTriangleMesh}{MySolidTriangleMesh<SOLID\_ELEMENT>}}(solid\_node\_file\_name,}
-\DoxyCodeLine{                                                     solid\_element\_file\_name,}
-\DoxyCodeLine{                                                     solid\_poly\_file\_name);}
+\DoxyCodeLine{\ }
+\DoxyCodeLine{\ }
+\DoxyCodeLine{\ \textcolor{comment}{//\ Solid\ mesh}}
+\DoxyCodeLine{\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\ }
+\DoxyCodeLine{\ \textcolor{comment}{//Create\ solid\ mesh}}
+\DoxyCodeLine{\ \textcolor{keywordtype}{string}\ solid\_node\_file\_name=\textcolor{stringliteral}{"{}solid.fig.1.node"{}};}
+\DoxyCodeLine{\ \textcolor{keywordtype}{string}\ solid\_element\_file\_name=\textcolor{stringliteral}{"{}solid.fig.1.ele"{}};}
+\DoxyCodeLine{\ \textcolor{keywordtype}{string}\ solid\_poly\_file\_name=\textcolor{stringliteral}{"{}solid.fig.1.poly"{}};\ }
+\DoxyCodeLine{\ Solid\_mesh\_pt\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classMySolidTriangleMesh}{MySolidTriangleMesh<SOLID\_ELEMENT>}}(solid\_node\_file\_name,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ solid\_element\_file\_name,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ solid\_poly\_file\_name);}
 
 \end{DoxyCodeInclude}
  We complete the build of the solid elements by passing the pointer to the constitutive equation and the function pointer to the gravitational body force.
@@ -706,37 +710,37 @@ Next, we create the solid mesh, using the files created by \href{http://www.cs.c
 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{}
-\DoxyCodeLine{ }
-\DoxyCodeLine{ \textcolor{comment}{// Complete the build of all solid elements so they are fully functional}}
-\DoxyCodeLine{ n\_element = Solid\_mesh\_pt-\/>nelement();}
-\DoxyCodeLine{ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<n\_element;i++)}
-\DoxyCodeLine{  \{}
-\DoxyCodeLine{   \textcolor{comment}{//Cast to a solid element}}
-\DoxyCodeLine{   SOLID\_ELEMENT *el\_pt = }
-\DoxyCodeLine{    \textcolor{keyword}{dynamic\_cast<}SOLID\_ELEMENT*\textcolor{keyword}{>}(Solid\_mesh\_pt-\/>element\_pt(i));}
+\DoxyCodeLine{\ }
+\DoxyCodeLine{\ \textcolor{comment}{//\ Complete\ the\ build\ of\ all\ solid\ elements\ so\ they\ are\ fully\ functional}}
+\DoxyCodeLine{\ n\_element\ =\ Solid\_mesh\_pt-\/>nelement();}
+\DoxyCodeLine{\ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ i=0;i<n\_element;i++)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//Cast\ to\ a\ solid\ element}}
+\DoxyCodeLine{\ \ \ SOLID\_ELEMENT\ *el\_pt\ =\ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{dynamic\_cast<}SOLID\_ELEMENT*\textcolor{keyword}{>}(Solid\_mesh\_pt-\/>element\_pt(i));}
 \DoxyCodeLine{}
-\DoxyCodeLine{   \textcolor{comment}{// Set the constitutive law}}
-\DoxyCodeLine{   el\_pt-\/>constitutive\_law\_pt() =}
-\DoxyCodeLine{    \mbox{\hyperlink{namespaceGlobal__Parameters_adbd1f040f375c96fe56b3f475f7dbec2}{Global\_Parameters::Constitutive\_law\_pt}};}
-\DoxyCodeLine{   }
-\DoxyCodeLine{   \textcolor{comment}{//Set the body force}}
-\DoxyCodeLine{   el\_pt-\/>body\_force\_fct\_pt() = \mbox{\hyperlink{namespaceGlobal__Parameters_a200109847bf4cc26da4d00e8d68d569e}{Global\_Parameters::gravity}};}
-\DoxyCodeLine{  \}}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Set\ the\ constitutive\ law}}
+\DoxyCodeLine{\ \ \ el\_pt-\/>constitutive\_law\_pt()\ =}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{namespaceGlobal__Parameters_adbd1f040f375c96fe56b3f475f7dbec2}{Global\_Parameters::Constitutive\_law\_pt}};}
+\DoxyCodeLine{\ \ \ }
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//Set\ the\ body\ force}}
+\DoxyCodeLine{\ \ \ el\_pt-\/>body\_force\_fct\_pt()\ =\ \mbox{\hyperlink{namespaceGlobal__Parameters_a200109847bf4cc26da4d00e8d68d569e}{Global\_Parameters::gravity}};}
+\DoxyCodeLine{\ \ \}}
 
 \end{DoxyCodeInclude}
  We suppress the displacements of the nodes on boundary 1.
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{ }
-\DoxyCodeLine{ \textcolor{comment}{// Pin both positions at lower boundary of solid mesh (boundary 1)}}
-\DoxyCodeLine{ ibound=1;}
-\DoxyCodeLine{ num\_nod=Solid\_mesh\_pt-\/>nboundary\_node(ibound);}
-\DoxyCodeLine{ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} inod=0;inod<num\_nod;inod++)}
-\DoxyCodeLine{  \{    }
-\DoxyCodeLine{   Solid\_mesh\_pt-\/>boundary\_node\_pt(ibound,inod)-\/>pin\_position(0);}
-\DoxyCodeLine{   Solid\_mesh\_pt-\/>boundary\_node\_pt(ibound,inod)-\/>pin\_position(1);}
-\DoxyCodeLine{  \}}
+\DoxyCodeLine{\ }
+\DoxyCodeLine{\ \textcolor{comment}{//\ Pin\ both\ positions\ at\ lower\ boundary\ of\ solid\ mesh\ (boundary\ 1)}}
+\DoxyCodeLine{\ ibound=1;}
+\DoxyCodeLine{\ num\_nod=Solid\_mesh\_pt-\/>nboundary\_node(ibound);}
+\DoxyCodeLine{\ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ inod=0;inod<num\_nod;inod++)}
+\DoxyCodeLine{\ \ \{\ \ \ \ }
+\DoxyCodeLine{\ \ \ Solid\_mesh\_pt-\/>boundary\_node\_pt(ibound,inod)-\/>pin\_position(0);}
+\DoxyCodeLine{\ \ \ Solid\_mesh\_pt-\/>boundary\_node\_pt(ibound,inod)-\/>pin\_position(1);}
+\DoxyCodeLine{\ \ \}}
 
 \end{DoxyCodeInclude}
 
@@ -747,14 +751,14 @@ Next, we create the {\ttfamily Face\+Elements} that apply the fluid traction to 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Create FSI Traction elements}}
-\DoxyCodeLine{ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Create\ FSI\ Traction\ elements}}
+\DoxyCodeLine{\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Now construct the (empty) traction element mesh}}
-\DoxyCodeLine{ Traction\_mesh\_pt=\textcolor{keyword}{new} SolidMesh;}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Now\ construct\ the\ (empty)\ traction\ element\ mesh}}
+\DoxyCodeLine{\ Traction\_mesh\_pt=\textcolor{keyword}{new}\ SolidMesh;}
 \DoxyCodeLine{}
-\DoxyCodeLine{  \textcolor{comment}{// Build the FSI traction elements and add them to the traction mesh}}
-\DoxyCodeLine{ create\_fsi\_traction\_elements();}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ Build\ the\ FSI\ traction\ elements\ and\ add\ them\ to\ the\ traction\ mesh}}
+\DoxyCodeLine{\ create\_fsi\_traction\_elements();}
 
 \end{DoxyCodeInclude}
  and the {\ttfamily Face\+Elements} that use Lagrange multipliers to deform the fluid mesh to keep it aligned with the FSI boundary.
@@ -762,13 +766,13 @@ Next, we create the {\ttfamily Face\+Elements} that apply the fluid traction to 
 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Create Lagrange multiplier mesh for boundary motion}}
-\DoxyCodeLine{ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{ }
-\DoxyCodeLine{ \textcolor{comment}{// Construct the mesh of elements that enforce prescribed boundary motion}}
-\DoxyCodeLine{ \textcolor{comment}{// of pseudo-\/solid fluid mesh by Lagrange multipliers}}
-\DoxyCodeLine{ Lagrange\_multiplier\_mesh\_pt=\textcolor{keyword}{new} SolidMesh;}
-\DoxyCodeLine{ create\_lagrange\_multiplier\_elements();}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Create\ Lagrange\ multiplier\ mesh\ for\ boundary\ motion}}
+\DoxyCodeLine{\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\ }
+\DoxyCodeLine{\ \textcolor{comment}{//\ Construct\ the\ mesh\ of\ elements\ that\ enforce\ prescribed\ boundary\ motion}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ of\ pseudo-\/solid\ fluid\ mesh\ by\ Lagrange\ multipliers}}
+\DoxyCodeLine{\ Lagrange\_multiplier\_mesh\_pt=\textcolor{keyword}{new}\ SolidMesh;}
+\DoxyCodeLine{\ create\_lagrange\_multiplier\_elements();}
 
 \end{DoxyCodeInclude}
  We combine the various sub-\/meshes into a global mesh.
@@ -777,17 +781,17 @@ Next, we create the {\ttfamily Face\+Elements} that apply the fluid traction to 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Combine meshes}}
-\DoxyCodeLine{ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Combine\ meshes}}
+\DoxyCodeLine{\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Add sub meshes}}
-\DoxyCodeLine{ add\_sub\_mesh(Fluid\_mesh\_pt);}
-\DoxyCodeLine{ add\_sub\_mesh(Solid\_mesh\_pt);}
-\DoxyCodeLine{ add\_sub\_mesh(Traction\_mesh\_pt);}
-\DoxyCodeLine{ add\_sub\_mesh(Lagrange\_multiplier\_mesh\_pt);}
-\DoxyCodeLine{ }
-\DoxyCodeLine{ \textcolor{comment}{// Build global mesh}}
-\DoxyCodeLine{ build\_global\_mesh();}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Add\ sub\ meshes}}
+\DoxyCodeLine{\ add\_sub\_mesh(Fluid\_mesh\_pt);}
+\DoxyCodeLine{\ add\_sub\_mesh(Solid\_mesh\_pt);}
+\DoxyCodeLine{\ add\_sub\_mesh(Traction\_mesh\_pt);}
+\DoxyCodeLine{\ add\_sub\_mesh(Lagrange\_multiplier\_mesh\_pt);}
+\DoxyCodeLine{\ }
+\DoxyCodeLine{\ \textcolor{comment}{//\ Build\ global\ mesh}}
+\DoxyCodeLine{\ build\_global\_mesh();}
 
 \end{DoxyCodeInclude}
  Finally, we set up the fluid-\/structure interaction by determining which \char`\"{}bulk\char`\"{} fluid elements are located next to the FSI traction elements that apply the fluid load to the solid. We document the boundary coordinate along the FSI interface by opening the {\ttfamily Multi\+\_\+domain\+\_\+functions\+::\+Doc\+\_\+boundary\+\_\+coordinate\+\_\+file} stream before calling {\ttfamily FSI\+\_\+functions\+::setup\+\_\+fluid\+\_\+load\+\_\+info\+\_\+for\+\_\+solid\+\_\+elements(...)} If this stream is open, the setup routine writes the Eulerian coordinates of the points on the FSI interface and their intrinsic surface coordinate $ [ x, y, \zeta ] $ to the specified file.
@@ -796,24 +800,24 @@ Next, we create the {\ttfamily Face\+Elements} that apply the fluid traction to 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Setup FSI}}
-\DoxyCodeLine{ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Setup\ FSI}}
+\DoxyCodeLine{\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Document the boundary coordinate  along the FSI interface }}
-\DoxyCodeLine{ \textcolor{comment}{// of the fluid mesh during call to}}
-\DoxyCodeLine{ \textcolor{comment}{// setup\_fluid\_load\_info\_for\_solid\_elements()}}
-\DoxyCodeLine{ Multi\_domain\_functions::Doc\_boundary\_coordinate\_file.open(}
-\DoxyCodeLine{  \textcolor{stringliteral}{"{}fluid\_boundary\_test.dat"{}});}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Document\ the\ boundary\ coordinate\ \ along\ the\ FSI\ interface\ }}
+\DoxyCodeLine{\ \textcolor{comment}{//\ of\ the\ fluid\ mesh\ during\ call\ to}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ setup\_fluid\_load\_info\_for\_solid\_elements()}}
+\DoxyCodeLine{\ Multi\_domain\_functions::Doc\_boundary\_coordinate\_file.open(}
+\DoxyCodeLine{\ \ \textcolor{stringliteral}{"{}fluid\_boundary\_test.dat"{}});}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Work out which fluid dofs affect the residuals of the wall elements:}}
-\DoxyCodeLine{ \textcolor{comment}{// We pass the boundary between the fluid and solid meshes and }}
-\DoxyCodeLine{ \textcolor{comment}{// pointers to the meshes. The interaction boundary is boundary 3}}
-\DoxyCodeLine{ \textcolor{comment}{// of the 2D fluid mesh.}}
-\DoxyCodeLine{ FSI\_functions::setup\_fluid\_load\_info\_for\_solid\_elements<FLUID\_ELEMENT,2>}
-\DoxyCodeLine{  (\textcolor{keyword}{this},3,Fluid\_mesh\_pt,Traction\_mesh\_pt);}
-\DoxyCodeLine{ }
-\DoxyCodeLine{ \textcolor{comment}{// Close the doc file}}
-\DoxyCodeLine{ Multi\_domain\_functions::Doc\_boundary\_coordinate\_file.close();}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Work\ out\ which\ fluid\ dofs\ affect\ the\ residuals\ of\ the\ wall\ elements:}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ We\ pass\ the\ boundary\ between\ the\ fluid\ and\ solid\ meshes\ and\ }}
+\DoxyCodeLine{\ \textcolor{comment}{//\ pointers\ to\ the\ meshes.\ The\ interaction\ boundary\ is\ boundary\ 3}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ of\ the\ 2D\ fluid\ mesh.}}
+\DoxyCodeLine{\ FSI\_functions::setup\_fluid\_load\_info\_for\_solid\_elements<FLUID\_ELEMENT,2>}
+\DoxyCodeLine{\ \ (\textcolor{keyword}{this},3,Fluid\_mesh\_pt,Traction\_mesh\_pt);}
+\DoxyCodeLine{\ }
+\DoxyCodeLine{\ \textcolor{comment}{//\ Close\ the\ doc\ file}}
+\DoxyCodeLine{\ Multi\_domain\_functions::Doc\_boundary\_coordinate\_file.close();}
 
 \end{DoxyCodeInclude}
  We use the private helper function {\ttfamily doc\+\_\+solid\+\_\+boundary\+\_\+coordinates()} to create the same output from the \char`\"{}solid side\char`\"{} of the FSI interface. This is useful for debugging purposes because it allows us to check whether the fluid and solid meshes employ a matching parametrisation of the FSI interface; see \mbox{\hyperlink{index_go_wrong}{What can go wrong?}} for more details.
@@ -821,8 +825,8 @@ Next, we create the {\ttfamily Face\+Elements} that apply the fluid traction to 
 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Sanity check: Doc boundary coordinates from solid side}}
-\DoxyCodeLine{ doc\_solid\_boundary\_coordinates();}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Sanity\ check:\ Doc\ boundary\ coordinates\ from\ solid\ side}}
+\DoxyCodeLine{\ doc\_solid\_boundary\_coordinates();}
 
 \end{DoxyCodeInclude}
  All that\textquotesingle{}s left to do is to set up the equation numbering scheme and the problem is ready to be solved.
@@ -830,10 +834,10 @@ Next, we create the {\ttfamily Face\+Elements} that apply the fluid traction to 
 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Setup equation numbering scheme}}
-\DoxyCodeLine{ cout <<\textcolor{stringliteral}{"{}Number of equations: "{}} << assign\_eqn\_numbers() << std::endl; }
+\DoxyCodeLine{\ \textcolor{comment}{//\ Setup\ equation\ numbering\ scheme}}
+\DoxyCodeLine{\ cout\ <<\textcolor{stringliteral}{"{}Number\ of\ equations:\ "{}}\ <<\ assign\_eqn\_numbers()\ <<\ std::endl;\ }
 \DoxyCodeLine{}
-\DoxyCodeLine{\} \textcolor{comment}{// end\_of\_constructor}}
+\DoxyCodeLine{\}\ \textcolor{comment}{//\ end\_of\_constructor}}
 
 \end{DoxyCodeInclude}
  \DoxyHorRuler{0}
@@ -844,49 +848,49 @@ The creation of the FSI traction elements adjacent to the solid boundary 2 follo
 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\textcolor{comment}{//============start\_of\_create\_traction\_elements==========================}}
-\DoxyCodeLine{\textcolor{comment}{/// Create FSI traction elements }}
+\DoxyCodeLine{\textcolor{comment}{///\ Create\ FSI\ traction\ elements\ }}
 \DoxyCodeLine{\textcolor{comment}{//=======================================================================}}
-\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class} FLUID\_ELEMENT,\textcolor{keyword}{class} SOLID\_ELEMENT>}
-\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{classUnstructuredFSIProblem_a934a587c99668fca969a72814b3142a7}{UnstructuredFSIProblem<FLUID\_ELEMENT,SOLID\_ELEMENT>::}}}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class}\ FLUID\_ELEMENT,\textcolor{keyword}{class}\ SOLID\_ELEMENT>}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUnstructuredFSIProblem_a934a587c99668fca969a72814b3142a7}{UnstructuredFSIProblem<FLUID\_ELEMENT,SOLID\_ELEMENT>::}}}
 \DoxyCodeLine{\mbox{\hyperlink{classUnstructuredFSIProblem_a934a587c99668fca969a72814b3142a7}{create\_fsi\_traction\_elements}}()}
 \DoxyCodeLine{\{}
-\DoxyCodeLine{ \textcolor{comment}{// Traction elements are located on boundary 2 of solid bulk mesh}}
-\DoxyCodeLine{ \textcolor{keywordtype}{unsigned} b=2;}
-\DoxyCodeLine{ }
-\DoxyCodeLine{ \textcolor{comment}{// How many bulk elements are adjacent to boundary b?}}
-\DoxyCodeLine{ \textcolor{keywordtype}{unsigned} n\_element = solid\_mesh\_pt()-\/>nboundary\_element(b);}
-\DoxyCodeLine{ }
-\DoxyCodeLine{ \textcolor{comment}{// Loop over the bulk elements adjacent to boundary b}}
-\DoxyCodeLine{ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} e=0;e<n\_element;e++)}
-\DoxyCodeLine{  \{}
-\DoxyCodeLine{   \textcolor{comment}{// Get pointer to the bulk element that is adjacent to boundary b}}
-\DoxyCodeLine{   SOLID\_ELEMENT* bulk\_elem\_pt = \textcolor{keyword}{dynamic\_cast<}SOLID\_ELEMENT*\textcolor{keyword}{>}(}
-\DoxyCodeLine{    solid\_mesh\_pt()-\/>boundary\_element\_pt(b,e));}
-\DoxyCodeLine{   }
-\DoxyCodeLine{   \textcolor{comment}{//What is the index of the face of the element e along boundary b}}
-\DoxyCodeLine{   \textcolor{keywordtype}{int} face\_index = solid\_mesh\_pt()-\/>face\_index\_at\_boundary(b,e);}
-\DoxyCodeLine{  }
-\DoxyCodeLine{   \textcolor{comment}{// Create new element }}
-\DoxyCodeLine{   FSISolidTractionElement<SOLID\_ELEMENT,2>* el\_pt=}
-\DoxyCodeLine{    \textcolor{keyword}{new} FSISolidTractionElement<SOLID\_ELEMENT,2>(bulk\_elem\_pt,face\_index);}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Traction\ elements\ are\ located\ on\ boundary\ 2\ of\ solid\ bulk\ mesh}}
+\DoxyCodeLine{\ \textcolor{keywordtype}{unsigned}\ b=2;}
+\DoxyCodeLine{\ }
+\DoxyCodeLine{\ \textcolor{comment}{//\ How\ many\ bulk\ elements\ are\ adjacent\ to\ boundary\ b?}}
+\DoxyCodeLine{\ \textcolor{keywordtype}{unsigned}\ n\_element\ =\ solid\_mesh\_pt()-\/>nboundary\_element(b);}
+\DoxyCodeLine{\ }
+\DoxyCodeLine{\ \textcolor{comment}{//\ Loop\ over\ the\ bulk\ elements\ adjacent\ to\ boundary\ b}}
+\DoxyCodeLine{\ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ e=0;e<n\_element;e++)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Get\ pointer\ to\ the\ bulk\ element\ that\ is\ adjacent\ to\ boundary\ b}}
+\DoxyCodeLine{\ \ \ SOLID\_ELEMENT*\ bulk\_elem\_pt\ =\ \textcolor{keyword}{dynamic\_cast<}SOLID\_ELEMENT*\textcolor{keyword}{>}(}
+\DoxyCodeLine{\ \ \ \ solid\_mesh\_pt()-\/>boundary\_element\_pt(b,e));}
+\DoxyCodeLine{\ \ \ }
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//What\ is\ the\ index\ of\ the\ face\ of\ the\ element\ e\ along\ boundary\ b}}
+\DoxyCodeLine{\ \ \ \textcolor{keywordtype}{int}\ face\_index\ =\ solid\_mesh\_pt()-\/>face\_index\_at\_boundary(b,e);}
+\DoxyCodeLine{\ \ }
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Create\ new\ element\ }}
+\DoxyCodeLine{\ \ \ FSISolidTractionElement<SOLID\_ELEMENT,2>*\ el\_pt=}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{new}\ FSISolidTractionElement<SOLID\_ELEMENT,2>(bulk\_elem\_pt,face\_index);}
 
 \end{DoxyCodeInclude}
  Next we add the newly-\/created {\ttfamily Face\+Element} to the mesh of traction elements, specify which boundary of the bulk mesh it is attached to, and pass the FSI interaction parameter $ Q $ to the element.
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{   }
-\DoxyCodeLine{   \textcolor{comment}{// Add it to the mesh}}
-\DoxyCodeLine{   Traction\_mesh\_pt-\/>add\_element\_pt(el\_pt);}
-\DoxyCodeLine{   }
-\DoxyCodeLine{   \textcolor{comment}{// Specify boundary number}}
-\DoxyCodeLine{   el\_pt-\/>set\_boundary\_number\_in\_bulk\_mesh(b);}
-\DoxyCodeLine{   }
-\DoxyCodeLine{   \textcolor{comment}{// Function that specifies the load ratios}}
-\DoxyCodeLine{   el\_pt-\/>q\_pt() = \&\mbox{\hyperlink{namespaceGlobal__Parameters_a7814fddf663e56168174a42d2cd6b4c1}{Global\_Parameters::Q}}; }
-\DoxyCodeLine{  \} }
+\DoxyCodeLine{\ \ \ }
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Add\ it\ to\ the\ mesh}}
+\DoxyCodeLine{\ \ \ Traction\_mesh\_pt-\/>add\_element\_pt(el\_pt);}
+\DoxyCodeLine{\ \ \ }
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Specify\ boundary\ number}}
+\DoxyCodeLine{\ \ \ el\_pt-\/>set\_boundary\_number\_in\_bulk\_mesh(b);}
+\DoxyCodeLine{\ \ \ }
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Function\ that\ specifies\ the\ load\ ratios}}
+\DoxyCodeLine{\ \ \ el\_pt-\/>q\_pt()\ =\ \&\mbox{\hyperlink{namespaceGlobal__Parameters_a7814fddf663e56168174a42d2cd6b4c1}{Global\_Parameters::Q}};\ }
+\DoxyCodeLine{\ \ \}\ }
 \DoxyCodeLine{}
-\DoxyCodeLine{ \} \textcolor{comment}{// end of create\_traction\_elements}}
+\DoxyCodeLine{\ \}\ \textcolor{comment}{//\ end\ of\ create\_traction\_elements}}
 
 \end{DoxyCodeInclude}
 
@@ -902,48 +906,48 @@ The creation of the {\ttfamily Face\+Elements} that use Lagrange multipliers to 
 \DoxyCodeLine{}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{comment}{//============start\_of\_create\_lagrange\_multiplier\_elements===============}\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{/// Create elements that impose the prescribed boundary displacement}}
-\DoxyCodeLine{\textcolor{comment}{/// for the pseudo-\/solid fluid mesh}}
+\DoxyCodeLine{\textcolor{comment}{///\ Create\ elements\ that\ impose\ the\ prescribed\ boundary\ displacement}}
+\DoxyCodeLine{\textcolor{comment}{///\ for\ the\ pseudo-\/solid\ fluid\ mesh}}
 \DoxyCodeLine{\textcolor{comment}{}\textcolor{comment}{//=======================================================================}}
-\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class} FLUID\_ELEMENT, \textcolor{keyword}{class} SOLID\_ELEMENT>}
-\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{classUnstructuredFSIProblem_a6f810c300f373cfc79e23d58f95944e3}{UnstructuredFSIProblem<FLUID\_ELEMENT,SOLID\_ELEMENT>::}}}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class}\ FLUID\_ELEMENT,\ \textcolor{keyword}{class}\ SOLID\_ELEMENT>}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUnstructuredFSIProblem_a6f810c300f373cfc79e23d58f95944e3}{UnstructuredFSIProblem<FLUID\_ELEMENT,SOLID\_ELEMENT>::}}}
 \DoxyCodeLine{\mbox{\hyperlink{classUnstructuredFSIProblem_a6f810c300f373cfc79e23d58f95944e3}{create\_lagrange\_multiplier\_elements}}()}
 \DoxyCodeLine{\{}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Create  GeomObject incarnation of fsi boundary in solid mesh}}
-\DoxyCodeLine{ Solid\_fsi\_boundary\_pt=}
-\DoxyCodeLine{  \textcolor{keyword}{new} MeshAsGeomObject}
-\DoxyCodeLine{  (Traction\_mesh\_pt);}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Create\ \ GeomObject\ incarnation\ of\ fsi\ boundary\ in\ solid\ mesh}}
+\DoxyCodeLine{\ Solid\_fsi\_boundary\_pt=}
+\DoxyCodeLine{\ \ \textcolor{keyword}{new}\ MeshAsGeomObject}
+\DoxyCodeLine{\ \ (Traction\_mesh\_pt);}
 
 \end{DoxyCodeInclude}
  Now we attach {\ttfamily Impose\+Displacement\+By\+Lagrange\+Multiplier\+Elements} to the appropriate faces of the \char`\"{}bulk\char`\"{} fluid elements that are adjacent to the FSI interface (boundary 3 in the fluid mesh).
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{ }
-\DoxyCodeLine{ \textcolor{comment}{// Lagrange multiplier elements are located on boundary 3 of the fluid mesh}}
-\DoxyCodeLine{ \textcolor{keywordtype}{unsigned} b=3;}
+\DoxyCodeLine{\ }
+\DoxyCodeLine{\ \textcolor{comment}{//\ Lagrange\ multiplier\ elements\ are\ located\ on\ boundary\ 3\ of\ the\ fluid\ mesh}}
+\DoxyCodeLine{\ \textcolor{keywordtype}{unsigned}\ b=3;}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// How many bulk fluid elements are adjacent to boundary b?}}
-\DoxyCodeLine{ \textcolor{keywordtype}{unsigned} n\_element = Fluid\_mesh\_pt-\/>nboundary\_element(b);}
-\DoxyCodeLine{ }
-\DoxyCodeLine{ \textcolor{comment}{// Loop over the bulk fluid elements adjacent to boundary b?}}
-\DoxyCodeLine{ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} e=0;e<n\_element;e++)}
-\DoxyCodeLine{  \{}
-\DoxyCodeLine{   \textcolor{comment}{// Get pointer to the bulk fluid element that is adjacent to boundary b}}
-\DoxyCodeLine{   FLUID\_ELEMENT* bulk\_elem\_pt = \textcolor{keyword}{dynamic\_cast<}FLUID\_ELEMENT*\textcolor{keyword}{>}(}
-\DoxyCodeLine{    Fluid\_mesh\_pt-\/>boundary\_element\_pt(b,e));}
-\DoxyCodeLine{   }
-\DoxyCodeLine{   \textcolor{comment}{//Find the index of the face of element e along boundary b}}
-\DoxyCodeLine{   \textcolor{keywordtype}{int} face\_index = Fluid\_mesh\_pt-\/>face\_index\_at\_boundary(b,e);}
-\DoxyCodeLine{      }
-\DoxyCodeLine{   \textcolor{comment}{// Create new element}}
-\DoxyCodeLine{   ImposeDisplacementByLagrangeMultiplierElement<FLUID\_ELEMENT>* el\_pt =}
-\DoxyCodeLine{    \textcolor{keyword}{new} ImposeDisplacementByLagrangeMultiplierElement<FLUID\_ELEMENT>(}
-\DoxyCodeLine{     bulk\_elem\_pt,face\_index);   }
-\DoxyCodeLine{   }
-\DoxyCodeLine{   \textcolor{comment}{// Add it to the mesh}}
-\DoxyCodeLine{   Lagrange\_multiplier\_mesh\_pt-\/>add\_element\_pt(el\_pt);}
+\DoxyCodeLine{\ \textcolor{comment}{//\ How\ many\ bulk\ fluid\ elements\ are\ adjacent\ to\ boundary\ b?}}
+\DoxyCodeLine{\ \textcolor{keywordtype}{unsigned}\ n\_element\ =\ Fluid\_mesh\_pt-\/>nboundary\_element(b);}
+\DoxyCodeLine{\ }
+\DoxyCodeLine{\ \textcolor{comment}{//\ Loop\ over\ the\ bulk\ fluid\ elements\ adjacent\ to\ boundary\ b?}}
+\DoxyCodeLine{\ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ e=0;e<n\_element;e++)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Get\ pointer\ to\ the\ bulk\ fluid\ element\ that\ is\ adjacent\ to\ boundary\ b}}
+\DoxyCodeLine{\ \ \ FLUID\_ELEMENT*\ bulk\_elem\_pt\ =\ \textcolor{keyword}{dynamic\_cast<}FLUID\_ELEMENT*\textcolor{keyword}{>}(}
+\DoxyCodeLine{\ \ \ \ Fluid\_mesh\_pt-\/>boundary\_element\_pt(b,e));}
+\DoxyCodeLine{\ \ \ }
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//Find\ the\ index\ of\ the\ face\ of\ element\ e\ along\ boundary\ b}}
+\DoxyCodeLine{\ \ \ \textcolor{keywordtype}{int}\ face\_index\ =\ Fluid\_mesh\_pt-\/>face\_index\_at\_boundary(b,e);}
+\DoxyCodeLine{\ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Create\ new\ element}}
+\DoxyCodeLine{\ \ \ ImposeDisplacementByLagrangeMultiplierElement<FLUID\_ELEMENT>*\ el\_pt\ =}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{new}\ ImposeDisplacementByLagrangeMultiplierElement<FLUID\_ELEMENT>(}
+\DoxyCodeLine{\ \ \ \ \ bulk\_elem\_pt,face\_index);\ \ \ }
+\DoxyCodeLine{\ \ \ }
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Add\ it\ to\ the\ mesh}}
+\DoxyCodeLine{\ \ \ Lagrange\_multiplier\_mesh\_pt-\/>add\_element\_pt(el\_pt);}
 
 \end{DoxyCodeInclude}
  Next we pass a pointer to the compound {\ttfamily Geom\+Object} that defines the desired shape of the FSI interface and specify which boundary in the \char`\"{}bulk\char`\"{} fluid mesh the element is attached to.
@@ -951,41 +955,41 @@ The creation of the {\ttfamily Face\+Elements} that use Lagrange multipliers to 
 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{}
-\DoxyCodeLine{   \textcolor{comment}{// Set the GeomObject that defines the boundary shape and set}}
-\DoxyCodeLine{   \textcolor{comment}{// which bulk boundary we are attached to (needed to extract}}
-\DoxyCodeLine{   \textcolor{comment}{// the boundary coordinate from the bulk nodes)}}
-\DoxyCodeLine{   el\_pt-\/>set\_boundary\_shape\_geom\_object\_pt(Solid\_fsi\_boundary\_pt,b);}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Set\ the\ GeomObject\ that\ defines\ the\ boundary\ shape\ and\ set}}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ which\ bulk\ boundary\ we\ are\ attached\ to\ (needed\ to\ extract}}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ the\ boundary\ coordinate\ from\ the\ bulk\ nodes)}}
+\DoxyCodeLine{\ \ \ el\_pt-\/>set\_boundary\_shape\_geom\_object\_pt(Solid\_fsi\_boundary\_pt,b);}
 
 \end{DoxyCodeInclude}
  Finally, we apply boundary conditions for the Lagrange multipliers\+: we pin the Lagrange multipliers for nodes that are located on boundary 0 where the nodal displacements are pinned. (\href{../../../solid/prescribed_displ_lagr_mult/html/index.html}{\texttt{ Recall}} that the Lagrange multipliers are additional degrees of freedom added to the \char`\"{}bulk\char`\"{} degrees of freedom originally created by the \char`\"{}bulk\char`\"{} element.)
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{   }
-\DoxyCodeLine{   \textcolor{comment}{// Loop over the nodes to apply boundary conditions}}
-\DoxyCodeLine{   \textcolor{keywordtype}{unsigned} nnod=el\_pt-\/>nnode();}
-\DoxyCodeLine{   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} j=0;j<nnod;j++)}
-\DoxyCodeLine{    \{}
-\DoxyCodeLine{     Node* nod\_pt = el\_pt-\/>node\_pt(j);}
-\DoxyCodeLine{     }
-\DoxyCodeLine{     \textcolor{comment}{// Is the node also on boundary 0? }}
-\DoxyCodeLine{     \textcolor{keywordflow}{if} (nod\_pt-\/>is\_on\_boundary(0))}
-\DoxyCodeLine{      \{}
-\DoxyCodeLine{       \textcolor{comment}{// How many nodal values were used by the "{}bulk"{} element}}
-\DoxyCodeLine{       \textcolor{comment}{// that originally created this node?}}
-\DoxyCodeLine{       \textcolor{keywordtype}{unsigned} n\_bulk\_value=el\_pt-\/>nbulk\_value(j);}
-\DoxyCodeLine{       }
-\DoxyCodeLine{        \textcolor{comment}{// The remaining ones are Lagrange multipliers and we pin them.}}
-\DoxyCodeLine{       \textcolor{keywordtype}{unsigned} nval=nod\_pt-\/>nvalue();}
-\DoxyCodeLine{       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} j=n\_bulk\_value;j<nval;j++)}
-\DoxyCodeLine{        \{}
-\DoxyCodeLine{         nod\_pt-\/>pin(j);}
-\DoxyCodeLine{        \}}
-\DoxyCodeLine{      \}}
-\DoxyCodeLine{    \}}
-\DoxyCodeLine{  \}}
-\DoxyCodeLine{ }
-\DoxyCodeLine{\} \textcolor{comment}{// end of create\_lagrange\_multiplier\_elements}}
+\DoxyCodeLine{\ \ \ }
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Loop\ over\ the\ nodes\ to\ apply\ boundary\ conditions}}
+\DoxyCodeLine{\ \ \ \textcolor{keywordtype}{unsigned}\ nnod=el\_pt-\/>nnode();}
+\DoxyCodeLine{\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ j=0;j<nnod;j++)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ Node*\ nod\_pt\ =\ el\_pt-\/>node\_pt(j);}
+\DoxyCodeLine{\ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \textcolor{comment}{//\ Is\ the\ node\ also\ on\ boundary\ 0?\ }}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordflow}{if}\ (nod\_pt-\/>is\_on\_boundary(0))}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \textcolor{comment}{//\ How\ many\ nodal\ values\ were\ used\ by\ the\ "{}bulk"{}\ element}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \textcolor{comment}{//\ that\ originally\ created\ this\ node?}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ n\_bulk\_value=el\_pt-\/>nbulk\_value(j);}
+\DoxyCodeLine{\ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ The\ remaining\ ones\ are\ Lagrange\ multipliers\ and\ we\ pin\ them.}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ nval=nod\_pt-\/>nvalue();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ j=n\_bulk\_value;j<nval;j++)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ nod\_pt-\/>pin(j);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ }
+\DoxyCodeLine{\}\ \textcolor{comment}{//\ end\ of\ create\_lagrange\_multiplier\_elements}}
 
 \end{DoxyCodeInclude}
  \DoxyHorRuler{0}
@@ -996,36 +1000,36 @@ The post-\/processing routine simply executes the output functions for the fluid
 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\textcolor{comment}{//==start\_of\_doc\_solution=================================================}}
-\DoxyCodeLine{\textcolor{comment}{/// Doc the solution}}
+\DoxyCodeLine{\textcolor{comment}{///\ Doc\ the\ solution}}
 \DoxyCodeLine{\textcolor{comment}{//========================================================================}}
-\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class} FLUID\_ELEMENT, \textcolor{keyword}{class} SOLID\_ELEMENT>}
-\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{classUnstructuredFSIProblem_a15f581318b505de07f50bd570da8c8d0}{UnstructuredFSIProblem<FLUID\_ELEMENT,SOLID\_ELEMENT>::}}}
-\DoxyCodeLine{\mbox{\hyperlink{classUnstructuredFSIProblem_a15f581318b505de07f50bd570da8c8d0}{doc\_solution}}(DocInfo\& doc\_info)}
-\DoxyCodeLine{\{ }
-\DoxyCodeLine{ ofstream some\_file;}
-\DoxyCodeLine{ \textcolor{keywordtype}{char} filename[100];}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class}\ FLUID\_ELEMENT,\ \textcolor{keyword}{class}\ SOLID\_ELEMENT>}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUnstructuredFSIProblem_a15f581318b505de07f50bd570da8c8d0}{UnstructuredFSIProblem<FLUID\_ELEMENT,SOLID\_ELEMENT>::}}}
+\DoxyCodeLine{\mbox{\hyperlink{classUnstructuredFSIProblem_a15f581318b505de07f50bd570da8c8d0}{doc\_solution}}(DocInfo\&\ doc\_info)}
+\DoxyCodeLine{\{\ }
+\DoxyCodeLine{\ ofstream\ some\_file;}
+\DoxyCodeLine{\ \textcolor{keywordtype}{char}\ filename[100];}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Number of plot points}}
-\DoxyCodeLine{ \textcolor{keywordtype}{unsigned} npts;}
-\DoxyCodeLine{ npts=5; }
+\DoxyCodeLine{\ \textcolor{comment}{//\ Number\ of\ plot\ points}}
+\DoxyCodeLine{\ \textcolor{keywordtype}{unsigned}\ npts;}
+\DoxyCodeLine{\ npts=5;\ }
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Output fluid solution }}
-\DoxyCodeLine{ sprintf(filename,\textcolor{stringliteral}{"{}\%s/fluid\_soln\%i.dat"{}},doc\_info.directory().c\_str(),}
-\DoxyCodeLine{         doc\_info.number());}
-\DoxyCodeLine{ some\_file.open(filename);}
-\DoxyCodeLine{ Fluid\_mesh\_pt-\/>output(some\_file,npts);}
-\DoxyCodeLine{ some\_file.close();}
-\DoxyCodeLine{}
-\DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Output solid solution }}
-\DoxyCodeLine{ sprintf(filename,\textcolor{stringliteral}{"{}\%s/solid\_soln\%i.dat"{}},doc\_info.directory().c\_str(),}
-\DoxyCodeLine{         doc\_info.number());}
-\DoxyCodeLine{ some\_file.open(filename);}
-\DoxyCodeLine{ Solid\_mesh\_pt-\/>output(some\_file,npts);}
-\DoxyCodeLine{ some\_file.close();}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Output\ fluid\ solution\ }}
+\DoxyCodeLine{\ sprintf(filename,\textcolor{stringliteral}{"{}\%s/fluid\_soln\%i.dat"{}},doc\_info.directory().c\_str(),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ doc\_info.number());}
+\DoxyCodeLine{\ some\_file.open(filename);}
+\DoxyCodeLine{\ Fluid\_mesh\_pt-\/>output(some\_file,npts);}
+\DoxyCodeLine{\ some\_file.close();}
 \DoxyCodeLine{}
 \DoxyCodeLine{}
-\DoxyCodeLine{\} \textcolor{comment}{// end\_of\_doc\_solution}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Output\ solid\ solution\ }}
+\DoxyCodeLine{\ sprintf(filename,\textcolor{stringliteral}{"{}\%s/solid\_soln\%i.dat"{}},doc\_info.directory().c\_str(),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ doc\_info.number());}
+\DoxyCodeLine{\ some\_file.open(filename);}
+\DoxyCodeLine{\ Solid\_mesh\_pt-\/>output(some\_file,npts);}
+\DoxyCodeLine{\ some\_file.close();}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\}\ \textcolor{comment}{//\ end\_of\_doc\_solution}}
 
 \end{DoxyCodeInclude}
 
@@ -1077,7 +1081,7 @@ This computation was performed by re-\/generating the mesh, running triangle wit
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{triangle -\/q -\/a0.01 fluid.fig.poly}
+\DoxyCodeLine{triangle\ -\/q\ -\/a0.01\ fluid.fig.poly}
 
 \end{DoxyCode}
 

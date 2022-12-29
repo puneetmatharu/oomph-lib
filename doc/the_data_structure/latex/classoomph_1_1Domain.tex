@@ -68,7 +68,7 @@ Base class for Domains with curvilinear and/or time-\/dependent boundaries. \mbo
 
  Any instantiation of a specific \mbox{\hyperlink{classoomph_1_1Domain}{Domain}} needs to implement the pure virtual member function 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classoomph_1_1Domain_a95f3e00d28ea37e6c4d3027bfac91096}{Domain::macro\_element\_boundary}}(...) }
+\DoxyCodeLine{\mbox{\hyperlink{classoomph_1_1Domain_a95f3e00d28ea37e6c4d3027bfac91096}{Domain::macro\_element\_boundary}}(...)\ }
 
 \end{DoxyCode}
  which returns a \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} representation of each of the \mbox{\hyperlink{classoomph_1_1MacroElement}{Macro\+Element}} s\textquotesingle{} boundaries, parametrised by the coordinate(s) along this boundary. For instance, in the above example, the eastern boundary of \mbox{\hyperlink{classoomph_1_1MacroElement}{Macro\+Element}} 1 is given by the appropriate fraction of the curvilinear boundary; its northern boundary (which coincides with the southern boundary of \mbox{\hyperlink{classoomph_1_1MacroElement}{Macro\+Element}} 2) is given by the straight line emanating from the curvilinear boundary, etc. The \mbox{\hyperlink{classoomph_1_1MacroElement}{Macro\+Element}} s obtain their boundary positions via member function pointers to {\ttfamily Domain\+::macro\+\_\+element\+\_\+boundary(...)}. 
@@ -179,7 +179,7 @@ Definition at line \mbox{\hyperlink{domain_8h_source_l00258}{258}} of file \mbox
 
 
 
-Referenced by \mbox{\hyperlink{macro__element_8cc_source_l00334}{oomph\+::\+QMacro\+Element$<$ 2 $>$\+::assemble\+\_\+macro\+\_\+to\+\_\+eulerian\+\_\+jacobian2()}}, and \mbox{\hyperlink{domain_8h_source_l00288}{d2macro\+\_\+element\+\_\+boundary()}}.
+Referenced by \mbox{\hyperlink{domain_8h_source_l00288}{d2macro\+\_\+element\+\_\+boundary()}}.
 
 \mbox{\Hypertarget{classoomph_1_1Domain_af4de3686bcfbf5a8e98b92a071607e0f}\label{classoomph_1_1Domain_af4de3686bcfbf5a8e98b92a071607e0f}} 
 \index{oomph::Domain@{oomph::Domain}!dmacro\_element\_boundary@{dmacro\_element\_boundary}}
@@ -233,7 +233,7 @@ Definition at line \mbox{\hyperlink{domain_8h_source_l00212}{212}} of file \mbox
 
 
 
-Referenced by \mbox{\hyperlink{macro__element_8cc_source_l00238}{oomph\+::\+QMacro\+Element$<$ 2 $>$\+::assemble\+\_\+macro\+\_\+to\+\_\+eulerian\+\_\+jacobian()}}, \mbox{\hyperlink{macro__element_8cc_source_l00334}{oomph\+::\+QMacro\+Element$<$ 2 $>$\+::assemble\+\_\+macro\+\_\+to\+\_\+eulerian\+\_\+jacobian2()}}, and \mbox{\hyperlink{domain_8h_source_l00244}{dmacro\+\_\+element\+\_\+boundary()}}.
+Referenced by \mbox{\hyperlink{domain_8h_source_l00244}{dmacro\+\_\+element\+\_\+boundary()}}.
 
 \mbox{\Hypertarget{classoomph_1_1Domain_a10142c029e8a57c5470d22701518e9d1}\label{classoomph_1_1Domain_a10142c029e8a57c5470d22701518e9d1}} 
 \index{oomph::Domain@{oomph::Domain}!macro\_element\_boundary@{macro\_element\_boundary}}
@@ -287,7 +287,7 @@ Implemented in \mbox{\hyperlink{classoomph_1_1WarpedCubeDomain_a4e02171948889730
 
 
 
-Referenced by \mbox{\hyperlink{macro__element_8cc_source_l00238}{oomph\+::\+QMacro\+Element$<$ 2 $>$\+::assemble\+\_\+macro\+\_\+to\+\_\+eulerian\+\_\+jacobian()}}, \mbox{\hyperlink{macro__element_8cc_source_l00334}{oomph\+::\+QMacro\+Element$<$ 2 $>$\+::assemble\+\_\+macro\+\_\+to\+\_\+eulerian\+\_\+jacobian2()}}, \mbox{\hyperlink{domain_8h_source_l00175}{macro\+\_\+element\+\_\+boundary()}}, \mbox{\hyperlink{extruded__domain_8cc_source_l00148}{oomph\+::\+Extruded\+Domain\+::macro\+\_\+element\+\_\+boundary()}}, \mbox{\hyperlink{macro__element_8cc_source_l00035}{oomph\+::\+QMacro\+Element$<$ 2 $>$\+::macro\+\_\+map()}}, \mbox{\hyperlink{macro__element_8cc_source_l00440}{oomph\+::\+QMacro\+Element$<$ 3 $>$\+::macro\+\_\+map()}}, \mbox{\hyperlink{macro__element_8cc_source_l00211}{oomph\+::\+QMacro\+Element$<$ 2 $>$\+::output\+\_\+macro\+\_\+element\+\_\+boundaries()}}, and \mbox{\hyperlink{macro__element_8cc_source_l00659}{oomph\+::\+QMacro\+Element$<$ 3 $>$\+::output\+\_\+macro\+\_\+element\+\_\+boundaries()}}.
+Referenced by \mbox{\hyperlink{domain_8h_source_l00175}{macro\+\_\+element\+\_\+boundary()}}, and \mbox{\hyperlink{extruded__domain_8cc_source_l00148}{oomph\+::\+Extruded\+Domain\+::macro\+\_\+element\+\_\+boundary()}}.
 
 \mbox{\Hypertarget{classoomph_1_1Domain_abef3886384a9b9e722e490268feecc2d}\label{classoomph_1_1Domain_abef3886384a9b9e722e490268feecc2d}} 
 \index{oomph::Domain@{oomph::Domain}!macro\_element\_pt@{macro\_element\_pt}}

@@ -38,11 +38,56 @@ void \mbox{\hyperlink{classoomph_1_1ElasticUpdateFluidInterfaceElement_a15c3d291
 \begin{DoxyCompactList}\small\item\em Helper function to calculate the additional contributions to be added at each integration point. This deals with Lagrange multiplier contribution, as well as any additional contributions by the other equations. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{classoomph_1_1FluidInterfaceBoundingElement}{Fluid\+Interface\+Bounding\+Element}} $\ast$ \mbox{\hyperlink{classoomph_1_1ElasticUpdateFluidInterfaceElement_a88d35a42eb1b3abb4adba9ca79787d2e}{make\+\_\+bounding\+\_\+element}} (const int \&face\+\_\+index)
 \begin{DoxyCompactList}\small\item\em Create an \char`\"{}bounding\char`\"{} element (here actually a 2D line element of type Elastic\+Line\+Fluid\+Interface\+Bounding\+Element$<$\+ELEMENT$>$ that allows the application of a contact angle boundary condition on the the specified face. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1Hijacked}{oomph\+::\+Hijacked$<$ Face\+Geometry$<$ ELEMENT $>$ $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1Hijacked_aaf792ec7672bf812fdc5b3e74c31f807}{Hijacked}} ()
+\begin{DoxyCompactList}\small\item\em Constructor, call the constructors of the base elements. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Hijacked_a5e4aa47011d8141757f9ecbd8f787811}{Hijacked}} (\mbox{\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element}} $\ast$const \&element\+\_\+pt, const int \&face\+\_\+index)
+\begin{DoxyCompactList}\small\item\em Constructor used for hijacking face elements. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Hijacked_ac03d9be9ce8252556d41ef643b3658be}{Hijacked}} (\mbox{\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element}} $\ast$const \&element\+\_\+pt, const int \&face\+\_\+index, const unsigned \&id=0)
+\begin{DoxyCompactList}\small\item\em Constructor used for hijacking face elements with specification of ID of additional variables. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Data}{Data}} $\ast$ \mbox{\hyperlink{classoomph_1_1Hijacked_ac010278a5af2f3072d7a79fd507aa71b}{hijack\+\_\+internal\+\_\+value}} (const unsigned \&n, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}, const bool \&return\+\_\+data=true)
+\begin{DoxyCompactList}\small\item\em Hijack the i-\/th value stored at internal data n. Optionally return a custom-\/made (copied) data object that contains only the hijacked value. This can be used as the input to other elements. Note that the calling program assumes responsibility for this data object and must clean it up. The default is that the data object is returned. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Data}{Data}} $\ast$ \mbox{\hyperlink{classoomph_1_1Hijacked_a38b793b1597b567938ca5014fef86a78}{hijack\+\_\+external\+\_\+value}} (const unsigned \&n, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}, const bool \&return\+\_\+data=true)
+\begin{DoxyCompactList}\small\item\em Hijack the i-\/th value stored at external data n. Optionally return a custom-\/made (copied) data object that contains only the hijacked value. Note that the calling program assumes responsibility for this data object and must clean it up. The default is that the data object is returned. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Data}{Data}} $\ast$ \mbox{\hyperlink{classoomph_1_1Hijacked_a944ab621f0da8b6434d843c33b8a63f4}{hijack\+\_\+nodal\+\_\+value}} (const unsigned \&n, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}, const bool \&return\+\_\+data=true)
+\begin{DoxyCompactList}\small\item\em Hijack the i-\/th value stored at node n. Optionally return a custom-\/made (copied) data object that contains only the hijacked value. Once again, the calling program must clean up the allocated \mbox{\hyperlink{classoomph_1_1Data}{Data}} object. The default is that the data object is returned. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Data}{Data}} $\ast$ \mbox{\hyperlink{classoomph_1_1Hijacked_a79cc7c9e72db17bf07538925b6d0537a}{hijack\+\_\+nodal\+\_\+position\+\_\+value}} (const unsigned \&n, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}, const bool \&return\+\_\+data=true)
+\begin{DoxyCompactList}\small\item\em Hijack the i-\/th positional value stored at node n. Optionaly return a custom-\/made (copied) data object that contains only the hijacked value. Again, responsibility for the memory allocated lies with the calling function. The default is that the data object is returned. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Data}{Data}} $\ast$ \mbox{\hyperlink{classoomph_1_1Hijacked_aaf4d8eb01937473cc10cc1c89dfe7dc6}{hijack\+\_\+nodal\+\_\+spine\+\_\+value}} (const unsigned \&n, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}, const bool \&return\+\_\+data=true)
+\begin{DoxyCompactList}\small\item\em Hijack the i-\/th value stored at the spine that affects local node n. Optionally return a custom-\/made (copied) data object that contains only the hijacked value. Deletion must be handled at the higher level The default is that the data object is returned. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Hijacked_afd4a5578291487aa37b0931dab845701}{assign\+\_\+local\+\_\+eqn\+\_\+numbers}} (const bool \&store\+\_\+local\+\_\+dof\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Set up the local equation numbers for the underlying element, then set up the local arrays to hold the hijacked variables. If the boolean argument is true then pointers to the associated degrees of freedom are stored in the array Dof\+\_\+pt. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Hijacked_adb1760705326df86f6289cc3774d37b9}{get\+\_\+residuals}} (\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&residuals)
+\begin{DoxyCompactList}\small\item\em Get the residuals from the underlying element, but then wipe the entries in the residual vector that correspond to hijacked values -- they will be computed by other elements. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Hijacked_a35778dccc9cf036c37ee569efe5b5f7c}{get\+\_\+jacobian}} (\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&residuals, \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ \&jacobian)
+\begin{DoxyCompactList}\small\item\em Get the residuals and Jacobian matrix from the underlying element, but then wipe the entries in the residual vector and the rows in the Jacobian matrix that correspond to hijacked values -- they will be computed by other elements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1HijackedElementBase}{oomph\+::\+Hijacked\+Element\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1HijackedElementBase_ad062d9c27f6fd3d613a86b32980fa71e}{Hijacked\+Element\+Base}} ()
+\begin{DoxyCompactList}\small\item\em Constructor, initialise the pointer to the equation numbers for the storage to zero. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1HijackedElementBase_af3393a98fc80a2f7761046920b4a3040}{$\sim$\+Hijacked\+Element\+Base}} ()
+\begin{DoxyCompactList}\small\item\em Destructor, destroy the storage for the equation numbers. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1HijackedElementBase_a0a373a87d121205b9cc0fd54ea41f4ad}{unhijack\+\_\+all\+\_\+data}} ()
+\begin{DoxyCompactList}\small\item\em Reset the hijacked data pt, so that none of the equations in the element are hijacked. \end{DoxyCompactList}\item 
+const double \& \mbox{\hyperlink{classoomph_1_1HijackedElementBase_aca8fb139dcd8632391ba601c87692748}{residual\+\_\+multiplier}} () const
+\begin{DoxyCompactList}\small\item\em Return the value of the residual multiplier. \end{DoxyCompactList}\item 
+double $\ast$\& \mbox{\hyperlink{classoomph_1_1HijackedElementBase_a8fb2d61b46a5b1d79890ec50e80d593d}{residual\+\_\+multiplier\+\_\+pt}} ()
+\begin{DoxyCompactList}\small\item\em Return the pointer to the residual multiplier. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 double \mbox{\hyperlink{classoomph_1_1ElasticUpdateFluidInterfaceElement_ae9df6c11ccb63dc04c0d5ca655fe1482}{compute\+\_\+surface\+\_\+derivatives}} (const \mbox{\hyperlink{classoomph_1_1Shape}{Shape}} \&psi, const \mbox{\hyperlink{classoomph_1_1DShape}{DShape}} \&dpsids, const \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ \&interpolated\+\_\+t, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&interpolated\+\_\+x, \mbox{\hyperlink{classoomph_1_1DShape}{DShape}} \&surface\+\_\+gradient, \mbox{\hyperlink{classoomph_1_1DShape}{DShape}} \&surface\+\_\+divergence)
 \begin{DoxyCompactList}\small\item\em Fill in the specific surface derivative calculations by calling the appropriate function from the derivative class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classoomph_1_1HijackedElementBase}{oomph\+::\+Hijacked\+Element\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classoomph_1_1HijackedElementBase_ac518df71f978c2b80cd25a1283353ab5}{hijack\+\_\+global\+\_\+eqn}} (long $\ast$const \&global\+\_\+eqn\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Mark the global equation, addressed by global\+\_\+eqn\+\_\+pt, as hijacked by this element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1HijackedElementBase_aa94e2c93374151302879645f4c354c3f}{unhijack\+\_\+global\+\_\+eqn}} (long $\ast$const \&global\+\_\+eqn\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em The global equation, addressed by global\+\_\+eqn\+\_\+pt, is no longer hijacked by this element. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -58,6 +103,20 @@ void \mbox{\hyperlink{classoomph_1_1ElasticUpdateFluidInterfaceElement_ae82f4864
 \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ unsigned $>$ \mbox{\hyperlink{classoomph_1_1ElasticUpdateFluidInterfaceElement_a7852050a89e3aac51ed3693814be9018}{Lagrange\+\_\+index}}
 \begin{DoxyCompactList}\small\item\em Storage for the location of the Lagrange multiplier (If other additional values have been added we need to add the Lagrange multiplier at the end) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1HijackedElementBase}{oomph\+::\+Hijacked\+Element\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::set$<$ long $\ast$ $>$ $\ast$ \mbox{\hyperlink{classoomph_1_1HijackedElementBase_a9c3a9a4e39ee5e3af0f5594c31f532c5}{Hijacked\+\_\+global\+\_\+eqn\+\_\+number\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em Pointer to a Set of pointers to the equation numbers that will be hijacked by this element. Note that these MUST be pointers because hijacking information is set BEFORE global equation numbers have been assigned. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ int $>$ $\ast$ \mbox{\hyperlink{classoomph_1_1HijackedElementBase_ae604da2f744f328f3866a2cefa3aa80c}{Hijacked\+\_\+local\+\_\+eqn\+\_\+number\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em Pointer to a vector of integers containing the local equation numbers of any hijacked variables in the element. \end{DoxyCompactList}\item 
+double $\ast$ \mbox{\hyperlink{classoomph_1_1HijackedElementBase_a283509b7af09479e7a1cb8c0e05a8c16}{Residual\+\_\+multiplier\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em Pointer to a double that multiplies the contribution to the residuals from the original element. This is usually used as a homotopy parameter to permit a smooth transition between different types of boundary conditions, rather than switching them on or off abruptly. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1HijackedElementBase}{oomph\+::\+Hijacked\+Element\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+static double \mbox{\hyperlink{classoomph_1_1HijackedElementBase_afd87cc7c33c2b846c5f7a373c352f13a}{Default\+\_\+residual\+\_\+multiplier}} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Static default value for the double that multiplies the original residuals. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -77,7 +136,7 @@ Definition at line \mbox{\hyperlink{specific__node__update__interface__elements_
 \index{ElasticUpdateFluidInterfaceElement@{ElasticUpdateFluidInterfaceElement}!oomph::ElasticUpdateFluidInterfaceElement$<$ EQUATION\_CLASS, DERIVATIVE\_CLASS, ELEMENT $>$@{oomph::ElasticUpdateFluidInterfaceElement$<$ EQUATION\_CLASS, DERIVATIVE\_CLASS, ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{ElasticUpdateFluidInterfaceElement()}{ElasticUpdateFluidInterfaceElement()}}
 {\footnotesize\ttfamily template$<$class EQUATION\+\_\+\+CLASS , class DERIVATIVE\+\_\+\+CLASS , class ELEMENT $>$ \\
-\mbox{\hyperlink{classoomph_1_1ElasticUpdateFluidInterfaceElement}{oomph\+::\+Elastic\+Update\+Fluid\+Interface\+Element}}$<$ EQUATION\+\_\+\+CLASS, DERIVATIVE\+\_\+\+CLASS, ELEMENT $>$\+::\mbox{\hyperlink{classoomph_1_1ElasticUpdateFluidInterfaceElement}{Elastic\+Update\+Fluid\+Interface\+Element}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element}} $\ast$const \&}]{element\+\_\+pt,  }\item[{const int \&}]{face\+\_\+index,  }\item[{const unsigned \&}]{id = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{classoomph_1_1ElasticUpdateFluidInterfaceElement}{oomph\+::\+Elastic\+Update\+Fluid\+Interface\+Element}}$<$ EQUATION\+\_\+\+CLASS, DERIVATIVE\+\_\+\+CLASS, ELEMENT $>$\+::\+Elastic\+Update\+Fluid\+Interface\+Element (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element}} $\ast$const \&}]{element\+\_\+pt,  }\item[{const int \&}]{face\+\_\+index,  }\item[{const unsigned \&}]{id = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -111,7 +170,7 @@ Definition at line \mbox{\hyperlink{specific__node__update__interface__elements_
 
 
 
-References \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{specific__node__update__interface__elements_8h_source_l00692}{oomph\+::\+Elastic\+Update\+Fluid\+Interface\+Element$<$ EQUATION\+\_\+\+CLASS, DERIVATIVE\+\_\+\+CLASS, ELEMENT $>$\+::kinematic\+\_\+local\+\_\+eqn()}}, \mbox{\hyperlink{specific__node__update__interface__elements_8h_source_l00830}{oomph\+::\+Elastic\+Update\+Fluid\+Interface\+Element$<$ EQUATION\+\_\+\+CLASS, DERIVATIVE\+\_\+\+CLASS, ELEMENT $>$\+::lagrange()}}, \mbox{\hyperlink{cfortran_8h_source_l00568}{s}}, and \mbox{\hyperlink{quadtree_8h_source_l00063}{oomph\+::\+Quad\+Tree\+Names\+::W}}.
+References \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{specific__node__update__interface__elements_8h_source_l00692}{oomph\+::\+Elastic\+Update\+Fluid\+Interface\+Element$<$ EQUATION\+\_\+\+CLASS, DERIVATIVE\+\_\+\+CLASS, ELEMENT $>$\+::kinematic\+\_\+local\+\_\+eqn()}}, \mbox{\hyperlink{specific__node__update__interface__elements_8h_source_l00830}{oomph\+::\+Elastic\+Update\+Fluid\+Interface\+Element$<$ EQUATION\+\_\+\+CLASS, DERIVATIVE\+\_\+\+CLASS, ELEMENT $>$\+::lagrange()}}, and \mbox{\hyperlink{cfortran_8h_source_l00568}{s}}.
 
 \mbox{\Hypertarget{classoomph_1_1ElasticUpdateFluidInterfaceElement_ae9df6c11ccb63dc04c0d5ca655fe1482}\label{classoomph_1_1ElasticUpdateFluidInterfaceElement_ae9df6c11ccb63dc04c0d5ca655fe1482}} 
 \index{oomph::ElasticUpdateFluidInterfaceElement$<$ EQUATION\_CLASS, DERIVATIVE\_CLASS, ELEMENT $>$@{oomph::ElasticUpdateFluidInterfaceElement$<$ EQUATION\_CLASS, DERIVATIVE\_CLASS, ELEMENT $>$}!compute\_surface\_derivatives@{compute\_surface\_derivatives}}
@@ -257,10 +316,6 @@ Overload the C-\/style output function.
 
 Definition at line \mbox{\hyperlink{specific__node__update__interface__elements_8h_source_l00861}{861}} of file \mbox{\hyperlink{specific__node__update__interface__elements_8h_source}{specific\+\_\+node\+\_\+update\+\_\+interface\+\_\+elements.\+h}}.
 
-
-
-References \mbox{\hyperlink{oomph__utilities_8cc_source_l00436}{oomph\+::\+Command\+Line\+Args\+::output()}}.
-
 \mbox{\Hypertarget{classoomph_1_1ElasticUpdateFluidInterfaceElement_a10b64a463b5ff98475e727b06d95b0ac}\label{classoomph_1_1ElasticUpdateFluidInterfaceElement_a10b64a463b5ff98475e727b06d95b0ac}} 
 \index{oomph::ElasticUpdateFluidInterfaceElement$<$ EQUATION\_CLASS, DERIVATIVE\_CLASS, ELEMENT $>$@{oomph::ElasticUpdateFluidInterfaceElement$<$ EQUATION\_CLASS, DERIVATIVE\_CLASS, ELEMENT $>$}!output@{output}}
 \index{output@{output}!oomph::ElasticUpdateFluidInterfaceElement$<$ EQUATION\_CLASS, DERIVATIVE\_CLASS, ELEMENT $>$@{oomph::ElasticUpdateFluidInterfaceElement$<$ EQUATION\_CLASS, DERIVATIVE\_CLASS, ELEMENT $>$}}
@@ -275,10 +330,6 @@ C-\/style Output function.
 
 
 Definition at line \mbox{\hyperlink{specific__node__update__interface__elements_8h_source_l00867}{867}} of file \mbox{\hyperlink{specific__node__update__interface__elements_8h_source}{specific\+\_\+node\+\_\+update\+\_\+interface\+\_\+elements.\+h}}.
-
-
-
-References \mbox{\hyperlink{oomph__utilities_8cc_source_l00436}{oomph\+::\+Command\+Line\+Args\+::output()}}.
 
 \mbox{\Hypertarget{classoomph_1_1ElasticUpdateFluidInterfaceElement_a46b22d178b248355083a3564e4e92eb0}\label{classoomph_1_1ElasticUpdateFluidInterfaceElement_a46b22d178b248355083a3564e4e92eb0}} 
 \index{oomph::ElasticUpdateFluidInterfaceElement$<$ EQUATION\_CLASS, DERIVATIVE\_CLASS, ELEMENT $>$@{oomph::ElasticUpdateFluidInterfaceElement$<$ EQUATION\_CLASS, DERIVATIVE\_CLASS, ELEMENT $>$}!output@{output}}
@@ -295,10 +346,6 @@ Overload the output function.
 
 Definition at line \mbox{\hyperlink{specific__node__update__interface__elements_8h_source_l00849}{849}} of file \mbox{\hyperlink{specific__node__update__interface__elements_8h_source}{specific\+\_\+node\+\_\+update\+\_\+interface\+\_\+elements.\+h}}.
 
-
-
-References \mbox{\hyperlink{oomph__utilities_8cc_source_l00436}{oomph\+::\+Command\+Line\+Args\+::output()}}.
-
 \mbox{\Hypertarget{classoomph_1_1ElasticUpdateFluidInterfaceElement_ac193aa64a8223a96e4148a5af456fb64}\label{classoomph_1_1ElasticUpdateFluidInterfaceElement_ac193aa64a8223a96e4148a5af456fb64}} 
 \index{oomph::ElasticUpdateFluidInterfaceElement$<$ EQUATION\_CLASS, DERIVATIVE\_CLASS, ELEMENT $>$@{oomph::ElasticUpdateFluidInterfaceElement$<$ EQUATION\_CLASS, DERIVATIVE\_CLASS, ELEMENT $>$}!output@{output}}
 \index{output@{output}!oomph::ElasticUpdateFluidInterfaceElement$<$ EQUATION\_CLASS, DERIVATIVE\_CLASS, ELEMENT $>$@{oomph::ElasticUpdateFluidInterfaceElement$<$ EQUATION\_CLASS, DERIVATIVE\_CLASS, ELEMENT $>$}}
@@ -313,10 +360,6 @@ Output the element.
 
 
 Definition at line \mbox{\hyperlink{specific__node__update__interface__elements_8h_source_l00855}{855}} of file \mbox{\hyperlink{specific__node__update__interface__elements_8h_source}{specific\+\_\+node\+\_\+update\+\_\+interface\+\_\+elements.\+h}}.
-
-
-
-References \mbox{\hyperlink{oomph__utilities_8cc_source_l00436}{oomph\+::\+Command\+Line\+Args\+::output()}}.
 
 \mbox{\Hypertarget{classoomph_1_1ElasticUpdateFluidInterfaceElement_a41706192ce4de3c4c51a70086199d8fa}\label{classoomph_1_1ElasticUpdateFluidInterfaceElement_a41706192ce4de3c4c51a70086199d8fa}} 
 \index{oomph::ElasticUpdateFluidInterfaceElement$<$ EQUATION\_CLASS, DERIVATIVE\_CLASS, ELEMENT $>$@{oomph::ElasticUpdateFluidInterfaceElement$<$ EQUATION\_CLASS, DERIVATIVE\_CLASS, ELEMENT $>$}!zeta\_nodal@{zeta\_nodal}}
@@ -345,7 +388,7 @@ References \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, and \mbox{\hyperlink
 \index{Lagrange\_index@{Lagrange\_index}!oomph::ElasticUpdateFluidInterfaceElement$<$ EQUATION\_CLASS, DERIVATIVE\_CLASS, ELEMENT $>$@{oomph::ElasticUpdateFluidInterfaceElement$<$ EQUATION\_CLASS, DERIVATIVE\_CLASS, ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Lagrange\_index}{Lagrange\_index}}
 {\footnotesize\ttfamily template$<$class EQUATION\+\_\+\+CLASS , class DERIVATIVE\+\_\+\+CLASS , class ELEMENT $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1ElasticUpdateFluidInterfaceElement}{oomph\+::\+Elastic\+Update\+Fluid\+Interface\+Element}}$<$ EQUATION\+\_\+\+CLASS, DERIVATIVE\+\_\+\+CLASS, ELEMENT $>$\+::Lagrange\+\_\+index\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1ElasticUpdateFluidInterfaceElement}{oomph\+::\+Elastic\+Update\+Fluid\+Interface\+Element}}$<$ EQUATION\+\_\+\+CLASS, DERIVATIVE\+\_\+\+CLASS, ELEMENT $>$\+::\+Lagrange\+\_\+index\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

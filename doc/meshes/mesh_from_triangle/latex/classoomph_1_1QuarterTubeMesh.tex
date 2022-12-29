@@ -54,11 +54,11 @@ class oomph\+::\+Quarter\+Tube\+Mesh$<$ ELEMENT $>$}
 
 The mesh boundaries are numbered as follows\+:
 \begin{DoxyItemize}
-\item Boundary 0\+: \char`\"{}\+Inflow\char`\"{} cross section; located along the line parametrised by $ \xi_0 = \xi_0^{lo} $ on the geometric object that specifies the wall.
+\item Boundary 0\+: \char`\"{}\+Inflow\char`\"{} cross section; located along the line parametrised by $ \xi_0 =  \xi_0^{lo} $ on the geometric object that specifies the wall.
 \item Boundary 1\+: Plane x=0
 \item Boundary 2\+: Plane y=0
 \item Boundary 3\+: The curved wall
-\item Boundary 4\+: \char`\"{}\+Outflow\char`\"{} cross section; located along the line parametrised by $ \xi_0 = \xi_0^{hi} $ on the geometric object that specifies the wall.
+\item Boundary 4\+: \char`\"{}\+Outflow\char`\"{} cross section; located along the line parametrised by $ \xi_0 =  \xi_0^{hi} $ on the geometric object that specifies the wall.
 \end{DoxyItemize}
 
 IMPORTANT NOTE\+: The interface looks more general than it should. The toplogy must remain that of a quarter tube, or the mesh generation will break. 
@@ -73,7 +73,7 @@ Definition at line \mbox{\hyperlink{quarter__tube__mesh_8template_8h_source_l000
 \index{QuarterTubeMesh@{QuarterTubeMesh}!oomph::QuarterTubeMesh$<$ ELEMENT $>$@{oomph::QuarterTubeMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{QuarterTubeMesh()}{QuarterTubeMesh()}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-\mbox{\hyperlink{classoomph_1_1QuarterTubeMesh}{oomph\+::\+Quarter\+Tube\+Mesh}}$<$ ELEMENT $>$\+::\mbox{\hyperlink{classoomph_1_1QuarterTubeMesh}{Quarter\+Tube\+Mesh}} (\begin{DoxyParamCaption}\item[{Geom\+Object $\ast$}]{wall\+\_\+pt,  }\item[{const Vector$<$ double $>$ \&}]{xi\+\_\+lo,  }\item[{const double \&}]{fract\+\_\+mid,  }\item[{const Vector$<$ double $>$ \&}]{xi\+\_\+hi,  }\item[{const unsigned \&}]{nlayer,  }\item[{Time\+Stepper $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&Mesh\+:\+:Default\+\_\+TimeStepper} }\end{DoxyParamCaption})}
+\mbox{\hyperlink{classoomph_1_1QuarterTubeMesh}{oomph\+::\+Quarter\+Tube\+Mesh}}$<$ ELEMENT $>$\+::\+Quarter\+Tube\+Mesh (\begin{DoxyParamCaption}\item[{Geom\+Object $\ast$}]{wall\+\_\+pt,  }\item[{const Vector$<$ double $>$ \&}]{xi\+\_\+lo,  }\item[{const double \&}]{fract\+\_\+mid,  }\item[{const Vector$<$ double $>$ \&}]{xi\+\_\+hi,  }\item[{const unsigned \&}]{nlayer,  }\item[{Time\+Stepper $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&Mesh\+:\+:Default\+\_\+TimeStepper} }\end{DoxyParamCaption})}
 
 
 
@@ -224,7 +224,7 @@ Referenced by \mbox{\hyperlink{quarter__tube__mesh_8template_8h_source_l00448}{o
 \index{Domain\_pt@{Domain\_pt}!oomph::QuarterTubeMesh$<$ ELEMENT $>$@{oomph::QuarterTubeMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Domain\_pt}{Domain\_pt}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-\mbox{\hyperlink{classoomph_1_1QuarterTubeDomain}{Quarter\+Tube\+Domain}}$\ast$ \mbox{\hyperlink{classoomph_1_1QuarterTubeMesh}{oomph\+::\+Quarter\+Tube\+Mesh}}$<$ ELEMENT $>$\+::Domain\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+\mbox{\hyperlink{classoomph_1_1QuarterTubeDomain}{Quarter\+Tube\+Domain}}$\ast$ \mbox{\hyperlink{classoomph_1_1QuarterTubeMesh}{oomph\+::\+Quarter\+Tube\+Mesh}}$<$ ELEMENT $>$\+::\+Domain\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -243,7 +243,7 @@ Referenced by \mbox{\hyperlink{quarter__tube__mesh_8template_8h_source_l00108}{o
 \index{Fract\_mid@{Fract\_mid}!oomph::QuarterTubeMesh$<$ ELEMENT $>$@{oomph::QuarterTubeMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Fract\_mid}{Fract\_mid}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-double \mbox{\hyperlink{classoomph_1_1QuarterTubeMesh}{oomph\+::\+Quarter\+Tube\+Mesh}}$<$ ELEMENT $>$\+::Fract\+\_\+mid\hspace{0.3cm}{\ttfamily [protected]}}
+double \mbox{\hyperlink{classoomph_1_1QuarterTubeMesh}{oomph\+::\+Quarter\+Tube\+Mesh}}$<$ ELEMENT $>$\+::\+Fract\+\_\+mid\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -258,7 +258,7 @@ Definition at line \mbox{\hyperlink{quarter__tube__mesh_8template_8h_source_l001
 \index{Wall\_pt@{Wall\_pt}!oomph::QuarterTubeMesh$<$ ELEMENT $>$@{oomph::QuarterTubeMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Wall\_pt}{Wall\_pt}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-Geom\+Object$\ast$ \mbox{\hyperlink{classoomph_1_1QuarterTubeMesh}{oomph\+::\+Quarter\+Tube\+Mesh}}$<$ ELEMENT $>$\+::Wall\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+Geom\+Object$\ast$ \mbox{\hyperlink{classoomph_1_1QuarterTubeMesh}{oomph\+::\+Quarter\+Tube\+Mesh}}$<$ ELEMENT $>$\+::\+Wall\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -277,7 +277,7 @@ Referenced by \mbox{\hyperlink{quarter__tube__mesh_8template_8h_source_l00325}{o
 \index{Xi\_hi@{Xi\_hi}!oomph::QuarterTubeMesh$<$ ELEMENT $>$@{oomph::QuarterTubeMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Xi\_hi}{Xi\_hi}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-Vector$<$double$>$ \mbox{\hyperlink{classoomph_1_1QuarterTubeMesh}{oomph\+::\+Quarter\+Tube\+Mesh}}$<$ ELEMENT $>$\+::Xi\+\_\+hi\hspace{0.3cm}{\ttfamily [protected]}}
+Vector$<$double$>$ \mbox{\hyperlink{classoomph_1_1QuarterTubeMesh}{oomph\+::\+Quarter\+Tube\+Mesh}}$<$ ELEMENT $>$\+::\+Xi\+\_\+hi\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -296,7 +296,7 @@ Referenced by \mbox{\hyperlink{quarter__tube__mesh_8template_8cc_source_l00044}{
 \index{Xi\_lo@{Xi\_lo}!oomph::QuarterTubeMesh$<$ ELEMENT $>$@{oomph::QuarterTubeMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Xi\_lo}{Xi\_lo}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-Vector$<$double$>$ \mbox{\hyperlink{classoomph_1_1QuarterTubeMesh}{oomph\+::\+Quarter\+Tube\+Mesh}}$<$ ELEMENT $>$\+::Xi\+\_\+lo\hspace{0.3cm}{\ttfamily [protected]}}
+Vector$<$double$>$ \mbox{\hyperlink{classoomph_1_1QuarterTubeMesh}{oomph\+::\+Quarter\+Tube\+Mesh}}$<$ ELEMENT $>$\+::\+Xi\+\_\+lo\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 

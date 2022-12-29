@@ -40,7 +40,41 @@ void \mbox{\hyperlink{classoomph_1_1Hijacked_adb1760705326df86f6289cc3774d37b9}{
 \begin{DoxyCompactList}\small\item\em Get the residuals from the underlying element, but then wipe the entries in the residual vector that correspond to hijacked values -- they will be computed by other elements. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1Hijacked_a35778dccc9cf036c37ee569efe5b5f7c}{get\+\_\+jacobian}} (\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&residuals, \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ \&jacobian)
 \begin{DoxyCompactList}\small\item\em Get the residuals and Jacobian matrix from the underlying element, but then wipe the entries in the residual vector and the rows in the Jacobian matrix that correspond to hijacked values -- they will be computed by other elements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1HijackedElementBase}{oomph\+::\+Hijacked\+Element\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1HijackedElementBase_ad062d9c27f6fd3d613a86b32980fa71e}{Hijacked\+Element\+Base}} ()
+\begin{DoxyCompactList}\small\item\em Constructor, initialise the pointer to the equation numbers for the storage to zero. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1HijackedElementBase_af3393a98fc80a2f7761046920b4a3040}{$\sim$\+Hijacked\+Element\+Base}} ()
+\begin{DoxyCompactList}\small\item\em Destructor, destroy the storage for the equation numbers. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1HijackedElementBase_a0a373a87d121205b9cc0fd54ea41f4ad}{unhijack\+\_\+all\+\_\+data}} ()
+\begin{DoxyCompactList}\small\item\em Reset the hijacked data pt, so that none of the equations in the element are hijacked. \end{DoxyCompactList}\item 
+const double \& \mbox{\hyperlink{classoomph_1_1HijackedElementBase_aca8fb139dcd8632391ba601c87692748}{residual\+\_\+multiplier}} () const
+\begin{DoxyCompactList}\small\item\em Return the value of the residual multiplier. \end{DoxyCompactList}\item 
+double $\ast$\& \mbox{\hyperlink{classoomph_1_1HijackedElementBase_a8fb2d61b46a5b1d79890ec50e80d593d}{residual\+\_\+multiplier\+\_\+pt}} ()
+\begin{DoxyCompactList}\small\item\em Return the pointer to the residual multiplier. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classoomph_1_1HijackedElementBase}{oomph\+::\+Hijacked\+Element\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classoomph_1_1HijackedElementBase_ac518df71f978c2b80cd25a1283353ab5}{hijack\+\_\+global\+\_\+eqn}} (long $\ast$const \&global\+\_\+eqn\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Mark the global equation, addressed by global\+\_\+eqn\+\_\+pt, as hijacked by this element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1HijackedElementBase_aa94e2c93374151302879645f4c354c3f}{unhijack\+\_\+global\+\_\+eqn}} (long $\ast$const \&global\+\_\+eqn\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em The global equation, addressed by global\+\_\+eqn\+\_\+pt, is no longer hijacked by this element. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1HijackedElementBase}{oomph\+::\+Hijacked\+Element\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::set$<$ long $\ast$ $>$ $\ast$ \mbox{\hyperlink{classoomph_1_1HijackedElementBase_a9c3a9a4e39ee5e3af0f5594c31f532c5}{Hijacked\+\_\+global\+\_\+eqn\+\_\+number\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em Pointer to a Set of pointers to the equation numbers that will be hijacked by this element. Note that these MUST be pointers because hijacking information is set BEFORE global equation numbers have been assigned. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ int $>$ $\ast$ \mbox{\hyperlink{classoomph_1_1HijackedElementBase_ae604da2f744f328f3866a2cefa3aa80c}{Hijacked\+\_\+local\+\_\+eqn\+\_\+number\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em Pointer to a vector of integers containing the local equation numbers of any hijacked variables in the element. \end{DoxyCompactList}\item 
+double $\ast$ \mbox{\hyperlink{classoomph_1_1HijackedElementBase_a283509b7af09479e7a1cb8c0e05a8c16}{Residual\+\_\+multiplier\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em Pointer to a double that multiplies the contribution to the residuals from the original element. This is usually used as a homotopy parameter to permit a smooth transition between different types of boundary conditions, rather than switching them on or off abruptly. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1HijackedElementBase}{oomph\+::\+Hijacked\+Element\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+static double \mbox{\hyperlink{classoomph_1_1HijackedElementBase_afd87cc7c33c2b846c5f7a373c352f13a}{Default\+\_\+residual\+\_\+multiplier}} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Static default value for the double that multiplies the original residuals. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -58,7 +92,7 @@ Definition at line \mbox{\hyperlink{hijacked__elements_8h_source_l00131}{131}} o
 \index{Hijacked@{Hijacked}!oomph::Hijacked$<$ ELEMENT $>$@{oomph::Hijacked$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Hijacked()}{Hijacked()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-\mbox{\hyperlink{classoomph_1_1Hijacked}{oomph\+::\+Hijacked}}$<$ ELEMENT $>$\+::\mbox{\hyperlink{classoomph_1_1Hijacked}{Hijacked}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{classoomph_1_1Hijacked}{oomph\+::\+Hijacked}}$<$ ELEMENT $>$\+::\+Hijacked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -73,7 +107,7 @@ Definition at line \mbox{\hyperlink{hijacked__elements_8h_source_l00135}{135}} o
 \index{Hijacked@{Hijacked}!oomph::Hijacked$<$ ELEMENT $>$@{oomph::Hijacked$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Hijacked()}{Hijacked()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-\mbox{\hyperlink{classoomph_1_1Hijacked}{oomph\+::\+Hijacked}}$<$ ELEMENT $>$\+::\mbox{\hyperlink{classoomph_1_1Hijacked}{Hijacked}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element}} $\ast$const \&}]{element\+\_\+pt,  }\item[{const int \&}]{face\+\_\+index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{classoomph_1_1Hijacked}{oomph\+::\+Hijacked}}$<$ ELEMENT $>$\+::\+Hijacked (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element}} $\ast$const \&}]{element\+\_\+pt,  }\item[{const int \&}]{face\+\_\+index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -88,7 +122,7 @@ Definition at line \mbox{\hyperlink{hijacked__elements_8h_source_l00138}{138}} o
 \index{Hijacked@{Hijacked}!oomph::Hijacked$<$ ELEMENT $>$@{oomph::Hijacked$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Hijacked()}{Hijacked()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-\mbox{\hyperlink{classoomph_1_1Hijacked}{oomph\+::\+Hijacked}}$<$ ELEMENT $>$\+::\mbox{\hyperlink{classoomph_1_1Hijacked}{Hijacked}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element}} $\ast$const \&}]{element\+\_\+pt,  }\item[{const int \&}]{face\+\_\+index,  }\item[{const unsigned \&}]{id = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{classoomph_1_1Hijacked}{oomph\+::\+Hijacked}}$<$ ELEMENT $>$\+::\+Hijacked (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1FiniteElement}{Finite\+Element}} $\ast$const \&}]{element\+\_\+pt,  }\item[{const int \&}]{face\+\_\+index,  }\item[{const unsigned \&}]{id = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -213,7 +247,7 @@ Definition at line \mbox{\hyperlink{hijacked__elements_8h_source_l00240}{240}} o
 
 
 
-References \mbox{\hyperlink{nodes_8h_source_l00358}{oomph\+::\+Data\+::eqn\+\_\+number\+\_\+pt()}}, \mbox{\hyperlink{hijacked__elements_8cc_source_l00062}{oomph\+::\+Hijacked\+Element\+Base\+::hijack\+\_\+global\+\_\+eqn()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00286}{oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string()}}, and \mbox{\hyperlink{nodes_8h_source_l01765}{oomph\+::\+Solid\+Node\+::variable\+\_\+position\+\_\+pt()}}.
+References \mbox{\hyperlink{nodes_8h_source_l00358}{oomph\+::\+Data\+::eqn\+\_\+number\+\_\+pt()}}, \mbox{\hyperlink{hijacked__elements_8cc_source_l00062}{oomph\+::\+Hijacked\+Element\+Base\+::hijack\+\_\+global\+\_\+eqn()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, and \mbox{\hyperlink{nodes_8h_source_l01765}{oomph\+::\+Solid\+Node\+::variable\+\_\+position\+\_\+pt()}}.
 
 \mbox{\Hypertarget{classoomph_1_1Hijacked_aaf4d8eb01937473cc10cc1c89dfe7dc6}\label{classoomph_1_1Hijacked_aaf4d8eb01937473cc10cc1c89dfe7dc6}} 
 \index{oomph::Hijacked$<$ ELEMENT $>$@{oomph::Hijacked$<$ ELEMENT $>$}!hijack\_nodal\_spine\_value@{hijack\_nodal\_spine\_value}}
@@ -232,7 +266,7 @@ Definition at line \mbox{\hyperlink{hijacked__elements_8h_source_l00279}{279}} o
 
 
 
-References \mbox{\hyperlink{nodes_8h_source_l00358}{oomph\+::\+Data\+::eqn\+\_\+number\+\_\+pt()}}, \mbox{\hyperlink{hijacked__elements_8cc_source_l00062}{oomph\+::\+Hijacked\+Element\+Base\+::hijack\+\_\+global\+\_\+eqn()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{spines_8h_source_l00156}{oomph\+::\+Spine\+::spine\+\_\+height\+\_\+pt()}}, \mbox{\hyperlink{spines_8h_source_l00372}{oomph\+::\+Spine\+Node\+::spine\+\_\+pt()}}, and \mbox{\hyperlink{oomph__definitions_8cc_source_l00286}{oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string()}}.
+References \mbox{\hyperlink{nodes_8h_source_l00358}{oomph\+::\+Data\+::eqn\+\_\+number\+\_\+pt()}}, \mbox{\hyperlink{hijacked__elements_8cc_source_l00062}{oomph\+::\+Hijacked\+Element\+Base\+::hijack\+\_\+global\+\_\+eqn()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{spines_8h_source_l00156}{oomph\+::\+Spine\+::spine\+\_\+height\+\_\+pt()}}, and \mbox{\hyperlink{spines_8h_source_l00372}{oomph\+::\+Spine\+Node\+::spine\+\_\+pt()}}.
 
 \mbox{\Hypertarget{classoomph_1_1Hijacked_a944ab621f0da8b6434d843c33b8a63f4}\label{classoomph_1_1Hijacked_a944ab621f0da8b6434d843c33b8a63f4}} 
 \index{oomph::Hijacked$<$ ELEMENT $>$@{oomph::Hijacked$<$ ELEMENT $>$}!hijack\_nodal\_value@{hijack\_nodal\_value}}

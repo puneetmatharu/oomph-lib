@@ -78,6 +78,49 @@ void \mbox{\hyperlink{classoomph_1_1BoundaryNode_a8ceaf97ad0211572e251091f84e4f6
 \begin{DoxyCompactList}\small\item\em Resize the number of equations. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1BoundaryNode_a11c0b14661482e08d65fb9ecaa9d73ec}{make\+\_\+periodic}} (\mbox{\hyperlink{classoomph_1_1Node}{Node}} $\ast$const \&node\+\_\+pt)
 \begin{DoxyCompactList}\small\item\em Make the node periodic. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1BoundaryNodeBase}{oomph\+::\+Boundary\+Node\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classoomph_1_1BoundaryNodeBase_a2af96b956e59182fe8bfe8e2a87e02ce}{assign\+\_\+additional\+\_\+values\+\_\+with\+\_\+face\+\_\+id}} (const unsigned \&n\+\_\+additional\+\_\+value, const unsigned \&face\+\_\+id=0)=0
+\begin{DoxyCompactList}\small\item\em Member function that allocates storage for a given number of additional degrees of freedom, n\+\_\+additional\+\_\+value, associated with a particular face\+\_\+id to the \mbox{\hyperlink{classoomph_1_1Node}{Node}} node\+\_\+pt. \end{DoxyCompactList}\item 
+std\+::map$<$ unsigned, unsigned $>$ $\ast$\& \mbox{\hyperlink{classoomph_1_1BoundaryNodeBase_a5f73c54dbb9bdfe3538b61117a0cc674}{index\+\_\+of\+\_\+first\+\_\+value\+\_\+assigned\+\_\+by\+\_\+face\+\_\+element\+\_\+pt}} ()
+\begin{DoxyCompactList}\small\item\em Return pointer to the map giving the index of the first face element value. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1BoundaryNodeBase_a67c470bd15750e91775101b5bce65a58}{index\+\_\+of\+\_\+first\+\_\+value\+\_\+assigned\+\_\+by\+\_\+face\+\_\+element}} (const unsigned \&face\+\_\+id=0) const
+\begin{DoxyCompactList}\small\item\em Return the index of the first value associated with the i-\/th face element value. If no argument is specified we return the index associated with the first (and assumed to be only) face element attached to this node. Throws error only in paranoid mode if no values have been set by any Face\+Elements. If you want to catch such cases gracefully in all circumstances (there are examples with complex unstructured 3D meshes where it\textquotesingle{}s not clear a priori if a node has been resized by Face\+Elements) use alternative version (with leading bool arguments) that always checks and throws so exceptions can be caught gracefully. Returns UINT\+\_\+\+MAX if error. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1BoundaryNodeBase_a1ff36a9e6c0894657a3ea61f1a4beeae}{index\+\_\+of\+\_\+first\+\_\+value\+\_\+assigned\+\_\+by\+\_\+face\+\_\+element}} (const bool \&throw\+\_\+if\+\_\+no\+\_\+value\+\_\+assigned\+\_\+by\+\_\+face\+\_\+element, const bool \&throw\+\_\+quietly, const unsigned \&face\+\_\+id=0) const
+\begin{DoxyCompactList}\small\item\em Return the index of the first value associated with the i-\/th face element value. If no argument id is specified we return the index associated with the first (and assumed to be only) face element attached to this node. If no values have been set by any Face\+Elements and throw\+\_\+if\+\_\+no\+\_\+value\+\_\+assigned\+\_\+by\+\_\+face\+\_\+element is set to true, this is caught gracefully in all circumstances (there are examples with complex unstructured 3D meshes where it\textquotesingle{}s not clear a priori if a node has been resized by Face\+Elements) by throwing an \mbox{\hyperlink{classoomph_1_1OomphLibError}{Oomph\+Lib\+Error}} that can be caught gracefully. If throw\+\_\+quietly is set to true we throw an \mbox{\hyperlink{classoomph_1_1OomphLibQuietException}{Oomph\+Lib\+Quiet\+Exception}} instead. You can catch either by catching the underlying std\+::runtime\+\_\+error. In PARANOID mode we check regardless of the setting of throw\+\_\+if\+\_\+no\+\_\+value\+\_\+assigned\+\_\+by\+\_\+face\+\_\+element (but respect the request for quietness). Returns UINT\+\_\+\+MAX if error. \end{DoxyCompactList}\item 
+virtual unsigned \mbox{\hyperlink{classoomph_1_1BoundaryNodeBase_ae0d9f15e311861a09073ee01e5fb5cd2}{nvalue\+\_\+assigned\+\_\+by\+\_\+face\+\_\+element}} (const unsigned \&face\+\_\+id=0) const =0
+\begin{DoxyCompactList}\small\item\em Return the number of values associated with the i-\/th face element field. If no argument is specified we return the value associated with the first (and assumed to be only) face element attached to this node. Throws error only in paranoid mode if no values have been set by any Face\+Elements. If you want to catch such cases gracefully in all circumstances (there are examples with complex unstructured 3D meshes where it\textquotesingle{}s not clear a priori if a node has been resized by Face\+Elements) use alternative version (with leading bool arguments) that always checks and throws so exceptions can be caught gracefully. Returns UINT\+\_\+\+MAX if error. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1BoundaryNodeBase_a00957868c82b2ec9f676ebdd80f2edf4}{Boundary\+Node\+Base}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor, set the pointers to the storage to NULL. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1BoundaryNodeBase_acb698db0bafda5e858856d4106614059}{$\sim$\+Boundary\+Node\+Base}} ()
+\begin{DoxyCompactList}\small\item\em Destructor, clean up any allocated storage for the boundaries. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1BoundaryNodeBase_a3381b2997d4fe951d48ed53ea5d84634}{Boundary\+Node\+Base}} (const \mbox{\hyperlink{classoomph_1_1BoundaryNodeBase}{Boundary\+Node\+Base}} \&boundary\+\_\+node\+\_\+base)=delete
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1BoundaryNodeBase_a75b43203e9539aec0cde988b57d24f2f}{operator=}} (const \mbox{\hyperlink{classoomph_1_1BoundaryNodeBase}{Boundary\+Node\+Base}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1BoundaryNodeBase_a5f40147dddc319bcde0e26239e2fb813}{boundary\+\_\+coordinates\+\_\+have\+\_\+been\+\_\+set\+\_\+up}} ()
+\begin{DoxyCompactList}\small\item\em Have boundary coordinates been set up? \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1BoundaryNodeBase_a29342ee40e695be4300b09920456073c}{get\+\_\+boundaries\+\_\+pt}} (std\+::set$<$ unsigned $>$ $\ast$\&boundaries\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Access to pointer to set of mesh boundaries that this node occupies; NULL if the node is not on any boundary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1BoundaryNodeBase_a3f909fc5f583bcfa5838766769448343}{add\+\_\+to\+\_\+boundary}} (const unsigned \&b)
+\begin{DoxyCompactList}\small\item\em Add the node to the mesh boundary b. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1BoundaryNodeBase_ab2b651cea5e5e0ec02183e6ab1b3c9b7}{remove\+\_\+from\+\_\+boundary}} (const unsigned \&b)
+\begin{DoxyCompactList}\small\item\em Remove the node from the mesh boundary b. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1BoundaryNodeBase_aa977a1295a422bf0bd44944ae056ff96}{is\+\_\+on\+\_\+boundary}} () const
+\begin{DoxyCompactList}\small\item\em Test whether the node lies on a boundary. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1BoundaryNodeBase_a90a976e520409d6c6fb0b1948c618294}{is\+\_\+on\+\_\+boundary}} (const unsigned \&b) const
+\begin{DoxyCompactList}\small\item\em Test whether the node lies on mesh boundary b. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1BoundaryNodeBase_a0a623123c46cafc3e81ede1a981c8663}{ncoordinates\+\_\+on\+\_\+boundary}} (const unsigned \&b)
+\begin{DoxyCompactList}\small\item\em Get the number of boundary coordinates on mesh boundary b. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1BoundaryNodeBase_a4c0397f720292ff195f32332f284cd8f}{get\+\_\+coordinates\+\_\+on\+\_\+boundary}} (const unsigned \&b, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&boundary\+\_\+zeta)
+\begin{DoxyCompactList}\small\item\em Return the vector of boundary coordinates on mesh boundary b. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1BoundaryNodeBase_a2dfc687fb793ef32693282a08c012d30}{set\+\_\+coordinates\+\_\+on\+\_\+boundary}} (const unsigned \&b, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&boundary\+\_\+zeta)
+\begin{DoxyCompactList}\small\item\em Set the vector of boundary coordinates on mesh boundary b. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1BoundaryNodeBase_a6dd015b923a309292616805a658eb401}{get\+\_\+coordinates\+\_\+on\+\_\+boundary}} (const unsigned \&b, const unsigned \&k, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&boundary\+\_\+zeta)
+\begin{DoxyCompactList}\small\item\em Return the vector of the k-\/th generalised boundary coordinates on mesh boundary b. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1BoundaryNodeBase_a45d53bb02ccf50ab551d051b5e2d4777}{set\+\_\+coordinates\+\_\+on\+\_\+boundary}} (const unsigned \&b, const unsigned \&k, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&boundary\+\_\+zeta)
+\begin{DoxyCompactList}\small\item\em Set the vector of the k-\/th generalised boundary coordinates on mesh boundary b. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -86,6 +129,20 @@ void \mbox{\hyperlink{classoomph_1_1BoundaryNode_ab90ca88d1178cfab62445d198470d4
 void \mbox{\hyperlink{classoomph_1_1BoundaryNode_ab0ef928d7afc2ea759d35dbf4690b341}{clear\+\_\+additional\+\_\+copied\+\_\+pointers}} ()
 \begin{DoxyCompactList}\small\item\em Copy over additional information so that if the node is periodic it can remain active if the node that holds the periodic data is deleted. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classoomph_1_1BoundaryNodeBase}{oomph\+::\+Boundary\+Node\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classoomph_1_1BoundaryNodeBase_a335936260b9a5d6ed4e191e4c44ab3a2}{make\+\_\+node\+\_\+periodic}} (\mbox{\hyperlink{classoomph_1_1Node}{Node}} $\ast$const \&node\+\_\+pt, \mbox{\hyperlink{classoomph_1_1Node}{Node}} $\ast$const \&original\+\_\+node\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Helper function that is used to turn Boundary\+Nodes into peridic boundary nodes by setting the data values of copied\+\_\+node\+\_\+pt to those of original\+\_\+node\+\_\+pt. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1BoundaryNodeBase_a37f55f9018ae7dcd5cb194f030fccfd6}{make\+\_\+nodes\+\_\+periodic}} (\mbox{\hyperlink{classoomph_1_1Node}{Node}} $\ast$const \&node\+\_\+pt, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1Node}{Node}} $\ast$ $>$ const \&periodic\+\_\+copies\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Helper function that is used to turn Boundary\+Nodes into periodic boundary nodes by setting the data values of the nodes in the vector periodic\+\_\+copies\+\_\+pt to be the same as those in node\+\_\+pt. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1BoundaryNodeBase}{oomph\+::\+Boundary\+Node\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::map$<$ unsigned, unsigned $>$ $\ast$ \mbox{\hyperlink{classoomph_1_1BoundaryNodeBase_a950c7d3ab5b9ee0473b45b2a134728a7}{Index\+\_\+of\+\_\+first\+\_\+value\+\_\+assigned\+\_\+by\+\_\+face\+\_\+element\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em Pointer to a map, indexed by the face element identifier it returns the position of the first face element value. If the \mbox{\hyperlink{classoomph_1_1Node}{Node}} does not lie on a face element this map should never be queried. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Node}{Node}} $\ast$ \mbox{\hyperlink{classoomph_1_1BoundaryNodeBase_a4afcc250ee4d601a60f06d0d39ebaca0}{Copied\+\_\+node\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em If the \mbox{\hyperlink{classoomph_1_1BoundaryNode}{Boundary\+Node}} is periodic, this pointer is set to the \mbox{\hyperlink{classoomph_1_1BoundaryNode}{Boundary\+Node}} whose data it shares. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -103,7 +160,7 @@ Definition at line \mbox{\hyperlink{nodes_8h_source_l02241}{2241}} of file \mbox
 \index{BoundaryNode@{BoundaryNode}!oomph::BoundaryNode$<$ NODE\_TYPE $>$@{oomph::BoundaryNode$<$ NODE\_TYPE $>$}}
 \doxysubsubsection{\texorpdfstring{BoundaryNode()}{BoundaryNode()}\hspace{0.1cm}{\footnotesize\ttfamily [1/6]}}
 {\footnotesize\ttfamily template$<$class NODE\+\_\+\+TYPE $>$ \\
-\mbox{\hyperlink{classoomph_1_1BoundaryNode}{oomph\+::\+Boundary\+Node}}$<$ NODE\+\_\+\+TYPE $>$\+::\mbox{\hyperlink{classoomph_1_1BoundaryNode}{Boundary\+Node}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{classoomph_1_1BoundaryNode}{oomph\+::\+Boundary\+Node}}$<$ NODE\+\_\+\+TYPE $>$\+::\+Boundary\+Node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -118,7 +175,7 @@ Definition at line \mbox{\hyperlink{nodes_8h_source_l02382}{2382}} of file \mbox
 \index{BoundaryNode@{BoundaryNode}!oomph::BoundaryNode$<$ NODE\_TYPE $>$@{oomph::BoundaryNode$<$ NODE\_TYPE $>$}}
 \doxysubsubsection{\texorpdfstring{BoundaryNode()}{BoundaryNode()}\hspace{0.1cm}{\footnotesize\ttfamily [2/6]}}
 {\footnotesize\ttfamily template$<$class NODE\+\_\+\+TYPE $>$ \\
-\mbox{\hyperlink{classoomph_1_1BoundaryNode}{oomph\+::\+Boundary\+Node}}$<$ NODE\+\_\+\+TYPE $>$\+::\mbox{\hyperlink{classoomph_1_1BoundaryNode}{Boundary\+Node}} (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n\+\_\+dim,  }\item[{const unsigned \&}]{n\+\_\+position\+\_\+type,  }\item[{const unsigned \&}]{initial\+\_\+n\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{classoomph_1_1BoundaryNode}{oomph\+::\+Boundary\+Node}}$<$ NODE\+\_\+\+TYPE $>$\+::\+Boundary\+Node (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n\+\_\+dim,  }\item[{const unsigned \&}]{n\+\_\+position\+\_\+type,  }\item[{const unsigned \&}]{initial\+\_\+n\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -133,7 +190,7 @@ Definition at line \mbox{\hyperlink{nodes_8h_source_l02391}{2391}} of file \mbox
 \index{BoundaryNode@{BoundaryNode}!oomph::BoundaryNode$<$ NODE\_TYPE $>$@{oomph::BoundaryNode$<$ NODE\_TYPE $>$}}
 \doxysubsubsection{\texorpdfstring{BoundaryNode()}{BoundaryNode()}\hspace{0.1cm}{\footnotesize\ttfamily [3/6]}}
 {\footnotesize\ttfamily template$<$class NODE\+\_\+\+TYPE $>$ \\
-\mbox{\hyperlink{classoomph_1_1BoundaryNode}{oomph\+::\+Boundary\+Node}}$<$ NODE\+\_\+\+TYPE $>$\+::\mbox{\hyperlink{classoomph_1_1BoundaryNode}{Boundary\+Node}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper}} $\ast$const \&}]{time\+\_\+stepper\+\_\+pt,  }\item[{const unsigned \&}]{n\+\_\+dim,  }\item[{const unsigned \&}]{n\+\_\+position\+\_\+type,  }\item[{const unsigned \&}]{initial\+\_\+n\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{classoomph_1_1BoundaryNode}{oomph\+::\+Boundary\+Node}}$<$ NODE\+\_\+\+TYPE $>$\+::\+Boundary\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper}} $\ast$const \&}]{time\+\_\+stepper\+\_\+pt,  }\item[{const unsigned \&}]{n\+\_\+dim,  }\item[{const unsigned \&}]{n\+\_\+position\+\_\+type,  }\item[{const unsigned \&}]{initial\+\_\+n\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -148,7 +205,7 @@ Definition at line \mbox{\hyperlink{nodes_8h_source_l02407}{2407}} of file \mbox
 \index{BoundaryNode@{BoundaryNode}!oomph::BoundaryNode$<$ NODE\_TYPE $>$@{oomph::BoundaryNode$<$ NODE\_TYPE $>$}}
 \doxysubsubsection{\texorpdfstring{BoundaryNode()}{BoundaryNode()}\hspace{0.1cm}{\footnotesize\ttfamily [4/6]}}
 {\footnotesize\ttfamily template$<$class NODE\+\_\+\+TYPE $>$ \\
-\mbox{\hyperlink{classoomph_1_1BoundaryNode}{oomph\+::\+Boundary\+Node}}$<$ NODE\+\_\+\+TYPE $>$\+::\mbox{\hyperlink{classoomph_1_1BoundaryNode}{Boundary\+Node}} (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n\+\_\+lagrangian,  }\item[{const unsigned \&}]{n\+\_\+lagrangian\+\_\+type,  }\item[{const unsigned \&}]{n\+\_\+dim,  }\item[{const unsigned \&}]{n\+\_\+position\+\_\+type,  }\item[{const unsigned \&}]{initial\+\_\+n\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{classoomph_1_1BoundaryNode}{oomph\+::\+Boundary\+Node}}$<$ NODE\+\_\+\+TYPE $>$\+::\+Boundary\+Node (\begin{DoxyParamCaption}\item[{const unsigned \&}]{n\+\_\+lagrangian,  }\item[{const unsigned \&}]{n\+\_\+lagrangian\+\_\+type,  }\item[{const unsigned \&}]{n\+\_\+dim,  }\item[{const unsigned \&}]{n\+\_\+position\+\_\+type,  }\item[{const unsigned \&}]{initial\+\_\+n\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -163,7 +220,7 @@ Definition at line \mbox{\hyperlink{nodes_8h_source_l02424}{2424}} of file \mbox
 \index{BoundaryNode@{BoundaryNode}!oomph::BoundaryNode$<$ NODE\_TYPE $>$@{oomph::BoundaryNode$<$ NODE\_TYPE $>$}}
 \doxysubsubsection{\texorpdfstring{BoundaryNode()}{BoundaryNode()}\hspace{0.1cm}{\footnotesize\ttfamily [5/6]}}
 {\footnotesize\ttfamily template$<$class NODE\+\_\+\+TYPE $>$ \\
-\mbox{\hyperlink{classoomph_1_1BoundaryNode}{oomph\+::\+Boundary\+Node}}$<$ NODE\+\_\+\+TYPE $>$\+::\mbox{\hyperlink{classoomph_1_1BoundaryNode}{Boundary\+Node}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper}} $\ast$const \&}]{time\+\_\+stepper\+\_\+pt,  }\item[{const unsigned \&}]{n\+\_\+lagrangian,  }\item[{const unsigned \&}]{n\+\_\+lagrangian\+\_\+type,  }\item[{const unsigned \&}]{n\+\_\+dim,  }\item[{const unsigned \&}]{n\+\_\+position\+\_\+type,  }\item[{const unsigned \&}]{initial\+\_\+n\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{classoomph_1_1BoundaryNode}{oomph\+::\+Boundary\+Node}}$<$ NODE\+\_\+\+TYPE $>$\+::\+Boundary\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper}} $\ast$const \&}]{time\+\_\+stepper\+\_\+pt,  }\item[{const unsigned \&}]{n\+\_\+lagrangian,  }\item[{const unsigned \&}]{n\+\_\+lagrangian\+\_\+type,  }\item[{const unsigned \&}]{n\+\_\+dim,  }\item[{const unsigned \&}]{n\+\_\+position\+\_\+type,  }\item[{const unsigned \&}]{initial\+\_\+n\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -197,7 +254,7 @@ References \mbox{\hyperlink{nodes_8h_source_l02288}{oomph\+::\+Boundary\+Node$<$
 \index{BoundaryNode@{BoundaryNode}!oomph::BoundaryNode$<$ NODE\_TYPE $>$@{oomph::BoundaryNode$<$ NODE\_TYPE $>$}}
 \doxysubsubsection{\texorpdfstring{BoundaryNode()}{BoundaryNode()}\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
 {\footnotesize\ttfamily template$<$class NODE\+\_\+\+TYPE $>$ \\
-\mbox{\hyperlink{classoomph_1_1BoundaryNode}{oomph\+::\+Boundary\+Node}}$<$ NODE\+\_\+\+TYPE $>$\+::\mbox{\hyperlink{classoomph_1_1BoundaryNode}{Boundary\+Node}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classoomph_1_1BoundaryNode}{Boundary\+Node}}$<$ NODE\+\_\+\+TYPE $>$ \&}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+\mbox{\hyperlink{classoomph_1_1BoundaryNode}{oomph\+::\+Boundary\+Node}}$<$ NODE\+\_\+\+TYPE $>$\+::\+Boundary\+Node (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classoomph_1_1BoundaryNode}{Boundary\+Node}}$<$ NODE\+\_\+\+TYPE $>$ \&}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
 
 
 

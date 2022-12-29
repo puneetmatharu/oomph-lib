@@ -28,6 +28,19 @@ void \mbox{\hyperlink{classoomph_1_1EBDF3_a742b80449f93d0fa1604891b19e58110}{set
 \begin{DoxyCompactList}\small\item\em Calculate the weights for this set of step sizes. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1EBDF3_a273b7eaa19d2e95d6392e6d8dc2970d9}{timestep}} (\mbox{\hyperlink{classoomph_1_1ExplicitTimeSteppableObject}{Explicit\+Time\+Steppable\+Object}} $\ast$const \&object\+\_\+pt, const double \&dt)
 \begin{DoxyCompactList}\small\item\em Function that is used to advance the solution by time dt. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1ExplicitTimeStepper}{oomph\+::\+Explicit\+Time\+Stepper}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1ExplicitTimeStepper_a4b54826f4098eae55da1ee7fd51b634d}{Explicit\+Time\+Stepper}} ()
+\begin{DoxyCompactList}\small\item\em Empty Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1ExplicitTimeStepper_a1e71c44aeb2699d63ba6300b212ad609}{Explicit\+Time\+Stepper}} (const \mbox{\hyperlink{classoomph_1_1ExplicitTimeStepper}{Explicit\+Time\+Stepper}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1ExplicitTimeStepper_aeb7796f8074f510f630a7a73dca98886}{operator=}} (const \mbox{\hyperlink{classoomph_1_1ExplicitTimeStepper}{Explicit\+Time\+Stepper}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1ExplicitTimeStepper_a51f659328a57063563b7344c8b9d7737}{$\sim$\+Explicit\+Time\+Stepper}} ()
+\begin{DoxyCompactList}\small\item\em Empty virtual destructor --- no memory is allocated in this class. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1ExplicitTimeStepper_ab43bbab17960d0f50b8842e996f5c765}{timestep}} (\mbox{\hyperlink{classoomph_1_1ExplicitTimeSteppableObject}{Explicit\+Time\+Steppable\+Object}} $\ast$const \&object\+\_\+pt, const double \&dt)=0
+\begin{DoxyCompactList}\small\item\em Pure virtual function that is used to advance time in the object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -40,6 +53,11 @@ double \mbox{\hyperlink{classoomph_1_1EBDF3_a4f4bf6b76694fc89cbf516a2388cff00}{Y
 double \mbox{\hyperlink{classoomph_1_1EBDF3_ad79bff41bb685114506252f24dd3e17e}{Fn\+\_\+weight}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1ExplicitTimeStepper}{oomph\+::\+Explicit\+Time\+Stepper}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classoomph_1_1ExplicitTimeStepper_aa923e120e84dc7cec56d2a50f5b33421}{Type}}
+\begin{DoxyCompactList}\small\item\em String that indicates the type of the timestepper (e.\+g. \char`\"{}\+Runge\+Kutta\char`\"{}, etc.) \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -129,7 +147,7 @@ Definition at line \mbox{\hyperlink{explicit__timesteppers_8cc_source_l00427}{42
 
 
 
-References \mbox{\hyperlink{explicit__timesteppers_8h_source_l00108}{oomph\+::\+Explicit\+Time\+Steppable\+Object\+::actions\+\_\+after\+\_\+explicit\+\_\+stage()}}, \mbox{\hyperlink{explicit__timesteppers_8h_source_l00116}{oomph\+::\+Explicit\+Time\+Steppable\+Object\+::actions\+\_\+after\+\_\+explicit\+\_\+timestep()}}, \mbox{\hyperlink{explicit__timesteppers_8h_source_l00102}{oomph\+::\+Explicit\+Time\+Steppable\+Object\+::actions\+\_\+before\+\_\+explicit\+\_\+stage()}}, \mbox{\hyperlink{explicit__timesteppers_8h_source_l00112}{oomph\+::\+Explicit\+Time\+Steppable\+Object\+::actions\+\_\+before\+\_\+explicit\+\_\+timestep()}}, \mbox{\hyperlink{timesteppers_8h_source_l00136}{oomph\+::\+Time\+::dt()}}, \mbox{\hyperlink{cfortran_8h_source_l00571}{e}}, \mbox{\hyperlink{explicit__timesteppers_8h_source_l00244}{Fn\+\_\+weight}}, \mbox{\hyperlink{explicit__timesteppers_8cc_source_l00060}{oomph\+::\+Explicit\+Time\+Steppable\+Object\+::get\+\_\+dofs()}}, \mbox{\hyperlink{explicit__timesteppers_8cc_source_l00041}{oomph\+::\+Explicit\+Time\+Steppable\+Object\+::get\+\_\+dvaluesdt()}}, \mbox{\hyperlink{explicit__timesteppers_8cc_source_l00095}{oomph\+::\+Explicit\+Time\+Steppable\+Object\+::set\+\_\+dofs()}}, \mbox{\hyperlink{explicit__timesteppers_8cc_source_l00494}{set\+\_\+weights()}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00286}{oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string()}}, \mbox{\hyperlink{explicit__timesteppers_8cc_source_l00132}{oomph\+::\+Explicit\+Time\+Steppable\+Object\+::time()}}, \mbox{\hyperlink{explicit__timesteppers_8cc_source_l00147}{oomph\+::\+Explicit\+Time\+Steppable\+Object\+::time\+\_\+pt()}}, \mbox{\hyperlink{oomph__utilities_8h_source_l00189}{oomph\+::\+String\+Conversion\+::to\+\_\+string()}}, \mbox{\hyperlink{explicit__timesteppers_8h_source_l00241}{Yn\+\_\+weight}}, \mbox{\hyperlink{explicit__timesteppers_8h_source_l00242}{Ynm1\+\_\+weight}}, and \mbox{\hyperlink{explicit__timesteppers_8h_source_l00243}{Ynm2\+\_\+weight}}.
+References \mbox{\hyperlink{explicit__timesteppers_8h_source_l00108}{oomph\+::\+Explicit\+Time\+Steppable\+Object\+::actions\+\_\+after\+\_\+explicit\+\_\+stage()}}, \mbox{\hyperlink{explicit__timesteppers_8h_source_l00116}{oomph\+::\+Explicit\+Time\+Steppable\+Object\+::actions\+\_\+after\+\_\+explicit\+\_\+timestep()}}, \mbox{\hyperlink{explicit__timesteppers_8h_source_l00102}{oomph\+::\+Explicit\+Time\+Steppable\+Object\+::actions\+\_\+before\+\_\+explicit\+\_\+stage()}}, \mbox{\hyperlink{explicit__timesteppers_8h_source_l00112}{oomph\+::\+Explicit\+Time\+Steppable\+Object\+::actions\+\_\+before\+\_\+explicit\+\_\+timestep()}}, \mbox{\hyperlink{timesteppers_8h_source_l00136}{oomph\+::\+Time\+::dt()}}, \mbox{\hyperlink{cfortran_8h_source_l00571}{e}}, \mbox{\hyperlink{explicit__timesteppers_8h_source_l00244}{Fn\+\_\+weight}}, \mbox{\hyperlink{explicit__timesteppers_8cc_source_l00060}{oomph\+::\+Explicit\+Time\+Steppable\+Object\+::get\+\_\+dofs()}}, \mbox{\hyperlink{explicit__timesteppers_8cc_source_l00041}{oomph\+::\+Explicit\+Time\+Steppable\+Object\+::get\+\_\+dvaluesdt()}}, \mbox{\hyperlink{explicit__timesteppers_8cc_source_l00095}{oomph\+::\+Explicit\+Time\+Steppable\+Object\+::set\+\_\+dofs()}}, \mbox{\hyperlink{explicit__timesteppers_8cc_source_l00494}{set\+\_\+weights()}}, \mbox{\hyperlink{explicit__timesteppers_8cc_source_l00132}{oomph\+::\+Explicit\+Time\+Steppable\+Object\+::time()}}, \mbox{\hyperlink{explicit__timesteppers_8cc_source_l00147}{oomph\+::\+Explicit\+Time\+Steppable\+Object\+::time\+\_\+pt()}}, \mbox{\hyperlink{oomph__utilities_8h_source_l00189}{oomph\+::\+String\+Conversion\+::to\+\_\+string()}}, \mbox{\hyperlink{explicit__timesteppers_8h_source_l00241}{Yn\+\_\+weight}}, \mbox{\hyperlink{explicit__timesteppers_8h_source_l00242}{Ynm1\+\_\+weight}}, and \mbox{\hyperlink{explicit__timesteppers_8h_source_l00243}{Ynm2\+\_\+weight}}.
 
 
 

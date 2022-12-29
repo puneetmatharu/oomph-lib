@@ -22,6 +22,13 @@ Inheritance diagram for oomph\+::Continuous\+Bermudez\+PMLMapping\+:\begin{figur
 \begin{DoxyCompactList}\small\item\em Default constructor (empty) \end{DoxyCompactList}\item 
 std\+::complex$<$ double $>$ \mbox{\hyperlink{classoomph_1_1ContinuousBermudezPMLMapping_a46c5e7d168dc1557697f08c49d5b63ea}{gamma}} (const double \&nu\+\_\+i, const double \&pml\+\_\+width\+\_\+i, const double \&wavenumber\+\_\+squared, const double \&alpha\+\_\+shift=0.\+0)
 \begin{DoxyCompactList}\small\item\em Overwrite the pure Pml mapping coefficient function to return the coeffcients proposed by Bermudez et al. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1PMLMapping}{oomph\+::\+PMLMapping}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1PMLMapping_a9642a52ea6b195a6da7d732b58030467}{PMLMapping}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor (empty) \end{DoxyCompactList}\item 
+virtual std\+::complex$<$ double $>$ \mbox{\hyperlink{classoomph_1_1PMLMapping_a748bcc76abc77d6df3ea83a174ebfb65}{gamma}} (const double \&nu\+\_\+i, const double \&pml\+\_\+width\+\_\+i, const double \&wavenumber\+\_\+squared, const double \&alpha\+\_\+shift=0.\+0)=0
+\begin{DoxyCompactList}\small\item\em Pure virtual to return Pml mapping gamma, where gamma is the $d\tilde x / d x$ as function of $\nu$ where $\nu = x - h$ where h is the vector from the origin to the start of the Pml. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}

@@ -28,7 +28,7 @@ By default, {\ttfamily oomph-\/lib} treats all problems as nonlinear and uses Ne
 
 The user may declare a problem to be linear by setting the flag 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keywordtype}{bool} Problem::Problem\_is\_nonlinear}
+\DoxyCodeLine{\textcolor{keywordtype}{bool}\ Problem::Problem\_is\_nonlinear}
 
 \end{DoxyCode}
  which is initialised to {\ttfamily true} in the constructor of the {\ttfamily Problem} base class, to {\ttfamily false}.
@@ -42,7 +42,8 @@ If a problem is to be solved repeatedly (e.\+g. in a time-\/dependent simulation
 
 However, there are two problems with this approach\+:
 \begin{DoxyEnumerate}
-\item It introduces significant memory overheads. For instance, to store just the shape functions in a 3D problem discretised by $ N_{elem}$ 27-\/node brick elements with a 27-\/point Gauss rule, storage for $ 27 \times 27 \times N_{elem} $ doubles is required. Storage of the (much more costly to compute) shape function derivatives requires six times that storage.
+\item It introduces significant memory overheads. For instance, to store just the shape functions in a 3D problem discretised by $ N_{elem}$ 27-\/node brick elements with a 27-\/point Gauss rule, storage for $ 27 \times 27 \times
+   N_{elem} $ doubles is required. Storage of the (much more costly to compute) shape function derivatives requires six times that storage.
 \item The most costly-\/to-\/compute quantities are the derivatives of the shape functions with respect to the global coordinates, so it is most tempting to store these. However, in free-\/boundary problems in which the nodal positions are determined as part of the solution, the derivatives of the shape functions with respect to the global coordinates depend on the solution and {\bfseries{must}} be recomputed.
 \end{DoxyEnumerate}To ensure correctness/robustness and to minimise the memory overheads, {\ttfamily oomph-\/lib\textquotesingle{}s} existing finite elements represent the shape functions and their derivatives as {\ttfamily Storable\+Shape\+Function} objects. These allow their values to be stored at the integration points, but the capability is not activated, unless an element (of type {\ttfamily ELEMENT}, say) is used in its \char`\"{}wrapped\char`\"{} form, as {\ttfamily Storable\+Shape\+Element$<$\+ELEMENT$>$}.
 
@@ -55,18 +56,18 @@ To maximise the potential for code reuse, all existing finite elements in {\ttfa
 
 In this case, the user can over-\/write the default spatial integration scheme, using the function {\ttfamily Finite\+Element\+::set\+\_\+integration\+\_\+scheme(...)}, as illustrated here. 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{ \textcolor{comment}{// Create an instance of a lower-\/order integration scheme}}
-\DoxyCodeLine{ Gauss<2,2>* int\_pt=\textcolor{keyword}{new} Gauss<2,2>;}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Create\ an\ instance\ of\ a\ lower-\/order\ integration\ scheme}}
+\DoxyCodeLine{\ Gauss<2,2>*\ int\_pt=\textcolor{keyword}{new}\ Gauss<2,2>;}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{comment}{//Find number of elements in mesh}}
-\DoxyCodeLine{\textcolor{keywordtype}{unsigned} n\_element = problem.mesh\_pt()-\/>nelement();}
+\DoxyCodeLine{\textcolor{comment}{//Find\ number\ of\ elements\ in\ mesh}}
+\DoxyCodeLine{\textcolor{keywordtype}{unsigned}\ n\_element\ =\ problem.mesh\_pt()-\/>nelement();}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{comment}{// Loop over the elements }}
-\DoxyCodeLine{\textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<n\_element;i++)}
-\DoxyCodeLine{ \{}
-\DoxyCodeLine{  \textcolor{comment}{//Set the a different integration scheme}}
-\DoxyCodeLine{  problem.mesh\_pt()-\/>finite\_element\_pt(i)-\/>set\_integration\_scheme(int\_pt); }
-\DoxyCodeLine{ \}}
+\DoxyCodeLine{\textcolor{comment}{//\ Loop\ over\ the\ elements\ }}
+\DoxyCodeLine{\textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ i=0;i<n\_element;i++)}
+\DoxyCodeLine{\ \{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//Set\ the\ a\ different\ integration\ scheme}}
+\DoxyCodeLine{\ \ problem.mesh\_pt()-\/>finite\_element\_pt(i)-\/>set\_integration\_scheme(int\_pt);\ }
+\DoxyCodeLine{\ \}}
 
 \end{DoxyCode}
 
@@ -74,7 +75,14 @@ In this case, the user can over-\/write the default spatial integration scheme, 
 Driver codes that may be used to experiment with reduced integration and to assess the asymptotic convergence behaviour can be found in the directory \href{../../../self_test/poisson/convergence_tests}{\texttt{ self\+\_\+test/poisson/convergence\+\_\+tests/}} \DoxyHorRuler{0}
  \DoxyHorRuler{0}
 \hypertarget{index_ale}{}\doxysection{Disabling the ALE formulation of unsteady equations}\label{index_ale}
-Most existing finite elements for unsteady problems are formulated in the \char`\"{}\+Arbitrary Lagrangian Eulerian (\+ALE)\char`\"{} form by implementing the Eulerian time-\/derivative $ \partial u /\partial t$ (to be evaluated at a fixed Eulerian position) as \[ \left. \frac{\partial u}{\partial t} \right|_{\mbox{fixed Eulerian position}} = \left. \frac{\partial u}{\partial t} \right|_{\mbox{fixed local coordinate}} - \sum_{i=1}^{DIM} v_i^{\mbox{[Mesh]}} \ \frac{\partial u}{\partial x_i} \] where $ v_i^{\mbox{[Mesh]}} \ \ (i=1,...,DIM)$ is the mesh velocity. This formulation ensures that the time-\/derivatives are computed correctly if the element is used in a free-\/boundary value problem. However, the computation of the mesh velocities introduces an additional cost which is avoidable if the mesh is, in fact, stationary. The user may disable the computation of the ALE terms by calling the function 
+Most existing finite elements for unsteady problems are formulated in the \char`\"{}\+Arbitrary Lagrangian Eulerian (\+ALE)\char`\"{} form by implementing the Eulerian time-\/derivative $ \partial u /\partial
+t$ (to be evaluated at a fixed Eulerian position) as  \[ 
+\left. \frac{\partial u}{\partial t}  \right|_{\mbox{fixed Eulerian position}}
+= 
+\left. \frac{\partial u}{\partial t}  \right|_{\mbox{fixed local
+coordinate}}
+- \sum_{i=1}^{DIM} v_i^{\mbox{[Mesh]}} \ \frac{\partial u}{\partial x_i}
+\] where $ v_i^{\mbox{[Mesh]}} \ \ (i=1,...,DIM)$ is the mesh velocity. This formulation ensures that the time-\/derivatives are computed correctly if the element is used in a free-\/boundary value problem. However, the computation of the mesh velocities introduces an additional cost which is avoidable if the mesh is, in fact, stationary. The user may disable the computation of the ALE terms by calling the function 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{FiniteElement::disable\_ALE()}
 
@@ -97,7 +105,7 @@ In most \href{../../example_code_list/html/index.html}{\texttt{ demo driver code
 \DoxyCodeLine{}
 \DoxyCodeLine{[...]}
 \DoxyCodeLine{}
-\DoxyCodeLine{ofstream output\_stream(\textcolor{stringliteral}{"{}solution.dat"{}});}
+\DoxyCodeLine{ofstream\ output\_stream(\textcolor{stringliteral}{"{}solution.dat"{}});}
 \DoxyCodeLine{mesh\_pt()-\/>output(output\_stream);}
 \DoxyCodeLine{output\_stream.close();}
 \DoxyCodeLine{}
@@ -114,7 +122,7 @@ While C++-\/streams are very convenient, they can be expensive -- so much so tha
 \DoxyCodeLine{}
 \DoxyCodeLine{[...]}
 \DoxyCodeLine{}
-\DoxyCodeLine{FILE* file\_pt = fopen(\textcolor{stringliteral}{"{}solution.dat"{}},\textcolor{stringliteral}{"{}w"{}});}
+\DoxyCodeLine{FILE*\ file\_pt\ =\ fopen(\textcolor{stringliteral}{"{}solution.dat"{}},\textcolor{stringliteral}{"{}w"{}});}
 \DoxyCodeLine{mesh\_pt()-\/>output(file\_pt);}
 \DoxyCodeLine{fclose(file\_pt);}
 \DoxyCodeLine{}
@@ -144,7 +152,7 @@ This function performs the assembly, using one of five different assembly method
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keywordtype}{unsigned} Problem::Sparse\_assembly\_method}
+\DoxyCodeLine{\textcolor{keywordtype}{unsigned}\ Problem::Sparse\_assembly\_method}
 
 \end{DoxyCode}
 
@@ -163,7 +171,7 @@ While the test code automatically documents the CPU times required for the matri
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keywordtype}{bool} Problem::Pause\_at\_end\_of\_sparse\_assembly}
+\DoxyCodeLine{\textcolor{keywordtype}{bool}\ Problem::Pause\_at\_end\_of\_sparse\_assembly}
 
 \end{DoxyCode}
 

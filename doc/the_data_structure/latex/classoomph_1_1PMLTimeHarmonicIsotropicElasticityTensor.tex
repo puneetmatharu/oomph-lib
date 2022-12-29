@@ -28,6 +28,13 @@ void \mbox{\hyperlink{classoomph_1_1PMLTimeHarmonicIsotropicElasticityTensor_a87
 \begin{DoxyCompactList}\small\item\em Update parameters\+: Specify values of the Poisson\textquotesingle{}s ratio and (optionally) Young\textquotesingle{}s modulus (interpreted as the ratio of the actual Young\textquotesingle{}s modulus to the Young\textquotesingle{}s modulus (or other reference stiffness) used to non-\/dimensionalise stresses and tractions in the governing equations). \end{DoxyCompactList}\item 
 std\+::complex$<$ double $>$ \mbox{\hyperlink{classoomph_1_1PMLTimeHarmonicIsotropicElasticityTensor_aee557f8f75af142cc59094cd3ab40a9c}{independent\+\_\+component}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
 \begin{DoxyCompactList}\small\item\em Overload the independent coefficient function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1PMLTimeHarmonicElasticityTensor}{oomph\+::\+PMLTime\+Harmonic\+Elasticity\+Tensor}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classoomph_1_1PMLTimeHarmonicElasticityTensor_a520e58b90e02cc9c36f39102e32afa3f}{$\sim$\+PMLTime\+Harmonic\+Elasticity\+Tensor}} ()
+\begin{DoxyCompactList}\small\item\em Empty virtual Destructor. \end{DoxyCompactList}\item 
+std\+::complex$<$ double $>$ \mbox{\hyperlink{classoomph_1_1PMLTimeHarmonicElasticityTensor_ac594b4fea1015ffb582862e078036d94}{operator()}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}, const unsigned \&j, const unsigned \&k, const unsigned \&l) const
+\begin{DoxyCompactList}\small\item\em Return the appropriate independent component via the index translation scheme (const version). \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -46,6 +53,15 @@ double \mbox{\hyperlink{classoomph_1_1PMLTimeHarmonicIsotropicElasticityTensor_a
 static const unsigned \mbox{\hyperlink{classoomph_1_1PMLTimeHarmonicIsotropicElasticityTensor_ac1c39fcce5b79af772e89e86def6f623}{Static\+Index}} \mbox{[}21\mbox{]}
 \begin{DoxyCompactList}\small\item\em Translation scheme between the 21 independent components of the general elasticity tensor and the isotropic case. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classoomph_1_1PMLTimeHarmonicElasticityTensor}{oomph\+::\+PMLTime\+Harmonic\+Elasticity\+Tensor}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual std\+::complex$<$ double $>$ \mbox{\hyperlink{classoomph_1_1PMLTimeHarmonicElasticityTensor_a9d07ac639fb398e15295e73bb87152b1}{independent\+\_\+component}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em Member function that returns the i-\/th independent component of the elasticity tensor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1PMLTimeHarmonicElasticityTensor_acc5d6de5e961ad67dd72bf032a47bb7b}{range\+\_\+check}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}, const unsigned \&j, const unsigned \&k, const unsigned \&l) const
+\begin{DoxyCompactList}\small\item\em Helper range checking function (Note that this only captures over-\/runs in 3D but errors are likely to be caught in evaluation of the stress and strain tensors anyway...) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1PMLTimeHarmonicElasticityTensor_a487ea0dfb56150b4189f1bc514a9bdda}{PMLTime\+Harmonic\+Elasticity\+Tensor}} ()
+\begin{DoxyCompactList}\small\item\em Empty Constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -72,7 +88,7 @@ Definition at line \mbox{\hyperlink{pml__time__harmonic__elasticity__tensor_8h_s
 
 
 
-References \mbox{\hyperlink{pml__time__harmonic__elasticity__tensor_8h_source_l00152}{C}}, \mbox{\hyperlink{quadtree_8h_source_l00061}{oomph\+::\+Quad\+Tree\+Names\+::E}}, \mbox{\hyperlink{pml__time__harmonic__elasticity__tensor_8h_source_l00194}{nu()}}, and \mbox{\hyperlink{pml__time__harmonic__elasticity__tensor_8h_source_l00223}{set\+\_\+lame\+\_\+coefficients()}}.
+References \mbox{\hyperlink{pml__time__harmonic__elasticity__tensor_8h_source_l00152}{C}}, \mbox{\hyperlink{pml__time__harmonic__elasticity__tensor_8h_source_l00194}{nu()}}, and \mbox{\hyperlink{pml__time__harmonic__elasticity__tensor_8h_source_l00223}{set\+\_\+lame\+\_\+coefficients()}}.
 
 \mbox{\Hypertarget{classoomph_1_1PMLTimeHarmonicIsotropicElasticityTensor_a60b7dc4f2a2b71f5fdb4af8026134fbd}\label{classoomph_1_1PMLTimeHarmonicIsotropicElasticityTensor_a60b7dc4f2a2b71f5fdb4af8026134fbd}} 
 \index{oomph::PMLTimeHarmonicIsotropicElasticityTensor@{oomph::PMLTimeHarmonicIsotropicElasticityTensor}!PMLTimeHarmonicIsotropicElasticityTensor@{PMLTimeHarmonicIsotropicElasticityTensor}}
@@ -90,7 +106,7 @@ Definition at line \mbox{\hyperlink{pml__time__harmonic__elasticity__tensor_8h_s
 
 
 
-References \mbox{\hyperlink{pml__time__harmonic__elasticity__tensor_8h_source_l00152}{C}}, \mbox{\hyperlink{quadtree_8h_source_l00061}{oomph\+::\+Quad\+Tree\+Names\+::E}}, \mbox{\hyperlink{pml__time__harmonic__elasticity__tensor_8h_source_l00194}{nu()}}, and \mbox{\hyperlink{pml__time__harmonic__elasticity__tensor_8h_source_l00223}{set\+\_\+lame\+\_\+coefficients()}}.
+References \mbox{\hyperlink{pml__time__harmonic__elasticity__tensor_8h_source_l00152}{C}}, \mbox{\hyperlink{pml__time__harmonic__elasticity__tensor_8h_source_l00194}{nu()}}, and \mbox{\hyperlink{pml__time__harmonic__elasticity__tensor_8h_source_l00223}{set\+\_\+lame\+\_\+coefficients()}}.
 
 
 
@@ -173,7 +189,7 @@ Definition at line \mbox{\hyperlink{pml__time__harmonic__elasticity__tensor_8h_s
 
 
 
-References \mbox{\hyperlink{pml__time__harmonic__elasticity__tensor_8h_source_l00152}{C}}, \mbox{\hyperlink{quadtree_8h_source_l00061}{oomph\+::\+Quad\+Tree\+Names\+::E}}, \mbox{\hyperlink{pml__time__harmonic__elasticity__tensor_8h_source_l00194}{nu()}}, and \mbox{\hyperlink{pml__time__harmonic__elasticity__tensor_8h_source_l00223}{set\+\_\+lame\+\_\+coefficients()}}.
+References \mbox{\hyperlink{pml__time__harmonic__elasticity__tensor_8h_source_l00152}{C}}, \mbox{\hyperlink{pml__time__harmonic__elasticity__tensor_8h_source_l00194}{nu()}}, and \mbox{\hyperlink{pml__time__harmonic__elasticity__tensor_8h_source_l00223}{set\+\_\+lame\+\_\+coefficients()}}.
 
 
 
@@ -222,8 +238,8 @@ Referenced by \mbox{\hyperlink{pml__time__harmonic__elasticity__tensor_8h_source
 
 {\bfseries Initial value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{= \{}
-\DoxyCodeLine{    1, 0, 2, 3, 0, 1, 0, 0, 2, 0, 0, 0, 3, 0, 0, 0, 0, 2, 3, 0, 1\}}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ 1,\ 0,\ 2,\ 3,\ 0,\ 1,\ 0,\ 0,\ 2,\ 0,\ 0,\ 0,\ 3,\ 0,\ 0,\ 0,\ 0,\ 2,\ 3,\ 0,\ 1\}}
 
 \end{DoxyCode}
 

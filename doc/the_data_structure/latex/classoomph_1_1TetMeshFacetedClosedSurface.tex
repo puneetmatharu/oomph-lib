@@ -42,6 +42,49 @@ bool \mbox{\hyperlink{classoomph_1_1TetMeshFacetedClosedSurface_aa37311d590909af
 \begin{DoxyCompactList}\small\item\em Is j-\/th internal point for tetgen associated with a hole? \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classoomph_1_1TetMeshFacetedClosedSurface_a9152e115fcf854c5974995fd4abc7aa0}{internal\+\_\+point\+\_\+identifies\+\_\+region\+\_\+for\+\_\+tetgen}} (const unsigned \&j)
 \begin{DoxyCompactList}\small\item\em Is j-\/th internal point for tetgen associated with a region? \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1TetMeshFacetedSurface}{oomph\+::\+Tet\+Mesh\+Faceted\+Surface}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1TetMeshFacetedSurface_ab11f1e6e44a264849600909929c2067f}{Tet\+Mesh\+Faceted\+Surface}} ()
+\begin{DoxyCompactList}\small\item\em Constructor\+: \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1TetMeshFacetedSurface_addb5688daf76ee730092f428162f9056}{$\sim$\+Tet\+Mesh\+Faceted\+Surface}} ()
+\begin{DoxyCompactList}\small\item\em Empty destructor. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TetMeshFacetedSurface_aae77dfb3a856e3840564e21716f4c3b1}{nvertex}} () const
+\begin{DoxyCompactList}\small\item\em Number of vertices. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TetMeshFacetedSurface_a6036f2a5e11bea9d72f9bba9a89faec7}{nfacet}} () const
+\begin{DoxyCompactList}\small\item\em Number of facets. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TetMeshFacetedSurface_a86b099447be23301fdfd4abdeee75560}{one\+\_\+based\+\_\+facet\+\_\+boundary\+\_\+id}} (const unsigned \&j) const
+\begin{DoxyCompactList}\small\item\em One-\/based boundary id of j-\/th facet. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TetMeshFacetedSurface_afa2552d4a9b397c635a8c427333c4bf5}{one\+\_\+based\+\_\+vertex\+\_\+boundary\+\_\+id}} (const unsigned \&j) const
+\begin{DoxyCompactList}\small\item\em First (of possibly multiple) one-\/based boundary id of j-\/th vertex. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1TetMeshFacetedSurface_aad7ab6940be9b8ed2e73d80c238c5128}{vertex\+\_\+coordinate}} (const unsigned \&j, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
+\begin{DoxyCompactList}\small\item\em i-\/th coordinate of j-\/th vertex \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1TetMeshFacetedSurface_a03f007362dac8406ad9b7337f1887c9d}{nvertex\+\_\+on\+\_\+facet}} (const unsigned \&j) const
+\begin{DoxyCompactList}\small\item\em Number of vertices defining the j-\/th facet. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1TetMeshFacetedSurface_a7f324fe118cd60222d64c5485c74f2a1}{boundaries\+\_\+can\+\_\+be\+\_\+split\+\_\+in\+\_\+tetgen}} ()
+\begin{DoxyCompactList}\small\item\em Test whether boundary can be split in tetgen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TetMeshFacetedSurface_aa4f46a7206332d355efb1de439bc08af}{enable\+\_\+boundaries\+\_\+can\+\_\+be\+\_\+split\+\_\+in\+\_\+tetgen}} ()
+\begin{DoxyCompactList}\small\item\em Test whether boundaries can be split in tetgen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TetMeshFacetedSurface_a4dde957835b3b2410f629cd72119a5af}{disable\+\_\+boundaries\+\_\+can\+\_\+be\+\_\+split\+\_\+in\+\_\+tetgen}} ()
+\begin{DoxyCompactList}\small\item\em Test whether boundaries can be split in tetgen. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1TetMeshFacet}{Tet\+Mesh\+Facet}} $\ast$ \mbox{\hyperlink{classoomph_1_1TetMeshFacetedSurface_a03ee576b3a3127a722f47905f05034da}{facet\+\_\+pt}} (const unsigned \&j) const
+\begin{DoxyCompactList}\small\item\em Pointer to j-\/th facet. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1TetMeshVertex}{Tet\+Mesh\+Vertex}} $\ast$ \mbox{\hyperlink{classoomph_1_1TetMeshFacetedSurface_a181d96997b273b165d67ea5aa9dfaff4}{vertex\+\_\+pt}} (const unsigned \&j) const
+\begin{DoxyCompactList}\small\item\em Pointer to j-\/th vertex. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1DiskLikeGeomObjectWithBoundaries}{Disk\+Like\+Geom\+Object\+With\+Boundaries}} $\ast$ \mbox{\hyperlink{classoomph_1_1TetMeshFacetedSurface_aa91cc535194a675b82d9360a1c7e11d9}{geom\+\_\+object\+\_\+with\+\_\+boundaries\+\_\+pt}} ()
+\begin{DoxyCompactList}\small\item\em Access to \mbox{\hyperlink{classoomph_1_1GeomObject}{Geom\+Object}} with boundaries associated with this surface (Null if there isn\textquotesingle{}t one!) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TetMeshFacetedSurface_ad8d350cfdd9f7c4dde06749a5387b13e}{output}} (std\+::ostream \&outfile) const
+\begin{DoxyCompactList}\small\item\em Output. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1TetMeshFacetedSurface_ac10b05cafa5f6b6cee9cd47b3be9e033}{output}} (const std\+::string \&filename) const
+\begin{DoxyCompactList}\small\item\em Output. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1TetMeshFacetedSurface_a5882667d66ad8460782b9fa36f39f485}{boundary\+\_\+zeta01}} (const unsigned \&facet\+\_\+id, const double \&zeta\+\_\+boundary, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&zeta)
+\begin{DoxyCompactList}\small\item\em Virtual function that specifies the variation of the zeta coordinates in the \mbox{\hyperlink{classoomph_1_1GeomObject}{Geom\+Object}} along the boundary connecting vertices 0 and 1 in facet facet\+\_\+id. Default implementation\+: Linear interpolation between edges. zeta\+\_\+boundary=0.\+0\+: we\textquotesingle{}re on vertex 0; zeta\+\_\+boundary=1.\+0\+: we\textquotesingle{}re on vertex 1. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1TetMeshFacetedSurface_a7dd49826326e9926d92fc773853a9afb}{boundary\+\_\+zeta12}} (const unsigned \&facet\+\_\+id, const double \&zeta\+\_\+boundary, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&zeta)
+\begin{DoxyCompactList}\small\item\em Virtual function that specifies the variation of the zeta coordinates in the \mbox{\hyperlink{classoomph_1_1GeomObject}{Geom\+Object}} along the boundary connecting vertices 1 and 2 in facet facet\+\_\+id. Default implementation\+: Linear interpolation between edges. zeta\+\_\+boundary=0.\+0\+: we\textquotesingle{}re on vertex 1; zeta\+\_\+boundary=1.\+0\+: we\textquotesingle{}re on vertex 2. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1TetMeshFacetedSurface_aa9c92e3c5ba628cdcc91086c9cb38c22}{boundary\+\_\+zeta20}} (const unsigned \&facet\+\_\+id, const double \&zeta\+\_\+boundary, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&zeta)
+\begin{DoxyCompactList}\small\item\em Virtual function that specifies the variation of the zeta coordinates in the \mbox{\hyperlink{classoomph_1_1GeomObject}{Geom\+Object}} along the boundary connecting vertices 2 and 0 in facet facet\+\_\+id. Default implementation\+: Linear interpolation between edges. zeta\+\_\+boundary=0.\+0\+: we\textquotesingle{}re on vertex 2; zeta\+\_\+boundary=1.\+0\+: we\textquotesingle{}re on vertex 0. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ unsigned $>$ \mbox{\hyperlink{classoomph_1_1TetMeshFacetedSurface_a6ed1b3038fb88005c2c637543fd20433}{vertex\+\_\+index\+\_\+in\+\_\+tetgen}} (const unsigned \&f)
+\begin{DoxyCompactList}\small\item\em Facet connectivity\+: vertex\+\_\+index\mbox{[}j\mbox{]} is the index of the j-\/th vertex (in the Vertex\+\_\+pt vector) in facet f. Bit of an obscure functionality that\textquotesingle{}s only needed for setup tetgen\+\_\+io. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -50,6 +93,19 @@ bool \mbox{\hyperlink{classoomph_1_1TetMeshFacetedClosedSurface_a9152e115fcf854c
 bool \mbox{\hyperlink{classoomph_1_1TetMeshFacetedClosedSurface_a375602f98fb808d3f733f651f314fe9b}{Faceted\+\_\+volume\+\_\+represents\+\_\+hole\+\_\+for\+\_\+gmsh}}
 \begin{DoxyCompactList}\small\item\em Does closed surface represent hole for gmsh? \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1TetMeshFacetedSurface}{oomph\+::\+Tet\+Mesh\+Faceted\+Surface}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1TetMeshVertex}{Tet\+Mesh\+Vertex}} $\ast$ $>$ \mbox{\hyperlink{classoomph_1_1TetMeshFacetedSurface_a5a755b2062fa4ed18f3bdd18236b0f72}{Vertex\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} pointers to vertices. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1TetMeshFacet}{Tet\+Mesh\+Facet}} $\ast$ $>$ \mbox{\hyperlink{classoomph_1_1TetMeshFacetedSurface_a84ddd979ab9031b80c6328b150669986}{Facet\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of pointers to facets. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1TetMeshFacetedSurface_a0d42b95b2097482d25a727a0f6fd7605}{Boundaries\+\_\+can\+\_\+be\+\_\+split\+\_\+in\+\_\+tetgen}}
+\begin{DoxyCompactList}\small\item\em Boolean to indicate whether extra vertices can be added on the boundary in tetgen. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ unsigned $>$ $>$ \mbox{\hyperlink{classoomph_1_1TetMeshFacetedSurface_a609f107e2737cec4b52b81977464c02b}{Facet\+\_\+vertex\+\_\+index\+\_\+in\+\_\+tetgen}}
+\begin{DoxyCompactList}\small\item\em Facet connectivity\+: Facet\+\_\+vertex\+\_\+index\mbox{[}f\mbox{]}\mbox{[}j\mbox{]} is the index of the j-\/th vertex (in the Vertex\+\_\+pt vector) in facet f. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1DiskLikeGeomObjectWithBoundaries}{Disk\+Like\+Geom\+Object\+With\+Boundaries}} $\ast$ \mbox{\hyperlink{classoomph_1_1TetMeshFacetedSurface_a6d5836261116c9fc17afa725fcd63bd1}{Geom\+\_\+object\+\_\+with\+\_\+boundaries\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1GeomObject}{Geom\+Object}} with boundaries associated with this surface. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}

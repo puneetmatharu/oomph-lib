@@ -32,6 +32,65 @@ void \mbox{\hyperlink{classoomph_1_1OcTree_a14dba08782264f0d6008a8c1578b41e1}{op
 \begin{DoxyCompactList}\small\item\em Find (pointer to) `greater-\/or-\/equal-\/sized true edge neighbour' in the given direction (LB,RB,DB,UB \mbox{[}the back edges\mbox{]}, LD,RD,LU,RU \mbox{[}the side edges\mbox{]}, LF,RF,DF,UF \mbox{[}the front edges\mbox{]}). \end{DoxyCompactList}\item 
 unsigned \mbox{\hyperlink{classoomph_1_1OcTree_a68218b6e02594bef23cb141af8a19ffb}{self\+\_\+test}} ()
 \begin{DoxyCompactList}\small\item\em Self-\/test\+: Check all neighbours. Return success (0) if the max. distance between corresponding points in the neighbours is less than the tolerance specified in the static value \mbox{\hyperlink{classoomph_1_1Tree_aef9abebc166fa3bf81ecb59ec0d5d6b2}{Tree\+::\+Max\+\_\+neighbour\+\_\+finding\+\_\+tolerance}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1Tree}{oomph\+::\+Tree}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classoomph_1_1Tree_ace0b4169cf94a040c280af8e14f6a283}{$\sim$\+Tree}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. Note\+: Deleting a tree also deletes the objects associated with its non-\/leave nodes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Tree_a50dce113a40c6ac422353ab149b2d4eb}{Tree}} (const \mbox{\hyperlink{classoomph_1_1Tree}{Tree}} \&dummy)=delete
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Tree_a6bce57d784f256d8d7b8d14432a7d77a}{operator=}} (const \mbox{\hyperlink{classoomph_1_1Tree}{Tree}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1RefineableElement}{Refineable\+Element}} $\ast$ \mbox{\hyperlink{classoomph_1_1Tree_a7d630dad19ef861ab6a5f37ad6ea67f4}{object\+\_\+pt}} () const
+\begin{DoxyCompactList}\small\item\em Return the pointer to the object (\mbox{\hyperlink{classoomph_1_1RefineableElement}{Refineable\+Element}}) represented by the tree. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Tree_a96a95bd9942e906fde87194845a1868c}{flush\+\_\+object}} ()
+\begin{DoxyCompactList}\small\item\em Flush the object represented by the tree. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Tree}{Tree}} $\ast$ \mbox{\hyperlink{classoomph_1_1Tree_a9851a9dd06212b6891ce9a8bc832d4cf}{son\+\_\+pt}} (const int \&son\+\_\+index) const
+\begin{DoxyCompactList}\small\item\em Return pointer to the son for a given index. Note that to aid code readability specific enums have been defined for specific trees. However, these are simply aliases for ints and the general interface can be implemented once, here. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Tree_ab7026d14ead1a8d91ce417dfd0cd9478}{set\+\_\+son\+\_\+pt}} (const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1Tree}{Tree}} $\ast$ $>$ \&\mbox{\hyperlink{classoomph_1_1Tree_a9851a9dd06212b6891ce9a8bc832d4cf}{son\+\_\+pt}})
+\begin{DoxyCompactList}\small\item\em Set vector of pointers to sons, indexed by the appropriate enum that identies son types. (To aid code readability specific enums have been defined for specific trees. However, these are simply aliases for ints and the general interface can be implemented once, here). \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1Tree_a31e4123b40f6fb52d180a154c9123e85}{nsons}} () const
+\begin{DoxyCompactList}\small\item\em Return number of sons (zero if it\textquotesingle{}s a leaf node) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Tree_a34df656d2f298dbbdf60e7890a3dff2f}{flush\+\_\+sons}} ()
+\begin{DoxyCompactList}\small\item\em Flush the sons. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1TreeRoot}{Tree\+Root}} $\ast$\& \mbox{\hyperlink{classoomph_1_1Tree_a33b9926754cddfaafd9869af3fe266e7}{root\+\_\+pt}} ()
+\begin{DoxyCompactList}\small\item\em Return pointer to root of the tree. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1TreeRoot}{Tree\+Root}} $\ast$ \mbox{\hyperlink{classoomph_1_1Tree_aa4a6a5242b5969cfd8d7d37da68f3495}{root\+\_\+pt}} () const
+\begin{DoxyCompactList}\small\item\em Return pointer to root of the tree (const version) \end{DoxyCompactList}\item 
+{\footnotesize template$<$class ELEMENT $>$ }\\void \mbox{\hyperlink{classoomph_1_1Tree_a975ccfd63ffa14a04f14a37b3d2ff931}{split\+\_\+if\+\_\+required}} ()
+\begin{DoxyCompactList}\small\item\em If required, split the leaf and create its sons -- criterion\+: bool \mbox{\hyperlink{classoomph_1_1Tree_a7d630dad19ef861ab6a5f37ad6ea67f4}{object\+\_\+pt()}}-\/\texorpdfstring{$>$}{>} to\+\_\+be\+\_\+refined() = true. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class ELEMENT $>$ }\\void \mbox{\hyperlink{classoomph_1_1Tree_a6502324233a86eeeadba7f46505656af}{p\+\_\+refine\+\_\+if\+\_\+required}} (\mbox{\hyperlink{classoomph_1_1Mesh}{Mesh}} $\ast$\&mesh\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em If required, p-\/refine the leaf -- criterion\+: bool \mbox{\hyperlink{classoomph_1_1Tree_a7d630dad19ef861ab6a5f37ad6ea67f4}{object\+\_\+pt()}}-\/\texorpdfstring{$>$}{>} to\+\_\+be\+\_\+p\+\_\+refined() = true or bool \mbox{\hyperlink{classoomph_1_1Tree_a7d630dad19ef861ab6a5f37ad6ea67f4}{object\+\_\+pt()}}-\/\texorpdfstring{$>$}{>} to\+\_\+be\+\_\+p\+\_\+unrefined() = true. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Tree_af4f977931ece6b719a9e616037bb2481}{merge\+\_\+sons\+\_\+if\+\_\+required}} (\mbox{\hyperlink{classoomph_1_1Mesh}{Mesh}} $\ast$\&mesh\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em If required, merge the four sons for unrefinement -- criterion\+: bool \mbox{\hyperlink{classoomph_1_1Tree_a7d630dad19ef861ab6a5f37ad6ea67f4}{object\+\_\+pt()}}-\/\texorpdfstring{$>$}{>} sons\+\_\+to\+\_\+be\+\_\+unrefined() = true. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Tree_aea17489589a1872db51f2b142da4c1fb}{deactivate\+\_\+object}} ()
+\begin{DoxyCompactList}\small\item\em Call the \mbox{\hyperlink{classoomph_1_1RefineableElement}{Refineable\+Element}}\textquotesingle{}s deactivate\+\_\+element() function. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1Tree}{Tree}} $\ast$ \mbox{\hyperlink{classoomph_1_1Tree_aca2fa14194f424583fd6425a8c4bbff2}{construct\+\_\+son}} (\mbox{\hyperlink{classoomph_1_1RefineableElement}{Refineable\+Element}} $\ast$const \&\mbox{\hyperlink{classoomph_1_1Tree_a7d630dad19ef861ab6a5f37ad6ea67f4}{object\+\_\+pt}}, \mbox{\hyperlink{classoomph_1_1Tree}{Tree}} $\ast$const \&\mbox{\hyperlink{classoomph_1_1Tree_aa2918f6d84795c9f366adb178e287843}{father\+\_\+pt}}, const int \&\mbox{\hyperlink{classoomph_1_1Tree_a7537f8fe7c896d2220eb2da03567b34d}{son\+\_\+type}})=0
+\begin{DoxyCompactList}\small\item\em A function that constructs a specific type of tree. This MUST be overloaded for each specific tree type. The use of such a function allows the generic implementation of \mbox{\hyperlink{classoomph_1_1Tree_a975ccfd63ffa14a04f14a37b3d2ff931}{split\+\_\+if\+\_\+required()}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Tree_a3caab39c8bee6fb65bbafed523aa6d3d}{traverse\+\_\+all}} (\mbox{\hyperlink{classoomph_1_1Tree_a6b8ef236d41f52c92973682ca83679d5}{Tree\+::\+Void\+Member\+Fct\+Pt}} member\+\_\+function)
+\begin{DoxyCompactList}\small\item\em Traverse the tree and execute void \mbox{\hyperlink{classoomph_1_1Tree}{Tree}} member function member\+\_\+function() at all its \char`\"{}nodes\char`\"{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Tree_af5c67186ca9c87eef9ce7eaa0af41057}{traverse\+\_\+all}} (\mbox{\hyperlink{classoomph_1_1Tree_a498ffc10556f4335e831a06fc885a27a}{Tree\+::\+Void\+Mesh\+Pt\+Argument\+Member\+Fct\+Pt}} member\+\_\+function, \mbox{\hyperlink{classoomph_1_1Mesh}{Mesh}} $\ast$\&mesh\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Traverse the tree and excute void \mbox{\hyperlink{classoomph_1_1Tree}{Tree}} member function that takes a pointer to a mesh as an argument. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Tree_aef175445b09edb47624c4b88c6d548bc}{traverse\+\_\+all\+\_\+but\+\_\+leaves}} (\mbox{\hyperlink{classoomph_1_1Tree_a6b8ef236d41f52c92973682ca83679d5}{Tree\+::\+Void\+Member\+Fct\+Pt}} member\+\_\+function)
+\begin{DoxyCompactList}\small\item\em Traverse the tree and execute void \mbox{\hyperlink{classoomph_1_1Tree}{Tree}} member function member\+\_\+function() at all its \char`\"{}nodes\char`\"{} aparat from the leaves. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Tree_a22e0e3695dd8986e439927b7657ff741}{traverse\+\_\+leaves}} (\mbox{\hyperlink{classoomph_1_1Tree_a6b8ef236d41f52c92973682ca83679d5}{Tree\+::\+Void\+Member\+Fct\+Pt}} member\+\_\+function)
+\begin{DoxyCompactList}\small\item\em Traverse the tree and execute void \mbox{\hyperlink{classoomph_1_1Tree}{Tree}} member function member\+\_\+function() only at its leaves. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Tree_a914e74ef473b7e82299ea9337d37830d}{traverse\+\_\+leaves}} (\mbox{\hyperlink{classoomph_1_1Tree_a498ffc10556f4335e831a06fc885a27a}{Tree\+::\+Void\+Mesh\+Pt\+Argument\+Member\+Fct\+Pt}} member\+\_\+function, \mbox{\hyperlink{classoomph_1_1Mesh}{Mesh}} $\ast$\&mesh\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Traverse the tree and execute void \mbox{\hyperlink{classoomph_1_1Tree}{Tree}} member function that takes a pointer to a mesh as an argument only at its leaves. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Tree_accfbeb9178ce92a8a51e3a15293a86d1}{stick\+\_\+leaves\+\_\+into\+\_\+vector}} (\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1Tree}{Tree}} $\ast$ $>$ \&)
+\begin{DoxyCompactList}\small\item\em Traverse tree and stick pointers to leaf \char`\"{}nodes\char`\"{} (only) into \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Tree_a2c84b4e4700a825ef0a6ca533b9ae895}{stick\+\_\+all\+\_\+tree\+\_\+nodes\+\_\+into\+\_\+vector}} (\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1Tree}{Tree}} $\ast$ $>$ \&)
+\begin{DoxyCompactList}\small\item\em Traverse and stick pointers to all \char`\"{}nodes\char`\"{} into \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classoomph_1_1Tree_a7537f8fe7c896d2220eb2da03567b34d}{son\+\_\+type}} () const
+\begin{DoxyCompactList}\small\item\em Return son type. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1Tree_a72000456c76880e3f78f8f8fb43d49d8}{is\+\_\+leaf}} ()
+\begin{DoxyCompactList}\small\item\em Return true if the tree is a leaf node. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Tree}{Tree}} $\ast$ \mbox{\hyperlink{classoomph_1_1Tree_aa2918f6d84795c9f366adb178e287843}{father\+\_\+pt}} () const
+\begin{DoxyCompactList}\small\item\em Return pointer to father\+: NULL if it\textquotesingle{}s a root node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Tree_ac0cf27d3116db0f8d2f18b3faf09ec15}{set\+\_\+father\+\_\+pt}} (\mbox{\hyperlink{classoomph_1_1Tree}{Tree}} $\ast$const \&\mbox{\hyperlink{classoomph_1_1Tree_aa2918f6d84795c9f366adb178e287843}{father\+\_\+pt}})
+\begin{DoxyCompactList}\small\item\em Set the father. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1Tree_ab3eba84432fcc595684ac7eb8331b8ee}{level}} () const
+\begin{DoxyCompactList}\small\item\em Return the level of the \mbox{\hyperlink{classoomph_1_1Tree}{Tree}} (root=0) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -53,6 +112,11 @@ static \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ int $>$ \mbox{\hyperli
 \begin{DoxyCompactList}\small\item\em If U\mbox{[}p\mbox{]} becomes new\+\_\+up and R\mbox{[}ight\mbox{]} becomes new\+\_\+right then the direction vector {\ttfamily dir} becomes rotate(new\+\_\+up, new\+\_\+right, dir) \end{DoxyCompactList}\item 
 static int \mbox{\hyperlink{classoomph_1_1OcTree_ab65a00f8f47eb8b6da56ffa9d6ba8f36}{rotate}} (const int \&new\+\_\+up, const int \&new\+\_\+right, const int \&dir)
 \begin{DoxyCompactList}\small\item\em If U\mbox{[}p\mbox{]} becomes new\+\_\+up and R\mbox{[}ight\mbox{]} becomes new\+\_\+right then the direction {\ttfamily dir} becomes {\ttfamily rotate(new\+\_\+up, new\+\_\+right, dir)} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1Tree}{oomph\+::\+Tree}}}
+\begin{DoxyCompactItemize}
+\item 
+static double \& \mbox{\hyperlink{classoomph_1_1Tree_a939e2d66696d9d59b47cea8c8d05957c}{max\+\_\+neighbour\+\_\+finding\+\_\+tolerance}} ()
+\begin{DoxyCompactList}\small\item\em Max. allowed discrepancy in neighbour finding routine (distance between points when identified from two neighbouring elements) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -72,6 +136,11 @@ static \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{class
 \begin{DoxyCompactList}\small\item\em For each direction, i.\+e. a son\+\_\+type (vertex), a face or an edge, this defines a vector that indicates this direction. E.\+g \+: Direction\+\_\+to\+\_\+vector\mbox{[}RDB\mbox{]}=(1,-\/1,-\/1), Direction\+\_\+to\+\_\+vector\mbox{[}U\mbox{]}=(0,1,0) \end{DoxyCompactList}\item 
 static std\+::map$<$ std\+::pair$<$ std\+::pair$<$ int, int $>$, std\+::pair$<$ int, int $>$ $>$, std\+::pair$<$ int, int $>$ $>$ \mbox{\hyperlink{classoomph_1_1OcTree_a88cff579697781e1ec50c86517feec77}{Up\+\_\+and\+\_\+right\+\_\+equivalent\+\_\+for\+\_\+pairs\+\_\+of\+\_\+vertices}}
 \begin{DoxyCompactList}\small\item\em Storage for the up/right-\/equivalents corresponding to two pairs of vertices along an element edge\+: \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classoomph_1_1Tree}{oomph\+::\+Tree}}}
+\begin{DoxyCompactItemize}
+\item 
+static const int \mbox{\hyperlink{classoomph_1_1Tree_a9e532196340dcd859ff8207eea2ddbbc}{OMEGA}} = 26
+\begin{DoxyCompactList}\small\item\em Default value for an unassigned neighbour. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -81,11 +150,25 @@ static std\+::map$<$ std\+::pair$<$ std\+::pair$<$ int, int $>$, std\+::pair$<$ 
 \begin{DoxyCompactList}\small\item\em Constructor for empty (root) tree\+: no father, no sons; just pass a pointer to its object (a \mbox{\hyperlink{classoomph_1_1RefineableQElement_3_013_01_4}{Refineable\+QElement$<$3$>$}}). This is protected because Oc\+Trees can only be created internally, during the split operation. Only Oc\+Tree\+Roots can be created externally. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classoomph_1_1OcTree_af79e3cbf9d0c65f9e4a01207d65d4967}{Oc\+Tree}} (\mbox{\hyperlink{classoomph_1_1RefineableElement}{Refineable\+Element}} $\ast$const \&\mbox{\hyperlink{classoomph_1_1Tree_a7d630dad19ef861ab6a5f37ad6ea67f4}{object\+\_\+pt}}, \mbox{\hyperlink{classoomph_1_1Tree}{Tree}} $\ast$const \&\mbox{\hyperlink{classoomph_1_1Tree_aa2918f6d84795c9f366adb178e287843}{father\+\_\+pt}}, const int \&\mbox{\hyperlink{classoomph_1_1Tree_a7537f8fe7c896d2220eb2da03567b34d}{son\+\_\+type}})
 \begin{DoxyCompactList}\small\item\em Constructor for tree that has a father\+: Pass it the pointer to its object, the pointer to its father and tell it what type of son (LDB,RDB,...) it is. Protected because Oc\+Trees can only be created internally, during the split operation. Only Oc\+Tree\+Roots can be created externally. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classoomph_1_1Tree}{oomph\+::\+Tree}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1Tree_ada92f1aa44ee6ef5b52ec5ad0af00359}{Tree}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor (empty and broken) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Tree_a6e78c3a130add917de182ab5f1674531}{Tree}} (\mbox{\hyperlink{classoomph_1_1RefineableElement}{Refineable\+Element}} $\ast$const \&\mbox{\hyperlink{classoomph_1_1Tree_a7d630dad19ef861ab6a5f37ad6ea67f4}{object\+\_\+pt}})
+\begin{DoxyCompactList}\small\item\em Default constructor for empty (root) tree\+: no father, no sons; just pass a pointer to its object Protected because Trees can only be created internally, during the split operation. Only Tree\+Roots can be created externally. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Tree_a9d611dde1f429500330f28e56ee71883}{Tree}} (\mbox{\hyperlink{classoomph_1_1RefineableElement}{Refineable\+Element}} $\ast$const \&\mbox{\hyperlink{classoomph_1_1Tree_a7d630dad19ef861ab6a5f37ad6ea67f4}{object\+\_\+pt}}, \mbox{\hyperlink{classoomph_1_1Tree}{Tree}} $\ast$const \&\mbox{\hyperlink{classoomph_1_1Tree_aa2918f6d84795c9f366adb178e287843}{father\+\_\+pt}}, const int \&\mbox{\hyperlink{classoomph_1_1Tree_a7537f8fe7c896d2220eb2da03567b34d}{son\+\_\+type}})
+\begin{DoxyCompactList}\small\item\em Constructor for tree that has a father\+: Pass it the pointer to its object, the pointer to its father and tell it what type of son it is. Protected because Trees can only be created internally, during the split operation. Only Tree\+Roots can be created externally. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
 static bool \mbox{\hyperlink{classoomph_1_1OcTree_addaa397d11580ec949531c8ae9b082a5}{Static\+\_\+data\+\_\+has\+\_\+been\+\_\+setup}} = false
 \begin{DoxyCompactList}\small\item\em Bool indicating that static member data has been setup. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1Tree}{oomph\+::\+Tree}}}
+\begin{DoxyCompactItemize}
+\item 
+static double \mbox{\hyperlink{classoomph_1_1Tree_aef9abebc166fa3bf81ecb59ec0d5d6b2}{Max\+\_\+neighbour\+\_\+finding\+\_\+tolerance}} = 1.\+0e-\/14
+\begin{DoxyCompactList}\small\item\em Max. allowed discrepancy in neighbour finding routine (distance between points when identified from two neighbouring elements) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -114,9 +197,9 @@ static \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ int $>$ \mbox{\hyperli
 static \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ int $>$ \mbox{\hyperlink{classoomph_1_1OcTree_a5537d73ec80462fe6f03bdfd5ac836ff}{Sini}}
 \begin{DoxyCompactList}\small\item\em Entry in rotation matrix sin(i$\ast$90) \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ bool $>$ \mbox{\hyperlink{classoomph_1_1OcTree_a24e29b9da2bf17cc81d803af6925890b}{Is\+\_\+adjacent}}
-\begin{DoxyCompactList}\small\item\em Array of direction/octant adjacency scheme\+: Is\+\_\+adjacent(direction,octant)\+: Is face/edge {\ttfamily direction} adjacent to octant {\ttfamily octant} ? (Table in Samet\textquotesingle{}s book) \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Array of direction/octant adjacency scheme\+: \mbox{\hyperlink{classoomph_1_1OcTree_a24e29b9da2bf17cc81d803af6925890b}{Is\+\_\+adjacent(direction,octant)}}\+: Is face/edge {\ttfamily direction} adjacent to octant {\ttfamily octant} ? (Table in Samet\textquotesingle{}s book) \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ int $>$ \mbox{\hyperlink{classoomph_1_1OcTree_aae2497ec31766ebf0541ff6f2bffa790}{Reflect}}
-\begin{DoxyCompactList}\small\item\em Reflection scheme\+: Reflect(direction,octant)\+: Get mirror of octant/edge in specified direction. E.\+g. Reflect(\+LDF,\+L)=RDF. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Reflection scheme\+: \mbox{\hyperlink{classoomph_1_1OcTree_aae2497ec31766ebf0541ff6f2bffa790}{Reflect(direction,octant)}}\+: Get mirror of octant/edge in specified direction. E.\+g. \mbox{\hyperlink{classoomph_1_1OcTree_aae2497ec31766ebf0541ff6f2bffa790}{Reflect(\+LDF,\+L)}}=RDF. \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ int $>$ \mbox{\hyperlink{classoomph_1_1OcTree_a50a97dff32038087df0195dcf346405e}{Common\+\_\+face}}
 \begin{DoxyCompactList}\small\item\em Determine common face of edges or octants. Slightly bizarre lookup scheme from Samet\textquotesingle{}s book. \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ std\+::string $>$ \mbox{\hyperlink{classoomph_1_1OcTree_a11213866602c59eae49ac1c9164b9785}{Colour}}
@@ -128,16 +211,38 @@ static \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$
 static \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ \mbox{\hyperlink{classoomph_1_1OcTree_addcc327c9831b6c57f30c8596125c236}{S\+\_\+stephi}}
 \begin{DoxyCompactList}\small\item\em If we\textquotesingle{}re located on face {\ttfamily face} \mbox{[}L/\+R/\+F/\+B/\+U/D\mbox{]}, then an increase in s\+\_\+hi from -\/1 to +1 corresponds to a change of {\ttfamily s\+\_\+stephi(i,face)} in the 3D coordinate \textbackslash{} s\mbox{[}i\mbox{]}. \mbox{[}Read the discussion of {\ttfamily s\+\_\+steplo} for an explanation of the subscripts {\ttfamily \+\_\+hi} and {\ttfamily \+\_\+lo}.\mbox{]}. \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ \mbox{\hyperlink{classoomph_1_1OcTree_a2ece71f32cf50ba50851d2102af15426}{S\+\_\+directlo}}
-\begin{DoxyCompactList}\small\item\em Relative to the left/down/back vertex in any (father) octree, the corresponding vertex in the son specified by {\ttfamily son\+\_\+octant} has an offset. If we project the son\+\_\+octant\textquotesingle{}s left/down/back vertex onto the father\textquotesingle{}s face {\ttfamily face}, it is located at the in-\/face coordinate {\ttfamily s\+\_\+lo} = h/2 {\ttfamily S\+\_\+directlo(face,son\+\_\+octant)}. \mbox{[}See discussion of {\ttfamily s\+\_\+steplo} for an explanation of the subscripts {\ttfamily \+\_\+hi} and {\ttfamily \+\_\+lo}.\mbox{]}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Relative to the left/down/back vertex in any (father) octree, the corresponding vertex in the son specified by {\ttfamily son\+\_\+octant} has an offset. If we project the son\+\_\+octant\textquotesingle{}s left/down/back vertex onto the father\textquotesingle{}s face {\ttfamily face}, it is located at the in-\/face coordinate {\ttfamily s\+\_\+lo} = h/2 {\ttfamily \mbox{\hyperlink{classoomph_1_1OcTree_a2ece71f32cf50ba50851d2102af15426}{S\+\_\+directlo(face,son\+\_\+octant)}}}. \mbox{[}See discussion of {\ttfamily s\+\_\+steplo} for an explanation of the subscripts {\ttfamily \+\_\+hi} and {\ttfamily \+\_\+lo}.\mbox{]}. \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ \mbox{\hyperlink{classoomph_1_1OcTree_a11aca558846c26e31f802396508bea51}{S\+\_\+directhi}}
 \begin{DoxyCompactList}\small\item\em Relative to the left/down/back vertex in any (father) octree, the corresponding vertex in the son specified by {\ttfamily son\+\_\+octant} has an offset. If we project the son\+\_\+octant\textquotesingle{}s left/down/back vertex onto the father\textquotesingle{}s face {\ttfamily face}, it is located at the in-\/face coordinate {\ttfamily s\+\_\+hi} = h/2 {\ttfamily S\+\_\+directlhi(face,son\+\_\+octant)}. \mbox{[}See discussion of {\ttfamily s\+\_\+steplo} for an explanation of the subscripts {\ttfamily \+\_\+hi} and {\ttfamily \+\_\+lo}.\mbox{]}. \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ \mbox{\hyperlink{classoomph_1_1OcTree_a9f8afa940d0ce2ceca2a064f3f1ec6b1}{S\+\_\+base\+\_\+edge}}
-\begin{DoxyCompactList}\small\item\em S\+\_\+base\+\_\+edge(i,edge)\+: Initial value for coordinate s\mbox{[}i\mbox{]} on the specified edge (LF/\+RF/...). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1OcTree_a9f8afa940d0ce2ceca2a064f3f1ec6b1}{S\+\_\+base\+\_\+edge(i,edge)}}\+: Initial value for coordinate s\mbox{[}i\mbox{]} on the specified edge (LF/\+RF/...). \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ \mbox{\hyperlink{classoomph_1_1OcTree_a036d7e355507212bee6a53d42adbea26}{S\+\_\+step\+\_\+edge}}
 \begin{DoxyCompactList}\small\item\em Each edge of the \mbox{\hyperlink{classoomph_1_1RefineableQElement_3_013_01_4}{Refineable\+QElement$<$3$>$}} that is represented by the octree is parametrised by one (of the three) local coordinates that parametrise the entire 3D element. If we\textquotesingle{}re located on edge {\ttfamily edge} \mbox{[}DB,UB,...\mbox{]}, then an increase in s from -\/1 to +1 corresponds to a change of {\ttfamily s\+\_\+step\+\_\+edge(i,edge)} in the 3D coordinates {\ttfamily s}\mbox{[}i\mbox{]}. \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ \mbox{\hyperlink{classoomph_1_1OcTree_abf12711759332ae1d0b55da939b62aa0}{S\+\_\+direct\+\_\+edge}}
-\begin{DoxyCompactList}\small\item\em Relative to the left/down/back vertex in any (father) octree, the corresponding vertex in the son specified by {\ttfamily son\+\_\+octant} has an offset. If we project the son\+\_\+octant\textquotesingle{}s left/down/back vertex onto the father\textquotesingle{}s edge {\ttfamily edge}, it is located at the in-\/face coordinate {\ttfamily s\+\_\+lo} = h/2 {\ttfamily S\+\_\+direct\+\_\+edge(edge,son\+\_\+octant)}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Relative to the left/down/back vertex in any (father) octree, the corresponding vertex in the son specified by {\ttfamily son\+\_\+octant} has an offset. If we project the son\+\_\+octant\textquotesingle{}s left/down/back vertex onto the father\textquotesingle{}s edge {\ttfamily edge}, it is located at the in-\/face coordinate {\ttfamily s\+\_\+lo} = h/2 {\ttfamily \mbox{\hyperlink{classoomph_1_1OcTree_abf12711759332ae1d0b55da939b62aa0}{S\+\_\+direct\+\_\+edge(edge,son\+\_\+octant)}}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Public Types inherited from \mbox{\hyperlink{classoomph_1_1Tree}{oomph\+::\+Tree}}}
+\begin{DoxyCompactItemize}
+\item 
+typedef void(Tree\+::$\ast$ \mbox{\hyperlink{classoomph_1_1Tree_a6b8ef236d41f52c92973682ca83679d5}{Void\+Member\+Fct\+Pt}}) ()
+\begin{DoxyCompactList}\small\item\em Function pointer to argument-\/free void \mbox{\hyperlink{classoomph_1_1Tree}{Tree}} member function. \end{DoxyCompactList}\item 
+typedef void(Tree\+::$\ast$ \mbox{\hyperlink{classoomph_1_1Tree_a498ffc10556f4335e831a06fc885a27a}{Void\+Mesh\+Pt\+Argument\+Member\+Fct\+Pt}}) (\mbox{\hyperlink{classoomph_1_1Mesh}{Mesh}} $\ast$\&mesh\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Function pointer to a void \mbox{\hyperlink{classoomph_1_1Tree}{Tree}} member function that takes a pointer to a mesh as its argument. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1Tree}{oomph\+::\+Tree}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1TreeRoot}{Tree\+Root}} $\ast$ \mbox{\hyperlink{classoomph_1_1Tree_a61782afd668561ad7ab324f658ffeb6a}{Root\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em Pointer to the root of the tree. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Tree}{Tree}} $\ast$ \mbox{\hyperlink{classoomph_1_1Tree_a001ce5515a3d76cdad248695e149504b}{Father\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em Pointer to the Father of the \mbox{\hyperlink{classoomph_1_1Tree}{Tree}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1Tree}{Tree}} $\ast$ $>$ \mbox{\hyperlink{classoomph_1_1Tree_ac6b9069f345b296654421604c5569af6}{Son\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of pointers to the sons of the \mbox{\hyperlink{classoomph_1_1Tree}{Tree}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classoomph_1_1Tree_a9ac30decb7a63027906880620f8b98ee}{Level}}
+\begin{DoxyCompactList}\small\item\em Level of the \mbox{\hyperlink{classoomph_1_1Tree}{Tree}} (level 0 = root) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classoomph_1_1Tree_a83fe7895af25c9f60062c081fc51967c}{Son\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Son type (e.\+g. SW/\+SE/\+NW/\+NE in a quadtree) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1RefineableElement}{Refineable\+Element}} $\ast$ \mbox{\hyperlink{classoomph_1_1Tree_a61ee20b575da510512d0e108cf7b06c6}{Object\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em Pointer to the object represented by the tree. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -254,7 +359,7 @@ Definition at line \mbox{\hyperlink{octree_8cc_source_l00609}{609}} of file \mbo
 
 
 
-References \mbox{\hyperlink{Vector_8h_source_l00309}{oomph\+::\+Vector\+Helpers\+::angle()}}, \mbox{\hyperlink{octree_8h_source_l00520}{Cosi}}, \mbox{\hyperlink{octree_8h_source_l00074}{oomph\+::\+Oc\+Tree\+Names\+::F}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{binary__tree_8h_source_l00051}{oomph\+::\+Binary\+Tree\+Names\+::R}}, \mbox{\hyperlink{octree_8h_source_l00070}{oomph\+::\+Oc\+Tree\+Names\+::R}}, \mbox{\hyperlink{octree_8h_source_l00523}{Sini}}, and \mbox{\hyperlink{octree_8h_source_l00072}{oomph\+::\+Oc\+Tree\+Names\+::U}}.
+References \mbox{\hyperlink{octree_8h_source_l00520}{Cosi}}, \mbox{\hyperlink{octree_8h_source_l00074}{oomph\+::\+Oc\+Tree\+Names\+::F}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{octree_8h_source_l00070}{oomph\+::\+Oc\+Tree\+Names\+::R}}, \mbox{\hyperlink{octree_8h_source_l00523}{Sini}}, and \mbox{\hyperlink{octree_8h_source_l00072}{oomph\+::\+Oc\+Tree\+Names\+::U}}.
 
 
 
@@ -298,7 +403,7 @@ Definition at line \mbox{\hyperlink{octree_8cc_source_l04275}{4275}} of file \mb
 
 
 
-References \mbox{\hyperlink{octree_8h_source_l00540}{Colour}}, \mbox{\hyperlink{octree_8h_source_l00329}{Direct\+\_\+string}}, \mbox{\hyperlink{octree_8h_source_l00074}{oomph\+::\+Oc\+Tree\+Names\+::F}}, \mbox{\hyperlink{elements_8h_source_l01885}{oomph\+::\+Finite\+Element\+::get\+\_\+x()}}, \mbox{\hyperlink{octree_8cc_source_l03373}{gteq\+\_\+face\+\_\+neighbour()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{tree_8h_source_l00364}{oomph\+::\+Tree\+Root\+::is\+\_\+neighbour\+\_\+periodic()}}, \mbox{\hyperlink{binary__tree_8h_source_l00050}{oomph\+::\+Binary\+Tree\+Names\+::L}}, \mbox{\hyperlink{tree_8h_source_l00313}{oomph\+::\+Tree\+::\+Max\+\_\+neighbour\+\_\+finding\+\_\+tolerance}}, \mbox{\hyperlink{refineable__elements_8h_source_l00389}{oomph\+::\+Refineable\+Element\+::nodes\+\_\+built()}}, \mbox{\hyperlink{refineable__elements_8h_source_l00395}{oomph\+::\+Refineable\+Element\+::number()}}, \mbox{\hyperlink{tree_8h_source_l00088}{oomph\+::\+Tree\+::object\+\_\+pt()}}, \mbox{\hyperlink{tree_8h_source_l00262}{oomph\+::\+Tree\+::\+OMEGA}}, \mbox{\hyperlink{oomph__utilities_8cc_source_l01265}{oomph\+::pause()}}, \mbox{\hyperlink{tree_8h_source_l00141}{oomph\+::\+Tree\+::root\+\_\+pt()}}, \mbox{\hyperlink{cfortran_8h_source_l00568}{s}}, \mbox{\hyperlink{octree_8h_source_l00544}{S\+\_\+base}}, \mbox{\hyperlink{octree_8h_source_l00565}{S\+\_\+stephi}}, and \mbox{\hyperlink{octree_8h_source_l00558}{S\+\_\+steplo}}.
+References \mbox{\hyperlink{octree_8h_source_l00540}{Colour}}, \mbox{\hyperlink{octree_8h_source_l00329}{Direct\+\_\+string}}, \mbox{\hyperlink{elements_8h_source_l01885}{oomph\+::\+Finite\+Element\+::get\+\_\+x()}}, \mbox{\hyperlink{octree_8cc_source_l03373}{gteq\+\_\+face\+\_\+neighbour()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{tree_8h_source_l00364}{oomph\+::\+Tree\+Root\+::is\+\_\+neighbour\+\_\+periodic()}}, \mbox{\hyperlink{tree_8h_source_l00313}{oomph\+::\+Tree\+::\+Max\+\_\+neighbour\+\_\+finding\+\_\+tolerance}}, \mbox{\hyperlink{refineable__elements_8h_source_l00389}{oomph\+::\+Refineable\+Element\+::nodes\+\_\+built()}}, \mbox{\hyperlink{refineable__elements_8h_source_l00395}{oomph\+::\+Refineable\+Element\+::number()}}, \mbox{\hyperlink{tree_8h_source_l00088}{oomph\+::\+Tree\+::object\+\_\+pt()}}, \mbox{\hyperlink{tree_8h_source_l00262}{oomph\+::\+Tree\+::\+OMEGA}}, \mbox{\hyperlink{oomph__utilities_8cc_source_l01265}{oomph\+::pause()}}, \mbox{\hyperlink{tree_8h_source_l00141}{oomph\+::\+Tree\+::root\+\_\+pt()}}, \mbox{\hyperlink{cfortran_8h_source_l00568}{s}}, \mbox{\hyperlink{octree_8h_source_l00544}{S\+\_\+base}}, \mbox{\hyperlink{octree_8h_source_l00565}{S\+\_\+stephi}}, and \mbox{\hyperlink{octree_8h_source_l00558}{S\+\_\+steplo}}.
 
 
 
@@ -322,7 +427,7 @@ Definition at line \mbox{\hyperlink{octree_8cc_source_l04552}{4552}} of file \mb
 
 
 
-References \mbox{\hyperlink{octree_8h_source_l00540}{Colour}}, \mbox{\hyperlink{octree_8h_source_l00329}{Direct\+\_\+string}}, \mbox{\hyperlink{octree_8cc_source_l00268}{faces\+\_\+of\+\_\+common\+\_\+edge()}}, \mbox{\hyperlink{elements_8h_source_l01885}{oomph\+::\+Finite\+Element\+::get\+\_\+x()}}, \mbox{\hyperlink{octree_8cc_source_l03618}{gteq\+\_\+true\+\_\+edge\+\_\+neighbour()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{tree_8h_source_l00220}{oomph\+::\+Tree\+::is\+\_\+leaf()}}, \mbox{\hyperlink{tree_8h_source_l00364}{oomph\+::\+Tree\+Root\+::is\+\_\+neighbour\+\_\+periodic()}}, \mbox{\hyperlink{octree_8h_source_l00057}{oomph\+::\+Oc\+Tree\+Names\+::\+LB}}, \mbox{\hyperlink{tree_8h_source_l00313}{oomph\+::\+Tree\+::\+Max\+\_\+neighbour\+\_\+finding\+\_\+tolerance}}, \mbox{\hyperlink{refineable__elements_8h_source_l00389}{oomph\+::\+Refineable\+Element\+::nodes\+\_\+built()}}, \mbox{\hyperlink{refineable__elements_8h_source_l00395}{oomph\+::\+Refineable\+Element\+::number()}}, \mbox{\hyperlink{tree_8h_source_l00088}{oomph\+::\+Tree\+::object\+\_\+pt()}}, \mbox{\hyperlink{tree_8h_source_l00262}{oomph\+::\+Tree\+::\+OMEGA}}, \mbox{\hyperlink{oomph__utilities_8cc_source_l01265}{oomph\+::pause()}}, \mbox{\hyperlink{tree_8h_source_l00141}{oomph\+::\+Tree\+::root\+\_\+pt()}}, \mbox{\hyperlink{cfortran_8h_source_l00568}{s}}, \mbox{\hyperlink{octree_8h_source_l00585}{S\+\_\+base\+\_\+edge}}, \mbox{\hyperlink{octree_8h_source_l00593}{S\+\_\+step\+\_\+edge}}, and \mbox{\hyperlink{octree_8h_source_l00068}{oomph\+::\+Oc\+Tree\+Names\+::\+UF}}.
+References \mbox{\hyperlink{octree_8h_source_l00540}{Colour}}, \mbox{\hyperlink{octree_8h_source_l00329}{Direct\+\_\+string}}, \mbox{\hyperlink{octree_8cc_source_l00268}{faces\+\_\+of\+\_\+common\+\_\+edge()}}, \mbox{\hyperlink{elements_8h_source_l01885}{oomph\+::\+Finite\+Element\+::get\+\_\+x()}}, \mbox{\hyperlink{octree_8cc_source_l03618}{gteq\+\_\+true\+\_\+edge\+\_\+neighbour()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{tree_8h_source_l00220}{oomph\+::\+Tree\+::is\+\_\+leaf()}}, \mbox{\hyperlink{tree_8h_source_l00364}{oomph\+::\+Tree\+Root\+::is\+\_\+neighbour\+\_\+periodic()}}, \mbox{\hyperlink{tree_8h_source_l00313}{oomph\+::\+Tree\+::\+Max\+\_\+neighbour\+\_\+finding\+\_\+tolerance}}, \mbox{\hyperlink{refineable__elements_8h_source_l00389}{oomph\+::\+Refineable\+Element\+::nodes\+\_\+built()}}, \mbox{\hyperlink{refineable__elements_8h_source_l00395}{oomph\+::\+Refineable\+Element\+::number()}}, \mbox{\hyperlink{tree_8h_source_l00088}{oomph\+::\+Tree\+::object\+\_\+pt()}}, \mbox{\hyperlink{tree_8h_source_l00262}{oomph\+::\+Tree\+::\+OMEGA}}, \mbox{\hyperlink{oomph__utilities_8cc_source_l01265}{oomph\+::pause()}}, \mbox{\hyperlink{tree_8h_source_l00141}{oomph\+::\+Tree\+::root\+\_\+pt()}}, \mbox{\hyperlink{cfortran_8h_source_l00568}{s}}, \mbox{\hyperlink{octree_8h_source_l00585}{S\+\_\+base\+\_\+edge}}, and \mbox{\hyperlink{octree_8h_source_l00593}{S\+\_\+step\+\_\+edge}}.
 
 
 
@@ -344,7 +449,7 @@ Definition at line \mbox{\hyperlink{octree_8cc_source_l02769}{2769}} of file \mb
 
 
 
-References \mbox{\hyperlink{octree_8h_source_l00073}{oomph\+::\+Oc\+Tree\+Names\+::B}}, \mbox{\hyperlink{octree_8h_source_l00071}{oomph\+::\+Oc\+Tree\+Names\+::D}}, \mbox{\hyperlink{octree_8h_source_l00059}{oomph\+::\+Oc\+Tree\+Names\+::\+DB}}, \mbox{\hyperlink{octree_8h_source_l00067}{oomph\+::\+Oc\+Tree\+Names\+::\+DF}}, \mbox{\hyperlink{octree_8h_source_l00329}{Direct\+\_\+string}}, \mbox{\hyperlink{octree_8h_source_l00074}{oomph\+::\+Oc\+Tree\+Names\+::F}}, \mbox{\hyperlink{octree_8cc_source_l03373}{gteq\+\_\+face\+\_\+neighbour()}}, \mbox{\hyperlink{binary__tree_8h_source_l00050}{oomph\+::\+Binary\+Tree\+Names\+::L}}, \mbox{\hyperlink{octree_8h_source_l00057}{oomph\+::\+Oc\+Tree\+Names\+::\+LB}}, \mbox{\hyperlink{octree_8h_source_l00061}{oomph\+::\+Oc\+Tree\+Names\+::\+LD}}, \mbox{\hyperlink{octree_8h_source_l00065}{oomph\+::\+Oc\+Tree\+Names\+::\+LF}}, \mbox{\hyperlink{octree_8h_source_l00063}{oomph\+::\+Oc\+Tree\+Names\+::\+LU}}, \mbox{\hyperlink{binary__tree_8h_source_l00051}{oomph\+::\+Binary\+Tree\+Names\+::R}}, \mbox{\hyperlink{octree_8h_source_l00058}{oomph\+::\+Oc\+Tree\+Names\+::\+RB}}, \mbox{\hyperlink{octree_8h_source_l00062}{oomph\+::\+Oc\+Tree\+Names\+::\+RD}}, \mbox{\hyperlink{octree_8h_source_l00066}{oomph\+::\+Oc\+Tree\+Names\+::\+RF}}, \mbox{\hyperlink{octree_8h_source_l00064}{oomph\+::\+Oc\+Tree\+Names\+::\+RU}}, \mbox{\hyperlink{octree_8h_source_l00072}{oomph\+::\+Oc\+Tree\+Names\+::U}}, \mbox{\hyperlink{octree_8h_source_l00060}{oomph\+::\+Oc\+Tree\+Names\+::\+UB}}, and \mbox{\hyperlink{octree_8h_source_l00068}{oomph\+::\+Oc\+Tree\+Names\+::\+UF}}.
+References \mbox{\hyperlink{octree_8h_source_l00329}{Direct\+\_\+string}}, and \mbox{\hyperlink{octree_8cc_source_l03373}{gteq\+\_\+face\+\_\+neighbour()}}.
 
 
 
@@ -366,7 +471,7 @@ Definition at line \mbox{\hyperlink{octree_8cc_source_l00268}{268}} of file \mbo
 
 
 
-References \mbox{\hyperlink{octree_8h_source_l00073}{oomph\+::\+Oc\+Tree\+Names\+::B}}, \mbox{\hyperlink{octree_8h_source_l00071}{oomph\+::\+Oc\+Tree\+Names\+::D}}, \mbox{\hyperlink{octree_8h_source_l00059}{oomph\+::\+Oc\+Tree\+Names\+::\+DB}}, \mbox{\hyperlink{octree_8h_source_l00067}{oomph\+::\+Oc\+Tree\+Names\+::\+DF}}, \mbox{\hyperlink{octree_8h_source_l00329}{Direct\+\_\+string}}, \mbox{\hyperlink{octree_8h_source_l00074}{oomph\+::\+Oc\+Tree\+Names\+::F}}, \mbox{\hyperlink{binary__tree_8h_source_l00050}{oomph\+::\+Binary\+Tree\+Names\+::L}}, \mbox{\hyperlink{octree_8h_source_l00057}{oomph\+::\+Oc\+Tree\+Names\+::\+LB}}, \mbox{\hyperlink{octree_8h_source_l00061}{oomph\+::\+Oc\+Tree\+Names\+::\+LD}}, \mbox{\hyperlink{octree_8h_source_l00065}{oomph\+::\+Oc\+Tree\+Names\+::\+LF}}, \mbox{\hyperlink{octree_8h_source_l00063}{oomph\+::\+Oc\+Tree\+Names\+::\+LU}}, \mbox{\hyperlink{binary__tree_8h_source_l00051}{oomph\+::\+Binary\+Tree\+Names\+::R}}, \mbox{\hyperlink{octree_8h_source_l00058}{oomph\+::\+Oc\+Tree\+Names\+::\+RB}}, \mbox{\hyperlink{octree_8h_source_l00062}{oomph\+::\+Oc\+Tree\+Names\+::\+RD}}, \mbox{\hyperlink{octree_8h_source_l00066}{oomph\+::\+Oc\+Tree\+Names\+::\+RF}}, \mbox{\hyperlink{octree_8h_source_l00064}{oomph\+::\+Oc\+Tree\+Names\+::\+RU}}, \mbox{\hyperlink{octree_8h_source_l00072}{oomph\+::\+Oc\+Tree\+Names\+::U}}, \mbox{\hyperlink{octree_8h_source_l00060}{oomph\+::\+Oc\+Tree\+Names\+::\+UB}}, and \mbox{\hyperlink{octree_8h_source_l00068}{oomph\+::\+Oc\+Tree\+Names\+::\+UF}}.
+References \mbox{\hyperlink{octree_8h_source_l00329}{Direct\+\_\+string}}.
 
 
 
@@ -434,7 +539,7 @@ Definition at line \mbox{\hyperlink{octree_8cc_source_l04015}{4015}} of file \mb
 
 
 
-References \mbox{\hyperlink{octree_8h_source_l00537}{Common\+\_\+face}}, \mbox{\hyperlink{octree_8h_source_l00059}{oomph\+::\+Oc\+Tree\+Names\+::\+DB}}, \mbox{\hyperlink{octree_8h_source_l00067}{oomph\+::\+Oc\+Tree\+Names\+::\+DF}}, \mbox{\hyperlink{octree_8h_source_l00329}{Direct\+\_\+string}}, \mbox{\hyperlink{tree_8h_source_l00296}{oomph\+::\+Tree\+::\+Father\+\_\+pt}}, \mbox{\hyperlink{octree_8cc_source_l04015}{gteq\+\_\+edge\+\_\+neighbour()}}, \mbox{\hyperlink{octree_8cc_source_l03373}{gteq\+\_\+face\+\_\+neighbour()}}, \mbox{\hyperlink{octree_8h_source_l00529}{Is\+\_\+adjacent}}, \mbox{\hyperlink{octree_8h_source_l00057}{oomph\+::\+Oc\+Tree\+Names\+::\+LB}}, \mbox{\hyperlink{octree_8h_source_l00061}{oomph\+::\+Oc\+Tree\+Names\+::\+LD}}, \mbox{\hyperlink{tree_8h_source_l00302}{oomph\+::\+Tree\+::\+Level}}, \mbox{\hyperlink{octree_8h_source_l00065}{oomph\+::\+Oc\+Tree\+Names\+::\+LF}}, \mbox{\hyperlink{octree_8h_source_l00063}{oomph\+::\+Oc\+Tree\+Names\+::\+LU}}, \mbox{\hyperlink{tree_8h_source_l00262}{oomph\+::\+Tree\+::\+OMEGA}}, \mbox{\hyperlink{octree_8h_source_l00058}{oomph\+::\+Oc\+Tree\+Names\+::\+RB}}, \mbox{\hyperlink{octree_8h_source_l00062}{oomph\+::\+Oc\+Tree\+Names\+::\+RD}}, \mbox{\hyperlink{octree_8h_source_l00533}{Reflect}}, \mbox{\hyperlink{octree_8h_source_l00066}{oomph\+::\+Oc\+Tree\+Names\+::\+RF}}, \mbox{\hyperlink{tree_8h_source_l00292}{oomph\+::\+Tree\+::\+Root\+\_\+pt}}, \mbox{\hyperlink{octree_8cc_source_l00750}{rotate()}}, \mbox{\hyperlink{octree_8h_source_l00064}{oomph\+::\+Oc\+Tree\+Names\+::\+RU}}, \mbox{\hyperlink{octree_8h_source_l00600}{S\+\_\+direct\+\_\+edge}}, \mbox{\hyperlink{tree_8h_source_l00299}{oomph\+::\+Tree\+::\+Son\+\_\+pt}}, \mbox{\hyperlink{tree_8h_source_l00305}{oomph\+::\+Tree\+::\+Son\+\_\+type}}, \mbox{\hyperlink{octree_8h_source_l00060}{oomph\+::\+Oc\+Tree\+Names\+::\+UB}}, and \mbox{\hyperlink{octree_8h_source_l00068}{oomph\+::\+Oc\+Tree\+Names\+::\+UF}}.
+References \mbox{\hyperlink{octree_8h_source_l00537}{Common\+\_\+face}}, \mbox{\hyperlink{octree_8h_source_l00329}{Direct\+\_\+string}}, \mbox{\hyperlink{tree_8h_source_l00296}{oomph\+::\+Tree\+::\+Father\+\_\+pt}}, \mbox{\hyperlink{octree_8cc_source_l04015}{gteq\+\_\+edge\+\_\+neighbour()}}, \mbox{\hyperlink{octree_8cc_source_l03373}{gteq\+\_\+face\+\_\+neighbour()}}, \mbox{\hyperlink{octree_8h_source_l00529}{Is\+\_\+adjacent}}, \mbox{\hyperlink{tree_8h_source_l00302}{oomph\+::\+Tree\+::\+Level}}, \mbox{\hyperlink{tree_8h_source_l00262}{oomph\+::\+Tree\+::\+OMEGA}}, \mbox{\hyperlink{octree_8h_source_l00533}{Reflect}}, \mbox{\hyperlink{tree_8h_source_l00292}{oomph\+::\+Tree\+::\+Root\+\_\+pt}}, \mbox{\hyperlink{octree_8cc_source_l00750}{rotate()}}, \mbox{\hyperlink{octree_8h_source_l00600}{S\+\_\+direct\+\_\+edge}}, \mbox{\hyperlink{tree_8h_source_l00299}{oomph\+::\+Tree\+::\+Son\+\_\+pt}}, and \mbox{\hyperlink{tree_8h_source_l00305}{oomph\+::\+Tree\+::\+Son\+\_\+type}}.
 
 
 
@@ -479,7 +584,7 @@ Definition at line \mbox{\hyperlink{octree_8cc_source_l03839}{3839}} of file \mb
 
 
 
-References \mbox{\hyperlink{octree_8h_source_l00073}{oomph\+::\+Oc\+Tree\+Names\+::B}}, \mbox{\hyperlink{octree_8h_source_l00071}{oomph\+::\+Oc\+Tree\+Names\+::D}}, \mbox{\hyperlink{octree_8h_source_l00329}{Direct\+\_\+string}}, \mbox{\hyperlink{octree_8h_source_l00074}{oomph\+::\+Oc\+Tree\+Names\+::F}}, \mbox{\hyperlink{tree_8h_source_l00296}{oomph\+::\+Tree\+::\+Father\+\_\+pt}}, \mbox{\hyperlink{octree_8cc_source_l03373}{gteq\+\_\+face\+\_\+neighbour()}}, \mbox{\hyperlink{octree_8h_source_l00529}{Is\+\_\+adjacent}}, \mbox{\hyperlink{binary__tree_8h_source_l00050}{oomph\+::\+Binary\+Tree\+Names\+::L}}, \mbox{\hyperlink{tree_8h_source_l00302}{oomph\+::\+Tree\+::\+Level}}, \mbox{\hyperlink{tree_8h_source_l00357}{oomph\+::\+Tree\+Root\+::neighbour\+\_\+pt()}}, \mbox{\hyperlink{binary__tree_8h_source_l00051}{oomph\+::\+Binary\+Tree\+Names\+::R}}, \mbox{\hyperlink{octree_8h_source_l00533}{Reflect}}, \mbox{\hyperlink{tree_8h_source_l00292}{oomph\+::\+Tree\+::\+Root\+\_\+pt}}, \mbox{\hyperlink{octree_8cc_source_l00750}{rotate()}}, \mbox{\hyperlink{octree_8h_source_l00581}{S\+\_\+directhi}}, \mbox{\hyperlink{octree_8h_source_l00573}{S\+\_\+directlo}}, \mbox{\hyperlink{tree_8h_source_l00299}{oomph\+::\+Tree\+::\+Son\+\_\+pt}}, \mbox{\hyperlink{tree_8h_source_l00305}{oomph\+::\+Tree\+::\+Son\+\_\+type}}, and \mbox{\hyperlink{octree_8h_source_l00072}{oomph\+::\+Oc\+Tree\+Names\+::U}}.
+References \mbox{\hyperlink{octree_8h_source_l00329}{Direct\+\_\+string}}, \mbox{\hyperlink{tree_8h_source_l00296}{oomph\+::\+Tree\+::\+Father\+\_\+pt}}, \mbox{\hyperlink{octree_8cc_source_l03373}{gteq\+\_\+face\+\_\+neighbour()}}, \mbox{\hyperlink{octree_8h_source_l00529}{Is\+\_\+adjacent}}, \mbox{\hyperlink{tree_8h_source_l00302}{oomph\+::\+Tree\+::\+Level}}, \mbox{\hyperlink{tree_8h_source_l00357}{oomph\+::\+Tree\+Root\+::neighbour\+\_\+pt()}}, \mbox{\hyperlink{octree_8h_source_l00533}{Reflect}}, \mbox{\hyperlink{tree_8h_source_l00292}{oomph\+::\+Tree\+::\+Root\+\_\+pt}}, \mbox{\hyperlink{octree_8cc_source_l00750}{rotate()}}, \mbox{\hyperlink{octree_8h_source_l00581}{S\+\_\+directhi}}, \mbox{\hyperlink{octree_8h_source_l00573}{S\+\_\+directlo}}, \mbox{\hyperlink{tree_8h_source_l00299}{oomph\+::\+Tree\+::\+Son\+\_\+pt}}, and \mbox{\hyperlink{tree_8h_source_l00305}{oomph\+::\+Tree\+::\+Son\+\_\+type}}.
 
 \mbox{\Hypertarget{classoomph_1_1OcTree_a690c4fbbca73bd48c0bc3b2913a9b39c}\label{classoomph_1_1OcTree_a690c4fbbca73bd48c0bc3b2913a9b39c}} 
 \index{oomph::OcTree@{oomph::OcTree}!gteq\_face\_neighbour@{gteq\_face\_neighbour}}
@@ -507,7 +612,7 @@ Definition at line \mbox{\hyperlink{octree_8cc_source_l03373}{3373}} of file \mb
 
 
 
-References \mbox{\hyperlink{octree_8h_source_l00073}{oomph\+::\+Oc\+Tree\+Names\+::B}}, \mbox{\hyperlink{octree_8h_source_l00071}{oomph\+::\+Oc\+Tree\+Names\+::D}}, \mbox{\hyperlink{octree_8h_source_l00329}{Direct\+\_\+string}}, \mbox{\hyperlink{octree_8h_source_l00353}{Direction\+\_\+to\+\_\+vector}}, \mbox{\hyperlink{octree_8h_source_l00074}{oomph\+::\+Oc\+Tree\+Names\+::F}}, \mbox{\hyperlink{octree_8cc_source_l03373}{gteq\+\_\+face\+\_\+neighbour()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{binary__tree_8h_source_l00050}{oomph\+::\+Binary\+Tree\+Names\+::L}}, \mbox{\hyperlink{tree_8h_source_l00302}{oomph\+::\+Tree\+::\+Level}}, \mbox{\hyperlink{binary__tree_8h_source_l00051}{oomph\+::\+Binary\+Tree\+Names\+::R}}, \mbox{\hyperlink{octree_8h_source_l00332}{Reflect\+\_\+face}}, \mbox{\hyperlink{octree_8h_source_l00790}{oomph\+::\+Oc\+Tree\+Root\+::right\+\_\+equivalent()}}, \mbox{\hyperlink{tree_8h_source_l00292}{oomph\+::\+Tree\+::\+Root\+\_\+pt}}, \mbox{\hyperlink{octree_8cc_source_l00750}{rotate()}}, \mbox{\hyperlink{octree_8h_source_l00544}{S\+\_\+base}}, \mbox{\hyperlink{octree_8h_source_l00565}{S\+\_\+stephi}}, \mbox{\hyperlink{octree_8h_source_l00558}{S\+\_\+steplo}}, \mbox{\hyperlink{octree_8h_source_l00072}{oomph\+::\+Oc\+Tree\+Names\+::U}}, and \mbox{\hyperlink{octree_8h_source_l00757}{oomph\+::\+Oc\+Tree\+Root\+::up\+\_\+equivalent()}}.
+References \mbox{\hyperlink{octree_8h_source_l00329}{Direct\+\_\+string}}, \mbox{\hyperlink{octree_8h_source_l00353}{Direction\+\_\+to\+\_\+vector}}, \mbox{\hyperlink{octree_8cc_source_l03373}{gteq\+\_\+face\+\_\+neighbour()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{tree_8h_source_l00302}{oomph\+::\+Tree\+::\+Level}}, \mbox{\hyperlink{octree_8h_source_l00332}{Reflect\+\_\+face}}, \mbox{\hyperlink{octree_8h_source_l00790}{oomph\+::\+Oc\+Tree\+Root\+::right\+\_\+equivalent()}}, \mbox{\hyperlink{tree_8h_source_l00292}{oomph\+::\+Tree\+::\+Root\+\_\+pt}}, \mbox{\hyperlink{octree_8cc_source_l00750}{rotate()}}, \mbox{\hyperlink{octree_8h_source_l00544}{S\+\_\+base}}, \mbox{\hyperlink{octree_8h_source_l00565}{S\+\_\+stephi}}, \mbox{\hyperlink{octree_8h_source_l00558}{S\+\_\+steplo}}, and \mbox{\hyperlink{octree_8h_source_l00757}{oomph\+::\+Oc\+Tree\+Root\+::up\+\_\+equivalent()}}.
 
 
 
@@ -551,7 +656,7 @@ Definition at line \mbox{\hyperlink{octree_8cc_source_l03618}{3618}} of file \mb
 
 
 
-References \mbox{\hyperlink{octree_8h_source_l00059}{oomph\+::\+Oc\+Tree\+Names\+::\+DB}}, \mbox{\hyperlink{octree_8h_source_l00067}{oomph\+::\+Oc\+Tree\+Names\+::\+DF}}, \mbox{\hyperlink{octree_8h_source_l00329}{Direct\+\_\+string}}, \mbox{\hyperlink{octree_8h_source_l00353}{Direction\+\_\+to\+\_\+vector}}, \mbox{\hyperlink{octree_8cc_source_l02769}{edge\+\_\+neighbour\+\_\+is\+\_\+face\+\_\+neighbour()}}, \mbox{\hyperlink{octree_8h_source_l00074}{oomph\+::\+Oc\+Tree\+Names\+::F}}, \mbox{\hyperlink{octree_8cc_source_l04015}{gteq\+\_\+edge\+\_\+neighbour()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{octree_8h_source_l00057}{oomph\+::\+Oc\+Tree\+Names\+::\+LB}}, \mbox{\hyperlink{octree_8h_source_l00061}{oomph\+::\+Oc\+Tree\+Names\+::\+LD}}, \mbox{\hyperlink{tree_8h_source_l00302}{oomph\+::\+Tree\+::\+Level}}, \mbox{\hyperlink{octree_8h_source_l00065}{oomph\+::\+Oc\+Tree\+Names\+::\+LF}}, \mbox{\hyperlink{octree_8h_source_l00063}{oomph\+::\+Oc\+Tree\+Names\+::\+LU}}, \mbox{\hyperlink{binary__tree_8h_source_l00051}{oomph\+::\+Binary\+Tree\+Names\+::R}}, \mbox{\hyperlink{octree_8h_source_l00058}{oomph\+::\+Oc\+Tree\+Names\+::\+RB}}, \mbox{\hyperlink{octree_8h_source_l00062}{oomph\+::\+Oc\+Tree\+Names\+::\+RD}}, \mbox{\hyperlink{octree_8h_source_l00335}{Reflect\+\_\+edge}}, \mbox{\hyperlink{octree_8h_source_l00066}{oomph\+::\+Oc\+Tree\+Names\+::\+RF}}, \mbox{\hyperlink{octree_8h_source_l00790}{oomph\+::\+Oc\+Tree\+Root\+::right\+\_\+equivalent()}}, \mbox{\hyperlink{tree_8h_source_l00292}{oomph\+::\+Tree\+::\+Root\+\_\+pt}}, \mbox{\hyperlink{octree_8cc_source_l00750}{rotate()}}, \mbox{\hyperlink{octree_8h_source_l00064}{oomph\+::\+Oc\+Tree\+Names\+::\+RU}}, \mbox{\hyperlink{octree_8h_source_l00585}{S\+\_\+base\+\_\+edge}}, \mbox{\hyperlink{octree_8h_source_l00593}{S\+\_\+step\+\_\+edge}}, \mbox{\hyperlink{octree_8h_source_l00072}{oomph\+::\+Oc\+Tree\+Names\+::U}}, \mbox{\hyperlink{octree_8h_source_l00060}{oomph\+::\+Oc\+Tree\+Names\+::\+UB}}, \mbox{\hyperlink{octree_8h_source_l00068}{oomph\+::\+Oc\+Tree\+Names\+::\+UF}}, and \mbox{\hyperlink{octree_8h_source_l00757}{oomph\+::\+Oc\+Tree\+Root\+::up\+\_\+equivalent()}}.
+References \mbox{\hyperlink{octree_8h_source_l00329}{Direct\+\_\+string}}, \mbox{\hyperlink{octree_8h_source_l00353}{Direction\+\_\+to\+\_\+vector}}, \mbox{\hyperlink{octree_8cc_source_l02769}{edge\+\_\+neighbour\+\_\+is\+\_\+face\+\_\+neighbour()}}, \mbox{\hyperlink{octree_8cc_source_l04015}{gteq\+\_\+edge\+\_\+neighbour()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{tree_8h_source_l00302}{oomph\+::\+Tree\+::\+Level}}, \mbox{\hyperlink{octree_8h_source_l00335}{Reflect\+\_\+edge}}, \mbox{\hyperlink{octree_8h_source_l00790}{oomph\+::\+Oc\+Tree\+Root\+::right\+\_\+equivalent()}}, \mbox{\hyperlink{tree_8h_source_l00292}{oomph\+::\+Tree\+::\+Root\+\_\+pt}}, \mbox{\hyperlink{octree_8cc_source_l00750}{rotate()}}, \mbox{\hyperlink{octree_8h_source_l00585}{S\+\_\+base\+\_\+edge}}, \mbox{\hyperlink{octree_8h_source_l00593}{S\+\_\+step\+\_\+edge}}, and \mbox{\hyperlink{octree_8h_source_l00757}{oomph\+::\+Oc\+Tree\+Root\+::up\+\_\+equivalent()}}.
 
 
 
@@ -617,10 +722,6 @@ Definition at line \mbox{\hyperlink{octree_8cc_source_l00491}{491}} of file \mbo
 
 
 
-References \mbox{\hyperlink{octree_8h_source_l00049}{oomph\+::\+Oc\+Tree\+Names\+::\+LDB}}, \mbox{\hyperlink{octree_8h_source_l00053}{oomph\+::\+Oc\+Tree\+Names\+::\+LDF}}, \mbox{\hyperlink{octree_8h_source_l00051}{oomph\+::\+Oc\+Tree\+Names\+::\+LUB}}, \mbox{\hyperlink{octree_8h_source_l00055}{oomph\+::\+Oc\+Tree\+Names\+::\+LUF}}, \mbox{\hyperlink{octree_8h_source_l00050}{oomph\+::\+Oc\+Tree\+Names\+::\+RDB}}, \mbox{\hyperlink{octree_8h_source_l00054}{oomph\+::\+Oc\+Tree\+Names\+::\+RDF}}, \mbox{\hyperlink{octree_8h_source_l00052}{oomph\+::\+Oc\+Tree\+Names\+::\+RUB}}, and \mbox{\hyperlink{octree_8h_source_l00056}{oomph\+::\+Oc\+Tree\+Names\+::\+RUF}}.
-
-
-
 Referenced by \mbox{\hyperlink{octree_8cc_source_l05255}{oomph\+::\+Oc\+Tree\+Forest\+::construct\+\_\+up\+\_\+right\+\_\+equivalents()}}.
 
 \mbox{\Hypertarget{classoomph_1_1OcTree_a14dba08782264f0d6008a8c1578b41e1}\label{classoomph_1_1OcTree_a14dba08782264f0d6008a8c1578b41e1}} 
@@ -649,7 +750,7 @@ Definition at line \mbox{\hyperlink{octree_8cc_source_l00709}{709}} of file \mbo
 
 
 
-References \mbox{\hyperlink{octree_8h_source_l00073}{oomph\+::\+Oc\+Tree\+Names\+::B}}, \mbox{\hyperlink{octree_8h_source_l00071}{oomph\+::\+Oc\+Tree\+Names\+::D}}, \mbox{\hyperlink{octree_8h_source_l00329}{Direct\+\_\+string}}, \mbox{\hyperlink{octree_8h_source_l00353}{Direction\+\_\+to\+\_\+vector}}, \mbox{\hyperlink{octree_8h_source_l00074}{oomph\+::\+Oc\+Tree\+Names\+::F}}, \mbox{\hyperlink{binary__tree_8h_source_l00050}{oomph\+::\+Binary\+Tree\+Names\+::L}}, \mbox{\hyperlink{binary__tree_8h_source_l00051}{oomph\+::\+Binary\+Tree\+Names\+::R}}, \mbox{\hyperlink{octree_8cc_source_l00750}{rotate()}}, \mbox{\hyperlink{octree_8h_source_l00072}{oomph\+::\+Oc\+Tree\+Names\+::U}}, and \mbox{\hyperlink{octree_8h_source_l00348}{Vector\+\_\+to\+\_\+direction}}.
+References \mbox{\hyperlink{octree_8h_source_l00329}{Direct\+\_\+string}}, \mbox{\hyperlink{octree_8h_source_l00353}{Direction\+\_\+to\+\_\+vector}}, \mbox{\hyperlink{octree_8cc_source_l00750}{rotate()}}, and \mbox{\hyperlink{octree_8h_source_l00348}{Vector\+\_\+to\+\_\+direction}}.
 
 \mbox{\Hypertarget{classoomph_1_1OcTree_a25e5185f0395a19883e216fd80103cf7}\label{classoomph_1_1OcTree_a25e5185f0395a19883e216fd80103cf7}} 
 \index{oomph::OcTree@{oomph::OcTree}!rotate@{rotate}}
@@ -667,7 +768,7 @@ Definition at line \mbox{\hyperlink{octree_8cc_source_l00750}{750}} of file \mbo
 
 
 
-References \mbox{\hyperlink{octree_8h_source_l00073}{oomph\+::\+Oc\+Tree\+Names\+::B}}, \mbox{\hyperlink{octree_8cc_source_l00609}{construct\+\_\+rotation\+\_\+matrix()}}, \mbox{\hyperlink{octree_8h_source_l00071}{oomph\+::\+Oc\+Tree\+Names\+::D}}, \mbox{\hyperlink{octree_8h_source_l00329}{Direct\+\_\+string}}, \mbox{\hyperlink{octree_8h_source_l00074}{oomph\+::\+Oc\+Tree\+Names\+::F}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{binary__tree_8h_source_l00050}{oomph\+::\+Binary\+Tree\+Names\+::L}}, \mbox{\hyperlink{octree_8cc_source_l00664}{mult\+\_\+mat\+\_\+mat()}}, \mbox{\hyperlink{octree_8cc_source_l00687}{mult\+\_\+mat\+\_\+vect()}}, \mbox{\hyperlink{binary__tree_8h_source_l00051}{oomph\+::\+Binary\+Tree\+Names\+::R}}, and \mbox{\hyperlink{octree_8h_source_l00072}{oomph\+::\+Oc\+Tree\+Names\+::U}}.
+References \mbox{\hyperlink{octree_8cc_source_l00609}{construct\+\_\+rotation\+\_\+matrix()}}, \mbox{\hyperlink{octree_8h_source_l00329}{Direct\+\_\+string}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{octree_8cc_source_l00664}{mult\+\_\+mat\+\_\+mat()}}, and \mbox{\hyperlink{octree_8cc_source_l00687}{mult\+\_\+mat\+\_\+vect()}}.
 
 
 
@@ -707,7 +808,7 @@ Definition at line \mbox{\hyperlink{octree_8cc_source_l01040}{1040}} of file \mb
 
 
 
-References \mbox{\hyperlink{octree_8h_source_l00073}{oomph\+::\+Oc\+Tree\+Names\+::B}}, \mbox{\hyperlink{octree_8h_source_l00540}{Colour}}, \mbox{\hyperlink{octree_8h_source_l00537}{Common\+\_\+face}}, \mbox{\hyperlink{octree_8h_source_l00520}{Cosi}}, \mbox{\hyperlink{octree_8h_source_l00071}{oomph\+::\+Oc\+Tree\+Names\+::D}}, \mbox{\hyperlink{octree_8h_source_l00059}{oomph\+::\+Oc\+Tree\+Names\+::\+DB}}, \mbox{\hyperlink{octree_8h_source_l00067}{oomph\+::\+Oc\+Tree\+Names\+::\+DF}}, \mbox{\hyperlink{octree_8h_source_l00329}{Direct\+\_\+string}}, \mbox{\hyperlink{octree_8h_source_l00353}{Direction\+\_\+to\+\_\+vector}}, \mbox{\hyperlink{octree_8h_source_l00074}{oomph\+::\+Oc\+Tree\+Names\+::F}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{octree_8h_source_l00529}{Is\+\_\+adjacent}}, \mbox{\hyperlink{binary__tree_8h_source_l00050}{oomph\+::\+Binary\+Tree\+Names\+::L}}, \mbox{\hyperlink{octree_8h_source_l00057}{oomph\+::\+Oc\+Tree\+Names\+::\+LB}}, \mbox{\hyperlink{octree_8h_source_l00061}{oomph\+::\+Oc\+Tree\+Names\+::\+LD}}, \mbox{\hyperlink{octree_8h_source_l00049}{oomph\+::\+Oc\+Tree\+Names\+::\+LDB}}, \mbox{\hyperlink{octree_8h_source_l00053}{oomph\+::\+Oc\+Tree\+Names\+::\+LDF}}, \mbox{\hyperlink{octree_8h_source_l00065}{oomph\+::\+Oc\+Tree\+Names\+::\+LF}}, \mbox{\hyperlink{octree_8h_source_l00063}{oomph\+::\+Oc\+Tree\+Names\+::\+LU}}, \mbox{\hyperlink{octree_8h_source_l00051}{oomph\+::\+Oc\+Tree\+Names\+::\+LUB}}, \mbox{\hyperlink{octree_8h_source_l00055}{oomph\+::\+Oc\+Tree\+Names\+::\+LUF}}, \mbox{\hyperlink{cfortran_8h_ac5977f3790a2b5e5a4e7e5ea21259aa1}{num\+\_\+elem()}}, \mbox{\hyperlink{tree_8h_source_l00262}{oomph\+::\+Tree\+::\+OMEGA}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00319}{oomph\+::oomph\+\_\+info}}, \mbox{\hyperlink{binary__tree_8h_source_l00051}{oomph\+::\+Binary\+Tree\+Names\+::R}}, \mbox{\hyperlink{octree_8h_source_l00058}{oomph\+::\+Oc\+Tree\+Names\+::\+RB}}, \mbox{\hyperlink{octree_8h_source_l00062}{oomph\+::\+Oc\+Tree\+Names\+::\+RD}}, \mbox{\hyperlink{octree_8h_source_l00050}{oomph\+::\+Oc\+Tree\+Names\+::\+RDB}}, \mbox{\hyperlink{octree_8h_source_l00054}{oomph\+::\+Oc\+Tree\+Names\+::\+RDF}}, \mbox{\hyperlink{octree_8h_source_l00533}{Reflect}}, \mbox{\hyperlink{octree_8h_source_l00335}{Reflect\+\_\+edge}}, \mbox{\hyperlink{octree_8h_source_l00332}{Reflect\+\_\+face}}, \mbox{\hyperlink{octree_8h_source_l00338}{Reflect\+\_\+vertex}}, \mbox{\hyperlink{matrices_8h_source_l00498}{oomph\+::\+Dense\+Matrix$<$ T $>$\+::resize()}}, \mbox{\hyperlink{octree_8h_source_l00066}{oomph\+::\+Oc\+Tree\+Names\+::\+RF}}, \mbox{\hyperlink{octree_8cc_source_l00750}{rotate()}}, \mbox{\hyperlink{octree_8h_source_l00064}{oomph\+::\+Oc\+Tree\+Names\+::\+RU}}, \mbox{\hyperlink{octree_8h_source_l00052}{oomph\+::\+Oc\+Tree\+Names\+::\+RUB}}, \mbox{\hyperlink{octree_8h_source_l00056}{oomph\+::\+Oc\+Tree\+Names\+::\+RUF}}, \mbox{\hyperlink{octree_8h_source_l00544}{S\+\_\+base}}, \mbox{\hyperlink{octree_8h_source_l00585}{S\+\_\+base\+\_\+edge}}, \mbox{\hyperlink{octree_8h_source_l00600}{S\+\_\+direct\+\_\+edge}}, \mbox{\hyperlink{octree_8h_source_l00581}{S\+\_\+directhi}}, \mbox{\hyperlink{octree_8h_source_l00573}{S\+\_\+directlo}}, \mbox{\hyperlink{octree_8h_source_l00593}{S\+\_\+step\+\_\+edge}}, \mbox{\hyperlink{octree_8h_source_l00565}{S\+\_\+stephi}}, \mbox{\hyperlink{octree_8h_source_l00558}{S\+\_\+steplo}}, \mbox{\hyperlink{octree_8h_source_l00523}{Sini}}, \mbox{\hyperlink{octree_8h_source_l00412}{Static\+\_\+data\+\_\+has\+\_\+been\+\_\+setup}}, \mbox{\hyperlink{octree_8h_source_l00072}{oomph\+::\+Oc\+Tree\+Names\+::U}}, \mbox{\hyperlink{octree_8h_source_l00060}{oomph\+::\+Oc\+Tree\+Names\+::\+UB}}, \mbox{\hyperlink{octree_8h_source_l00068}{oomph\+::\+Oc\+Tree\+Names\+::\+UF}}, \mbox{\hyperlink{octree_8h_source_l00377}{Up\+\_\+and\+\_\+right\+\_\+equivalent\+\_\+for\+\_\+pairs\+\_\+of\+\_\+vertices}}, \mbox{\hyperlink{octree_8h_source_l00348}{Vector\+\_\+to\+\_\+direction}}, and \mbox{\hyperlink{octree_8h_source_l00343}{Vertex\+\_\+at\+\_\+end\+\_\+of\+\_\+edge}}.
+References \mbox{\hyperlink{octree_8h_source_l00540}{Colour}}, \mbox{\hyperlink{octree_8h_source_l00537}{Common\+\_\+face}}, \mbox{\hyperlink{octree_8h_source_l00520}{Cosi}}, \mbox{\hyperlink{octree_8h_source_l00329}{Direct\+\_\+string}}, \mbox{\hyperlink{octree_8h_source_l00353}{Direction\+\_\+to\+\_\+vector}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{octree_8h_source_l00529}{Is\+\_\+adjacent}}, \mbox{\hyperlink{cfortran_8h_ac5977f3790a2b5e5a4e7e5ea21259aa1}{num\+\_\+elem()}}, \mbox{\hyperlink{tree_8h_source_l00262}{oomph\+::\+Tree\+::\+OMEGA}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00319}{oomph\+::oomph\+\_\+info}}, \mbox{\hyperlink{octree_8h_source_l00533}{Reflect}}, \mbox{\hyperlink{octree_8h_source_l00335}{Reflect\+\_\+edge}}, \mbox{\hyperlink{octree_8h_source_l00332}{Reflect\+\_\+face}}, \mbox{\hyperlink{octree_8h_source_l00338}{Reflect\+\_\+vertex}}, \mbox{\hyperlink{matrices_8h_source_l00498}{oomph\+::\+Dense\+Matrix$<$ T $>$\+::resize()}}, \mbox{\hyperlink{octree_8cc_source_l00750}{rotate()}}, \mbox{\hyperlink{octree_8h_source_l00544}{S\+\_\+base}}, \mbox{\hyperlink{octree_8h_source_l00585}{S\+\_\+base\+\_\+edge}}, \mbox{\hyperlink{octree_8h_source_l00600}{S\+\_\+direct\+\_\+edge}}, \mbox{\hyperlink{octree_8h_source_l00581}{S\+\_\+directhi}}, \mbox{\hyperlink{octree_8h_source_l00573}{S\+\_\+directlo}}, \mbox{\hyperlink{octree_8h_source_l00593}{S\+\_\+step\+\_\+edge}}, \mbox{\hyperlink{octree_8h_source_l00565}{S\+\_\+stephi}}, \mbox{\hyperlink{octree_8h_source_l00558}{S\+\_\+steplo}}, \mbox{\hyperlink{octree_8h_source_l00523}{Sini}}, \mbox{\hyperlink{octree_8h_source_l00412}{Static\+\_\+data\+\_\+has\+\_\+been\+\_\+setup}}, \mbox{\hyperlink{octree_8h_source_l00377}{Up\+\_\+and\+\_\+right\+\_\+equivalent\+\_\+for\+\_\+pairs\+\_\+of\+\_\+vertices}}, \mbox{\hyperlink{octree_8h_source_l00348}{Vector\+\_\+to\+\_\+direction}}, and \mbox{\hyperlink{octree_8h_source_l00343}{Vertex\+\_\+at\+\_\+end\+\_\+of\+\_\+edge}}.
 
 
 
@@ -747,7 +848,7 @@ Definition at line \mbox{\hyperlink{octree_8cc_source_l00414}{414}} of file \mbo
 
 
 
-References \mbox{\hyperlink{octree_8h_source_l00329}{Direct\+\_\+string}}, \mbox{\hyperlink{octree_8h_source_l00049}{oomph\+::\+Oc\+Tree\+Names\+::\+LDB}}, \mbox{\hyperlink{octree_8h_source_l00053}{oomph\+::\+Oc\+Tree\+Names\+::\+LDF}}, \mbox{\hyperlink{octree_8h_source_l00051}{oomph\+::\+Oc\+Tree\+Names\+::\+LUB}}, \mbox{\hyperlink{octree_8h_source_l00055}{oomph\+::\+Oc\+Tree\+Names\+::\+LUF}}, \mbox{\hyperlink{octree_8h_source_l00050}{oomph\+::\+Oc\+Tree\+Names\+::\+RDB}}, \mbox{\hyperlink{octree_8h_source_l00054}{oomph\+::\+Oc\+Tree\+Names\+::\+RDF}}, \mbox{\hyperlink{octree_8h_source_l00052}{oomph\+::\+Oc\+Tree\+Names\+::\+RUB}}, and \mbox{\hyperlink{octree_8h_source_l00056}{oomph\+::\+Oc\+Tree\+Names\+::\+RUF}}.
+References \mbox{\hyperlink{octree_8h_source_l00329}{Direct\+\_\+string}}.
 
 
 
@@ -854,9 +955,9 @@ Referenced by \mbox{\hyperlink{generalised__newtonian__refineable__navier__stoke
 
 
 
-Array of direction/octant adjacency scheme\+: Is\+\_\+adjacent(direction,octant)\+: Is face/edge {\ttfamily direction} adjacent to octant {\ttfamily octant} ? (Table in Samet\textquotesingle{}s book) 
+Array of direction/octant adjacency scheme\+: \mbox{\hyperlink{classoomph_1_1OcTree_a24e29b9da2bf17cc81d803af6925890b}{Is\+\_\+adjacent(direction,octant)}}\+: Is face/edge {\ttfamily direction} adjacent to octant {\ttfamily octant} ? (Table in Samet\textquotesingle{}s book) 
 
-Array of direction/octant adjacency scheme\+: Is\+\_\+adjacent(direction,octant)\+: Is face/edge {\ttfamily direction} adjacent to octant {\ttfamily octant} ? Table in Samet\textquotesingle{}s book. 
+Array of direction/octant adjacency scheme\+: \mbox{\hyperlink{classoomph_1_1OcTree_a24e29b9da2bf17cc81d803af6925890b}{Is\+\_\+adjacent(direction,octant)}}\+: Is face/edge {\ttfamily direction} adjacent to octant {\ttfamily octant} ? Table in Samet\textquotesingle{}s book. 
 
 Definition at line \mbox{\hyperlink{octree_8h_source_l00529}{529}} of file \mbox{\hyperlink{octree_8h_source}{octree.\+h}}.
 
@@ -872,7 +973,7 @@ Referenced by \mbox{\hyperlink{octree_8cc_source_l04015}{gteq\+\_\+edge\+\_\+nei
 
 
 
-Reflection scheme\+: Reflect(direction,octant)\+: Get mirror of octant/edge in specified direction. E.\+g. Reflect(\+LDF,\+L)=RDF. 
+Reflection scheme\+: \mbox{\hyperlink{classoomph_1_1OcTree_aae2497ec31766ebf0541ff6f2bffa790}{Reflect(direction,octant)}}\+: Get mirror of octant/edge in specified direction. E.\+g. \mbox{\hyperlink{classoomph_1_1OcTree_aae2497ec31766ebf0541ff6f2bffa790}{Reflect(\+LDF,\+L)}}=RDF. 
 
 
 
@@ -962,7 +1063,7 @@ Referenced by \mbox{\hyperlink{octree_8cc_source_l04275}{doc\+\_\+face\+\_\+neig
 
 
 
-S\+\_\+base\+\_\+edge(i,edge)\+: Initial value for coordinate s\mbox{[}i\mbox{]} on the specified edge (LF/\+RF/...). 
+\mbox{\hyperlink{classoomph_1_1OcTree_a9f8afa940d0ce2ceca2a064f3f1ec6b1}{S\+\_\+base\+\_\+edge(i,edge)}}\+: Initial value for coordinate s\mbox{[}i\mbox{]} on the specified edge (LF/\+RF/...). 
 
 
 
@@ -980,7 +1081,7 @@ Referenced by \mbox{\hyperlink{octree_8cc_source_l04552}{doc\+\_\+true\+\_\+edge
 
 
 
-Relative to the left/down/back vertex in any (father) octree, the corresponding vertex in the son specified by {\ttfamily son\+\_\+octant} has an offset. If we project the son\+\_\+octant\textquotesingle{}s left/down/back vertex onto the father\textquotesingle{}s edge {\ttfamily edge}, it is located at the in-\/face coordinate {\ttfamily s\+\_\+lo} = h/2 {\ttfamily S\+\_\+direct\+\_\+edge(edge,son\+\_\+octant)}. 
+Relative to the left/down/back vertex in any (father) octree, the corresponding vertex in the son specified by {\ttfamily son\+\_\+octant} has an offset. If we project the son\+\_\+octant\textquotesingle{}s left/down/back vertex onto the father\textquotesingle{}s edge {\ttfamily edge}, it is located at the in-\/face coordinate {\ttfamily s\+\_\+lo} = h/2 {\ttfamily \mbox{\hyperlink{classoomph_1_1OcTree_abf12711759332ae1d0b55da939b62aa0}{S\+\_\+direct\+\_\+edge(edge,son\+\_\+octant)}}}. 
 
 
 
@@ -1016,9 +1117,9 @@ Referenced by \mbox{\hyperlink{octree_8cc_source_l03839}{gteq\+\_\+face\+\_\+nei
 
 
 
-Relative to the left/down/back vertex in any (father) octree, the corresponding vertex in the son specified by {\ttfamily son\+\_\+octant} has an offset. If we project the son\+\_\+octant\textquotesingle{}s left/down/back vertex onto the father\textquotesingle{}s face {\ttfamily face}, it is located at the in-\/face coordinate {\ttfamily s\+\_\+lo} = h/2 {\ttfamily S\+\_\+directlo(face,son\+\_\+octant)}. \mbox{[}See discussion of {\ttfamily s\+\_\+steplo} for an explanation of the subscripts {\ttfamily \+\_\+hi} and {\ttfamily \+\_\+lo}.\mbox{]}. 
+Relative to the left/down/back vertex in any (father) octree, the corresponding vertex in the son specified by {\ttfamily son\+\_\+octant} has an offset. If we project the son\+\_\+octant\textquotesingle{}s left/down/back vertex onto the father\textquotesingle{}s face {\ttfamily face}, it is located at the in-\/face coordinate {\ttfamily s\+\_\+lo} = h/2 {\ttfamily \mbox{\hyperlink{classoomph_1_1OcTree_a2ece71f32cf50ba50851d2102af15426}{S\+\_\+directlo(face,son\+\_\+octant)}}}. \mbox{[}See discussion of {\ttfamily s\+\_\+steplo} for an explanation of the subscripts {\ttfamily \+\_\+hi} and {\ttfamily \+\_\+lo}.\mbox{]}. 
 
-Relative to the left/down/back vertex in any (father) octree, the corresponding vertex in the son specified by {\ttfamily son\+\_\+octant} has an offset. If we project the son\+\_\+octant\textquotesingle{}s left/down/back vertex onto the father\textquotesingle{}s face {\ttfamily face}, it is located at the in-\/face coordinate {\ttfamily s\+\_\+lo} = h/2 {\ttfamily S\+\_\+directlo(face,son\+\_\+octant)}. \mbox{[}See discussion of {\ttfamily S\+\_\+steplo} for an explanation of the subscripts {\ttfamily \+\_\+hi} and {\ttfamily \+\_\+lo}.\mbox{]}. 
+Relative to the left/down/back vertex in any (father) octree, the corresponding vertex in the son specified by {\ttfamily son\+\_\+octant} has an offset. If we project the son\+\_\+octant\textquotesingle{}s left/down/back vertex onto the father\textquotesingle{}s face {\ttfamily face}, it is located at the in-\/face coordinate {\ttfamily s\+\_\+lo} = h/2 {\ttfamily \mbox{\hyperlink{classoomph_1_1OcTree_a2ece71f32cf50ba50851d2102af15426}{S\+\_\+directlo(face,son\+\_\+octant)}}}. \mbox{[}See discussion of {\ttfamily S\+\_\+steplo} for an explanation of the subscripts {\ttfamily \+\_\+hi} and {\ttfamily \+\_\+lo}.\mbox{]}. 
 
 Definition at line \mbox{\hyperlink{octree_8h_source_l00573}{573}} of file \mbox{\hyperlink{octree_8h_source}{octree.\+h}}.
 
@@ -1054,7 +1155,7 @@ Referenced by \mbox{\hyperlink{octree_8cc_source_l04552}{doc\+\_\+true\+\_\+edge
 
 If we\textquotesingle{}re located on face {\ttfamily face} \mbox{[}L/\+R/\+F/\+B/\+U/D\mbox{]}, then an increase in s\+\_\+hi from -\/1 to +1 corresponds to a change of {\ttfamily s\+\_\+stephi(i,face)} in the 3D coordinate \textbackslash{} s\mbox{[}i\mbox{]}. \mbox{[}Read the discussion of {\ttfamily s\+\_\+steplo} for an explanation of the subscripts {\ttfamily \+\_\+hi} and {\ttfamily \+\_\+lo}.\mbox{]}. 
 
-If we\textquotesingle{}re located on face {\ttfamily face} \mbox{[}L/\+R/\+F/\+B/\+U/D\mbox{]}, then an increase in s\+\_\+hi from -\/1 to +1 corresponds to a change of {\ttfamily S\+\_\+stephi(i,face)} in the 3D coordinate \textbackslash{} s\mbox{[}i\mbox{]}. \mbox{[}Read the discussion of {\ttfamily S\+\_\+steplo} for an explanation of the subscripts {\ttfamily \+\_\+hi} and {\ttfamily \+\_\+lo}.\mbox{]}. 
+If we\textquotesingle{}re located on face {\ttfamily face} \mbox{[}L/\+R/\+F/\+B/\+U/D\mbox{]}, then an increase in s\+\_\+hi from -\/1 to +1 corresponds to a change of {\ttfamily \mbox{\hyperlink{classoomph_1_1OcTree_addcc327c9831b6c57f30c8596125c236}{S\+\_\+stephi(i,face)}}} in the 3D coordinate \textbackslash{} s\mbox{[}i\mbox{]}. \mbox{[}Read the discussion of {\ttfamily S\+\_\+steplo} for an explanation of the subscripts {\ttfamily \+\_\+hi} and {\ttfamily \+\_\+lo}.\mbox{]}. 
 
 Definition at line \mbox{\hyperlink{octree_8h_source_l00565}{565}} of file \mbox{\hyperlink{octree_8h_source}{octree.\+h}}.
 
@@ -1072,7 +1173,7 @@ Referenced by \mbox{\hyperlink{octree_8cc_source_l04275}{doc\+\_\+face\+\_\+neig
 
 Each face of the \mbox{\hyperlink{classoomph_1_1RefineableQElement_3_013_01_4}{Refineable\+QElement$<$3$>$}} that is represented by the octree is parametrised by two (of the three) local coordinates that parametrise the entire 3D element. E.\+g. the B\mbox{[}ack\mbox{]} face is parametrised by (s\mbox{[}0\mbox{]}, s\mbox{[}1\mbox{]}); the D\mbox{[}own\mbox{]} face is parametrised by (s\mbox{[}0\mbox{]},s\mbox{[}2\mbox{]}); etc. We always identify the in-\/face coordinate with the lower (3D) index with the subscript {\ttfamily \+\_\+lo} and the one with the larger (3D) index with the subscript {\ttfamily \+\_\+hi}. Here we set up the translation scheme between the 2D in-\/face coordinates (s\+\_\+lo,s\+\_\+hi) and the corresponding 3D coordinates\+: If we\textquotesingle{}re located on face {\ttfamily face} \mbox{[}L/\+R/\+F/\+B/\+U/D\mbox{]}, then an increase in s\+\_\+lo from -\/1 to +1 corresponds to a change of {\ttfamily s\+\_\+steplo(i,face)} in the 3D coordinate {\ttfamily s}\mbox{[}i\mbox{]}. 
 
-Each face of the \mbox{\hyperlink{classoomph_1_1RefineableQElement_3_013_01_4}{Refineable\+QElement$<$3$>$}} that is represented by the octree is parametrised by two (of the three) local coordinates that parametrise the entire 3D element. E.\+g. the B\mbox{[}ack\mbox{]} face is parametrised by (s\mbox{[}0\mbox{]}, s\mbox{[}1\mbox{]}); the D\mbox{[}own\mbox{]} face is parametrised by (s\mbox{[}0\mbox{]},s\mbox{[}2\mbox{]}); etc. We always identify the in-\/face coordinate with the lower (3D) index with the subscript {\ttfamily \+\_\+lo} and the one with the larger (3D) index with the subscript {\ttfamily \+\_\+hi}. Here we set up the translation scheme between the 2D in-\/face coordinates (s\+\_\+lo,s\+\_\+hi) and the corresponding 3D coordinates\+: If we\textquotesingle{}re located on face {\ttfamily face} \mbox{[}L/\+R/\+F/\+B/\+U/D\mbox{]}, then an increase in s\+\_\+lo from -\/1 to +1 corresponds to a change of {\ttfamily S\+\_\+steplo(i,face)} in the 3D coordinate {\ttfamily s}\mbox{[}i\mbox{]}. S\+\_\+steplo(i,direction) 
+Each face of the \mbox{\hyperlink{classoomph_1_1RefineableQElement_3_013_01_4}{Refineable\+QElement$<$3$>$}} that is represented by the octree is parametrised by two (of the three) local coordinates that parametrise the entire 3D element. E.\+g. the B\mbox{[}ack\mbox{]} face is parametrised by (s\mbox{[}0\mbox{]}, s\mbox{[}1\mbox{]}); the D\mbox{[}own\mbox{]} face is parametrised by (s\mbox{[}0\mbox{]},s\mbox{[}2\mbox{]}); etc. We always identify the in-\/face coordinate with the lower (3D) index with the subscript {\ttfamily \+\_\+lo} and the one with the larger (3D) index with the subscript {\ttfamily \+\_\+hi}. Here we set up the translation scheme between the 2D in-\/face coordinates (s\+\_\+lo,s\+\_\+hi) and the corresponding 3D coordinates\+: If we\textquotesingle{}re located on face {\ttfamily face} \mbox{[}L/\+R/\+F/\+B/\+U/D\mbox{]}, then an increase in s\+\_\+lo from -\/1 to +1 corresponds to a change of {\ttfamily \mbox{\hyperlink{classoomph_1_1OcTree_af1c005f0207cae66390314859edd9bd1}{S\+\_\+steplo(i,face)}}} in the 3D coordinate {\ttfamily s}\mbox{[}i\mbox{]}. \mbox{\hyperlink{classoomph_1_1OcTree_af1c005f0207cae66390314859edd9bd1}{S\+\_\+steplo(i,direction)}} 
 
 Definition at line \mbox{\hyperlink{octree_8h_source_l00558}{558}} of file \mbox{\hyperlink{octree_8h_source}{octree.\+h}}.
 

@@ -55,7 +55,7 @@ void \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_a9dae351352d344321ea8299
 void \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_a69fa79db7073f39a1ac5333c8bd9c1d5}{get\+\_\+blocks}} (\mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ bool $>$ \&required\+\_\+blocks, \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ MATRIX $\ast$ $>$ \&block\+\_\+matrix\+\_\+pt) const
 \begin{DoxyCompactList}\small\item\em Get all the block matrices required by the block preconditioner. Takes a pointer to a matrix of bools that indicate if a specified sub-\/block is required for the preconditioning operation. Computes the required block matrices, and stores pointers to them in the matrix block\+\_\+matrix\+\_\+pt. If an entry in block\+\_\+matrix\+\_\+pt is equal to NULL on return, that sub-\/block has not been requested and is therefore not available. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_a314fc14d95f2833be66067cd5b45e093}{get\+\_\+dof\+\_\+level\+\_\+block}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}, const unsigned \&j, MATRIX \&output\+\_\+block, const bool \&ignore\+\_\+replacement\+\_\+block=false) const
-\begin{DoxyCompactList}\small\item\em Gets dof-\/level block (i,j). If Replacement\+\_\+dof\+\_\+block\+\_\+pt(i,j) is not null, then the replacement block is returned via a deep copy. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Gets dof-\/level block (i,j). If \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_ad2cd49c5c823c4202046e97038f6e080}{Replacement\+\_\+dof\+\_\+block\+\_\+pt(i,j)}} is not null, then the replacement block is returned via a deep copy. \end{DoxyCompactList}\item 
 MATRIX \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_a51636746e5921ee2845daf60b1c322dc}{get\+\_\+concatenated\+\_\+block}} (const \mbox{\hyperlink{classoomph_1_1VectorMatrix}{Vector\+Matrix}}$<$ \mbox{\hyperlink{classoomph_1_1BlockSelector}{Block\+Selector}} $>$ \&selected\+\_\+block)
 \begin{DoxyCompactList}\small\item\em Returns a concatenation of the block matrices specified by the argument selected\+\_\+block. The \mbox{\hyperlink{classoomph_1_1VectorMatrix}{Vector\+Matrix}} selected\+\_\+block must be correctly sized as it is used to determine the number of sub block matrices to concatenate. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_af9321cdab3f506ab95fe51cd9b93deab}{get\+\_\+concatenated\+\_\+block\+\_\+vector}} (const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ unsigned $>$ \&block\+\_\+vec\+\_\+number, const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&v, \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&b)
@@ -161,7 +161,7 @@ int \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_affcfd24c1ba15bf9cac712ff
 const \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} $\ast$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_a92aa6c59cd0b4dc15705d2b90f9bd206}{internal\+\_\+block\+\_\+distribution\+\_\+pt}} (const unsigned \&b) const
 \begin{DoxyCompactList}\small\item\em Access function to the internal block distributions. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_a9b3c4072be2bf4f0dfdd18f56a5d51bf}{insert\+\_\+auxiliary\+\_\+block\+\_\+distribution}} (const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ unsigned $>$ \&block\+\_\+vec\+\_\+number, \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} $\ast$dist\+\_\+pt)
-\begin{DoxyCompactList}\small\item\em insert a Vector$<$unsigned$>$ and Linear\+Algebra\+Distribution$\ast$ pair into Auxiliary\+\_\+block\+\_\+distribution\+\_\+pt. The Auxiliary\+\_\+block\+\_\+distribution\+\_\+pt should only contain pointers to distributions concatenated at this block level. We try to ensure this by checking if the block\+\_\+vec\+\_\+number vector is within the range \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_a80808d42be8db74fd58af80b019bf317}{nblock\+\_\+types()}}. Of course, this does not guarantee correctness, but this is the least we can do. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em insert a \mbox{\hyperlink{classoomph_1_1Vector}{Vector$<$unsigned$>$}} and Linear\+Algebra\+Distribution$\ast$ pair into Auxiliary\+\_\+block\+\_\+distribution\+\_\+pt. The Auxiliary\+\_\+block\+\_\+distribution\+\_\+pt should only contain pointers to distributions concatenated at this block level. We try to ensure this by checking if the block\+\_\+vec\+\_\+number vector is within the range \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_a80808d42be8db74fd58af80b019bf317}{nblock\+\_\+types()}}. Of course, this does not guarantee correctness, but this is the least we can do. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_a4d8ff67e34e85a71c0f9bb68c0b10496}{block\+\_\+matrix\+\_\+test}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}, const unsigned \&j, const MATRIX $\ast$block\+\_\+matrix\+\_\+pt) const
 \begin{DoxyCompactList}\small\item\em Private helper function to check that every element in the block matrix (i,j) matches the corresponding element in the original matrix. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename my\+Type $>$ }\\int \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_acac55e8dea1a0f63fcf32b7b058b0979}{get\+\_\+index\+\_\+of\+\_\+value}} (const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ my\+Type $>$ \&vec, const my\+Type val, const bool sorted=false) const
@@ -169,7 +169,79 @@ void \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_a4d8ff67e34e85a71c0f9bb6
 void \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_a4f714d01cd2fdb791aa0795f34b9610a}{internal\+\_\+get\+\_\+block}} (const unsigned \&block\+\_\+i, const unsigned \&block\+\_\+j, \mbox{\hyperlink{classoomph_1_1CRDoubleMatrix}{CRDouble\+Matrix}} \&output\+\_\+block) const
 \begin{DoxyCompactList}\small\item\em Gets block (i,j) from the matrix pointed to by Matrix\+\_\+pt and returns it in output\+\_\+block. This is associated with the internal blocks. Please use the other get\+\_\+block(...) function. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_a1df550d281ec99914115edfa1a40b982}{get\+\_\+dof\+\_\+level\+\_\+block}} (const unsigned \&block\+\_\+i, const unsigned \&block\+\_\+j, \mbox{\hyperlink{classoomph_1_1CRDoubleMatrix}{CRDouble\+Matrix}} \&output\+\_\+block, const bool \&ignore\+\_\+replacement\+\_\+block) const
-\begin{DoxyCompactList}\small\item\em Gets dof-\/level block (i,j). If Replacement\+\_\+dof\+\_\+block\+\_\+pt(i,j) is not null, then the replacement block is returned via a deep copy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Gets dof-\/level block (i,j). If \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_ad2cd49c5c823c4202046e97038f6e080}{Replacement\+\_\+dof\+\_\+block\+\_\+pt(i,j)}} is not null, then the replacement block is returned via a deep copy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1Preconditioner}{oomph\+::\+Preconditioner}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1Preconditioner_a7bd8801e4395ccb88fe1f4296e77e9ab}{Preconditioner}} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Preconditioner_ab6e58c82c3cc4f4e44434a7d92d8e776}{Preconditioner}} (const \mbox{\hyperlink{classoomph_1_1Preconditioner}{Preconditioner}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Preconditioner_a63fefcfb21ae1c2a3b4232d2dfbb6340}{operator=}} (const \mbox{\hyperlink{classoomph_1_1Preconditioner}{Preconditioner}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1Preconditioner_ab60952a82cc1b6b91fff5924eaa62c0e}{$\sim$\+Preconditioner}} ()
+\begin{DoxyCompactList}\small\item\em Destructor (empty) \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Preconditioner_ace1199369e4465cd2b9a34884bb64ec8}{preconditioner\+\_\+solve}} (const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&r, \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&z)=0
+\begin{DoxyCompactList}\small\item\em Apply the preconditioner. Pure virtual generic interface function. This method should apply the preconditioner operator to the vector r and return the vector z. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Preconditioner_a1e469ffc87f31f6f2eebbe5ccf03d78b}{preconditioner\+\_\+solve\+\_\+transpose}} (const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&r, \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&z)
+\begin{DoxyCompactList}\small\item\em Apply the preconditioner. Pure virtual generic interface function. This method should apply the preconditioner operator to the vector r and return the vector z. (broken virtual) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Preconditioner_a0b95e7159585b5151f9e5dc1d1713655}{setup}} (\mbox{\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base}} $\ast$\mbox{\hyperlink{classoomph_1_1Preconditioner_a08e0582b77c6cbfaf85b80a4ac5c11f3}{matrix\+\_\+pt}})
+\begin{DoxyCompactList}\small\item\em Setup the preconditioner\+: store the matrix pointer and the communicator pointer then call preconditioner specific \mbox{\hyperlink{classoomph_1_1Preconditioner_af4886f4efe510e5c9b0eb19422943588}{setup()}} function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Preconditioner_a783fae97e4b898f8de72b504a4f4bec6}{setup}} (const \mbox{\hyperlink{classoomph_1_1Problem}{Problem}} $\ast$problem\+\_\+pt, \mbox{\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base}} $\ast$\mbox{\hyperlink{classoomph_1_1Preconditioner_a08e0582b77c6cbfaf85b80a4ac5c11f3}{matrix\+\_\+pt}})
+\begin{DoxyCompactList}\small\item\em Compatability layer for old preconditioners where problem pointers were needed. The problem pointer is only used to get a communicator pointer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Preconditioner_aad84467ec9243138945c4d5bbca8fa6c}{enable\+\_\+silent\+\_\+preconditioner\+\_\+setup}} ()
+\begin{DoxyCompactList}\small\item\em Set up the block preconditioner quietly! \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Preconditioner_a221f120f734fd3ca851db42b8defb53d}{disable\+\_\+silent\+\_\+preconditioner\+\_\+setup}} ()
+\begin{DoxyCompactList}\small\item\em Be verbose in the block preconditioner setup. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Preconditioner_af4886f4efe510e5c9b0eb19422943588}{setup}} ()=0
+\begin{DoxyCompactList}\small\item\em Setup the preconditioner. Pure virtual generic interface function. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Preconditioner_a46c31c416829bedcd9db238431262027}{clean\+\_\+up\+\_\+memory}} ()
+\begin{DoxyCompactList}\small\item\em Clean up memory (empty). Generic interface function. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base}} $\ast$ \mbox{\hyperlink{classoomph_1_1Preconditioner_a08e0582b77c6cbfaf85b80a4ac5c11f3}{matrix\+\_\+pt}} () const
+\begin{DoxyCompactList}\small\item\em Get function for matrix pointer. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Preconditioner_af459b7333c4c64435fd8fa933535901f}{set\+\_\+matrix\+\_\+pt}} (\mbox{\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base}} $\ast$\mbox{\hyperlink{classoomph_1_1Preconditioner_a08e0582b77c6cbfaf85b80a4ac5c11f3}{matrix\+\_\+pt}})
+\begin{DoxyCompactList}\small\item\em Set the matrix pointer. \end{DoxyCompactList}\item 
+virtual const \mbox{\hyperlink{classoomph_1_1OomphCommunicator}{Oomph\+Communicator}} $\ast$ \mbox{\hyperlink{classoomph_1_1Preconditioner_a88d799e18a605c3993c6fcac0a41d901}{comm\+\_\+pt}} () const
+\begin{DoxyCompactList}\small\item\em Get function for comm pointer. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Preconditioner_a306f5a52f493816fcfda2dc9b2ee1dbf}{set\+\_\+comm\+\_\+pt}} (const \mbox{\hyperlink{classoomph_1_1OomphCommunicator}{Oomph\+Communicator}} $\ast$const \mbox{\hyperlink{classoomph_1_1Preconditioner_a88d799e18a605c3993c6fcac0a41d901}{comm\+\_\+pt}})
+\begin{DoxyCompactList}\small\item\em Set the communicator pointer. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1Preconditioner_a9202e15534f063a8e21a8a60623eac9f}{setup\+\_\+time}} () const
+\begin{DoxyCompactList}\small\item\em Returns the time to setup the preconditioner. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Preconditioner_a1183f65956ef8a5b332a1246f418e907}{turn\+\_\+into\+\_\+subsidiary\+\_\+block\+\_\+preconditioner}} (\mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{Block\+Preconditioner}}$<$ \mbox{\hyperlink{classoomph_1_1CRDoubleMatrix}{CRDouble\+Matrix}} $>$ $\ast$master\+\_\+block\+\_\+prec\+\_\+pt, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ unsigned $>$ \&doftype\+\_\+in\+\_\+master\+\_\+preconditioner\+\_\+coarse)
+\begin{DoxyCompactList}\small\item\em Virtual interface function for making a preconditioner a subsidiary of a block preconditioner. By default nothing is needed, but if this preconditioner is also a block preconditioner then things need to happen. There\textquotesingle{}s an assumption here that the block preconditioner will be in CR form but since that assumption is hard coded all over \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{Block\+Preconditioner}} we\textquotesingle{}re safe. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Preconditioner_a61a462f4266c22050b4ab9ab441c77a6}{turn\+\_\+into\+\_\+subsidiary\+\_\+block\+\_\+preconditioner}} (\mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{Block\+Preconditioner}}$<$ \mbox{\hyperlink{classoomph_1_1CRDoubleMatrix}{CRDouble\+Matrix}} $>$ $\ast$master\+\_\+block\+\_\+prec\+\_\+pt, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ unsigned $>$ \&doftype\+\_\+in\+\_\+master\+\_\+preconditioner\+\_\+coarse, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ unsigned $>$ $>$ \&doftype\+\_\+coarsen\+\_\+map\+\_\+coarse)
+\begin{DoxyCompactList}\small\item\em Virtual interface function for making a preconditioner a subsidiary of a block preconditioner. By default nothing is needed, but if this preconditioner is also a block preconditioner then things need to happen. Version for coarsening dof-\/types. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject}{oomph\+::\+Distributable\+Linear\+Algebra\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_ac9492d59cff9d9b0098712ae72989cd3}{Distributable\+Linear\+Algebra\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor -\/ create a distribution. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a7522391265c46e6c748fd660eae66f5e}{Distributable\+Linear\+Algebra\+Object}} (const \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject}{Distributable\+Linear\+Algebra\+Object}} \&matrix)=delete
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_ada5f539f36451c06e69de79bb129521b}{operator=}} (const \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject}{Distributable\+Linear\+Algebra\+Object}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a4038de53b5737dc625411e7848d21dad}{$\sim$\+Distributable\+Linear\+Algebra\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} $\ast$ \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_abfa9cf25494c796d62b15bad586fab47}{distribution\+\_\+pt}} () const
+\begin{DoxyCompactList}\small\item\em access to the \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a7569556f14fd68b28508920e89bd5eee}{nrow}} () const
+\begin{DoxyCompactList}\small\item\em access function to the number of global rows. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a9bd7e1d242c69a28da85a804a7717fce}{nrow\+\_\+local}} () const
+\begin{DoxyCompactList}\small\item\em access function for the num of local rows on this processor. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a21e966b025edec79067b41d7f1f25220}{nrow\+\_\+local}} (const unsigned \&p) const
+\begin{DoxyCompactList}\small\item\em access function for the num of local rows on this processor. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_ab00a3919b8634c698749f14a4d92947d}{first\+\_\+row}} () const
+\begin{DoxyCompactList}\small\item\em access function for the first row on this processor \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a4266c1d18d8e102bad3f4aec26c9b7cf}{first\+\_\+row}} (const unsigned \&p) const
+\begin{DoxyCompactList}\small\item\em access function for the first row on this processor \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a5505731e7e73d7e4251c67c7adec6bf5}{distributed}} () const
+\begin{DoxyCompactList}\small\item\em distribution is serial or distributed \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a8c35baa65e335043f62954c92c090a5a}{distribution\+\_\+built}} () const
+\begin{DoxyCompactList}\small\item\em if the communicator\+\_\+pt is null then the distribution is not setup then false is returned, otherwise return true \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_ac5340bac40b9559b0378037b57005203}{build\+\_\+distribution}} (const \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} $\ast$const dist\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em setup the distribution of this distributable linear algebra object \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_adad20ac61a61d907f823da7694b50616}{build\+\_\+distribution}} (const \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} \&dist)
+\begin{DoxyCompactList}\small\item\em setup the distribution of this distributable linear algebra object \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -196,7 +268,12 @@ unsigned \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_a7297e4d24c2c7ae7af6
 const \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} $\ast$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_aab9893960364a7fa71fdc4628a453b8a}{internal\+\_\+preconditioner\+\_\+matrix\+\_\+distribution\+\_\+pt}} () const
 \begin{DoxyCompactList}\small\item\em access function to the internal preconditioner matrix distribution pt. preconditioner\+\_\+matrix\+\_\+distribution\+\_\+pt always returns the concatenation of the internal block distributions. Since the writer of the preconditioner does not need to concern themselves with the internal dof/block, please use \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_a1fc376778f57a98580e6355e09db7a9d}{preconditioner\+\_\+matrix\+\_\+distribution\+\_\+pt()}}. \end{DoxyCompactList}\item 
 const \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} $\ast$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_a1fc376778f57a98580e6355e09db7a9d}{preconditioner\+\_\+matrix\+\_\+distribution\+\_\+pt}} () const
-\begin{DoxyCompactList}\small\item\em Access function to the preconditioner matrix distribution pointer. This is the concatenation of the block distributions with the identity ordering. I.\+e. if this preconditioner has three block types, with the three associated block distributions dist\+\_\+b0, dist\+\_\+b1 and dist\+\_\+b2, then this distribution is\+: \mbox{\hyperlink{namespaceoomph_1_1LinearAlgebraDistributionHelpers_af11187289196182ce650da88cfe37fc2}{Linear\+Algebra\+Distribution\+Helpers\+::concatenate}}(dist\+\_\+b0, dist\+\_\+b1, dist\+\_\+b2). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Access function to the preconditioner matrix distribution pointer. This is the concatenation of the block distributions with the identity ordering. I.\+e. if this preconditioner has three block types, with the three associated block distributions dist\+\_\+b0, dist\+\_\+b1 and dist\+\_\+b2, then this distribution is\+: Linear\+Algebra\+Distribution\+Helpers\+::concatenate(dist\+\_\+b0, dist\+\_\+b1, dist\+\_\+b2). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject}{oomph\+::\+Distributable\+Linear\+Algebra\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a30742aa2ac9abcfa037179f2d28ff43a}{clear\+\_\+distribution}} ()
+\begin{DoxyCompactList}\small\item\em clear the distribution of this distributable linear algebra object \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -226,6 +303,13 @@ unsigned \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_a06c7426a2c8c096c8f4
 \begin{DoxyCompactList}\small\item\em Number of different block types in this preconditioner. Note that this information is maintained if used as a subsidiary or stand-\/alone block preconditioner, in the latter case it stores the number of blocks within the subsidiary preconditioner. \end{DoxyCompactList}\item 
 unsigned \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_a3985436e4645c202eadd47a4f4f466e2}{Internal\+\_\+ndof\+\_\+types}}
 \begin{DoxyCompactList}\small\item\em Number of different DOF types in this preconditioner. Note that this information is maintained if used as a subsidiary or stand-\/alone block preconditioner, in the latter case it stores the number of dofs within the subsidiary preconditioner. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1Preconditioner}{oomph\+::\+Preconditioner}}}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classoomph_1_1Preconditioner_ad191d6be6caf8875700f54c939ec33e6}{Silent\+\_\+preconditioner\+\_\+setup}}
+\begin{DoxyCompactList}\small\item\em Boolean to indicate whether or not the build should be done silently. \end{DoxyCompactList}\item 
+std\+::ostream $\ast$ \mbox{\hyperlink{classoomph_1_1Preconditioner_a2a6b2f6cd34495167ea766b47f055a7d}{Stream\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em Pointer to the output stream -- defaults to std\+::cout. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -234,7 +318,7 @@ bool \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_ae6ce543de76eedb34a2562e
 bool \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_ab4647ea06ca7cf44c8de695ba35f3e97}{Debug\+\_\+flag}}
 \begin{DoxyCompactList}\small\item\em Debugging variable. Set true or false via the access functions turn\+\_\+on\+\_\+debug\+\_\+flag(...) turn\+\_\+off\+\_\+debug\+\_\+flag(...) \end{DoxyCompactList}\item 
 std\+::map$<$ \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ unsigned $>$, \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}} $\ast$ $>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_ab295a391e32dc00c4e56dfb0527ea354}{Auxiliary\+\_\+block\+\_\+distribution\+\_\+pt}}
-\begin{DoxyCompactList}\small\item\em Stores any block-\/level distributions / concatenation of block-\/level distributions required. The first in the pair (Vector$<$unsigned$>$) represents the block numbers of the distributions concatenated to get the second in the pair (Linear\+Algebra\+Distribution$\ast$). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Stores any block-\/level distributions / concatenation of block-\/level distributions required. The first in the pair (\mbox{\hyperlink{classoomph_1_1Vector}{Vector$<$unsigned$>$}}) represents the block numbers of the distributions concatenated to get the second in the pair (Linear\+Algebra\+Distribution$\ast$). \end{DoxyCompactList}\item 
 unsigned \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_a4aa232afd2a76adac97fb7d484a18c5e}{Nrow}}
 \begin{DoxyCompactList}\small\item\em Number of DOFs (\# of rows or columns in the matrix) in this preconditioner. Note that this information is maintained if used as a subsidiary or stand-\/alone block preconditioner, in the latter case it stores the number of rows within the subsidiary preconditioner. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{Block\+Preconditioner}}$<$ MATRIX $>$ $\ast$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_a7759d79eefa52fb688caac08a4ff4894}{Master\+\_\+block\+\_\+preconditioner\+\_\+pt}}
@@ -313,7 +397,7 @@ Definition at line \mbox{\hyperlink{block__preconditioner_8h_source_l00421}{421}
 \index{BlockPreconditioner@{BlockPreconditioner}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{BlockPreconditioner()}{BlockPreconditioner()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{Block\+Preconditioner}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Block\+Preconditioner (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -351,7 +435,7 @@ References \mbox{\hyperlink{block__preconditioner_8h_source_l02159}{oomph\+::\+B
 \index{BlockPreconditioner@{BlockPreconditioner}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{BlockPreconditioner()}{BlockPreconditioner()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{Block\+Preconditioner}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{Block\+Preconditioner}}$<$ MATRIX $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+\mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Block\+Preconditioner (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{Block\+Preconditioner}}$<$ MATRIX $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
 
 
 
@@ -438,7 +522,7 @@ Definition at line \mbox{\hyperlink{block__preconditioner_8cc_source_l05839}{583
 
 
 
-References \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, and \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00463}{oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::nrow()}}.
+References \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}.
 
 \mbox{\Hypertarget{classoomph_1_1BlockPreconditioner_a8a64cfc57ffd16b92ac78499de515138}\label{classoomph_1_1BlockPreconditioner_a8a64cfc57ffd16b92ac78499de515138}} 
 \index{oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}!block\_number@{block\_number}}
@@ -539,7 +623,7 @@ Definition at line \mbox{\hyperlink{block__preconditioner_8h_source_l02159}{2159
 
 
 
-References \mbox{\hyperlink{block__preconditioner_8h_source_l03387}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Auxiliary\+\_\+block\+\_\+distribution\+\_\+pt}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03277}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Block\+\_\+distribution\+\_\+pt}}, \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00522}{oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::clear\+\_\+distribution()}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03341}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Dof\+\_\+block\+\_\+distribution\+\_\+pt}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03463}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Global\+\_\+index}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03337}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Internal\+\_\+block\+\_\+distribution\+\_\+pt}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03362}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Internal\+\_\+nblock\+\_\+types}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03368}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Internal\+\_\+ndof\+\_\+types}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03519}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Internal\+\_\+preconditioner\+\_\+matrix\+\_\+distribution\+\_\+pt}}, \mbox{\hyperlink{block__preconditioner_8h_source_l02068}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::is\+\_\+master\+\_\+block\+\_\+preconditioner()}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03393}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Nrow}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03492}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Nrows\+\_\+to\+\_\+recv\+\_\+for\+\_\+get\+\_\+block}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03508}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Nrows\+\_\+to\+\_\+recv\+\_\+for\+\_\+get\+\_\+ordered}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03484}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Nrows\+\_\+to\+\_\+send\+\_\+for\+\_\+get\+\_\+block}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03500}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Nrows\+\_\+to\+\_\+send\+\_\+for\+\_\+get\+\_\+ordered}}, \mbox{\hyperlink{block__preconditioner_8h_source_l02120}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::post\+\_\+block\+\_\+matrix\+\_\+assembly\+\_\+partial\+\_\+clear()}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03523}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Preconditioner\+\_\+matrix\+\_\+distribution\+\_\+pt}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03274}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Replacement\+\_\+dof\+\_\+block\+\_\+pt}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03488}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Rows\+\_\+to\+\_\+recv\+\_\+for\+\_\+get\+\_\+block}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03504}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Rows\+\_\+to\+\_\+recv\+\_\+for\+\_\+get\+\_\+ordered}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03480}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Rows\+\_\+to\+\_\+send\+\_\+for\+\_\+get\+\_\+block}}, and \mbox{\hyperlink{block__preconditioner_8h_source_l03496}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Rows\+\_\+to\+\_\+send\+\_\+for\+\_\+get\+\_\+ordered}}.
+References \mbox{\hyperlink{block__preconditioner_8h_source_l03387}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Auxiliary\+\_\+block\+\_\+distribution\+\_\+pt}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03277}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Block\+\_\+distribution\+\_\+pt}}, \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00522}{oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::clear\+\_\+distribution()}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03341}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Dof\+\_\+block\+\_\+distribution\+\_\+pt}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03463}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Global\+\_\+index}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03337}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Internal\+\_\+block\+\_\+distribution\+\_\+pt}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03362}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Internal\+\_\+nblock\+\_\+types}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03368}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Internal\+\_\+ndof\+\_\+types}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03519}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Internal\+\_\+preconditioner\+\_\+matrix\+\_\+distribution\+\_\+pt}}, \mbox{\hyperlink{block__preconditioner_8h_source_l02068}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::is\+\_\+master\+\_\+block\+\_\+preconditioner()}}, \mbox{\hyperlink{matrices_8h_source_l00491}{oomph\+::\+Dense\+Matrix$<$ T $>$\+::ncol()}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03393}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Nrow}}, \mbox{\hyperlink{matrices_8h_source_l00485}{oomph\+::\+Dense\+Matrix$<$ T $>$\+::nrow()}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03492}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Nrows\+\_\+to\+\_\+recv\+\_\+for\+\_\+get\+\_\+block}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03508}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Nrows\+\_\+to\+\_\+recv\+\_\+for\+\_\+get\+\_\+ordered}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03484}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Nrows\+\_\+to\+\_\+send\+\_\+for\+\_\+get\+\_\+block}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03500}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Nrows\+\_\+to\+\_\+send\+\_\+for\+\_\+get\+\_\+ordered}}, \mbox{\hyperlink{block__preconditioner_8h_source_l02120}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::post\+\_\+block\+\_\+matrix\+\_\+assembly\+\_\+partial\+\_\+clear()}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03523}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Preconditioner\+\_\+matrix\+\_\+distribution\+\_\+pt}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03274}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Replacement\+\_\+dof\+\_\+block\+\_\+pt}}, \mbox{\hyperlink{matrices_8h_source_l00498}{oomph\+::\+Dense\+Matrix$<$ T $>$\+::resize()}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03488}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Rows\+\_\+to\+\_\+recv\+\_\+for\+\_\+get\+\_\+block}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03504}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Rows\+\_\+to\+\_\+recv\+\_\+for\+\_\+get\+\_\+ordered}}, \mbox{\hyperlink{block__preconditioner_8h_source_l03480}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Rows\+\_\+to\+\_\+send\+\_\+for\+\_\+get\+\_\+block}}, and \mbox{\hyperlink{block__preconditioner_8h_source_l03496}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::\+Rows\+\_\+to\+\_\+send\+\_\+for\+\_\+get\+\_\+ordered}}.
 
 
 
@@ -677,6 +761,18 @@ void \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preco
 
 
 Given the naturally ordered vector, v, return the vector rearranged in block order in w. This function calls get\+\_\+concatenated\+\_\+block\+\_\+vector(...) with the identity block mapping. 
+
+This function has been re-\/written to work with the new dof type coarsening feature. The old function is kept alive in internal\+\_\+get\+\_\+block\+\_\+ordered\+\_\+preconditioner\+\_\+vector(...) and is moved to the private section of the code. The differences between the two are\+:
+
+1) This function extracts all the block vectors (in one go) via the function internal\+\_\+get\+\_\+block\+\_\+vectors(...), and concatenates them.
+
+2) The old function makes use of the variables ending in \char`\"{}get\+\_\+ordered\char`\"{}, thus is slightly more efficient since it does not have to concatenate any block vectors.
+
+3) The old function no longer respect the new indirections if dof types have been coarsened.
+
+4) This function extracts the most fine grain dof-\/level vectors and concatenates them. These dof-\/level vectors respect the re-\/ordering caused by the coarsening of dof types. The overhead associated with concatenating Double\+Vectors without communication is very small.
+
+This function should be used.
 
 This function has been re-\/written to work with the new dof type coarsening feature. The old function is kept alive in internal\+\_\+get\+\_\+block\+\_\+ordered\+\_\+preconditioner\+\_\+vector(...) and is moved to the private section of the code. The differences between the two are\+:
 
@@ -882,7 +978,7 @@ Definition at line \mbox{\hyperlink{block__preconditioner_8cc_source_l02608}{260
 
 
 
-Gets dof-\/level block (i,j). If Replacement\+\_\+dof\+\_\+block\+\_\+pt(i,j) is not null, then the replacement block is returned via a deep copy. 
+Gets dof-\/level block (i,j). If \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_ad2cd49c5c823c4202046e97038f6e080}{Replacement\+\_\+dof\+\_\+block\+\_\+pt(i,j)}} is not null, then the replacement block is returned via a deep copy. 
 
 Otherwise if this is the uppermost block preconditioner then it calls internal\+\_\+get\+\_\+block(i,j), else if it is a subsidiary block preconditioner, it will call it\textquotesingle{}s master block preconditioners\textquotesingle{} get\+\_\+dof\+\_\+level\+\_\+block function. 
 
@@ -890,7 +986,7 @@ Definition at line \mbox{\hyperlink{block__preconditioner_8cc_source_l05671}{567
 
 
 
-References \mbox{\hyperlink{double__vector_8cc_source_l01856}{oomph\+::\+Double\+Vector\+Helpers\+::concatenate\+\_\+without\+\_\+communication()}}, and \mbox{\hyperlink{matrices_8h_source_l03490}{oomph\+::\+CRDouble\+Matrix\+Helpers\+::deep\+\_\+copy()}}.
+References \mbox{\hyperlink{matrices_8cc_source_l05223}{oomph\+::\+CRDouble\+Matrix\+Helpers\+::concatenate\+\_\+without\+\_\+communication()}}, and \mbox{\hyperlink{matrices_8h_source_l03490}{oomph\+::\+CRDouble\+Matrix\+Helpers\+::deep\+\_\+copy()}}.
 
 \mbox{\Hypertarget{classoomph_1_1BlockPreconditioner_a314fc14d95f2833be66067cd5b45e093}\label{classoomph_1_1BlockPreconditioner_a314fc14d95f2833be66067cd5b45e093}} 
 \index{oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}!get\_dof\_level\_block@{get\_dof\_level\_block}}
@@ -901,7 +997,7 @@ void \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preco
 
 
 
-Gets dof-\/level block (i,j). If Replacement\+\_\+dof\+\_\+block\+\_\+pt(i,j) is not null, then the replacement block is returned via a deep copy. 
+Gets dof-\/level block (i,j). If \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_ad2cd49c5c823c4202046e97038f6e080}{Replacement\+\_\+dof\+\_\+block\+\_\+pt(i,j)}} is not null, then the replacement block is returned via a deep copy. 
 
 Otherwise if this is the uppermost block preconditioner then it calls internal\+\_\+get\+\_\+block(i,j), else if it is a subsidiary block preconditioner, it will call it\textquotesingle{}s master block preconditioners\textquotesingle{} get\+\_\+dof\+\_\+level\+\_\+block function. 
 
@@ -970,7 +1066,7 @@ void \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preco
 
 
 
-insert a Vector$<$unsigned$>$ and Linear\+Algebra\+Distribution$\ast$ pair into Auxiliary\+\_\+block\+\_\+distribution\+\_\+pt. The Auxiliary\+\_\+block\+\_\+distribution\+\_\+pt should only contain pointers to distributions concatenated at this block level. We try to ensure this by checking if the block\+\_\+vec\+\_\+number vector is within the range \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_a80808d42be8db74fd58af80b019bf317}{nblock\+\_\+types()}}. Of course, this does not guarantee correctness, but this is the least we can do. 
+insert a \mbox{\hyperlink{classoomph_1_1Vector}{Vector$<$unsigned$>$}} and Linear\+Algebra\+Distribution$\ast$ pair into Auxiliary\+\_\+block\+\_\+distribution\+\_\+pt. The Auxiliary\+\_\+block\+\_\+distribution\+\_\+pt should only contain pointers to distributions concatenated at this block level. We try to ensure this by checking if the block\+\_\+vec\+\_\+number vector is within the range \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_a80808d42be8db74fd58af80b019bf317}{nblock\+\_\+types()}}. Of course, this does not guarantee correctness, but this is the least we can do. 
 
 
 
@@ -1111,7 +1207,7 @@ Definition at line \mbox{\hyperlink{block__preconditioner_8cc_source_l05101}{510
 
 
 
-References \mbox{\hyperlink{matrices_8cc_source_l01672}{oomph\+::\+CRDouble\+Matrix\+::build()}}, \mbox{\hyperlink{matrices_8cc_source_l01710}{oomph\+::\+CRDouble\+Matrix\+::build\+\_\+without\+\_\+copy()}}, \mbox{\hyperlink{matrices_8h_source_l01072}{oomph\+::\+CRDouble\+Matrix\+::column\+\_\+index()}}, \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00335}{oomph\+::\+Linear\+Algebra\+Distribution\+::communicator\+\_\+pt()}}, \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00329}{oomph\+::\+Linear\+Algebra\+Distribution\+::distributed()}}, \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00457}{oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::distribution\+\_\+pt()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{matrices_8h_source_l01060}{oomph\+::\+CRDouble\+Matrix\+::row\+\_\+start()}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00286}{oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string()}}, and \mbox{\hyperlink{matrices_8h_source_l01084}{oomph\+::\+CRDouble\+Matrix\+::value()}}.
+References \mbox{\hyperlink{matrices_8cc_source_l01672}{oomph\+::\+CRDouble\+Matrix\+::build()}}, \mbox{\hyperlink{matrices_8cc_source_l01710}{oomph\+::\+CRDouble\+Matrix\+::build\+\_\+without\+\_\+copy()}}, \mbox{\hyperlink{matrices_8h_source_l01072}{oomph\+::\+CRDouble\+Matrix\+::column\+\_\+index()}}, \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00335}{oomph\+::\+Linear\+Algebra\+Distribution\+::communicator\+\_\+pt()}}, \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00329}{oomph\+::\+Linear\+Algebra\+Distribution\+::distributed()}}, \mbox{\hyperlink{linear__algebra__distribution_8h_source_l00457}{oomph\+::\+Distributable\+Linear\+Algebra\+Object\+::distribution\+\_\+pt()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{matrices_8h_source_l01060}{oomph\+::\+CRDouble\+Matrix\+::row\+\_\+start()}}, and \mbox{\hyperlink{matrices_8h_source_l01084}{oomph\+::\+CRDouble\+Matrix\+::value()}}.
 
 \mbox{\Hypertarget{classoomph_1_1BlockPreconditioner_abe001ffe270c96e761ec5205364976a7}\label{classoomph_1_1BlockPreconditioner_abe001ffe270c96e761ec5205364976a7}} 
 \index{oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}!internal\_get\_block@{internal\_get\_block}}
@@ -1134,6 +1230,18 @@ void \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preco
 
 
 Given the naturally ordered vector, v, return the vector rearranged in block order in w. This is a legacy function from the old block preconditioning framework. Kept alive in case it may be needed again. 
+
+This uses the variables ending in \char`\"{}get\+\_\+ordered\char`\"{}. We no longer use this type of method. This function copy values from v and re-\/order them in \char`\"{}block order\char`\"{} and place them in w. Block order means that the values in w are the same as the concatenated block vectors.
+
+I.\+e. -\/ v is naturally ordered. v -\/\texorpdfstring{$>$}{>} s\+\_\+b, v is ordered into blocks vectors (requires communication) concatenate\+\_\+without\+\_\+communication(s\+\_\+\{0,...,nblocks\},w) gives w.
+
+But this function skips out the concatenation part and builds w directly from v.
+
+This is nice but the function is implemented in such a way that it always use all the (internal) blocks and concatenated with the identity ordering. I.\+e. if this preconditioner has 3 block types, then w will always be\+: concatenate\+\_\+without\+\_\+communication(\mbox{[}s\+\_\+0, s\+\_\+1, s\+\_\+2\mbox{]}, w). There is easy way to change this.
+
+Furthermore, it does not take into account the new dof type coarsening feature. So this function will most likely produce the incorrect vector w from what the user intended. It still works, but w will be the concatenation of the most fine grain dof block vectors with the \char`\"{}natural\char`\"{} dof type ordering.
+
+This has been superseded by the function get\+\_\+block\+\_\+ordered\+\_\+preconditioner\+\_\+vector(...) which does the correct thing.
 
 This uses the variables ending in \char`\"{}get\+\_\+ordered\char`\"{}. We no longer use this type of method. This function copy values from v and re-\/order them in \char`\"{}block order\char`\"{} and place them in w. Block order means that the values in w are the same as the concatenated block vectors.
 
@@ -1363,6 +1471,12 @@ This is the return function for the function internal\+\_\+get\+\_\+block\+\_\+o
 
 get\+\_\+block\+\_\+ordered\+\_\+preconditioner\+\_\+vector(...) and return\+\_\+block\+\_\+ordered\+\_\+preconditioner\+\_\+vector(...),
 
+Thus this function is moved to the private section of the code.
+
+This is the return function for the function internal\+\_\+get\+\_\+block\+\_\+ordered\+\_\+preconditioner\+\_\+vector(...). Both internal\+\_\+get\+\_\+block\+\_\+ordered\+\_\+preconditioner\+\_\+vector(...) and internal\+\_\+return\+\_\+block\+\_\+ordered\+\_\+preconditioner\+\_\+vector(...) has been superseded by the functions
+
+get\+\_\+block\+\_\+ordered\+\_\+preconditioner\+\_\+vector(...) and return\+\_\+block\+\_\+ordered\+\_\+preconditioner\+\_\+vector(...),
+
 Thus this function is moved to the private section of the code. 
 
 Definition at line \mbox{\hyperlink{block__preconditioner_8cc_source_l04849}{4849}} of file \mbox{\hyperlink{block__preconditioner_8cc_source}{block\+\_\+preconditioner.\+cc}}.
@@ -1381,6 +1495,8 @@ void \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preco
 
 
 Takes the n-\/th block ordered vector, b, and copies its entries to the appropriate entries in the naturally ordered vector, v. Here n is the block number in the current block preconditioner. If the preconditioner is a subsidiary block preconditioner the other entries in v that are not associated with it are left alone. 
+
+This version works with the internal block types. This is legacy code but is kept alive, hence moved to private. Please use the function \char`\"{}return\+\_\+block\+\_\+vector(...)\char`\"{}.
 
 This version works with the internal block types. This is legacy code but is kept alive, hence moved to private. Please use the function \char`\"{}return\+\_\+block\+\_\+vector(...)\char`\"{}. 
 
@@ -1728,7 +1844,7 @@ Definition at line \mbox{\hyperlink{block__preconditioner_8h_source_l02095}{2095
 
 
 
-References \mbox{\hyperlink{block__preconditioner_8h_source_l00673}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::get\+\_\+block()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{block__preconditioner_8h_source_l02522}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::internal\+\_\+nblock\+\_\+types()}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00286}{oomph\+::\+Global\+\_\+string\+\_\+for\+\_\+annotation\+::string()}}, and \mbox{\hyperlink{oomph__utilities_8h_source_l00189}{oomph\+::\+String\+Conversion\+::to\+\_\+string()}}.
+References \mbox{\hyperlink{block__preconditioner_8h_source_l00673}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::get\+\_\+block()}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{block__preconditioner_8h_source_l02522}{oomph\+::\+Block\+Preconditioner$<$ MATRIX $>$\+::internal\+\_\+nblock\+\_\+types()}}, and \mbox{\hyperlink{oomph__utilities_8h_source_l00189}{oomph\+::\+String\+Conversion\+::to\+\_\+string()}}.
 
 \mbox{\Hypertarget{classoomph_1_1BlockPreconditioner_aa760ae71a5aae488547ccf721d412b1e}\label{classoomph_1_1BlockPreconditioner_aa760ae71a5aae488547ccf721d412b1e}} 
 \index{oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}!post\_block\_matrix\_assembly\_partial\_clear@{post\_block\_matrix\_assembly\_partial\_clear}}
@@ -1762,7 +1878,7 @@ const \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\
 
 
 
-Access function to the preconditioner matrix distribution pointer. This is the concatenation of the block distributions with the identity ordering. I.\+e. if this preconditioner has three block types, with the three associated block distributions dist\+\_\+b0, dist\+\_\+b1 and dist\+\_\+b2, then this distribution is\+: \mbox{\hyperlink{namespaceoomph_1_1LinearAlgebraDistributionHelpers_af11187289196182ce650da88cfe37fc2}{Linear\+Algebra\+Distribution\+Helpers\+::concatenate}}(dist\+\_\+b0, dist\+\_\+b1, dist\+\_\+b2). 
+Access function to the preconditioner matrix distribution pointer. This is the concatenation of the block distributions with the identity ordering. I.\+e. if this preconditioner has three block types, with the three associated block distributions dist\+\_\+b0, dist\+\_\+b1 and dist\+\_\+b2, then this distribution is\+: Linear\+Algebra\+Distribution\+Helpers\+::concatenate(dist\+\_\+b0, dist\+\_\+b1, dist\+\_\+b2). 
 
 
 
@@ -1809,6 +1925,10 @@ void \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preco
 
 
 Takes the block ordered vector, w, and reorders it in natural order. Reordered vector is returned in v. Note\+: If the preconditioner is a subsidiary preconditioner then only the components of the vector associated with the blocks of the subsidiary preconditioner will be included. Hence the length of v is \mbox{\hyperlink{classoomph_1_1BlockPreconditioner_a3e5b553f65e6c25354a5c908d507e8ee}{master\+\_\+nrow()}} whereas that of the vector w is of length this-\/\texorpdfstring{$>$}{>}\mbox{\hyperlink{classoomph_1_1DistributableLinearAlgebraObject_a7569556f14fd68b28508920e89bd5eee}{nrow()}}. 
+
+This is the return function for the function get\+\_\+block\+\_\+ordered\+\_\+preconditioner\+\_\+vector(...).
+
+It calls the function return\+\_\+concatenated\+\_\+block\+\_\+vector(...) with the identity block number ordering.
 
 This is the return function for the function get\+\_\+block\+\_\+ordered\+\_\+preconditioner\+\_\+vector(...).
 
@@ -2193,7 +2313,7 @@ References \mbox{\hyperlink{block__preconditioner_8h_source_l02061}{oomph\+::\+B
 \index{Allow\_multiple\_element\_type\_in\_mesh@{Allow\_multiple\_element\_type\_in\_mesh}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Allow\_multiple\_element\_type\_in\_mesh}{Allow\_multiple\_element\_type\_in\_mesh}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Allow\+\_\+multiple\+\_\+element\+\_\+type\+\_\+in\+\_\+mesh\hspace{0.3cm}{\ttfamily [protected]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Allow\+\_\+multiple\+\_\+element\+\_\+type\+\_\+in\+\_\+mesh\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -2212,11 +2332,11 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l02866}{oomph\+::
 \index{Auxiliary\_block\_distribution\_pt@{Auxiliary\_block\_distribution\_pt}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Auxiliary\_block\_distribution\_pt}{Auxiliary\_block\_distribution\_pt}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-std\+::map$<$\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$, \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}}$\ast$$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Auxiliary\+\_\+block\+\_\+distribution\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+std\+::map$<$\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$, \mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}}$\ast$$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Auxiliary\+\_\+block\+\_\+distribution\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Stores any block-\/level distributions / concatenation of block-\/level distributions required. The first in the pair (Vector$<$unsigned$>$) represents the block numbers of the distributions concatenated to get the second in the pair (Linear\+Algebra\+Distribution$\ast$). 
+Stores any block-\/level distributions / concatenation of block-\/level distributions required. The first in the pair (\mbox{\hyperlink{classoomph_1_1Vector}{Vector$<$unsigned$>$}}) represents the block numbers of the distributions concatenated to get the second in the pair (Linear\+Algebra\+Distribution$\ast$). 
 
 
 
@@ -2231,7 +2351,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l02159}{oomph\+::
 \index{Block\_distribution\_pt@{Block\_distribution\_pt}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Block\_distribution\_pt}{Block\_distribution\_pt}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}}$\ast$$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Block\+\_\+distribution\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}}$\ast$$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Block\+\_\+distribution\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -2250,7 +2370,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l01903}{oomph\+::
 \index{Block\_number\_to\_dof\_number\_lookup@{Block\_number\_to\_dof\_number\_lookup}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Block\_number\_to\_dof\_number\_lookup}{Block\_number\_to\_dof\_number\_lookup}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ $>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Block\+\_\+number\+\_\+to\+\_\+dof\+\_\+number\+\_\+lookup\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ $>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Block\+\_\+number\+\_\+to\+\_\+dof\+\_\+number\+\_\+lookup\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -2269,7 +2389,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l02269}{oomph\+::
 \index{Block\_to\_dof\_map\_coarse@{Block\_to\_dof\_map\_coarse}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Block\_to\_dof\_map\_coarse}{Block\_to\_dof\_map\_coarse}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ $>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Block\+\_\+to\+\_\+dof\+\_\+map\+\_\+coarse\hspace{0.3cm}{\ttfamily [protected]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ $>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Block\+\_\+to\+\_\+dof\+\_\+map\+\_\+coarse\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -2288,7 +2408,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l00425}{oomph\+::
 \index{Block\_to\_dof\_map\_fine@{Block\_to\_dof\_map\_fine}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Block\_to\_dof\_map\_fine}{Block\_to\_dof\_map\_fine}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ $>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Block\+\_\+to\+\_\+dof\+\_\+map\+\_\+fine\hspace{0.3cm}{\ttfamily [protected]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ $>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Block\+\_\+to\+\_\+dof\+\_\+map\+\_\+fine\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -2307,7 +2427,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l01822}{oomph\+::
 \index{Debug\_flag@{Debug\_flag}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Debug\_flag}{Debug\_flag}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-bool \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Debug\+\_\+flag\hspace{0.3cm}{\ttfamily [private]}}
+bool \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Debug\+\_\+flag\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -2326,7 +2446,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l00425}{oomph\+::
 \index{Dof\_block\_distribution\_pt@{Dof\_block\_distribution\_pt}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Dof\_block\_distribution\_pt}{Dof\_block\_distribution\_pt}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}}$\ast$$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Dof\+\_\+block\+\_\+distribution\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}}$\ast$$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Dof\+\_\+block\+\_\+distribution\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -2345,7 +2465,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l00425}{oomph\+::
 \index{Dof\_dimension@{Dof\_dimension}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Dof\_dimension}{Dof\_dimension}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Dof\+\_\+dimension\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Dof\+\_\+dimension\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -2364,7 +2484,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l03187}{oomph\+::
 \index{Dof\_number\_dense@{Dof\_number\_dense}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Dof\_number\_dense}{Dof\_number\_dense}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Dof\+\_\+number\+\_\+dense\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Dof\+\_\+number\+\_\+dense\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -2383,7 +2503,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l03045}{oomph\+::
 \index{Dof\_number\_sparse@{Dof\_number\_sparse}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Dof\_number\_sparse}{Dof\_number\_sparse}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Dof\+\_\+number\+\_\+sparse\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Dof\+\_\+number\+\_\+sparse\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -2402,7 +2522,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l03045}{oomph\+::
 \index{Dof\_number\_to\_block\_number\_lookup@{Dof\_number\_to\_block\_number\_lookup}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Dof\_number\_to\_block\_number\_lookup}{Dof\_number\_to\_block\_number\_lookup}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Dof\+\_\+number\+\_\+to\+\_\+block\+\_\+number\+\_\+lookup\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Dof\+\_\+number\+\_\+to\+\_\+block\+\_\+number\+\_\+lookup\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -2421,7 +2541,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l02689}{oomph\+::
 \index{Doftype\_coarsen\_map\_coarse@{Doftype\_coarsen\_map\_coarse}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Doftype\_coarsen\_map\_coarse}{Doftype\_coarsen\_map\_coarse}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ $>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Doftype\+\_\+coarsen\+\_\+map\+\_\+coarse\hspace{0.3cm}{\ttfamily [protected]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ $>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Doftype\+\_\+coarsen\+\_\+map\+\_\+coarse\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -2446,7 +2566,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l01694}{oomph\+::
 \index{Doftype\_coarsen\_map\_fine@{Doftype\_coarsen\_map\_fine}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Doftype\_coarsen\_map\_fine}{Doftype\_coarsen\_map\_fine}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ $>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Doftype\+\_\+coarsen\+\_\+map\+\_\+fine\hspace{0.3cm}{\ttfamily [protected]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ $>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Doftype\+\_\+coarsen\+\_\+map\+\_\+fine\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -2465,7 +2585,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l02334}{oomph\+::
 \index{Doftype\_in\_master\_preconditioner\_coarse@{Doftype\_in\_master\_preconditioner\_coarse}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Doftype\_in\_master\_preconditioner\_coarse}{Doftype\_in\_master\_preconditioner\_coarse}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Doftype\+\_\+in\+\_\+master\+\_\+preconditioner\+\_\+coarse\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Doftype\+\_\+in\+\_\+master\+\_\+preconditioner\+\_\+coarse\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -2480,7 +2600,7 @@ Definition at line \mbox{\hyperlink{block__preconditioner_8h_source_l03411}{3411
 \index{Doftype\_in\_master\_preconditioner\_fine@{Doftype\_in\_master\_preconditioner\_fine}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Doftype\_in\_master\_preconditioner\_fine}{Doftype\_in\_master\_preconditioner\_fine}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Doftype\+\_\+in\+\_\+master\+\_\+preconditioner\+\_\+fine\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Doftype\+\_\+in\+\_\+master\+\_\+preconditioner\+\_\+fine\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -2499,7 +2619,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l03045}{oomph\+::
 \index{Global\_index@{Global\_index}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Global\_index}{Global\_index}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ $>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Global\+\_\+index\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ $>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Global\+\_\+index\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -2518,7 +2638,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l02159}{oomph\+::
 \index{Global\_index\_sparse@{Global\_index\_sparse}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Global\_index\_sparse}{Global\_index\_sparse}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Global\+\_\+index\+\_\+sparse\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Global\+\_\+index\+\_\+sparse\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -2541,7 +2661,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l03045}{oomph\+::
 \index{Index\_in\_dof\_block\_dense@{Index\_in\_dof\_block\_dense}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Index\_in\_dof\_block\_dense}{Index\_in\_dof\_block\_dense}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Index\+\_\+in\+\_\+dof\+\_\+block\+\_\+dense\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Index\+\_\+in\+\_\+dof\+\_\+block\+\_\+dense\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -2560,7 +2680,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l03113}{oomph\+::
 \index{Index\_in\_dof\_block\_sparse@{Index\_in\_dof\_block\_sparse}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Index\_in\_dof\_block\_sparse}{Index\_in\_dof\_block\_sparse}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Index\+\_\+in\+\_\+dof\+\_\+block\+\_\+sparse\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Index\+\_\+in\+\_\+dof\+\_\+block\+\_\+sparse\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -2579,7 +2699,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l03113}{oomph\+::
 \index{Internal\_block\_distribution\_pt@{Internal\_block\_distribution\_pt}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Internal\_block\_distribution\_pt}{Internal\_block\_distribution\_pt}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}}$\ast$$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Internal\+\_\+block\+\_\+distribution\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$\mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}}$\ast$$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Internal\+\_\+block\+\_\+distribution\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -2598,7 +2718,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l00425}{oomph\+::
 \index{Internal\_nblock\_types@{Internal\_nblock\_types}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Internal\_nblock\_types}{Internal\_nblock\_types}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-unsigned \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Internal\+\_\+nblock\+\_\+types\hspace{0.3cm}{\ttfamily [protected]}}
+unsigned \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Internal\+\_\+nblock\+\_\+types\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -2617,7 +2737,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l00425}{oomph\+::
 \index{Internal\_ndof\_types@{Internal\_ndof\_types}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Internal\_ndof\_types}{Internal\_ndof\_types}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-unsigned \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Internal\+\_\+ndof\+\_\+types\hspace{0.3cm}{\ttfamily [protected]}}
+unsigned \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Internal\+\_\+ndof\+\_\+types\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -2636,7 +2756,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l00425}{oomph\+::
 \index{Internal\_preconditioner\_matrix\_distribution\_pt@{Internal\_preconditioner\_matrix\_distribution\_pt}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Internal\_preconditioner\_matrix\_distribution\_pt}{Internal\_preconditioner\_matrix\_distribution\_pt}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}}$\ast$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Internal\+\_\+preconditioner\+\_\+matrix\+\_\+distribution\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}}$\ast$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Internal\+\_\+preconditioner\+\_\+matrix\+\_\+distribution\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -2658,7 +2778,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l00425}{oomph\+::
 \index{Master\_block\_preconditioner\_pt@{Master\_block\_preconditioner\_pt}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Master\_block\_preconditioner\_pt}{Master\_block\_preconditioner\_pt}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{Block\+Preconditioner}}$<$MATRIX$>$$\ast$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Master\+\_\+block\+\_\+preconditioner\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{Block\+Preconditioner}}$<$MATRIX$>$$\ast$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Master\+\_\+block\+\_\+preconditioner\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -2677,7 +2797,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l00425}{oomph\+::
 \index{Mesh\_pt@{Mesh\_pt}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Mesh\_pt}{Mesh\_pt}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$const \mbox{\hyperlink{classoomph_1_1Mesh}{Mesh}}$\ast$$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$const \mbox{\hyperlink{classoomph_1_1Mesh}{Mesh}}$\ast$$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -2696,7 +2816,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l01782}{oomph\+::
 \index{Ndof\_in\_block@{Ndof\_in\_block}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Ndof\_in\_block}{Ndof\_in\_block}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Ndof\+\_\+in\+\_\+block\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Ndof\+\_\+in\+\_\+block\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -2715,7 +2835,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l02120}{oomph\+::
 \index{Ndof\_types\_in\_mesh@{Ndof\_types\_in\_mesh}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Ndof\_types\_in\_mesh}{Ndof\_types\_in\_mesh}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Ndof\+\_\+types\+\_\+in\+\_\+mesh\hspace{0.3cm}{\ttfamily [protected]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Ndof\+\_\+types\+\_\+in\+\_\+mesh\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -2734,7 +2854,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l02037}{oomph\+::
 \index{Nrow@{Nrow}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Nrow}{Nrow}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-unsigned \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Nrow\hspace{0.3cm}{\ttfamily [private]}}
+unsigned \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Nrow\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -2753,7 +2873,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l00425}{oomph\+::
 \index{Nrows\_to\_recv\_for\_get\_block@{Nrows\_to\_recv\_for\_get\_block}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Nrows\_to\_recv\_for\_get\_block}{Nrows\_to\_recv\_for\_get\_block}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Nrows\+\_\+to\+\_\+recv\+\_\+for\+\_\+get\+\_\+block\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Nrows\+\_\+to\+\_\+recv\+\_\+for\+\_\+get\+\_\+block\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -2772,7 +2892,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l02159}{oomph\+::
 \index{Nrows\_to\_recv\_for\_get\_ordered@{Nrows\_to\_recv\_for\_get\_ordered}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Nrows\_to\_recv\_for\_get\_ordered}{Nrows\_to\_recv\_for\_get\_ordered}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Nrows\+\_\+to\+\_\+recv\+\_\+for\+\_\+get\+\_\+ordered\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Nrows\+\_\+to\+\_\+recv\+\_\+for\+\_\+get\+\_\+ordered\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -2791,7 +2911,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l02159}{oomph\+::
 \index{Nrows\_to\_send\_for\_get\_block@{Nrows\_to\_send\_for\_get\_block}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Nrows\_to\_send\_for\_get\_block}{Nrows\_to\_send\_for\_get\_block}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Nrows\+\_\+to\+\_\+send\+\_\+for\+\_\+get\+\_\+block\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Nrows\+\_\+to\+\_\+send\+\_\+for\+\_\+get\+\_\+block\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -2810,7 +2930,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l02159}{oomph\+::
 \index{Nrows\_to\_send\_for\_get\_ordered@{Nrows\_to\_send\_for\_get\_ordered}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Nrows\_to\_send\_for\_get\_ordered}{Nrows\_to\_send\_for\_get\_ordered}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Nrows\+\_\+to\+\_\+send\+\_\+for\+\_\+get\+\_\+ordered\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$unsigned$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Nrows\+\_\+to\+\_\+send\+\_\+for\+\_\+get\+\_\+ordered\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -2829,7 +2949,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l02159}{oomph\+::
 \index{Output\_base\_filename@{Output\_base\_filename}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Output\_base\_filename}{Output\_base\_filename}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-std\+::string \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Output\+\_\+base\+\_\+filename\hspace{0.3cm}{\ttfamily [private]}}
+std\+::string \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Output\+\_\+base\+\_\+filename\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -2848,7 +2968,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l02088}{oomph\+::
 \index{Preconditioner\_matrix\_distribution\_pt@{Preconditioner\_matrix\_distribution\_pt}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Preconditioner\_matrix\_distribution\_pt}{Preconditioner\_matrix\_distribution\_pt}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}}$\ast$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Preconditioner\+\_\+matrix\+\_\+distribution\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1LinearAlgebraDistribution}{Linear\+Algebra\+Distribution}}$\ast$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Preconditioner\+\_\+matrix\+\_\+distribution\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -2867,7 +2987,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l00425}{oomph\+::
 \index{Recursive\_debug\_flag@{Recursive\_debug\_flag}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Recursive\_debug\_flag}{Recursive\_debug\_flag}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-bool \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Recursive\+\_\+debug\+\_\+flag\hspace{0.3cm}{\ttfamily [private]}}
+bool \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Recursive\+\_\+debug\+\_\+flag\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -2886,7 +3006,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l00425}{oomph\+::
 \index{Replacement\_dof\_block\_pt@{Replacement\_dof\_block\_pt}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Replacement\_dof\_block\_pt}{Replacement\_dof\_block\_pt}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1MapMatrix}{Map\+Matrix}}$<$unsigned, \mbox{\hyperlink{classoomph_1_1CRDoubleMatrix}{CRDouble\+Matrix}}$\ast$$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Replacement\+\_\+dof\+\_\+block\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+\mbox{\hyperlink{classoomph_1_1MapMatrix}{Map\+Matrix}}$<$unsigned, \mbox{\hyperlink{classoomph_1_1CRDoubleMatrix}{CRDouble\+Matrix}}$\ast$$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Replacement\+\_\+dof\+\_\+block\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -2905,7 +3025,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l02159}{oomph\+::
 \index{Rows\_to\_recv\_for\_get\_block@{Rows\_to\_recv\_for\_get\_block}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Rows\_to\_recv\_for\_get\_block}{Rows\_to\_recv\_for\_get\_block}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$int$\ast$$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Rows\+\_\+to\+\_\+recv\+\_\+for\+\_\+get\+\_\+block\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$int$\ast$$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Rows\+\_\+to\+\_\+recv\+\_\+for\+\_\+get\+\_\+block\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -2924,7 +3044,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l02159}{oomph\+::
 \index{Rows\_to\_recv\_for\_get\_ordered@{Rows\_to\_recv\_for\_get\_ordered}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Rows\_to\_recv\_for\_get\_ordered}{Rows\_to\_recv\_for\_get\_ordered}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$int$\ast$$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Rows\+\_\+to\+\_\+recv\+\_\+for\+\_\+get\+\_\+ordered\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$int$\ast$$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Rows\+\_\+to\+\_\+recv\+\_\+for\+\_\+get\+\_\+ordered\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -2943,7 +3063,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l02159}{oomph\+::
 \index{Rows\_to\_send\_for\_get\_block@{Rows\_to\_send\_for\_get\_block}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Rows\_to\_send\_for\_get\_block}{Rows\_to\_send\_for\_get\_block}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$int$\ast$$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Rows\+\_\+to\+\_\+send\+\_\+for\+\_\+get\+\_\+block\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$int$\ast$$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Rows\+\_\+to\+\_\+send\+\_\+for\+\_\+get\+\_\+block\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -2962,7 +3082,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l02159}{oomph\+::
 \index{Rows\_to\_send\_for\_get\_ordered@{Rows\_to\_send\_for\_get\_ordered}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Rows\_to\_send\_for\_get\_ordered}{Rows\_to\_send\_for\_get\_ordered}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$int$\ast$$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Rows\+\_\+to\+\_\+send\+\_\+for\+\_\+get\+\_\+ordered\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$int$\ast$$>$ \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Rows\+\_\+to\+\_\+send\+\_\+for\+\_\+get\+\_\+ordered\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -2981,7 +3101,7 @@ Referenced by \mbox{\hyperlink{block__preconditioner_8h_source_l02159}{oomph\+::
 \index{Run\_block\_matrix\_test@{Run\_block\_matrix\_test}!oomph::BlockPreconditioner$<$ MATRIX $>$@{oomph::BlockPreconditioner$<$ MATRIX $>$}}
 \doxysubsubsection{\texorpdfstring{Run\_block\_matrix\_test}{Run\_block\_matrix\_test}}
 {\footnotesize\ttfamily template$<$typename MATRIX $>$ \\
-bool \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::Run\+\_\+block\+\_\+matrix\+\_\+test = false\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+bool \mbox{\hyperlink{classoomph_1_1BlockPreconditioner}{oomph\+::\+Block\+Preconditioner}}$<$ MATRIX $>$\+::\+Run\+\_\+block\+\_\+matrix\+\_\+test = false\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
 
 
 

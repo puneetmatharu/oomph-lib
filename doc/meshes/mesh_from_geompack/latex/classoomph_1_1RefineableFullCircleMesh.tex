@@ -22,7 +22,27 @@ Inheritance diagram for oomph\+::Refineable\+Full\+Circle\+Mesh\texorpdfstring{$
 \begin{DoxyCompactList}\small\item\em Constructor for adaptive deformable quarter tube mesh class. Pass pointer to geometric object that specifies the volume, start and end coordinates for the centreline on the geometric object. Values of theta at which dividing lines are to be placed, fractions of the radius for the central box at the dividing lines, the number of layers and the timestepper. Timestepper defaults to Steady dummy timestepper. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{classoomph_1_1RefineableFullCircleMesh_ac50b75d390504a37ecc8a86daebc78ee}{$\sim$\+Refineable\+Full\+Circle\+Mesh}} ()
 \begin{DoxyCompactList}\small\item\em Destructor\+: empty. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1FullCircleMesh}{oomph\+::\+Full\+Circle\+Mesh$<$ ELEMENT $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1FullCircleMesh_acf4dee3c3072751597d7897176b1e7f1}{Full\+Circle\+Mesh}} (Geom\+Object $\ast$wall\+\_\+pt, const Vector$<$ double $>$ \&theta\+\_\+positions, const Vector$<$ double $>$ \&radius\+\_\+box, Time\+Stepper $\ast$time\+\_\+stepper\+\_\+pt=\&Mesh\+::\+Default\+\_\+\+Time\+Stepper)
+\begin{DoxyCompactList}\small\item\em Constructor\+: Pass pointer to geometric object that specifies the area; values of theta at which dividing lines are to be placed, fractions of the radius for the central box at the dividing lines and the timestepper. Timestepper defaults to Steady dummy timestepper. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1FullCircleMesh_a7acf128e8eeaefcd79b5b3cd5e9cbaa9}{$\sim$\+Full\+Circle\+Mesh}} ()
+\begin{DoxyCompactList}\small\item\em Destructor\+: empty. \end{DoxyCompactList}\item 
+Geom\+Object $\ast$\& \mbox{\hyperlink{classoomph_1_1FullCircleMesh_a1430ba8a6ca36301cd2cfa1827b17458}{area\+\_\+pt}} ()
+\begin{DoxyCompactList}\small\item\em Access function to Geom\+Object representing wall. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1FullCircleDomain}{Full\+Circle\+Domain}} $\ast$ \mbox{\hyperlink{classoomph_1_1FullCircleMesh_ae21e220de18f8839b6a57f4b6f607f8e}{domain\+\_\+pt}} ()
+\begin{DoxyCompactList}\small\item\em Access function to domain. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1FullCircleDomain}{Full\+Circle\+Domain}} $\ast$ \mbox{\hyperlink{classoomph_1_1FullCircleMesh_a3a9ff839f5c0ceee41fb840ac9477402}{domain\+\_\+pt}} () const
+\begin{DoxyCompactList}\small\item\em Access function to underlying domain. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1FullCircleMesh}{oomph\+::\+Full\+Circle\+Mesh$<$ ELEMENT $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1FullCircleDomain}{Full\+Circle\+Domain}} $\ast$ \mbox{\hyperlink{classoomph_1_1FullCircleMesh_a042c0729727a71bee0660f44c33f8691}{Domain\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em Pointer to domain. \end{DoxyCompactList}\item 
+Geom\+Object $\ast$ \mbox{\hyperlink{classoomph_1_1FullCircleMesh_a0eb9088080115746b8570264f444c37f}{Area\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em Pointer to the geometric object that represents the entire domain. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -47,7 +67,7 @@ Definition at line \mbox{\hyperlink{full__circle__mesh_8template_8h_source_l0011
 \index{RefineableFullCircleMesh@{RefineableFullCircleMesh}!oomph::RefineableFullCircleMesh$<$ ELEMENT $>$@{oomph::RefineableFullCircleMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{RefineableFullCircleMesh()}{RefineableFullCircleMesh()}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-\mbox{\hyperlink{classoomph_1_1RefineableFullCircleMesh}{oomph\+::\+Refineable\+Full\+Circle\+Mesh}}$<$ ELEMENT $>$\+::\mbox{\hyperlink{classoomph_1_1RefineableFullCircleMesh}{Refineable\+Full\+Circle\+Mesh}} (\begin{DoxyParamCaption}\item[{Geom\+Object $\ast$}]{wall\+\_\+pt,  }\item[{const Vector$<$ double $>$ \&}]{theta\+\_\+positions,  }\item[{const Vector$<$ double $>$ \&}]{radius\+\_\+box,  }\item[{Time\+Stepper $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&Mesh\+:\+:Default\+\_\+TimeStepper} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{classoomph_1_1RefineableFullCircleMesh}{oomph\+::\+Refineable\+Full\+Circle\+Mesh}}$<$ ELEMENT $>$\+::\+Refineable\+Full\+Circle\+Mesh (\begin{DoxyParamCaption}\item[{Geom\+Object $\ast$}]{wall\+\_\+pt,  }\item[{const Vector$<$ double $>$ \&}]{theta\+\_\+positions,  }\item[{const Vector$<$ double $>$ \&}]{radius\+\_\+box,  }\item[{Time\+Stepper $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&Mesh\+:\+:Default\+\_\+TimeStepper} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 

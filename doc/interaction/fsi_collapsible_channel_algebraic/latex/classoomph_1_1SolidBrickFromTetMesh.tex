@@ -22,6 +22,17 @@ Inheritance diagram for oomph\+::Solid\+Brick\+From\+Tet\+Mesh\texorpdfstring{$<
 \begin{DoxyCompactList}\small\item\em Constructor\+: Pass xda file name. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classoomph_1_1SolidBrickFromTetMesh_a6d45c13e6c02bb636b23e72d32240619}{Solid\+Brick\+From\+Tet\+Mesh}} (const std\+::string xda\+\_\+file\+\_\+name, \mbox{\hyperlink{classoomph_1_1XdaTetMesh}{Xda\+Tet\+Mesh}}$<$ TElement$<$ 3, 3 $>$ $>$ $\ast$\&xda\+\_\+tet\+\_\+mesh\+\_\+pt, Time\+Stepper $\ast$time\+\_\+stepper\+\_\+pt=\&Mesh\+::\+Default\+\_\+\+Time\+Stepper)
 \begin{DoxyCompactList}\small\item\em Constructor\+: Pass xda file name. This returns a pointer to the internally built \mbox{\hyperlink{classoomph_1_1XdaTetMesh}{Xda\+Tet\+Mesh}} for external use. Note that YOU are responsible for deleting this mesh. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1BrickFromTetMesh}{oomph\+::\+Brick\+From\+Tet\+Mesh$<$ ELEMENT $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1BrickFromTetMesh_abed00a445cc3c6b6cc00d32e0db4a366}{Brick\+From\+Tet\+Mesh}} (const std\+::string xda\+\_\+file\+\_\+name, Time\+Stepper $\ast$time\+\_\+stepper\+\_\+pt=\&Mesh\+::\+Default\+\_\+\+Time\+Stepper)
+\begin{DoxyCompactList}\small\item\em Constructor\+: Pass xda file name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1BrickFromTetMesh_af05fe6ff520986d7794c467fc1885f92}{Brick\+From\+Tet\+Mesh}} (const std\+::string \&node\+\_\+file\+\_\+name, const std\+::string \&element\+\_\+file\+\_\+name, const std\+::string \&face\+\_\+file\+\_\+name, const bool \&split\+\_\+corner\+\_\+elements, Time\+Stepper $\ast$time\+\_\+stepper\+\_\+pt=\&Mesh\+::\+Default\+\_\+\+Time\+Stepper, const bool \&use\+\_\+attributes=false)
+\begin{DoxyCompactList}\small\item\em Constructor\+: Pass the files required for the tetgen mesh. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1BrickFromTetMesh_a49d6a583221a04f2997dae4509592350}{Brick\+From\+Tet\+Mesh}} (const std\+::string xda\+\_\+file\+\_\+name, \mbox{\hyperlink{classoomph_1_1XdaTetMesh}{Xda\+Tet\+Mesh}}$<$ TElement$<$ 3, 3 $>$ $>$ $\ast$\&xda\+\_\+tet\+\_\+mesh\+\_\+pt, Time\+Stepper $\ast$time\+\_\+stepper\+\_\+pt=\&Mesh\+::\+Default\+\_\+\+Time\+Stepper)
+\begin{DoxyCompactList}\small\item\em Constructor\+: Pass xda file name. This returns a pointer to the internally built \mbox{\hyperlink{classoomph_1_1XdaTetMesh}{Xda\+Tet\+Mesh}} for external use. Note that YOU are responsible for deleting this mesh. \end{DoxyCompactList}\item 
+Vector$<$ unsigned $>$ \mbox{\hyperlink{classoomph_1_1BrickFromTetMesh_aa733549ba2a9bb78bd95ba671d5c4d69}{oomph\+\_\+lib\+\_\+boundary\+\_\+ids}} (const unsigned \&xda\+\_\+boundary\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Access functions to the Vector of oomph-\/lib boundary ids that make up boundary b in the original xda enumeration. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -41,7 +52,7 @@ Definition at line \mbox{\hyperlink{brick__from__tet__mesh_8template_8h_source_l
 \index{SolidBrickFromTetMesh@{SolidBrickFromTetMesh}!oomph::SolidBrickFromTetMesh$<$ ELEMENT $>$@{oomph::SolidBrickFromTetMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{SolidBrickFromTetMesh()}{SolidBrickFromTetMesh()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-\mbox{\hyperlink{classoomph_1_1SolidBrickFromTetMesh}{oomph\+::\+Solid\+Brick\+From\+Tet\+Mesh}}$<$ ELEMENT $>$\+::\mbox{\hyperlink{classoomph_1_1SolidBrickFromTetMesh}{Solid\+Brick\+From\+Tet\+Mesh}} (\begin{DoxyParamCaption}\item[{const std\+::string}]{xda\+\_\+file\+\_\+name,  }\item[{Time\+Stepper $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&Mesh\+:\+:Default\+\_\+TimeStepper} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{classoomph_1_1SolidBrickFromTetMesh}{oomph\+::\+Solid\+Brick\+From\+Tet\+Mesh}}$<$ ELEMENT $>$\+::\+Solid\+Brick\+From\+Tet\+Mesh (\begin{DoxyParamCaption}\item[{const std\+::string}]{xda\+\_\+file\+\_\+name,  }\item[{Time\+Stepper $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&Mesh\+:\+:Default\+\_\+TimeStepper} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -56,7 +67,7 @@ Definition at line \mbox{\hyperlink{brick__from__tet__mesh_8template_8h_source_l
 \index{SolidBrickFromTetMesh@{SolidBrickFromTetMesh}!oomph::SolidBrickFromTetMesh$<$ ELEMENT $>$@{oomph::SolidBrickFromTetMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{SolidBrickFromTetMesh()}{SolidBrickFromTetMesh()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-\mbox{\hyperlink{classoomph_1_1SolidBrickFromTetMesh}{oomph\+::\+Solid\+Brick\+From\+Tet\+Mesh}}$<$ ELEMENT $>$\+::\mbox{\hyperlink{classoomph_1_1SolidBrickFromTetMesh}{Solid\+Brick\+From\+Tet\+Mesh}} (\begin{DoxyParamCaption}\item[{const std\+::string}]{xda\+\_\+file\+\_\+name,  }\item[{\mbox{\hyperlink{classoomph_1_1XdaTetMesh}{Xda\+Tet\+Mesh}}$<$ TElement$<$ 3, 3 $>$ $>$ $\ast$\&}]{xda\+\_\+tet\+\_\+mesh\+\_\+pt,  }\item[{Time\+Stepper $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&Mesh\+:\+:Default\+\_\+TimeStepper} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{classoomph_1_1SolidBrickFromTetMesh}{oomph\+::\+Solid\+Brick\+From\+Tet\+Mesh}}$<$ ELEMENT $>$\+::\+Solid\+Brick\+From\+Tet\+Mesh (\begin{DoxyParamCaption}\item[{const std\+::string}]{xda\+\_\+file\+\_\+name,  }\item[{\mbox{\hyperlink{classoomph_1_1XdaTetMesh}{Xda\+Tet\+Mesh}}$<$ TElement$<$ 3, 3 $>$ $>$ $\ast$\&}]{xda\+\_\+tet\+\_\+mesh\+\_\+pt,  }\item[{Time\+Stepper $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&Mesh\+:\+:Default\+\_\+TimeStepper} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 

@@ -56,7 +56,139 @@ void \mbox{\hyperlink{classoomph_1_1DenseDoubleMatrix_a64b81a329f8e9204e50b75ea3
 \begin{DoxyCompactList}\small\item\em For every row, find the maximum absolute value of the entries in this row. Set all values that are less than alpha times this maximum to zero and return the resulting matrix in reduced\+\_\+matrix. Note\+: Diagonal entries are retained regardless of their size. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1DenseDoubleMatrix_aab687b1136f0265434ada2684aa1b0a4}{multiply}} (const \mbox{\hyperlink{classoomph_1_1DenseDoubleMatrix}{Dense\+Double\+Matrix}} \&matrix\+\_\+in, \mbox{\hyperlink{classoomph_1_1DenseDoubleMatrix}{Dense\+Double\+Matrix}} \&result)
 \begin{DoxyCompactList}\small\item\em Function to multiply this matrix by a \mbox{\hyperlink{classoomph_1_1DenseDoubleMatrix}{Dense\+Double\+Matrix}} matrix\+\_\+in. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1DoubleMatrixBase}{oomph\+::\+Double\+Matrix\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1DoubleMatrixBase_a9ab2dcaf990403cd43d4b952f7dbaa1c}{Double\+Matrix\+Base}} ()
+\begin{DoxyCompactList}\small\item\em (Empty) constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1DoubleMatrixBase_a449fe88a14eed90f8820a75f53883c66}{Double\+Matrix\+Base}} (const \mbox{\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base}} \&matrix)=delete
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DoubleMatrixBase_abc390458d9899179f84488f6a94b261d}{operator=}} (const \mbox{\hyperlink{classoomph_1_1DoubleMatrixBase}{Double\+Matrix\+Base}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+virtual unsigned long \mbox{\hyperlink{classoomph_1_1DoubleMatrixBase_acdcd6e1ea2bf2380f1a2fa32c7829cb5}{nrow}} () const =0
+\begin{DoxyCompactList}\small\item\em Return the number of rows of the matrix. \end{DoxyCompactList}\item 
+virtual unsigned long \mbox{\hyperlink{classoomph_1_1DoubleMatrixBase_a253feffbf1db1976cdd86c6134c50abe}{ncol}} () const =0
+\begin{DoxyCompactList}\small\item\em Return the number of columns of the matrix. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1DoubleMatrixBase_a82ece2e3cfc355bb68ba78a2ed9dae9f}{$\sim$\+Double\+Matrix\+Base}} ()
+\begin{DoxyCompactList}\small\item\em virtual (empty) destructor \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classoomph_1_1DoubleMatrixBase_a20b85f0286f80464f42f0846fede2d77}{operator()}} (const unsigned long \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}, const unsigned long \&j) const =0
+\begin{DoxyCompactList}\small\item\em Round brackets to give access as a(i,j) for read only (we\textquotesingle{}re not providing a general interface for component-\/wise write access since not all matrix formats allow efficient direct access!) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1LinearSolver}{Linear\+Solver}} $\ast$\& \mbox{\hyperlink{classoomph_1_1DoubleMatrixBase_aa2ef063bc84bee59fec7a933093ac8f7}{linear\+\_\+solver\+\_\+pt}} ()
+\begin{DoxyCompactList}\small\item\em Return a pointer to the linear solver object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1LinearSolver}{Linear\+Solver}} $\ast$const \& \mbox{\hyperlink{classoomph_1_1DoubleMatrixBase_a48e6ef5e74c6c260919d3bf0420c7a68}{linear\+\_\+solver\+\_\+pt}} () const
+\begin{DoxyCompactList}\small\item\em Return a pointer to the linear solver object (const version) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DoubleMatrixBase_a4d445c4a1204da569f40ec1bdace9ef3}{solve}} (\mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&rhs)
+\begin{DoxyCompactList}\small\item\em Complete LU solve (replaces matrix by its LU decomposition and overwrites RHS with solution). The default should not need to be over-\/written. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DoubleMatrixBase_ac35083cf8225822363c25b921b4ca1ce}{solve}} (const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&rhs, \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&soln)
+\begin{DoxyCompactList}\small\item\em Complete LU solve (Nothing gets overwritten!). The default should not need to be overwritten. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DoubleMatrixBase_ae9098f3e129833a6b1cb5fe6ebdd9835}{solve}} (\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&rhs)
+\begin{DoxyCompactList}\small\item\em Complete LU solve (replaces matrix by its LU decomposition and overwrites RHS with solution). The default should not need to be over-\/written. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DoubleMatrixBase_a8d9fb5fddec05a0b6e35cff23c79255c}{solve}} (const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&rhs, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&soln)
+\begin{DoxyCompactList}\small\item\em Complete LU solve (Nothing gets overwritten!). The default should not need to be overwritten. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1DoubleMatrixBase_a971bdc2d9297fc582af8467178f4e00e}{residual}} (const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&x, const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&b, \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&residual\+\_\+)
+\begin{DoxyCompactList}\small\item\em Find the residual, i.\+e. r=b-\/\+Ax the residual. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classoomph_1_1DoubleMatrixBase_a69a001b704e1d67277170ff7c0e4f6af}{max\+\_\+residual}} (const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&x, const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&rhs)
+\begin{DoxyCompactList}\small\item\em Find the maximum residual r=b-\/\+Ax -- generic version, can be overloaded for specific derived classes where the max. can be determined \char`\"{}on the fly\char`\"{}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1DoubleMatrixBase_a78204eab557e0dc99618e41a28a5c092}{multiply}} (const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&x, \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&soln) const =0
+\begin{DoxyCompactList}\small\item\em Multiply the matrix by the vector x\+: soln=Ax. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1DoubleMatrixBase_a843d44405b70da1d96b43218a21e6ffc}{multiply\+\_\+transpose}} (const \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&x, \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} \&soln) const =0
+\begin{DoxyCompactList}\small\item\em Multiply the transposed matrix by the vector x\+: soln=A$^\wedge$T x. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1DenseMatrix}{oomph\+::\+Dense\+Matrix$<$ double $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1DenseMatrix_aecfca835918b50b607e080fc706b6fcf}{Dense\+Matrix}} ()
+\begin{DoxyCompactList}\small\item\em Empty constructor, simply assign the lengths N and M to 0. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1DenseMatrix_a1d8bf7ffb6cc91b882be17b25ff6d452}{Dense\+Matrix}} (const \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}} \&source\+\_\+matrix)
+\begin{DoxyCompactList}\small\item\em Copy constructor\+: Deep copy! \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1DenseMatrix_a2291404def276dcee1a6099d054d44d6}{Dense\+Matrix}} (const unsigned long \&n)
+\begin{DoxyCompactList}\small\item\em Constructor to build a square n by n matrix. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1DenseMatrix_a5afcfd56a9720541e67a6e8d002016d4}{Dense\+Matrix}} (const unsigned long \&n, const unsigned long \&m)
+\begin{DoxyCompactList}\small\item\em Constructor to build a matrix with n rows and m columns. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1DenseMatrix_a7b599610bd78a7818b2e4d0835b27e3a}{Dense\+Matrix}} (const unsigned long \&n, const unsigned long \&m, const double \&initial\+\_\+val)
+\begin{DoxyCompactList}\small\item\em Constructor to build a matrix with n rows and m columns, with initial value initial\+\_\+val. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}} \& \mbox{\hyperlink{classoomph_1_1DenseMatrix_a01b02acc166aa69ec0a7d9153076b5f4}{operator=}} (const \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}} \&source\+\_\+matrix)
+\begin{DoxyCompactList}\small\item\em Copy assignment. \end{DoxyCompactList}\item 
+double \& \mbox{\hyperlink{classoomph_1_1DenseMatrix_a727aed44cb4b695daa4120178517c03d}{entry}} (const unsigned long \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}, const unsigned long \&j)
+\begin{DoxyCompactList}\small\item\em The access function that will be called by the read-\/write round-\/bracket operator. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classoomph_1_1DenseMatrix_a0b03682b4c7d8f820599bd2681a01ee0}{get\+\_\+entry}} (const unsigned long \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}, const unsigned long \&j) const
+\begin{DoxyCompactList}\small\item\em The access function the will be called by the read-\/only (const version) round-\/bracket operator. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1DenseMatrix_a673e04c72174ec084e56ad5f53ba51da}{$\sim$\+Dense\+Matrix}} ()
+\begin{DoxyCompactList}\small\item\em Destructor, clean up the matrix data. \end{DoxyCompactList}\item 
+unsigned long \mbox{\hyperlink{classoomph_1_1DenseMatrix_a1b425094510d833ffe91920747a0a962}{nrow}} () const
+\begin{DoxyCompactList}\small\item\em Return the number of rows of the matrix. \end{DoxyCompactList}\item 
+unsigned long \mbox{\hyperlink{classoomph_1_1DenseMatrix_a9937181f1cb4cfaed7aaf3b483c42456}{ncol}} () const
+\begin{DoxyCompactList}\small\item\em Return the number of columns of the matrix. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DenseMatrix_adec1ef741b1c5048a12ba9a540c2719c}{resize}} (const unsigned long \&n)
+\begin{DoxyCompactList}\small\item\em Resize to a square nxn matrix; any values already present will be transfered. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DenseMatrix_a0f01dd97b1c71868371f93259efc26b0}{resize}} (const unsigned long \&n, const unsigned long \&m)
+\begin{DoxyCompactList}\small\item\em Resize to a non-\/square n x m matrix; any values already present will be transfered. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DenseMatrix_aeb6daf6539fee8d3d6f7a81306798b10}{resize}} (const unsigned long \&n, const unsigned long \&m, const double \&initial\+\_\+value)
+\begin{DoxyCompactList}\small\item\em Resize to a non-\/square n x m matrix and initialize the new values to initial\+\_\+value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DenseMatrix_aafcfbb0309fdcbd84f8654fe1b5601fd}{initialise}} (const double \&val)
+\begin{DoxyCompactList}\small\item\em Initialize all values in the matrix to val. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DenseMatrix_a03e20626e889a1ab4582614f55784165}{output}} (std\+::ostream \&outfile) const
+\begin{DoxyCompactList}\small\item\em Output function to print a matrix row-\/by-\/row to the stream outfile. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DenseMatrix_a4ab60b1e7db98bcb5b75b080266e452e}{output}} (std\+::string filename) const
+\begin{DoxyCompactList}\small\item\em Output function to print a matrix row-\/by-\/row to a file. Specify filename. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DenseMatrix_a440b549690cfc07c85f395eb06951321}{indexed\+\_\+output}} (std\+::ostream \&outfile) const
+\begin{DoxyCompactList}\small\item\em Indexed output function to print a matrix to the stream outfile as i,j,a(i,j) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DenseMatrix_a5730d359fa98ea501ab7115147a4bd87}{indexed\+\_\+output}} (std\+::string filename) const
+\begin{DoxyCompactList}\small\item\em Indexed output function to print a matrix to a file as i,j,a(i,j). Specify filename. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DenseMatrix_aa02dc7c9b2f4e1cc1204cc8281f030f9}{output\+\_\+bottom\+\_\+right\+\_\+zero\+\_\+helper}} (std\+::ostream \&outfile) const
+\begin{DoxyCompactList}\small\item\em Output the \char`\"{}bottom right\char`\"{} entry regardless of it being zero or not (this allows automatic detection of matrix size in e.\+g. matlab, python). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1DenseMatrix_a6e9084acc11e036d4c5f7e5322d12034}{sparse\+\_\+indexed\+\_\+output\+\_\+helper}} (std\+::ostream \&outfile) const
+\begin{DoxyCompactList}\small\item\em Indexed output function to print a matrix to the stream outfile as i,j,a(i,j) for a(i,j)!=0 only. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1Matrix}{oomph\+::\+Matrix$<$ T, MATRIX\+\_\+\+TYPE $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1Matrix_ab414a0bf8e2658fc30d2c516f3bf4837}{Matrix}} ()
+\begin{DoxyCompactList}\small\item\em (Empty) constructor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1Matrix_ac40b846daa81698ea61aba9dfb1ae361}{Matrix}} (const \mbox{\hyperlink{classoomph_1_1Matrix}{Matrix}} \&matrix)=delete
+\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Matrix_a81c8f71e6eae8ebf79aa206666e666b4}{operator=}} (const \mbox{\hyperlink{classoomph_1_1Matrix}{Matrix}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1Matrix_a3bc2eeb0940268de5252a9234d126f11}{$\sim$\+Matrix}} ()
+\begin{DoxyCompactList}\small\item\em Virtual (empty) destructor. \end{DoxyCompactList}\item 
+virtual unsigned long \mbox{\hyperlink{classoomph_1_1Matrix_ac366ca5324d3e00e23d9800f3d5f4d5f}{nrow}} () const =0
+\begin{DoxyCompactList}\small\item\em Return the number of rows of the matrix. \end{DoxyCompactList}\item 
+virtual unsigned long \mbox{\hyperlink{classoomph_1_1Matrix_ad1af46b34096c348272b0dfacb5ce6a9}{ncol}} () const =0
+\begin{DoxyCompactList}\small\item\em Return the number of columns of the matrix. \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{classoomph_1_1Matrix_a26f23d2b331cb7f533fd8585f1ef8d28}{operator()}} (const unsigned long \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}, const unsigned long \&j) const
+\begin{DoxyCompactList}\small\item\em Round brackets to give access as a(i,j) for read only (we\textquotesingle{}re not providing a general interface for component-\/wise write access since not all matrix formats allow efficient direct access!) The function uses the MATRIX\+\_\+\+TYPE template parameter to call the get\+\_\+entry() function which must be defined in all derived classes that are to be fully instantiated. \end{DoxyCompactList}\item 
+T \& \mbox{\hyperlink{classoomph_1_1Matrix_a0f6a65782771830fd4fa1a16284c6bc9}{operator()}} (const unsigned long \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}, const unsigned long \&j)
+\begin{DoxyCompactList}\small\item\em Round brackets to give access as a(i,j) for read-\/write access. The function uses the MATRIX\+\_\+\+TYPE template parameter to call the entry() function which must be defined in all derived classes that are to be fully instantiated. If the particular \mbox{\hyperlink{classoomph_1_1Matrix}{Matrix}} does not allow write access, the function should break with an error message. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Matrix_ace9b59cbe514c77f0b3816b144c740f6}{output}} (std\+::ostream \&outfile) const
+\begin{DoxyCompactList}\small\item\em Output function to print a matrix row-\/by-\/row, in the form a(0,0) a(0,1) ... a(1,0) a(1,1) ... ... to the stream outfile. Broken virtual since it might not be sensible to implement this for some sparse matrices. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Matrix_a10ee338f4d3893010291a692aea04248}{output\+\_\+bottom\+\_\+right\+\_\+zero\+\_\+helper}} (std\+::ostream \&outfile) const =0
+\begin{DoxyCompactList}\small\item\em Output the \char`\"{}bottom right\char`\"{} entry regardless of it being zero or not (this allows automatic detection of matrix size in e.\+g. matlab, python). This functionality was moved from the function sparse\+\_\+indexed\+\_\+output(...) because at the moment, generalisation of this functionality does not work in parallel. \mbox{\hyperlink{classoomph_1_1CRDoubleMatrix}{CRDouble\+Matrix}} has an \mbox{\hyperlink{classoomph_1_1Matrix_ac366ca5324d3e00e23d9800f3d5f4d5f}{nrow()}} function but it should it should use nrow\+\_\+local() -\/ which is the N variable in the underlaying \mbox{\hyperlink{classoomph_1_1CRMatrix}{CRMatrix}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1Matrix_a7a5b44e7688ce2c2f7552da104e615c8}{sparse\+\_\+indexed\+\_\+output\+\_\+helper}} (std\+::ostream \&outfile) const =0
+\begin{DoxyCompactList}\small\item\em Indexed output function to print a matrix to the stream outfile as i,j,a(i,j) for a(i,j)!=0 only. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Matrix_a4f97fa3c94e6fd664e46acb8873a80f8}{sparse\+\_\+indexed\+\_\+output}} (std\+::ostream \&outfile, const unsigned \&precision=0, const bool \&output\+\_\+bottom\+\_\+right\+\_\+zero=false) const
+\begin{DoxyCompactList}\small\item\em Indexed output function to print a matrix to the stream outfile as i,j,a(i,j) for a(i,j)!=0 only with specified precision (if precision=0 then nothing is changed). If optional boolean flag is set to true we also output the \char`\"{}bottom right\char`\"{} entry regardless of it being zero or not (this allows automatic detection of matrix size in e.\+g. matlab, python). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoomph_1_1Matrix_ac7473fb07d4db925b4cf3a22131b561a}{sparse\+\_\+indexed\+\_\+output}} (std\+::string filename, const unsigned \&precision=0, const bool \&output\+\_\+bottom\+\_\+right\+\_\+zero=false) const
+\begin{DoxyCompactList}\small\item\em Indexed output function to print a matrix to the file named filename as i,j,a(i,j) for a(i,j)!=0 only with specified precision. If optional boolean flag is set to true we also output the \char`\"{}bottom right\char`\"{} entry regardless of it being zero or not (this allows automatic detection of matrix size in e.\+g. matlab, python). \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classoomph_1_1Matrix}{oomph\+::\+Matrix$<$ T, MATRIX\+\_\+\+TYPE $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classoomph_1_1Matrix_a2fed2ea1840638eb0ddaa2d4ab1da82f}{range\+\_\+check}} (const unsigned long \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}, const unsigned long \&j) const
+\begin{DoxyCompactList}\small\item\em Range check to catch when an index is out of bounds, if so, it issues a warning message and dies by throwing an {\ttfamily \mbox{\hyperlink{classoomph_1_1OomphLibError}{Oomph\+Lib\+Error}}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1DoubleMatrixBase}{oomph\+::\+Double\+Matrix\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1LinearSolver}{Linear\+Solver}} $\ast$ \mbox{\hyperlink{classoomph_1_1DoubleMatrixBase_a86f0315e581cd5b41b75867383aa3760}{Linear\+\_\+solver\+\_\+pt}}
+\item 
+\mbox{\hyperlink{classoomph_1_1LinearSolver}{Linear\+Solver}} $\ast$ \mbox{\hyperlink{classoomph_1_1DoubleMatrixBase_a6ef2e36e4e5907af2738934f131e8dcf}{Default\+\_\+linear\+\_\+solver\+\_\+pt}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1DenseMatrix}{oomph\+::\+Dense\+Matrix$<$ double $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+double $\ast$ \mbox{\hyperlink{classoomph_1_1DenseMatrix_a92a2eea603a42e22fd4d3ea0a258e6f8}{Matrixdata}}
+\begin{DoxyCompactList}\small\item\em Internal representation of matrix as a pointer to data. \end{DoxyCompactList}\item 
+unsigned long \mbox{\hyperlink{classoomph_1_1DenseMatrix_a23cb539be0b4ef0381b9f18e8e50f75e}{N}}
+\begin{DoxyCompactList}\small\item\em Number of rows. \end{DoxyCompactList}\item 
+unsigned long \mbox{\hyperlink{classoomph_1_1DenseMatrix_aa36631ee95fe55afe697377b03d05d6a}{M}}
+\begin{DoxyCompactList}\small\item\em Number of columns. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}

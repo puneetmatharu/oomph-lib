@@ -20,8 +20,8 @@ As with other parallel driver codes, the changes from the \href{../../../interac
 
  
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{   \textcolor{comment}{// Distribute problem using METIS to determine the partitioning}}
-\DoxyCodeLine{   problem.distribute(report\_stats);}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Distribute\ problem\ using\ METIS\ to\ determine\ the\ partitioning}}
+\DoxyCodeLine{\ \ \ problem.distribute(report\_stats);}
 
 \end{DoxyCodeInclude}
  \DoxyHorRuler{0}
@@ -35,19 +35,19 @@ The only difference from the serial counterpart is that we ~\newline
 
  
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{ \textcolor{comment}{// Discretise leaflet}}
-\DoxyCodeLine{ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Discretise\ leaflet}}
+\DoxyCodeLine{\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Geometric object that represents the undeformed leaflet}}
-\DoxyCodeLine{ UndeformedLeaflet* undeformed\_wall\_pt=\textcolor{keyword}{new} UndeformedLeaflet(x\_0);}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Geometric\ object\ that\ represents\ the\ undeformed\ leaflet}}
+\DoxyCodeLine{\ UndeformedLeaflet*\ undeformed\_wall\_pt=\textcolor{keyword}{new}\ UndeformedLeaflet(x\_0);}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{//Create the "{}wall"{} mesh with FSI Hermite beam elements}}
-\DoxyCodeLine{ \textcolor{keywordtype}{unsigned} n\_wall\_el=5;}
-\DoxyCodeLine{ Wall\_mesh\_pt = \textcolor{keyword}{new} OneDLagrangianMesh<FSIHermiteBeamElement>}
-\DoxyCodeLine{  (n\_wall\_el,hleaflet,undeformed\_wall\_pt,wall\_time\_stepper\_pt);}
+\DoxyCodeLine{\ \textcolor{comment}{//Create\ the\ "{}wall"{}\ mesh\ with\ FSI\ Hermite\ beam\ elements}}
+\DoxyCodeLine{\ \textcolor{keywordtype}{unsigned}\ n\_wall\_el=5;}
+\DoxyCodeLine{\ Wall\_mesh\_pt\ =\ \textcolor{keyword}{new}\ OneDLagrangianMesh<FSIHermiteBeamElement>}
+\DoxyCodeLine{\ \ (n\_wall\_el,hleaflet,undeformed\_wall\_pt,wall\_time\_stepper\_pt);}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Flag to tell the wall mesh that all its elements should be halo}}
-\DoxyCodeLine{ Wall\_mesh\_pt-\/>set\_keep\_all\_elements\_as\_halos();}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Flag\ to\ tell\ the\ wall\ mesh\ that\ all\ its\ elements\ should\ be\ halo}}
+\DoxyCodeLine{\ Wall\_mesh\_pt-\/>set\_keep\_all\_elements\_as\_halos();}
 
 \end{DoxyCodeInclude}
  \DoxyHorRuler{0}
@@ -56,60 +56,60 @@ The {\ttfamily actions\+\_\+after\+\_\+adapt()} function requires only a minor c
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{comment}{//==== start\_of\_actions\_after\_adapt=================================}}
-\DoxyCodeLine{\textcolor{comment}{/// Actions\_after\_adapt()}}
+\DoxyCodeLine{\textcolor{comment}{//====\ start\_of\_actions\_after\_adapt=================================}}
+\DoxyCodeLine{\textcolor{comment}{///\ Actions\_after\_adapt()}}
 \DoxyCodeLine{\textcolor{comment}{//==================================================================}}
-\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>}
-\DoxyCodeLine{\textcolor{keywordtype}{void} FSIChannelWithLeafletProblem<ELEMENT>::actions\_after\_adapt()}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class}\ ELEMENT>}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ FSIChannelWithLeafletProblem<ELEMENT>::actions\_after\_adapt()}
 \DoxyCodeLine{\{}
-\DoxyCodeLine{ \textcolor{comment}{// Unpin all pressure dofs}}
-\DoxyCodeLine{ RefineableNavierStokesEquations<2>::}
-\DoxyCodeLine{  unpin\_all\_pressure\_dofs(Fluid\_mesh\_pt-\/>element\_pt());}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Unpin\ all\ pressure\ dofs}}
+\DoxyCodeLine{\ RefineableNavierStokesEquations<2>::}
+\DoxyCodeLine{\ \ unpin\_all\_pressure\_dofs(Fluid\_mesh\_pt-\/>element\_pt());}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Pin redundant pressure dofs}}
-\DoxyCodeLine{ RefineableNavierStokesEquations<2>::}
-\DoxyCodeLine{  pin\_redundant\_nodal\_pressures(Fluid\_mesh\_pt-\/>element\_pt());}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Pin\ redundant\ pressure\ dofs}}
+\DoxyCodeLine{\ RefineableNavierStokesEquations<2>::}
+\DoxyCodeLine{\ \ pin\_redundant\_nodal\_pressures(Fluid\_mesh\_pt-\/>element\_pt());}
 \DoxyCodeLine{}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Re-\/setup FSI}}
-\DoxyCodeLine{ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Re-\/setup\ FSI}}
+\DoxyCodeLine{\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Work out which fluid dofs affect the residuals of the wall elements:}}
-\DoxyCodeLine{ \textcolor{comment}{// We pass the boundary between the fluid and solid meshes and}}
-\DoxyCodeLine{ \textcolor{comment}{// pointers to the meshes. The interaction boundary is boundary 4 and 5}}
-\DoxyCodeLine{ \textcolor{comment}{// of the 2D fluid mesh.}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Work\ out\ which\ fluid\ dofs\ affect\ the\ residuals\ of\ the\ wall\ elements:}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ We\ pass\ the\ boundary\ between\ the\ fluid\ and\ solid\ meshes\ and}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ pointers\ to\ the\ meshes.\ The\ interaction\ boundary\ is\ boundary\ 4\ and\ 5}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ of\ the\ 2D\ fluid\ mesh.}}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Front of leaflet: Set face=0 (which is also the default so this argument}}
-\DoxyCodeLine{ \textcolor{comment}{// could be omitted)}}
-\DoxyCodeLine{ \textcolor{keywordtype}{unsigned} face=0;}
-\DoxyCodeLine{ FSI\_functions::setup\_fluid\_load\_info\_for\_solid\_elements<ELEMENT,2>}
-\DoxyCodeLine{  (\textcolor{keyword}{this},4,Fluid\_mesh\_pt,Wall\_mesh\_pt,face);}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Front\ of\ leaflet:\ Set\ face=0\ (which\ is\ also\ the\ default\ so\ this\ argument}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ could\ be\ omitted)}}
+\DoxyCodeLine{\ \textcolor{keywordtype}{unsigned}\ face=0;}
+\DoxyCodeLine{\ FSI\_functions::setup\_fluid\_load\_info\_for\_solid\_elements<ELEMENT,2>}
+\DoxyCodeLine{\ \ (\textcolor{keyword}{this},4,Fluid\_mesh\_pt,Wall\_mesh\_pt,face);}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Back of leaflet: face 1, needs to be specified explicitly}}
-\DoxyCodeLine{ face=1;}
-\DoxyCodeLine{ FSI\_functions::setup\_fluid\_load\_info\_for\_solid\_elements<ELEMENT,2>}
-\DoxyCodeLine{  (\textcolor{keyword}{this},5,Fluid\_mesh\_pt,Wall\_mesh\_pt,face);}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Back\ of\ leaflet:\ face\ 1,\ needs\ to\ be\ specified\ explicitly}}
+\DoxyCodeLine{\ face=1;}
+\DoxyCodeLine{\ FSI\_functions::setup\_fluid\_load\_info\_for\_solid\_elements<ELEMENT,2>}
+\DoxyCodeLine{\ \ (\textcolor{keyword}{this},5,Fluid\_mesh\_pt,Wall\_mesh\_pt,face);}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// (Re-\/)apply the no slip condition on the moving wall}}
-\DoxyCodeLine{ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ (Re-\/)apply\ the\ no\ slip\ condition\ on\ the\ moving\ wall}}
+\DoxyCodeLine{\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// The velocity of the fluid nodes on the wall (fluid mesh boundary 4,5)}}
-\DoxyCodeLine{ \textcolor{comment}{// is set by the wall motion -\/-\/ hence the no-\/slip condition must be}}
-\DoxyCodeLine{ \textcolor{comment}{// re-\/applied whenever a node update is performed for these nodes.}}
-\DoxyCodeLine{ \textcolor{comment}{// Such tasks may be performed automatically by the auxiliary node update}}
-\DoxyCodeLine{ \textcolor{comment}{// function specified by a function pointer:}}
-\DoxyCodeLine{ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} ibound=4;ibound<6;ibound++ )}
-\DoxyCodeLine{  \{}
-\DoxyCodeLine{   \textcolor{keywordtype}{unsigned} num\_nod= Fluid\_mesh\_pt-\/>nboundary\_node(ibound);}
-\DoxyCodeLine{   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} inod=0;inod<num\_nod;inod++)}
-\DoxyCodeLine{    \{}
-\DoxyCodeLine{     Fluid\_mesh\_pt-\/>boundary\_node\_pt(ibound, inod)-\/>}
-\DoxyCodeLine{      set\_auxiliary\_node\_update\_fct\_pt(}
-\DoxyCodeLine{       FSI\_functions::apply\_no\_slip\_on\_moving\_wall);}
-\DoxyCodeLine{    \}}
-\DoxyCodeLine{  \} \textcolor{comment}{// aux node update fct has been (re-\/)set}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ The\ velocity\ of\ the\ fluid\ nodes\ on\ the\ wall\ (fluid\ mesh\ boundary\ 4,5)}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ is\ set\ by\ the\ wall\ motion\ -\/-\/\ hence\ the\ no-\/slip\ condition\ must\ be}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ re-\/applied\ whenever\ a\ node\ update\ is\ performed\ for\ these\ nodes.}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Such\ tasks\ may\ be\ performed\ automatically\ by\ the\ auxiliary\ node\ update}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ function\ specified\ by\ a\ function\ pointer:}}
+\DoxyCodeLine{\ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ ibound=4;ibound<6;ibound++\ )}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \textcolor{keywordtype}{unsigned}\ num\_nod=\ Fluid\_mesh\_pt-\/>nboundary\_node(ibound);}
+\DoxyCodeLine{\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ inod=0;inod<num\_nod;inod++)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ Fluid\_mesh\_pt-\/>boundary\_node\_pt(ibound,\ inod)-\/>}
+\DoxyCodeLine{\ \ \ \ \ \ set\_auxiliary\_node\_update\_fct\_pt(}
+\DoxyCodeLine{\ \ \ \ \ \ \ FSI\_functions::apply\_no\_slip\_on\_moving\_wall);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}\ \textcolor{comment}{//\ aux\ node\ update\ fct\ has\ been\ (re-\/)set}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\} \textcolor{comment}{// end\_of\_actions\_after\_adapt}}
+\DoxyCodeLine{\}\ \textcolor{comment}{//\ end\_of\_actions\_after\_adapt}}
 
 \end{DoxyCodeInclude}
  \DoxyHorRuler{0}
@@ -118,52 +118,52 @@ The actions required after distribution are extremely similar to those required 
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{comment}{//==== start\_of\_actions\_after\_distribute============================}}
-\DoxyCodeLine{\textcolor{comment}{/// Actions\_after\_distribute()}}
+\DoxyCodeLine{\textcolor{comment}{//====\ start\_of\_actions\_after\_distribute============================}}
+\DoxyCodeLine{\textcolor{comment}{///\ Actions\_after\_distribute()}}
 \DoxyCodeLine{\textcolor{comment}{//==================================================================}}
-\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>}
-\DoxyCodeLine{\textcolor{keywordtype}{void} FSIChannelWithLeafletProblem<ELEMENT>::actions\_after\_distribute()}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class}\ ELEMENT>}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ FSIChannelWithLeafletProblem<ELEMENT>::actions\_after\_distribute()}
 \DoxyCodeLine{\{}
-\DoxyCodeLine{ \textcolor{comment}{// Re-\/setup FSI}}
-\DoxyCodeLine{ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Re-\/setup\ FSI}}
+\DoxyCodeLine{\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Work out which fluid dofs affect the residuals of the wall elements:}}
-\DoxyCodeLine{ \textcolor{comment}{// We pass the boundary between the fluid and solid meshes and}}
-\DoxyCodeLine{ \textcolor{comment}{// pointers to the meshes. The interaction boundary is boundary 4 and 5}}
-\DoxyCodeLine{ \textcolor{comment}{// of the 2D fluid mesh.}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Work\ out\ which\ fluid\ dofs\ affect\ the\ residuals\ of\ the\ wall\ elements:}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ We\ pass\ the\ boundary\ between\ the\ fluid\ and\ solid\ meshes\ and}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ pointers\ to\ the\ meshes.\ The\ interaction\ boundary\ is\ boundary\ 4\ and\ 5}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ of\ the\ 2D\ fluid\ mesh.}}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Front of leaflet: Set face=0 (which is also the default so this argument}}
-\DoxyCodeLine{ \textcolor{comment}{// could be omitted)}}
-\DoxyCodeLine{ \textcolor{keywordtype}{unsigned} face=0;}
-\DoxyCodeLine{ FSI\_functions::setup\_fluid\_load\_info\_for\_solid\_elements<ELEMENT,2>}
-\DoxyCodeLine{  (\textcolor{keyword}{this},4,Fluid\_mesh\_pt,Wall\_mesh\_pt,face);}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Front\ of\ leaflet:\ Set\ face=0\ (which\ is\ also\ the\ default\ so\ this\ argument}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ could\ be\ omitted)}}
+\DoxyCodeLine{\ \textcolor{keywordtype}{unsigned}\ face=0;}
+\DoxyCodeLine{\ FSI\_functions::setup\_fluid\_load\_info\_for\_solid\_elements<ELEMENT,2>}
+\DoxyCodeLine{\ \ (\textcolor{keyword}{this},4,Fluid\_mesh\_pt,Wall\_mesh\_pt,face);}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// Back of leaflet: face 1, needs to be specified explicitly}}
-\DoxyCodeLine{ face=1;}
-\DoxyCodeLine{ FSI\_functions::setup\_fluid\_load\_info\_for\_solid\_elements<ELEMENT,2>}
-\DoxyCodeLine{  (\textcolor{keyword}{this},5,Fluid\_mesh\_pt,Wall\_mesh\_pt,face);}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Back\ of\ leaflet:\ face\ 1,\ needs\ to\ be\ specified\ explicitly}}
+\DoxyCodeLine{\ face=1;}
+\DoxyCodeLine{\ FSI\_functions::setup\_fluid\_load\_info\_for\_solid\_elements<ELEMENT,2>}
+\DoxyCodeLine{\ \ (\textcolor{keyword}{this},5,Fluid\_mesh\_pt,Wall\_mesh\_pt,face);}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// (Re-\/)apply the no slip condition on the moving wall}}
-\DoxyCodeLine{ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ (Re-\/)apply\ the\ no\ slip\ condition\ on\ the\ moving\ wall}}
+\DoxyCodeLine{\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{}
-\DoxyCodeLine{ \textcolor{comment}{// The velocity of the fluid nodes on the wall (fluid mesh boundary 4,5)}}
-\DoxyCodeLine{ \textcolor{comment}{// is set by the wall motion -\/-\/ hence the no-\/slip condition must be}}
-\DoxyCodeLine{ \textcolor{comment}{// re-\/applied whenever a node update is performed for these nodes.}}
-\DoxyCodeLine{ \textcolor{comment}{// Such tasks may be performed automatically by the auxiliary node update}}
-\DoxyCodeLine{ \textcolor{comment}{// function specified by a function pointer:}}
-\DoxyCodeLine{ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} ibound=4;ibound<6;ibound++ )}
-\DoxyCodeLine{  \{}
-\DoxyCodeLine{   \textcolor{keywordtype}{unsigned} num\_nod= Fluid\_mesh\_pt-\/>nboundary\_node(ibound);}
-\DoxyCodeLine{   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} inod=0;inod<num\_nod;inod++)}
-\DoxyCodeLine{    \{}
-\DoxyCodeLine{     Fluid\_mesh\_pt-\/>boundary\_node\_pt(ibound, inod)-\/>}
-\DoxyCodeLine{      set\_auxiliary\_node\_update\_fct\_pt(}
-\DoxyCodeLine{       FSI\_functions::apply\_no\_slip\_on\_moving\_wall);}
-\DoxyCodeLine{    \}}
-\DoxyCodeLine{  \} \textcolor{comment}{// aux node update fct has been (re-\/)set}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ The\ velocity\ of\ the\ fluid\ nodes\ on\ the\ wall\ (fluid\ mesh\ boundary\ 4,5)}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ is\ set\ by\ the\ wall\ motion\ -\/-\/\ hence\ the\ no-\/slip\ condition\ must\ be}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ re-\/applied\ whenever\ a\ node\ update\ is\ performed\ for\ these\ nodes.}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Such\ tasks\ may\ be\ performed\ automatically\ by\ the\ auxiliary\ node\ update}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ function\ specified\ by\ a\ function\ pointer:}}
+\DoxyCodeLine{\ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ ibound=4;ibound<6;ibound++\ )}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \textcolor{keywordtype}{unsigned}\ num\_nod=\ Fluid\_mesh\_pt-\/>nboundary\_node(ibound);}
+\DoxyCodeLine{\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ inod=0;inod<num\_nod;inod++)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ Fluid\_mesh\_pt-\/>boundary\_node\_pt(ibound,\ inod)-\/>}
+\DoxyCodeLine{\ \ \ \ \ \ set\_auxiliary\_node\_update\_fct\_pt(}
+\DoxyCodeLine{\ \ \ \ \ \ \ FSI\_functions::apply\_no\_slip\_on\_moving\_wall);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}\ \textcolor{comment}{//\ aux\ node\ update\ fct\ has\ been\ (re-\/)set}}
 \DoxyCodeLine{}
 \DoxyCodeLine{}
-\DoxyCodeLine{\} \textcolor{comment}{// end\_of\_actions\_after\_distribute}}
+\DoxyCodeLine{\}\ \textcolor{comment}{//\ end\_of\_actions\_after\_distribute}}
 
 \end{DoxyCodeInclude}
  \DoxyHorRuler{0}
@@ -174,21 +174,21 @@ The trace file documents the time trace of the imposed influx and the displaceme
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{ \textcolor{comment}{// Write trace file (only on processor 0) -\/-\/ Tip node exists on}}
-\DoxyCodeLine{ \textcolor{comment}{// every processor (because all wall elements are kept as halos)}}
-\DoxyCodeLine{ \textcolor{comment}{// but we don't want different processors to overwrite (or replicate)}}
-\DoxyCodeLine{ \textcolor{comment}{// the trace file.}}
-\DoxyCodeLine{ \textcolor{keywordflow}{if} (this-\/>communicator\_pt()-\/>my\_rank()==0)}
-\DoxyCodeLine{  \{}
-\DoxyCodeLine{   trace << time << \textcolor{stringliteral}{"{} "{}}}
-\DoxyCodeLine{         << Global\_Physical\_Variables::flux(time) << \textcolor{stringliteral}{"{} "{}}}
-\DoxyCodeLine{         << tip\_node\_pt-\/>x(0) << \textcolor{stringliteral}{"{} "{}}}
-\DoxyCodeLine{         << tip\_node\_pt-\/>x(1) << \textcolor{stringliteral}{"{} "{}}}
-\DoxyCodeLine{         << tip\_node\_pt-\/>dposition\_dt(0) << \textcolor{stringliteral}{"{} "{}}}
-\DoxyCodeLine{         << tip\_node\_pt-\/>dposition\_dt(1) << \textcolor{stringliteral}{"{} "{}}}
-\DoxyCodeLine{         << doc\_info.number() << \textcolor{stringliteral}{"{} "{}}}
-\DoxyCodeLine{         << std::endl;}
-\DoxyCodeLine{  \}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Write\ trace\ file\ (only\ on\ processor\ 0)\ -\/-\/\ Tip\ node\ exists\ on}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ every\ processor\ (because\ all\ wall\ elements\ are\ kept\ as\ halos)}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ but\ we\ don't\ want\ different\ processors\ to\ overwrite\ (or\ replicate)}}
+\DoxyCodeLine{\ \textcolor{comment}{//\ the\ trace\ file.}}
+\DoxyCodeLine{\ \textcolor{keywordflow}{if}\ (this-\/>communicator\_pt()-\/>my\_rank()==0)}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ trace\ <<\ time\ <<\ \textcolor{stringliteral}{"{}\ "{}}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ <<\ Global\_Physical\_Variables::flux(time)\ <<\ \textcolor{stringliteral}{"{}\ "{}}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ <<\ tip\_node\_pt-\/>x(0)\ <<\ \textcolor{stringliteral}{"{}\ "{}}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ <<\ tip\_node\_pt-\/>x(1)\ <<\ \textcolor{stringliteral}{"{}\ "{}}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ <<\ tip\_node\_pt-\/>dposition\_dt(0)\ <<\ \textcolor{stringliteral}{"{}\ "{}}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ <<\ tip\_node\_pt-\/>dposition\_dt(1)\ <<\ \textcolor{stringliteral}{"{}\ "{}}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ <<\ doc\_info.number()\ <<\ \textcolor{stringliteral}{"{}\ "{}}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ <<\ std::endl;}
+\DoxyCodeLine{\ \ \}}
 
 \end{DoxyCodeInclude}
 

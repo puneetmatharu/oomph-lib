@@ -38,6 +38,15 @@ void \mbox{\hyperlink{classoomph_1_1AlgebraicCylinderWithFlagMesh_a9d909de1db84a
 \begin{DoxyCompactList}\small\item\em Update the geometric references that are used to update node after mesh adaptation. Empty -- no update of node update required without adaptativity. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1AlgebraicCylinderWithFlagMesh_a5e1e770e82577e5702470d8b87f8599d}{algebraic\+\_\+node\+\_\+update}} (const unsigned \&t, Algebraic\+Node $\ast$\&node\+\_\+pt)
 \begin{DoxyCompactList}\small\item\em Update nodal position at time level t (t=0\+: present; t\texorpdfstring{$>$}{>}0\+: previous) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1CylinderWithFlagMesh}{oomph\+::\+Cylinder\+With\+Flag\+Mesh$<$ ELEMENT $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1CylinderWithFlagMesh_a6591a2b9fdcb8080c899e34b9c8277cd}{Cylinder\+With\+Flag\+Mesh}} (Circle $\ast$cylinder\+\_\+pt, Geom\+Object $\ast$top\+\_\+flag\+\_\+pt, Geom\+Object $\ast$bottom\+\_\+flag\+\_\+pt, Geom\+Object $\ast$tip\+\_\+flag\+\_\+pt, const double \&length, const double \&height, const double \&flag\+\_\+length, const double \&flag\+\_\+height, const double \&centre\+\_\+x, const double \&centre\+\_\+y, const double \&a, Time\+Stepper $\ast$time\+\_\+stepper\+\_\+pt=\&Mesh\+::\+Default\+\_\+\+Time\+Stepper)
+\begin{DoxyCompactList}\small\item\em Constructor. Pass the pointers to the Geom\+Objects that parametrise the cylinder, the three edges of the flag, the length and height of the domain, the length and height of the flag, the coordinates of the centre of the cylinder and its radius. Timestepper defaults to Steady default timestepper. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1CylinderWithFlagMesh_a04fb9a6ea7a70eb8dbfb83ef73ed7b48}{$\sim$\+Cylinder\+With\+Flag\+Mesh}} ()
+\begin{DoxyCompactList}\small\item\em Destructor\+: Kill the domain. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1CylinderWithFlagDomain}{Cylinder\+With\+Flag\+Domain}} $\ast$ \mbox{\hyperlink{classoomph_1_1CylinderWithFlagMesh_ae9595e7512c5285c8afa31ad6adb1c97}{domain\+\_\+pt}} ()
+\begin{DoxyCompactList}\small\item\em Access function to the domain. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -86,6 +95,11 @@ double \mbox{\hyperlink{classoomph_1_1AlgebraicCylinderWithFlagMesh_a6b4575a9c38
 \begin{DoxyCompactList}\small\item\em x position of the centre of the cylinder \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{classoomph_1_1AlgebraicCylinderWithFlagMesh_aabc6cdfe508f04a4b1c92f2c2f1639c4}{A}}
 \begin{DoxyCompactList}\small\item\em radius of the cylinder \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1CylinderWithFlagMesh}{oomph\+::\+Cylinder\+With\+Flag\+Mesh$<$ ELEMENT $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1CylinderWithFlagDomain}{Cylinder\+With\+Flag\+Domain}} $\ast$ \mbox{\hyperlink{classoomph_1_1CylinderWithFlagMesh_a257b36fed6fb0d20d108a27c6a1c5f86}{Domain\+\_\+pt}}
+\begin{DoxyCompactList}\small\item\em Pointer to the domain. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -105,7 +119,7 @@ Definition at line \mbox{\hyperlink{cylinder__with__flag__mesh_8template_8h_sour
 \index{AlgebraicCylinderWithFlagMesh@{AlgebraicCylinderWithFlagMesh}!oomph::AlgebraicCylinderWithFlagMesh$<$ ELEMENT $>$@{oomph::AlgebraicCylinderWithFlagMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{AlgebraicCylinderWithFlagMesh()}{AlgebraicCylinderWithFlagMesh()}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-\mbox{\hyperlink{classoomph_1_1AlgebraicCylinderWithFlagMesh}{oomph\+::\+Algebraic\+Cylinder\+With\+Flag\+Mesh}}$<$ ELEMENT $>$\+::\mbox{\hyperlink{classoomph_1_1AlgebraicCylinderWithFlagMesh}{Algebraic\+Cylinder\+With\+Flag\+Mesh}} (\begin{DoxyParamCaption}\item[{Circle $\ast$}]{cylinder\+\_\+pt,  }\item[{Geom\+Object $\ast$}]{top\+\_\+flag\+\_\+pt,  }\item[{Geom\+Object $\ast$}]{bottom\+\_\+flag\+\_\+pt,  }\item[{Geom\+Object $\ast$}]{tip\+\_\+flag\+\_\+pt,  }\item[{const double \&}]{length,  }\item[{const double \&}]{height,  }\item[{const double \&}]{flag\+\_\+length,  }\item[{const double \&}]{flag\+\_\+height,  }\item[{const double \&}]{centre\+\_\+x,  }\item[{const double \&}]{centre\+\_\+y,  }\item[{const double \&}]{a,  }\item[{Time\+Stepper $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&Mesh\+:\+:Default\+\_\+TimeStepper} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{classoomph_1_1AlgebraicCylinderWithFlagMesh}{oomph\+::\+Algebraic\+Cylinder\+With\+Flag\+Mesh}}$<$ ELEMENT $>$\+::\+Algebraic\+Cylinder\+With\+Flag\+Mesh (\begin{DoxyParamCaption}\item[{Circle $\ast$}]{cylinder\+\_\+pt,  }\item[{Geom\+Object $\ast$}]{top\+\_\+flag\+\_\+pt,  }\item[{Geom\+Object $\ast$}]{bottom\+\_\+flag\+\_\+pt,  }\item[{Geom\+Object $\ast$}]{tip\+\_\+flag\+\_\+pt,  }\item[{const double \&}]{length,  }\item[{const double \&}]{height,  }\item[{const double \&}]{flag\+\_\+length,  }\item[{const double \&}]{flag\+\_\+height,  }\item[{const double \&}]{centre\+\_\+x,  }\item[{const double \&}]{centre\+\_\+y,  }\item[{const double \&}]{a,  }\item[{Time\+Stepper $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&Mesh\+:\+:Default\+\_\+TimeStepper} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -472,7 +486,7 @@ Definition at line \mbox{\hyperlink{cylinder__with__flag__mesh_8template_8h_sour
 \index{Bottom\_flag\_pt@{Bottom\_flag\_pt}!oomph::AlgebraicCylinderWithFlagMesh$<$ ELEMENT $>$@{oomph::AlgebraicCylinderWithFlagMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Bottom\_flag\_pt}{Bottom\_flag\_pt}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-Geom\+Object$\ast$ \mbox{\hyperlink{classoomph_1_1AlgebraicCylinderWithFlagMesh}{oomph\+::\+Algebraic\+Cylinder\+With\+Flag\+Mesh}}$<$ ELEMENT $>$\+::Bottom\+\_\+flag\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+Geom\+Object$\ast$ \mbox{\hyperlink{classoomph_1_1AlgebraicCylinderWithFlagMesh}{oomph\+::\+Algebraic\+Cylinder\+With\+Flag\+Mesh}}$<$ ELEMENT $>$\+::\+Bottom\+\_\+flag\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -491,7 +505,7 @@ Referenced by \mbox{\hyperlink{cylinder__with__flag__mesh_8template_8h_source_l0
 \index{Centre\_x@{Centre\_x}!oomph::AlgebraicCylinderWithFlagMesh$<$ ELEMENT $>$@{oomph::AlgebraicCylinderWithFlagMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Centre\_x}{Centre\_x}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-double \mbox{\hyperlink{classoomph_1_1AlgebraicCylinderWithFlagMesh}{oomph\+::\+Algebraic\+Cylinder\+With\+Flag\+Mesh}}$<$ ELEMENT $>$\+::Centre\+\_\+x\hspace{0.3cm}{\ttfamily [protected]}}
+double \mbox{\hyperlink{classoomph_1_1AlgebraicCylinderWithFlagMesh}{oomph\+::\+Algebraic\+Cylinder\+With\+Flag\+Mesh}}$<$ ELEMENT $>$\+::\+Centre\+\_\+x\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -506,7 +520,7 @@ Definition at line \mbox{\hyperlink{cylinder__with__flag__mesh_8template_8h_sour
 \index{Centre\_y@{Centre\_y}!oomph::AlgebraicCylinderWithFlagMesh$<$ ELEMENT $>$@{oomph::AlgebraicCylinderWithFlagMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Centre\_y}{Centre\_y}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-double \mbox{\hyperlink{classoomph_1_1AlgebraicCylinderWithFlagMesh}{oomph\+::\+Algebraic\+Cylinder\+With\+Flag\+Mesh}}$<$ ELEMENT $>$\+::Centre\+\_\+y\hspace{0.3cm}{\ttfamily [protected]}}
+double \mbox{\hyperlink{classoomph_1_1AlgebraicCylinderWithFlagMesh}{oomph\+::\+Algebraic\+Cylinder\+With\+Flag\+Mesh}}$<$ ELEMENT $>$\+::\+Centre\+\_\+y\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -521,7 +535,7 @@ Definition at line \mbox{\hyperlink{cylinder__with__flag__mesh_8template_8h_sour
 \index{Cylinder\_pt@{Cylinder\_pt}!oomph::AlgebraicCylinderWithFlagMesh$<$ ELEMENT $>$@{oomph::AlgebraicCylinderWithFlagMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Cylinder\_pt}{Cylinder\_pt}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-Geom\+Object$\ast$ \mbox{\hyperlink{classoomph_1_1AlgebraicCylinderWithFlagMesh}{oomph\+::\+Algebraic\+Cylinder\+With\+Flag\+Mesh}}$<$ ELEMENT $>$\+::Cylinder\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+Geom\+Object$\ast$ \mbox{\hyperlink{classoomph_1_1AlgebraicCylinderWithFlagMesh}{oomph\+::\+Algebraic\+Cylinder\+With\+Flag\+Mesh}}$<$ ELEMENT $>$\+::\+Cylinder\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -536,7 +550,7 @@ Definition at line \mbox{\hyperlink{cylinder__with__flag__mesh_8template_8h_sour
 \index{Flag\_height@{Flag\_height}!oomph::AlgebraicCylinderWithFlagMesh$<$ ELEMENT $>$@{oomph::AlgebraicCylinderWithFlagMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Flag\_height}{Flag\_height}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-double \mbox{\hyperlink{classoomph_1_1AlgebraicCylinderWithFlagMesh}{oomph\+::\+Algebraic\+Cylinder\+With\+Flag\+Mesh}}$<$ ELEMENT $>$\+::Flag\+\_\+height\hspace{0.3cm}{\ttfamily [protected]}}
+double \mbox{\hyperlink{classoomph_1_1AlgebraicCylinderWithFlagMesh}{oomph\+::\+Algebraic\+Cylinder\+With\+Flag\+Mesh}}$<$ ELEMENT $>$\+::\+Flag\+\_\+height\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -551,7 +565,7 @@ Definition at line \mbox{\hyperlink{cylinder__with__flag__mesh_8template_8h_sour
 \index{Flag\_length@{Flag\_length}!oomph::AlgebraicCylinderWithFlagMesh$<$ ELEMENT $>$@{oomph::AlgebraicCylinderWithFlagMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Flag\_length}{Flag\_length}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-double \mbox{\hyperlink{classoomph_1_1AlgebraicCylinderWithFlagMesh}{oomph\+::\+Algebraic\+Cylinder\+With\+Flag\+Mesh}}$<$ ELEMENT $>$\+::Flag\+\_\+length\hspace{0.3cm}{\ttfamily [protected]}}
+double \mbox{\hyperlink{classoomph_1_1AlgebraicCylinderWithFlagMesh}{oomph\+::\+Algebraic\+Cylinder\+With\+Flag\+Mesh}}$<$ ELEMENT $>$\+::\+Flag\+\_\+length\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -566,7 +580,7 @@ Definition at line \mbox{\hyperlink{cylinder__with__flag__mesh_8template_8h_sour
 \index{Height@{Height}!oomph::AlgebraicCylinderWithFlagMesh$<$ ELEMENT $>$@{oomph::AlgebraicCylinderWithFlagMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Height}{Height}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-double \mbox{\hyperlink{classoomph_1_1AlgebraicCylinderWithFlagMesh}{oomph\+::\+Algebraic\+Cylinder\+With\+Flag\+Mesh}}$<$ ELEMENT $>$\+::Height\hspace{0.3cm}{\ttfamily [protected]}}
+double \mbox{\hyperlink{classoomph_1_1AlgebraicCylinderWithFlagMesh}{oomph\+::\+Algebraic\+Cylinder\+With\+Flag\+Mesh}}$<$ ELEMENT $>$\+::\+Height\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -581,7 +595,7 @@ Definition at line \mbox{\hyperlink{cylinder__with__flag__mesh_8template_8h_sour
 \index{Length@{Length}!oomph::AlgebraicCylinderWithFlagMesh$<$ ELEMENT $>$@{oomph::AlgebraicCylinderWithFlagMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Length}{Length}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-double \mbox{\hyperlink{classoomph_1_1AlgebraicCylinderWithFlagMesh}{oomph\+::\+Algebraic\+Cylinder\+With\+Flag\+Mesh}}$<$ ELEMENT $>$\+::Length\hspace{0.3cm}{\ttfamily [protected]}}
+double \mbox{\hyperlink{classoomph_1_1AlgebraicCylinderWithFlagMesh}{oomph\+::\+Algebraic\+Cylinder\+With\+Flag\+Mesh}}$<$ ELEMENT $>$\+::\+Length\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -596,7 +610,7 @@ Definition at line \mbox{\hyperlink{cylinder__with__flag__mesh_8template_8h_sour
 \index{Tip\_flag\_pt@{Tip\_flag\_pt}!oomph::AlgebraicCylinderWithFlagMesh$<$ ELEMENT $>$@{oomph::AlgebraicCylinderWithFlagMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Tip\_flag\_pt}{Tip\_flag\_pt}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-Geom\+Object$\ast$ \mbox{\hyperlink{classoomph_1_1AlgebraicCylinderWithFlagMesh}{oomph\+::\+Algebraic\+Cylinder\+With\+Flag\+Mesh}}$<$ ELEMENT $>$\+::Tip\+\_\+flag\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+Geom\+Object$\ast$ \mbox{\hyperlink{classoomph_1_1AlgebraicCylinderWithFlagMesh}{oomph\+::\+Algebraic\+Cylinder\+With\+Flag\+Mesh}}$<$ ELEMENT $>$\+::\+Tip\+\_\+flag\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -615,7 +629,7 @@ Referenced by \mbox{\hyperlink{cylinder__with__flag__mesh_8template_8h_source_l0
 \index{Top\_flag\_pt@{Top\_flag\_pt}!oomph::AlgebraicCylinderWithFlagMesh$<$ ELEMENT $>$@{oomph::AlgebraicCylinderWithFlagMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{Top\_flag\_pt}{Top\_flag\_pt}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-Geom\+Object$\ast$ \mbox{\hyperlink{classoomph_1_1AlgebraicCylinderWithFlagMesh}{oomph\+::\+Algebraic\+Cylinder\+With\+Flag\+Mesh}}$<$ ELEMENT $>$\+::Top\+\_\+flag\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
+Geom\+Object$\ast$ \mbox{\hyperlink{classoomph_1_1AlgebraicCylinderWithFlagMesh}{oomph\+::\+Algebraic\+Cylinder\+With\+Flag\+Mesh}}$<$ ELEMENT $>$\+::\+Top\+\_\+flag\+\_\+pt\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 

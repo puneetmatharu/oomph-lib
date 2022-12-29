@@ -2,6 +2,7 @@
 \usepackage{ifthen}
 \usepackage{epsfig}
 \usepackage[utf8]{inputenc}
+\usepackage{xcolor}
 \usepackage{newunicodechar}
   \newunicodechar{⁻}{${}^{-}$}% Superscript minus
   \newunicodechar{²}{${}^{2}$}% Superscript two
@@ -18,7 +19,8 @@ $ u $
 \[ u = \sum_{j} U_{J(j,E)} \psi_j(s) \mbox{\hspace{5cm} (1)} \]
 \pagebreak
 
-\[ {\bf x} = \sum_{j} {\bf X}_{J(j,E)} \psi_j(s), \mbox{\hspace{5cm} (2)} \]
+\[   {\bf x} = \sum_{j} {\bf X}_{J(j,E)} \psi_j(s),
+        \mbox{\hspace{5cm} (2)} \]
 \pagebreak
 
 $ j $
@@ -39,7 +41,7 @@ $ J $
 $ {\bf x} $
 \pagebreak
 
-\[ U_J = \sum_{K} U_{K} \omega_{JK} \]
+\[ U_J = \sum_{K} U_{K} \omega_{JK}  \]
 \pagebreak
 
 \[ {\bf X}_J = \sum_{K} {\bf X}_{K} \omega_{JK} \]
@@ -54,10 +56,14 @@ $ \omega_{JK} $
 $ s_J $
 \pagebreak
 
+$  \omega_{JK} $
+\pagebreak
+
 \[ \omega_{JK} = \psi_K(s_J) \]
 \pagebreak
 
-$ \omega_{17\ 4} = \omega_{17\ 9} \times \omega_{9 \ 4}. $
+$ \omega_{17\ 4} = \omega_{17\ 9}  
+ \times \omega_{9 \ 4}. $
 \pagebreak
 
 $\partial D$
@@ -84,7 +90,11 @@ $C$
 $R(t)$
 \pagebreak
 
-\[ {\bf r}_{_{\partial C}} = \left( \begin{array}{c} R(t) \cos(\xi_2) \\ R(t) \sin(\xi_2) \\ \xi_1 \\ \end{array} \right). \]
+\[ {\bf r}_{_{\partial C}} = \left( \begin{array}{c} 
+                         R(t) \cos(\xi_2) \\
+                         R(t) \sin(\xi_2) \\ 
+                         \xi_1 \\ 
+                         \end{array} \right). \]
 \pagebreak
 
 $ {\tt t} \ne 0; $
@@ -111,10 +121,11 @@ $ {\bf r}(S_0=-1,S_1) $
 $(S_0,S_1)=(-1,-1)$
 \pagebreak
 
-$ S_0^{min}=-1, \ S_0^{max}=0, \ S_1^{min}=-1, \ S_1^{max}=0 $
+$ S_0^{min}=-1, \  S_0^{max}=0, \ S_1^{min}=-1, \  S_1^{max}=0 $
 \pagebreak
 
-$ S_0^{min}=-1, \ S_0^{max}=-0.5, \ S_1^{min}=-0.5, \ S_1^{max}=0 $
+$ S_0^{min}=-1, \  S_0^{max}=-0.5,
+   \ S_1^{min}=-0.5, \  S_1^{max}=0 $
 \pagebreak
 
 \[ \frac{\partial^2 u}{\partial x_i^2} = Pe w_i(x_k) \frac{\partial u}{\partial x_i} + f(x_j) \]
@@ -357,7 +368,7 @@ $ d, $
 $ \kappa$
 \pagebreak
 
-$ \sigma^{ij} = -p G^{ij} + \overline{ \sigma^{ij}} $
+$ \sigma^{ij} = -p G^{ij} + \overline{ \sigma^{ij}}  $
 \pagebreak
 
 $ p $
@@ -369,7 +380,7 @@ $ p / \kappa - d =0 $
 $ \overline{ \sigma^{ij}}$
 \pagebreak
 
-$ \sigma^{ij} = - p G^{ij} +\overline{ \sigma^{ij}} $
+$ \sigma^{ij} = - p G^{ij} +\overline{ \sigma^{ij}}  $
 \pagebreak
 
 $ \det G_{ij} - \det g_{ij} = 0 $
@@ -603,10 +614,10 @@ $ 3N+2 $
 \[ J\psi - \omega M \phi = 0, \]
 \pagebreak
 
-\[ c \cdot \phi = 1. \]
+\[ c \cdot \phi  = 1. \]
 \pagebreak
 
-\[ c \cdot \psi = 0. \]
+\[ c \cdot \psi  = 0. \]
 \pagebreak
 
 $ M $
@@ -633,7 +644,7 @@ $ x_1 $
 $ \in [-1,1]^2 $
 \pagebreak
 
-$ Ax = \lambda Mx $
+$ Ax = \lambda  Mx $
 \pagebreak
 
 $ X_{pq} $
@@ -882,10 +893,10 @@ $ Q = \mu U/(LE) $
 \[ y = B \sin(\zeta) \]
 \pagebreak
 
-\[ x = X_c + R \cos(\zeta) \]
+\[ x = X_c + R \cos(\zeta)  \]
 \pagebreak
 
-\[ y = Y_c + R \sin(\zeta) \]
+\[ y = Y_c + R \sin(\zeta)  \]
 \pagebreak
 
 \[ {\bf r} = ( a \cos(\zeta_1), b \sin(zeta_1), \zeta_0)^T \]
@@ -954,16 +965,16 @@ $ {\bf r} ({\bf S}) $
 $ {\bf r} (t,{\bf S}) $
 \pagebreak
 
-\[ {\bf f}_{i} (t,{\bf S}) \]
+\[  {\bf f}_{i} (t,{\bf S}) \]
 \pagebreak
 
 $ i $
 \pagebreak
 
-$ {\bf S} \in [-1,1]^1 $
+$ {\bf S} \in [-1,1]^1  $
 \pagebreak
 
-$ {\bf S} \in [-1,1]^2 $
+$ {\bf S} \in [-1,1]^2  $
 \pagebreak
 
 $ i \in \{ 1,...,n \} $
@@ -1017,10 +1028,10 @@ $ N_{type} $
 $ N_{type}=2 $
 \pagebreak
 
-$ X_{ijk} \ (i=1..DIM, \ k=1..N_{type}) $
+$ X_{ijk}  \ (i=1..DIM, \ k=1..N_{type}) $
 \pagebreak
 
-$ \sum_{i=-1}{nval-1} Node::is_hanging(i) 2^{i+1} $
+$  \sum_{i=-1}{nval-1} Node::is_hanging(i) 2^{i+1} $
 \pagebreak
 
 $ {\bf s} \in [-1,1]^3 $
@@ -1173,10 +1184,10 @@ $s \in [-1,1]*[-1,1] $
 $ \in [-1,1]x[-1,1] $
 \pagebreak
 
-$ \xi_0 = \xi_0^{lo} $
+$ \xi_0 =  \xi_0^{lo} $
 \pagebreak
 
-$ \xi_0 = \xi_0^{hi} $
+$ \xi_0 =  \xi_0^{hi} $
 \pagebreak
 
 $\zeta \in [0,2\pi]$

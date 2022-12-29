@@ -44,6 +44,58 @@ void \mbox{\hyperlink{classoomph_1_1PeriodicOrbitAssemblyHandler_a358d1749faa8ac
 \begin{DoxyCompactList}\small\item\em Adapt the time mesh. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classoomph_1_1PeriodicOrbitAssemblyHandler_a919aba117d2e7f08d1462b9d00799782}{$\sim$\+Periodic\+Orbit\+Assembly\+Handler}} ()
 \begin{DoxyCompactList}\small\item\em Destructor, destroy the time mesh. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1PeriodicOrbitAssemblyHandlerBase}{oomph\+::\+Periodic\+Orbit\+Assembly\+Handler\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1PeriodicOrbitAssemblyHandlerBase_a75182b5fa555a6d410015feb180701b8}{Periodic\+Orbit\+Assembly\+Handler\+Base}} ()
+\item 
+virtual void \mbox{\hyperlink{classoomph_1_1PeriodicOrbitAssemblyHandlerBase_a48968325ba57e969f64298c5b2dfb8f8}{get\+\_\+dofs\+\_\+for\+\_\+element}} (\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const elem\+\_\+pt, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&dofs)=0
+\item 
+virtual void \mbox{\hyperlink{classoomph_1_1PeriodicOrbitAssemblyHandlerBase_a680c82526671e8213d317367f3f7a7e1}{get\+\_\+previous\+\_\+dofs\+\_\+for\+\_\+element}} (\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const elem\+\_\+pt, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&dofs)=0
+\item 
+virtual void \mbox{\hyperlink{classoomph_1_1PeriodicOrbitAssemblyHandlerBase_a09d7c31dec8b9688cec82f8b24558b9b}{set\+\_\+dofs\+\_\+for\+\_\+element}} (\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const elem\+\_\+pt, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ const \&dofs)=0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1AssemblyHandler}{oomph\+::\+Assembly\+Handler}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1AssemblyHandler_af3ab79744dce0b50370defdbf7981691}{Assembly\+Handler}} ()
+\begin{DoxyCompactList}\small\item\em Empty constructor. \end{DoxyCompactList}\item 
+virtual unsigned \mbox{\hyperlink{classoomph_1_1AssemblyHandler_a09213be8f4aa009e0366460a7ed78e68}{ndof}} (\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const \&elem\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Return the number of degrees of freedom in the element elem\+\_\+pt. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1AssemblyHandler_abfd15243fce76ce8f1ea0248c700a3f4}{dof\+\_\+vector}} (\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const \&elem\+\_\+pt, const unsigned \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&dof)
+\begin{DoxyCompactList}\small\item\em Return vector of dofs at time level t in the element elem\+\_\+pt. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1AssemblyHandler_afe6002d5703a93b3b147de79508c5719}{dof\+\_\+pt\+\_\+vector}} (\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const \&elem\+\_\+pt, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $\ast$ $>$ \&dof\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em Return vector of pointers to dofs in the element elem\+\_\+pt. \end{DoxyCompactList}\item 
+virtual double \& \mbox{\hyperlink{classoomph_1_1AssemblyHandler_ab61559fc5df46871c1eebd103f7bf08b}{local\+\_\+problem\+\_\+dof}} (\mbox{\hyperlink{classoomph_1_1Problem}{Problem}} $\ast$const \&problem\+\_\+pt, const unsigned \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})
+\begin{DoxyCompactList}\small\item\em Return the t-\/th level of storage associated with the i-\/th (local) dof stored in the problem. \end{DoxyCompactList}\item 
+virtual unsigned long \mbox{\hyperlink{classoomph_1_1AssemblyHandler_a94d28e2de2559cde803d1ba2195b5290}{eqn\+\_\+number}} (\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const \&elem\+\_\+pt, const unsigned \&ieqn\+\_\+local)
+\begin{DoxyCompactList}\small\item\em Return the global equation number of the local unknown ieqn\+\_\+local in elem\+\_\+pt. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1AssemblyHandler_a7a6203b0ab90da62b4da2af8a26d08b3}{get\+\_\+residuals}} (\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const \&elem\+\_\+pt, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&residuals)
+\begin{DoxyCompactList}\small\item\em Return the contribution to the residuals of the element elem\+\_\+pt. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1AssemblyHandler_ad43c3d8760be0ba6ebee8d82509458e5}{get\+\_\+jacobian}} (\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const \&elem\+\_\+pt, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&residuals, \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ \&jacobian)
+\begin{DoxyCompactList}\small\item\em Calculate the elemental Jacobian matrix \char`\"{}d equation / d variable\char`\"{} for elem\+\_\+pt. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1AssemblyHandler_ab2e4ee4623116b18245ca90cfe9ba144}{get\+\_\+all\+\_\+vectors\+\_\+and\+\_\+matrices}} (\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const \&elem\+\_\+pt, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ $>$ \&vec, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ $>$ \&matrix)
+\begin{DoxyCompactList}\small\item\em Calculate all desired vectors and matrices provided by the element elem\+\_\+pt. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1AssemblyHandler_a2ee980ccabe0ad82f98e694eecf270bb}{get\+\_\+dresiduals\+\_\+dparameter}} (\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const \&elem\+\_\+pt, double $\ast$const \&parameter\+\_\+pt, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&dres\+\_\+dparam)
+\begin{DoxyCompactList}\small\item\em Calculate the derivative of the residuals with respect to a parameter. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1AssemblyHandler_aefc0c13a65342806c167c5d53f014803}{get\+\_\+djacobian\+\_\+dparameter}} (\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const \&elem\+\_\+pt, double $\ast$const \&parameter\+\_\+pt, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&dres\+\_\+dparam, \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ \&djac\+\_\+dparam)
+\begin{DoxyCompactList}\small\item\em Calculate the derivative of the residuals and jacobian with respect to a parameter. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1AssemblyHandler_a296bef49838d23522bb660c4c5207f03}{get\+\_\+hessian\+\_\+vector\+\_\+products}} (\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const \&elem\+\_\+pt, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ const \&Y, \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ const \&C, \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ \&product)
+\begin{DoxyCompactList}\small\item\em Calculate the product of the Hessian (derivative of Jacobian with respect to all variables) an eigenvector, Y, and other specified vectors, C (d(J\+\_\+\{ij\})/d u\+\_\+\{k\}) Y\+\_\+\{j\} C\+\_\+\{k\}. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classoomph_1_1AssemblyHandler_a22c5f240674e4f6cee12006790c11dae}{bifurcation\+\_\+type}} () const
+\begin{DoxyCompactList}\small\item\em Return an unsigned integer to indicate whether the handler is a bifurcation tracking handler. The default is zero (not) \end{DoxyCompactList}\item 
+virtual double $\ast$ \mbox{\hyperlink{classoomph_1_1AssemblyHandler_a3e369ec692c3d36a4a2a8a64dab7fe2b}{bifurcation\+\_\+parameter\+\_\+pt}} () const
+\begin{DoxyCompactList}\small\item\em Return a pointer to the bifurcation parameter in bifurcation tracking problems. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1AssemblyHandler_a6d614b1b3809d0eb7ceb393e3ae9594f}{get\+\_\+eigenfunction}} (\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} $>$ \&eigenfunction)
+\begin{DoxyCompactList}\small\item\em Return the eigenfunction(s) associated with the bifurcation that has been detected in bifurcation tracking problems. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1AssemblyHandler_a60c8efc6756825df9cd41389cdeac6cc}{get\+\_\+inner\+\_\+products}} (\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const \&elem\+\_\+pt, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ std\+::pair$<$ unsigned, unsigned $>$ $>$ const \&history\+\_\+index, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&inner\+\_\+product)
+\begin{DoxyCompactList}\small\item\em Compute the inner products of the given vector of pairs of history values over the element. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1AssemblyHandler_a2300910f43476551318d74e3a90e7713}{get\+\_\+inner\+\_\+product\+\_\+vectors}} (\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const \&elem\+\_\+pt, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ unsigned $>$ const \&history\+\_\+index, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ $>$ \&inner\+\_\+product\+\_\+vector)
+\begin{DoxyCompactList}\small\item\em Compute the vectors that when taken as a dot product with other history values give the inner product over the element. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classoomph_1_1AssemblyHandler_a0ccef21253d997dd1a78ed26c2b99fce}{synchronise}} ()
+\begin{DoxyCompactList}\small\item\em Function that is used to perform any synchronisation required during the solution. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classoomph_1_1AssemblyHandler_ab26633238200230ab57a20cc49e731de}{$\sim$\+Assembly\+Handler}} ()
+\begin{DoxyCompactList}\small\item\em Empty virtual destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -82,7 +134,7 @@ Definition at line \mbox{\hyperlink{periodic__orbit__handler_8h_source_l00690}{6
 \index{PeriodicOrbitAssemblyHandler@{PeriodicOrbitAssemblyHandler}!oomph::PeriodicOrbitAssemblyHandler$<$ NNODE\_1D $>$@{oomph::PeriodicOrbitAssemblyHandler$<$ NNODE\_1D $>$}}
 \doxysubsubsection{\texorpdfstring{PeriodicOrbitAssemblyHandler()}{PeriodicOrbitAssemblyHandler()}}
 {\footnotesize\ttfamily template$<$unsigned NNODE\+\_\+1D$>$ \\
-\mbox{\hyperlink{classoomph_1_1PeriodicOrbitAssemblyHandler}{oomph\+::\+Periodic\+Orbit\+Assembly\+Handler}}$<$ NNODE\+\_\+1D $>$\+::\mbox{\hyperlink{classoomph_1_1PeriodicOrbitAssemblyHandler}{Periodic\+Orbit\+Assembly\+Handler}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1Problem}{Problem}} $\ast$const \&}]{problem\+\_\+pt,  }\item[{const unsigned \&}]{n\+\_\+element\+\_\+in\+\_\+period,  }\item[{const \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ \&}]{initial\+\_\+guess,  }\item[{const double \&}]{omega }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{classoomph_1_1PeriodicOrbitAssemblyHandler}{oomph\+::\+Periodic\+Orbit\+Assembly\+Handler}}$<$ NNODE\+\_\+1D $>$\+::\+Periodic\+Orbit\+Assembly\+Handler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1Problem}{Problem}} $\ast$const \&}]{problem\+\_\+pt,  }\item[{const unsigned \&}]{n\+\_\+element\+\_\+in\+\_\+period,  }\item[{const \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ \&}]{initial\+\_\+guess,  }\item[{const double \&}]{omega }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -359,7 +411,7 @@ Referenced by \mbox{\hyperlink{periodic__orbit__handler_8h_source_l01045}{oomph\
 \index{Basic\_time\_mesh\_pt@{Basic\_time\_mesh\_pt}!oomph::PeriodicOrbitAssemblyHandler$<$ NNODE\_1D $>$@{oomph::PeriodicOrbitAssemblyHandler$<$ NNODE\_1D $>$}}
 \doxysubsubsection{\texorpdfstring{Basic\_time\_mesh\_pt}{Basic\_time\_mesh\_pt}}
 {\footnotesize\ttfamily template$<$unsigned NNODE\+\_\+1D$>$ \\
-\mbox{\hyperlink{classoomph_1_1Mesh}{Mesh}}$\ast$ \mbox{\hyperlink{classoomph_1_1PeriodicOrbitAssemblyHandler}{oomph\+::\+Periodic\+Orbit\+Assembly\+Handler}}$<$ NNODE\+\_\+1D $>$\+::Basic\+\_\+time\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1Mesh}{Mesh}}$\ast$ \mbox{\hyperlink{classoomph_1_1PeriodicOrbitAssemblyHandler}{oomph\+::\+Periodic\+Orbit\+Assembly\+Handler}}$<$ NNODE\+\_\+1D $>$\+::\+Basic\+\_\+time\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -378,7 +430,7 @@ Referenced by \mbox{\hyperlink{periodic__orbit__handler_8h_source_l01045}{oomph\
 \index{N\_element\_in\_period@{N\_element\_in\_period}!oomph::PeriodicOrbitAssemblyHandler$<$ NNODE\_1D $>$@{oomph::PeriodicOrbitAssemblyHandler$<$ NNODE\_1D $>$}}
 \doxysubsubsection{\texorpdfstring{N\_element\_in\_period}{N\_element\_in\_period}}
 {\footnotesize\ttfamily template$<$unsigned NNODE\+\_\+1D$>$ \\
-unsigned \mbox{\hyperlink{classoomph_1_1PeriodicOrbitAssemblyHandler}{oomph\+::\+Periodic\+Orbit\+Assembly\+Handler}}$<$ NNODE\+\_\+1D $>$\+::N\+\_\+element\+\_\+in\+\_\+period\hspace{0.3cm}{\ttfamily [private]}}
+unsigned \mbox{\hyperlink{classoomph_1_1PeriodicOrbitAssemblyHandler}{oomph\+::\+Periodic\+Orbit\+Assembly\+Handler}}$<$ NNODE\+\_\+1D $>$\+::\+N\+\_\+element\+\_\+in\+\_\+period\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -397,7 +449,7 @@ Referenced by \mbox{\hyperlink{periodic__orbit__handler_8h_source_l01045}{oomph\
 \index{N\_tstorage@{N\_tstorage}!oomph::PeriodicOrbitAssemblyHandler$<$ NNODE\_1D $>$@{oomph::PeriodicOrbitAssemblyHandler$<$ NNODE\_1D $>$}}
 \doxysubsubsection{\texorpdfstring{N\_tstorage}{N\_tstorage}}
 {\footnotesize\ttfamily template$<$unsigned NNODE\+\_\+1D$>$ \\
-unsigned \mbox{\hyperlink{classoomph_1_1PeriodicOrbitAssemblyHandler}{oomph\+::\+Periodic\+Orbit\+Assembly\+Handler}}$<$ NNODE\+\_\+1D $>$\+::N\+\_\+tstorage\hspace{0.3cm}{\ttfamily [private]}}
+unsigned \mbox{\hyperlink{classoomph_1_1PeriodicOrbitAssemblyHandler}{oomph\+::\+Periodic\+Orbit\+Assembly\+Handler}}$<$ NNODE\+\_\+1D $>$\+::\+N\+\_\+tstorage\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -416,7 +468,7 @@ Referenced by \mbox{\hyperlink{periodic__orbit__handler_8h_source_l01045}{oomph\
 \index{Ndof@{Ndof}!oomph::PeriodicOrbitAssemblyHandler$<$ NNODE\_1D $>$@{oomph::PeriodicOrbitAssemblyHandler$<$ NNODE\_1D $>$}}
 \doxysubsubsection{\texorpdfstring{Ndof}{Ndof}}
 {\footnotesize\ttfamily template$<$unsigned NNODE\+\_\+1D$>$ \\
-unsigned \mbox{\hyperlink{classoomph_1_1PeriodicOrbitAssemblyHandler}{oomph\+::\+Periodic\+Orbit\+Assembly\+Handler}}$<$ NNODE\+\_\+1D $>$\+::Ndof\hspace{0.3cm}{\ttfamily [private]}}
+unsigned \mbox{\hyperlink{classoomph_1_1PeriodicOrbitAssemblyHandler}{oomph\+::\+Periodic\+Orbit\+Assembly\+Handler}}$<$ NNODE\+\_\+1D $>$\+::\+Ndof\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -435,7 +487,7 @@ Referenced by \mbox{\hyperlink{periodic__orbit__handler_8h_source_l01045}{oomph\
 \index{Omega@{Omega}!oomph::PeriodicOrbitAssemblyHandler$<$ NNODE\_1D $>$@{oomph::PeriodicOrbitAssemblyHandler$<$ NNODE\_1D $>$}}
 \doxysubsubsection{\texorpdfstring{Omega}{Omega}}
 {\footnotesize\ttfamily template$<$unsigned NNODE\+\_\+1D$>$ \\
-double \mbox{\hyperlink{classoomph_1_1PeriodicOrbitAssemblyHandler}{oomph\+::\+Periodic\+Orbit\+Assembly\+Handler}}$<$ NNODE\+\_\+1D $>$\+::Omega\hspace{0.3cm}{\ttfamily [private]}}
+double \mbox{\hyperlink{classoomph_1_1PeriodicOrbitAssemblyHandler}{oomph\+::\+Periodic\+Orbit\+Assembly\+Handler}}$<$ NNODE\+\_\+1D $>$\+::\+Omega\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -454,7 +506,7 @@ Referenced by \mbox{\hyperlink{periodic__orbit__handler_8h_source_l01045}{oomph\
 \index{Previous\_dofs@{Previous\_dofs}!oomph::PeriodicOrbitAssemblyHandler$<$ NNODE\_1D $>$@{oomph::PeriodicOrbitAssemblyHandler$<$ NNODE\_1D $>$}}
 \doxysubsubsection{\texorpdfstring{Previous\_dofs}{Previous\_dofs}}
 {\footnotesize\ttfamily template$<$unsigned NNODE\+\_\+1D$>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$double$>$ \mbox{\hyperlink{classoomph_1_1PeriodicOrbitAssemblyHandler}{oomph\+::\+Periodic\+Orbit\+Assembly\+Handler}}$<$ NNODE\+\_\+1D $>$\+::Previous\+\_\+dofs\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$double$>$ \mbox{\hyperlink{classoomph_1_1PeriodicOrbitAssemblyHandler}{oomph\+::\+Periodic\+Orbit\+Assembly\+Handler}}$<$ NNODE\+\_\+1D $>$\+::\+Previous\+\_\+dofs\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -473,7 +525,7 @@ Referenced by \mbox{\hyperlink{periodic__orbit__handler_8h_source_l01045}{oomph\
 \index{Problem\_pt@{Problem\_pt}!oomph::PeriodicOrbitAssemblyHandler$<$ NNODE\_1D $>$@{oomph::PeriodicOrbitAssemblyHandler$<$ NNODE\_1D $>$}}
 \doxysubsubsection{\texorpdfstring{Problem\_pt}{Problem\_pt}}
 {\footnotesize\ttfamily template$<$unsigned NNODE\+\_\+1D$>$ \\
-\mbox{\hyperlink{classoomph_1_1Problem}{Problem}}$\ast$ \mbox{\hyperlink{classoomph_1_1PeriodicOrbitAssemblyHandler}{oomph\+::\+Periodic\+Orbit\+Assembly\+Handler}}$<$ NNODE\+\_\+1D $>$\+::Problem\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1Problem}{Problem}}$\ast$ \mbox{\hyperlink{classoomph_1_1PeriodicOrbitAssemblyHandler}{oomph\+::\+Periodic\+Orbit\+Assembly\+Handler}}$<$ NNODE\+\_\+1D $>$\+::\+Problem\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -492,7 +544,7 @@ Referenced by \mbox{\hyperlink{periodic__orbit__handler_8h_source_l01045}{oomph\
 \index{Time\_mesh\_pt@{Time\_mesh\_pt}!oomph::PeriodicOrbitAssemblyHandler$<$ NNODE\_1D $>$@{oomph::PeriodicOrbitAssemblyHandler$<$ NNODE\_1D $>$}}
 \doxysubsubsection{\texorpdfstring{Time\_mesh\_pt}{Time\_mesh\_pt}}
 {\footnotesize\ttfamily template$<$unsigned NNODE\+\_\+1D$>$ \\
-\mbox{\hyperlink{classoomph_1_1PeriodicOrbitTemporalMesh}{Periodic\+Orbit\+Temporal\+Mesh}}$<$\mbox{\hyperlink{classoomph_1_1SpectralPeriodicOrbitElement}{Spectral\+Periodic\+Orbit\+Element}}$<$NNODE\+\_\+1D$>$ $>$$\ast$ \mbox{\hyperlink{classoomph_1_1PeriodicOrbitAssemblyHandler}{oomph\+::\+Periodic\+Orbit\+Assembly\+Handler}}$<$ NNODE\+\_\+1D $>$\+::Time\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1PeriodicOrbitTemporalMesh}{Periodic\+Orbit\+Temporal\+Mesh}}$<$\mbox{\hyperlink{classoomph_1_1SpectralPeriodicOrbitElement}{Spectral\+Periodic\+Orbit\+Element}}$<$NNODE\+\_\+1D$>$ $>$$\ast$ \mbox{\hyperlink{classoomph_1_1PeriodicOrbitAssemblyHandler}{oomph\+::\+Periodic\+Orbit\+Assembly\+Handler}}$<$ NNODE\+\_\+1D $>$\+::\+Time\+\_\+mesh\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -511,7 +563,7 @@ Referenced by \mbox{\hyperlink{periodic__orbit__handler_8h_source_l01045}{oomph\
 \index{Time\_stepper\_pt@{Time\_stepper\_pt}!oomph::PeriodicOrbitAssemblyHandler$<$ NNODE\_1D $>$@{oomph::PeriodicOrbitAssemblyHandler$<$ NNODE\_1D $>$}}
 \doxysubsubsection{\texorpdfstring{Time\_stepper\_pt}{Time\_stepper\_pt}}
 {\footnotesize\ttfamily template$<$unsigned NNODE\+\_\+1D$>$ \\
-\mbox{\hyperlink{classoomph_1_1PeriodicOrbitTimeDiscretisation}{Periodic\+Orbit\+Time\+Discretisation}}$\ast$ \mbox{\hyperlink{classoomph_1_1PeriodicOrbitAssemblyHandler}{oomph\+::\+Periodic\+Orbit\+Assembly\+Handler}}$<$ NNODE\+\_\+1D $>$\+::Time\+\_\+stepper\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\hyperlink{classoomph_1_1PeriodicOrbitTimeDiscretisation}{Periodic\+Orbit\+Time\+Discretisation}}$\ast$ \mbox{\hyperlink{classoomph_1_1PeriodicOrbitAssemblyHandler}{oomph\+::\+Periodic\+Orbit\+Assembly\+Handler}}$<$ NNODE\+\_\+1D $>$\+::\+Time\+\_\+stepper\+\_\+pt\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

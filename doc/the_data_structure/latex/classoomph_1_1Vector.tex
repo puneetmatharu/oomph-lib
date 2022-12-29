@@ -36,7 +36,7 @@ typedef size\+\_\+t \mbox{\hyperlink{classoomph_1_1Vector_a8ad2a43bd51f6bf2a981d
 \mbox{\hyperlink{classoomph_1_1Vector_a408f09400832e1584c832aff24b00966}{Vector}} (\mbox{\hyperlink{classoomph_1_1Vector_a8ad2a43bd51f6bf2a981dd4e4e4247f5}{size\+\_\+type}} \+\_\+\+\_\+n, const \+\_\+\+Tp \&\+\_\+\+\_\+value)
 \begin{DoxyCompactList}\small\item\em A constructor that creates a vector of size \+\_\+\+\_\+n and initialises every entry to \+\_\+\+\_\+value. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classoomph_1_1Vector_a6b383bf851bd1442e3552fded1cad024}{Vector}} (std\+::initializer\+\_\+list$<$ \+\_\+\+Tp $>$ init)
-\begin{DoxyCompactList}\small\item\em A constructor that creates a vector with entries set by the values in the input initialiser\+\_\+list Example\+: Vector$<$int$>$ arr\{0, 20, 100, 150); Vector$<$int$>$ arr = \{0, 20, 100, 150);. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em A constructor that creates a vector with entries set by the values in the input initialiser\+\_\+list Example\+: \mbox{\hyperlink{classoomph_1_1Vector}{Vector$<$int$>$}} arr\{0, 20, 100, 150); \mbox{\hyperlink{classoomph_1_1Vector}{Vector$<$int$>$}} arr = \{0, 20, 100, 150);. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classoomph_1_1Vector_a6b3ef7c59dd463636129183dd64f7843}{Vector}} (const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \+\_\+\+Tp $>$ \&\+\_\+\+\_\+x)
 \begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1Vector_ad526bb1acccf11b485ebe12c9cde44fd}{initialise}} (const \+\_\+\+Tp \&\+\_\+\+\_\+value)
@@ -69,7 +69,7 @@ Definition at line \mbox{\hyperlink{Vector_8h_source_l00057}{57}} of file \mbox{
 \index{const\_reference@{const\_reference}!oomph::Vector$<$ \_Tp $>$@{oomph::Vector$<$ \_Tp $>$}}
 \doxysubsubsection{\texorpdfstring{const\_reference}{const\_reference}}
 {\footnotesize\ttfamily template$<$class \+\_\+\+Tp $>$ \\
-typedef const \mbox{\hyperlink{classoomph_1_1Vector_a73b0fda236ce64119befbeb30111f0b2}{value\+\_\+type}}\& \mbox{\hyperlink{classoomph_1_1Vector}{oomph\+::\+Vector}}$<$ \+\_\+\+Tp $>$\+::\mbox{\hyperlink{classoomph_1_1Vector_ad126afbb3b115ef9dce224cf33c71428}{const\+\_\+reference}}}
+typedef const \mbox{\hyperlink{classoomph_1_1Vector_a73b0fda236ce64119befbeb30111f0b2}{value\+\_\+type}}\& \mbox{\hyperlink{classoomph_1_1Vector}{oomph\+::\+Vector}}$<$ \+\_\+\+Tp $>$\+::const\+\_\+reference}
 
 
 
@@ -84,7 +84,7 @@ Definition at line \mbox{\hyperlink{Vector_8h_source_l00067}{67}} of file \mbox{
 \index{reference@{reference}!oomph::Vector$<$ \_Tp $>$@{oomph::Vector$<$ \_Tp $>$}}
 \doxysubsubsection{\texorpdfstring{reference}{reference}}
 {\footnotesize\ttfamily template$<$class \+\_\+\+Tp $>$ \\
-typedef \mbox{\hyperlink{classoomph_1_1Vector_a73b0fda236ce64119befbeb30111f0b2}{value\+\_\+type}}\& \mbox{\hyperlink{classoomph_1_1Vector}{oomph\+::\+Vector}}$<$ \+\_\+\+Tp $>$\+::\mbox{\hyperlink{classoomph_1_1Vector_a7bd8c89b884168f3ecc358acc501d356}{reference}}}
+typedef \mbox{\hyperlink{classoomph_1_1Vector_a73b0fda236ce64119befbeb30111f0b2}{value\+\_\+type}}\& \mbox{\hyperlink{classoomph_1_1Vector}{oomph\+::\+Vector}}$<$ \+\_\+\+Tp $>$\+::reference}
 
 
 
@@ -99,7 +99,7 @@ Definition at line \mbox{\hyperlink{Vector_8h_source_l00064}{64}} of file \mbox{
 \index{size\_type@{size\_type}!oomph::Vector$<$ \_Tp $>$@{oomph::Vector$<$ \_Tp $>$}}
 \doxysubsubsection{\texorpdfstring{size\_type}{size\_type}}
 {\footnotesize\ttfamily template$<$class \+\_\+\+Tp $>$ \\
-typedef size\+\_\+t \mbox{\hyperlink{classoomph_1_1Vector}{oomph\+::\+Vector}}$<$ \+\_\+\+Tp $>$\+::\mbox{\hyperlink{classoomph_1_1Vector_a8ad2a43bd51f6bf2a981dd4e4e4247f5}{size\+\_\+type}}}
+typedef size\+\_\+t \mbox{\hyperlink{classoomph_1_1Vector}{oomph\+::\+Vector}}$<$ \+\_\+\+Tp $>$\+::size\+\_\+type}
 
 
 
@@ -114,7 +114,7 @@ Definition at line \mbox{\hyperlink{Vector_8h_source_l00070}{70}} of file \mbox{
 \index{value\_type@{value\_type}!oomph::Vector$<$ \_Tp $>$@{oomph::Vector$<$ \_Tp $>$}}
 \doxysubsubsection{\texorpdfstring{value\_type}{value\_type}}
 {\footnotesize\ttfamily template$<$class \+\_\+\+Tp $>$ \\
-typedef \+\_\+\+Tp \mbox{\hyperlink{classoomph_1_1Vector}{oomph\+::\+Vector}}$<$ \+\_\+\+Tp $>$\+::\mbox{\hyperlink{classoomph_1_1Vector_a73b0fda236ce64119befbeb30111f0b2}{value\+\_\+type}}}
+typedef \+\_\+\+Tp \mbox{\hyperlink{classoomph_1_1Vector}{oomph\+::\+Vector}}$<$ \+\_\+\+Tp $>$\+::value\+\_\+type}
 
 
 
@@ -132,7 +132,7 @@ Definition at line \mbox{\hyperlink{Vector_8h_source_l00061}{61}} of file \mbox{
 \index{Vector@{Vector}!oomph::Vector$<$ \_Tp $>$@{oomph::Vector$<$ \_Tp $>$}}
 \doxysubsubsection{\texorpdfstring{Vector()}{Vector()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
 {\footnotesize\ttfamily template$<$class \+\_\+\+Tp $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{oomph\+::\+Vector}}$<$ \+\_\+\+Tp $>$\+::\mbox{\hyperlink{classoomph_1_1Vector}{Vector}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{oomph\+::\+Vector}}$<$ \+\_\+\+Tp $>$\+::\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -147,7 +147,7 @@ Definition at line \mbox{\hyperlink{Vector_8h_source_l00141}{141}} of file \mbox
 \index{Vector@{Vector}!oomph::Vector$<$ \_Tp $>$@{oomph::Vector$<$ \_Tp $>$}}
 \doxysubsubsection{\texorpdfstring{Vector()}{Vector()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
 {\footnotesize\ttfamily template$<$class \+\_\+\+Tp $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{oomph\+::\+Vector}}$<$ \+\_\+\+Tp $>$\+::\mbox{\hyperlink{classoomph_1_1Vector}{Vector}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1Vector_a8ad2a43bd51f6bf2a981dd4e4e4247f5}{size\+\_\+type}}}]{\+\_\+\+\_\+n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{oomph\+::\+Vector}}$<$ \+\_\+\+Tp $>$\+::\+Vector (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1Vector_a8ad2a43bd51f6bf2a981dd4e4e4247f5}{size\+\_\+type}}}]{\+\_\+\+\_\+n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
 
 
 
@@ -162,7 +162,7 @@ Definition at line \mbox{\hyperlink{Vector_8h_source_l00145}{145}} of file \mbox
 \index{Vector@{Vector}!oomph::Vector$<$ \_Tp $>$@{oomph::Vector$<$ \_Tp $>$}}
 \doxysubsubsection{\texorpdfstring{Vector()}{Vector()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
 {\footnotesize\ttfamily template$<$class \+\_\+\+Tp $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{oomph\+::\+Vector}}$<$ \+\_\+\+Tp $>$\+::\mbox{\hyperlink{classoomph_1_1Vector}{Vector}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1Vector_a8ad2a43bd51f6bf2a981dd4e4e4247f5}{size\+\_\+type}}}]{\+\_\+\+\_\+n,  }\item[{const \+\_\+\+Tp \&}]{\+\_\+\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{oomph\+::\+Vector}}$<$ \+\_\+\+Tp $>$\+::\+Vector (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1Vector_a8ad2a43bd51f6bf2a981dd4e4e4247f5}{size\+\_\+type}}}]{\+\_\+\+\_\+n,  }\item[{const \+\_\+\+Tp \&}]{\+\_\+\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -177,11 +177,11 @@ Definition at line \mbox{\hyperlink{Vector_8h_source_l00149}{149}} of file \mbox
 \index{Vector@{Vector}!oomph::Vector$<$ \_Tp $>$@{oomph::Vector$<$ \_Tp $>$}}
 \doxysubsubsection{\texorpdfstring{Vector()}{Vector()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
 {\footnotesize\ttfamily template$<$class \+\_\+\+Tp $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{oomph\+::\+Vector}}$<$ \+\_\+\+Tp $>$\+::\mbox{\hyperlink{classoomph_1_1Vector}{Vector}} (\begin{DoxyParamCaption}\item[{std\+::initializer\+\_\+list$<$ \+\_\+\+Tp $>$}]{init }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{oomph\+::\+Vector}}$<$ \+\_\+\+Tp $>$\+::\+Vector (\begin{DoxyParamCaption}\item[{std\+::initializer\+\_\+list$<$ \+\_\+\+Tp $>$}]{init }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-A constructor that creates a vector with entries set by the values in the input initialiser\+\_\+list Example\+: Vector$<$int$>$ arr\{0, 20, 100, 150); Vector$<$int$>$ arr = \{0, 20, 100, 150);. 
+A constructor that creates a vector with entries set by the values in the input initialiser\+\_\+list Example\+: \mbox{\hyperlink{classoomph_1_1Vector}{Vector$<$int$>$}} arr\{0, 20, 100, 150); \mbox{\hyperlink{classoomph_1_1Vector}{Vector$<$int$>$}} arr = \{0, 20, 100, 150);. 
 
 
 
@@ -192,7 +192,7 @@ Definition at line \mbox{\hyperlink{Vector_8h_source_l00158}{158}} of file \mbox
 \index{Vector@{Vector}!oomph::Vector$<$ \_Tp $>$@{oomph::Vector$<$ \_Tp $>$}}
 \doxysubsubsection{\texorpdfstring{Vector()}{Vector()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
 {\footnotesize\ttfamily template$<$class \+\_\+\+Tp $>$ \\
-\mbox{\hyperlink{classoomph_1_1Vector}{oomph\+::\+Vector}}$<$ \+\_\+\+Tp $>$\+::\mbox{\hyperlink{classoomph_1_1Vector}{Vector}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \+\_\+\+Tp $>$ \&}]{\+\_\+\+\_\+x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{classoomph_1_1Vector}{oomph\+::\+Vector}}$<$ \+\_\+\+Tp $>$\+::\+Vector (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \+\_\+\+Tp $>$ \&}]{\+\_\+\+\_\+x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
