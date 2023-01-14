@@ -125,6 +125,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
@@ -152,6 +153,15 @@ $(function() {
   </map>
 </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a2900d28d8182988e2220b44f96652933"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1CRComplexMatrix.html#a2900d28d8182988e2220b44f96652933">SerialMatrixMultiplyMethod</a> { <a class="el" href="classoomph_1_1CRComplexMatrix.html#a2900d28d8182988e2220b44f96652933ad61f471b8223c0e7144cfa586e7fbc1e">Memory_efficient</a> = 0
+, <a class="el" href="classoomph_1_1CRComplexMatrix.html#a2900d28d8182988e2220b44f96652933a90fd7fdf6f41406a75e5265b9583bb4e">Fastest</a> = 1
+, <a class="el" href="classoomph_1_1CRComplexMatrix.html#a2900d28d8182988e2220b44f96652933a4a1a3c57c4bdbd9d25dd5fdc01476fe4">Vector_of_vectors</a> = 2
+ }</td></tr>
+<tr class="memdesc:a2900d28d8182988e2220b44f96652933"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serial matrix multiply method enumeration.  <a href="classoomph_1_1CRComplexMatrix.html#a2900d28d8182988e2220b44f96652933">More...</a><br /></td></tr>
+<tr class="separator:a2900d28d8182988e2220b44f96652933"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aafc13fb96931fb4d62bad6c3146602af"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1CRComplexMatrix.html#aafc13fb96931fb4d62bad6c3146602af">CRComplexMatrix</a> ()</td></tr>
@@ -202,6 +212,21 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5df8a8b3bb15ce5627e7300448b13d28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1CRComplexMatrix.html#a5df8a8b3bb15ce5627e7300448b13d28">multiply_transpose</a> (const <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; std::complex&lt; double &gt; &gt; &amp;x, <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; std::complex&lt; double &gt; &gt; &amp;soln)</td></tr>
 <tr class="memdesc:a5df8a8b3bb15ce5627e7300448b13d28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply the transposed matrix by the vector x: soln=A^T x.  <br /></td></tr>
 <tr class="separator:a5df8a8b3bb15ce5627e7300448b13d28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75b4509e92befcf966494dc988ab6385"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1CRComplexMatrix.html#a75b4509e92befcf966494dc988ab6385">add</a> (const <a class="el" href="classoomph_1_1CRDoubleMatrix.html">CRDoubleMatrix</a> &amp;matrix_in, <a class="el" href="classoomph_1_1CRComplexMatrix.html">CRComplexMatrix</a> &amp;result_matrix) const</td></tr>
+<tr class="memdesc:a75b4509e92befcf966494dc988ab6385"><td class="mdescLeft">&#160;</td><td class="mdescRight">Element-wise addition of this matrix with matrix_in.  <br /></td></tr>
+<tr class="separator:a75b4509e92befcf966494dc988ab6385"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa27eef8fbca4814c8fc6a18f8b15381e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1CRComplexMatrix.html#aa27eef8fbca4814c8fc6a18f8b15381e">add</a> (const <a class="el" href="classoomph_1_1CRComplexMatrix.html">CRComplexMatrix</a> &amp;matrix_in, <a class="el" href="classoomph_1_1CRComplexMatrix.html">CRComplexMatrix</a> &amp;result_matrix) const</td></tr>
+<tr class="memdesc:aa27eef8fbca4814c8fc6a18f8b15381e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Element-wise addition of this matrix with matrix_in.  <br /></td></tr>
+<tr class="separator:aa27eef8fbca4814c8fc6a18f8b15381e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a229bcd64b878c045da7d4255276cdc21"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1CRComplexMatrix.html#a229bcd64b878c045da7d4255276cdc21">multiply</a> (const <a class="el" href="classoomph_1_1CRComplexMatrix.html">CRComplexMatrix</a> &amp;matrix_in, <a class="el" href="classoomph_1_1CRComplexMatrix.html">CRComplexMatrix</a> &amp;result) const</td></tr>
+<tr class="memdesc:a229bcd64b878c045da7d4255276cdc21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to multiply this matrix by the <a class="el" href="classoomph_1_1CRComplexMatrix.html" title="A class for compressed row matrices.">CRComplexMatrix</a> matrix_in. In a serial matrix, there are 3 methods available: Method 1: First runs through this matrix and matrix_in to find the storage requirements for result - arrays of the correct size are then allocated before performing the calculation. Minimises memory requirements but more costly. Method 2: Grows storage for values and column indices of result 'on the fly' using an array of maps. Faster but more memory intensive. Method 3: Grows storage for values and column indices of result 'on the fly' using a vector of vectors. Not particularly impressive on the platforms we tried... Method 2 is employed by default. See also CRDoubleMatrix::multiply(...)  <br /></td></tr>
+<tr class="separator:a229bcd64b878c045da7d4255276cdc21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a4e126871cea8645ed076ef9d25f628"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1CRComplexMatrix.html#a2900d28d8182988e2220b44f96652933">SerialMatrixMultiplyMethod</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1CRComplexMatrix.html#a9a4e126871cea8645ed076ef9d25f628">serial_matrix_matrix_multiply_method</a> ()</td></tr>
+<tr class="memdesc:a9a4e126871cea8645ed076ef9d25f628"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access function to Serial_matrix_matrix_multiply_method, the flag which determines the matrix matrix multiplication method used for serial matrices.  <br /></td></tr>
+<tr class="separator:a9a4e126871cea8645ed076ef9d25f628"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c5412ab2e02b48fc6e93a2a61972065"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1CRComplexMatrix.html#a2900d28d8182988e2220b44f96652933">SerialMatrixMultiplyMethod</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1CRComplexMatrix.html#a7c5412ab2e02b48fc6e93a2a61972065">serial_matrix_matrix_multiply_method</a> () const</td></tr>
+<tr class="memdesc:a7c5412ab2e02b48fc6e93a2a61972065"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read only access function (const version) to Serial_matrix_matrix_multiply_method, the flag which determines the matrix matrix multiplication method used for serial matrices.  <br /></td></tr>
+<tr class="separator:a7c5412ab2e02b48fc6e93a2a61972065"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classoomph_1_1CRMatrix"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classoomph_1_1CRMatrix')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classoomph_1_1CRMatrix.html">oomph::CRMatrix&lt; std::complex&lt; double &gt; &gt;</a></td></tr>
 <tr class="memitem:a0b362175c2474a0531ed7b196681209b inherit pub_methods_classoomph_1_1CRMatrix"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1CRMatrix.html#a0b362175c2474a0531ed7b196681209b">CRMatrix</a> ()</td></tr>
 <tr class="memdesc:a0b362175c2474a0531ed7b196681209b inherit pub_methods_classoomph_1_1CRMatrix"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <br /></td></tr>
@@ -406,6 +431,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:adb7e147717d66f466c46178a403fe630"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1CRComplexMatrix.html#adb7e147717d66f466c46178a403fe630">Info</a></td></tr>
 <tr class="memdesc:adb7e147717d66f466c46178a403fe630"><td class="mdescLeft">&#160;</td><td class="mdescRight">Info flag for the SuperLU solver.  <br /></td></tr>
 <tr class="separator:adb7e147717d66f466c46178a403fe630"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55efe07e54d6f4bc0fbb4164d1f26282"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1CRComplexMatrix.html#a2900d28d8182988e2220b44f96652933">SerialMatrixMultiplyMethod</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1CRComplexMatrix.html#a55efe07e54d6f4bc0fbb4164d1f26282">Serial_matrix_matrix_multiply_method</a></td></tr>
+<tr class="memdesc:a55efe07e54d6f4bc0fbb4164d1f26282"><td class="mdescLeft">&#160;</td><td class="mdescRight">A switch variable for selecting the matrix multiply method for serial (non-parallel) runs. Note that the parallel case hasn't been implemented, so this is used in both cases.  <br /></td></tr>
+<tr class="separator:a55efe07e54d6f4bc0fbb4164d1f26282"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -422,7 +450,39 @@ Additional Inherited Members</h2></td></tr>
 <div class="textblock"><p>A class for compressed row matrices. </p>
 
 <p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00277">277</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="a2900d28d8182988e2220b44f96652933" name="a2900d28d8182988e2220b44f96652933"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2900d28d8182988e2220b44f96652933">&#9670;&#160;</a></span>SerialMatrixMultiplyMethod</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="classoomph_1_1CRComplexMatrix.html#a2900d28d8182988e2220b44f96652933">oomph::CRComplexMatrix::SerialMatrixMultiplyMethod</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Serial matrix multiply method enumeration. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a2900d28d8182988e2220b44f96652933ad61f471b8223c0e7144cfa586e7fbc1e" name="a2900d28d8182988e2220b44f96652933ad61f471b8223c0e7144cfa586e7fbc1e"></a>Memory_efficient&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2900d28d8182988e2220b44f96652933a90fd7fdf6f41406a75e5265b9583bb4e" name="a2900d28d8182988e2220b44f96652933a90fd7fdf6f41406a75e5265b9583bb4e"></a>Fastest&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2900d28d8182988e2220b44f96652933a4a1a3c57c4bdbd9d25dd5fdc01476fe4" name="a2900d28d8182988e2220b44f96652933a4a1a3c57c4bdbd9d25dd5fdc01476fe4"></a>Vector_of_vectors&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00282">282</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aafc13fb96931fb4d62bad6c3146602af" name="aafc13fb96931fb4d62bad6c3146602af"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aafc13fb96931fb4d62bad6c3146602af">&#9670;&#160;</a></span>CRComplexMatrix() <span class="overload">[1/3]</span></h2>
 
@@ -448,9 +508,9 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Default constructor. </p>
 
-<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00289">289</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00291">291</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
 
-<p class="reference">References <a class="el" href="complex__matrices_8h_source.html#l00383">Doc_stats_during_solve</a>.</p>
+<p class="reference">References <a class="el" href="complex__matrices_8h_source.html#l00425">Doc_stats_during_solve</a>, <a class="el" href="classoomph_1_1CRComplexMatrix.html#a2900d28d8182988e2220b44f96652933a90fd7fdf6f41406a75e5265b9583bb4e">Fastest</a>, and <a class="el" href="complex__matrices_8h_source.html#l00437">Serial_matrix_matrix_multiply_method</a>.</p>
 
 </div>
 </div>
@@ -508,9 +568,9 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Constructor: Pass vector of values, vector of column indices, vector of row starts and number of columns (can be suppressed for square matrices) </p>
 
-<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00298">298</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00304">304</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
 
-<p class="reference">References <a class="el" href="complex__matrices_8h_source.html#l00383">Doc_stats_during_solve</a>.</p>
+<p class="reference">References <a class="el" href="complex__matrices_8h_source.html#l00425">Doc_stats_during_solve</a>, <a class="el" href="classoomph_1_1CRComplexMatrix.html#a2900d28d8182988e2220b44f96652933a90fd7fdf6f41406a75e5265b9583bb4e">Fastest</a>, and <a class="el" href="complex__matrices_8h_source.html#l00437">Serial_matrix_matrix_multiply_method</a>.</p>
 
 </div>
 </div>
@@ -567,13 +627,81 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Destructor: Kill the LU decomposition if it has been computed. </p>
 
-<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00319">319</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00329">329</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
 
-<p class="reference">References <a class="el" href="complex__matrices_8cc_source.html#l01080">clean_up_memory()</a>.</p>
+<p class="reference">References <a class="el" href="complex__matrices_8cc_source.html#l01616">clean_up_memory()</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa27eef8fbca4814c8fc6a18f8b15381e" name="aa27eef8fbca4814c8fc6a18f8b15381e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa27eef8fbca4814c8fc6a18f8b15381e">&#9670;&#160;</a></span>add() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::CRComplexMatrix::add </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classoomph_1_1CRComplexMatrix.html">CRComplexMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>matrix_in</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1CRComplexMatrix.html">CRComplexMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>result_matrix</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Element-wise addition of this matrix with matrix_in. </p>
+
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8cc_source.html#l00867">867</a> of file <a class="el" href="complex__matrices_8cc_source.html">complex_matrices.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="matrices_8h_source.html#l03404">oomph::CRMatrix&lt; T &gt;::build()</a>, <a class="el" href="matrices_8h_source.html#l00797">oomph::CRMatrix&lt; T &gt;::column_index()</a>, <a class="el" href="matrices_8h_source.html#l00797">oomph::CRMatrix&lt; std::complex&lt; double &gt; &gt;::column_index()</a>, <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="complex__matrices_8h_source.html#l00355">ncol()</a>, <a class="el" href="complex__matrices_8h_source.html#l00349">nrow()</a>, <a class="el" href="matrices_8h_source.html#l00785">oomph::CRMatrix&lt; T &gt;::row_start()</a>, <a class="el" href="matrices_8h_source.html#l00785">oomph::CRMatrix&lt; std::complex&lt; double &gt; &gt;::row_start()</a>, and <a class="el" href="matrices_8h_source.html#l00616">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::value()</a>.</p>
+
+</div>
+</div>
+<a id="a75b4509e92befcf966494dc988ab6385" name="a75b4509e92befcf966494dc988ab6385"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75b4509e92befcf966494dc988ab6385">&#9670;&#160;</a></span>add() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::CRComplexMatrix::add </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classoomph_1_1CRDoubleMatrix.html">CRDoubleMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>matrix_in</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1CRComplexMatrix.html">CRComplexMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>result_matrix</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Element-wise addition of this matrix with matrix_in. </p>
+
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8cc_source.html#l00967">967</a> of file <a class="el" href="complex__matrices_8cc_source.html">complex_matrices.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="matrices_8h_source.html#l03404">oomph::CRMatrix&lt; T &gt;::build()</a>, <a class="el" href="matrices_8h_source.html#l01210">oomph::CRDoubleMatrix::built()</a>, <a class="el" href="matrices_8h_source.html#l00797">oomph::CRMatrix&lt; std::complex&lt; double &gt; &gt;::column_index()</a>, <a class="el" href="matrices_8h_source.html#l01072">oomph::CRDoubleMatrix::column_index()</a>, <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="complex__matrices_8h_source.html#l00355">ncol()</a>, <a class="el" href="matrices_8h_source.html#l01008">oomph::CRDoubleMatrix::ncol()</a>, <a class="el" href="complex__matrices_8h_source.html#l00349">nrow()</a>, <a class="el" href="matrices_8h_source.html#l01002">oomph::CRDoubleMatrix::nrow()</a>, <a class="el" href="matrices_8h_source.html#l00785">oomph::CRMatrix&lt; std::complex&lt; double &gt; &gt;::row_start()</a>, <a class="el" href="matrices_8h_source.html#l01060">oomph::CRDoubleMatrix::row_start()</a>, <a class="el" href="matrices_8h_source.html#l00616">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::value()</a>, and <a class="el" href="matrices_8h_source.html#l01084">oomph::CRDoubleMatrix::value()</a>.</p>
+
+</div>
+</div>
 <a id="af541bd4937b4029764d1af2343633691" name="af541bd4937b4029764d1af2343633691"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af541bd4937b4029764d1af2343633691">&#9670;&#160;</a></span>clean_up_memory()</h2>
 
@@ -592,11 +720,11 @@ Additional Inherited Members</h2></td></tr>
 <p>LU clean up (perhaps this should happen in the destructor) </p>
 <p>Cleanup memory. </p>
 
-<p class="definition">Definition at line <a class="el" href="complex__matrices_8cc_source.html#l01080">1080</a> of file <a class="el" href="complex__matrices_8cc_source.html">complex_matrices.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8cc_source.html#l01616">1616</a> of file <a class="el" href="complex__matrices_8cc_source.html">complex_matrices.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="matrices_8h_source.html#l00870">oomph::CRMatrix&lt; std::complex&lt; double &gt; &gt;::Column_index</a>, <a class="el" href="complex__matrices_8h_source.html#l00383">Doc_stats_during_solve</a>, <a class="el" href="complex__matrices_8h_source.html#l00282">F_factors</a>, <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="complex__matrices_8h_source.html#l00285">Info</a>, <a class="el" href="matrices_8h_source.html#l00568">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::N</a>, <a class="el" href="matrices_8h_source.html#l00574">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::Nnz</a>, <a class="el" href="matrices_8h_source.html#l00873">oomph::CRMatrix&lt; std::complex&lt; double &gt; &gt;::Row_start</a>, <a class="el" href="namespaceoomph.html#a86eed4072592007720b957cf58c7bbe5">oomph::superlu_complex()</a>, and <a class="el" href="matrices_8h_source.html#l00565">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::Value</a>.</p>
+<p class="reference">References <a class="el" href="matrices_8h_source.html#l00870">oomph::CRMatrix&lt; std::complex&lt; double &gt; &gt;::Column_index</a>, <a class="el" href="complex__matrices_8h_source.html#l00425">Doc_stats_during_solve</a>, <a class="el" href="complex__matrices_8h_source.html#l00429">F_factors</a>, <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="complex__matrices_8h_source.html#l00432">Info</a>, <a class="el" href="matrices_8h_source.html#l00568">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::N</a>, <a class="el" href="matrices_8h_source.html#l00574">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::Nnz</a>, <a class="el" href="matrices_8h_source.html#l00873">oomph::CRMatrix&lt; std::complex&lt; double &gt; &gt;::Row_start</a>, <a class="el" href="namespaceoomph.html#a86eed4072592007720b957cf58c7bbe5">oomph::superlu_complex()</a>, and <a class="el" href="matrices_8h_source.html#l00565">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::Value</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="complex__matrices_8h_source.html#l00319">~CRComplexMatrix()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="complex__matrices_8h_source.html#l00329">~CRComplexMatrix()</a>.</p>
 
 </div>
 </div>
@@ -625,9 +753,9 @@ Additional Inherited Members</h2></td></tr>
 
 <p>the solve </p>
 
-<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00333">333</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00343">343</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
 
-<p class="reference">References <a class="el" href="complex__matrices_8h_source.html#l00383">Doc_stats_during_solve</a>.</p>
+<p class="reference">References <a class="el" href="complex__matrices_8h_source.html#l00425">Doc_stats_during_solve</a>.</p>
 
 </div>
 </div>
@@ -656,9 +784,9 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Set flag to indicate that stats are to be displayed during solution of linear system with SuperLU. </p>
 
-<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00326">326</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00336">336</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
 
-<p class="reference">References <a class="el" href="complex__matrices_8h_source.html#l00383">Doc_stats_during_solve</a>.</p>
+<p class="reference">References <a class="el" href="complex__matrices_8h_source.html#l00425">Doc_stats_during_solve</a>.</p>
 
 </div>
 </div>
@@ -692,9 +820,9 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classoomph_1_1ComplexMatrixBase.html#aa0e444d60d4ec9e35a6903ab88baaf62">oomph::ComplexMatrixBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="complex__matrices_8cc_source.html#l00999">999</a> of file <a class="el" href="complex__matrices_8cc_source.html">complex_matrices.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8cc_source.html#l01535">1535</a> of file <a class="el" href="complex__matrices_8cc_source.html">complex_matrices.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="matrices_8h_source.html#l00870">oomph::CRMatrix&lt; std::complex&lt; double &gt; &gt;::Column_index</a>, <a class="el" href="complex__matrices_8h_source.html#l00383">Doc_stats_during_solve</a>, <a class="el" href="complex__matrices_8h_source.html#l00282">F_factors</a>, <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="complex__matrices_8h_source.html#l00285">Info</a>, <a class="el" href="matrices_8h_source.html#l00571">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::M</a>, <a class="el" href="matrices_8h_source.html#l00568">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::N</a>, <a class="el" href="matrices_8h_source.html#l00574">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::Nnz</a>, <a class="el" href="matrices_8h_source.html#l00873">oomph::CRMatrix&lt; std::complex&lt; double &gt; &gt;::Row_start</a>, <a class="el" href="namespaceoomph.html#a86eed4072592007720b957cf58c7bbe5">oomph::superlu_complex()</a>, and <a class="el" href="matrices_8h_source.html#l00565">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::Value</a>.</p>
+<p class="reference">References <a class="el" href="matrices_8h_source.html#l00870">oomph::CRMatrix&lt; std::complex&lt; double &gt; &gt;::Column_index</a>, <a class="el" href="complex__matrices_8h_source.html#l00425">Doc_stats_during_solve</a>, <a class="el" href="complex__matrices_8h_source.html#l00429">F_factors</a>, <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="complex__matrices_8h_source.html#l00432">Info</a>, <a class="el" href="matrices_8h_source.html#l00571">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::M</a>, <a class="el" href="matrices_8h_source.html#l00568">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::N</a>, <a class="el" href="matrices_8h_source.html#l00574">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::Nnz</a>, <a class="el" href="matrices_8h_source.html#l00873">oomph::CRMatrix&lt; std::complex&lt; double &gt; &gt;::Row_start</a>, <a class="el" href="namespaceoomph.html#a86eed4072592007720b957cf58c7bbe5">oomph::superlu_complex()</a>, and <a class="el" href="matrices_8h_source.html#l00565">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::Value</a>.</p>
 
 </div>
 </div>
@@ -727,14 +855,48 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classoomph_1_1ComplexMatrixBase.html#a11e1beeb7767e9bc5e511c17f80f097f">oomph::ComplexMatrixBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="complex__matrices_8cc_source.html#l00946">946</a> of file <a class="el" href="complex__matrices_8cc_source.html">complex_matrices.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8cc_source.html#l01482">1482</a> of file <a class="el" href="complex__matrices_8cc_source.html">complex_matrices.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="matrices_8h_source.html#l00870">oomph::CRMatrix&lt; std::complex&lt; double &gt; &gt;::Column_index</a>, <a class="el" href="complex__matrices_8h_source.html#l00383">Doc_stats_during_solve</a>, <a class="el" href="complex__matrices_8h_source.html#l00282">F_factors</a>, <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="complex__matrices_8h_source.html#l00285">Info</a>, <a class="el" href="matrices_8h_source.html#l00571">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::M</a>, <a class="el" href="matrices_8h_source.html#l00568">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::N</a>, <a class="el" href="matrices_8h_source.html#l00574">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::Nnz</a>, <a class="el" href="matrices_8h_source.html#l00873">oomph::CRMatrix&lt; std::complex&lt; double &gt; &gt;::Row_start</a>, <a class="el" href="namespaceoomph.html#a86eed4072592007720b957cf58c7bbe5">oomph::superlu_complex()</a>, and <a class="el" href="matrices_8h_source.html#l00565">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::Value</a>.</p>
+<p class="reference">References <a class="el" href="matrices_8h_source.html#l00870">oomph::CRMatrix&lt; std::complex&lt; double &gt; &gt;::Column_index</a>, <a class="el" href="complex__matrices_8h_source.html#l00425">Doc_stats_during_solve</a>, <a class="el" href="complex__matrices_8h_source.html#l00429">F_factors</a>, <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="complex__matrices_8h_source.html#l00432">Info</a>, <a class="el" href="matrices_8h_source.html#l00571">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::M</a>, <a class="el" href="matrices_8h_source.html#l00568">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::N</a>, <a class="el" href="matrices_8h_source.html#l00574">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::Nnz</a>, <a class="el" href="matrices_8h_source.html#l00873">oomph::CRMatrix&lt; std::complex&lt; double &gt; &gt;::Row_start</a>, <a class="el" href="namespaceoomph.html#a86eed4072592007720b957cf58c7bbe5">oomph::superlu_complex()</a>, and <a class="el" href="matrices_8h_source.html#l00565">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::Value</a>.</p>
+
+</div>
+</div>
+<a id="a229bcd64b878c045da7d4255276cdc21" name="a229bcd64b878c045da7d4255276cdc21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a229bcd64b878c045da7d4255276cdc21">&#9670;&#160;</a></span>multiply() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oomph::CRComplexMatrix::multiply </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classoomph_1_1CRComplexMatrix.html">CRComplexMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>matrix_in</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoomph_1_1CRComplexMatrix.html">CRComplexMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>result</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to multiply this matrix by the <a class="el" href="classoomph_1_1CRComplexMatrix.html" title="A class for compressed row matrices.">CRComplexMatrix</a> matrix_in. In a serial matrix, there are 3 methods available: Method 1: First runs through this matrix and matrix_in to find the storage requirements for result - arrays of the correct size are then allocated before performing the calculation. Minimises memory requirements but more costly. Method 2: Grows storage for values and column indices of result 'on the fly' using an array of maps. Faster but more memory intensive. Method 3: Grows storage for values and column indices of result 'on the fly' using a vector of vectors. Not particularly impressive on the platforms we tried... Method 2 is employed by default. See also CRDoubleMatrix::multiply(...) </p>
+
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8cc_source.html#l00559">559</a> of file <a class="el" href="complex__matrices_8cc_source.html">complex_matrices.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="matrices_8h_source.html#l03354">oomph::CRMatrix&lt; T &gt;::build_without_copy()</a>, <a class="el" href="matrices_8h_source.html#l00797">oomph::CRMatrix&lt; std::complex&lt; double &gt; &gt;::column_index()</a>, <a class="el" href="matrices_8h_source.html#l00797">oomph::CRMatrix&lt; T &gt;::column_index()</a>, <a class="el" href="classoomph_1_1CRComplexMatrix.html#a2900d28d8182988e2220b44f96652933a90fd7fdf6f41406a75e5265b9583bb4e">Fastest</a>, <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="classoomph_1_1CRComplexMatrix.html#a2900d28d8182988e2220b44f96652933ad61f471b8223c0e7144cfa586e7fbc1e">Memory_efficient</a>, <a class="el" href="complex__matrices_8h_source.html#l00355">ncol()</a>, <a class="el" href="matrices_8h_source.html#l00640">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::nnz()</a>, <a class="el" href="complex__matrices_8h_source.html#l00349">nrow()</a>, <a class="el" href="matrices_8h_source.html#l00785">oomph::CRMatrix&lt; std::complex&lt; double &gt; &gt;::row_start()</a>, <a class="el" href="matrices_8h_source.html#l00785">oomph::CRMatrix&lt; T &gt;::row_start()</a>, <a class="el" href="complex__matrices_8h_source.html#l00437">Serial_matrix_matrix_multiply_method</a>, <a class="el" href="matrices_8h_source.html#l00616">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::value()</a>, and <a class="el" href="classoomph_1_1CRComplexMatrix.html#a2900d28d8182988e2220b44f96652933a4a1a3c57c4bdbd9d25dd5fdc01476fe4">Vector_of_vectors</a>.</p>
 
 </div>
 </div>
 <a id="a5ebf5f24c1bd1b4e4e3df6ebcceb189e" name="a5ebf5f24c1bd1b4e4e3df6ebcceb189e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5ebf5f24c1bd1b4e4e3df6ebcceb189e">&#9670;&#160;</a></span>multiply()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ebf5f24c1bd1b4e4e3df6ebcceb189e">&#9670;&#160;</a></span>multiply() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -772,7 +934,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classoomph_1_1ComplexMatrixBase.html#a730c106643464a29ebf0660a6921ebaa">oomph::ComplexMatrixBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="complex__matrices_8cc_source.html#l01169">1169</a> of file <a class="el" href="complex__matrices_8cc_source.html">complex_matrices.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8cc_source.html#l01706">1706</a> of file <a class="el" href="complex__matrices_8cc_source.html">complex_matrices.cc</a>.</p>
 
 <p class="reference">References <a class="el" href="matrices_8h_source.html#l00870">oomph::CRMatrix&lt; std::complex&lt; double &gt; &gt;::Column_index</a>, <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="matrices_8h_source.html#l00571">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::M</a>, <a class="el" href="matrices_8h_source.html#l00568">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::N</a>, <a class="el" href="matrices_8h_source.html#l00873">oomph::CRMatrix&lt; std::complex&lt; double &gt; &gt;::Row_start</a>, and <a class="el" href="matrices_8h_source.html#l00565">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::Value</a>.</p>
 
@@ -816,7 +978,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classoomph_1_1ComplexMatrixBase.html#a90c7832bad84aad3d0f437925efb089a">oomph::ComplexMatrixBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="complex__matrices_8cc_source.html#l01207">1207</a> of file <a class="el" href="complex__matrices_8cc_source.html">complex_matrices.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8cc_source.html#l01745">1745</a> of file <a class="el" href="complex__matrices_8cc_source.html">complex_matrices.cc</a>.</p>
 
 <p class="reference">References <a class="el" href="matrices_8h_source.html#l00870">oomph::CRMatrix&lt; std::complex&lt; double &gt; &gt;::Column_index</a>, <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="matrices_8h_source.html#l00571">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::M</a>, <a class="el" href="matrices_8h_source.html#l00568">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::N</a>, <a class="el" href="matrices_8h_source.html#l00873">oomph::CRMatrix&lt; std::complex&lt; double &gt; &gt;::Row_start</a>, and <a class="el" href="matrices_8h_source.html#l00565">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::Value</a>.</p>
 
@@ -849,11 +1011,11 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classoomph_1_1ComplexMatrixBase.html#a849b63e50dad36ca8b20b7bdefd34b8d">oomph::ComplexMatrixBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00345">345</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00355">355</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
 
-<p class="reference">References <a class="el" href="complex__matrices_8h_source.html#l00345">ncol()</a>.</p>
+<p class="reference">References <a class="el" href="complex__matrices_8h_source.html#l00355">ncol()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="complex__matrices_8h_source.html#l00345">ncol()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="complex__matrices_8cc_source.html#l00867">add()</a>, <a class="el" href="complex__matrices_8cc_source.html#l00559">multiply()</a>, and <a class="el" href="complex__matrices_8h_source.html#l00355">ncol()</a>.</p>
 
 </div>
 </div>
@@ -884,11 +1046,11 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classoomph_1_1ComplexMatrixBase.html#adcbdf19bc82c61c0a4fbfd8c8de97b3b">oomph::ComplexMatrixBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00339">339</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00349">349</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
 
-<p class="reference">References <a class="el" href="complex__matrices_8h_source.html#l00339">nrow()</a>.</p>
+<p class="reference">References <a class="el" href="complex__matrices_8h_source.html#l00349">nrow()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="complex__matrices_8h_source.html#l00339">nrow()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="complex__matrices_8cc_source.html#l00867">add()</a>, <a class="el" href="complex__matrices_8cc_source.html#l00559">multiply()</a>, and <a class="el" href="complex__matrices_8h_source.html#l00349">nrow()</a>.</p>
 
 </div>
 </div>
@@ -930,7 +1092,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classoomph_1_1ComplexMatrixBase.html#a2140730b879cfc6ea58bba5a34e6c197">oomph::ComplexMatrixBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00351">351</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00361">361</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
 
 <p class="reference">References <a class="el" href="matrices_8h_source.html#l00748">oomph::CRMatrix&lt; std::complex&lt; double &gt; &gt;::get_entry()</a>, and <a class="el" href="cfortran_8h_source.html#l00603">i</a>.</p>
 
@@ -1009,11 +1171,73 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classoomph_1_1ComplexMatrixBase.html#aec72875402b9ba387e0724d6c2597430">oomph::ComplexMatrixBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="complex__matrices_8cc_source.html#l01120">1120</a> of file <a class="el" href="complex__matrices_8cc_source.html">complex_matrices.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8cc_source.html#l01656">1656</a> of file <a class="el" href="complex__matrices_8cc_source.html">complex_matrices.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="matrices_8h_source.html#l00870">oomph::CRMatrix&lt; std::complex&lt; double &gt; &gt;::Column_index</a>, <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="matrices_8h_source.html#l00571">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::M</a>, <a class="el" href="matrices_8h_source.html#l00568">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::N</a>, <a class="el" href="complex__matrices_8cc_source.html#l01120">residual()</a>, <a class="el" href="matrices_8h_source.html#l00873">oomph::CRMatrix&lt; std::complex&lt; double &gt; &gt;::Row_start</a>, and <a class="el" href="matrices_8h_source.html#l00565">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::Value</a>.</p>
+<p class="reference">References <a class="el" href="matrices_8h_source.html#l00870">oomph::CRMatrix&lt; std::complex&lt; double &gt; &gt;::Column_index</a>, <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="matrices_8h_source.html#l00571">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::M</a>, <a class="el" href="matrices_8h_source.html#l00568">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::N</a>, <a class="el" href="complex__matrices_8cc_source.html#l01656">residual()</a>, <a class="el" href="matrices_8h_source.html#l00873">oomph::CRMatrix&lt; std::complex&lt; double &gt; &gt;::Row_start</a>, and <a class="el" href="matrices_8h_source.html#l00565">oomph::SparseMatrix&lt; T, MATRIX_TYPE &gt;::Value</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="complex__matrices_8cc_source.html#l01120">residual()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="complex__matrices_8cc_source.html#l01656">residual()</a>.</p>
+
+</div>
+</div>
+<a id="a9a4e126871cea8645ed076ef9d25f628" name="a9a4e126871cea8645ed076ef9d25f628"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a4e126871cea8645ed076ef9d25f628">&#9670;&#160;</a></span>serial_matrix_matrix_multiply_method() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoomph_1_1CRComplexMatrix.html#a2900d28d8182988e2220b44f96652933">SerialMatrixMultiplyMethod</a> &amp; oomph::CRComplexMatrix::serial_matrix_matrix_multiply_method </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Access function to Serial_matrix_matrix_multiply_method, the flag which determines the matrix matrix multiplication method used for serial matrices. </p>
+
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00408">408</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
+
+<p class="reference">References <a class="el" href="complex__matrices_8h_source.html#l00437">Serial_matrix_matrix_multiply_method</a>.</p>
+
+</div>
+</div>
+<a id="a7c5412ab2e02b48fc6e93a2a61972065" name="a7c5412ab2e02b48fc6e93a2a61972065"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c5412ab2e02b48fc6e93a2a61972065">&#9670;&#160;</a></span>serial_matrix_matrix_multiply_method() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoomph_1_1CRComplexMatrix.html#a2900d28d8182988e2220b44f96652933">SerialMatrixMultiplyMethod</a> oomph::CRComplexMatrix::serial_matrix_matrix_multiply_method </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Read only access function (const version) to Serial_matrix_matrix_multiply_method, the flag which determines the matrix matrix multiplication method used for serial matrices. </p>
+
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00417">417</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
+
+<p class="reference">References <a class="el" href="complex__matrices_8h_source.html#l00437">Serial_matrix_matrix_multiply_method</a>.</p>
 
 </div>
 </div>
@@ -1040,9 +1264,9 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Flag to indicate if stats are to be displayed during solution of linear system with SuperLU. </p>
 
-<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00383">383</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00425">425</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="complex__matrices_8cc_source.html#l01080">clean_up_memory()</a>, <a class="el" href="complex__matrices_8h_source.html#l00289">CRComplexMatrix()</a>, <a class="el" href="complex__matrices_8h_source.html#l00333">disable_doc_stats()</a>, <a class="el" href="complex__matrices_8h_source.html#l00326">enable_doc_stats()</a>, <a class="el" href="complex__matrices_8cc_source.html#l00999">lubksub()</a>, and <a class="el" href="complex__matrices_8cc_source.html#l00946">ludecompose()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="complex__matrices_8cc_source.html#l01616">clean_up_memory()</a>, <a class="el" href="complex__matrices_8h_source.html#l00291">CRComplexMatrix()</a>, <a class="el" href="complex__matrices_8h_source.html#l00343">disable_doc_stats()</a>, <a class="el" href="complex__matrices_8h_source.html#l00336">enable_doc_stats()</a>, <a class="el" href="complex__matrices_8cc_source.html#l01535">lubksub()</a>, and <a class="el" href="complex__matrices_8cc_source.html#l01482">ludecompose()</a>.</p>
 
 </div>
 </div>
@@ -1068,9 +1292,9 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Storage for the LU factors as required by SuperLU. </p>
 
-<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00282">282</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00429">429</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="complex__matrices_8cc_source.html#l01080">clean_up_memory()</a>, <a class="el" href="complex__matrices_8cc_source.html#l00999">lubksub()</a>, and <a class="el" href="complex__matrices_8cc_source.html#l00946">ludecompose()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="complex__matrices_8cc_source.html#l01616">clean_up_memory()</a>, <a class="el" href="complex__matrices_8cc_source.html#l01535">lubksub()</a>, and <a class="el" href="complex__matrices_8cc_source.html#l01482">ludecompose()</a>.</p>
 
 </div>
 </div>
@@ -1096,9 +1320,37 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Info flag for the SuperLU solver. </p>
 
-<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00285">285</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00432">432</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="complex__matrices_8cc_source.html#l01080">clean_up_memory()</a>, <a class="el" href="complex__matrices_8cc_source.html#l00999">lubksub()</a>, and <a class="el" href="complex__matrices_8cc_source.html#l00946">ludecompose()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="complex__matrices_8cc_source.html#l01616">clean_up_memory()</a>, <a class="el" href="complex__matrices_8cc_source.html#l01535">lubksub()</a>, and <a class="el" href="complex__matrices_8cc_source.html#l01482">ludecompose()</a>.</p>
+
+</div>
+</div>
+<a id="a55efe07e54d6f4bc0fbb4164d1f26282" name="a55efe07e54d6f4bc0fbb4164d1f26282"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55efe07e54d6f4bc0fbb4164d1f26282">&#9670;&#160;</a></span>Serial_matrix_matrix_multiply_method</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoomph_1_1CRComplexMatrix.html#a2900d28d8182988e2220b44f96652933">SerialMatrixMultiplyMethod</a> oomph::CRComplexMatrix::Serial_matrix_matrix_multiply_method</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>A switch variable for selecting the matrix multiply method for serial (non-parallel) runs. Note that the parallel case hasn't been implemented, so this is used in both cases. </p>
+
+<p class="definition">Definition at line <a class="el" href="complex__matrices_8h_source.html#l00437">437</a> of file <a class="el" href="complex__matrices_8h_source.html">complex_matrices.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="complex__matrices_8h_source.html#l00291">CRComplexMatrix()</a>, <a class="el" href="complex__matrices_8cc_source.html#l00559">multiply()</a>, and <a class="el" href="complex__matrices_8h_source.html#l00408">serial_matrix_matrix_multiply_method()</a>.</p>
 
 </div>
 </div>
@@ -1134,7 +1386,7 @@ Additional Inherited Members</h2></td></tr>
     <footer>
       <div class="container">
         <div class="text-muted" style="float:right;">Generated by <a href="http://www.doxygen.org/index.html">
-          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Thu Dec 29 2022 19:30:27
+          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Sat Jan 14 2023 20:52:03
         </div>
       </div>
     </footer>

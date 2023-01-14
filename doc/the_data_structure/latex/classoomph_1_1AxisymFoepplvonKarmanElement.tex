@@ -27,9 +27,9 @@ void \mbox{\hyperlink{classoomph_1_1AxisymFoepplvonKarmanElement_acfa52869f254f9
 unsigned \mbox{\hyperlink{classoomph_1_1AxisymFoepplvonKarmanElement_ab481ef11edd5211f38bb6e9936d2351f}{required\+\_\+nvalue}} (const unsigned \&n) const
 \begin{DoxyCompactList}\small\item\em Required \# of `values' (pinned or dofs) at node n. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1AxisymFoepplvonKarmanElement_a76cf09e19fc810a96251a64572248f76}{output}} (std\+::ostream \&outfile)
-\begin{DoxyCompactList}\small\item\em Output function\+: r,w,sigma\+\_\+r\+\_\+r,sigma\+\_\+phi\+\_\+phi. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Output function\+: r,w,u,sigma\+\_\+r\+\_\+r,sigma\+\_\+phi\+\_\+phi. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1AxisymFoepplvonKarmanElement_a435aab946dfcaa0b23e7df59e9bc3933}{output}} (std\+::ostream \&outfile, const unsigned \&n\+\_\+plot)
-\begin{DoxyCompactList}\small\item\em Output function\+: r,w,sigma\+\_\+r\+\_\+r,sigma\+\_\+phi\+\_\+phi at n\+\_\+plot plot points. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Output function\+: r,w,u,sigma\+\_\+r\+\_\+r,sigma\+\_\+phi\+\_\+phi at n\+\_\+plot plot points. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1AxisymFoepplvonKarmanElement_a17a94d66cf74c7be11d8e0a514db1d92}{output}} (FILE $\ast$file\+\_\+pt)
 \begin{DoxyCompactList}\small\item\em C-\/style output function\+: r,w. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1AxisymFoepplvonKarmanElement_a09a7d0ec1c8c495c7703e6c034d8eafc}{output}} (FILE $\ast$file\+\_\+pt, const unsigned \&n\+\_\+plot)
@@ -649,7 +649,7 @@ virtual unsigned \mbox{\hyperlink{classoomph_1_1AxisymFoepplvonKarmanEquations_a
 void \mbox{\hyperlink{classoomph_1_1AxisymFoepplvonKarmanEquations_a162b507ce3d9126a558790e77ec86e70}{output}} (std\+::ostream \&outfile)
 \begin{DoxyCompactList}\small\item\em Output with default number of plot points. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1AxisymFoepplvonKarmanEquations_a704051a00a2c8624edb98f3ba05e63a2}{output}} (std\+::ostream \&outfile, const unsigned \&n\+\_\+plot)
-\begin{DoxyCompactList}\small\item\em Output FE representation of soln\+: r,w,sigma\+\_\+r\+\_\+r,sigma\+\_\+phi\+\_\+phi at n\+\_\+plot plot points. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Output FE representation of soln\+: r,w,u,sigma\+\_\+r\+\_\+r,sigma\+\_\+phi\+\_\+phi at n\+\_\+plot plot points. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1AxisymFoepplvonKarmanEquations_a236f169caf08c0214ff686e939b9dd33}{output}} (FILE $\ast$file\+\_\+pt)
 \begin{DoxyCompactList}\small\item\em C\+\_\+style output with default number of plot points. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1AxisymFoepplvonKarmanEquations_a5278f37c336b7a4bd2931fdedd2945f8}{output}} (FILE $\ast$file\+\_\+pt, const unsigned \&n\+\_\+plot)
@@ -1267,7 +1267,7 @@ void \mbox{\hyperlink{classoomph_1_1AxisymFoepplvonKarmanElement}{oomph\+::\+Axi
 
 
 
-Output function\+: r,w,sigma\+\_\+r\+\_\+r,sigma\+\_\+phi\+\_\+phi. 
+Output function\+: r,w,u,sigma\+\_\+r\+\_\+r,sigma\+\_\+phi\+\_\+phi. 
 
 
 
@@ -1313,7 +1313,7 @@ void \mbox{\hyperlink{classoomph_1_1AxisymFoepplvonKarmanElement}{oomph\+::\+Axi
 
 
 
-Output function\+: r,w,sigma\+\_\+r\+\_\+r,sigma\+\_\+phi\+\_\+phi at n\+\_\+plot plot points. 
+Output function\+: r,w,u,sigma\+\_\+r\+\_\+r,sigma\+\_\+phi\+\_\+phi at n\+\_\+plot plot points. 
 
 
 

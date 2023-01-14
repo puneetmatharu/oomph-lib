@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.12.29)  29 DEC 2022 19:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.1.14)  14 JAN 2023 21:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -922,7 +922,7 @@ Package rerunfilecheck Info: File `refman.out' has not changed.
  ) ) 
 Here is how much of TeX's memory you used:
  17537 strings out of 480247
- 280841 string characters out of 5896150
+ 280841 string characters out of 5896151
  590079 words of memory out of 5000000
  35103 multiletter control sequences out of 15000+600000
  503958 words of font info for 70 fonts, out of 8000000 for 9000
@@ -1005,7 +1005,7 @@ m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
 hare/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/urw/helvetic/uhvb8ac.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on refman.pdf (11 pages, 237041 bytes).
+Output written on refman.pdf (11 pages, 237037 bytes).
 PDF statistics:
  281 PDF objects out of 1000 (max. 8388607)
  237 compressed objects within 3 object streams

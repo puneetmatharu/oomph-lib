@@ -93,7 +93,7 @@ Objective\+:
 \item objective=1\+: minimise total communications volume.
 \end{DoxyItemize}The partioning is based on the dof graph of the complete mesh by taking into account which global equation numbers are affected by each element and connecting elements which affect the same global equation number. Partitioning is done such that all elements associated with the same tree root move together. Non-\/refineable elements are treated as their own root elements. If the optional boolean flag is set to true (it defaults to false) each processor assigns a dumb-\/but-\/repeatable equidistribution of its non-\/halo elements over the domains and outputs the input that would have gone into \mbox{\hyperlink{namespaceoomph_1_1METIS}{METIS}} in the file metis\+\_\+input\+\_\+for\+\_\+validation.\+dat 
 
-Definition at line \mbox{\hyperlink{partitioning_8cc_source_l00567}{567}} of file \mbox{\hyperlink{partitioning_8cc_source}{partitioning.\+cc}}.
+Definition at line \mbox{\hyperlink{partitioning_8cc_source_l00589}{589}} of file \mbox{\hyperlink{partitioning_8cc_source}{partitioning.\+cc}}.
 
 
 
@@ -101,7 +101,7 @@ References \mbox{\hyperlink{problem_8h_source_l01246}{oomph\+::\+Problem\+::comm
 
 
 
-Referenced by \mbox{\hyperlink{problem_8cc_source_l17190}{oomph\+::\+Problem\+::load\+\_\+balance()}}.
+Referenced by \mbox{\hyperlink{problem_8cc_source_l17383}{oomph\+::\+Problem\+::load\+\_\+balance()}}.
 
 \mbox{\Hypertarget{namespaceoomph_1_1METIS_a7504999ec1517cc95d0393753a714fe9}\label{namespaceoomph_1_1METIS_a7504999ec1517cc95d0393753a714fe9}} 
 \index{oomph::METIS@{oomph::METIS}!partition\_mesh@{partition\_mesh}}
@@ -143,11 +143,11 @@ Definition at line \mbox{\hyperlink{partitioning_8cc_source_l00116}{116}} of fil
 
 
 
-References \mbox{\hyperlink{partitioning_8cc_source_l00053}{default\+\_\+error\+\_\+to\+\_\+weight\+\_\+fct()}}, \mbox{\hyperlink{cfortran_8h_source_l00571}{e}}, \mbox{\hyperlink{mesh_8h_source_l00448}{oomph\+::\+Mesh\+::element\+\_\+pt()}}, \mbox{\hyperlink{elements_8h_source_l00704}{oomph\+::\+Generalised\+Element\+::eqn\+\_\+number()}}, \mbox{\hyperlink{partitioning_8cc_source_l00063}{Error\+\_\+to\+\_\+weight\+\_\+fct\+\_\+pt}}, \mbox{\hyperlink{error__estimator_8h_source_l00056}{oomph\+::\+Error\+Estimator\+::get\+\_\+element\+\_\+errors()}}, \mbox{\hyperlink{problem_8h_source_l01280}{oomph\+::\+Problem\+::mesh\+\_\+pt()}}, \mbox{\hyperlink{namespaceoomph_a86e73012a914a19df3d849e1c6f4b9a1}{oomph\+::\+METIS\+\_\+\+Part\+Graph\+Kway()}}, \mbox{\hyperlink{namespaceoomph_abf5fe3c38b4c12aad8fdfd89b05599bd}{oomph\+::\+METIS\+\_\+\+Part\+Graph\+VKway()}}, \mbox{\hyperlink{elements_8h_source_l00835}{oomph\+::\+Generalised\+Element\+::ndof()}}, \mbox{\hyperlink{mesh_8h_source_l00590}{oomph\+::\+Mesh\+::nelement()}}, \mbox{\hyperlink{problem_8h_source_l01323}{oomph\+::\+Problem\+::nsub\+\_\+mesh()}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00319}{oomph\+::oomph\+\_\+info}}, and \mbox{\hyperlink{refineable__mesh_8h_source_l00143}{oomph\+::\+Refineable\+Mesh\+Base\+::spatial\+\_\+error\+\_\+estimator\+\_\+pt()}}.
+References \mbox{\hyperlink{problem_8h_source_l01246}{oomph\+::\+Problem\+::communicator\+\_\+pt()}}, \mbox{\hyperlink{partitioning_8cc_source_l00053}{default\+\_\+error\+\_\+to\+\_\+weight\+\_\+fct()}}, \mbox{\hyperlink{cfortran_8h_source_l00571}{e}}, \mbox{\hyperlink{mesh_8h_source_l00448}{oomph\+::\+Mesh\+::element\+\_\+pt()}}, \mbox{\hyperlink{elements_8h_source_l00704}{oomph\+::\+Generalised\+Element\+::eqn\+\_\+number()}}, \mbox{\hyperlink{partitioning_8cc_source_l00063}{Error\+\_\+to\+\_\+weight\+\_\+fct\+\_\+pt}}, \mbox{\hyperlink{error__estimator_8h_source_l00056}{oomph\+::\+Error\+Estimator\+::get\+\_\+element\+\_\+errors()}}, \mbox{\hyperlink{problem_8h_source_l01280}{oomph\+::\+Problem\+::mesh\+\_\+pt()}}, \mbox{\hyperlink{namespaceoomph_a86e73012a914a19df3d849e1c6f4b9a1}{oomph\+::\+METIS\+\_\+\+Part\+Graph\+Kway()}}, \mbox{\hyperlink{namespaceoomph_abf5fe3c38b4c12aad8fdfd89b05599bd}{oomph\+::\+METIS\+\_\+\+Part\+Graph\+VKway()}}, \mbox{\hyperlink{elements_8h_source_l00835}{oomph\+::\+Generalised\+Element\+::ndof()}}, \mbox{\hyperlink{mesh_8h_source_l00590}{oomph\+::\+Mesh\+::nelement()}}, \mbox{\hyperlink{problem_8h_source_l01323}{oomph\+::\+Problem\+::nsub\+\_\+mesh()}}, \mbox{\hyperlink{oomph__definitions_8cc_source_l00319}{oomph\+::oomph\+\_\+info}}, and \mbox{\hyperlink{refineable__mesh_8h_source_l00143}{oomph\+::\+Refineable\+Mesh\+Base\+::spatial\+\_\+error\+\_\+estimator\+\_\+pt()}}.
 
 
 
-Referenced by \mbox{\hyperlink{problem_8cc_source_l00878}{oomph\+::\+Problem\+::partition\+\_\+global\+\_\+mesh()}}.
+Referenced by \mbox{\hyperlink{problem_8cc_source_l00964}{oomph\+::\+Problem\+::partition\+\_\+global\+\_\+mesh()}}.
 
 \mbox{\Hypertarget{namespaceoomph_1_1METIS_a58831157b0cfadc57485c3de01df7d78}\label{namespaceoomph_1_1METIS_a58831157b0cfadc57485c3de01df7d78}} 
 \index{oomph::METIS@{oomph::METIS}!uniform\_partition\_mesh@{uniform\_partition\_mesh}}

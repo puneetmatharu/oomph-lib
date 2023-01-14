@@ -403,7 +403,7 @@ Private Member Functions</h2></td></tr>
 <tr class="memdesc:a0c6df8b6c50a0ccd344a62654b1411d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function to update the result vector.  <br /></td></tr>
 <tr class="separator:a0c6df8b6c50a0ccd344a62654b1411d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07183636586d7d30fcde380ef88e5fe6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1ComplexGMRES.html#a07183636586d7d30fcde380ef88e5fe6">generate_plane_rotation</a> (std::complex&lt; double &gt; &amp;dx, std::complex&lt; double &gt; &amp;dy, std::complex&lt; double &gt; &amp;cs, std::complex&lt; double &gt; &amp;sn)</td></tr>
-<tr class="memdesc:a07183636586d7d30fcde380ef88e5fe6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function: Generate a plane rotation. This is done by finding the value of <picture><source srcset="form_307_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \cos(\theta) $" src="form_307.png"/></picture> (i.e. cs) and the value of <picture><source srcset="form_417_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \sin(\theta) $" src="form_417.png"/></picture> (i.e. sn) such that:  <br /></td></tr>
+<tr class="memdesc:a07183636586d7d30fcde380ef88e5fe6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function: Generate a plane rotation. This is done by finding the value of <img class="formulaInl" alt="$ \cos(\theta) $" src="form_310.png" width="33" height="14"/> (i.e. cs) and the value of <img class="formulaInl" alt="$ \sin(\theta) $" src="form_420.png" width="31" height="14"/> (i.e. sn) such that:  <br /></td></tr>
 <tr class="separator:a07183636586d7d30fcde380ef88e5fe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8aa80ff477c4b131f8c1a4c74f872df1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1ComplexGMRES.html#a8aa80ff477c4b131f8c1a4c74f872df1">apply_plane_rotation</a> (std::complex&lt; double &gt; &amp;dx, std::complex&lt; double &gt; &amp;dy, std::complex&lt; double &gt; &amp;cs, std::complex&lt; double &gt; &amp;sn)</td></tr>
 <tr class="memdesc:a8aa80ff477c4b131f8c1a4c74f872df1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function: Apply plane rotation. This is done using the update:  <br /></td></tr>
@@ -643,7 +643,7 @@ template&lt;typename MATRIX &gt; </div>
 
 <p>Helper function: Apply plane rotation. This is done using the update: </p>
 <p class="formulaDsp">
-<picture><source srcset="form_422_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[ \begin{bmatrix} dx \\ dy \end{bmatrix} \leftarrow \begin{bmatrix} \overline{\cos\theta} &amp; \overline{\sin\theta} \\ -\sin\theta &amp; \cos\theta \end{bmatrix} \begin{bmatrix} dx \\ dy \end{bmatrix}. \]" src="form_422.png"/></picture>
+<img class="formulaDsp" alt="\[ \begin{bmatrix} dx \\ dy \end{bmatrix} \leftarrow \begin{bmatrix} \overline{\cos\theta} &amp; \overline{\sin\theta} \\ -\sin\theta &amp; \cos\theta \end{bmatrix} \begin{bmatrix} dx \\ dy \end{bmatrix}. \]" src="form_425.png" width="164" height="30"/>
 </p>
 <p> Taken from: Saad Y."Iterative methods for sparse linear systems", p.193. </p>
 
@@ -899,15 +899,15 @@ template&lt;typename MATRIX &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Helper function: Generate a plane rotation. This is done by finding the value of <picture><source srcset="form_307_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \cos(\theta) $" src="form_307.png"/></picture> (i.e. cs) and the value of <picture><source srcset="form_417_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \sin(\theta) $" src="form_417.png"/></picture> (i.e. sn) such that: </p>
+<p>Helper function: Generate a plane rotation. This is done by finding the value of <img class="formulaInl" alt="$ \cos(\theta) $" src="form_310.png" width="33" height="14"/> (i.e. cs) and the value of <img class="formulaInl" alt="$ \sin(\theta) $" src="form_420.png" width="31" height="14"/> (i.e. sn) such that: </p>
 <p class="formulaDsp">
-<picture><source srcset="form_418_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[ \begin{bmatrix} \overline{\cos\theta} &amp; \overline{\sin\theta} \cr -\sin\theta &amp; \cos\theta \end{bmatrix} \begin{bmatrix} dx \\ dy \end{bmatrix} = \begin{bmatrix} r \\ 0 \end{bmatrix}, \]" src="form_418.png"/></picture>
+<img class="formulaDsp" alt="\[ \begin{bmatrix} \overline{\cos\theta} &amp; \overline{\sin\theta} \cr -\sin\theta &amp; \cos\theta \end{bmatrix} \begin{bmatrix} dx \\ dy \end{bmatrix} = \begin{bmatrix} r \\ 0 \end{bmatrix}, \]" src="form_421.png" width="154" height="30"/>
 </p>
-<p> where <picture><source srcset="form_419_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ r=\sqrt{pow(|dx|,2)+pow(|dy|,2)} $" src="form_419.png"/></picture>. The values of a and b are given by: The values of dx and dy are given by: </p><p class="formulaDsp">
-<picture><source srcset="form_420_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[ \cos\theta&amp;=\dfrac{dx}{\sqrt{|dx|^2+|dy|^2}}, \]" src="form_420.png"/></picture>
+<p> where <img class="formulaInl" alt="$ r=\sqrt{pow(|dx|,2)+pow(|dy|,2)} $" src="form_422.png" width="179" height="16"/>. The values of a and b are given by: The values of dx and dy are given by: </p><p class="formulaDsp">
+<img class="formulaDsp" alt="\[ \cos\theta=\dfrac{dx}{\sqrt{|dx|^2+|dy|^2}}, \]" src="form_423.png" width="128" height="33"/>
 </p>
 <p> and </p><p class="formulaDsp">
-<picture><source srcset="form_421_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[ \sin\theta&amp;=\dfrac{dy}{\sqrt{|dx|^2+|dy|^2}}. \]" src="form_421.png"/></picture>
+<img class="formulaDsp" alt="\[ \sin\theta=\dfrac{dy}{\sqrt{|dx|^2+|dy|^2}}. \]" src="form_424.png" width="126" height="33"/>
 </p>
 <p> Taken from: Saad Y."Iterative methods for sparse linear systems", p.193. We also check to see that sn is always a real (nonnegative) number. See pp.193-194 for an explanation. </p>
 
@@ -1290,7 +1290,7 @@ template&lt;typename MATRIX &gt; </div>
     <footer>
       <div class="container">
         <div class="text-muted" style="float:right;">Generated by <a href="http://www.doxygen.org/index.html">
-          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Thu Dec 29 2022 19:30:26
+          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Sat Jan 14 2023 20:52:02
         </div>
       </div>
     </footer>

@@ -143,13 +143,13 @@ Functions</h2></td></tr>
 <tr class="memitem:a9b11a3992826d8daf747565d4cfcc819"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoomph_1_1Orthpoly.html#a9b11a3992826d8daf747565d4cfcc819">gl_nodes</a> (const unsigned &amp;Nnode, <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;x, <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;w)</td></tr>
 <tr class="separator:a9b11a3992826d8daf747565d4cfcc819"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa71411bff7bff140b78e33bebc5133c0"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoomph_1_1Orthpoly.html#aa71411bff7bff140b78e33bebc5133c0">legendre</a> (const unsigned &amp;p, const double &amp;x)</td></tr>
-<tr class="memdesc:aa71411bff7bff140b78e33bebc5133c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates Legendre polynomial of degree p at x using the three term recurrence relation <picture><source srcset="form_340_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ (n+1) P_{n+1} = (2n+1)xP_{n} - nP_{n-1} $" src="form_340.png"/></picture>.  <br /></td></tr>
+<tr class="memdesc:aa71411bff7bff140b78e33bebc5133c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates Legendre polynomial of degree p at x using the three term recurrence relation <img class="formulaInl" alt="$ (n+1) P_{n+1} = (2n+1)xP_{n} - nP_{n-1} $" src="form_343.png" width="199" height="14"/>.  <br /></td></tr>
 <tr class="separator:aa71411bff7bff140b78e33bebc5133c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6f2929f6ec8fde591799edaebc66380"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoomph_1_1Orthpoly.html#ab6f2929f6ec8fde591799edaebc66380">legendre_vector</a> (const unsigned &amp;p, const double &amp;x, <a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; double &gt; &amp;polys)</td></tr>
 <tr class="memdesc:ab6f2929f6ec8fde591799edaebc66380"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates Legendre polynomial of degree p at x using three term recursive formula. Returns all polynomials up to order p in the vector.  <br /></td></tr>
 <tr class="separator:ab6f2929f6ec8fde591799edaebc66380"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4062725a9af419d3c0a24927725e5435"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoomph_1_1Orthpoly.html#a4062725a9af419d3c0a24927725e5435">dlegendre</a> (const unsigned &amp;p, const double &amp;x)</td></tr>
-<tr class="memdesc:a4062725a9af419d3c0a24927725e5435"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates first derivative of Legendre polynomial of degree p at x using three term recursive formula. <picture><source srcset="form_341_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ nP_{n+1}^{'} = (2n+1)xP_{n}^{'} - (n+1)P_{n-1}^{'} $" src="form_341.png"/></picture>.  <br /></td></tr>
+<tr class="memdesc:a4062725a9af419d3c0a24927725e5435"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates first derivative of Legendre polynomial of degree p at x using three term recursive formula. <img class="formulaInl" alt="$ nP_{n+1}^{'} = (2n+1)xP_{n}^{'} - (n+1)P_{n-1}^{'} $" src="form_344.png" width="200" height="18"/>.  <br /></td></tr>
 <tr class="separator:a4062725a9af419d3c0a24927725e5435"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a560de3e87ebd12628426d853d8b4d5b3"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoomph_1_1Orthpoly.html#a560de3e87ebd12628426d853d8b4d5b3">ddlegendre</a> (const unsigned &amp;p, const double &amp;x)</td></tr>
 <tr class="memdesc:a560de3e87ebd12628426d853d8b4d5b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates second derivative of Legendre polynomial of degree p at x using three term recursive formula.  <br /></td></tr>
@@ -245,7 +245,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Calculates first derivative of Legendre polynomial of degree p at x using three term recursive formula. <picture><source srcset="form_341_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ nP_{n+1}^{'} = (2n+1)xP_{n}^{'} - (n+1)P_{n-1}^{'} $" src="form_341.png"/></picture>. </p>
+<p>Calculates first derivative of Legendre polynomial of degree p at x using three term recursive formula. <img class="formulaInl" alt="$ nP_{n+1}^{'} = (2n+1)xP_{n}^{'} - (n+1)P_{n-1}^{'} $" src="form_344.png" width="200" height="18"/>. </p>
 
 <p class="definition">Definition at line <a class="el" href="orthpoly_8h_source.html#l00121">121</a> of file <a class="el" href="orthpoly_8h_source.html">orthpoly.h</a>.</p>
 
@@ -543,7 +543,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Calculates Legendre polynomial of degree p at x using the three term recurrence relation <picture><source srcset="form_340_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ (n+1) P_{n+1} = (2n+1)xP_{n} - nP_{n-1} $" src="form_340.png"/></picture>. </p>
+<p>Calculates Legendre polynomial of degree p at x using the three term recurrence relation <img class="formulaInl" alt="$ (n+1) P_{n+1} = (2n+1)xP_{n} - nP_{n-1} $" src="form_343.png" width="199" height="14"/>. </p>
 
 <p class="definition">Definition at line <a class="el" href="orthpoly_8h_source.html#l00057">57</a> of file <a class="el" href="orthpoly_8h_source.html">orthpoly.h</a>.</p>
 
@@ -644,7 +644,7 @@ Variables</h2></td></tr>
     <footer>
       <div class="container">
         <div class="text-muted" style="float:right;">Generated by <a href="http://www.doxygen.org/index.html">
-          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Thu Dec 29 2022 19:33:51
+          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Sat Jan 14 2023 20:56:07
         </div>
       </div>
     </footer>

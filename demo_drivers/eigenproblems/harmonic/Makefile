@@ -87,8 +87,7 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = x86_64-pc-linux-gnu
 host_triplet = x86_64-pc-linux-gnu
-#check_PROGRAMS = harmonic$(EXEEXT) \
-#	complex_harmonic$(EXEEXT)
+check_PROGRAMS = harmonic$(EXEEXT) complex_harmonic$(EXEEXT)
 subdir = demo_drivers/eigenproblems/harmonic
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/config/configure.ac_scripts/automake_init_command_file \
@@ -101,24 +100,18 @@ mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
-am__complex_harmonic_SOURCES_DIST = complex_harmonic.cc validate.sh
-#am_complex_harmonic_OBJECTS =  \
-#	complex_harmonic.$(OBJEXT)
+am_complex_harmonic_OBJECTS = complex_harmonic.$(OBJEXT)
 complex_harmonic_OBJECTS = $(am_complex_harmonic_OBJECTS)
 am__DEPENDENCIES_1 =
-#complex_harmonic_DEPENDENCIES =  \
-#	$(am__DEPENDENCIES_1) \
-#	$(am__DEPENDENCIES_1)
+complex_harmonic_DEPENDENCIES = $(am__DEPENDENCIES_1) \
+	$(am__DEPENDENCIES_1)
 AM_V_lt = $(am__v_lt_$(V))
 am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))
 am__v_lt_0 = --silent
 am__v_lt_1 = 
-am__harmonic_SOURCES_DIST = harmonic.cc validate.sh
-#am_harmonic_OBJECTS = harmonic.$(OBJEXT)
+am_harmonic_OBJECTS = harmonic.$(OBJEXT)
 harmonic_OBJECTS = $(am_harmonic_OBJECTS)
-#harmonic_DEPENDENCIES =  \
-#	$(am__DEPENDENCIES_1) \
-#	$(am__DEPENDENCIES_1)
+harmonic_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 AM_V_P = $(am__v_P_$(V))
 am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))
 am__v_P_0 = false
@@ -155,8 +148,7 @@ am__v_CXXLD_ = $(am__v_CXXLD_$(AM_DEFAULT_VERBOSITY))
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
 SOURCES = $(complex_harmonic_SOURCES) $(harmonic_SOURCES)
-DIST_SOURCES = $(am__complex_harmonic_SOURCES_DIST) \
-	$(am__harmonic_SOURCES_DIST)
+DIST_SOURCES = $(complex_harmonic_SOURCES) $(harmonic_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -400,18 +392,18 @@ TESTS = $(top_builddir)/bin/wrapper_for_validate.sh
 EXTRA_DIST = validate.sh validata
 
 # Sources for executable
-#harmonic_SOURCES = harmonic.cc validate.sh
+harmonic_SOURCES = harmonic.cc validate.sh
 
 # Required libraries:
 # $(FLIBS) is included in case the solver involves fortran sources.
-#harmonic_LDADD = -L${exec_prefix}/lib -lgeneric $(EXTERNAL_LIBS) $(FLIBS)
+harmonic_LDADD = -L${exec_prefix}/lib -lgeneric $(EXTERNAL_LIBS) $(FLIBS)
 
 # Sources for executable
-#complex_harmonic_SOURCES = complex_harmonic.cc validate.sh
+complex_harmonic_SOURCES = complex_harmonic.cc validate.sh
 
 # Required libraries:
 # $(FLIBS) is included in case the solver involves fortran sources.
-#complex_harmonic_LDADD = -L${exec_prefix}/lib -lgeneric $(EXTERNAL_LIBS) $(FLIBS)
+complex_harmonic_LDADD = -L${exec_prefix}/lib -lgeneric $(EXTERNAL_LIBS) $(FLIBS)
 all: all-am
 
 .SUFFIXES:
@@ -830,10 +822,6 @@ check-if-executables-exist:
 # Get command to run gmsh on command line
 spit_out_gmsh_command:
 	@echo $(GMSH_RUN_COMMAND)
-
-do_we_have_arpack:
-#	echo "have arpack"
-	echo "dont have arpack"
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
