@@ -7,7 +7,7 @@
 \DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l00003}00003\ \textcolor{comment}{//\ LIC//\ multi-\/physics\ finite-\/element\ library,\ available}}
 \DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l00004}00004\ \textcolor{comment}{//\ LIC//\ at\ http://www.oomph-\/lib.org.}}
 \DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l00005}00005\ \textcolor{comment}{//\ LIC//}}
-\DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l00006}00006\ \textcolor{comment}{//\ LIC//\ Copyright\ (C)\ 2006-\/2023\ Matthias\ Heil\ and\ Andrew\ Hazel}}
+\DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l00006}00006\ \textcolor{comment}{//\ LIC//\ Copyright\ (C)\ 2006-\/2022\ Matthias\ Heil\ and\ Andrew\ Hazel}}
 \DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l00007}00007\ \textcolor{comment}{//\ LIC//}}
 \DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l00008}00008\ \textcolor{comment}{//\ LIC//\ This\ library\ is\ free\ software;\ you\ can\ redistribute\ it\ and/or}}
 \DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l00009}00009\ \textcolor{comment}{//\ LIC//\ modify\ it\ under\ the\ terms\ of\ the\ GNU\ Lesser\ General\ Public}}
@@ -685,9 +685,9 @@
 \DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l00681}00681\ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ the\ 2-\/norm\ (noting\ that\ the\ 2-\/norm\ of\ a\ complex\ vector\ a\ of}}
 \DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l00682}00682\ \ \ \ \ \ \ \textcolor{comment}{//\ length\ n\ is\ simply\ the\ square\ root\ of\ the\ sum\ of\ the\ squares\ of\ each}}
 \DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l00683}00683\ \ \ \ \ \ \ \textcolor{comment}{//\ real\ and\ imaginary\ component).\ That\ is:}\textcolor{comment}{}}
-\DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l00684}00684\ \textcolor{comment}{\ \ \ \ \ \ ///\ \(\backslash\)f[\ \(\backslash\)|a\(\backslash\)|\_2\string^2=\(\backslash\)sum\_\{i=0\}\string^\{i=n-\/1\}\(\backslash\)Re(a[i])\string^2+\(\backslash\)Im(a[i])\string^2.\ \(\backslash\)f]}}
+\DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l00684}00684\ \textcolor{comment}{\ \ \ \ \ \ ///\ \(\backslash\)f[\ \(\backslash\)|a\(\backslash\)|\_2\string^2=\(\backslash\)sum\_\{i=0\}\string^\{i=n-\/1\}\(\backslash\)real(a[i])\string^2+\(\backslash\)imag(a[i])\string^2.\ \(\backslash\)f]}}
 \DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l00685}00685\ \textcolor{comment}{}\ \ \ \ \ \ \textcolor{comment}{//\ can\ be\ written\ as:}\textcolor{comment}{}}
-\DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l00686}00686\ \textcolor{comment}{\ \ \ \ \ \ ///\ \(\backslash\)f[\ \(\backslash\)|a\(\backslash\)|\_2\string^2=\(\backslash\)|\(\backslash\)Re(a)\(\backslash\)|\_2\string^2+\(\backslash\)|\(\backslash\)Im(a)\(\backslash\)|\_2\string^2.\ \(\backslash\)f]}}
+\DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l00686}00686\ \textcolor{comment}{\ \ \ \ \ \ ///\ \(\backslash\)f[\ \(\backslash\)|a\(\backslash\)|\_2\string^2=\(\backslash\)|\(\backslash\)real(a)\(\backslash\)|\_2\string^2+\(\backslash\)|\(\backslash\)imag(a)\(\backslash\)|\_2\string^2.\ \(\backslash\)f]}}
 \DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l00687}00687\ \textcolor{comment}{}\ \ \ \ \ \ \textcolor{keywordtype}{double}\ res\_real\_norm\ =\ residual\_real.\mbox{\hyperlink{classoomph_1_1DoubleVector_a9ac9245cac87ddcdb70cfcd697553a55}{norm}}();}
 \DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l00688}00688\ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ res\_imag\_norm\ =\ residual\_imag.\mbox{\hyperlink{classoomph_1_1DoubleVector_a9ac9245cac87ddcdb70cfcd697553a55}{norm}}();}
 \DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l00689}00689\ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ norm\_res\ =}
@@ -1101,9 +1101,9 @@
 \DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l01097}01097\ \textcolor{comment}{\ \ \ \ ///\ where\ \(\backslash\)f\$\ r=\(\backslash\)sqrt\{pow(|dx|,2)+pow(|dy|,2)\}\ \(\backslash\)f\$.\ The\ values\ of\ a\ and\ b}}
 \DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l01098}01098\ \textcolor{comment}{\ \ \ \ ///\ are\ given\ by:}}
 \DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l01099}01099\ \textcolor{comment}{\ \ \ \ ///\ The\ values\ of\ dx\ and\ dy\ are\ given\ by:}}
-\DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l01100}01100\ \textcolor{comment}{\ \ \ \ ///\ \(\backslash\)f[\ \(\backslash\)cos\(\backslash\)theta=\(\backslash\)dfrac\{dx\}\{\(\backslash\)sqrt\{|dx|\string^2+|dy|\string^2\}\},\ \(\backslash\)f]}}
+\DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l01100}01100\ \textcolor{comment}{\ \ \ \ ///\ \(\backslash\)f[\ \(\backslash\)cos\(\backslash\)theta\&=\(\backslash\)dfrac\{dx\}\{\(\backslash\)sqrt\{|dx|\string^2+|dy|\string^2\}\},\ \(\backslash\)f]}}
 \DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l01101}01101\ \textcolor{comment}{\ \ \ \ ///\ and}}
-\DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l01102}01102\ \textcolor{comment}{\ \ \ \ ///\ \(\backslash\)f[\ \(\backslash\)sin\(\backslash\)theta=\(\backslash\)dfrac\{dy\}\{\(\backslash\)sqrt\{|dx|\string^2+|dy|\string^2\}\}.\ \(\backslash\)f]}}
+\DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l01102}01102\ \textcolor{comment}{\ \ \ \ ///\ \(\backslash\)f[\ \(\backslash\)sin\(\backslash\)theta\&=\(\backslash\)dfrac\{dy\}\{\(\backslash\)sqrt\{|dx|\string^2+|dy|\string^2\}\}.\ \(\backslash\)f]}}
 \DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l01103}01103\ \textcolor{comment}{\ \ \ \ ///\ Taken\ from:\ Saad\ Y."{}Iterative\ methods\ for\ sparse\ linear\ systems"{},\ p.193.}}
 \DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l01104}01104\ \textcolor{comment}{\ \ \ \ ///\ We\ also\ check\ to\ see\ that\ sn\ is\ always\ a\ real\ (nonnegative)\ number.\ See}}
 \DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l01105}01105\ \textcolor{comment}{\ \ \ \ ///\ pp.193-\/194\ for\ an\ explanation.}}
@@ -2322,9 +2322,9 @@
 \DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l02318}02318\ \textcolor{comment}{\ \ \ \ ///\ where\ \(\backslash\)f\$\ r=\(\backslash\)sqrt\{pow(|dx|,2)+pow(|dy|,2)\}\ \(\backslash\)f\$.\ The\ values\ of\ a\ and\ b}}
 \DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l02319}02319\ \textcolor{comment}{\ \ \ \ ///\ are\ given\ by:}}
 \DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l02320}02320\ \textcolor{comment}{\ \ \ \ ///\ The\ values\ of\ dx\ and\ dy\ are\ given\ by:}}
-\DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l02321}02321\ \textcolor{comment}{\ \ \ \ ///\ \(\backslash\)f[\ \(\backslash\)cos\(\backslash\)theta=\(\backslash\)dfrac\{dx\}\{\(\backslash\)sqrt\{|dx|\string^2+|dy|\string^2\}\},\ \(\backslash\)f]}}
+\DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l02321}02321\ \textcolor{comment}{\ \ \ \ ///\ \(\backslash\)f[\ \(\backslash\)cos\(\backslash\)theta\&=\(\backslash\)dfrac\{dx\}\{\(\backslash\)sqrt\{|dx|\string^2+|dy|\string^2\}\},\ \(\backslash\)f]}}
 \DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l02322}02322\ \textcolor{comment}{\ \ \ \ ///\ and}}
-\DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l02323}02323\ \textcolor{comment}{\ \ \ \ ///\ \(\backslash\)f[\ \(\backslash\)sin\(\backslash\)theta=\(\backslash\)dfrac\{dy\}\{\(\backslash\)sqrt\{|dx|\string^2+|dy|\string^2\}\}.\ \(\backslash\)f]}}
+\DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l02323}02323\ \textcolor{comment}{\ \ \ \ ///\ \(\backslash\)f[\ \(\backslash\)sin\(\backslash\)theta\&=\(\backslash\)dfrac\{dy\}\{\(\backslash\)sqrt\{|dx|\string^2+|dy|\string^2\}\}.\ \(\backslash\)f]}}
 \DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l02324}02324\ \textcolor{comment}{\ \ \ \ ///\ Taken\ from:\ Saad\ Y."{}Iterative\ methods\ for\ sparse\ linear\ systems"{},\ p.193.}}
 \DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l02325}02325\ \textcolor{comment}{\ \ \ \ ///\ We\ also\ check\ to\ see\ that\ sn\ is\ always\ a\ real\ (nonnegative)\ number.\ See}}
 \DoxyCodeLine{\Hypertarget{complex__smoother_8h_source_l02326}02326\ \textcolor{comment}{\ \ \ \ ///\ pp.193-\/194\ for\ an\ explanation.}}

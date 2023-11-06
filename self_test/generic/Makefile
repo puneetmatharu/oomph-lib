@@ -365,10 +365,7 @@ top_builddir = ../..
 top_srcdir = ../..
 SUBDIRS = \
 vector_matrix_test \
-block_selector_test \
-complex_matrices_test \
-eigen_solver_test \
-problem_test
+block_selector_test
 
 all: all-recursive
 

@@ -86,9 +86,6 @@
 #              used. autoconf should automatically detect any 
 #              other libraries.
 #=====================================================================
-# Disable the build of CGAL and its underlying third party distributions
---enable-suppress-cgal-build
-
 --enable-suppress-doc
 --enable-symbolic-links-for-headers
 --disable-shared

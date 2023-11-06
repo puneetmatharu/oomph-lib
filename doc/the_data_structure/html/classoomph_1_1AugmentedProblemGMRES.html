@@ -403,7 +403,7 @@ Private Member Functions</h2></td></tr>
 <tr class="memdesc:ab7513cfa22054fa1bff319c72aac8313"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function to update the result vector using the result, x=x_0+V_m*y.  <br /></td></tr>
 <tr class="separator:ab7513cfa22054fa1bff319c72aac8313"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74bb2d9ceab6473c1922b166ebf48681"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AugmentedProblemGMRES.html#a74bb2d9ceab6473c1922b166ebf48681">generate_plane_rotation</a> (double &amp;dx, double &amp;dy, double &amp;cs, double &amp;sn)</td></tr>
-<tr class="memdesc:a74bb2d9ceab6473c1922b166ebf48681"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function: Generate a plane rotation. This is done by finding the values of <img class="formulaInl" alt="$ \cos(\theta) $" src="form_310.png" width="33" height="14"/> (i.e. cs) and \sin(\theta) (i.e. sn) such that:  <br /></td></tr>
+<tr class="memdesc:a74bb2d9ceab6473c1922b166ebf48681"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function: Generate a plane rotation. This is done by finding the values of <picture><source srcset="form_307_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \cos(\theta) $" src="form_307.png"/></picture> (i.e. cs) and \sin(\theta) (i.e. sn) such that:  <br /></td></tr>
 <tr class="separator:a74bb2d9ceab6473c1922b166ebf48681"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a175361cb4600f20511213636f2e645ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1AugmentedProblemGMRES.html#a175361cb4600f20511213636f2e645ce">apply_plane_rotation</a> (double &amp;dx, double &amp;dy, double &amp;cs, double &amp;sn)</td></tr>
 <tr class="memdesc:a175361cb4600f20511213636f2e645ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function: Apply plane rotation. This is done using the update:  <br /></td></tr>
@@ -680,7 +680,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Helper function: Apply plane rotation. This is done using the update: </p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[ \begin{bmatrix} dx \newline dy \end{bmatrix} \leftarrow \begin{bmatrix} \cos\theta &amp; \sin\theta \newline -\sin\theta &amp; \cos\theta \end{bmatrix} \begin{bmatrix} dx \newline dy \end{bmatrix}. \]" src="form_315.png" width="246" height="16"/>
+<picture><source srcset="form_312_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[ \begin{bmatrix} dx \newline dy \end{bmatrix} \leftarrow \begin{bmatrix} \cos\theta &amp; \sin\theta \newline -\sin\theta &amp; \cos\theta \end{bmatrix} \begin{bmatrix} dx \newline dy \end{bmatrix}. \]" src="form_312.png"/></picture>
 </p>
  
 <p class="definition">Definition at line <a class="el" href="iterative__linear__solver_8h_source.html#l01913">1913</a> of file <a class="el" href="iterative__linear__solver_8h_source.html">iterative_linear_solver.h</a>.</p>
@@ -960,15 +960,15 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Helper function: Generate a plane rotation. This is done by finding the values of <img class="formulaInl" alt="$ \cos(\theta) $" src="form_310.png" width="33" height="14"/> (i.e. cs) and \sin(\theta) (i.e. sn) such that: </p>
+<p>Helper function: Generate a plane rotation. This is done by finding the values of <picture><source srcset="form_307_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \cos(\theta) $" src="form_307.png"/></picture> (i.e. cs) and \sin(\theta) (i.e. sn) such that: </p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[ \begin{bmatrix} \cos\theta &amp; \sin\theta \newline -\sin\theta &amp; \cos\theta \end{bmatrix} \begin{bmatrix} dx \newline dy \end{bmatrix} = \begin{bmatrix} r \newline 0 \end{bmatrix}, \]" src="form_311.png" width="229" height="16"/>
+<picture><source srcset="form_308_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[ \begin{bmatrix} \cos\theta &amp; \sin\theta \newline -\sin\theta &amp; \cos\theta \end{bmatrix} \begin{bmatrix} dx \newline dy \end{bmatrix} = \begin{bmatrix} r \newline 0 \end{bmatrix}, \]" src="form_308.png"/></picture>
 </p>
-<p> where <img class="formulaInl" alt="$ r=\sqrt{pow(dx,2)+pow(dy,2)} $" src="form_312.png" width="165" height="16"/>. The values of a and b are given by: </p><p class="formulaDsp">
-<img class="formulaDsp" alt="\[ \cos\theta=\dfrac{dx}{\sqrt{pow(dx,2)+pow(dy,2)}}, \]" src="form_313.png" width="189" height="33"/>
+<p> where <picture><source srcset="form_309_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ r=\sqrt{pow(dx,2)+pow(dy,2)} $" src="form_309.png"/></picture>. The values of a and b are given by: </p><p class="formulaDsp">
+<picture><source srcset="form_310_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[ \cos\theta&amp;=\dfrac{dx}{\sqrt{pow(dx,2)+pow(dy,2)}}, \]" src="form_310.png"/></picture>
 </p>
 <p> and </p><p class="formulaDsp">
-<img class="formulaDsp" alt="\[ \sin\theta=\dfrac{dy}{\sqrt{pow(dx,2)+pow(dy,2)}}. \]" src="form_314.png" width="186" height="33"/>
+<picture><source srcset="form_311_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[ \sin\theta&amp;=\dfrac{dy}{\sqrt{pow(dx,2)+pow(dy,2)}}. \]" src="form_311.png"/></picture>
 </p>
 <p> Taken from: Saad Y."Iterative methods for sparse linear systems", p.192 </p>
 
@@ -1319,7 +1319,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="iterative__linear__solver_8cc_source.html#l02746">2746</a> of file <a class="el" href="iterative__linear__solver_8cc_source.html">iterative_linear_solver.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="double__vector_8cc_source.html#l00035">oomph::DoubleVector::build()</a>, <a class="el" href="linear__algebra__distribution_8h_source.html#l00507">oomph::DistributableLinearAlgebraObject::build_distribution()</a>, <a class="el" href="double__vector_8h_source.html#l00154">oomph::DoubleVector::built()</a>, <a class="el" href="iterative__linear__solver_8h_source.html#l01687">clean_up_memory()</a>, <a class="el" href="problem_8h_source.html#l01246">oomph::Problem::communicator_pt()</a>, <a class="el" href="linear__algebra__distribution_8h_source.html#l00457">oomph::DistributableLinearAlgebraObject::distribution_pt()</a>, <a class="el" href="linear__solver_8h_source.html#l00077">oomph::LinearSolver::Doc_time</a>, <a class="el" href="linear__solver_8h_source.html#l00073">oomph::LinearSolver::Enable_resolve</a>, <a class="el" href="problem_8cc_source.html#l03921">oomph::Problem::get_jacobian()</a>, <a class="el" href="iterative__linear__solver_8h_source.html#l00248">oomph::IterativeLinearSolver::Jacobian_setup_time</a>, <a class="el" href="iterative__linear__solver_8h_source.html#l01959">Matrix_can_be_deleted</a>, <a class="el" href="iterative__linear__solver_8h_source.html#l01936">Matrix_pt</a>, <a class="el" href="problem_8h_source.html#l01678">oomph::Problem::ndof()</a>, <a class="el" href="oomph__definitions_8cc_source.html#l00319">oomph::oomph_info</a>, <a class="el" href="double__vector_8cc_source.html#l00164">oomph::DoubleVector::redistribute()</a>, <a class="el" href="iterative__linear__solver_8h_source.html#l01955">Resolving</a>, <a class="el" href="iterative__linear__solver_8h_source.html#l01951">Schur_complement_scalar</a>, <a class="el" href="iterative__linear__solver_8cc_source.html#l02862">solve_helper()</a>, and <a class="el" href="oomph__utilities_8cc_source.html#l01295">oomph::TimingHelpers::timer()</a>.</p>
+<p class="reference">References <a class="el" href="double__vector_8cc_source.html#l00035">oomph::DoubleVector::build()</a>, <a class="el" href="linear__algebra__distribution_8h_source.html#l00507">oomph::DistributableLinearAlgebraObject::build_distribution()</a>, <a class="el" href="double__vector_8h_source.html#l00154">oomph::DoubleVector::built()</a>, <a class="el" href="iterative__linear__solver_8h_source.html#l01687">clean_up_memory()</a>, <a class="el" href="problem_8h_source.html#l01246">oomph::Problem::communicator_pt()</a>, <a class="el" href="linear__algebra__distribution_8h_source.html#l00457">oomph::DistributableLinearAlgebraObject::distribution_pt()</a>, <a class="el" href="linear__solver_8h_source.html#l00077">oomph::LinearSolver::Doc_time</a>, <a class="el" href="linear__solver_8h_source.html#l00073">oomph::LinearSolver::Enable_resolve</a>, <a class="el" href="problem_8cc_source.html#l03890">oomph::Problem::get_jacobian()</a>, <a class="el" href="iterative__linear__solver_8h_source.html#l00248">oomph::IterativeLinearSolver::Jacobian_setup_time</a>, <a class="el" href="iterative__linear__solver_8h_source.html#l01959">Matrix_can_be_deleted</a>, <a class="el" href="iterative__linear__solver_8h_source.html#l01936">Matrix_pt</a>, <a class="el" href="problem_8h_source.html#l01674">oomph::Problem::ndof()</a>, <a class="el" href="oomph__definitions_8cc_source.html#l00319">oomph::oomph_info</a>, <a class="el" href="double__vector_8cc_source.html#l00164">oomph::DoubleVector::redistribute()</a>, <a class="el" href="iterative__linear__solver_8h_source.html#l01955">Resolving</a>, <a class="el" href="iterative__linear__solver_8h_source.html#l01951">Schur_complement_scalar</a>, <a class="el" href="iterative__linear__solver_8cc_source.html#l02862">solve_helper()</a>, and <a class="el" href="oomph__utilities_8cc_source.html#l01295">oomph::TimingHelpers::timer()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="iterative__linear__solver_8cc_source.html#l02831">resolve()</a>.</p>
 
@@ -1803,7 +1803,7 @@ Additional Inherited Members</h2></td></tr>
     <footer>
       <div class="container">
         <div class="text-muted" style="float:right;">Generated by <a href="http://www.doxygen.org/index.html">
-          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Sat Jan 14 2023 20:51:44
+          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Mon Nov 6 2023 20:11:04
         </div>
       </div>
     </footer>

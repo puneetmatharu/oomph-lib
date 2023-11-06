@@ -51,7 +51,7 @@ virtual unsigned \mbox{\hyperlink{classoomph_1_1AxisymFoepplvonKarmanEquations_a
 void \mbox{\hyperlink{classoomph_1_1AxisymFoepplvonKarmanEquations_a162b507ce3d9126a558790e77ec86e70}{output}} (std\+::ostream \&outfile)
 \begin{DoxyCompactList}\small\item\em Output with default number of plot points. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1AxisymFoepplvonKarmanEquations_a704051a00a2c8624edb98f3ba05e63a2}{output}} (std\+::ostream \&outfile, const unsigned \&n\+\_\+plot)
-\begin{DoxyCompactList}\small\item\em Output FE representation of soln\+: r,w,u,sigma\+\_\+r\+\_\+r,sigma\+\_\+phi\+\_\+phi at n\+\_\+plot plot points. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Output FE representation of soln\+: r,w,sigma\+\_\+r\+\_\+r,sigma\+\_\+phi\+\_\+phi at n\+\_\+plot plot points. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1AxisymFoepplvonKarmanEquations_a236f169caf08c0214ff686e939b9dd33}{output}} (FILE $\ast$file\+\_\+pt)
 \begin{DoxyCompactList}\small\item\em C\+\_\+style output with default number of plot points. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1AxisymFoepplvonKarmanEquations_a5278f37c336b7a4bd2931fdedd2945f8}{output}} (FILE $\ast$file\+\_\+pt, const unsigned \&n\+\_\+plot)
@@ -1584,9 +1584,7 @@ References \mbox{\hyperlink{axisym__displ__based__fvk__elements_8h_source_l00117
 
 C-\/style output FE representation of soln\+: r,w at n\+\_\+plot plot points. 
 
-C-\/style output function\+: r,w nplot points.
-
-C-\/style output function\+: r,w,u nplot points. 
+C-\/style output function\+: r,w nplot points. 
 
 Reimplemented from \mbox{\hyperlink{classoomph_1_1FiniteElement_adfaee690bb0608f03320eeb9d110d48c}{oomph\+::\+Finite\+Element}}.
 
@@ -1684,11 +1682,9 @@ References \mbox{\hyperlink{axisym__displ__based__fvk__elements_8h_source_l00117
 
 
 
-Output FE representation of soln\+: r,w,u,sigma\+\_\+r\+\_\+r,sigma\+\_\+phi\+\_\+phi at n\+\_\+plot plot points. 
+Output FE representation of soln\+: r,w,sigma\+\_\+r\+\_\+r,sigma\+\_\+phi\+\_\+phi at n\+\_\+plot plot points. 
 
-Output function\+: r, w, sigma\+\_\+r\+\_\+r, sigma\+\_\+phi\+\_\+phi nplot points.
-
-Output function\+: r, w, u, sigma\+\_\+r\+\_\+r, sigma\+\_\+phi\+\_\+phi nplot points. 
+Output function\+: r, w, sigma\+\_\+r\+\_\+r, sigma\+\_\+phi\+\_\+phi nplot points. 
 
 Reimplemented from \mbox{\hyperlink{classoomph_1_1FiniteElement_afa9d9b2670f999b43e6679c9dd28c457}{oomph\+::\+Finite\+Element}}.
 

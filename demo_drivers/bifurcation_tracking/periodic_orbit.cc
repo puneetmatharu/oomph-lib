@@ -3,7 +3,7 @@
 //LIC// multi-physics finite-element library, available 
 //LIC// at http://www.oomph-lib.org.
 //LIC// 
-//LIC// Copyright (C) 2006-2023 Matthias Heil and Andrew Hazel
+//LIC// Copyright (C) 2006-2022 Matthias Heil and Andrew Hazel
 //LIC// 
 //LIC// This library is free software; you can redistribute it and/or
 //LIC// modify it under the terms of the GNU Lesser General Public
@@ -378,8 +378,7 @@ void ABCProblem<ELEMENT,TIMESTEPPER>::solve()
 {
  //Assign memory for the eigenvalues and eigenvectors
  Vector<std::complex<double> > eigenvalues;
- Vector<DoubleVector> eigenvector_real;
- Vector<DoubleVector> eigenvector_imag;
+ Vector< DoubleVector > eigenvectors;
 
  Desired_newton_iterations_ds = 2;
  Desired_proportion_of_arc_length = 0.5;
@@ -401,7 +400,7 @@ void ABCProblem<ELEMENT,TIMESTEPPER>::solve()
          << mesh_pt()->element_pt(0)->internal_data_pt(0)->value(2) 
          << std::endl;
    
-   this->solve_eigenproblem(3,eigenvalues,eigenvector_real,eigenvector_imag);
+   this->solve_eigenproblem(3,eigenvalues,eigenvectors);
    
    for(unsigned e=0;e<eigenvalues.size();e++)
     {
@@ -414,7 +413,7 @@ void ABCProblem<ELEMENT,TIMESTEPPER>::solve()
  //Now let's track the Hopf 
  activate_hopf_tracking(&Global_Physical_Variables::P[0],
                         eigenvalues[0].imag(),
-                        eigenvector_real[0],eigenvector_imag[0]);
+                        eigenvectors[0],eigenvectors[1]);
 
  this->steady_newton_solve();
 

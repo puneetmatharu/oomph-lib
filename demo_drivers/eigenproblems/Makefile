@@ -151,7 +151,7 @@ am__define_uniq_tagged_files = \
   unique=`for i in $$list; do \
     if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
   done | $(am__uniquify_input)`
-DIST_SUBDIRS = $(SUBDIRS)
+DIST_SUBDIRS = harmonic orr_sommerfeld
 am__DIST_COMMON = $(srcdir)/Makefile.in
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 am__relativize = \
@@ -363,7 +363,10 @@ target_alias =
 top_build_prefix = ../../
 top_builddir = ../..
 top_srcdir = ../..
-SUBDIRS = harmonic orr_sommerfeld
+SUBDIRS = 
+
+# Only do the eigen-tests if the arpack sources are available
+#SUBDIRS = harmonic orr_sommerfeld
 all: all-recursive
 
 .SUFFIXES:

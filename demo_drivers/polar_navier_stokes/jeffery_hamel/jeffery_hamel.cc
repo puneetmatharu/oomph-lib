@@ -3,7 +3,7 @@
 //LIC// multi-physics finite-element library, available 
 //LIC// at http://www.oomph-lib.org.
 //LIC// 
-//LIC// Copyright (C) 2006-2023 Matthias Heil and Andrew Hazel
+//LIC// Copyright (C) 2006-2022 Matthias Heil and Andrew Hazel
 //LIC// 
 //LIC// This library is free software; you can redistribute it and/or
 //LIC// modify it under the terms of the GNU Lesser General Public
@@ -813,20 +813,19 @@ int main()
 
  //Storage for eigenvalues and eigenvectors 
  Vector<complex<double> > eigenvalues;
- Vector<DoubleVector> eigenvector_real;
- Vector<DoubleVector> eigenvector_imag;
-
+ Vector<DoubleVector> eigenvectors;
  //Desired number eigenvalues
  unsigned n_eval=6;
- //Set shift. This will need to be implemented for ANASAZI
- //static_cast<ARPACK*>( problem.eigen_solver_pt() ) -> set_shift( 0.4 );
+ //Set shift
+ static_cast<ARPACK*>( problem.eigen_solver_pt() ) -> set_shift( 0.4 );
 
  //Solve the eigenproblem
- problem.solve_eigenproblem(n_eval,eigenvalues,eigenvector_real,eigenvector_imag);
+ cout << "facking" << endl;
+ problem.solve_eigenproblem(n_eval,eigenvalues,eigenvectors);
  for(unsigned k=0;k<n_eval;k++)  cout << "eigenvalue: " << eigenvalues[k] << endl;
-
+ cout << "arpack" << endl;
  //Activate pitchfork tracking
- DoubleVector eigenvector(eigenvector_real[0]);
+ DoubleVector eigenvector(eigenvectors[0]);
 
  //Compute symmetry vector
  DoubleVector symmetry;
@@ -886,14 +885,14 @@ int main()
  cout << "========================================================" << endl;
  cout << endl << "Computing eigenvalue at pitchfork.  Re = " << Re << endl << endl;
  //Solve the eigenproblem
- problem.solve_eigenproblem(n_eval,eigenvalues,eigenvector_real,eigenvector_imag);
+ problem.solve_eigenproblem(n_eval,eigenvalues,eigenvectors);
  for(unsigned k=0;k<n_eval;k++)  cout << "eigenvalue: " << eigenvalues[k] << endl;
 
  // OUTPUT THE EIGENMODE
  eigenmode.number()=100;
  problem.store_current_dof_values();
  problem.pin_boundaries_to_zero();
- problem.assign_eigenvector_to_dofs( eigenvector_real[0] );
+ problem.assign_eigenvector_to_dofs( eigenvectors[0] );
  problem.doc_solution( eigenmode ); 
  problem.restore_dof_values(); 
 
@@ -901,7 +900,7 @@ int main()
  n_dof = problem.ndof(); cout << "ndof: " << n_dof << endl;
  DoubleVector soln_at_bifurcation;
  problem.get_dofs(soln_at_bifurcation);
- DoubleVector critical_eigenvector(eigenvector_real[0]);
+ DoubleVector critical_eigenvector(eigenvectors[0]);
 
  // part one ---------------------------------------------------------------------------------------
 

@@ -13,12 +13,12 @@ touch Validation
 rm -r -f Validation
 mkdir Validation
 
+# Validation for circular driven cavity
+#-----------------------------------------
 cd Validation
 
-# Validation for vector matrix multiplication
-#-----------------------------------------
 echo "Running VectorMatrix validation "
-../vector_matrix_test > OUTPUT
+../vector_matrix_test
 echo "done"
 echo " " >> validation.log
 echo "VectorMatrix validation" >> validation.log
@@ -37,14 +37,18 @@ else
          OUTPUT >> validation.log
 fi
 
-mv OUTPUT OUTPUT_vector_matrix_test
+rm -rf OUTPUT
 
 # Append log to main validation log
 cat validation.log >> ../../../../validation.log
 
 cd ..
 
+
+
+
 #######################################################################
+
 
 #Check that we get the correct number of OKs
 # validate_ok_count will exit with status
