@@ -52,108 +52,6 @@ unsigned \mbox{\hyperlink{classoomph_1_1ContinuationStorageScheme_acef989300e17c
 \item 
 unsigned \mbox{\hyperlink{classoomph_1_1ContinuationStorageScheme_a8f074b7e24750498f7d640e6476bef61}{dof\+\_\+current\+\_\+offset}} ()
 \end{DoxyCompactItemize}
-\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1GeneralisedTimeStepper}{oomph\+::\+Generalised\+Time\+Stepper}}}
-\begin{DoxyCompactItemize}
-\item 
-unsigned \mbox{\hyperlink{classoomph_1_1GeneralisedTimeStepper_a0ffd908ef40b0dcd0ef5a4adbfbe4d3e}{ndof\+\_\+storage\+\_\+entries}} () const
-\begin{DoxyCompactList}\small\item\em Return the number of entries that correspond to dof storage. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1TimeStepper}{oomph\+::\+Time\+Stepper}}}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\hyperlink{classoomph_1_1TimeStepper_a8a4f14d18d49b82f0a6ad1c279485cd9}{Time\+Stepper}} (const unsigned \&tstorage, const unsigned \&max\+\_\+deriv)
-\begin{DoxyCompactList}\small\item\em Constructor. Pass the amount of storage required by timestepper (present value + history values) and the order of highest time-\/derivative. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classoomph_1_1TimeStepper_a67f21ad40e01e35dd4cbb218aecbf596}{Time\+Stepper}} ()
-\begin{DoxyCompactList}\small\item\em Broken empty constructor. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classoomph_1_1TimeStepper_a035589314a3bdbe215ba002fd4f49f62}{Time\+Stepper}} (const \mbox{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper}} \&)=delete
-\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1TimeStepper_a6ddf0fae6331efde51deb853866bdeed}{operator=}} (const \mbox{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper}} \&)=delete
-\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
-virtual \mbox{\hyperlink{classoomph_1_1TimeStepper_a171b5bbc223c889474ee38fd02eefc4d}{$\sim$\+Time\+Stepper}} ()
-\begin{DoxyCompactList}\small\item\em virtual destructor \end{DoxyCompactList}\item 
-unsigned \mbox{\hyperlink{classoomph_1_1TimeStepper_aa02483da1254fab8f268d70bb3ef2289}{highest\+\_\+derivative}} () const
-\begin{DoxyCompactList}\small\item\em Highest order derivative that the scheme can compute. \end{DoxyCompactList}\item 
-virtual unsigned \mbox{\hyperlink{classoomph_1_1TimeStepper_a251e5d4b37381e582b7cf4c554e2e724}{order}} () const
-\begin{DoxyCompactList}\small\item\em Actual order (accuracy) of the scheme. \end{DoxyCompactList}\item 
-double \& \mbox{\hyperlink{classoomph_1_1TimeStepper_a5a69b6874b36b2f594cbee45719d4c7b}{time}} ()
-\begin{DoxyCompactList}\small\item\em Return current value of continous time. \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{classoomph_1_1TimeStepper_ab0fe7c6da82843fbaf406a29f5aaa78b}{time}} () const
-\begin{DoxyCompactList}\small\item\em Return current value of continous time. \end{DoxyCompactList}\item 
-virtual unsigned \mbox{\hyperlink{classoomph_1_1TimeStepper_a00e57b6436cff4fc82af481b81a78a1a}{ndt}} () const =0
-\begin{DoxyCompactList}\small\item\em Number of timestep increments that are required by the scheme. \end{DoxyCompactList}\item 
-virtual unsigned \mbox{\hyperlink{classoomph_1_1TimeStepper_a5fcbef20161383c516ecdba4cf782106}{nprev\+\_\+values\+\_\+for\+\_\+value\+\_\+at\+\_\+evaluation\+\_\+time}} () const
-\begin{DoxyCompactList}\small\item\em Number of previous values needed to calculate the value at the current time. i.\+e. how many previous values must we loop over to calculate the values at the evaluation time. For most methods this is 1, i.\+e. just use the value at t\+\_\+\{n+1\}. See midpoint method for a counter-\/example. \end{DoxyCompactList}\item 
-virtual unsigned \mbox{\hyperlink{classoomph_1_1TimeStepper_a0f38713ed304c18d9f7b5cf8131664c1}{nprev\+\_\+values}} () const =0
-\begin{DoxyCompactList}\small\item\em Number of previous values available\+: 0 for static, 1 for BDF$<$1$>$,... \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classoomph_1_1TimeStepper_a028fa3a8d3c6db6b0ddf580cb0468d55}{set\+\_\+weights}} ()=0
-\begin{DoxyCompactList}\small\item\em Function to set the weights for present timestep (don\textquotesingle{}t need to pass present timestep or previous timesteps as they are available via Time\+\_\+pt) \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1TimeStepper_a81ea0ff2e66cef5e0184b616c608e418}{make\+\_\+steady}} ()
-\begin{DoxyCompactList}\small\item\em Function to make the time stepper temporarily steady. This is trivially achieved by setting all the weights to zero. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classoomph_1_1TimeStepper_ad341ba9e80265e1c26c1cda0f40c8292}{is\+\_\+steady}} () const
-\begin{DoxyCompactList}\small\item\em Flag to indicate if a timestepper has been made steady (possibly temporarily to switch off time-\/dependence) \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classoomph_1_1TimeStepper_abf0f84ac9e7c1266dea9bd9e479fb2bf}{predict\+\_\+by\+\_\+explicit\+\_\+step}} () const
-\begin{DoxyCompactList}\small\item\em Flag\+: is adaptivity done by taking a separate step using an \mbox{\hyperlink{classoomph_1_1ExplicitTimeStepper}{Explicit\+Time\+Stepper}} object? \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classoomph_1_1ExplicitTimeStepper}{Explicit\+Time\+Stepper}} $\ast$ \mbox{\hyperlink{classoomph_1_1TimeStepper_a1214f9edca10512e1f3b857cff4e0797}{explicit\+\_\+predictor\+\_\+pt}} ()
-\begin{DoxyCompactList}\small\item\em Get the pointer to the explicit timestepper to use as a predictor in adaptivity if Predict\+\_\+by\+\_\+explicit\+\_\+step is set. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1TimeStepper_affb7d9405e9b8cfbd108082faa0c74e4}{set\+\_\+predictor\+\_\+pt}} (\mbox{\hyperlink{classoomph_1_1ExplicitTimeStepper}{Explicit\+Time\+Stepper}} $\ast$\+\_\+pred\+\_\+pt)
-\begin{DoxyCompactList}\small\item\em Set the pointer to the explicit timestepper to use as a predictor in adaptivity if Predict\+\_\+by\+\_\+explicit\+\_\+step is set. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1TimeStepper_ab9813c8ea8ad981f0db9a467302b9cd0}{update\+\_\+predicted\+\_\+time}} (const double \&new\+\_\+time)
-\begin{DoxyCompactList}\small\item\em Set the time that the current predictions apply for, only needed for paranoid checks when doing Predict\+\_\+by\+\_\+explicit\+\_\+step. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1TimeStepper_a385e522bb6b5c6109e20e860b70e9b6b}{check\+\_\+predicted\+\_\+values\+\_\+up\+\_\+to\+\_\+date}} () const
-\begin{DoxyCompactList}\small\item\em Check that the predicted values are the ones we want. \end{DoxyCompactList}\item 
-unsigned \mbox{\hyperlink{classoomph_1_1TimeStepper_a31e756a339277e21f74b21a5d61c9841}{predictor\+\_\+storage\+\_\+index}} () const
-\begin{DoxyCompactList}\small\item\em Return the time-\/index in each \mbox{\hyperlink{classoomph_1_1Data}{Data}} where predicted values are stored if the timestepper is adaptive. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1TimeStepper_a365cc834ec75291eba462f671ec997e1}{enable\+\_\+warning\+\_\+in\+\_\+assign\+\_\+initial\+\_\+data\+\_\+values}} ()
-\begin{DoxyCompactList}\small\item\em Enable the output of warnings due to possible fct pointer vector size mismatch in assign\+\_\+initial\+\_\+data\+\_\+values (Default) \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1TimeStepper_a7f97ab9e4d8d4269cf75bf79b72da5bc}{disable\+\_\+warning\+\_\+in\+\_\+assign\+\_\+initial\+\_\+data\+\_\+values}} ()
-\begin{DoxyCompactList}\small\item\em Disable the output of warnings due to possible fct pointer vector size mismatch in assign\+\_\+initial\+\_\+data\+\_\+values. \end{DoxyCompactList}\item 
-const \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ $\ast$ \mbox{\hyperlink{classoomph_1_1TimeStepper_ac59f0fb50e6ca3622c03cd9b4d29ee8c}{weights\+\_\+pt}} () const
-\begin{DoxyCompactList}\small\item\em Get a (const) pointer to the weights. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classoomph_1_1TimeStepper_aada05f89e86aae352bd5b32bfb173b18}{undo\+\_\+make\+\_\+steady}} ()
-\begin{DoxyCompactList}\small\item\em Reset the is\+\_\+steady status of a specific \mbox{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper}} to its default and re-\/assign the weights. \end{DoxyCompactList}\item 
-std\+::string \mbox{\hyperlink{classoomph_1_1TimeStepper_acbd69b35e54efa29b219bbb56ba49260}{type}} () const
-\begin{DoxyCompactList}\small\item\em Return string that indicates the type of the timestepper (e.\+g. \char`\"{}\+BDF\char`\"{}, \char`\"{}\+Newmark\char`\"{}, etc.) \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1TimeStepper_a802c8b2a2e1933e4e8da30c6d10d1f9c}{time\+\_\+derivative}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}, \mbox{\hyperlink{classoomph_1_1Data}{Data}} $\ast$const \&data\+\_\+pt, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&deriv)
-\begin{DoxyCompactList}\small\item\em Evaluate i-\/th derivative of all values in \mbox{\hyperlink{classoomph_1_1Data}{Data}} and return in \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} deriv\mbox{[}\mbox{]}. \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{classoomph_1_1TimeStepper_ab88e09cb347f024c07d7341ee6ba7389}{time\+\_\+derivative}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}, \mbox{\hyperlink{classoomph_1_1Data}{Data}} $\ast$const \&data\+\_\+pt, const unsigned \&j)
-\begin{DoxyCompactList}\small\item\em Evaluate i-\/th derivative of j-\/th value in \mbox{\hyperlink{classoomph_1_1Data}{Data}}. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1TimeStepper_a3adfcfcf4ba99366d1475df8b4722082}{time\+\_\+derivative}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}, \mbox{\hyperlink{classoomph_1_1Node}{Node}} $\ast$const \&node\+\_\+pt, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&deriv)
-\begin{DoxyCompactList}\small\item\em Evaluate i-\/th derivative of all values in \mbox{\hyperlink{classoomph_1_1Node}{Node}} and return in \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} deriv\mbox{[}\mbox{]} (this can\textquotesingle{}t be simply combined with time\+\_\+derivative(.., \mbox{\hyperlink{classoomph_1_1Data}{Data}}, ...) because of differences with haning nodes). \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{classoomph_1_1TimeStepper_af02a53d7047869cbf0d563272b4de908}{time\+\_\+derivative}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}, \mbox{\hyperlink{classoomph_1_1Node}{Node}} $\ast$const \&node\+\_\+pt, const unsigned \&j)
-\begin{DoxyCompactList}\small\item\em Evaluate i-\/th derivative of j-\/th value in \mbox{\hyperlink{classoomph_1_1Node}{Node}}. Note the use of the node\textquotesingle{}s value() function so that hanging nodes are taken into account (this is why the functions for \mbox{\hyperlink{classoomph_1_1Data}{Data}} and \mbox{\hyperlink{classoomph_1_1Node}{Node}} cannot be combined through simple polymorphism\+: value is not virtual). \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classoomph_1_1Time}{Time}} $\ast$const \& \mbox{\hyperlink{classoomph_1_1TimeStepper_ac73981d5a68161d7b317bebb4ee04adb}{time\+\_\+pt}} () const
-\begin{DoxyCompactList}\small\item\em Access function for the pointer to time (const version) \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classoomph_1_1Time}{Time}} $\ast$\& \mbox{\hyperlink{classoomph_1_1TimeStepper_a5f1c63c2e8adf1137264a78871772986}{time\+\_\+pt}} ()
-\begin{DoxyCompactList}\small\item\em Access function for the pointer to time (can\textquotesingle{}t have a paranoid test for null pointers because this is used as a set function). \end{DoxyCompactList}\item 
-virtual double \mbox{\hyperlink{classoomph_1_1TimeStepper_a4cb0aecb044b77ba0553cdd54b586d8a}{weight}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}, const unsigned \&j) const
-\begin{DoxyCompactList}\small\item\em Access function for j-\/th weight for the i-\/th derivative. \end{DoxyCompactList}\item 
-unsigned \mbox{\hyperlink{classoomph_1_1TimeStepper_a3939b77ec3578e4bd5b453c85649d631}{ntstorage}} () const
-\begin{DoxyCompactList}\small\item\em Return the number of doubles required to represent history (one for steady) \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classoomph_1_1TimeStepper_a7e894df13c88c96dd8eced2700228225}{assign\+\_\+initial\+\_\+values\+\_\+impulsive}} (\mbox{\hyperlink{classoomph_1_1Data}{Data}} $\ast$const \&data\+\_\+pt)=0
-\begin{DoxyCompactList}\small\item\em Initialise the time-\/history for the \mbox{\hyperlink{classoomph_1_1Data}{Data}} values corresponding to an impulsive start. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classoomph_1_1TimeStepper_ab66972f0eaf3ba34645793e23e46afd5}{assign\+\_\+initial\+\_\+positions\+\_\+impulsive}} (\mbox{\hyperlink{classoomph_1_1Node}{Node}} $\ast$const \&node\+\_\+pt)=0
-\begin{DoxyCompactList}\small\item\em Initialiset the positions for the node corresponding to an impulsive start. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classoomph_1_1TimeStepper_a010a3b03a23a1c48dd8ca10641427255}{shift\+\_\+time\+\_\+values}} (\mbox{\hyperlink{classoomph_1_1Data}{Data}} $\ast$const \&data\+\_\+pt)=0
-\begin{DoxyCompactList}\small\item\em This function advances the \mbox{\hyperlink{classoomph_1_1Data}{Data}}\textquotesingle{}s time history so that we can move on to the next timestep. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classoomph_1_1TimeStepper_a518b1bee5dc3aae8c5ef13560d1954ac}{shift\+\_\+time\+\_\+positions}} (\mbox{\hyperlink{classoomph_1_1Node}{Node}} $\ast$const \&node\+\_\+pt)=0
-\begin{DoxyCompactList}\small\item\em This function advances the time history of the positions at a node. The default should be OK, but would need to be overloaded. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classoomph_1_1TimeStepper_a6168cca9a2a3c7bfd50c8797aed72d2d}{adaptive\+\_\+flag}} () const
-\begin{DoxyCompactList}\small\item\em Function to indicate whether the scheme is adaptive (false by default) \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classoomph_1_1TimeStepper_a2dfb949155ba433066fd69dc427ba1ce}{set\+\_\+predictor\+\_\+weights}} ()
-\begin{DoxyCompactList}\small\item\em Set the weights for the predictor previous timestep (currently empty -- overwrite for specific scheme) \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classoomph_1_1TimeStepper_a159d508b1ae643fe31b55da9ee789dbf}{calculate\+\_\+predicted\+\_\+values}} (\mbox{\hyperlink{classoomph_1_1Data}{Data}} $\ast$const \&data\+\_\+pt)
-\begin{DoxyCompactList}\small\item\em Do the predictor step for data stored in a \mbox{\hyperlink{classoomph_1_1Data}{Data}} object (currently empty -- overwrite for specific scheme) \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classoomph_1_1TimeStepper_a2e7fafceb9330ac971078cf9dc248701}{calculate\+\_\+predicted\+\_\+positions}} (\mbox{\hyperlink{classoomph_1_1Node}{Node}} $\ast$const \&node\+\_\+pt)
-\begin{DoxyCompactList}\small\item\em Do the predictor step for the positions at a node (currently empty --- overwrite for a specific scheme) \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classoomph_1_1TimeStepper_aee0c1da870a603e64efebb51dfc96a3d}{set\+\_\+error\+\_\+weights}} ()
-\begin{DoxyCompactList}\small\item\em Set the weights for the error computation, (currently empty -- overwrite for specific scheme) \end{DoxyCompactList}\item 
-virtual double \mbox{\hyperlink{classoomph_1_1TimeStepper_ac463807aff4bcbedd6e8a463c7390536}{temporal\+\_\+error\+\_\+in\+\_\+position}} (\mbox{\hyperlink{classoomph_1_1Node}{Node}} $\ast$const \&node\+\_\+pt, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})
-\begin{DoxyCompactList}\small\item\em Compute the error in the position i at a node zero here -- overwrite for specific scheme. \end{DoxyCompactList}\item 
-virtual double \mbox{\hyperlink{classoomph_1_1TimeStepper_a27f66759f6d9b2040d26918adb998c78}{temporal\+\_\+error\+\_\+in\+\_\+value}} (\mbox{\hyperlink{classoomph_1_1Data}{Data}} $\ast$const \&data\+\_\+pt, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})
-\begin{DoxyCompactList}\small\item\em Compute the error in the value i in a \mbox{\hyperlink{classoomph_1_1Data}{Data}} structure zero here -- overwrite for specific scheme. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classoomph_1_1TimeStepper_a36cbcee0c1127085ba3aa2331bfc0f74}{actions\+\_\+before\+\_\+timestep}} (\mbox{\hyperlink{classoomph_1_1Problem}{Problem}} $\ast$problem\+\_\+pt)
-\begin{DoxyCompactList}\small\item\em Interface for any actions that need to be performed before a time step. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classoomph_1_1TimeStepper_a3a0fabf83f9bdc89800cd3501df2c586}{actions\+\_\+after\+\_\+timestep}} (\mbox{\hyperlink{classoomph_1_1Problem}{Problem}} $\ast$problem\+\_\+pt)
-\begin{DoxyCompactList}\small\item\em Interface for any actions that need to be performed after a time step. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -162,51 +60,12 @@ unsigned \mbox{\hyperlink{classoomph_1_1ContinuationStorageScheme_aafee8dedf6e47
 unsigned \mbox{\hyperlink{classoomph_1_1ContinuationStorageScheme_a8b0d1e52fa6ff062f58b4d37ba5fbc7f}{Dof\+\_\+current\+\_\+offset}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
-\doxysubsubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classoomph_1_1GeneralisedTimeStepper}{oomph\+::\+Generalised\+Time\+Stepper}}}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\hyperlink{classoomph_1_1GeneralisedTimeStepper_a900fa5bbfd48ee5a133ed8c6c2ba44a8}{Generalised\+Time\+Stepper}} (const unsigned \&n\+\_\+tstorage, const unsigned \&max\+\_\+deriv, const unsigned \&\mbox{\hyperlink{classoomph_1_1GeneralisedTimeStepper_a0ffd908ef40b0dcd0ef5a4adbfbe4d3e}{ndof\+\_\+storage\+\_\+entries}}=1)
-\begin{DoxyCompactList}\small\item\em Constructor that can only be called by derived objects. Pass the information directly through to the \mbox{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper}} object. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classoomph_1_1GeneralisedTimeStepper_a8a200841329ed3abbf45ebe051598967}{Generalised\+Time\+Stepper}} ()
-\begin{DoxyCompactList}\small\item\em Broken empty constructor. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classoomph_1_1GeneralisedTimeStepper_a85265f092bfccf0e434b6c2e0c00cc3a}{Generalised\+Time\+Stepper}} (const \mbox{\hyperlink{classoomph_1_1GeneralisedTimeStepper}{Generalised\+Time\+Stepper}} \&)=delete
-\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1GeneralisedTimeStepper_a18ebb728778395c044451bd9587b9320}{operator=}} (const \mbox{\hyperlink{classoomph_1_1GeneralisedTimeStepper}{Generalised\+Time\+Stepper}} \&)=delete
-\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1GeneralisedTimeStepper}{oomph\+::\+Generalised\+Time\+Stepper}}}
-\begin{DoxyCompactItemize}
-\item 
-unsigned \mbox{\hyperlink{classoomph_1_1GeneralisedTimeStepper_a5041d173762ea30fbd724281df50f1fc}{Ndof\+\_\+storage\+\_\+entries}}
-\end{DoxyCompactItemize}
-\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1TimeStepper}{oomph\+::\+Time\+Stepper}}}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\hyperlink{classoomph_1_1Time}{Time}} $\ast$ \mbox{\hyperlink{classoomph_1_1TimeStepper_a38740bc33e75ecfd61746ff43be54358}{Time\+\_\+pt}}
-\begin{DoxyCompactList}\small\item\em Pointer to discrete time storage scheme. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ \mbox{\hyperlink{classoomph_1_1TimeStepper_a0dbf867c7f0e06f790a470d547b6b3f2}{Weight}}
-\begin{DoxyCompactList}\small\item\em Storage for the weights associated with the timestepper. \end{DoxyCompactList}\item 
-std\+::string \mbox{\hyperlink{classoomph_1_1TimeStepper_a39dfe6cf216263d547c430d6f7a67530}{Type}}
-\begin{DoxyCompactList}\small\item\em String that indicates the type of the timestepper (e.\+g. \char`\"{}\+BDF\char`\"{}, \char`\"{}\+Newmark\char`\"{}, etc.) \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classoomph_1_1TimeStepper_afe6d4d7cf3e0b2a186694f24c8cf016f}{Adaptive\+\_\+\+Flag}}
-\begin{DoxyCompactList}\small\item\em Boolean variable to indicate whether the timestepping scheme can be adaptive. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classoomph_1_1TimeStepper_a5a23db485d16d7f9598c011850d0563f}{Is\+\_\+steady}}
-\begin{DoxyCompactList}\small\item\em Bool to indicate if the timestepper is steady, i.\+e. its time-\/derivatives evaluate to zero. This status may be achieved temporarily by calling \mbox{\hyperlink{classoomph_1_1TimeStepper_a81ea0ff2e66cef5e0184b616c608e418}{make\+\_\+steady()}}. It can be reset to the appropriate default by the function \mbox{\hyperlink{classoomph_1_1TimeStepper_aada05f89e86aae352bd5b32bfb173b18}{undo\+\_\+make\+\_\+steady()}}. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classoomph_1_1TimeStepper_a1a8928784f3903a8f0f3f5e2400fa430}{Shut\+\_\+up\+\_\+in\+\_\+assign\+\_\+initial\+\_\+data\+\_\+values}}
-\begin{DoxyCompactList}\small\item\em Boolean to indicate if the timestepper will output warnings when setting possibly an incorrect number of initial data values from function pointers. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classoomph_1_1TimeStepper_a30f71fb3ee14db4dd9d9d2cef1189ddc}{Predict\+\_\+by\+\_\+explicit\+\_\+step}}
-\begin{DoxyCompactList}\small\item\em Flag\+: is adaptivity done by taking a separate step using an \mbox{\hyperlink{classoomph_1_1ExplicitTimeStepper}{Explicit\+Time\+Stepper}} object? \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classoomph_1_1ExplicitTimeStepper}{Explicit\+Time\+Stepper}} $\ast$ \mbox{\hyperlink{classoomph_1_1TimeStepper_a41f408e1a313ae5b1806c3a306d720a2}{Explicit\+\_\+predictor\+\_\+pt}}
-\begin{DoxyCompactList}\small\item\em Pointer to explicit time stepper to use as predictor if Predict\+\_\+by\+\_\+explicit\+\_\+step is set. ??ds merge the two? predict by explicit if pointer is set? \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{classoomph_1_1TimeStepper_af41318cc5f48050e143182f59a06e5d6}{Predicted\+\_\+time}}
-\begin{DoxyCompactList}\small\item\em Store the time that the predicted values currently stored are at, to compare for paranoid checks. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{classoomph_1_1TimeStepper_af91eb510f32a9d072399f37389853174}{Predictor\+\_\+storage\+\_\+index}}
-\begin{DoxyCompactList}\small\item\em The time-\/index in each \mbox{\hyperlink{classoomph_1_1Data}{Data}} object where predicted values are stored. -\/1 if not set. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Generalised\+Timestepper used to store the arclength derivatives and pervious solutions required in continuation problems. The data is stored as auxilliary data in the (fake) \mbox{\hyperlink{classoomph_1_1TimeStepper}{Time\+Stepper}} so that spatial adaptivity will be handled automatically through our standard mechanisms. The adopted storage scheme is that the continuation derivatives will be stored at the first auxilliary value and the previous value will be the second auixilliary value. 
 
-Definition at line \mbox{\hyperlink{generalised__timesteppers_8h_source_l00100}{100}} of file \mbox{\hyperlink{generalised__timesteppers_8h_source}{generalised\+\_\+timesteppers.\+h}}.
+Definition at line 100 of file generalised\+\_\+timesteppers.\+h.
 
 
 
@@ -223,11 +82,11 @@ Constructor for the case when we allow adaptive continuation It can evaulate up 
 
 
 
-Definition at line \mbox{\hyperlink{generalised__timesteppers_8h_source_l00112}{112}} of file \mbox{\hyperlink{generalised__timesteppers_8h_source}{generalised\+\_\+timesteppers.\+h}}.
+Definition at line 112 of file generalised\+\_\+timesteppers.\+h.
 
 
 
-References \mbox{\hyperlink{timesteppers_8h_source_l00251}{oomph\+::\+Time\+Stepper\+::\+Is\+\_\+steady}}, and \mbox{\hyperlink{timesteppers_8h_source_l00241}{oomph\+::\+Time\+Stepper\+::\+Type}}.
+References oomph\+::\+Time\+Stepper\+::\+Is\+\_\+steady, and oomph\+::\+Time\+Stepper\+::\+Type.
 
 \mbox{\Hypertarget{classoomph_1_1ContinuationStorageScheme_a3c2a8c78a56a25aa0a5f86407f27f12b}\label{classoomph_1_1ContinuationStorageScheme_a3c2a8c78a56a25aa0a5f86407f27f12b}} 
 \index{oomph::ContinuationStorageScheme@{oomph::ContinuationStorageScheme}!ContinuationStorageScheme@{ContinuationStorageScheme}}
@@ -258,7 +117,7 @@ Implements \mbox{\hyperlink{classoomph_1_1TimeStepper_ab66972f0eaf3ba34645793e23
 
 
 
-Definition at line \mbox{\hyperlink{generalised__timesteppers_8h_source_l00177}{177}} of file \mbox{\hyperlink{generalised__timesteppers_8h_source}{generalised\+\_\+timesteppers.\+h}}.
+Definition at line 177 of file generalised\+\_\+timesteppers.\+h.
 
 \mbox{\Hypertarget{classoomph_1_1ContinuationStorageScheme_a24344971f7f5dd254488f7373ceb2074}\label{classoomph_1_1ContinuationStorageScheme_a24344971f7f5dd254488f7373ceb2074}} 
 \index{oomph::ContinuationStorageScheme@{oomph::ContinuationStorageScheme}!assign\_initial\_values\_impulsive@{assign\_initial\_values\_impulsive}}
@@ -276,7 +135,7 @@ Implements \mbox{\hyperlink{classoomph_1_1TimeStepper_a7e894df13c88c96dd8eced270
 
 
 
-Definition at line \mbox{\hyperlink{generalised__timesteppers_8h_source_l00167}{167}} of file \mbox{\hyperlink{generalised__timesteppers_8h_source}{generalised\+\_\+timesteppers.\+h}}.
+Definition at line 167 of file generalised\+\_\+timesteppers.\+h.
 
 \mbox{\Hypertarget{classoomph_1_1ContinuationStorageScheme_a8f074b7e24750498f7d640e6476bef61}\label{classoomph_1_1ContinuationStorageScheme_a8f074b7e24750498f7d640e6476bef61}} 
 \index{oomph::ContinuationStorageScheme@{oomph::ContinuationStorageScheme}!dof\_current\_offset@{dof\_current\_offset}}
@@ -286,11 +145,11 @@ Definition at line \mbox{\hyperlink{generalised__timesteppers_8h_source_l00167}{
 
 
 
-Definition at line \mbox{\hyperlink{generalised__timesteppers_8h_source_l00322}{322}} of file \mbox{\hyperlink{generalised__timesteppers_8h_source}{generalised\+\_\+timesteppers.\+h}}.
+Definition at line 322 of file generalised\+\_\+timesteppers.\+h.
 
 
 
-References \mbox{\hyperlink{generalised__timesteppers_8h_source_l00106}{Dof\+\_\+current\+\_\+offset}}.
+References Dof\+\_\+current\+\_\+offset.
 
 \mbox{\Hypertarget{classoomph_1_1ContinuationStorageScheme_acef989300e17ce031538fe447f13c4d8}\label{classoomph_1_1ContinuationStorageScheme_acef989300e17ce031538fe447f13c4d8}} 
 \index{oomph::ContinuationStorageScheme@{oomph::ContinuationStorageScheme}!dof\_derivative\_offset@{dof\_derivative\_offset}}
@@ -300,11 +159,11 @@ References \mbox{\hyperlink{generalised__timesteppers_8h_source_l00106}{Dof\+\_\
 
 
 
-Definition at line \mbox{\hyperlink{generalised__timesteppers_8h_source_l00316}{316}} of file \mbox{\hyperlink{generalised__timesteppers_8h_source}{generalised\+\_\+timesteppers.\+h}}.
+Definition at line 316 of file generalised\+\_\+timesteppers.\+h.
 
 
 
-References \mbox{\hyperlink{generalised__timesteppers_8h_source_l00103}{Dof\+\_\+derivative\+\_\+offset}}.
+References Dof\+\_\+derivative\+\_\+offset.
 
 \mbox{\Hypertarget{classoomph_1_1ContinuationStorageScheme_a48726b336985f9c71e10a01fdded177b}\label{classoomph_1_1ContinuationStorageScheme_a48726b336985f9c71e10a01fdded177b}} 
 \index{oomph::ContinuationStorageScheme@{oomph::ContinuationStorageScheme}!modify\_storage@{modify\_storage}}
@@ -318,11 +177,11 @@ Modify the scheme based on the underlying timestepper.
 
 
 
-Definition at line \mbox{\hyperlink{generalised__timesteppers_8h_source_l00126}{126}} of file \mbox{\hyperlink{generalised__timesteppers_8h_source}{generalised\+\_\+timesteppers.\+h}}.
+Definition at line 126 of file generalised\+\_\+timesteppers.\+h.
 
 
 
-References \mbox{\hyperlink{generalised__timesteppers_8h_source_l00106}{Dof\+\_\+current\+\_\+offset}}, \mbox{\hyperlink{generalised__timesteppers_8h_source_l00103}{Dof\+\_\+derivative\+\_\+offset}}, \mbox{\hyperlink{generalised__timesteppers_8h_source_l00054}{oomph\+::\+Generalised\+Time\+Stepper\+::\+Ndof\+\_\+storage\+\_\+entries}}, \mbox{\hyperlink{generalised__timesteppers_8h_source_l00081}{oomph\+::\+Generalised\+Time\+Stepper\+::ndof\+\_\+storage\+\_\+entries()}}, \mbox{\hyperlink{timesteppers_8h_source_l00601}{oomph\+::\+Time\+Stepper\+::ntstorage()}}, \mbox{\hyperlink{matrices_8h_source_l00498}{oomph\+::\+Dense\+Matrix$<$ T $>$\+::resize()}}, and \mbox{\hyperlink{timesteppers_8h_source_l00237}{oomph\+::\+Time\+Stepper\+::\+Weight}}.
+References Dof\+\_\+current\+\_\+offset, Dof\+\_\+derivative\+\_\+offset, oomph\+::\+Generalised\+Time\+Stepper\+::\+Ndof\+\_\+storage\+\_\+entries, oomph\+::\+Generalised\+Time\+Stepper\+::ndof\+\_\+storage\+\_\+entries(), oomph\+::\+Time\+Stepper\+::ntstorage(), oomph\+::\+Dense\+Matrix$<$ T $>$\+::resize(), and oomph\+::\+Time\+Stepper\+::\+Weight.
 
 \mbox{\Hypertarget{classoomph_1_1ContinuationStorageScheme_aedf54b092d3f98b60b49190cb5dad540}\label{classoomph_1_1ContinuationStorageScheme_aedf54b092d3f98b60b49190cb5dad540}} 
 \index{oomph::ContinuationStorageScheme@{oomph::ContinuationStorageScheme}!ndt@{ndt}}
@@ -340,7 +199,7 @@ Implements \mbox{\hyperlink{classoomph_1_1TimeStepper_a00e57b6436cff4fc82af481b8
 
 
 
-Definition at line \mbox{\hyperlink{generalised__timesteppers_8h_source_l00213}{213}} of file \mbox{\hyperlink{generalised__timesteppers_8h_source}{generalised\+\_\+timesteppers.\+h}}.
+Definition at line 213 of file generalised\+\_\+timesteppers.\+h.
 
 \mbox{\Hypertarget{classoomph_1_1ContinuationStorageScheme_a895e0f4bc35dc3cae52fcee71db86de3}\label{classoomph_1_1ContinuationStorageScheme_a895e0f4bc35dc3cae52fcee71db86de3}} 
 \index{oomph::ContinuationStorageScheme@{oomph::ContinuationStorageScheme}!nprev\_values@{nprev\_values}}
@@ -358,7 +217,7 @@ Implements \mbox{\hyperlink{classoomph_1_1TimeStepper_a0f38713ed304c18d9f7b5cf81
 
 
 
-Definition at line \mbox{\hyperlink{generalised__timesteppers_8h_source_l00207}{207}} of file \mbox{\hyperlink{generalised__timesteppers_8h_source}{generalised\+\_\+timesteppers.\+h}}.
+Definition at line 207 of file generalised\+\_\+timesteppers.\+h.
 
 \mbox{\Hypertarget{classoomph_1_1ContinuationStorageScheme_a0a65d5203e658e03213eafab1a2a0748}\label{classoomph_1_1ContinuationStorageScheme_a0a65d5203e658e03213eafab1a2a0748}} 
 \index{oomph::ContinuationStorageScheme@{oomph::ContinuationStorageScheme}!operator=@{operator=}}
@@ -386,7 +245,7 @@ Reimplemented from \mbox{\hyperlink{classoomph_1_1TimeStepper_a251e5d4b37381e582
 
 
 
-Definition at line \mbox{\hyperlink{generalised__timesteppers_8h_source_l00154}{154}} of file \mbox{\hyperlink{generalised__timesteppers_8h_source}{generalised\+\_\+timesteppers.\+h}}.
+Definition at line 154 of file generalised\+\_\+timesteppers.\+h.
 
 \mbox{\Hypertarget{classoomph_1_1ContinuationStorageScheme_ad08f35407fff9e171312d482cfdeacc0}\label{classoomph_1_1ContinuationStorageScheme_ad08f35407fff9e171312d482cfdeacc0}} 
 \index{oomph::ContinuationStorageScheme@{oomph::ContinuationStorageScheme}!set\_consistent\_pinned\_positions@{set\_consistent\_pinned\_positions}}
@@ -400,15 +259,15 @@ Set consistent values of the derivatives and current value when the Nodes positi
 
 
 
-Definition at line \mbox{\hyperlink{generalised__timesteppers_8h_source_l00261}{261}} of file \mbox{\hyperlink{generalised__timesteppers_8h_source}{generalised\+\_\+timesteppers.\+h}}.
+Definition at line 261 of file generalised\+\_\+timesteppers.\+h.
 
 
 
-References \mbox{\hyperlink{generalised__timesteppers_8h_source_l00106}{Dof\+\_\+current\+\_\+offset}}, \mbox{\hyperlink{generalised__timesteppers_8h_source_l00103}{Dof\+\_\+derivative\+\_\+offset}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{generalised__timesteppers_8h_source_l00054}{oomph\+::\+Generalised\+Time\+Stepper\+::\+Ndof\+\_\+storage\+\_\+entries}}, \mbox{\hyperlink{nodes_8h_source_l01022}{oomph\+::\+Node\+::position\+\_\+time\+\_\+stepper\+\_\+pt()}}, and \mbox{\hyperlink{cfortran_8h_source_l00568}{t}}.
+References Dof\+\_\+current\+\_\+offset, Dof\+\_\+derivative\+\_\+offset, i, oomph\+::\+Generalised\+Time\+Stepper\+::\+Ndof\+\_\+storage\+\_\+entries, oomph\+::\+Node\+::position\+\_\+time\+\_\+stepper\+\_\+pt(), and t.
 
 
 
-Referenced by \mbox{\hyperlink{mesh_8cc_source_l02436}{oomph\+::\+Mesh\+::set\+\_\+consistent\+\_\+pinned\+\_\+values\+\_\+for\+\_\+continuation()}}.
+Referenced by oomph\+::\+Mesh\+::set\+\_\+consistent\+\_\+pinned\+\_\+values\+\_\+for\+\_\+continuation().
 
 \mbox{\Hypertarget{classoomph_1_1ContinuationStorageScheme_a279e4c16176c0374b9bba05519a17b0c}\label{classoomph_1_1ContinuationStorageScheme_a279e4c16176c0374b9bba05519a17b0c}} 
 \index{oomph::ContinuationStorageScheme@{oomph::ContinuationStorageScheme}!set\_consistent\_pinned\_values@{set\_consistent\_pinned\_values}}
@@ -422,15 +281,15 @@ Set consistent values of the derivatives and current value when the data is pinn
 
 
 
-Definition at line \mbox{\hyperlink{generalised__timesteppers_8h_source_l00221}{221}} of file \mbox{\hyperlink{generalised__timesteppers_8h_source}{generalised\+\_\+timesteppers.\+h}}.
+Definition at line 221 of file generalised\+\_\+timesteppers.\+h.
 
 
 
-References \mbox{\hyperlink{generalised__timesteppers_8h_source_l00106}{Dof\+\_\+current\+\_\+offset}}, \mbox{\hyperlink{generalised__timesteppers_8h_source_l00103}{Dof\+\_\+derivative\+\_\+offset}}, \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{nodes_8h_source_l00253}{oomph\+::\+Data\+::is\+\_\+a\+\_\+copy()}}, \mbox{\hyperlink{nodes_8h_source_l00417}{oomph\+::\+Data\+::is\+\_\+pinned()}}, \mbox{\hyperlink{generalised__timesteppers_8h_source_l00054}{oomph\+::\+Generalised\+Time\+Stepper\+::\+Ndof\+\_\+storage\+\_\+entries}}, \mbox{\hyperlink{nodes_8h_source_l00483}{oomph\+::\+Data\+::nvalue()}}, \mbox{\hyperlink{nodes_8h_source_l00271}{oomph\+::\+Data\+::set\+\_\+value()}}, \mbox{\hyperlink{cfortran_8h_source_l00568}{t}}, \mbox{\hyperlink{nodes_8h_source_l00238}{oomph\+::\+Data\+::time\+\_\+stepper\+\_\+pt()}}, and \mbox{\hyperlink{nodes_8h_source_l00293}{oomph\+::\+Data\+::value()}}.
+References Dof\+\_\+current\+\_\+offset, Dof\+\_\+derivative\+\_\+offset, i, oomph\+::\+Data\+::is\+\_\+a\+\_\+copy(), oomph\+::\+Data\+::is\+\_\+pinned(), oomph\+::\+Generalised\+Time\+Stepper\+::\+Ndof\+\_\+storage\+\_\+entries, oomph\+::\+Data\+::nvalue(), oomph\+::\+Data\+::set\+\_\+value(), t, oomph\+::\+Data\+::time\+\_\+stepper\+\_\+pt(), and oomph\+::\+Data\+::value().
 
 
 
-Referenced by \mbox{\hyperlink{spines_8cc_source_l00189}{oomph\+::\+Spine\+Mesh\+::set\+\_\+consistent\+\_\+pinned\+\_\+spine\+\_\+values\+\_\+for\+\_\+continuation()}}, \mbox{\hyperlink{problem_8cc_source_l10466}{oomph\+::\+Problem\+::set\+\_\+consistent\+\_\+pinned\+\_\+values\+\_\+for\+\_\+continuation()}}, and \mbox{\hyperlink{mesh_8cc_source_l02436}{oomph\+::\+Mesh\+::set\+\_\+consistent\+\_\+pinned\+\_\+values\+\_\+for\+\_\+continuation()}}.
+Referenced by oomph\+::\+Spine\+Mesh\+::set\+\_\+consistent\+\_\+pinned\+\_\+spine\+\_\+values\+\_\+for\+\_\+continuation(), oomph\+::\+Problem\+::set\+\_\+consistent\+\_\+pinned\+\_\+values\+\_\+for\+\_\+continuation(), and oomph\+::\+Mesh\+::set\+\_\+consistent\+\_\+pinned\+\_\+values\+\_\+for\+\_\+continuation().
 
 \mbox{\Hypertarget{classoomph_1_1ContinuationStorageScheme_a57108416ef10b5d0a7664ea2d748a4cb}\label{classoomph_1_1ContinuationStorageScheme_a57108416ef10b5d0a7664ea2d748a4cb}} 
 \index{oomph::ContinuationStorageScheme@{oomph::ContinuationStorageScheme}!set\_weights@{set\_weights}}
@@ -448,7 +307,7 @@ Implements \mbox{\hyperlink{classoomph_1_1TimeStepper_a028fa3a8d3c6db6b0ddf580cb
 
 
 
-Definition at line \mbox{\hyperlink{generalised__timesteppers_8h_source_l00204}{204}} of file \mbox{\hyperlink{generalised__timesteppers_8h_source}{generalised\+\_\+timesteppers.\+h}}.
+Definition at line 204 of file generalised\+\_\+timesteppers.\+h.
 
 \mbox{\Hypertarget{classoomph_1_1ContinuationStorageScheme_a2271fd0ad65dda38686851df5a3970d5}\label{classoomph_1_1ContinuationStorageScheme_a2271fd0ad65dda38686851df5a3970d5}} 
 \index{oomph::ContinuationStorageScheme@{oomph::ContinuationStorageScheme}!shift\_time\_positions@{shift\_time\_positions}}
@@ -466,7 +325,7 @@ Implements \mbox{\hyperlink{classoomph_1_1TimeStepper_a518b1bee5dc3aae8c5ef13560
 
 
 
-Definition at line \mbox{\hyperlink{generalised__timesteppers_8h_source_l00195}{195}} of file \mbox{\hyperlink{generalised__timesteppers_8h_source}{generalised\+\_\+timesteppers.\+h}}.
+Definition at line 195 of file generalised\+\_\+timesteppers.\+h.
 
 \mbox{\Hypertarget{classoomph_1_1ContinuationStorageScheme_a74f8d1b2ca6413edfa6fe4a5110a215f}\label{classoomph_1_1ContinuationStorageScheme_a74f8d1b2ca6413edfa6fe4a5110a215f}} 
 \index{oomph::ContinuationStorageScheme@{oomph::ContinuationStorageScheme}!shift\_time\_values@{shift\_time\_values}}
@@ -484,7 +343,7 @@ Implements \mbox{\hyperlink{classoomph_1_1TimeStepper_a010a3b03a23a1c48dd8ca1064
 
 
 
-Definition at line \mbox{\hyperlink{generalised__timesteppers_8h_source_l00186}{186}} of file \mbox{\hyperlink{generalised__timesteppers_8h_source}{generalised\+\_\+timesteppers.\+h}}.
+Definition at line 186 of file generalised\+\_\+timesteppers.\+h.
 
 \mbox{\Hypertarget{classoomph_1_1ContinuationStorageScheme_adf4be6b7cf66d8b8f4dfed7520d43afb}\label{classoomph_1_1ContinuationStorageScheme_adf4be6b7cf66d8b8f4dfed7520d43afb}} 
 \index{oomph::ContinuationStorageScheme@{oomph::ContinuationStorageScheme}!undo\_make\_steady@{undo\_make\_steady}}
@@ -502,11 +361,11 @@ Reimplemented from \mbox{\hyperlink{classoomph_1_1TimeStepper_aada05f89e86aae352
 
 
 
-Definition at line \mbox{\hyperlink{generalised__timesteppers_8h_source_l00160}{160}} of file \mbox{\hyperlink{generalised__timesteppers_8h_source}{generalised\+\_\+timesteppers.\+h}}.
+Definition at line 160 of file generalised\+\_\+timesteppers.\+h.
 
 
 
-References \mbox{\hyperlink{timesteppers_8h_source_l00251}{oomph\+::\+Time\+Stepper\+::\+Is\+\_\+steady}}.
+References oomph\+::\+Time\+Stepper\+::\+Is\+\_\+steady.
 
 
 
@@ -519,11 +378,11 @@ References \mbox{\hyperlink{timesteppers_8h_source_l00251}{oomph\+::\+Time\+Step
 
 
 
-Definition at line \mbox{\hyperlink{generalised__timesteppers_8h_source_l00106}{106}} of file \mbox{\hyperlink{generalised__timesteppers_8h_source}{generalised\+\_\+timesteppers.\+h}}.
+Definition at line 106 of file generalised\+\_\+timesteppers.\+h.
 
 
 
-Referenced by \mbox{\hyperlink{generalised__timesteppers_8h_source_l00322}{dof\+\_\+current\+\_\+offset()}}, \mbox{\hyperlink{generalised__timesteppers_8h_source_l00126}{modify\+\_\+storage()}}, \mbox{\hyperlink{generalised__timesteppers_8h_source_l00261}{set\+\_\+consistent\+\_\+pinned\+\_\+positions()}}, and \mbox{\hyperlink{generalised__timesteppers_8h_source_l00221}{set\+\_\+consistent\+\_\+pinned\+\_\+values()}}.
+Referenced by dof\+\_\+current\+\_\+offset(), modify\+\_\+storage(), set\+\_\+consistent\+\_\+pinned\+\_\+positions(), and set\+\_\+consistent\+\_\+pinned\+\_\+values().
 
 \mbox{\Hypertarget{classoomph_1_1ContinuationStorageScheme_aafee8dedf6e4787bc3e65ba52eab26dc}\label{classoomph_1_1ContinuationStorageScheme_aafee8dedf6e4787bc3e65ba52eab26dc}} 
 \index{oomph::ContinuationStorageScheme@{oomph::ContinuationStorageScheme}!Dof\_derivative\_offset@{Dof\_derivative\_offset}}
@@ -533,11 +392,11 @@ Referenced by \mbox{\hyperlink{generalised__timesteppers_8h_source_l00322}{dof\+
 
 
 
-Definition at line \mbox{\hyperlink{generalised__timesteppers_8h_source_l00103}{103}} of file \mbox{\hyperlink{generalised__timesteppers_8h_source}{generalised\+\_\+timesteppers.\+h}}.
+Definition at line 103 of file generalised\+\_\+timesteppers.\+h.
 
 
 
-Referenced by \mbox{\hyperlink{generalised__timesteppers_8h_source_l00316}{dof\+\_\+derivative\+\_\+offset()}}, \mbox{\hyperlink{generalised__timesteppers_8h_source_l00126}{modify\+\_\+storage()}}, \mbox{\hyperlink{generalised__timesteppers_8h_source_l00261}{set\+\_\+consistent\+\_\+pinned\+\_\+positions()}}, and \mbox{\hyperlink{generalised__timesteppers_8h_source_l00221}{set\+\_\+consistent\+\_\+pinned\+\_\+values()}}.
+Referenced by dof\+\_\+derivative\+\_\+offset(), modify\+\_\+storage(), set\+\_\+consistent\+\_\+pinned\+\_\+positions(), and set\+\_\+consistent\+\_\+pinned\+\_\+values().
 
 
 

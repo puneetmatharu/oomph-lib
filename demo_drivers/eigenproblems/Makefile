@@ -151,7 +151,7 @@ am__define_uniq_tagged_files = \
   unique=`for i in $$list; do \
     if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
   done | $(am__uniquify_input)`
-DIST_SUBDIRS = harmonic orr_sommerfeld
+DIST_SUBDIRS = $(SUBDIRS)
 am__DIST_COMMON = $(srcdir)/Makefile.in
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 am__relativize = \
@@ -228,7 +228,7 @@ EXTERNAL_LIBS = -lpthread -lboost_thread -lboost_system -lgmp -lmpfr -lCGAL_Core
 F77 = f77
 FC = gfortran
 FCFLAGS = -g -O2
-FFLAGS = -g -Wall
+FFLAGS = -fallow-argument-mismatch -g -Wall
 FFLAGS_NO_OPT = -O0
 FGREP = /usr/bin/grep -F
 FLIBS =  -L/usr/lib/gcc/x86_64-linux-gnu/11 -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/11/../../.. -lgfortran -lm -lquadmath
@@ -328,7 +328,7 @@ docdir = ${datarootdir}/doc/${PACKAGE_TARNAME}
 dvidir = ${docdir}
 exec_prefix = ${prefix}
 have_cmake = true
-have_doxygen = true
+have_doxygen = false
 have_libtool = true
 have_online_triangle = false
 have_pdf_latex = true
@@ -363,10 +363,7 @@ target_alias =
 top_build_prefix = ../../
 top_builddir = ../..
 top_srcdir = ../..
-SUBDIRS = 
-
-# Only do the eigen-tests if the arpack sources are available
-#SUBDIRS = harmonic orr_sommerfeld
+SUBDIRS = harmonic orr_sommerfeld
 all: all-recursive
 
 .SUFFIXES:

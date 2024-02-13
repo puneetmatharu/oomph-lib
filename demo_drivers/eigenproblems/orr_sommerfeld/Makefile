@@ -87,7 +87,7 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = x86_64-pc-linux-gnu
 host_triplet = x86_64-pc-linux-gnu
-#check_PROGRAMS = orr_sommerfeld$(EXEEXT)
+check_PROGRAMS = orr_sommerfeld$(EXEEXT)
 subdir = demo_drivers/eigenproblems/orr_sommerfeld
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/config/configure.ac_scripts/automake_init_command_file \
@@ -100,14 +100,11 @@ mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
-am__orr_sommerfeld_SOURCES_DIST = orr_sommerfeld.cc validate.sh
-#am_orr_sommerfeld_OBJECTS =  \
-#	orr_sommerfeld.$(OBJEXT)
+am_orr_sommerfeld_OBJECTS = orr_sommerfeld.$(OBJEXT)
 orr_sommerfeld_OBJECTS = $(am_orr_sommerfeld_OBJECTS)
 am__DEPENDENCIES_1 =
-#orr_sommerfeld_DEPENDENCIES =  \
-#	$(am__DEPENDENCIES_1) \
-#	$(am__DEPENDENCIES_1)
+orr_sommerfeld_DEPENDENCIES = $(am__DEPENDENCIES_1) \
+	$(am__DEPENDENCIES_1)
 AM_V_lt = $(am__v_lt_$(V))
 am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))
 am__v_lt_0 = --silent
@@ -147,7 +144,7 @@ am__v_CXXLD_ = $(am__v_CXXLD_$(AM_DEFAULT_VERBOSITY))
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
 SOURCES = $(orr_sommerfeld_SOURCES)
-DIST_SOURCES = $(am__orr_sommerfeld_SOURCES_DIST)
+DIST_SOURCES = $(orr_sommerfeld_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -248,7 +245,7 @@ EXTERNAL_LIBS = -lpthread -lboost_thread -lboost_system -lgmp -lmpfr -lCGAL_Core
 F77 = f77
 FC = gfortran
 FCFLAGS = -g -O2
-FFLAGS = -g -Wall
+FFLAGS = -fallow-argument-mismatch -g -Wall
 FFLAGS_NO_OPT = -O0
 FGREP = /usr/bin/grep -F
 FLIBS =  -L/usr/lib/gcc/x86_64-linux-gnu/11 -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/11/../../.. -lgfortran -lm -lquadmath
@@ -348,7 +345,7 @@ docdir = ${datarootdir}/doc/${PACKAGE_TARNAME}
 dvidir = ${docdir}
 exec_prefix = ${prefix}
 have_cmake = true
-have_doxygen = true
+have_doxygen = false
 have_libtool = true
 have_online_triangle = false
 have_pdf_latex = true
@@ -391,11 +388,11 @@ TESTS = $(top_builddir)/bin/wrapper_for_validate.sh
 EXTRA_DIST = validate.sh validata
 
 # Sources for executable
-#orr_sommerfeld_SOURCES = orr_sommerfeld.cc validate.sh
+orr_sommerfeld_SOURCES = orr_sommerfeld.cc validate.sh
 
 # Required libraries:
 # $(FLIBS) is included in case the solver involves fortran sources.
-#orr_sommerfeld_LDADD = -L${exec_prefix}/lib -lgeneric $(EXTERNAL_LIBS) $(FLIBS)
+orr_sommerfeld_LDADD = -L${exec_prefix}/lib -lgeneric $(EXTERNAL_LIBS) $(FLIBS)
 all: all-am
 
 .SUFFIXES:

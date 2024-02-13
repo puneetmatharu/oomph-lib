@@ -10,6 +10,8 @@ The purpose of this tutorial is to show how to specify different linear solvers 
 \item \mbox{\hyperlink{index_iterative_linear_solvers}{Iterative linear solvers and preconditioners}}
 \item \mbox{\hyperlink{index_third_party_iterative_linear_solvers}{Third-\/party iterative linear solvers and preconditioners}}
 \end{DoxyItemize}
+\end{DoxyItemize}
+\begin{DoxyItemize}
 \item \mbox{\hyperlink{index_specific_precond}{Problem-\/specific preconditioners}}
 \end{DoxyItemize}\DoxyHorRuler{0}
  \DoxyHorRuler{0}
@@ -20,12 +22,10 @@ As discussed in the \href{../../the_data_structure/html/index.html}{\texttt{ bot
 
  
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ solve(Problem*\ \textcolor{keyword}{const}\&\ problem\_pt,\ DoubleVector\&\ result)\ =\ 0;}
+\DoxyCodeLine{    \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} solve(Problem* \textcolor{keyword}{const}\& problem\_pt, DoubleVector\& result) = 0;}
 
 \end{DoxyCodeInclude}
- whose task it is to compute the solution $ \delta {\bf x} $ (returned in the vector {\ttfamily result}) of the linear system  \[
-{\cal J} \delta {\bf x} = -{\bf r}
-\] where $ {\bf r} $ and $ {\cal J} $ are the global Jacobian and the residual vector, computed by the {\ttfamily Problem} pointed to by {\ttfamily problem\+\_\+pt}. The \href{../../the_data_structure/html/classoomph_1_1LinearSolver.html}{\texttt{ {\ttfamily  Linear\+Solver}}} class also defines linear-\/algebra-\/type interfaces that allow the solution of linear systems with matrices other than the {\ttfamily Problem\textquotesingle{}s} Jacobian matrix. However, these methods may not be implemented for all linear solvers.
+ whose task it is to compute the solution $ \delta {\bf x} $ (returned in the vector {\ttfamily result}) of the linear system \[ {\cal J} \delta {\bf x} = -{\bf r} \] where $ {\bf r} $ and $ {\cal J} $ are the global Jacobian and the residual vector, computed by the {\ttfamily Problem} pointed to by {\ttfamily problem\+\_\+pt}. The \href{../../the_data_structure/html/classoomph_1_1LinearSolver.html}{\texttt{ {\ttfamily  Linear\+Solver}}} class also defines linear-\/algebra-\/type interfaces that allow the solution of linear systems with matrices other than the {\ttfamily Problem\textquotesingle{}s} Jacobian matrix. However, these methods may not be implemented for all linear solvers.
 
 \DoxyHorRuler{0}
  \DoxyHorRuler{0}
@@ -108,6 +108,9 @@ As discussed in the \href{../../the_data_structure/html/index.html}{\texttt{ bot
 
 \item \href{../../the_data_structure/html/classoomph_1_1MumpsSolver.html}{\texttt{ {\ttfamily  Mumps\+Solver }}}\+: is a wrapper to the \href{http://graal.ens-lyon.fr/MUMPS/}{\texttt{ MUMPS }} multifrontal solver that is available when {\ttfamily oomph-\/lib} is compiled with MPI support and support for MUMPS.
 \end{DoxyItemize}
+\end{DoxyItemize}
+\end{DoxyItemize}
+\begin{DoxyItemize}
 \item {\bfseries{Iterative solvers\+:}} ~\newline
 ~\newline
 
@@ -120,7 +123,6 @@ As discussed in the \href{../../the_data_structure/html/index.html}{\texttt{ bot
 
 \end{DoxyItemize}
 \end{DoxyItemize}
-\end{DoxyItemize}
 
 \DoxyHorRuler{0}
  \DoxyHorRuler{0}
@@ -130,8 +132,8 @@ Changing {\ttfamily oomph-\/lib\textquotesingle{}s} linear solver is straightfor
 
  
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ \textcolor{comment}{//\ Change\ solver\ to\ DenseLU}}
-\DoxyCodeLine{\ linear\_solver\_pt()=\textcolor{keyword}{new}\ DenseLU;}
+\DoxyCodeLine{ \textcolor{comment}{// Change solver to DenseLU}}
+\DoxyCodeLine{ linear\_solver\_pt()=\textcolor{keyword}{new} DenseLU;}
 
 \end{DoxyCodeInclude}
  In any subsequent calls to {\ttfamily oomph-\/lib\textquotesingle{}s} Newton solver, {\ttfamily Dense\+LU} will now be used to solve the linear systems arising during the Newton iteration.
@@ -143,9 +145,9 @@ The specification of an iterative linear solver is just as easy\+: For instance,
 
  
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ \textcolor{comment}{//\ Change\ solver\ to\ CG}}
-\DoxyCodeLine{\ IterativeLinearSolver*\ solver\_pt=\textcolor{keyword}{new}\ CG<CRDoubleMatrix>;}
-\DoxyCodeLine{\ linear\_solver\_pt()=solver\_pt;}
+\DoxyCodeLine{ \textcolor{comment}{// Change solver to CG}}
+\DoxyCodeLine{ IterativeLinearSolver* solver\_pt=\textcolor{keyword}{new} CG<CRDoubleMatrix>;}
+\DoxyCodeLine{ linear\_solver\_pt()=solver\_pt;}
 
 \end{DoxyCodeInclude}
  to the problem constructor. We note that, by default, {\ttfamily oomph-\/lib\textquotesingle{}s} {\ttfamily Iterative\+Linear\+Solvers} perform the preconditioning using the trivial \char`\"{}identity preconditioner\char`\"{}. Most Krylov subspace solvers perform very poorly without some sort of preconditioning.
@@ -154,20 +156,20 @@ Specific preconditioners may be implemented by deriving from the {\ttfamily Prec
 
  
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{comment}{\ \ \ \ ///\ Apply\ the\ preconditioner.\ Pure\ virtual\ generic\ interface}}
-\DoxyCodeLine{\textcolor{comment}{\ \ \ \ ///\ function.\ This\ method\ should\ apply\ the\ preconditioner\ operator\ to\ the}\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{\ \ \ \ ///\ vector\ r\ and\ return\ the\ vector\ z.}}
-\DoxyCodeLine{\textcolor{comment}{}\ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ preconditioner\_solve(\textcolor{keyword}{const}\ DoubleVector\&\ r,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DoubleVector\&\ z)\ =\ 0;}
+\DoxyCodeLine{    \textcolor{comment}{/// Apply the preconditioner. Pure virtual generic interface}}
+\DoxyCodeLine{\textcolor{comment}{    /// function. This method should apply the preconditioner operator to the}}
+\DoxyCodeLine{\textcolor{comment}{}\textcolor{comment}{    /// vector r and return the vector z.}}
+\DoxyCodeLine{\textcolor{comment}{}    \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} preconditioner\_solve(\textcolor{keyword}{const} DoubleVector\& r,}
+\DoxyCodeLine{                                      DoubleVector\& z) = 0;}
 
 \end{DoxyCodeInclude}
  and
 
  
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{comment}{\ \ \ \ ///\ Setup\ the\ preconditioner.\ Pure\ virtual\ generic\ interface}}
-\DoxyCodeLine{\textcolor{comment}{\ \ \ \ ///\ function.}}
-\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ setup()\ =\ 0;}
+\DoxyCodeLine{    \textcolor{comment}{/// Setup the preconditioner. Pure virtual generic interface}}
+\DoxyCodeLine{\textcolor{comment}{    /// function.}}
+\DoxyCodeLine{\textcolor{comment}{}    \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} setup() = 0;}
 
 \end{DoxyCodeInclude}
  Note that, by default, {\ttfamily oomph-\/lib\textquotesingle{}s} {\ttfamily Iterative\+Linear\+Solvers} employ left preconditioning.
@@ -176,8 +178,8 @@ Specific preconditioners may be implemented by deriving from the {\ttfamily Prec
 
  
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ \textcolor{comment}{//\ Specify\ preconditioner}}
-\DoxyCodeLine{\ solver\_pt-\/>preconditioner\_pt()=\textcolor{keyword}{new}\ ILUZeroPreconditioner<CRDoubleMatrix>;\ }
+\DoxyCodeLine{ \textcolor{comment}{// Specify preconditioner}}
+\DoxyCodeLine{ solver\_pt-\/>preconditioner\_pt()=\textcolor{keyword}{new} ILUZeroPreconditioner<CRDoubleMatrix>; }
 
 \end{DoxyCodeInclude}
  to the {\ttfamily Problem} constructor.
@@ -200,24 +202,24 @@ The wrappers to Trilinos\textquotesingle{} Krylov subspace solvers are implement
 
  
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ Create\ a\ Trilinos\ Solver\ }}
-\DoxyCodeLine{\ \ TrilinosAztecOOSolver*\ linear\_solver\_pt\ =\ \textcolor{keyword}{new}\ TrilinosAztecOOSolver;}
-\DoxyCodeLine{\ \ }
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ Create\ the\ Trilinos\ ML\ preconditioner}}
-\DoxyCodeLine{\ \ TrilinosMLPreconditioner*\ preconditioner\_pt\ =\ \textcolor{keyword}{new}\ TrilinosMLPreconditioner;}
+\DoxyCodeLine{  \textcolor{comment}{// Create a Trilinos Solver }}
+\DoxyCodeLine{  TrilinosAztecOOSolver* linear\_solver\_pt = \textcolor{keyword}{new} TrilinosAztecOOSolver;}
+\DoxyCodeLine{  }
+\DoxyCodeLine{  \textcolor{comment}{// Create the Trilinos ML preconditioner}}
+\DoxyCodeLine{  TrilinosMLPreconditioner* preconditioner\_pt = \textcolor{keyword}{new} TrilinosMLPreconditioner;}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ Set\ the\ preconditioner\ pointer}}
-\DoxyCodeLine{\ \ linear\_solver\_pt-\/>preconditioner\_pt()\ =\ preconditioner\_pt;}
+\DoxyCodeLine{  \textcolor{comment}{// Set the preconditioner pointer}}
+\DoxyCodeLine{  linear\_solver\_pt-\/>preconditioner\_pt() = preconditioner\_pt;}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ Set\ linear\ solver}}
-\DoxyCodeLine{\ \ problem.linear\_solver\_pt()\ =\ linear\_solver\_pt;}
+\DoxyCodeLine{  \textcolor{comment}{// Set linear solver}}
+\DoxyCodeLine{  problem.linear\_solver\_pt() = linear\_solver\_pt;}
 
 \end{DoxyCodeInclude}
  The actual Krylov subspace solver used by the {\ttfamily Trilinos} solver is specified by passing an enumerated flag (defined as static member data in the {\ttfamily Trilinos\+Aztec\+OOSolver} class) to the solver. For instance, {\ttfamily Trilinos\textquotesingle{}} CG, GMRES and Bi\+CGStab solvers are selected with
 
  
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ \ \ \ \ \ linear\_solver\_pt-\/>solver\_type()\ =\ TrilinosAztecOOSolver::CG;}
+\DoxyCodeLine{      linear\_solver\_pt-\/>solver\_type() = TrilinosAztecOOSolver::CG;}
 
 \end{DoxyCodeInclude}
 
@@ -226,14 +228,14 @@ or
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ \ \ \ \ \ linear\_solver\_pt-\/>solver\_type()\ =\ TrilinosAztecOOSolver::GMRES;}
+\DoxyCodeLine{      linear\_solver\_pt-\/>solver\_type() = TrilinosAztecOOSolver::GMRES;}
 
 \end{DoxyCodeInclude}
  or
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ \ \ \ \ \ linear\_solver\_pt-\/>solver\_type()\ =\ TrilinosAztecOOSolver::BiCGStab;}
+\DoxyCodeLine{      linear\_solver\_pt-\/>solver\_type() = TrilinosAztecOOSolver::BiCGStab;}
 
 \end{DoxyCodeInclude}
  respectively.
@@ -244,14 +246,14 @@ or
 
  
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Create\ oomph-\/lib\ linear\ solver}}
-\DoxyCodeLine{\ \ \ IterativeLinearSolver*\ linear\_solver\_pt=\textcolor{keyword}{new}\ GMRES<CRDoubleMatrix>;}
+\DoxyCodeLine{   \textcolor{comment}{// Create oomph-\/lib linear solver}}
+\DoxyCodeLine{   IterativeLinearSolver* linear\_solver\_pt=\textcolor{keyword}{new} GMRES<CRDoubleMatrix>;}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Create\ Trilinos\ IFPACK\ preconditioner\ as\ oomph-\/lib\ Preconditioner}}
-\DoxyCodeLine{\ \ \ Preconditioner*\ preconditioner\_pt=\textcolor{keyword}{new}\ TrilinosIFPACKPreconditioner;}
+\DoxyCodeLine{   \textcolor{comment}{// Create Trilinos IFPACK preconditioner as oomph-\/lib Preconditioner}}
+\DoxyCodeLine{   Preconditioner* preconditioner\_pt=\textcolor{keyword}{new} TrilinosIFPACKPreconditioner;}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Pass\ pointer\ to\ preconditioner\ to\ oomph-\/lib\ IterativeLinearSolver}}
-\DoxyCodeLine{\ \ \ linear\_solver\_pt-\/>preconditioner\_pt()=preconditioner\_pt;}
+\DoxyCodeLine{   \textcolor{comment}{// Pass pointer to preconditioner to oomph-\/lib IterativeLinearSolver}}
+\DoxyCodeLine{   linear\_solver\_pt-\/>preconditioner\_pt()=preconditioner\_pt;}
 
 \end{DoxyCodeInclude}
  \DoxyHorRuler{0}
@@ -268,11 +270,11 @@ The {\ttfamily Hypre\+Solver} is set like any other {\ttfamily Linear\+Solver\+:
 
  
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ \textcolor{comment}{//\ Create\ a\ new\ Hypre\ linear\ solver}}
-\DoxyCodeLine{\ HypreSolver*\ hypre\_linear\_solver\_pt\ =\ \textcolor{keyword}{new}\ HypreSolver;}
+\DoxyCodeLine{ \textcolor{comment}{// Create a new Hypre linear solver}}
+\DoxyCodeLine{ HypreSolver* hypre\_linear\_solver\_pt = \textcolor{keyword}{new} HypreSolver;}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \textcolor{comment}{//\ Set\ the\ linear\ solver\ for\ problem}}
-\DoxyCodeLine{\ problem.linear\_solver\_pt()\ =\ hypre\_linear\_solver\_pt;}
+\DoxyCodeLine{ \textcolor{comment}{// Set the linear solver for problem}}
+\DoxyCodeLine{ problem.linear\_solver\_pt() = hypre\_linear\_solver\_pt;}
 
 \end{DoxyCodeInclude}
 
@@ -281,28 +283,28 @@ The actual solver used by the {\ttfamily Hypre\+Solver} is specified by passing 
 
  
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ \ \ \ \ hypre\_linear\_solver\_pt-\/>hypre\_method()\ =\ HypreSolver::BoomerAMG;}
+\DoxyCodeLine{     hypre\_linear\_solver\_pt-\/>hypre\_method() = HypreSolver::BoomerAMG;}
 
 \end{DoxyCodeInclude}
  or
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ \ \ \ \ hypre\_linear\_solver\_pt-\/>hypre\_method()\ =\ HypreSolver::CG;}
+\DoxyCodeLine{     hypre\_linear\_solver\_pt-\/>hypre\_method() = HypreSolver::CG;}
 
 \end{DoxyCodeInclude}
  or
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ \ \ \ \ hypre\_linear\_solver\_pt-\/>hypre\_method()\ =\ HypreSolver::GMRES;}
+\DoxyCodeLine{     hypre\_linear\_solver\_pt-\/>hypre\_method() = HypreSolver::GMRES;}
 
 \end{DoxyCodeInclude}
  or
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ \ \ \ \ hypre\_linear\_solver\_pt-\/>hypre\_method()\ =\ HypreSolver::BiCGStab;}
+\DoxyCodeLine{     hypre\_linear\_solver\_pt-\/>hypre\_method() = HypreSolver::BiCGStab;}
 
 \end{DoxyCodeInclude}
  respectively.
@@ -311,28 +313,28 @@ These Krylov subspace methods may then be preconditioned by {\ttfamily Hypre\tex
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ \ \ \ \ \ \ hypre\_linear\_solver\_pt-\/>internal\_preconditioner()=HypreSolver::None;}
+\DoxyCodeLine{       hypre\_linear\_solver\_pt-\/>internal\_preconditioner()=HypreSolver::None;}
 
 \end{DoxyCodeInclude}
  or
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ \ \ \ \ \ \ hypre\_linear\_solver\_pt-\/>internal\_preconditioner()=HypreSolver::BoomerAMG;}
+\DoxyCodeLine{       hypre\_linear\_solver\_pt-\/>internal\_preconditioner()=HypreSolver::BoomerAMG;}
 
 \end{DoxyCodeInclude}
  or
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ \ \ \ \ \ \ hypre\_linear\_solver\_pt-\/>internal\_preconditioner()=HypreSolver::Euclid;}
+\DoxyCodeLine{       hypre\_linear\_solver\_pt-\/>internal\_preconditioner()=HypreSolver::Euclid;}
 
 \end{DoxyCodeInclude}
 or
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ \ \ \ \ \ \ hypre\_linear\_solver\_pt-\/>internal\_preconditioner()=HypreSolver::ParaSails;}
+\DoxyCodeLine{       hypre\_linear\_solver\_pt-\/>internal\_preconditioner()=HypreSolver::ParaSails;}
 
 \end{DoxyCodeInclude}
  respectively.
@@ -343,32 +345,32 @@ or
 
  
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ \textcolor{comment}{//\ Build\ and\ instance\ of\ BiCGStab\ and\ pass\ it\ to\ the\ problem}}
-\DoxyCodeLine{\ oomph\_linear\_solver\_pt\ =\ \textcolor{keyword}{new}\ BiCGStab<CRDoubleMatrix>;}
+\DoxyCodeLine{ \textcolor{comment}{// Build and instance of BiCGStab and pass it to the problem}}
+\DoxyCodeLine{ oomph\_linear\_solver\_pt = \textcolor{keyword}{new} BiCGStab<CRDoubleMatrix>;}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ problem.linear\_solver\_pt()\ =\ oomph\_linear\_solver\_pt;}
+\DoxyCodeLine{ problem.linear\_solver\_pt() = oomph\_linear\_solver\_pt;}
 
 \end{DoxyCodeInclude}
  Now we build an instance of a {\ttfamily Hypre\+Preconditioner} 
 
  
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ \textcolor{comment}{//\ Create\ a\ new\ Hypre\ preconditioner}}
-\DoxyCodeLine{\ HyprePreconditioner*\ hypre\_preconditioner\_pt\ =\ \textcolor{keyword}{new}\ HyprePreconditioner;}
+\DoxyCodeLine{ \textcolor{comment}{// Create a new Hypre preconditioner}}
+\DoxyCodeLine{ HyprePreconditioner* hypre\_preconditioner\_pt = \textcolor{keyword}{new} HyprePreconditioner;}
 
 \end{DoxyCodeInclude}
  and set it as the {\ttfamily Preconditioner} for {\ttfamily oomph-\/lib\textquotesingle{}s} {\ttfamily Bi\+CGStab} solver\+:
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ \ \ oomph\_linear\_solver\_pt-\/>preconditioner\_pt()=hypre\_preconditioner\_pt;}
+\DoxyCodeLine{   oomph\_linear\_solver\_pt-\/>preconditioner\_pt()=hypre\_preconditioner\_pt;}
 
 \end{DoxyCodeInclude}
  The actual preconditioning methodology to be used by the {\ttfamily Hypre\+Preconditioner} is again selected via enumerated flags, i.\+e.
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ \ \ \ \ hypre\_preconditioner\_pt-\/>hypre\_method()\ =\ HyprePreconditioner::BoomerAMG;}
+\DoxyCodeLine{     hypre\_preconditioner\_pt-\/>hypre\_method() = HyprePreconditioner::BoomerAMG;}
 
 \end{DoxyCodeInclude}
 
@@ -377,14 +379,14 @@ or
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ \ \ \ \ hypre\_preconditioner\_pt-\/>hypre\_method()\ =\ HyprePreconditioner::Euclid;}
+\DoxyCodeLine{     hypre\_preconditioner\_pt-\/>hypre\_method() = HyprePreconditioner::Euclid;}
 
 \end{DoxyCodeInclude}
  or
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ \ \ \ \ hypre\_preconditioner\_pt-\/>hypre\_method()\ =\ HyprePreconditioner::ParaSails;}
+\DoxyCodeLine{     hypre\_preconditioner\_pt-\/>hypre\_method() = HyprePreconditioner::ParaSails;}
 
 \end{DoxyCodeInclude}
 

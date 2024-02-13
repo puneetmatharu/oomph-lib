@@ -28,50 +28,9 @@ void \mbox{\hyperlink{classoomph_1_1ParallelResidualsHandler_a9a4e40b86cfb1db2b4
 \begin{DoxyCompactList}\small\item\em Use underlying \mbox{\hyperlink{classoomph_1_1AssemblyHandler}{Assembly\+Handler}} to return the contribution to the residuals of the element elem\+\_\+pt. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1ParallelResidualsHandler_a366186bb0905d7251390ec726fe33797}{get\+\_\+jacobian}} (\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const \&elem\+\_\+pt, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&residuals, \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ \&jacobian)
 \begin{DoxyCompactList}\small\item\em Use underlying \mbox{\hyperlink{classoomph_1_1AssemblyHandler}{Assembly\+Handler}} to Calculate the elemental Jacobian matrix \char`\"{}d equation / d variable\char`\"{} for elem\+\_\+pt. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1ParallelResidualsHandler_adea071e3131e4e84b7c3e9400892fb17}{get\+\_\+all\+\_\+vectors\+\_\+and\+\_\+matrices}} (\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const \&elem\+\_\+pt, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ $>$ \&vec, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ $>$ \&matrix)
+void \mbox{\hyperlink{classoomph_1_1ParallelResidualsHandler_ad1627856c77501b2f57b5842e75833a3}{get\+\_\+all\+\_\+vectors\+\_\+and\+\_\+matrices}} (\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const \&elem\+\_\+pt, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$$>$ \&vec, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$$>$ \&matrix)
 \begin{DoxyCompactList}\small\item\em Calculate all desired vectors and matrices provided by the element elem\+\_\+pt This function calls only the get\+\_\+residuals function associated with the original assembly handler. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classoomph_1_1ParallelResidualsHandler_abe905bb4dfc8977da144e8796f65ebf4}{$\sim$\+Parallel\+Residuals\+Handler}} ()
-\begin{DoxyCompactList}\small\item\em Empty virtual destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1AssemblyHandler}{oomph\+::\+Assembly\+Handler}}}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\hyperlink{classoomph_1_1AssemblyHandler_af3ab79744dce0b50370defdbf7981691}{Assembly\+Handler}} ()
-\begin{DoxyCompactList}\small\item\em Empty constructor. \end{DoxyCompactList}\item 
-virtual unsigned \mbox{\hyperlink{classoomph_1_1AssemblyHandler_a09213be8f4aa009e0366460a7ed78e68}{ndof}} (\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const \&elem\+\_\+pt)
-\begin{DoxyCompactList}\small\item\em Return the number of degrees of freedom in the element elem\+\_\+pt. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classoomph_1_1AssemblyHandler_abfd15243fce76ce8f1ea0248c700a3f4}{dof\+\_\+vector}} (\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const \&elem\+\_\+pt, const unsigned \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&dof)
-\begin{DoxyCompactList}\small\item\em Return vector of dofs at time level t in the element elem\+\_\+pt. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classoomph_1_1AssemblyHandler_afe6002d5703a93b3b147de79508c5719}{dof\+\_\+pt\+\_\+vector}} (\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const \&elem\+\_\+pt, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $\ast$ $>$ \&dof\+\_\+pt)
-\begin{DoxyCompactList}\small\item\em Return vector of pointers to dofs in the element elem\+\_\+pt. \end{DoxyCompactList}\item 
-virtual double \& \mbox{\hyperlink{classoomph_1_1AssemblyHandler_ab61559fc5df46871c1eebd103f7bf08b}{local\+\_\+problem\+\_\+dof}} (\mbox{\hyperlink{classoomph_1_1Problem}{Problem}} $\ast$const \&problem\+\_\+pt, const unsigned \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})
-\begin{DoxyCompactList}\small\item\em Return the t-\/th level of storage associated with the i-\/th (local) dof stored in the problem. \end{DoxyCompactList}\item 
-virtual unsigned long \mbox{\hyperlink{classoomph_1_1AssemblyHandler_a94d28e2de2559cde803d1ba2195b5290}{eqn\+\_\+number}} (\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const \&elem\+\_\+pt, const unsigned \&ieqn\+\_\+local)
-\begin{DoxyCompactList}\small\item\em Return the global equation number of the local unknown ieqn\+\_\+local in elem\+\_\+pt. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classoomph_1_1AssemblyHandler_a7a6203b0ab90da62b4da2af8a26d08b3}{get\+\_\+residuals}} (\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const \&elem\+\_\+pt, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&residuals)
-\begin{DoxyCompactList}\small\item\em Return the contribution to the residuals of the element elem\+\_\+pt. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classoomph_1_1AssemblyHandler_ad43c3d8760be0ba6ebee8d82509458e5}{get\+\_\+jacobian}} (\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const \&elem\+\_\+pt, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&residuals, \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ \&jacobian)
-\begin{DoxyCompactList}\small\item\em Calculate the elemental Jacobian matrix \char`\"{}d equation / d variable\char`\"{} for elem\+\_\+pt. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classoomph_1_1AssemblyHandler_ab2e4ee4623116b18245ca90cfe9ba144}{get\+\_\+all\+\_\+vectors\+\_\+and\+\_\+matrices}} (\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const \&elem\+\_\+pt, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ $>$ \&vec, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ $>$ \&matrix)
-\begin{DoxyCompactList}\small\item\em Calculate all desired vectors and matrices provided by the element elem\+\_\+pt. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classoomph_1_1AssemblyHandler_a2ee980ccabe0ad82f98e694eecf270bb}{get\+\_\+dresiduals\+\_\+dparameter}} (\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const \&elem\+\_\+pt, double $\ast$const \&parameter\+\_\+pt, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&dres\+\_\+dparam)
-\begin{DoxyCompactList}\small\item\em Calculate the derivative of the residuals with respect to a parameter. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classoomph_1_1AssemblyHandler_aefc0c13a65342806c167c5d53f014803}{get\+\_\+djacobian\+\_\+dparameter}} (\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const \&elem\+\_\+pt, double $\ast$const \&parameter\+\_\+pt, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&dres\+\_\+dparam, \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ \&djac\+\_\+dparam)
-\begin{DoxyCompactList}\small\item\em Calculate the derivative of the residuals and jacobian with respect to a parameter. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classoomph_1_1AssemblyHandler_a296bef49838d23522bb660c4c5207f03}{get\+\_\+hessian\+\_\+vector\+\_\+products}} (\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const \&elem\+\_\+pt, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ const \&Y, \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ const \&C, \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ \&product)
-\begin{DoxyCompactList}\small\item\em Calculate the product of the Hessian (derivative of Jacobian with respect to all variables) an eigenvector, Y, and other specified vectors, C (d(J\+\_\+\{ij\})/d u\+\_\+\{k\}) Y\+\_\+\{j\} C\+\_\+\{k\}. \end{DoxyCompactList}\item 
-virtual int \mbox{\hyperlink{classoomph_1_1AssemblyHandler_a22c5f240674e4f6cee12006790c11dae}{bifurcation\+\_\+type}} () const
-\begin{DoxyCompactList}\small\item\em Return an unsigned integer to indicate whether the handler is a bifurcation tracking handler. The default is zero (not) \end{DoxyCompactList}\item 
-virtual double $\ast$ \mbox{\hyperlink{classoomph_1_1AssemblyHandler_a3e369ec692c3d36a4a2a8a64dab7fe2b}{bifurcation\+\_\+parameter\+\_\+pt}} () const
-\begin{DoxyCompactList}\small\item\em Return a pointer to the bifurcation parameter in bifurcation tracking problems. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classoomph_1_1AssemblyHandler_a6d614b1b3809d0eb7ceb393e3ae9594f}{get\+\_\+eigenfunction}} (\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1DoubleVector}{Double\+Vector}} $>$ \&eigenfunction)
-\begin{DoxyCompactList}\small\item\em Return the eigenfunction(s) associated with the bifurcation that has been detected in bifurcation tracking problems. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classoomph_1_1AssemblyHandler_a60c8efc6756825df9cd41389cdeac6cc}{get\+\_\+inner\+\_\+products}} (\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const \&elem\+\_\+pt, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ std\+::pair$<$ unsigned, unsigned $>$ $>$ const \&history\+\_\+index, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&inner\+\_\+product)
-\begin{DoxyCompactList}\small\item\em Compute the inner products of the given vector of pairs of history values over the element. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classoomph_1_1AssemblyHandler_a2300910f43476551318d74e3a90e7713}{get\+\_\+inner\+\_\+product\+\_\+vectors}} (\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const \&elem\+\_\+pt, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ unsigned $>$ const \&history\+\_\+index, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ $>$ \&inner\+\_\+product\+\_\+vector)
-\begin{DoxyCompactList}\small\item\em Compute the vectors that when taken as a dot product with other history values give the inner product over the element. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classoomph_1_1AssemblyHandler_a0ccef21253d997dd1a78ed26c2b99fce}{synchronise}} ()
-\begin{DoxyCompactList}\small\item\em Function that is used to perform any synchronisation required during the solution. \end{DoxyCompactList}\item 
-virtual \mbox{\hyperlink{classoomph_1_1AssemblyHandler_ab26633238200230ab57a20cc49e731de}{$\sim$\+Assembly\+Handler}} ()
 \begin{DoxyCompactList}\small\item\em Empty virtual destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -83,7 +42,7 @@ virtual \mbox{\hyperlink{classoomph_1_1AssemblyHandler_ab26633238200230ab57a20cc
 \doxysubsection{Detailed Description}
 A class that is used to assemble the residuals in parallel by overloading the get\+\_\+all\+\_\+vectors\+\_\+and\+\_\+matrices, so that only the residuals are returned. This ensures that the (moderately complex) distributed parallel assembly loops are only in one place. 
 
-Definition at line \mbox{\hyperlink{assembly__handler_8h_source_l00268}{268}} of file \mbox{\hyperlink{assembly__handler_8h_source}{assembly\+\_\+handler.\+h}}.
+Definition at line 268 of file assembly\+\_\+handler.\+h.
 
 
 
@@ -100,7 +59,7 @@ Constructor, set the original assembly handler.
 
 
 
-Definition at line \mbox{\hyperlink{assembly__handler_8h_source_l00275}{275}} of file \mbox{\hyperlink{assembly__handler_8h_source}{assembly\+\_\+handler.\+h}}.
+Definition at line 275 of file assembly\+\_\+handler.\+h.
 
 \mbox{\Hypertarget{classoomph_1_1ParallelResidualsHandler_abe905bb4dfc8977da144e8796f65ebf4}\label{classoomph_1_1ParallelResidualsHandler_abe905bb4dfc8977da144e8796f65ebf4}} 
 \index{oomph::ParallelResidualsHandler@{oomph::ParallelResidualsHandler}!````~ParallelResidualsHandler@{$\sim$ParallelResidualsHandler}}
@@ -114,7 +73,7 @@ Empty virtual destructor.
 
 
 
-Definition at line \mbox{\hyperlink{assembly__handler_8h_source_l00327}{327}} of file \mbox{\hyperlink{assembly__handler_8h_source}{assembly\+\_\+handler.\+h}}.
+Definition at line 327 of file assembly\+\_\+handler.\+h.
 
 
 
@@ -135,17 +94,17 @@ Reimplemented from \mbox{\hyperlink{classoomph_1_1AssemblyHandler_a94d28e2de2559
 
 
 
-Definition at line \mbox{\hyperlink{assembly__handler_8h_source_l00289}{289}} of file \mbox{\hyperlink{assembly__handler_8h_source}{assembly\+\_\+handler.\+h}}.
+Definition at line 289 of file assembly\+\_\+handler.\+h.
 
 
 
-References \mbox{\hyperlink{assembly__handler_8h_source_l00271}{Assembly\+\_\+handler\+\_\+pt}}, and \mbox{\hyperlink{assembly__handler_8cc_source_l00082}{oomph\+::\+Assembly\+Handler\+::eqn\+\_\+number()}}.
+References Assembly\+\_\+handler\+\_\+pt, and oomph\+::\+Assembly\+Handler\+::eqn\+\_\+number().
 
-\mbox{\Hypertarget{classoomph_1_1ParallelResidualsHandler_adea071e3131e4e84b7c3e9400892fb17}\label{classoomph_1_1ParallelResidualsHandler_adea071e3131e4e84b7c3e9400892fb17}} 
+\mbox{\Hypertarget{classoomph_1_1ParallelResidualsHandler_ad1627856c77501b2f57b5842e75833a3}\label{classoomph_1_1ParallelResidualsHandler_ad1627856c77501b2f57b5842e75833a3}} 
 \index{oomph::ParallelResidualsHandler@{oomph::ParallelResidualsHandler}!get\_all\_vectors\_and\_matrices@{get\_all\_vectors\_and\_matrices}}
 \index{get\_all\_vectors\_and\_matrices@{get\_all\_vectors\_and\_matrices}!oomph::ParallelResidualsHandler@{oomph::ParallelResidualsHandler}}
 \doxysubsubsection{\texorpdfstring{get\_all\_vectors\_and\_matrices()}{get\_all\_vectors\_and\_matrices()}}
-{\footnotesize\ttfamily void oomph\+::\+Parallel\+Residuals\+Handler\+::get\+\_\+all\+\_\+vectors\+\_\+and\+\_\+matrices (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const \&}]{elem\+\_\+pt,  }\item[{\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ $>$ \&}]{vec,  }\item[{\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$ $>$ \&}]{matrix }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily void oomph\+::\+Parallel\+Residuals\+Handler\+::get\+\_\+all\+\_\+vectors\+\_\+and\+\_\+matrices (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1GeneralisedElement}{Generalised\+Element}} $\ast$const \&}]{elem\+\_\+pt,  }\item[{\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$$>$ \&}]{vec,  }\item[{\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1DenseMatrix}{Dense\+Matrix}}$<$ double $>$$>$ \&}]{matrix }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
 
 
 
@@ -153,15 +112,15 @@ Calculate all desired vectors and matrices provided by the element elem\+\_\+pt 
 
 
 
-Reimplemented from \mbox{\hyperlink{classoomph_1_1AssemblyHandler_ab2e4ee4623116b18245ca90cfe9ba144}{oomph\+::\+Assembly\+Handler}}.
+Reimplemented from \mbox{\hyperlink{classoomph_1_1AssemblyHandler_a67093ef481c51d384606486c41002baa}{oomph\+::\+Assembly\+Handler}}.
 
 
 
-Definition at line \mbox{\hyperlink{assembly__handler_8h_source_l00319}{319}} of file \mbox{\hyperlink{assembly__handler_8h_source}{assembly\+\_\+handler.\+h}}.
+Definition at line 319 of file assembly\+\_\+handler.\+h.
 
 
 
-References \mbox{\hyperlink{assembly__handler_8h_source_l00271}{Assembly\+\_\+handler\+\_\+pt}}, and \mbox{\hyperlink{assembly__handler_8cc_source_l00092}{oomph\+::\+Assembly\+Handler\+::get\+\_\+residuals()}}.
+References Assembly\+\_\+handler\+\_\+pt, and oomph\+::\+Assembly\+Handler\+::get\+\_\+residuals().
 
 \mbox{\Hypertarget{classoomph_1_1ParallelResidualsHandler_a366186bb0905d7251390ec726fe33797}\label{classoomph_1_1ParallelResidualsHandler_a366186bb0905d7251390ec726fe33797}} 
 \index{oomph::ParallelResidualsHandler@{oomph::ParallelResidualsHandler}!get\_jacobian@{get\_jacobian}}
@@ -179,11 +138,11 @@ Reimplemented from \mbox{\hyperlink{classoomph_1_1AssemblyHandler_ad43c3d8760be0
 
 
 
-Definition at line \mbox{\hyperlink{assembly__handler_8h_source_l00307}{307}} of file \mbox{\hyperlink{assembly__handler_8h_source}{assembly\+\_\+handler.\+h}}.
+Definition at line 307 of file assembly\+\_\+handler.\+h.
 
 
 
-References \mbox{\hyperlink{assembly__handler_8h_source_l00271}{Assembly\+\_\+handler\+\_\+pt}}, and \mbox{\hyperlink{assembly__handler_8cc_source_l00102}{oomph\+::\+Assembly\+Handler\+::get\+\_\+jacobian()}}.
+References Assembly\+\_\+handler\+\_\+pt, and oomph\+::\+Assembly\+Handler\+::get\+\_\+jacobian().
 
 \mbox{\Hypertarget{classoomph_1_1ParallelResidualsHandler_a9a4e40b86cfb1db2b4c770d8d7241ad1}\label{classoomph_1_1ParallelResidualsHandler_a9a4e40b86cfb1db2b4c770d8d7241ad1}} 
 \index{oomph::ParallelResidualsHandler@{oomph::ParallelResidualsHandler}!get\_residuals@{get\_residuals}}
@@ -201,11 +160,11 @@ Reimplemented from \mbox{\hyperlink{classoomph_1_1AssemblyHandler_a7a6203b0ab90d
 
 
 
-Definition at line \mbox{\hyperlink{assembly__handler_8h_source_l00297}{297}} of file \mbox{\hyperlink{assembly__handler_8h_source}{assembly\+\_\+handler.\+h}}.
+Definition at line 297 of file assembly\+\_\+handler.\+h.
 
 
 
-References \mbox{\hyperlink{assembly__handler_8h_source_l00271}{Assembly\+\_\+handler\+\_\+pt}}, and \mbox{\hyperlink{assembly__handler_8cc_source_l00092}{oomph\+::\+Assembly\+Handler\+::get\+\_\+residuals()}}.
+References Assembly\+\_\+handler\+\_\+pt, and oomph\+::\+Assembly\+Handler\+::get\+\_\+residuals().
 
 \mbox{\Hypertarget{classoomph_1_1ParallelResidualsHandler_a16eb9ec097e85c5da57b2e588d9683b6}\label{classoomph_1_1ParallelResidualsHandler_a16eb9ec097e85c5da57b2e588d9683b6}} 
 \index{oomph::ParallelResidualsHandler@{oomph::ParallelResidualsHandler}!ndof@{ndof}}
@@ -223,11 +182,11 @@ Reimplemented from \mbox{\hyperlink{classoomph_1_1AssemblyHandler_a09213be8f4aa0
 
 
 
-Definition at line \mbox{\hyperlink{assembly__handler_8h_source_l00282}{282}} of file \mbox{\hyperlink{assembly__handler_8h_source}{assembly\+\_\+handler.\+h}}.
+Definition at line 282 of file assembly\+\_\+handler.\+h.
 
 
 
-References \mbox{\hyperlink{assembly__handler_8h_source_l00271}{Assembly\+\_\+handler\+\_\+pt}}, and \mbox{\hyperlink{assembly__handler_8cc_source_l00042}{oomph\+::\+Assembly\+Handler\+::ndof()}}.
+References Assembly\+\_\+handler\+\_\+pt, and oomph\+::\+Assembly\+Handler\+::ndof().
 
 
 
@@ -244,11 +203,11 @@ The original assembly handler.
 
 
 
-Definition at line \mbox{\hyperlink{assembly__handler_8h_source_l00271}{271}} of file \mbox{\hyperlink{assembly__handler_8h_source}{assembly\+\_\+handler.\+h}}.
+Definition at line 271 of file assembly\+\_\+handler.\+h.
 
 
 
-Referenced by \mbox{\hyperlink{assembly__handler_8h_source_l00289}{eqn\+\_\+number()}}, \mbox{\hyperlink{assembly__handler_8h_source_l00319}{get\+\_\+all\+\_\+vectors\+\_\+and\+\_\+matrices()}}, \mbox{\hyperlink{assembly__handler_8h_source_l00307}{get\+\_\+jacobian()}}, \mbox{\hyperlink{assembly__handler_8h_source_l00297}{get\+\_\+residuals()}}, and \mbox{\hyperlink{assembly__handler_8h_source_l00282}{ndof()}}.
+Referenced by eqn\+\_\+number(), get\+\_\+all\+\_\+vectors\+\_\+and\+\_\+matrices(), get\+\_\+jacobian(), get\+\_\+residuals(), and ndof().
 
 
 

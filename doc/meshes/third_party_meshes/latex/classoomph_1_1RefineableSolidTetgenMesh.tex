@@ -1,4 +1,4 @@
-\hypertarget{classoomph_1_1RefineableSolidTetgenMesh}{}\doxysection{oomph\+::Refineable\+Solid\+Tetgen\+Mesh\texorpdfstring{$<$}{<} ELEMENT \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classoomph_1_1RefineableSolidTetgenMesh}{}\doxysection{oomph\+::Refineable\+Solid\+Tetgen\+Mesh$<$ ELEMENT $>$ Class Template Reference}
 \label{classoomph_1_1RefineableSolidTetgenMesh}\index{oomph::RefineableSolidTetgenMesh$<$ ELEMENT $>$@{oomph::RefineableSolidTetgenMesh$<$ ELEMENT $>$}}
 
 
@@ -9,7 +9,7 @@
 
 {\ttfamily \#include $<$refineable\+\_\+tetgen\+\_\+mesh.\+template.\+h$>$}
 
-Inheritance diagram for oomph\+::Refineable\+Solid\+Tetgen\+Mesh\texorpdfstring{$<$}{<} ELEMENT \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+Inheritance diagram for oomph\+::Refineable\+Solid\+Tetgen\+Mesh$<$ ELEMENT $>$\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.472406cm]{classoomph_1_1RefineableSolidTetgenMesh}
@@ -24,101 +24,16 @@ Inheritance diagram for oomph\+::Refineable\+Solid\+Tetgen\+Mesh\texorpdfstring{
 \begin{DoxyCompactList}\small\item\em Build mesh from specified triangulation and associated target areas for elements in it. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{classoomph_1_1RefineableSolidTetgenMesh_a8386e0befb5c197208918f7f43265974}{$\sim$\+Refineable\+Solid\+Tetgen\+Mesh}} ()
 \begin{DoxyCompactList}\small\item\em Empty Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1RefineableTetgenMesh}{oomph\+::\+Refineable\+Tetgen\+Mesh$<$ ELEMENT $>$}}}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\hyperlink{classoomph_1_1RefineableTetgenMesh_abb04c6b7cd68bd23907886dd8d880e5f}{Refineable\+Tetgen\+Mesh}} (Tet\+Mesh\+Faceted\+Closed\+Surface $\ast$const \&outer\+\_\+boundary\+\_\+pt, Vector$<$ Tet\+Mesh\+Faceted\+Surface $\ast$ $>$ \&internal\+\_\+closed\+\_\+surface\+\_\+pt, const double \&element\+\_\+volume, Time\+Stepper $\ast$time\+\_\+stepper\+\_\+pt=\&Mesh\+::\+Default\+\_\+\+Time\+Stepper, const bool \&use\+\_\+attributes=false, const bool \&split\+\_\+corner\+\_\+elements=false, Vector$<$ double $>$ $\ast$const \&target\+\_\+element\+\_\+volume\+\_\+in\+\_\+region\+\_\+pt=nullptr)
-\begin{DoxyCompactList}\small\item\em Build mesh, based on a Tet\+Mesh\+Faceted\+Closed\+Surface that specifies the outer boundary of the domain and any number of internal closed curves, specified by Tet\+Mesh\+Faceted\+Surfaces. Also specify target volume for uniform element size. \end{DoxyCompactList}\item 
-virtual \mbox{\hyperlink{classoomph_1_1RefineableTetgenMesh_ac2ac6c6961647d0f332a6742f52dd27d}{$\sim$\+Refineable\+Tetgen\+Mesh}} ()
-\begin{DoxyCompactList}\small\item\em Empty Destructor. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1RefineableTetgenMesh_a5ddc94b2545c82bfb2795583f9b98db2}{refine\+\_\+uniformly}} (Doc\+Info \&doc\+\_\+info)
-\begin{DoxyCompactList}\small\item\em Refine mesh uniformly and doc process. \end{DoxyCompactList}\item 
-unsigned \mbox{\hyperlink{classoomph_1_1RefineableTetgenMesh_add609c3184ffa1786e183f4c6dc24a57}{unrefine\+\_\+uniformly}} ()
-\begin{DoxyCompactList}\small\item\em Unrefine mesh uniformly\+: Return 0 for success, 1 for failure (if unrefinement has reached the coarsest permitted level) \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1RefineableTetgenMesh_ad75ff5f1e088e611311c3f6a30feea5b}{adapt}} (const Vector$<$ double $>$ \&elem\+\_\+error)
-\begin{DoxyCompactList}\small\item\em Adapt mesh, based on elemental error provided. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classoomph_1_1RefineableTetgenMesh_a3c2bb21844f02403fa687fefc55ba5ad}{projection\+\_\+is\+\_\+disabled}} ()
-\begin{DoxyCompactList}\small\item\em Is projection of old solution onto new mesh disabled? \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1RefineableTetgenMesh_af5342732d4a4e715a443688a53801c00}{disable\+\_\+projection}} ()
-\begin{DoxyCompactList}\small\item\em Disable projection of old solution onto new mesh. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1RefineableTetgenMesh_a7fabe6ae591918c313213fd0528e21d1}{enable\+\_\+projection}} ()
-\begin{DoxyCompactList}\small\item\em Disable projection of old solution onto new mesh. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1TetgenMesh}{oomph\+::\+Tetgen\+Mesh$<$ ELEMENT $>$}}}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\hyperlink{classoomph_1_1TetgenMesh_a2d2c7796e578f9fed1faf17569893531}{Tetgen\+Mesh}} ()
-\begin{DoxyCompactList}\small\item\em Empty constructor. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classoomph_1_1TetgenMesh_a10976b817c361f04da4ce996bd019c02}{Tetgen\+Mesh}} (const std\+::string \&node\+\_\+file\+\_\+name, const std\+::string \&element\+\_\+file\+\_\+name, const std\+::string \&face\+\_\+file\+\_\+name, Time\+Stepper $\ast$time\+\_\+stepper\+\_\+pt=\&Mesh\+::\+Default\+\_\+\+Time\+Stepper, const bool \&use\+\_\+attributes=false)
-\begin{DoxyCompactList}\small\item\em Constructor with the input files. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classoomph_1_1TetgenMesh_ace863f736d0dfa0a059b28959fced51d}{Tetgen\+Mesh}} (tetgenio \&tetgen\+\_\+data, Time\+Stepper $\ast$time\+\_\+stepper\+\_\+pt=\&Mesh\+::\+Default\+\_\+\+Time\+Stepper, const bool \&use\+\_\+attributes=false)
-\begin{DoxyCompactList}\small\item\em Constructor with tetgenio data structure. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classoomph_1_1TetgenMesh_a867b3f70bd0f5063901720d04f28e95e}{Tetgen\+Mesh}} (const std\+::string \&node\+\_\+file\+\_\+name, const std\+::string \&element\+\_\+file\+\_\+name, const std\+::string \&face\+\_\+file\+\_\+name, const bool \&split\+\_\+corner\+\_\+elements, Time\+Stepper $\ast$time\+\_\+stepper\+\_\+pt=\&Mesh\+::\+Default\+\_\+\+Time\+Stepper, const bool \&use\+\_\+attributes=false)
-\begin{DoxyCompactList}\small\item\em Constructor with the input files. Setting the boolean flag to true splits \char`\"{}corner\char`\"{} elements, i.\+e. elements that that have at least three faces on a domain boundary. The relevant elements are split without introducing hanging nodes so the sons have a \char`\"{}worse\char`\"{} shape than their fathers. However, this step avoids otherwise-\/hard-\/to-\/diagnose problems in fluids problems where the application of boundary conditions at such \char`\"{}corner\char`\"{} elements can overconstrain the solution. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classoomph_1_1TetgenMesh_a0fa783641ea515a942941425c468df01}{Tetgen\+Mesh}} (tetgenio \&tetgen\+\_\+data, const bool \&split\+\_\+corner\+\_\+elements, Time\+Stepper $\ast$time\+\_\+stepper\+\_\+pt=\&Mesh\+::\+Default\+\_\+\+Time\+Stepper, const bool \&use\+\_\+attributes=false)
-\begin{DoxyCompactList}\small\item\em Constructor with tetgen data structure Setting the boolean flag to true splits \char`\"{}corner\char`\"{} elements, i.\+e. elements that that have at least three faces on a domain boundary. The relevant elements are split without introducing hanging nodes so the sons have a \char`\"{}worse\char`\"{} shape than their fathers. However, this step avoids otherwise-\/hard-\/to-\/diagnose problems in fluids problems where the application of boundary conditions at such \char`\"{}corner\char`\"{} elements can overconstrain the solution. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classoomph_1_1TetgenMesh_a5bb8cf6353e81ff354a91f5622dece25}{Tetgen\+Mesh}} (Tet\+Mesh\+Faceted\+Closed\+Surface $\ast$const \&outer\+\_\+boundary\+\_\+pt, Vector$<$ Tet\+Mesh\+Faceted\+Surface $\ast$ $>$ \&internal\+\_\+surface\+\_\+pt, const double \&element\+\_\+volume, Time\+Stepper $\ast$time\+\_\+stepper\+\_\+pt=\&Mesh\+::\+Default\+\_\+\+Time\+Stepper, const bool \&use\+\_\+attributes=false, const bool \&split\+\_\+corner\+\_\+elements=false, Vector$<$ double $>$ $\ast$const \&target\+\_\+element\+\_\+volume\+\_\+in\+\_\+region\+\_\+pt=nullptr)
-\begin{DoxyCompactList}\small\item\em Build mesh, based on a Tetgen\+Mesh\+Facted\+Closed\+Surface that specifies the outer boundary of the domain and any number of internal boundaries, specified by Tet\+Mesh\+Faceted\+Surfaces. Also specify target size for uniform element size. Optionally specify the target element volume in each region. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1TetgenMesh_ab08c5b23d5b384729a3674d78f9f63bf}{build\+\_\+tetgenio}} (Tet\+Mesh\+Faceted\+Surface $\ast$const \&outer\+\_\+boundary\+\_\+pt, Vector$<$ Tet\+Mesh\+Faceted\+Surface $\ast$ $>$ \&internal\+\_\+surface\+\_\+pt, Vector$<$ double $>$ $\ast$const \&target\+\_\+element\+\_\+volume\+\_\+in\+\_\+region\+\_\+pt, tetgenio \&tetgen\+\_\+io)
-\begin{DoxyCompactList}\small\item\em Build tetgenio object from the Tet\+Mesh\+Faceted\+Surfaces. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classoomph_1_1TetgenMesh_a9a83c64b6481463161f6eb87f347ee9e}{$\sim$\+Tetgen\+Mesh}} ()
-\begin{DoxyCompactList}\small\item\em Empty destructor. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1TetgenMesh_a9c0441ea7404e7ea404979955ffbb5dd}{set\+\_\+mesh\+\_\+level\+\_\+time\+\_\+stepper}} (Time\+Stepper $\ast$const \&time\+\_\+stepper\+\_\+pt, const bool \&preserve\+\_\+existing\+\_\+data)
-\begin{DoxyCompactList}\small\item\em Overload set\+\_\+mesh\+\_\+level\+\_\+time\+\_\+stepper so that the stored time stepper now corresponds to the new timestepper. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classoomph_1_1TetgenMesh_aeab19209f141e65511a52f195d89d6ac}{tetgenio\+\_\+exists}} () const
-\begin{DoxyCompactList}\small\item\em Boolen defining whether tetgenio object has been built or not. \end{DoxyCompactList}\item 
-tetgenio $\ast$\& \mbox{\hyperlink{classoomph_1_1TetgenMesh_a4f80936c6c66947f304286605b2046ba}{tetgenio\+\_\+pt}} ()
-\begin{DoxyCompactList}\small\item\em Access to the triangulateio representation of the mesh. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1TetgenMesh_a8758320eb646d20b578414c35145f0d7}{set\+\_\+deep\+\_\+copy\+\_\+tetgenio\+\_\+pt}} (tetgenio $\ast$const \&\mbox{\hyperlink{classoomph_1_1TetgenMesh_a4f80936c6c66947f304286605b2046ba}{tetgenio\+\_\+pt}})
-\begin{DoxyCompactList}\small\item\em Set the tetgen pointer by a deep copy. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1TetgenMesh_a93e764a63a21a93d4a2548058eb1a7c4}{deep\+\_\+copy\+\_\+of\+\_\+tetgenio}} (tetgenio $\ast$const \&input\+\_\+pt, tetgenio $\ast$\&output\+\_\+pt)
-\begin{DoxyCompactList}\small\item\em Transfer tetgenio data from the input to the output The output is assumed to have been constructed and \char`\"{}empty\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
-\doxysubsubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classoomph_1_1RefineableTetgenMesh}{oomph\+::\+Refineable\+Tetgen\+Mesh$<$ ELEMENT $>$}}}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\hyperlink{classoomph_1_1RefineableTetgenMesh_ae1cdeb38e28b0840cc3b53d76f353e89}{Refineable\+Tetgen\+Mesh}} (const Vector$<$ double $>$ \&target\+\_\+volume, tetgenio $\ast$const \&tetgen\+\_\+io\+\_\+pt, Tet\+Mesh\+Faceted\+Closed\+Surface $\ast$const \&outer\+\_\+boundary\+\_\+pt, Vector$<$ Tet\+Mesh\+Faceted\+Surface $\ast$ $>$ \&internal\+\_\+surface\+\_\+pt, Time\+Stepper $\ast$time\+\_\+stepper\+\_\+pt=\&Mesh\+::\+Default\+\_\+\+Time\+Stepper, const bool \&use\+\_\+attributes=false)
-\begin{DoxyCompactList}\small\item\em Specialised constructor used during adaptation only. Element sizes are specified by vector tetgen\+\_\+io is passed in from previous mesh (is then modified to build new mesh) Ditto with use\+\_\+attributes, which comes from the previous mesh. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1RefineableTetgenMesh_a78ed78a656617d294c73118eda904253}{initialise\+\_\+adaptation\+\_\+data}} ()
-\begin{DoxyCompactList}\small\item\em Helper function to initialise data associated with adaptation. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1RefineableTetgenMesh_a48331c4310ecbad71e98b482d0d3ea0c}{update\+\_\+faceted\+\_\+surface\+\_\+using\+\_\+face\+\_\+mesh}} (Tet\+Mesh\+Faceted\+Surface $\ast$\&faceted\+\_\+surface\+\_\+pt)
-\begin{DoxyCompactList}\small\item\em Helper function that updates the input faceted surface by using the flattened elements from Face\+Mesh(es) that are constructed for the boundaries associated with the segments of the polygon. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1RefineableTetgenMesh_a001c3ff513cabdfbd67c65bd97ebb768}{surface\+\_\+remesh\+\_\+for\+\_\+inner\+\_\+hole\+\_\+boundaries}} ()
-\begin{DoxyCompactList}\small\item\em Generate a new faceted representation of the inner hole boundaries. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1RefineableTetgenMesh_acf9eea5998765dc36b96a2050db3e1e3}{snap\+\_\+nodes\+\_\+onto\+\_\+boundary}} (\mbox{\hyperlink{classoomph_1_1RefineableTetgenMesh}{Refineable\+Tetgen\+Mesh}}$<$ ELEMENT $>$ $\ast$\&new\+\_\+mesh\+\_\+pt, const unsigned \&b)
-\begin{DoxyCompactList}\small\item\em Snap the boundary nodes onto any curvilinear boundaries. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classoomph_1_1TetgenMesh}{oomph\+::\+Tetgen\+Mesh$<$ ELEMENT $>$}}}
-\begin{DoxyCompactItemize}
-\item 
-void \mbox{\hyperlink{classoomph_1_1TetgenMesh_a3b0d214cb14243f7ecc2c82e6641930b}{build\+\_\+from\+\_\+scaffold}} (Time\+Stepper $\ast$time\+\_\+stepper\+\_\+pt, const bool \&use\+\_\+attributes)
-\begin{DoxyCompactList}\small\item\em Build mesh from scaffold. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1TetgenMesh_a685e57d2adeb2a378ffc7e244e38c910}{setup\+\_\+reverse\+\_\+lookup\+\_\+schemes\+\_\+for\+\_\+faceted\+\_\+surface}} (Tet\+Mesh\+Faceted\+Surface $\ast$const \&faceted\+\_\+surface\+\_\+pt)
-\begin{DoxyCompactList}\small\item\em Function to setup the reverse look-\/up schemes. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1RefineableTetgenMesh}{oomph\+::\+Refineable\+Tetgen\+Mesh$<$ ELEMENT $>$}}}
-\begin{DoxyCompactItemize}
-\item 
-bool \mbox{\hyperlink{classoomph_1_1RefineableTetgenMesh_a274ebedf983f3b34620fa2bbb1980fcd}{Projection\+\_\+is\+\_\+disabled}}
-\begin{DoxyCompactList}\small\item\em Disable projection of solution onto new mesh during adaptation. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classoomph_1_1RefineableTetgenMesh_a72b505d4bfd018471ef1543e18ae5fce}{Corner\+\_\+elements\+\_\+must\+\_\+be\+\_\+split}}
-\begin{DoxyCompactList}\small\item\em Corner elements which have all of their nodes on the outer boundary are to be split into elements which have some non-\/boundary nodes. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1TetgenMesh}{oomph\+::\+Tetgen\+Mesh$<$ ELEMENT $>$}}}
-\begin{DoxyCompactItemize}
-\item 
-Tetgen\+Scaffold\+Mesh $\ast$ \mbox{\hyperlink{classoomph_1_1TetgenMesh_ac11e90fcf927bbf8317800db7723bad2}{Tmp\+\_\+mesh\+\_\+pt}}
-\begin{DoxyCompactList}\small\item\em Temporary scaffold mesh. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classoomph_1_1TetgenMesh_ab9aa31216620790d084d133b8781be37}{Tetgenio\+\_\+exists}}
-\begin{DoxyCompactList}\small\item\em Boolean to indicate whether a tetgenio representation of the mesh exists. \end{DoxyCompactList}\item 
-tetgenio $\ast$ \mbox{\hyperlink{classoomph_1_1TetgenMesh_a508672e33aa773da58c834a526cb5c59}{Tetgenio\+\_\+pt}}
-\begin{DoxyCompactList}\small\item\em Tetgen representation of mesh. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classoomph_1_1TetgenMesh_a94c4ac3940ecfdd87679167d300ce75d}{Use\+\_\+attributes}}
-\begin{DoxyCompactList}\small\item\em Boolean flag to indicate whether to use attributes or not (required for multidomain meshes) \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 \subsubsection*{template$<$class ELEMENT$>$\newline
 class oomph\+::\+Refineable\+Solid\+Tetgen\+Mesh$<$ ELEMENT $>$}
+
 ////////////////////////////////////////////////////////////////////////// ////////////////////////////////////////////////////////////////////////// 
 
-Definition at line \mbox{\hyperlink{refineable__tetgen__mesh_8template_8h_source_l00272}{272}} of file \mbox{\hyperlink{refineable__tetgen__mesh_8template_8h_source}{refineable\+\_\+tetgen\+\_\+mesh.\+template.\+h}}.
+Definition at line 272 of file refineable\+\_\+tetgen\+\_\+mesh.\+template.\+h.
 
 
 
@@ -128,7 +43,7 @@ Definition at line \mbox{\hyperlink{refineable__tetgen__mesh_8template_8h_source
 \index{RefineableSolidTetgenMesh@{RefineableSolidTetgenMesh}!oomph::RefineableSolidTetgenMesh$<$ ELEMENT $>$@{oomph::RefineableSolidTetgenMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{RefineableSolidTetgenMesh()}{RefineableSolidTetgenMesh()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-\mbox{\hyperlink{classoomph_1_1RefineableSolidTetgenMesh}{oomph\+::\+Refineable\+Solid\+Tetgen\+Mesh}}$<$ ELEMENT $>$\+::\+Refineable\+Solid\+Tetgen\+Mesh (\begin{DoxyParamCaption}\item[{Tet\+Mesh\+Faceted\+Closed\+Surface $\ast$const \&}]{outer\+\_\+boundary\+\_\+pt,  }\item[{Vector$<$ Tet\+Mesh\+Faceted\+Surface $\ast$ $>$ \&}]{internal\+\_\+closed\+\_\+surface\+\_\+pt,  }\item[{const double \&}]{element\+\_\+volume,  }\item[{Time\+Stepper $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&Mesh\+:\+:Default\+\_\+TimeStepper},  }\item[{const bool \&}]{use\+\_\+attributes = {\ttfamily false},  }\item[{const bool \&}]{split\+\_\+corner\+\_\+elements = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{classoomph_1_1RefineableSolidTetgenMesh}{oomph\+::\+Refineable\+Solid\+Tetgen\+Mesh}}$<$ ELEMENT $>$\+::\mbox{\hyperlink{classoomph_1_1RefineableSolidTetgenMesh}{Refineable\+Solid\+Tetgen\+Mesh}} (\begin{DoxyParamCaption}\item[{Tet\+Mesh\+Faceted\+Closed\+Surface $\ast$const \&}]{outer\+\_\+boundary\+\_\+pt,  }\item[{Vector$<$ Tet\+Mesh\+Faceted\+Surface $\ast$ $>$ \&}]{internal\+\_\+closed\+\_\+surface\+\_\+pt,  }\item[{const double \&}]{element\+\_\+volume,  }\item[{Time\+Stepper $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&Mesh\+:\+:Default\+\_\+TimeStepper},  }\item[{const bool \&}]{use\+\_\+attributes = {\ttfamily false},  }\item[{const bool \&}]{split\+\_\+corner\+\_\+elements = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -136,14 +51,14 @@ Build mesh, based on closed curve that specifies the outer boundary of the domai
 
 
 
-Definition at line \mbox{\hyperlink{refineable__tetgen__mesh_8template_8h_source_l00280}{280}} of file \mbox{\hyperlink{refineable__tetgen__mesh_8template_8h_source}{refineable\+\_\+tetgen\+\_\+mesh.\+template.\+h}}.
+Definition at line 280 of file refineable\+\_\+tetgen\+\_\+mesh.\+template.\+h.
 
 \mbox{\Hypertarget{classoomph_1_1RefineableSolidTetgenMesh_a316eeacca5760fb6517732ff93072a3f}\label{classoomph_1_1RefineableSolidTetgenMesh_a316eeacca5760fb6517732ff93072a3f}} 
 \index{oomph::RefineableSolidTetgenMesh$<$ ELEMENT $>$@{oomph::RefineableSolidTetgenMesh$<$ ELEMENT $>$}!RefineableSolidTetgenMesh@{RefineableSolidTetgenMesh}}
 \index{RefineableSolidTetgenMesh@{RefineableSolidTetgenMesh}!oomph::RefineableSolidTetgenMesh$<$ ELEMENT $>$@{oomph::RefineableSolidTetgenMesh$<$ ELEMENT $>$}}
 \doxysubsubsection{\texorpdfstring{RefineableSolidTetgenMesh()}{RefineableSolidTetgenMesh()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily template$<$class ELEMENT $>$ \\
-\mbox{\hyperlink{classoomph_1_1RefineableSolidTetgenMesh}{oomph\+::\+Refineable\+Solid\+Tetgen\+Mesh}}$<$ ELEMENT $>$\+::\+Refineable\+Solid\+Tetgen\+Mesh (\begin{DoxyParamCaption}\item[{const Vector$<$ double $>$ \&}]{target\+\_\+volume,  }\item[{tetgenio $\ast$const \&}]{tetgen\+\_\+io\+\_\+pt,  }\item[{Tet\+Mesh\+Faceted\+Closed\+Surface $\ast$const \&}]{outer\+\_\+boundary\+\_\+pt,  }\item[{Vector$<$ Tet\+Mesh\+Faceted\+Surface $\ast$ $>$ \&}]{internal\+\_\+surface\+\_\+pt,  }\item[{Time\+Stepper $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&Mesh\+:\+:Default\+\_\+TimeStepper},  }\item[{const bool \&}]{use\+\_\+attributes = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{classoomph_1_1RefineableSolidTetgenMesh}{oomph\+::\+Refineable\+Solid\+Tetgen\+Mesh}}$<$ ELEMENT $>$\+::\mbox{\hyperlink{classoomph_1_1RefineableSolidTetgenMesh}{Refineable\+Solid\+Tetgen\+Mesh}} (\begin{DoxyParamCaption}\item[{const Vector$<$ double $>$ \&}]{target\+\_\+volume,  }\item[{tetgenio $\ast$const \&}]{tetgen\+\_\+io\+\_\+pt,  }\item[{Tet\+Mesh\+Faceted\+Closed\+Surface $\ast$const \&}]{outer\+\_\+boundary\+\_\+pt,  }\item[{Vector$<$ Tet\+Mesh\+Faceted\+Surface $\ast$ $>$ \&}]{internal\+\_\+surface\+\_\+pt,  }\item[{Time\+Stepper $\ast$}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&Mesh\+:\+:Default\+\_\+TimeStepper},  }\item[{const bool \&}]{use\+\_\+attributes = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -151,7 +66,7 @@ Build mesh from specified triangulation and associated target areas for elements
 
 
 
-Definition at line \mbox{\hyperlink{refineable__tetgen__mesh_8template_8h_source_l00308}{308}} of file \mbox{\hyperlink{refineable__tetgen__mesh_8template_8h_source}{refineable\+\_\+tetgen\+\_\+mesh.\+template.\+h}}.
+Definition at line 308 of file refineable\+\_\+tetgen\+\_\+mesh.\+template.\+h.
 
 \mbox{\Hypertarget{classoomph_1_1RefineableSolidTetgenMesh_a8386e0befb5c197208918f7f43265974}\label{classoomph_1_1RefineableSolidTetgenMesh_a8386e0befb5c197208918f7f43265974}} 
 \index{oomph::RefineableSolidTetgenMesh$<$ ELEMENT $>$@{oomph::RefineableSolidTetgenMesh$<$ ELEMENT $>$}!````~RefineableSolidTetgenMesh@{$\sim$RefineableSolidTetgenMesh}}
@@ -166,7 +81,7 @@ Empty Destructor.
 
 
 
-Definition at line \mbox{\hyperlink{refineable__tetgen__mesh_8template_8h_source_l00328}{328}} of file \mbox{\hyperlink{refineable__tetgen__mesh_8template_8h_source}{refineable\+\_\+tetgen\+\_\+mesh.\+template.\+h}}.
+Definition at line 328 of file refineable\+\_\+tetgen\+\_\+mesh.\+template.\+h.
 
 
 

@@ -1,4 +1,4 @@
-\hypertarget{classoomph_1_1TGauss_3_011_00_014_01_4}{}\doxysection{oomph\+::TGauss\texorpdfstring{$<$}{<} 1, 4 \texorpdfstring{$>$}{>} Class Reference}
+\hypertarget{classoomph_1_1TGauss_3_011_00_014_01_4}{}\doxysection{oomph\+::TGauss$<$ 1, 4 $>$ Class Reference}
 \label{classoomph_1_1TGauss_3_011_00_014_01_4}\index{oomph::TGauss$<$ 1, 4 $>$@{oomph::TGauss$<$ 1, 4 $>$}}
 
 
@@ -9,7 +9,7 @@
 
 {\ttfamily \#include $<$integral.\+h$>$}
 
-Inheritance diagram for oomph\+::TGauss\texorpdfstring{$<$}{<} 1, 4 \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+Inheritance diagram for oomph\+::TGauss$<$ 1, 4 $>$\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{classoomph_1_1TGauss_3_011_00_014_01_4}
@@ -30,25 +30,6 @@ double \mbox{\hyperlink{classoomph_1_1TGauss_3_011_00_014_01_4_a32b231a7aaa3dd5e
 \begin{DoxyCompactList}\small\item\em Return coordinate x\mbox{[}j\mbox{]} of integration point i. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{classoomph_1_1TGauss_3_011_00_014_01_4_aea4817d7bb13c31e4608af7cc33b77d5}{weight}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
 \begin{DoxyCompactList}\small\item\em Return weight of integration point i. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1Integral}{oomph\+::\+Integral}}}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\hyperlink{classoomph_1_1Integral_a68e50805e1859191361da2be4e89b9a8}{Integral}} ()
-\begin{DoxyCompactList}\small\item\em Default constructor (empty) \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classoomph_1_1Integral_a2834c14eed14ab19d0ee182af599a86c}{Integral}} (const \mbox{\hyperlink{classoomph_1_1Integral}{Integral}} \&dummy)=delete
-\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1Integral_ae018673975ff5d9ecdac2052887884fd}{operator=}} (const \mbox{\hyperlink{classoomph_1_1Integral}{Integral}} \&)=delete
-\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
-virtual \mbox{\hyperlink{classoomph_1_1Integral_a61b5870e0953a50d0c678ef59eefe147}{$\sim$\+Integral}} ()
-\begin{DoxyCompactList}\small\item\em Virtual destructor (empty) \end{DoxyCompactList}\item 
-virtual unsigned \mbox{\hyperlink{classoomph_1_1Integral_a1a270de9d99a1fcf1d25a6c1017f65fa}{nweight}} () const =0
-\begin{DoxyCompactList}\small\item\em Return the number of integration points of the scheme. \end{DoxyCompactList}\item 
-virtual double \mbox{\hyperlink{classoomph_1_1Integral_a1a2122f99a87c18649bafdd9ed739758}{knot}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}, const unsigned \&j) const =0
-\begin{DoxyCompactList}\small\item\em Return local coordinate s\mbox{[}j\mbox{]} of i-\/th integration point. \end{DoxyCompactList}\item 
-virtual \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \mbox{\hyperlink{classoomph_1_1Integral_a750f52bb0121c183d02822a623ec708d}{knot}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const
-\begin{DoxyCompactList}\small\item\em Return local coordinates of i-\/th intergration point. Broken virtual. \end{DoxyCompactList}\item 
-virtual double \mbox{\hyperlink{classoomph_1_1Integral_ac65335e2aab120b285b3d6c294507b06}{weight}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}) const =0
-\begin{DoxyCompactList}\small\item\em Return weight of i-\/th integration point. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -63,7 +44,7 @@ static const double \mbox{\hyperlink{classoomph_1_1TGauss_3_011_00_014_01_4_a4d1
 \doxysubsection{Detailed Description}
 1D Gaussian integration class for cubic \char`\"{}triangular\char`\"{} elements. Four integration points. This integration scheme can integrate up to seventh-\/order polynomials exactly and is therefore a suitable \char`\"{}full\char`\"{} integration scheme for cubic (ten-\/node) elements in which the highest-\/order polynomial is sixth order. 
 
-Definition at line \mbox{\hyperlink{integral_8h_source_l00733}{733}} of file \mbox{\hyperlink{integral_8h_source}{integral.\+h}}.
+Definition at line 733 of file integral.\+h.
 
 
 
@@ -72,7 +53,7 @@ Definition at line \mbox{\hyperlink{integral_8h_source_l00733}{733}} of file \mb
 \index{oomph::TGauss$<$ 1, 4 $>$@{oomph::TGauss$<$ 1, 4 $>$}!TGauss@{TGauss}}
 \index{TGauss@{TGauss}!oomph::TGauss$<$ 1, 4 $>$@{oomph::TGauss$<$ 1, 4 $>$}}
 \doxysubsubsection{\texorpdfstring{TGauss()}{TGauss()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classoomph_1_1TGauss}{oomph\+::\+TGauss}}$<$ 1, 4 $>$\+::\+TGauss (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classoomph_1_1TGauss}{oomph\+::\+TGauss}}$<$ 1, 4 $>$\+::\mbox{\hyperlink{classoomph_1_1TGauss}{TGauss}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -80,13 +61,13 @@ Default constructor (empty)
 
 
 
-Definition at line \mbox{\hyperlink{integral_8h_source_l00743}{743}} of file \mbox{\hyperlink{integral_8h_source}{integral.\+h}}.
+Definition at line 743 of file integral.\+h.
 
 \mbox{\Hypertarget{classoomph_1_1TGauss_3_011_00_014_01_4_a596e9275962aa502e02ffa2369059e31}\label{classoomph_1_1TGauss_3_011_00_014_01_4_a596e9275962aa502e02ffa2369059e31}} 
 \index{oomph::TGauss$<$ 1, 4 $>$@{oomph::TGauss$<$ 1, 4 $>$}!TGauss@{TGauss}}
 \index{TGauss@{TGauss}!oomph::TGauss$<$ 1, 4 $>$@{oomph::TGauss$<$ 1, 4 $>$}}
 \doxysubsubsection{\texorpdfstring{TGauss()}{TGauss()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classoomph_1_1TGauss}{oomph\+::\+TGauss}}$<$ 1, 4 $>$\+::\+TGauss (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classoomph_1_1TGauss}{TGauss}}$<$ 1, 4 $>$ \&}]{dummy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classoomph_1_1TGauss}{oomph\+::\+TGauss}}$<$ 1, 4 $>$\+::\mbox{\hyperlink{classoomph_1_1TGauss}{TGauss}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classoomph_1_1TGauss}{TGauss}}$<$ 1, 4 $>$ \&}]{dummy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
 
 
 
@@ -111,11 +92,11 @@ Implements \mbox{\hyperlink{classoomph_1_1Integral_a1a2122f99a87c18649bafdd9ed73
 
 
 
-Definition at line \mbox{\hyperlink{integral_8h_source_l00758}{758}} of file \mbox{\hyperlink{integral_8h_source}{integral.\+h}}.
+Definition at line 758 of file integral.\+h.
 
 
 
-References \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}.
+References i.
 
 \mbox{\Hypertarget{classoomph_1_1TGauss_3_011_00_014_01_4_a8d87fc81e81aefe26e6c9a3ef5628231}\label{classoomph_1_1TGauss_3_011_00_014_01_4_a8d87fc81e81aefe26e6c9a3ef5628231}} 
 \index{oomph::TGauss$<$ 1, 4 $>$@{oomph::TGauss$<$ 1, 4 $>$}!nweight@{nweight}}
@@ -133,7 +114,7 @@ Implements \mbox{\hyperlink{classoomph_1_1Integral_a1a270de9d99a1fcf1d25a6c1017f
 
 
 
-Definition at line \mbox{\hyperlink{integral_8h_source_l00752}{752}} of file \mbox{\hyperlink{integral_8h_source}{integral.\+h}}.
+Definition at line 752 of file integral.\+h.
 
 \mbox{\Hypertarget{classoomph_1_1TGauss_3_011_00_014_01_4_a88edeefd0c99ffd91671fdb385be0807}\label{classoomph_1_1TGauss_3_011_00_014_01_4_a88edeefd0c99ffd91671fdb385be0807}} 
 \index{oomph::TGauss$<$ 1, 4 $>$@{oomph::TGauss$<$ 1, 4 $>$}!operator=@{operator=}}
@@ -161,11 +142,11 @@ Implements \mbox{\hyperlink{classoomph_1_1Integral_ac65335e2aab120b285b3d6c29450
 
 
 
-Definition at line \mbox{\hyperlink{integral_8h_source_l00764}{764}} of file \mbox{\hyperlink{integral_8h_source}{integral.\+h}}.
+Definition at line 764 of file integral.\+h.
 
 
 
-References \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}.
+References i.
 
 
 
@@ -174,14 +155,14 @@ References \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}.
 \index{oomph::TGauss$<$ 1, 4 $>$@{oomph::TGauss$<$ 1, 4 $>$}!Knot@{Knot}}
 \index{Knot@{Knot}!oomph::TGauss$<$ 1, 4 $>$@{oomph::TGauss$<$ 1, 4 $>$}}
 \doxysubsubsection{\texorpdfstring{Knot}{Knot}}
-{\footnotesize\ttfamily const double \mbox{\hyperlink{classoomph_1_1TGauss}{oomph\+::\+TGauss}}$<$ 1, 4 $>$\+::\+Knot\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+{\footnotesize\ttfamily const double \mbox{\hyperlink{classoomph_1_1TGauss}{oomph\+::\+TGauss}}$<$ 1, 4 $>$\+::Knot\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
 
 {\bfseries Initial value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{=\ \{\{0.5\ *\ (-\/0.861136311594053\ +\ 1.0)\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0.5\ *\ (-\/0.339981043584856\ +\ 1.0)\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0.5\ *\ (0.339981043584856\ +\ 1.0)\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0.5\ *\ (0.861136311594053\ +\ 1.0)\}\}}
+\DoxyCodeLine{= \{\{0.5 * (-\/0.861136311594053 + 1.0)\},}
+\DoxyCodeLine{                                           \{0.5 * (-\/0.339981043584856 + 1.0)\},}
+\DoxyCodeLine{                                           \{0.5 * (0.339981043584856 + 1.0)\},}
+\DoxyCodeLine{                                           \{0.5 * (0.861136311594053 + 1.0)\}\}}
 
 \end{DoxyCode}
 
@@ -190,13 +171,13 @@ Array to hold the weights and knots (defined in cc file)
 
 
 
-Definition at line \mbox{\hyperlink{integral_8h_source_l00739}{739}} of file \mbox{\hyperlink{integral_8h_source}{integral.\+h}}.
+Definition at line 739 of file integral.\+h.
 
 \mbox{\Hypertarget{classoomph_1_1TGauss_3_011_00_014_01_4_a219e645b38a17ae8c5de31501d6b3eb7}\label{classoomph_1_1TGauss_3_011_00_014_01_4_a219e645b38a17ae8c5de31501d6b3eb7}} 
 \index{oomph::TGauss$<$ 1, 4 $>$@{oomph::TGauss$<$ 1, 4 $>$}!Npts@{Npts}}
 \index{Npts@{Npts}!oomph::TGauss$<$ 1, 4 $>$@{oomph::TGauss$<$ 1, 4 $>$}}
 \doxysubsubsection{\texorpdfstring{Npts}{Npts}}
-{\footnotesize\ttfamily const unsigned \mbox{\hyperlink{classoomph_1_1TGauss}{oomph\+::\+TGauss}}$<$ 1, 4 $>$\+::\+Npts = 4\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+{\footnotesize\ttfamily const unsigned \mbox{\hyperlink{classoomph_1_1TGauss}{oomph\+::\+TGauss}}$<$ 1, 4 $>$\+::Npts = 4\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
 
 
 
@@ -204,25 +185,25 @@ Number of integration points in the scheme.
 
 
 
-Definition at line \mbox{\hyperlink{integral_8h_source_l00737}{737}} of file \mbox{\hyperlink{integral_8h_source}{integral.\+h}}.
+Definition at line 737 of file integral.\+h.
 
 \mbox{\Hypertarget{classoomph_1_1TGauss_3_011_00_014_01_4_a4d1975be33c55bf2450c540f9c4b50a9}\label{classoomph_1_1TGauss_3_011_00_014_01_4_a4d1975be33c55bf2450c540f9c4b50a9}} 
 \index{oomph::TGauss$<$ 1, 4 $>$@{oomph::TGauss$<$ 1, 4 $>$}!Weight@{Weight}}
 \index{Weight@{Weight}!oomph::TGauss$<$ 1, 4 $>$@{oomph::TGauss$<$ 1, 4 $>$}}
 \doxysubsubsection{\texorpdfstring{Weight}{Weight}}
-{\footnotesize\ttfamily const double \mbox{\hyperlink{classoomph_1_1TGauss}{oomph\+::\+TGauss}}$<$ 1, 4 $>$\+::\+Weight\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+{\footnotesize\ttfamily const double \mbox{\hyperlink{classoomph_1_1TGauss}{oomph\+::\+TGauss}}$<$ 1, 4 $>$\+::Weight\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
 
 {\bfseries Initial value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{=\ \{0.5\ *\ 0.347854845137448,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.5\ *\ 0.652145154862546,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.5\ *\ 0.652145154862546,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.5\ *\ 0.347854845137448\}}
+\DoxyCodeLine{= \{0.5 * 0.347854845137448,}
+\DoxyCodeLine{                                          0.5 * 0.652145154862546,}
+\DoxyCodeLine{                                          0.5 * 0.652145154862546,}
+\DoxyCodeLine{                                          0.5 * 0.347854845137448\}}
 
 \end{DoxyCode}
 
 
-Definition at line \mbox{\hyperlink{integral_8h_source_l00739}{739}} of file \mbox{\hyperlink{integral_8h_source}{integral.\+h}}.
+Definition at line 739 of file integral.\+h.
 
 
 

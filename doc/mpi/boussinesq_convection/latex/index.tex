@@ -34,33 +34,33 @@ The boundary conditions are such that a single pressure degree of freedom must b
 
  
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{comment}{\ ///\ Actions\ after\ adaptation,\ re-\/set\ all\ interactions,\ then}}
-\DoxyCodeLine{\textcolor{comment}{\ ///\ re-\/pin\ a\ single\ pressure\ degree\ of\ freedom}}
-\DoxyCodeLine{\ \textcolor{keywordtype}{void}\ actions\_after\_adapt()}
-\DoxyCodeLine{\ \ \{}
-\DoxyCodeLine{\ \ \ \textcolor{comment}{//Unpin\ all\ the\ pressures\ in\ NST\ mesh\ to\ avoid\ pinning\ two\ pressures}}
-\DoxyCodeLine{\ \ \ RefineableNavierStokesEquations<2>::}
-\DoxyCodeLine{\ \ \ \ unpin\_all\_pressure\_dofs(nst\_mesh\_pt()-\/>element\_pt());}
+\DoxyCodeLine{ \textcolor{comment}{/// Actions after adaptation, re-\/set all interactions, then}}
+\DoxyCodeLine{\textcolor{comment}{ /// re-\/pin a single pressure degree of freedom}}
+\DoxyCodeLine{\textcolor{comment}{} \textcolor{keywordtype}{void} actions\_after\_adapt()}
+\DoxyCodeLine{  \{}
+\DoxyCodeLine{   \textcolor{comment}{//Unpin all the pressures in NST mesh to avoid pinning two pressures}}
+\DoxyCodeLine{   RefineableNavierStokesEquations<2>::}
+\DoxyCodeLine{    unpin\_all\_pressure\_dofs(nst\_mesh\_pt()-\/>element\_pt());}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \textcolor{comment}{//Pin\ the\ zero-\/th\ pressure\ dof\ in\ the\ zero-\/th\ element\ and\ set}}
-\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ its\ value\ to\ zero}}
-\DoxyCodeLine{\ \ \ \textcolor{keywordtype}{unsigned}\ nnod=nst\_mesh\_pt()-\/>nnode();}
-\DoxyCodeLine{\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ j=0;\ j<nnod;\ j++)}
-\DoxyCodeLine{\ \ \ \ \{}
-\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordflow}{if}\ (mesh\_pt()-\/>node\_pt(j)-\/>x(0)==0.0\ \&\&\ }
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ mesh\_pt()-\/>node\_pt(j)-\/>x(1)==0.0)\ \textcolor{comment}{//\ 2d\ problem\ only}}
-\DoxyCodeLine{\ \ \ \ \ \ \{}
-\DoxyCodeLine{\ \ \ \ \ \ \ fix\_pressure(0,0,0.0);}
-\DoxyCodeLine{\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\ \ \ \ \ \ \}}
-\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{   \textcolor{comment}{//Pin the zero-\/th pressure dof in the zero-\/th element and set}}
+\DoxyCodeLine{   \textcolor{comment}{// its value to zero}}
+\DoxyCodeLine{   \textcolor{keywordtype}{unsigned} nnod=nst\_mesh\_pt()-\/>nnode();}
+\DoxyCodeLine{   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} j=0; j<nnod; j++)}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{     \textcolor{keywordflow}{if} (mesh\_pt()-\/>node\_pt(j)-\/>x(0)==0.0 \&\& }
+\DoxyCodeLine{         mesh\_pt()-\/>node\_pt(j)-\/>x(1)==0.0) \textcolor{comment}{// 2d problem only}}
+\DoxyCodeLine{      \{}
+\DoxyCodeLine{       fix\_pressure(0,0,0.0);}
+\DoxyCodeLine{       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{      \}}
+\DoxyCodeLine{    \}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Set\ external\ elements\ for\ the\ multi-\/domain\ solution.}}
-\DoxyCodeLine{\ \ \ Multi\_domain\_functions::}
-\DoxyCodeLine{\ \ \ \ setup\_multi\_domain\_interactions<NST\_ELEMENT,AD\_ELEMENT>}
-\DoxyCodeLine{\ \ \ \ (\textcolor{keyword}{this},nst\_mesh\_pt(),adv\_diff\_mesh\_pt());}
-\DoxyCodeLine{\ }
-\DoxyCodeLine{\ \ \}\ \textcolor{comment}{//end\_of\_actions\_after\_adapt}}
+\DoxyCodeLine{   \textcolor{comment}{// Set external elements for the multi-\/domain solution.}}
+\DoxyCodeLine{   Multi\_domain\_functions::}
+\DoxyCodeLine{    setup\_multi\_domain\_interactions<NST\_ELEMENT,AD\_ELEMENT>}
+\DoxyCodeLine{    (\textcolor{keyword}{this},nst\_mesh\_pt(),adv\_diff\_mesh\_pt());}
+\DoxyCodeLine{ }
+\DoxyCodeLine{  \} \textcolor{comment}{//end\_of\_actions\_after\_adapt}}
 
 \end{DoxyCodeInclude}
 
@@ -71,13 +71,13 @@ After the problem distribution, the multi-\/domain interactions must be set up a
 
  
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{comment}{\ ///\ Actions\ after\ distribute:\ Re-\/setup\ multi-\/domain\ interaction}}
-\DoxyCodeLine{\ \textcolor{keywordtype}{void}\ actions\_after\_distribute()}
-\DoxyCodeLine{\ \ \{}
-\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Re-\/set\ all\ the\ interactions\ in\ the\ problem}}
-\DoxyCodeLine{\ \ \ Multi\_domain\_functions::setup\_multi\_domain\_interactions}
-\DoxyCodeLine{\ \ \ \ <NST\_ELEMENT,AD\_ELEMENT>(\textcolor{keyword}{this},nst\_mesh\_pt(),adv\_diff\_mesh\_pt());}
-\DoxyCodeLine{\ \ \}\ }
+\DoxyCodeLine{ \textcolor{comment}{/// Actions after distribute: Re-\/setup multi-\/domain interaction}}
+\DoxyCodeLine{ \textcolor{keywordtype}{void} actions\_after\_distribute()}
+\DoxyCodeLine{  \{}
+\DoxyCodeLine{   \textcolor{comment}{// Re-\/set all the interactions in the problem}}
+\DoxyCodeLine{   Multi\_domain\_functions::setup\_multi\_domain\_interactions}
+\DoxyCodeLine{    <NST\_ELEMENT,AD\_ELEMENT>(\textcolor{keyword}{this},nst\_mesh\_pt(),adv\_diff\_mesh\_pt());}
+\DoxyCodeLine{  \} }
 
 \end{DoxyCodeInclude}
  \DoxyHorRuler{0}
@@ -98,11 +98,11 @@ The function
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class}\ ELEMENT\_0,\textcolor{keyword}{class}\ ELEMENT\_1>\ \ \ \ \ }
-\DoxyCodeLine{\textcolor{keywordtype}{void}\ Multi\_domain\_functions::setup\_multi\_domain\_interactions(}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Problem*\ problem\_pt,\ }
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Mesh*\ \textcolor{keyword}{const}\ \&first\_mesh\_pt,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Mesh*\ \textcolor{keyword}{const}\ \&second\_mesh\_pt);}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT\_0,\textcolor{keyword}{class} ELEMENT\_1>     }
+\DoxyCodeLine{\textcolor{keywordtype}{void} Multi\_domain\_functions::setup\_multi\_domain\_interactions(}
+\DoxyCodeLine{                                       Problem* problem\_pt, }
+\DoxyCodeLine{                                       Mesh* \textcolor{keyword}{const} \&first\_mesh\_pt,}
+\DoxyCodeLine{                                       Mesh* \textcolor{keyword}{const} \&second\_mesh\_pt);}
 
 \end{DoxyCode}
 
@@ -113,11 +113,11 @@ The corresponding function
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class}\ EXT\_ELEMENT>}
-\DoxyCodeLine{\textcolor{keywordtype}{void}\ Multi\_domain\_functions::setup\_multi\_domain\_interaction(}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Problem*\ problem\_pt,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Mesh*\ \textcolor{keyword}{const}\ \&mesh\_pt,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Mesh*\ \textcolor{keyword}{const}\ \&external\_mesh\_pt);}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class} EXT\_ELEMENT>}
+\DoxyCodeLine{\textcolor{keywordtype}{void} Multi\_domain\_functions::setup\_multi\_domain\_interaction(}
+\DoxyCodeLine{                                       Problem* problem\_pt,}
+\DoxyCodeLine{                                       Mesh* \textcolor{keyword}{const} \&mesh\_pt,}
+\DoxyCodeLine{                                       Mesh* \textcolor{keyword}{const} \&external\_mesh\_pt);}
 
 \end{DoxyCode}
 
@@ -127,21 +127,21 @@ The corresponding function
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{setup\_multi\_domain\_interaction<ELEMENT\_1>}
-\DoxyCodeLine{\ \ \ \ \ (problem\_pt,first\_mesh\_pt,second\_mesh\_pt);}
+\DoxyCodeLine{     (problem\_pt,first\_mesh\_pt,second\_mesh\_pt);}
 \DoxyCodeLine{setup\_multi\_domain\_interaction<ELEMENT\_0>}
-\DoxyCodeLine{\ \ \ \ \ (problem\_pt,second\_mesh\_pt,first\_mesh\_pt);}
+\DoxyCodeLine{     (problem\_pt,second\_mesh\_pt,first\_mesh\_pt);}
 
 \end{DoxyCode}
 
 
 Finally, the function 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class}\ EXT\_ELEMENT,\ \textcolor{keyword}{class}\ FACE\_ELEMENT\_GEOM\_OBJECT>}
-\DoxyCodeLine{\textcolor{keywordtype}{void}\ Multi\_domain\_functions::\ setup\_multi\_domain\_interaction(}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Problem*\ problem\_pt,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Mesh*\ \textcolor{keyword}{const}\ \&mesh\_pt,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Mesh*\ \textcolor{keyword}{const}\ \&external\_mesh\_pt,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Mesh*\ \textcolor{keyword}{const}\ \&external\_face\_mesh\_pt);}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class} EXT\_ELEMENT, \textcolor{keyword}{class} FACE\_ELEMENT\_GEOM\_OBJECT>}
+\DoxyCodeLine{\textcolor{keywordtype}{void} Multi\_domain\_functions:: setup\_multi\_domain\_interaction(}
+\DoxyCodeLine{                                       Problem* problem\_pt,}
+\DoxyCodeLine{                                       Mesh* \textcolor{keyword}{const} \&mesh\_pt,}
+\DoxyCodeLine{                                       Mesh* \textcolor{keyword}{const} \&external\_mesh\_pt,}
+\DoxyCodeLine{                                       Mesh* \textcolor{keyword}{const} \&external\_face\_mesh\_pt);}
 
 \end{DoxyCode}
 

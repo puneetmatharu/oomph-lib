@@ -61,7 +61,7 @@ See the \href{http://wias-berlin.de/software/tetgen//}{\texttt{ {\ttfamily Tetge
 \hypertarget{index_run_Tetgen}{}\doxysubsection{How to run Tetgen}\label{index_run_Tetgen}
 To create the mesh from a given input file the command is 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{./tetgen\ filename.poly}
+\DoxyCodeLine{./tetgen filename.poly}
 
 \end{DoxyCode}
 
@@ -94,71 +94,71 @@ Here is a listing of the corresponding input file, {\ttfamily cube\+\_\+hole.\+p
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\#\ This\ file\ represents\ a\ cube\ with\ a\ cube\ hole\ in\ the\ middle.}
+\DoxyCodeLine{\# This file represents a cube with a cube hole in the middle.}
 \DoxyCodeLine{}
-\DoxyCodeLine{\#\ Part\ 1\ -\/\ node\ list}
-\DoxyCodeLine{16\ 3\ 0\ 1}
-\DoxyCodeLine{1\ \ \ \ 0\ 0\ 0\ 1}
-\DoxyCodeLine{2\ \ \ \ 3\ 0\ 0\ 1\ }
-\DoxyCodeLine{3\ \ \ \ 3\ 3\ 0\ 1}
-\DoxyCodeLine{4\ \ \ \ 0\ 3\ 0\ 1}
-\DoxyCodeLine{5\ \ \ \ 0\ 0\ 3\ 1}
-\DoxyCodeLine{6\ \ \ \ 3\ 0\ 3\ 1}
-\DoxyCodeLine{7\ \ \ \ 3\ 3\ 3\ 1}
-\DoxyCodeLine{8\ \ \ \ 0\ 3\ 3\ 1}
-\DoxyCodeLine{9\ \ \ \ 1\ 1\ 1\ 2}
-\DoxyCodeLine{10\ \ \ 2\ 1\ 1\ 2}
-\DoxyCodeLine{11\ \ \ 2\ 2\ 1\ 2}
-\DoxyCodeLine{12\ \ \ 1\ 2\ 1\ 2}
-\DoxyCodeLine{13\ \ \ 1\ 1\ 2\ 2}
-\DoxyCodeLine{14\ \ \ 2\ 1\ 2\ 2}
-\DoxyCodeLine{15\ \ \ 2\ 2\ 2\ 2}
-\DoxyCodeLine{16\ \ \ 1\ 2\ 2\ 2}
+\DoxyCodeLine{\# Part 1 -\/ node list}
+\DoxyCodeLine{16 3 0 1}
+\DoxyCodeLine{1    0 0 0 1}
+\DoxyCodeLine{2    3 0 0 1 }
+\DoxyCodeLine{3    3 3 0 1}
+\DoxyCodeLine{4    0 3 0 1}
+\DoxyCodeLine{5    0 0 3 1}
+\DoxyCodeLine{6    3 0 3 1}
+\DoxyCodeLine{7    3 3 3 1}
+\DoxyCodeLine{8    0 3 3 1}
+\DoxyCodeLine{9    1 1 1 2}
+\DoxyCodeLine{10   2 1 1 2}
+\DoxyCodeLine{11   2 2 1 2}
+\DoxyCodeLine{12   1 2 1 2}
+\DoxyCodeLine{13   1 1 2 2}
+\DoxyCodeLine{14   2 1 2 2}
+\DoxyCodeLine{15   2 2 2 2}
+\DoxyCodeLine{16   1 2 2 2}
 \DoxyCodeLine{}
-\DoxyCodeLine{\#\ Part\ 2\ -\/\ facet\ list}
-\DoxyCodeLine{12\ 1}
-\DoxyCodeLine{\#\ bottom\ 1}
-\DoxyCodeLine{1\ 0\ 1}
-\DoxyCodeLine{4\ 1\ 2\ 3\ 4}
-\DoxyCodeLine{\#\ top\ 1}
-\DoxyCodeLine{1\ 0\ 1}
-\DoxyCodeLine{4\ 5\ 6\ 7\ 8}
-\DoxyCodeLine{\#\ left\ 1}
-\DoxyCodeLine{1\ 0\ 1}
-\DoxyCodeLine{4\ 1\ 4\ 8\ 5}
-\DoxyCodeLine{\#\ right\ 1}
-\DoxyCodeLine{1\ 0\ 1}
-\DoxyCodeLine{4\ 2\ 3\ 7\ 6}
-\DoxyCodeLine{\#\ front\ 1}
-\DoxyCodeLine{1\ 0\ 1}
-\DoxyCodeLine{4\ 3\ 4\ 8\ 7}
-\DoxyCodeLine{\#\ back\ 1}
-\DoxyCodeLine{1\ 0\ 1}
-\DoxyCodeLine{4\ 1\ 2\ 6\ 5}
-\DoxyCodeLine{\#\ bottom\ 2}
-\DoxyCodeLine{1\ 0\ 2}
-\DoxyCodeLine{4\ 9\ 10\ 11\ 12}
-\DoxyCodeLine{\#\ top\ 2}
-\DoxyCodeLine{1\ 0\ 2}
-\DoxyCodeLine{4\ 13\ 14\ 15\ 16}
-\DoxyCodeLine{\#\ left\ 2}
-\DoxyCodeLine{1\ 0\ 2}
-\DoxyCodeLine{4\ 9\ 12\ 16\ 13}
-\DoxyCodeLine{\#\ right\ 2}
-\DoxyCodeLine{1\ 0\ 2}
-\DoxyCodeLine{4\ 10\ 11\ 15\ 14}
-\DoxyCodeLine{\#\ front\ 2}
-\DoxyCodeLine{1\ 0\ 2}
-\DoxyCodeLine{4\ 11\ 12\ 16\ 15}
-\DoxyCodeLine{\#\ back\ 2}
-\DoxyCodeLine{1\ 0\ 2}
-\DoxyCodeLine{4\ 9\ 10\ 14\ 13}
+\DoxyCodeLine{\# Part 2 -\/ facet list}
+\DoxyCodeLine{12 1}
+\DoxyCodeLine{\# bottom 1}
+\DoxyCodeLine{1 0 1}
+\DoxyCodeLine{4 1 2 3 4}
+\DoxyCodeLine{\# top 1}
+\DoxyCodeLine{1 0 1}
+\DoxyCodeLine{4 5 6 7 8}
+\DoxyCodeLine{\# left 1}
+\DoxyCodeLine{1 0 1}
+\DoxyCodeLine{4 1 4 8 5}
+\DoxyCodeLine{\# right 1}
+\DoxyCodeLine{1 0 1}
+\DoxyCodeLine{4 2 3 7 6}
+\DoxyCodeLine{\# front 1}
+\DoxyCodeLine{1 0 1}
+\DoxyCodeLine{4 3 4 8 7}
+\DoxyCodeLine{\# back 1}
+\DoxyCodeLine{1 0 1}
+\DoxyCodeLine{4 1 2 6 5}
+\DoxyCodeLine{\# bottom 2}
+\DoxyCodeLine{1 0 2}
+\DoxyCodeLine{4 9 10 11 12}
+\DoxyCodeLine{\# top 2}
+\DoxyCodeLine{1 0 2}
+\DoxyCodeLine{4 13 14 15 16}
+\DoxyCodeLine{\# left 2}
+\DoxyCodeLine{1 0 2}
+\DoxyCodeLine{4 9 12 16 13}
+\DoxyCodeLine{\# right 2}
+\DoxyCodeLine{1 0 2}
+\DoxyCodeLine{4 10 11 15 14}
+\DoxyCodeLine{\# front 2}
+\DoxyCodeLine{1 0 2}
+\DoxyCodeLine{4 11 12 16 15}
+\DoxyCodeLine{\# back 2}
+\DoxyCodeLine{1 0 2}
+\DoxyCodeLine{4 9 10 14 13}
 \DoxyCodeLine{}
-\DoxyCodeLine{\#\ Part\ 3\ -\/\ hole\ list}
+\DoxyCodeLine{\# Part 3 -\/ hole list}
 \DoxyCodeLine{1}
-\DoxyCodeLine{1\ 1.5\ 1.5\ 1.5\ }
+\DoxyCodeLine{1 1.5 1.5 1.5 }
 \DoxyCodeLine{}
-\DoxyCodeLine{\#\ Part\ 4\ -\/\ region\ list}
+\DoxyCodeLine{\# Part 4 -\/ region list}
 \DoxyCodeLine{0}
 
 \end{DoxyCodeInclude}
@@ -166,7 +166,7 @@ Here is a listing of the corresponding input file, {\ttfamily cube\+\_\+hole.\+p
 
 The output files that \href{http://wias-berlin.de/software/tetgen//}{\texttt{ {\ttfamily Tetgen} }} creates with the command 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{./tetgen\ \ -\/a0.2\ cube\_hole.poly\ }
+\DoxyCodeLine{./tetgen  -\/a0.2 cube\_hole.poly }
 
 \end{DoxyCode}
  are \href{../../../../demo_drivers/meshing/mesh_from_tetgen/cube_hole.1.node}{\texttt{ cube\+\_\+hole.\+1.\+node}} , \href{../../../../demo_drivers/meshing/mesh_from_tetgen/cube_hole.1.ele}{\texttt{ cube\+\_\+hole.\+1.\+ele}} and \href{../../../../demo_drivers/meshing/mesh_from_tetgen/cube_hole.1.face}{\texttt{ cube\+\_\+hole.\+1.\+face}}.
@@ -186,26 +186,26 @@ Here is a sketch of the resulting discretisation, as displayed by {\ttfamily tet
 
  
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ \ \textcolor{comment}{//=========start\ of\ TetgenMesh\ class======================================}}
-\DoxyCodeLine{\textcolor{comment}{\ \ ///\ \ Unstructured\ tet\ mesh\ based\ on\ output\ from\ Tetgen:}\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{\ \ ///\ http://wias-\/berlin.de/software/tetgen/}}
-\DoxyCodeLine{\textcolor{comment}{}\ \ \textcolor{comment}{//========================================================================}}
-\DoxyCodeLine{\ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ ELEMENT>}
-\DoxyCodeLine{\ \ \textcolor{keyword}{class\ }TetgenMesh\ :\ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ TetMeshBase}
-\DoxyCodeLine{\ \ \{}
-\DoxyCodeLine{\ \ \textcolor{keyword}{public}:\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{\ \ \ \ ///\ Empty\ constructor}}
-\DoxyCodeLine{\textcolor{comment}{}\ \ \ \ TetgenMesh()}
-\DoxyCodeLine{\ \ \ \ \{}
-\DoxyCodeLine{\ \ \ \ \ \ \textcolor{comment}{//\ Mesh\ can\ only\ be\ built\ with\ 3D\ Telements.}}
-\DoxyCodeLine{\ \ \ \ \ \ MeshChecker::assert\_geometric\_element<TElementGeometricBase,\ ELEMENT>(3);}
-\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{  \textcolor{comment}{//=========start of TetgenMesh class======================================}}
+\DoxyCodeLine{\textcolor{comment}{  ///  Unstructured tet mesh based on output from Tetgen:}}
+\DoxyCodeLine{\textcolor{comment}{}\textcolor{comment}{  /// http://wias-\/berlin.de/software/tetgen/}}
+\DoxyCodeLine{\textcolor{comment}{}  \textcolor{comment}{//========================================================================}}
+\DoxyCodeLine{  \textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>}
+\DoxyCodeLine{  \textcolor{keyword}{class }TetgenMesh : \textcolor{keyword}{public} \textcolor{keyword}{virtual} TetMeshBase}
+\DoxyCodeLine{  \{}
+\DoxyCodeLine{  \textcolor{keyword}{public}:\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{    /// Empty constructor}}
+\DoxyCodeLine{\textcolor{comment}{}    TetgenMesh()}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{      \textcolor{comment}{// Mesh can only be built with 3D Telements.}}
+\DoxyCodeLine{      MeshChecker::assert\_geometric\_element<TElementGeometricBase, ELEMENT>(3);}
+\DoxyCodeLine{    \}}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{\ \ \ \ ///\ Constructor\ with\ the\ input\ files}}
-\DoxyCodeLine{\textcolor{comment}{}\ \ \ \ TetgenMesh(\textcolor{keyword}{const}\ std::string\&\ node\_file\_name,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ element\_file\_name,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ face\_file\_name,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TimeStepper*\ time\_stepper\_pt\ =\ \&Mesh::Default\_TimeStepper,}
+\DoxyCodeLine{\textcolor{comment}{    /// Constructor with the input files}}
+\DoxyCodeLine{\textcolor{comment}{}    TetgenMesh(\textcolor{keyword}{const} std::string\& node\_file\_name,}
+\DoxyCodeLine{               \textcolor{keyword}{const} std::string\& element\_file\_name,}
+\DoxyCodeLine{               \textcolor{keyword}{const} std::string\& face\_file\_name,}
+\DoxyCodeLine{               TimeStepper* time\_stepper\_pt = \&Mesh::Default\_TimeStepper,}
 
 \end{DoxyCodeInclude}
 
@@ -219,26 +219,26 @@ The code expects the names of {\ttfamily $\ast$}.{\ttfamily node}, $\ast$.{\ttfa
 
  
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{mesh__from__tetgen__navier__stokes_8cc_a0ddf1224851353fc92bfbff6f499fa97}{main}}(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}*\ argv[])}
+\DoxyCodeLine{\textcolor{keywordtype}{int} \mbox{\hyperlink{mesh__from__tetgen__poisson_8cc_a0ddf1224851353fc92bfbff6f499fa97}{main}}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char}* argv[])}
 \DoxyCodeLine{\{}
-\DoxyCodeLine{\ }
-\DoxyCodeLine{\textcolor{comment}{//\ Store\ command\ line\ arguments}}
-\DoxyCodeLine{\ CommandLineArgs::setup(argc,argv);}
+\DoxyCodeLine{ }
+\DoxyCodeLine{\textcolor{comment}{// Store command line arguments}}
+\DoxyCodeLine{ CommandLineArgs::setup(argc,argv);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \textcolor{comment}{//\ Check\ number\ of\ command\ line\ arguments:\ Need\ exactly\ three.}}
-\DoxyCodeLine{\ \textcolor{keywordflow}{if}\ (argc!=4)}
-\DoxyCodeLine{\ \ \{}
-\DoxyCodeLine{\ \ \ std::string\ error\_message\ =}
-\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}Wrong\ number\ of\ command\ line\ arguments.\(\backslash\)n"{}};}
-\DoxyCodeLine{\ \ \ error\_message\ +=}
-\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}Must\ specify\ the\ following\ file\ names\ \ \(\backslash\)n"{}};}
-\DoxyCodeLine{\ \ \ error\_message\ +=\ }
-\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}filename.node\ then\ filename.ele\ then\ filename.face\(\backslash\)n"{}};}
+\DoxyCodeLine{ \textcolor{comment}{// Check number of command line arguments: Need exactly three.}}
+\DoxyCodeLine{ \textcolor{keywordflow}{if} (argc!=4)}
+\DoxyCodeLine{  \{}
+\DoxyCodeLine{   std::string error\_message =}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}Wrong number of command line arguments.\(\backslash\)n"{}};}
+\DoxyCodeLine{   error\_message +=}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}Must specify the following file names  \(\backslash\)n"{}};}
+\DoxyCodeLine{   error\_message += }
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}filename.node then filename.ele then filename.face\(\backslash\)n"{}};}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \textcolor{keywordflow}{throw}\ OomphLibError(error\_message,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ OOMPH\_CURRENT\_FUNCTION,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ OOMPH\_EXCEPTION\_LOCATION);}
-\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{   \textcolor{keywordflow}{throw} OomphLibError(error\_message,}
+\DoxyCodeLine{                       OOMPH\_CURRENT\_FUNCTION,}
+\DoxyCodeLine{                       OOMPH\_EXCEPTION\_LOCATION);}
+\DoxyCodeLine{  \}}
 
 \end{DoxyCodeInclude}
  The names of these files are then passed to the mesh constructor. Since the rest of the \href{../../../../demo_drivers/meshing/mesh_from_tetgen/mesh_from_tetgen_poisson.cc}{\texttt{ driver code }} is identical to that in the \href{../../../../doc/poisson/eighth_sphere_poisson/html/index.html}{\texttt{ corresponding example with a structured mesh}}, we do not provide a detailed listing but simply show the plot of the computed results, together with a plot of the exact solution, for linear (four-\/noded) elements

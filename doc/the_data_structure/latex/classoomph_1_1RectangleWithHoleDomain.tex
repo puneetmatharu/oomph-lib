@@ -25,48 +25,7 @@ Inheritance diagram for oomph\+::Rectangle\+With\+Hole\+Domain\+:\begin{figure}[
 void \mbox{\hyperlink{classoomph_1_1RectangleWithHoleDomain_a9548ab705821b22c43850b658a893fd8}{linear\+\_\+interpolate}} (\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ left, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ right, const double \&\mbox{\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}}, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&f)
 \begin{DoxyCompactList}\small\item\em Helper function to interpolate linearly between the \char`\"{}right\char`\"{} and \char`\"{}left\char`\"{} points; $ s \in [-1,1] $. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classoomph_1_1RectangleWithHoleDomain_a514085f80059aa9f0cc3334a3cb408c1}{macro\+\_\+element\+\_\+boundary}} (const unsigned \&time, const unsigned \&m, const unsigned \&direction, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}}, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&f)
-\begin{DoxyCompactList}\small\item\em Parametrisation of macro element boundaries\+: f(s) is the position vector to macro-\/element m\textquotesingle{}s boundary in the specified direction \mbox{[}N/\+S/\+E/W\mbox{]} at the specfied discrete time level (time=0\+: present; time\texorpdfstring{$>$}{>}0\+: previous) \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1Domain}{oomph\+::\+Domain}}}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\hyperlink{classoomph_1_1Domain_a091982333107142c3ac71a02fbdb6ac8}{Domain}} ()
-\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classoomph_1_1Domain_ad3ae60cfff2bc9595d942c6891aefb8a}{Domain}} (const \mbox{\hyperlink{classoomph_1_1Domain}{Domain}} \&)=delete
-\begin{DoxyCompactList}\small\item\em Broken copy constructor. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1Domain_a33de7a18dd8ff992dc7faf068197ff50}{operator=}} (const \mbox{\hyperlink{classoomph_1_1Domain}{Domain}} \&)=delete
-\begin{DoxyCompactList}\small\item\em Broken assignment operator. \end{DoxyCompactList}\item 
-virtual \mbox{\hyperlink{classoomph_1_1Domain_afd6c101003640d74becabcd8f1dcbc67}{$\sim$\+Domain}} ()
-\begin{DoxyCompactList}\small\item\em Destructor\+: Strictly speaking, whoever creates an object dynamically should be responsible for the cleanup of said object but it makes sense here for the \mbox{\hyperlink{classoomph_1_1Domain}{Domain}} to generically kill any Macro\+Elements left over in the \mbox{\hyperlink{classoomph_1_1MacroElement}{Macro\+Element}} container (if it hasn\textquotesingle{}t already been done in the derived class) to avoid memory leaks. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classoomph_1_1MacroElement}{Macro\+Element}} $\ast$ \mbox{\hyperlink{classoomph_1_1Domain_abef3886384a9b9e722e490268feecc2d}{macro\+\_\+element\+\_\+pt}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})
-\begin{DoxyCompactList}\small\item\em Access to i-\/th macro element. \end{DoxyCompactList}\item 
-unsigned \mbox{\hyperlink{classoomph_1_1Domain_a3ed63583615d0e8471d95ba13ccc0aff}{nmacro\+\_\+element}} ()
-\begin{DoxyCompactList}\small\item\em Number of macro elements in domain. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1Domain_a7b0c50db44e3bc3c8ae1a0d34ac835c8}{output}} (const std\+::string \&filename, const unsigned \&nplot)
-\begin{DoxyCompactList}\small\item\em Output macro elements. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1Domain_ab7ccc375ba2e46ffb11e4e2c5c485578}{output}} (std\+::ostream \&outfile, const unsigned \&nplot)
-\begin{DoxyCompactList}\small\item\em Output macro elements. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classoomph_1_1Domain_a95f3e00d28ea37e6c4d3027bfac91096}{macro\+\_\+element\+\_\+boundary}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, const unsigned \&i\+\_\+macro, const unsigned \&i\+\_\+direct, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}}, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&f)=0
-\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} representation of the i\+\_\+macro-\/th macro element boundary i\+\_\+direct (e.\+g. N/\+S/\+W/E in 2D) at time level t (t=0\+: present; t\texorpdfstring{$>$}{>}0\+: previous)\+: f(s) \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classoomph_1_1Domain_a10142c029e8a57c5470d22701518e9d1}{macro\+\_\+element\+\_\+boundary}} (const double \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, const unsigned \&i\+\_\+macro, const unsigned \&i\+\_\+direct, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}}, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&f)
-\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} representation of the i\+\_\+macro-\/th macro element boundary i\+\_\+direct (e.\+g. N/\+S/\+W/E in 2D) at continuous time, t. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1Domain_a9d293b736e74bfeace64c1c8858add8a}{macro\+\_\+element\+\_\+boundary}} (const unsigned \&i\+\_\+macro, const unsigned \&i\+\_\+direct, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}}, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&f)
-\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} representation of the i\+\_\+macro-\/th macro element boundary i\+\_\+direct (e.\+g. N/\+S/\+W/E in 2D) at current time\+: f(s). \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1Domain_ac663be35932981a1c02b3ed930ec2eda}{output\+\_\+macro\+\_\+element\+\_\+boundaries}} (const std\+::string \&filename, const unsigned \&nplot)
-\begin{DoxyCompactList}\small\item\em Output all macro element boundaries as tecplot zones. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1Domain_a59dfe3a2cff10aa2e12f86dba9584f15}{output\+\_\+macro\+\_\+element\+\_\+boundaries}} (std\+::ostream \&outfile, const unsigned \&nplot)
-\begin{DoxyCompactList}\small\item\em Output all macro element boundaries as tecplot zones. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classoomph_1_1Domain_ae573c54363a8e9d33951e59208a9bc39}{dmacro\+\_\+element\+\_\+boundary}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, const unsigned \&i\+\_\+macro, const unsigned \&i\+\_\+direct, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}}, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&f)
-\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} representation of the i\+\_\+macro-\/th macro element boundary derivatives i\+\_\+direct (e.\+g. N/\+S/\+W/E in 2D) at time level t (t=0\+: present; t\texorpdfstring{$>$}{>}0\+: previous)\+: f(s). Broken virtual. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classoomph_1_1Domain_af4de3686bcfbf5a8e98b92a071607e0f}{dmacro\+\_\+element\+\_\+boundary}} (const double \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, const unsigned \&i\+\_\+macro, const unsigned \&i\+\_\+direct, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}}, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&f)
-\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} representation of the i\+\_\+macro-\/th macro element boundary derivatives i\+\_\+direct (e.\+g. N/\+S/\+W/E in 2D) at continuous time level t. Broken virtual. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1Domain_a6973f0ef86b83c6cadcd722374c62270}{dmacro\+\_\+element\+\_\+boundary}} (const unsigned \&i\+\_\+macro, const unsigned \&i\+\_\+direct, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}}, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&f)
-\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} representation of the i\+\_\+macro-\/th macro element boundary derivatives i\+\_\+direct (e.\+g. N/\+S/\+W/E in 2D) at current time\+: f(s). \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classoomph_1_1Domain_afeeb40f9179abe710f14effbe4db42a1}{d2macro\+\_\+element\+\_\+boundary}} (const unsigned \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, const unsigned \&i\+\_\+macro, const unsigned \&i\+\_\+direct, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}}, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&f)
-\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} representation of the i\+\_\+macro-\/th macro element boundary second derivatives i\+\_\+direct (e.\+g. N/\+S/\+W/E in 2D) at time level t (t=0\+: present; t\texorpdfstring{$>$}{>}0\+: previous)\+: f(s). Broken virtual. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classoomph_1_1Domain_a645d0e40b2e378eca3b6230741b21169}{d2macro\+\_\+element\+\_\+boundary}} (const double \&\mbox{\hyperlink{cfortran_8h_af6f0bd3dc13317f895c91323c25c2b8f}{t}}, const unsigned \&i\+\_\+macro, const unsigned \&i\+\_\+direct, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}}, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&f)
-\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} representation of the i\+\_\+macro-\/th macro element boundary seocond derivatives i\+\_\+direct (e.\+g. N/\+S/\+W/E in 2D) at continuous time level t. Broken virtual. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classoomph_1_1Domain_a837d82e917451ca9adc755aa99ad99a2}{d2macro\+\_\+element\+\_\+boundary}} (const unsigned \&i\+\_\+macro, const unsigned \&i\+\_\+direct, const \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&\mbox{\hyperlink{cfortran_8h_ab7123126e4885ef647dd9c6e3807a21c}{s}}, \mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ double $>$ \&f)
-\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} representation of the i\+\_\+macro-\/th macro element boundary second derivatives i\+\_\+direct (e.\+g. N/\+S/\+W/E in 2D) at current time\+: f(s). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Parametrisation of macro element boundaries\+: f(s) is the position vector to macro-\/element m\textquotesingle{}s boundary in the specified direction \mbox{[}N/\+S/\+E/W\mbox{]} at the specfied discrete time level (time=0\+: present; time$>$0\+: previous) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -89,17 +48,12 @@ void \mbox{\hyperlink{classoomph_1_1Domain_a837d82e917451ca9adc755aa99ad99a2}{d2
 \mbox{\hyperlink{classoomph_1_1GeomObject}{Geom\+Object}} $\ast$ \mbox{\hyperlink{classoomph_1_1RectangleWithHoleDomain_a4ca65e1f063e65c4254a594db66fabf8}{Cylinder\+\_\+pt}}
 \begin{DoxyCompactList}\small\item\em Pointer to geometric object that represents the central cylinder. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
-\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1Domain}{oomph\+::\+Domain}}}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\hyperlink{classoomph_1_1Vector}{Vector}}$<$ \mbox{\hyperlink{classoomph_1_1MacroElement}{Macro\+Element}} $\ast$ $>$ \mbox{\hyperlink{classoomph_1_1Domain_a3a54693bb493f31acccadc62468dd7ae}{Macro\+\_\+element\+\_\+pt}}
-\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classoomph_1_1Vector}{Vector}} of pointers to macro elements. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Rectangular domain with circular whole. 
 
-Definition at line \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00042}{42}} of file \mbox{\hyperlink{rectangle__with__hole__domain_8h_source}{rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h}}.
+Definition at line 42 of file rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h.
 
 
 
@@ -116,11 +70,11 @@ Constructor. Pass pointer to geometric object that represents the cylinder, the 
 
 
 
-Definition at line \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00050}{50}} of file \mbox{\hyperlink{rectangle__with__hole__domain_8h_source}{rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h}}.
+Definition at line 50 of file rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h.
 
 
 
-References \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00312}{Lower\+\_\+left}}, \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00318}{Lower\+\_\+mid\+\_\+left}}, \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00321}{Lower\+\_\+mid\+\_\+right}}, \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00315}{Lower\+\_\+right}}, \mbox{\hyperlink{domain_8h_source_l00301}{oomph\+::\+Domain\+::\+Macro\+\_\+element\+\_\+pt}}, \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00324}{Upper\+\_\+left}}, \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00330}{Upper\+\_\+mid\+\_\+left}}, \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00333}{Upper\+\_\+mid\+\_\+right}}, and \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00327}{Upper\+\_\+right}}.
+References i, Lower\+\_\+left, Lower\+\_\+mid\+\_\+left, Lower\+\_\+mid\+\_\+right, Lower\+\_\+right, oomph\+::\+Domain\+::\+Macro\+\_\+element\+\_\+pt, Upper\+\_\+left, Upper\+\_\+mid\+\_\+left, Upper\+\_\+mid\+\_\+right, and Upper\+\_\+right.
 
 \mbox{\Hypertarget{classoomph_1_1RectangleWithHoleDomain_adae7fabe3167ec35c1c0d4af813a4dca}\label{classoomph_1_1RectangleWithHoleDomain_adae7fabe3167ec35c1c0d4af813a4dca}} 
 \index{oomph::RectangleWithHoleDomain@{oomph::RectangleWithHoleDomain}!````~RectangleWithHoleDomain@{$\sim$RectangleWithHoleDomain}}
@@ -134,7 +88,7 @@ Destructor\+: Empty; cleanup done in base class.
 
 
 
-Definition at line \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00102}{102}} of file \mbox{\hyperlink{rectangle__with__hole__domain_8h_source}{rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h}}.
+Definition at line 102 of file rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h.
 
 
 
@@ -151,15 +105,15 @@ Helper function to interpolate linearly between the \char`\"{}right\char`\"{} an
 
 
 
-Definition at line \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00106}{106}} of file \mbox{\hyperlink{rectangle__with__hole__domain_8h_source}{rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h}}.
+Definition at line 106 of file rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h.
 
 
 
-References \mbox{\hyperlink{cfortran_8h_source_l00603}{i}}, and \mbox{\hyperlink{cfortran_8h_source_l00568}{s}}.
+References i, and s.
 
 
 
-Referenced by \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00122}{macro\+\_\+element\+\_\+boundary()}}.
+Referenced by macro\+\_\+element\+\_\+boundary().
 
 \mbox{\Hypertarget{classoomph_1_1RectangleWithHoleDomain_a514085f80059aa9f0cc3334a3cb408c1}\label{classoomph_1_1RectangleWithHoleDomain_a514085f80059aa9f0cc3334a3cb408c1}} 
 \index{oomph::RectangleWithHoleDomain@{oomph::RectangleWithHoleDomain}!macro\_element\_boundary@{macro\_element\_boundary}}
@@ -169,7 +123,7 @@ Referenced by \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00122}{m
 
 
 
-Parametrisation of macro element boundaries\+: f(s) is the position vector to macro-\/element m\textquotesingle{}s boundary in the specified direction \mbox{[}N/\+S/\+E/W\mbox{]} at the specfied discrete time level (time=0\+: present; time\texorpdfstring{$>$}{>}0\+: previous) 
+Parametrisation of macro element boundaries\+: f(s) is the position vector to macro-\/element m\textquotesingle{}s boundary in the specified direction \mbox{[}N/\+S/\+E/W\mbox{]} at the specfied discrete time level (time=0\+: present; time$>$0\+: previous) 
 
 
 
@@ -177,11 +131,11 @@ Implements \mbox{\hyperlink{classoomph_1_1Domain_a95f3e00d28ea37e6c4d3027bfac910
 
 
 
-Definition at line \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00122}{122}} of file \mbox{\hyperlink{rectangle__with__hole__domain_8h_source}{rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h}}.
+Definition at line 122 of file rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h.
 
 
 
-References \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00336}{Cylinder\+\_\+pt}}, \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00106}{linear\+\_\+interpolate()}}, \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00318}{Lower\+\_\+mid\+\_\+left}}, \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00321}{Lower\+\_\+mid\+\_\+right}}, \mbox{\hyperlink{classoomph_1_1GeomObject_a0d04c9d4667817f3ef24bb660fd56065}{oomph\+::\+Geom\+Object\+::position()}}, \mbox{\hyperlink{cfortran_8h_source_l00568}{s}}, \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00330}{Upper\+\_\+mid\+\_\+left}}, and \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00333}{Upper\+\_\+mid\+\_\+right}}.
+References Cylinder\+\_\+pt, oomph\+::\+Quad\+Tree\+Names\+::E, linear\+\_\+interpolate(), Lower\+\_\+mid\+\_\+left, Lower\+\_\+mid\+\_\+right, oomph\+::\+Quad\+Tree\+Names\+::N, oomph\+::\+Geom\+Object\+::position(), s, oomph\+::\+Quad\+Tree\+Names\+::S, Upper\+\_\+mid\+\_\+left, Upper\+\_\+mid\+\_\+right, and oomph\+::\+Quad\+Tree\+Names\+::W.
 
 
 
@@ -198,11 +152,11 @@ Pointer to geometric object that represents the central cylinder.
 
 
 
-Definition at line \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00336}{336}} of file \mbox{\hyperlink{rectangle__with__hole__domain_8h_source}{rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h}}.
+Definition at line 336 of file rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h.
 
 
 
-Referenced by \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00122}{macro\+\_\+element\+\_\+boundary()}}.
+Referenced by macro\+\_\+element\+\_\+boundary().
 
 \mbox{\Hypertarget{classoomph_1_1RectangleWithHoleDomain_a6926164244a3726aa904023c014e2cf0}\label{classoomph_1_1RectangleWithHoleDomain_a6926164244a3726aa904023c014e2cf0}} 
 \index{oomph::RectangleWithHoleDomain@{oomph::RectangleWithHoleDomain}!Lower\_left@{Lower\_left}}
@@ -216,11 +170,11 @@ Lower left corner of rectangle.
 
 
 
-Definition at line \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00312}{312}} of file \mbox{\hyperlink{rectangle__with__hole__domain_8h_source}{rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h}}.
+Definition at line 312 of file rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h.
 
 
 
-Referenced by \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00050}{Rectangle\+With\+Hole\+Domain()}}.
+Referenced by Rectangle\+With\+Hole\+Domain().
 
 \mbox{\Hypertarget{classoomph_1_1RectangleWithHoleDomain_aa643600f8269e6037a76832dd0fba0f9}\label{classoomph_1_1RectangleWithHoleDomain_aa643600f8269e6037a76832dd0fba0f9}} 
 \index{oomph::RectangleWithHoleDomain@{oomph::RectangleWithHoleDomain}!Lower\_mid\_left@{Lower\_mid\_left}}
@@ -234,11 +188,11 @@ Where the \char`\"{}radial\char`\"{} line from circle meets lower boundary on le
 
 
 
-Definition at line \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00318}{318}} of file \mbox{\hyperlink{rectangle__with__hole__domain_8h_source}{rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h}}.
+Definition at line 318 of file rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h.
 
 
 
-Referenced by \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00122}{macro\+\_\+element\+\_\+boundary()}}, and \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00050}{Rectangle\+With\+Hole\+Domain()}}.
+Referenced by macro\+\_\+element\+\_\+boundary(), and Rectangle\+With\+Hole\+Domain().
 
 \mbox{\Hypertarget{classoomph_1_1RectangleWithHoleDomain_a9ef86489e71e2f67eec783b460694be2}\label{classoomph_1_1RectangleWithHoleDomain_a9ef86489e71e2f67eec783b460694be2}} 
 \index{oomph::RectangleWithHoleDomain@{oomph::RectangleWithHoleDomain}!Lower\_mid\_right@{Lower\_mid\_right}}
@@ -252,11 +206,11 @@ Where the \char`\"{}radial\char`\"{} line from circle meets lower boundary on ri
 
 
 
-Definition at line \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00321}{321}} of file \mbox{\hyperlink{rectangle__with__hole__domain_8h_source}{rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h}}.
+Definition at line 321 of file rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h.
 
 
 
-Referenced by \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00122}{macro\+\_\+element\+\_\+boundary()}}, and \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00050}{Rectangle\+With\+Hole\+Domain()}}.
+Referenced by macro\+\_\+element\+\_\+boundary(), and Rectangle\+With\+Hole\+Domain().
 
 \mbox{\Hypertarget{classoomph_1_1RectangleWithHoleDomain_ab71febd980c61d0c2ba0a76eca053a97}\label{classoomph_1_1RectangleWithHoleDomain_ab71febd980c61d0c2ba0a76eca053a97}} 
 \index{oomph::RectangleWithHoleDomain@{oomph::RectangleWithHoleDomain}!Lower\_right@{Lower\_right}}
@@ -270,11 +224,11 @@ Lower right corner of rectangle.
 
 
 
-Definition at line \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00315}{315}} of file \mbox{\hyperlink{rectangle__with__hole__domain_8h_source}{rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h}}.
+Definition at line 315 of file rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h.
 
 
 
-Referenced by \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00050}{Rectangle\+With\+Hole\+Domain()}}.
+Referenced by Rectangle\+With\+Hole\+Domain().
 
 \mbox{\Hypertarget{classoomph_1_1RectangleWithHoleDomain_a0e5a29a907836dace560edd72a70917d}\label{classoomph_1_1RectangleWithHoleDomain_a0e5a29a907836dace560edd72a70917d}} 
 \index{oomph::RectangleWithHoleDomain@{oomph::RectangleWithHoleDomain}!Upper\_left@{Upper\_left}}
@@ -288,11 +242,11 @@ Upper left corner of rectangle.
 
 
 
-Definition at line \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00324}{324}} of file \mbox{\hyperlink{rectangle__with__hole__domain_8h_source}{rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h}}.
+Definition at line 324 of file rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h.
 
 
 
-Referenced by \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00050}{Rectangle\+With\+Hole\+Domain()}}.
+Referenced by Rectangle\+With\+Hole\+Domain().
 
 \mbox{\Hypertarget{classoomph_1_1RectangleWithHoleDomain_a025fb05e2f6905e62459ecd45ed389e2}\label{classoomph_1_1RectangleWithHoleDomain_a025fb05e2f6905e62459ecd45ed389e2}} 
 \index{oomph::RectangleWithHoleDomain@{oomph::RectangleWithHoleDomain}!Upper\_mid\_left@{Upper\_mid\_left}}
@@ -306,11 +260,11 @@ Where the \char`\"{}radial\char`\"{} line from circle meets upper boundary on le
 
 
 
-Definition at line \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00330}{330}} of file \mbox{\hyperlink{rectangle__with__hole__domain_8h_source}{rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h}}.
+Definition at line 330 of file rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h.
 
 
 
-Referenced by \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00122}{macro\+\_\+element\+\_\+boundary()}}, and \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00050}{Rectangle\+With\+Hole\+Domain()}}.
+Referenced by macro\+\_\+element\+\_\+boundary(), and Rectangle\+With\+Hole\+Domain().
 
 \mbox{\Hypertarget{classoomph_1_1RectangleWithHoleDomain_aa38db31456f7dd847e13d03d96fc99aa}\label{classoomph_1_1RectangleWithHoleDomain_aa38db31456f7dd847e13d03d96fc99aa}} 
 \index{oomph::RectangleWithHoleDomain@{oomph::RectangleWithHoleDomain}!Upper\_mid\_right@{Upper\_mid\_right}}
@@ -324,11 +278,11 @@ Where the \char`\"{}radial\char`\"{} line from circle meets upper boundary on ri
 
 
 
-Definition at line \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00333}{333}} of file \mbox{\hyperlink{rectangle__with__hole__domain_8h_source}{rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h}}.
+Definition at line 333 of file rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h.
 
 
 
-Referenced by \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00122}{macro\+\_\+element\+\_\+boundary()}}, and \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00050}{Rectangle\+With\+Hole\+Domain()}}.
+Referenced by macro\+\_\+element\+\_\+boundary(), and Rectangle\+With\+Hole\+Domain().
 
 \mbox{\Hypertarget{classoomph_1_1RectangleWithHoleDomain_a3bc6d59a004c8fe1b634b43b6665c9b9}\label{classoomph_1_1RectangleWithHoleDomain_a3bc6d59a004c8fe1b634b43b6665c9b9}} 
 \index{oomph::RectangleWithHoleDomain@{oomph::RectangleWithHoleDomain}!Upper\_right@{Upper\_right}}
@@ -342,11 +296,11 @@ Upper right corner of rectangle.
 
 
 
-Definition at line \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00327}{327}} of file \mbox{\hyperlink{rectangle__with__hole__domain_8h_source}{rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h}}.
+Definition at line 327 of file rectangle\+\_\+with\+\_\+hole\+\_\+domain.\+h.
 
 
 
-Referenced by \mbox{\hyperlink{rectangle__with__hole__domain_8h_source_l00050}{Rectangle\+With\+Hole\+Domain()}}.
+Referenced by Rectangle\+With\+Hole\+Domain().
 
 
 

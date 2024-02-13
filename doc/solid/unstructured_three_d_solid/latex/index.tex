@@ -48,7 +48,7 @@ Note that we have deliberately assigned a different boundary ID to each facet. T
 
 The figure below shows a {\ttfamily tetview} plot of the mesh, created with a volume constraint of 0.\+2 (i.\+e. the maximum volume of each tetrahedron is guaranteed to be less than 0.\+2 units), using the command 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{tetgen\ -\/a0.2\ fsi\_bifurcation\_solid.poly\ }
+\DoxyCodeLine{tetgen -\/a0.2 fsi\_bifurcation\_solid.poly }
 
 \end{DoxyCode}
 
@@ -70,11 +70,11 @@ We create the solid mesh by multiple inheritance from {\ttfamily oomph-\/lib\tex
  
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\textcolor{comment}{//=======================start\_mesh========================================}}
-\DoxyCodeLine{\textcolor{comment}{///\ Tetgen-\/based\ mesh\ upgraded\ to\ become\ a\ solid\ mesh}}
-\DoxyCodeLine{\textcolor{comment}{//=========================================================================}}
-\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class}\ ELEMENT>}
-\DoxyCodeLine{\textcolor{keyword}{class\ }\mbox{\hyperlink{classMySolidTetgenMesh}{MySolidTetgenMesh}}\ :\ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ TetgenMesh<ELEMENT>,\ }
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ SolidMesh\ }
+\DoxyCodeLine{\textcolor{comment}{/// Tetgen-\/based mesh upgraded to become a solid mesh}}
+\DoxyCodeLine{\textcolor{comment}{}\textcolor{comment}{//=========================================================================}}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>}
+\DoxyCodeLine{\textcolor{keyword}{class }\mbox{\hyperlink{classMySolidTetgenMesh}{MySolidTetgenMesh}} : \textcolor{keyword}{public} \textcolor{keyword}{virtual} TetgenMesh<ELEMENT>, }
+\DoxyCodeLine{                       \textcolor{keyword}{public} \textcolor{keyword}{virtual} SolidMesh }
 \DoxyCodeLine{\{}
 
 \end{DoxyCodeInclude}
@@ -82,33 +82,33 @@ We create the solid mesh by multiple inheritance from {\ttfamily oomph-\/lib\tex
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ }
+\DoxyCodeLine{ }
 \DoxyCodeLine{\textcolor{keyword}{public}:}
-\DoxyCodeLine{\ \textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{\ ///\ Constructor:\ }}
-\DoxyCodeLine{\textcolor{comment}{}\ \mbox{\hyperlink{classMySolidTetgenMesh}{MySolidTetgenMesh}}(\textcolor{keyword}{const}\ std::string\&\ node\_file\_name,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ element\_file\_name,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ face\_file\_name,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TimeStepper*\ time\_stepper\_pt=}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&Mesh::Default\_TimeStepper)\ :\ }
-\DoxyCodeLine{\ \ TetgenMesh<ELEMENT>(node\_file\_name,\ element\_file\_name,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ face\_file\_name,\ time\_stepper\_pt)}
-\DoxyCodeLine{\ \ \{}
-\DoxyCodeLine{\ \ \ \textcolor{comment}{//Assign\ the\ Lagrangian\ coordinates}}
-\DoxyCodeLine{\ \ \ set\_lagrangian\_nodal\_coordinates();}
+\DoxyCodeLine{ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{ /// Constructor: }}
+\DoxyCodeLine{\textcolor{comment}{} \mbox{\hyperlink{classMySolidTetgenMesh}{MySolidTetgenMesh}}(\textcolor{keyword}{const} std::string\& node\_file\_name,}
+\DoxyCodeLine{                \textcolor{keyword}{const} std::string\& element\_file\_name,}
+\DoxyCodeLine{                \textcolor{keyword}{const} std::string\& face\_file\_name,}
+\DoxyCodeLine{                TimeStepper* time\_stepper\_pt=}
+\DoxyCodeLine{                \&Mesh::Default\_TimeStepper) : }
+\DoxyCodeLine{  TetgenMesh<ELEMENT>(node\_file\_name, element\_file\_name,}
+\DoxyCodeLine{                      face\_file\_name, time\_stepper\_pt)}
+\DoxyCodeLine{  \{}
+\DoxyCodeLine{   \textcolor{comment}{//Assign the Lagrangian coordinates}}
+\DoxyCodeLine{   set\_lagrangian\_nodal\_coordinates();}
 
 \end{DoxyCodeInclude}
  Finally, we identify the elements that are located next to the various mesh boundaries to facilitate the application of the traction boundary conditions.
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ \ \ }
-\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Find\ elements\ next\ to\ boundaries}}
-\DoxyCodeLine{\ \ \ setup\_boundary\_element\_info();}
-\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{   }
+\DoxyCodeLine{   \textcolor{comment}{// Find elements next to boundaries}}
+\DoxyCodeLine{   setup\_boundary\_element\_info();}
+\DoxyCodeLine{  \}}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{\ ///\ Empty\ Destructor}}
-\DoxyCodeLine{\textcolor{comment}{}\ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classMySolidTetgenMesh}{\string~MySolidTetgenMesh}}()\ \{\ \}}
+\DoxyCodeLine{\textcolor{comment}{ /// Empty Destructor}}
+\DoxyCodeLine{\textcolor{comment}{} \textcolor{keyword}{virtual} \string~\mbox{\hyperlink{classMySolidTetgenMesh}{MySolidTetgenMesh}}() \{ \}}
 \DoxyCodeLine{}
 \DoxyCodeLine{}
 \DoxyCodeLine{\};}
@@ -122,16 +122,16 @@ As usual, we define the various problem parameters in a global namespace. We use
 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\textcolor{comment}{//=======start\_namespace==========================================}}
-\DoxyCodeLine{\textcolor{comment}{///\ Global\ variables}}
-\DoxyCodeLine{\textcolor{comment}{//================================================================}}
-\DoxyCodeLine{\textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceGlobal__Parameters}{Global\_Parameters}}}
+\DoxyCodeLine{\textcolor{comment}{/// Global variables}}
+\DoxyCodeLine{\textcolor{comment}{}\textcolor{comment}{//================================================================}}
+\DoxyCodeLine{\textcolor{keyword}{namespace }\mbox{\hyperlink{namespaceGlobal__Parameters}{Global\_Parameters}}}
 \DoxyCodeLine{\{}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{\ ///\ Poisson's\ ratio}}
-\DoxyCodeLine{\textcolor{comment}{}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespaceGlobal__Parameters_a20fccdcfa2c15ad8b951b9ada3bb1661}{Nu}}=0.3;}
-\DoxyCodeLine{\ \textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{\ ///\ Create\ constitutive\ law}}
-\DoxyCodeLine{\textcolor{comment}{}\ ConstitutiveLaw*\ \mbox{\hyperlink{namespaceGlobal__Parameters_adbd1f040f375c96fe56b3f475f7dbec2}{Constitutive\_law\_pt}}=\textcolor{keyword}{new}\ GeneralisedHookean(\&\mbox{\hyperlink{namespaceGlobal__Parameters_a20fccdcfa2c15ad8b951b9ada3bb1661}{Nu}});}
+\DoxyCodeLine{\textcolor{comment}{ /// Poisson's ratio}}
+\DoxyCodeLine{\textcolor{comment}{} \textcolor{keywordtype}{double} \mbox{\hyperlink{namespaceGlobal__Parameters_a20fccdcfa2c15ad8b951b9ada3bb1661}{Nu}}=0.3;}
+\DoxyCodeLine{ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{ /// Create constitutive law}}
+\DoxyCodeLine{\textcolor{comment}{} ConstitutiveLaw* \mbox{\hyperlink{namespaceGlobal__Parameters_adbd1f040f375c96fe56b3f475f7dbec2}{Constitutive\_law\_pt}}=\textcolor{keyword}{new} GeneralisedHookean(\&\mbox{\hyperlink{namespaceGlobal__Parameters_a20fccdcfa2c15ad8b951b9ada3bb1661}{Nu}});}
 
 \end{DoxyCodeInclude}
  Next we define the gravitational body force which acts in the negative $x$-\/direction,
@@ -139,18 +139,18 @@ As usual, we define the various problem parameters in a global namespace. We use
 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{\ ///\ Non-\/dim\ gravity}}
-\DoxyCodeLine{\textcolor{comment}{}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespaceGlobal__Parameters_a335000b5db4206486a116ae0468d2d0c}{Gravity}}=0.0;}
+\DoxyCodeLine{\textcolor{comment}{ /// Non-\/dim gravity}}
+\DoxyCodeLine{\textcolor{comment}{} \textcolor{keywordtype}{double} \mbox{\hyperlink{namespaceGlobal__Parameters_a335000b5db4206486a116ae0468d2d0c}{Gravity}}=0.0;}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{\ ///\ Non-\/dimensional\ gravity\ as\ body\ force}}
-\DoxyCodeLine{\textcolor{comment}{}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceGlobal__Parameters_a200109847bf4cc26da4d00e8d68d569e}{gravity}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ time,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Vector<double>\ \&xi,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector<double>\ \&b)}
-\DoxyCodeLine{\ \{}
-\DoxyCodeLine{\ \ b[0]=-\/\mbox{\hyperlink{namespaceGlobal__Parameters_a335000b5db4206486a116ae0468d2d0c}{Gravity}};\ }
-\DoxyCodeLine{\ \ b[1]=0.0;}
-\DoxyCodeLine{\ \ b[2]=0.0;}
-\DoxyCodeLine{\ \}\ \textcolor{comment}{//\ end\ gravity}}
+\DoxyCodeLine{\textcolor{comment}{ /// Non-\/dimensional gravity as body force}}
+\DoxyCodeLine{\textcolor{comment}{} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespaceGlobal__Parameters_a200109847bf4cc26da4d00e8d68d569e}{gravity}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double}\& time,}
+\DoxyCodeLine{              \textcolor{keyword}{const} Vector<double> \&xi,}
+\DoxyCodeLine{              Vector<double> \&b)}
+\DoxyCodeLine{ \{}
+\DoxyCodeLine{  b[0]=-\/\mbox{\hyperlink{namespaceGlobal__Parameters_a335000b5db4206486a116ae0468d2d0c}{Gravity}}; }
+\DoxyCodeLine{  b[1]=0.0;}
+\DoxyCodeLine{  b[2]=0.0;}
+\DoxyCodeLine{ \} \textcolor{comment}{// end gravity}}
 
 \end{DoxyCodeInclude}
  and the pressure load, $ {\bf t} = -P {\bf n} $, that acts on internal walls of the bifurcation (note that the outer unit normal $ {\bf n} $ on the wall is passed to the function).
@@ -158,26 +158,26 @@ As usual, we define the various problem parameters in a global namespace. We use
 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{\ ///\ Uniform\ pressure}}
-\DoxyCodeLine{\textcolor{comment}{}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespaceGlobal__Parameters_a31fb55c20db4aa0127aafa20f0d76731}{P}}\ =\ 0.0;}
+\DoxyCodeLine{\textcolor{comment}{ /// Uniform pressure}}
+\DoxyCodeLine{\textcolor{comment}{} \textcolor{keywordtype}{double} \mbox{\hyperlink{namespaceGlobal__Parameters_a31fb55c20db4aa0127aafa20f0d76731}{P}} = 0.0;}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{\ ///\ Constant\ pressure\ load.\ The\ arguments\ to\ this\ function\ are\ imposed}}
-\DoxyCodeLine{\textcolor{comment}{\ ///\ on\ us\ by\ the\ SolidTractionElements\ which\ allow\ the\ traction\ to\ }}
-\DoxyCodeLine{\textcolor{comment}{\ ///\ depend\ on\ the\ Lagrangian\ and\ Eulerian\ coordinates\ x\ and\ xi,\ and\ on\ the\ }}
-\DoxyCodeLine{\textcolor{comment}{\ ///\ outer\ unit\ normal\ to\ the\ surface.\ Here\ we\ only\ need\ the\ outer\ unit}}
-\DoxyCodeLine{\textcolor{comment}{\ ///\ normal.}}
-\DoxyCodeLine{\textcolor{comment}{}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceGlobal__Parameters_a7dc25ca2abd48b7f1bffb2d6129f02bd}{constant\_pressure}}(\textcolor{keyword}{const}\ Vector<double>\ \&xi,\ \textcolor{keyword}{const}\ Vector<double>\ \&x,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Vector<double>\ \&n,\ Vector<double>\ \&traction)}
-\DoxyCodeLine{\ \{}
-\DoxyCodeLine{\ \ \textcolor{keywordtype}{unsigned}\ dim\ =\ traction.size();}
-\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ i=0;i<dim;i++)}
-\DoxyCodeLine{\ \ \ \{}
-\DoxyCodeLine{\ \ \ \ traction[i]\ =\ -\/\mbox{\hyperlink{namespaceGlobal__Parameters_a31fb55c20db4aa0127aafa20f0d76731}{P}}*n[i];}
-\DoxyCodeLine{\ \ \ \}}
-\DoxyCodeLine{\ \}\ \textcolor{comment}{//\ end\ traction}}
-\DoxyCodeLine{\ }
-\DoxyCodeLine{\ }
-\DoxyCodeLine{\}\ \textcolor{comment}{//end\ namespace}}
+\DoxyCodeLine{\textcolor{comment}{ /// Constant pressure load. The arguments to this function are imposed}}
+\DoxyCodeLine{\textcolor{comment}{ /// on us by the SolidTractionElements which allow the traction to }}
+\DoxyCodeLine{\textcolor{comment}{ /// depend on the Lagrangian and Eulerian coordinates x and xi, and on the }}
+\DoxyCodeLine{\textcolor{comment}{ /// outer unit normal to the surface. Here we only need the outer unit}}
+\DoxyCodeLine{\textcolor{comment}{ /// normal.}}
+\DoxyCodeLine{\textcolor{comment}{} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespaceGlobal__Parameters_a7dc25ca2abd48b7f1bffb2d6129f02bd}{constant\_pressure}}(\textcolor{keyword}{const} Vector<double> \&xi, \textcolor{keyword}{const} Vector<double> \&x,}
+\DoxyCodeLine{                        \textcolor{keyword}{const} Vector<double> \&n, Vector<double> \&traction)}
+\DoxyCodeLine{ \{}
+\DoxyCodeLine{  \textcolor{keywordtype}{unsigned} dim = traction.size();}
+\DoxyCodeLine{  \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<dim;i++)}
+\DoxyCodeLine{   \{}
+\DoxyCodeLine{    traction[i] = -\/\mbox{\hyperlink{namespaceGlobal__Parameters_a31fb55c20db4aa0127aafa20f0d76731}{P}}*n[i];}
+\DoxyCodeLine{   \}}
+\DoxyCodeLine{ \} \textcolor{comment}{// end traction}}
+\DoxyCodeLine{ }
+\DoxyCodeLine{ }
+\DoxyCodeLine{\} \textcolor{comment}{//end namespace}}
 
 \end{DoxyCodeInclude}
  \DoxyHorRuler{0}
@@ -188,61 +188,61 @@ The driver code is straightforward. We store the command line arguments, specify
  
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\textcolor{comment}{//============================start\_main==================================}}
-\DoxyCodeLine{\textcolor{comment}{///\ Demonstrate\ how\ to\ solve\ an\ unstructured\ 3D\ solid\ problem}}
-\DoxyCodeLine{\textcolor{comment}{//========================================================================}}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{unstructured__three__d__solid_8cc_a3c04138a5bfe5d72780bb7e82a18e627}{main}}(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}\ **argv)}
+\DoxyCodeLine{\textcolor{comment}{/// Demonstrate how to solve an unstructured 3D solid problem}}
+\DoxyCodeLine{\textcolor{comment}{}\textcolor{comment}{//========================================================================}}
+\DoxyCodeLine{\textcolor{keywordtype}{int} \mbox{\hyperlink{unstructured__three__d__solid_8cc_a3c04138a5bfe5d72780bb7e82a18e627}{main}}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} **argv)}
 \DoxyCodeLine{\{}
-\DoxyCodeLine{\ \textcolor{comment}{//\ Store\ command\ line\ arguments}}
-\DoxyCodeLine{\ CommandLineArgs::setup(argc,argv);}
-\DoxyCodeLine{\ \ }
-\DoxyCodeLine{\ \textcolor{comment}{//\ Label\ for\ output}}
-\DoxyCodeLine{\ DocInfo\ doc\_info;}
-\DoxyCodeLine{\ }
-\DoxyCodeLine{\ \textcolor{comment}{//\ Output\ directory}}
-\DoxyCodeLine{\ doc\_info.set\_directory(\textcolor{stringliteral}{"{}RESLT"{}});}
-\DoxyCodeLine{\ \ }
-\DoxyCodeLine{\ \textcolor{comment}{//Set\ up\ the\ problem}}
-\DoxyCodeLine{\ \mbox{\hyperlink{classUnstructuredSolidProblem}{UnstructuredSolidProblem<TPVDElement<3,3>}}\ >\ problem;}
+\DoxyCodeLine{ \textcolor{comment}{// Store command line arguments}}
+\DoxyCodeLine{ CommandLineArgs::setup(argc,argv);}
+\DoxyCodeLine{  }
+\DoxyCodeLine{ \textcolor{comment}{// Label for output}}
+\DoxyCodeLine{ DocInfo doc\_info;}
+\DoxyCodeLine{ }
+\DoxyCodeLine{ \textcolor{comment}{// Output directory}}
+\DoxyCodeLine{ doc\_info.set\_directory(\textcolor{stringliteral}{"{}RESLT"{}});}
+\DoxyCodeLine{  }
+\DoxyCodeLine{ \textcolor{comment}{//Set up the problem}}
+\DoxyCodeLine{ \mbox{\hyperlink{classUnstructuredSolidProblem}{UnstructuredSolidProblem<TPVDElement<3,3>}} > problem;}
 
 \end{DoxyCodeInclude}
  We output the initial configuration and then perform a parameter study in which we increment the gravitational body force and the pressure loads simultaneously, causing the vessel to expand and sag, as shown in the animation at the beginning of this tutorial. (As usual we perform a smaller number of steps if the code is run in self-\/test mode; this is indicated by a non-\/zero number of command line arguments.)
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ }
-\DoxyCodeLine{\ \textcolor{comment}{//Output\ initial\ configuration}}
-\DoxyCodeLine{\ problem.\mbox{\hyperlink{classUnstructuredSolidProblem_ab3d66fd61b69d12b4f159d763fc44f15}{doc\_solution}}(doc\_info);}
-\DoxyCodeLine{\ doc\_info.number()++;\ \ \ }
+\DoxyCodeLine{ }
+\DoxyCodeLine{ \textcolor{comment}{//Output initial configuration}}
+\DoxyCodeLine{ problem.\mbox{\hyperlink{classUnstructuredSolidProblem_ab3d66fd61b69d12b4f159d763fc44f15}{doc\_solution}}(doc\_info);}
+\DoxyCodeLine{ doc\_info.number()++;   }
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ Parameter\ study}}
-\DoxyCodeLine{\ \mbox{\hyperlink{namespaceGlobal__Parameters_a31fb55c20db4aa0127aafa20f0d76731}{Global\_Parameters::P}}=0.0;\ }
-\DoxyCodeLine{\ \textcolor{keywordtype}{double}\ g\_increment=1.0e-\/3;\ }
-\DoxyCodeLine{\ \textcolor{keywordtype}{double}\ p\_increment=1.0e-\/2;\ }
+\DoxyCodeLine{  \textcolor{comment}{// Parameter study}}
+\DoxyCodeLine{ \mbox{\hyperlink{namespaceGlobal__Parameters_a31fb55c20db4aa0127aafa20f0d76731}{Global\_Parameters::P}}=0.0; }
+\DoxyCodeLine{ \textcolor{keywordtype}{double} g\_increment=1.0e-\/3; }
+\DoxyCodeLine{ \textcolor{keywordtype}{double} p\_increment=1.0e-\/2; }
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \textcolor{keywordtype}{unsigned}\ nstep=6;}
-\DoxyCodeLine{\ \textcolor{keywordflow}{if}\ (CommandLineArgs::Argc!=1)}
-\DoxyCodeLine{\ \ \{}
-\DoxyCodeLine{\ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Validation\ -\/-\/\ only\ doing\ two\ steps"{}}\ <<\ std::endl;}
-\DoxyCodeLine{\ \ \ nstep=2;}
-\DoxyCodeLine{\ \ \}}
-\DoxyCodeLine{\ }
-\DoxyCodeLine{\ \textcolor{comment}{//\ Do\ the\ parameter\ study}}
-\DoxyCodeLine{\ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ istep=0;istep<nstep;istep++)}
-\DoxyCodeLine{\ \ \{}
-\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Solve\ the\ problem}}
-\DoxyCodeLine{\ \ \ problem.newton\_solve();}
-\DoxyCodeLine{\ \ \ }
-\DoxyCodeLine{\ \ \ \textcolor{comment}{//Output\ solution}}
-\DoxyCodeLine{\ \ \ problem.\mbox{\hyperlink{classUnstructuredSolidProblem_ab3d66fd61b69d12b4f159d763fc44f15}{doc\_solution}}(doc\_info);}
-\DoxyCodeLine{\ \ \ doc\_info.number()++;}
+\DoxyCodeLine{ \textcolor{keywordtype}{unsigned} nstep=6;}
+\DoxyCodeLine{ \textcolor{keywordflow}{if} (CommandLineArgs::Argc!=1)}
+\DoxyCodeLine{  \{}
+\DoxyCodeLine{   std::cout << \textcolor{stringliteral}{"{}Validation -\/-\/ only doing two steps"{}} << std::endl;}
+\DoxyCodeLine{   nstep=2;}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{ }
+\DoxyCodeLine{ \textcolor{comment}{// Do the parameter study}}
+\DoxyCodeLine{ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} istep=0;istep<nstep;istep++)}
+\DoxyCodeLine{  \{}
+\DoxyCodeLine{   \textcolor{comment}{// Solve the problem}}
+\DoxyCodeLine{   problem.newton\_solve();}
+\DoxyCodeLine{   }
+\DoxyCodeLine{   \textcolor{comment}{//Output solution}}
+\DoxyCodeLine{   problem.\mbox{\hyperlink{classUnstructuredSolidProblem_ab3d66fd61b69d12b4f159d763fc44f15}{doc\_solution}}(doc\_info);}
+\DoxyCodeLine{   doc\_info.number()++;}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Bump\ up\ load}}
-\DoxyCodeLine{\ \ \ \mbox{\hyperlink{namespaceGlobal__Parameters_a335000b5db4206486a116ae0468d2d0c}{Global\_Parameters::Gravity}}+=g\_increment;}
-\DoxyCodeLine{\ \ \ \mbox{\hyperlink{namespaceGlobal__Parameters_a31fb55c20db4aa0127aafa20f0d76731}{Global\_Parameters::P}}+=p\_increment;\ }
-\DoxyCodeLine{\ \ \ }
-\DoxyCodeLine{\ \ \}}
-\DoxyCodeLine{\ }
-\DoxyCodeLine{\}\ \textcolor{comment}{//\ end\ main}}
+\DoxyCodeLine{   \textcolor{comment}{// Bump up load}}
+\DoxyCodeLine{   \mbox{\hyperlink{namespaceGlobal__Parameters_a335000b5db4206486a116ae0468d2d0c}{Global\_Parameters::Gravity}}+=g\_increment;}
+\DoxyCodeLine{   \mbox{\hyperlink{namespaceGlobal__Parameters_a31fb55c20db4aa0127aafa20f0d76731}{Global\_Parameters::P}}+=p\_increment; }
+\DoxyCodeLine{   }
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{ }
+\DoxyCodeLine{\} \textcolor{comment}{// end main}}
 
 \end{DoxyCodeInclude}
 
@@ -255,33 +255,33 @@ The {\ttfamily Problem} class has the usual member functions, and provides stora
  
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\textcolor{comment}{//=============start\_problem===========================================}}
-\DoxyCodeLine{\textcolor{comment}{///\ Unstructured\ solid\ problem}}
-\DoxyCodeLine{\textcolor{comment}{//=====================================================================}}
-\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class}\ ELEMENT>}
-\DoxyCodeLine{\textcolor{keyword}{class\ }\mbox{\hyperlink{classUnstructuredSolidProblem}{UnstructuredSolidProblem}}\ :\ \textcolor{keyword}{public}\ Problem}
+\DoxyCodeLine{\textcolor{comment}{/// Unstructured solid problem}}
+\DoxyCodeLine{\textcolor{comment}{}\textcolor{comment}{//=====================================================================}}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>}
+\DoxyCodeLine{\textcolor{keyword}{class }\mbox{\hyperlink{classUnstructuredSolidProblem}{UnstructuredSolidProblem}} : \textcolor{keyword}{public} Problem}
 \DoxyCodeLine{\{}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{keyword}{public}:}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{\ ///\ Constructor:\ }}
-\DoxyCodeLine{\textcolor{comment}{}\ \mbox{\hyperlink{classUnstructuredSolidProblem_a18ce02b6e4bbc86403c9e1b32c095772}{UnstructuredSolidProblem}}();}
+\DoxyCodeLine{\textcolor{comment}{ /// Constructor: }}
+\DoxyCodeLine{\textcolor{comment}{} \mbox{\hyperlink{classUnstructuredSolidProblem_a18ce02b6e4bbc86403c9e1b32c095772}{UnstructuredSolidProblem}}();}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{\ ///\ Destructor\ (empty)}}
-\DoxyCodeLine{\textcolor{comment}{}\ \mbox{\hyperlink{classUnstructuredSolidProblem_a25fe105d949498bf8f7c15aff96a7d00}{\string~UnstructuredSolidProblem}}()\{\}}
+\DoxyCodeLine{\textcolor{comment}{ /// Destructor (empty)}}
+\DoxyCodeLine{\textcolor{comment}{} \mbox{\hyperlink{classUnstructuredSolidProblem_a25fe105d949498bf8f7c15aff96a7d00}{\string~UnstructuredSolidProblem}}()\{\}}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{\ ///\ Doc\ the\ solution}}
-\DoxyCodeLine{\textcolor{comment}{}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUnstructuredSolidProblem_ab3d66fd61b69d12b4f159d763fc44f15}{doc\_solution}}(DocInfo\&\ doc\_info);}
-\DoxyCodeLine{\ }
+\DoxyCodeLine{\textcolor{comment}{ /// Doc the solution}}
+\DoxyCodeLine{\textcolor{comment}{} \textcolor{keywordtype}{void} \mbox{\hyperlink{classUnstructuredSolidProblem_ab3d66fd61b69d12b4f159d763fc44f15}{doc\_solution}}(DocInfo\& doc\_info);}
+\DoxyCodeLine{ }
 \DoxyCodeLine{\textcolor{keyword}{private}:}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{\ ///\ Create\ traction\ elements}}
-\DoxyCodeLine{\textcolor{comment}{}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUnstructuredSolidProblem_a9137960284200ed998989f785965f902}{create\_traction\_elements}}();}
+\DoxyCodeLine{\textcolor{comment}{ /// Create traction elements}}
+\DoxyCodeLine{\textcolor{comment}{} \textcolor{keywordtype}{void} \mbox{\hyperlink{classUnstructuredSolidProblem_a9137960284200ed998989f785965f902}{create\_traction\_elements}}();}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{\ ///\ Bulk\ solid\ mesh}}
-\DoxyCodeLine{\textcolor{comment}{}\ \mbox{\hyperlink{classMySolidTetgenMesh}{MySolidTetgenMesh<ELEMENT>}}*\ \mbox{\hyperlink{classUnstructuredSolidProblem_ad6a8cbe2c2f3596385e1a2484bfb68f7}{Solid\_mesh\_pt}};}
+\DoxyCodeLine{\textcolor{comment}{ /// Bulk solid mesh}}
+\DoxyCodeLine{\textcolor{comment}{} \mbox{\hyperlink{classMySolidTetgenMesh}{MySolidTetgenMesh<ELEMENT>}}* \mbox{\hyperlink{classUnstructuredSolidProblem_ad6a8cbe2c2f3596385e1a2484bfb68f7}{Solid\_mesh\_pt}};}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{\ ///\ Meshes\ of\ traction\ elements}}
-\DoxyCodeLine{\textcolor{comment}{}\ Vector<SolidMesh*>\ \mbox{\hyperlink{classUnstructuredSolidProblem_a32e691a698667053003e21333fc65057}{Solid\_traction\_mesh\_pt}};}
+\DoxyCodeLine{\textcolor{comment}{ /// Meshes of traction elements}}
+\DoxyCodeLine{\textcolor{comment}{} Vector<SolidMesh*> \mbox{\hyperlink{classUnstructuredSolidProblem_a32e691a698667053003e21333fc65057}{Solid\_traction\_mesh\_pt}};}
 
 \end{DoxyCodeInclude}
 
@@ -291,11 +291,11 @@ The two vectors {\ttfamily Pinned\+\_\+solid\+\_\+boundary\+\_\+id} and {\ttfami
 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{\ ///\ IDs\ of\ solid\ mesh\ boundaries\ where\ displacements\ are\ pinned}}
-\DoxyCodeLine{\textcolor{comment}{}\ Vector<unsigned>\ Pinned\_solid\_boundary\_id;}
+\DoxyCodeLine{\textcolor{comment}{ /// IDs of solid mesh boundaries where displacements are pinned}}
+\DoxyCodeLine{\textcolor{comment}{} Vector<unsigned> Pinned\_solid\_boundary\_id;}
 \DoxyCodeLine{\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{\ ///\ IDs\ of\ solid\ mesh\ boundaries\ which\ make\ up\ the\ traction\ interface}}
-\DoxyCodeLine{\textcolor{comment}{}\ Vector<unsigned>\ Solid\_traction\_boundary\_id;}
+\DoxyCodeLine{\textcolor{comment}{ /// IDs of solid mesh boundaries which make up the traction interface}}
+\DoxyCodeLine{\textcolor{comment}{} Vector<unsigned> Solid\_traction\_boundary\_id;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\};}
 
@@ -310,111 +310,111 @@ We start by building the bulk mesh, using the files created by \href{http://wias
 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\textcolor{comment}{//=============start\_constructor==========================================}}
-\DoxyCodeLine{\textcolor{comment}{///\ Constructor\ for\ unstructured\ solid\ problem}}
-\DoxyCodeLine{\textcolor{comment}{//========================================================================}}
-\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class}\ ELEMENT>}
+\DoxyCodeLine{\textcolor{comment}{/// Constructor for unstructured solid problem}}
+\DoxyCodeLine{\textcolor{comment}{}\textcolor{comment}{//========================================================================}}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>}
 \DoxyCodeLine{\mbox{\hyperlink{classUnstructuredSolidProblem_a18ce02b6e4bbc86403c9e1b32c095772}{UnstructuredSolidProblem<ELEMENT>::UnstructuredSolidProblem}}()}
-\DoxyCodeLine{\{\ }
+\DoxyCodeLine{\{ }
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \textcolor{comment}{//Create\ solid\ bulk\ mesh}}
-\DoxyCodeLine{\ \textcolor{keywordtype}{string}\ node\_file\_name=\textcolor{stringliteral}{"{}fsi\_bifurcation\_solid.1.node"{}};}
-\DoxyCodeLine{\ \textcolor{keywordtype}{string}\ element\_file\_name=\textcolor{stringliteral}{"{}fsi\_bifurcation\_solid.1.ele"{}};}
-\DoxyCodeLine{\ \textcolor{keywordtype}{string}\ face\_file\_name=\textcolor{stringliteral}{"{}fsi\_bifurcation\_solid.1.face"{}};}
-\DoxyCodeLine{\ Solid\_mesh\_pt\ =\ \ \textcolor{keyword}{new}\ \mbox{\hyperlink{classMySolidTetgenMesh}{MySolidTetgenMesh<ELEMENT>}}(node\_file\_name,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ element\_file\_name,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ face\_file\_name);}
+\DoxyCodeLine{  \textcolor{comment}{//Create solid bulk mesh}}
+\DoxyCodeLine{ \textcolor{keywordtype}{string} node\_file\_name=\textcolor{stringliteral}{"{}fsi\_bifurcation\_solid.1.node"{}};}
+\DoxyCodeLine{ \textcolor{keywordtype}{string} element\_file\_name=\textcolor{stringliteral}{"{}fsi\_bifurcation\_solid.1.ele"{}};}
+\DoxyCodeLine{ \textcolor{keywordtype}{string} face\_file\_name=\textcolor{stringliteral}{"{}fsi\_bifurcation\_solid.1.face"{}};}
+\DoxyCodeLine{ Solid\_mesh\_pt =  \textcolor{keyword}{new} \mbox{\hyperlink{classMySolidTetgenMesh}{MySolidTetgenMesh<ELEMENT>}}(node\_file\_name,}
+\DoxyCodeLine{                                              element\_file\_name,}
+\DoxyCodeLine{                                              face\_file\_name);}
 
 \end{DoxyCodeInclude}
  Next we specify the IDs of the \href{http://wias-berlin.de/software/tetgen//}{\texttt{ {\ttfamily tetgen} }} boundaries that form part of specific domain boundaries in our problem. Boundaries 0, 1 and 2 are the in-\/ and outflow faces along which the solid is pinned. (See the specification of the boundaries in \href{../../../../demo_drivers/solid/unstructured_three_d_solid/fsi_bifurcation_solid.poly}{\texttt{ fsi\+\_\+bifurcation\+\_\+solid.\+poly}} and/or check the boundary enumeration using {\ttfamily tetview} as shown in the {\ttfamily tetview} plot of the domain boundaries at the beginning of this tutorial.)
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ }
-\DoxyCodeLine{\ \textcolor{comment}{//\ The\ following\ IDs\ corresponds\ to\ the\ boundary\ IDs\ specified\ in}}
-\DoxyCodeLine{\ \textcolor{comment}{//\ the\ *.poly\ file\ from\ which\ tetgen\ generated\ the\ unstructured\ mesh.}}
-\DoxyCodeLine{\ \textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{\ ///\ IDs\ of\ solid\ mesh\ boundaries\ where\ displacements\ are\ pinned}}
-\DoxyCodeLine{\textcolor{comment}{}\ Pinned\_solid\_boundary\_id.resize(3);}
-\DoxyCodeLine{\ Pinned\_solid\_boundary\_id[0]=0;}
-\DoxyCodeLine{\ Pinned\_solid\_boundary\_id[1]=1;}
-\DoxyCodeLine{\ Pinned\_solid\_boundary\_id[2]=2;}
+\DoxyCodeLine{ }
+\DoxyCodeLine{ \textcolor{comment}{// The following IDs corresponds to the boundary IDs specified in}}
+\DoxyCodeLine{ \textcolor{comment}{// the *.poly file from which tetgen generated the unstructured mesh.}}
+\DoxyCodeLine{ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{ /// IDs of solid mesh boundaries where displacements are pinned}}
+\DoxyCodeLine{\textcolor{comment}{} Pinned\_solid\_boundary\_id.resize(3);}
+\DoxyCodeLine{ Pinned\_solid\_boundary\_id[0]=0;}
+\DoxyCodeLine{ Pinned\_solid\_boundary\_id[1]=1;}
+\DoxyCodeLine{ Pinned\_solid\_boundary\_id[2]=2;}
 
 \end{DoxyCodeInclude}
  Similarly, boundaries 3 to 15 are the faces that define the internal boundary of the bifurcation, i.\+e. the boundary along which we have to apply the pressure load\+:
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ }
-\DoxyCodeLine{\ \ \textcolor{comment}{//\ The\ solid\ mesh\ boundaries\ where\ an\ internal\ pressure\ is\ applied}}
-\DoxyCodeLine{\ Solid\_traction\_boundary\_id.resize(12);}
-\DoxyCodeLine{\ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ i=0;i<12;i++)}
-\DoxyCodeLine{\ \ \{}
-\DoxyCodeLine{\ \ \ Solid\_traction\_boundary\_id[i]=i+3;}
-\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{ }
+\DoxyCodeLine{  \textcolor{comment}{// The solid mesh boundaries where an internal pressure is applied}}
+\DoxyCodeLine{ Solid\_traction\_boundary\_id.resize(12);}
+\DoxyCodeLine{ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i=0;i<12;i++)}
+\DoxyCodeLine{  \{}
+\DoxyCodeLine{   Solid\_traction\_boundary\_id[i]=i+3;}
+\DoxyCodeLine{  \}}
 
 \end{DoxyCodeInclude}
  We apply the boundary conditions by pinning the displacements of all nodes that are located on the in-\/ and outflow faces, and document their positions.
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ }
-\DoxyCodeLine{\ }
-\DoxyCodeLine{\ \textcolor{comment}{//\ Apply\ BCs\ for\ solid}}
-\DoxyCodeLine{\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{\ }
-\DoxyCodeLine{\ \textcolor{comment}{//\ Doc\ pinned\ solid\ nodes}}
-\DoxyCodeLine{\ std::ofstream\ bc\_file(\textcolor{stringliteral}{"{}RESLT/pinned\_solid\_nodes.dat"{}});}
-\DoxyCodeLine{\ }
-\DoxyCodeLine{\ \textcolor{comment}{//\ Pin\ positions\ at\ inflow\ boundary\ (boundaries\ 0\ and\ 1)}}
-\DoxyCodeLine{\ \textcolor{keywordtype}{unsigned}\ n=Pinned\_solid\_boundary\_id.size();}
-\DoxyCodeLine{\ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ i=0;i<n;i++)}
-\DoxyCodeLine{\ \ \{}
-\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Get\ boundary\ ID}}
-\DoxyCodeLine{\ \ \ \textcolor{keywordtype}{unsigned}\ b=Pinned\_solid\_boundary\_id[i];}
-\DoxyCodeLine{\ \ \ \textcolor{keywordtype}{unsigned}\ num\_nod=\ Solid\_mesh\_pt-\/>nboundary\_node(b);\ \ }
-\DoxyCodeLine{\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ inod=0;inod<num\_nod;inod++)}
-\DoxyCodeLine{\ \ \ \ \{\ \ \ \ }
-\DoxyCodeLine{\ \ \ \ \ \textcolor{comment}{//\ Get\ node}}
-\DoxyCodeLine{\ \ \ \ \ SolidNode*\ nod\_pt=Solid\_mesh\_pt-\/>boundary\_node\_pt(b,inod);}
-\DoxyCodeLine{\ \ \ \ \ }
-\DoxyCodeLine{\ \ \ \ \ \textcolor{comment}{//\ Pin\ all\ directions}}
-\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ i=0;i<3;i++)}
-\DoxyCodeLine{\ \ \ \ \ \ \{}
-\DoxyCodeLine{\ \ \ \ \ \ \ nod\_pt-\/>pin\_position(i);}
-\DoxyCodeLine{\ \ \ \ \ \ \ }
-\DoxyCodeLine{\ \ \ \ \ \ \ \textcolor{comment}{//\ ...and\ doc\ it\ as\ pinned}}
-\DoxyCodeLine{\ \ \ \ \ \ \ bc\_file\ <<\ nod\_pt-\/>x(i)\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
-\DoxyCodeLine{\ \ \ \ \ \ \}}
-\DoxyCodeLine{\ \ \ \ \ }
-\DoxyCodeLine{\ \ \ \ \ bc\_file\ <<\ std::endl;}
-\DoxyCodeLine{\ \ \ \ \}}
-\DoxyCodeLine{\ \ \}}
-\DoxyCodeLine{\ bc\_file.close();}
+\DoxyCodeLine{ }
+\DoxyCodeLine{ }
+\DoxyCodeLine{ \textcolor{comment}{// Apply BCs for solid}}
+\DoxyCodeLine{ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{ }
+\DoxyCodeLine{ \textcolor{comment}{// Doc pinned solid nodes}}
+\DoxyCodeLine{ std::ofstream bc\_file(\textcolor{stringliteral}{"{}RESLT/pinned\_solid\_nodes.dat"{}});}
+\DoxyCodeLine{ }
+\DoxyCodeLine{ \textcolor{comment}{// Pin positions at inflow boundary (boundaries 0 and 1)}}
+\DoxyCodeLine{ \textcolor{keywordtype}{unsigned} n=Pinned\_solid\_boundary\_id.size();}
+\DoxyCodeLine{ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i=0;i<n;i++)}
+\DoxyCodeLine{  \{}
+\DoxyCodeLine{   \textcolor{comment}{// Get boundary ID}}
+\DoxyCodeLine{   \textcolor{keywordtype}{unsigned} b=Pinned\_solid\_boundary\_id[i];}
+\DoxyCodeLine{   \textcolor{keywordtype}{unsigned} num\_nod= Solid\_mesh\_pt-\/>nboundary\_node(b);  }
+\DoxyCodeLine{   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} inod=0;inod<num\_nod;inod++)}
+\DoxyCodeLine{    \{    }
+\DoxyCodeLine{     \textcolor{comment}{// Get node}}
+\DoxyCodeLine{     SolidNode* nod\_pt=Solid\_mesh\_pt-\/>boundary\_node\_pt(b,inod);}
+\DoxyCodeLine{     }
+\DoxyCodeLine{     \textcolor{comment}{// Pin all directions}}
+\DoxyCodeLine{     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i=0;i<3;i++)}
+\DoxyCodeLine{      \{}
+\DoxyCodeLine{       nod\_pt-\/>pin\_position(i);}
+\DoxyCodeLine{       }
+\DoxyCodeLine{       \textcolor{comment}{// ...and doc it as pinned}}
+\DoxyCodeLine{       bc\_file << nod\_pt-\/>x(i) << \textcolor{stringliteral}{"{} "{}};}
+\DoxyCodeLine{      \}}
+\DoxyCodeLine{     }
+\DoxyCodeLine{     bc\_file << std::endl;}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{ bc\_file.close();}
 
 \end{DoxyCodeInclude}
  We complete the build of the elements by setting the pointer to the constitutive equation and the body force.
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ }
-\DoxyCodeLine{\ }
-\DoxyCodeLine{\ }
-\DoxyCodeLine{\ \textcolor{comment}{//\ Complete\ the\ build\ of\ all\ elements\ so\ they\ are\ fully\ functional}}
-\DoxyCodeLine{\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{\ \textcolor{keywordtype}{unsigned}\ n\_element\ =\ Solid\_mesh\_pt-\/>nelement();}
-\DoxyCodeLine{\ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ i=0;i<n\_element;i++)}
-\DoxyCodeLine{\ \ \{}
-\DoxyCodeLine{\ \ \ \textcolor{comment}{//Cast\ to\ a\ solid\ element}}
-\DoxyCodeLine{\ \ \ ELEMENT\ *el\_pt\ =\ \textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(}
-\DoxyCodeLine{\ \ \ \ Solid\_mesh\_pt-\/>element\_pt(i));}
-\DoxyCodeLine{\ \ \ }
-\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Set\ the\ constitutive\ law\ \ \ }}
-\DoxyCodeLine{\ \ \ el\_pt-\/>constitutive\_law\_pt()\ =}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{namespaceGlobal__Parameters_adbd1f040f375c96fe56b3f475f7dbec2}{Global\_Parameters::Constitutive\_law\_pt}};}
-\DoxyCodeLine{\ \ \ }
-\DoxyCodeLine{\ \ \ \textcolor{comment}{//Set\ the\ body\ force}}
-\DoxyCodeLine{\ \ \ el\_pt-\/>body\_force\_fct\_pt()\ =\ \mbox{\hyperlink{namespaceGlobal__Parameters_a200109847bf4cc26da4d00e8d68d569e}{Global\_Parameters::gravity}};}
-\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{ }
+\DoxyCodeLine{ }
+\DoxyCodeLine{ }
+\DoxyCodeLine{ \textcolor{comment}{// Complete the build of all elements so they are fully functional}}
+\DoxyCodeLine{ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{ \textcolor{keywordtype}{unsigned} n\_element = Solid\_mesh\_pt-\/>nelement();}
+\DoxyCodeLine{ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} i=0;i<n\_element;i++)}
+\DoxyCodeLine{  \{}
+\DoxyCodeLine{   \textcolor{comment}{//Cast to a solid element}}
+\DoxyCodeLine{   ELEMENT *el\_pt = \textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(}
+\DoxyCodeLine{    Solid\_mesh\_pt-\/>element\_pt(i));}
+\DoxyCodeLine{   }
+\DoxyCodeLine{   \textcolor{comment}{// Set the constitutive law   }}
+\DoxyCodeLine{   el\_pt-\/>constitutive\_law\_pt() =}
+\DoxyCodeLine{    \mbox{\hyperlink{namespaceGlobal__Parameters_adbd1f040f375c96fe56b3f475f7dbec2}{Global\_Parameters::Constitutive\_law\_pt}};}
+\DoxyCodeLine{   }
+\DoxyCodeLine{   \textcolor{comment}{//Set the body force}}
+\DoxyCodeLine{   el\_pt-\/>body\_force\_fct\_pt() = \mbox{\hyperlink{namespaceGlobal__Parameters_a200109847bf4cc26da4d00e8d68d569e}{Global\_Parameters::gravity}};}
+\DoxyCodeLine{  \}}
 
 \end{DoxyCodeInclude}
 
@@ -423,21 +423,21 @@ Next we create the traction elements, attaching them to the \char`\"{}bulk\char`
 
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\ }
-\DoxyCodeLine{\ }
-\DoxyCodeLine{\ \textcolor{comment}{//\ Create\ traction\ elements}}
-\DoxyCodeLine{\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{\ }
-\DoxyCodeLine{\ \textcolor{comment}{//\ Create\ meshes\ of\ traction\ elements}}
-\DoxyCodeLine{\ n=Solid\_traction\_boundary\_id.size();}
-\DoxyCodeLine{\ Solid\_traction\_mesh\_pt.resize(n);}
-\DoxyCodeLine{\ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ i=0;i<n;i++)}
-\DoxyCodeLine{\ \ \{}
-\DoxyCodeLine{\ \ \ Solid\_traction\_mesh\_pt[i]=\textcolor{keyword}{new}\ SolidMesh;}
-\DoxyCodeLine{\ \ \}}
-\DoxyCodeLine{\ }
-\DoxyCodeLine{\ \textcolor{comment}{//\ Build\ the\ traction\ elements}}
-\DoxyCodeLine{\ create\_traction\_elements();}
+\DoxyCodeLine{ }
+\DoxyCodeLine{ }
+\DoxyCodeLine{ \textcolor{comment}{// Create traction elements}}
+\DoxyCodeLine{ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{ }
+\DoxyCodeLine{ \textcolor{comment}{// Create meshes of traction elements}}
+\DoxyCodeLine{ n=Solid\_traction\_boundary\_id.size();}
+\DoxyCodeLine{ Solid\_traction\_mesh\_pt.resize(n);}
+\DoxyCodeLine{ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i=0;i<n;i++)}
+\DoxyCodeLine{  \{}
+\DoxyCodeLine{   Solid\_traction\_mesh\_pt[i]=\textcolor{keyword}{new} SolidMesh;}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{ }
+\DoxyCodeLine{ \textcolor{comment}{// Build the traction elements}}
+\DoxyCodeLine{ create\_traction\_elements();}
 
 \end{DoxyCodeInclude}
  Finally, we add the various meshes as sub-\/meshes to the {\ttfamily Problem}, build the global mesh, and assign the equation numbers.
@@ -446,26 +446,26 @@ Next we create the traction elements, attaching them to the \char`\"{}bulk\char`
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \textcolor{comment}{//\ Combine\ the\ lot}}
-\DoxyCodeLine{\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{\ }
-\DoxyCodeLine{\ \textcolor{comment}{//\ The\ solid\ bulk\ mesh}}
-\DoxyCodeLine{\ add\_sub\_mesh(Solid\_mesh\_pt);}
+\DoxyCodeLine{ \textcolor{comment}{// Combine the lot}}
+\DoxyCodeLine{ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{ }
+\DoxyCodeLine{ \textcolor{comment}{// The solid bulk mesh}}
+\DoxyCodeLine{ add\_sub\_mesh(Solid\_mesh\_pt);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \textcolor{comment}{//\ The\ solid\ traction\ meshes}}
-\DoxyCodeLine{\ n=Solid\_traction\_boundary\_id.size();}
-\DoxyCodeLine{\ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ i=0;i<n;i++)}
-\DoxyCodeLine{\ \ \{}
-\DoxyCodeLine{\ \ \ add\_sub\_mesh(Solid\_traction\_mesh\_pt[i]);}
-\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{ \textcolor{comment}{// The solid traction meshes}}
+\DoxyCodeLine{ n=Solid\_traction\_boundary\_id.size();}
+\DoxyCodeLine{ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i=0;i<n;i++)}
+\DoxyCodeLine{  \{}
+\DoxyCodeLine{   add\_sub\_mesh(Solid\_traction\_mesh\_pt[i]);}
+\DoxyCodeLine{  \}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \textcolor{comment}{//\ Build\ global\ mesh}}
-\DoxyCodeLine{\ build\_global\_mesh();}
+\DoxyCodeLine{ \textcolor{comment}{// Build global mesh}}
+\DoxyCodeLine{ build\_global\_mesh();}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \textcolor{comment}{//\ Setup\ equation\ numbering\ scheme}}
-\DoxyCodeLine{\ std::cout\ <<\textcolor{stringliteral}{"{}Number\ of\ equations:\ "{}}\ <<\ assign\_eqn\_numbers()\ <<\ std::endl;\ }
-\DoxyCodeLine{\ }
-\DoxyCodeLine{\}\ \textcolor{comment}{//\ end\ constructor}}
+\DoxyCodeLine{ \textcolor{comment}{// Setup equation numbering scheme}}
+\DoxyCodeLine{ std::cout <<\textcolor{stringliteral}{"{}Number of equations: "{}} << assign\_eqn\_numbers() << std::endl; }
+\DoxyCodeLine{ }
+\DoxyCodeLine{\} \textcolor{comment}{// end constructor}}
 
 \end{DoxyCodeInclude}
 
@@ -481,45 +481,45 @@ The helper function {\ttfamily create\+\_\+traction\+\_\+elements()} does exactl
 \DoxyCodeLine{}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{comment}{//============start\_of\_create\_traction\_elements==========================}\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{///\ Create\ traction\ elements\ }}
+\DoxyCodeLine{\textcolor{comment}{/// Create traction elements }}
 \DoxyCodeLine{\textcolor{comment}{}\textcolor{comment}{//=======================================================================}}
-\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class}\ ELEMENT>}
-\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUnstructuredSolidProblem_a9137960284200ed998989f785965f902}{UnstructuredSolidProblem<ELEMENT>::create\_traction\_elements}}()}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{classUnstructuredSolidProblem_a9137960284200ed998989f785965f902}{UnstructuredSolidProblem<ELEMENT>::create\_traction\_elements}}()}
 \DoxyCodeLine{\{}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \textcolor{comment}{//\ Loop\ over\ traction\ boundaries}}
-\DoxyCodeLine{\ \textcolor{keywordtype}{unsigned}\ n=Solid\_traction\_boundary\_id.size();}
-\DoxyCodeLine{\ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ i=0;i<n;i++)}
-\DoxyCodeLine{\ \ \{}
-\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Get\ boundary\ ID}}
-\DoxyCodeLine{\ \ \ \textcolor{keywordtype}{unsigned}\ b=Solid\_traction\_boundary\_id[i];}
-\DoxyCodeLine{\ \ \ }
-\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ How\ many\ bulk\ elements\ are\ adjacent\ to\ boundary\ b?}}
-\DoxyCodeLine{\ \ \ \textcolor{keywordtype}{unsigned}\ n\_element\ =\ Solid\_mesh\_pt-\/>nboundary\_element(b);}
-\DoxyCodeLine{\ \ \ }
-\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Loop\ over\ the\ bulk\ elements\ adjacent\ to\ boundary\ b}}
-\DoxyCodeLine{\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ e=0;e<n\_element;e++)}
-\DoxyCodeLine{\ \ \ \ \{}
-\DoxyCodeLine{\ \ \ \ \ \textcolor{comment}{//\ Get\ pointer\ to\ the\ bulk\ element\ that\ is\ adjacent\ to\ boundary\ b}}
-\DoxyCodeLine{\ \ \ \ \ ELEMENT*\ bulk\_elem\_pt\ =\ \textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(}
-\DoxyCodeLine{\ \ \ \ \ \ Solid\_mesh\_pt-\/>boundary\_element\_pt(b,e));}
-\DoxyCodeLine{\ \ \ \ \ }
-\DoxyCodeLine{\ \ \ \ \ \textcolor{comment}{//What\ is\ the\ index\ of\ the\ face\ of\ the\ element\ e\ along\ boundary\ b}}
-\DoxyCodeLine{\ \ \ \ \ \textcolor{keywordtype}{int}\ face\_index\ =\ Solid\_mesh\_pt-\/>face\_index\_at\_boundary(b,e);}
-\DoxyCodeLine{\ \ \ \ \ }
-\DoxyCodeLine{\ \ \ \ \ \textcolor{comment}{//\ Create\ new\ element\ }}
-\DoxyCodeLine{\ \ \ \ \ SolidTractionElement<ELEMENT>*\ el\_pt=}
-\DoxyCodeLine{\ \ \ \ \ \ \textcolor{keyword}{new}\ SolidTractionElement<ELEMENT>(bulk\_elem\_pt,face\_index);}
-\DoxyCodeLine{\ \ \ \ \ }
-\DoxyCodeLine{\ \ \ \ \ \textcolor{comment}{//\ Add\ it\ to\ the\ mesh}}
-\DoxyCodeLine{\ \ \ \ \ Solid\_traction\_mesh\_pt[i]-\/>add\_element\_pt(el\_pt);}
-\DoxyCodeLine{\ \ \ \ \ }
-\DoxyCodeLine{\ \ \ \ \ \textcolor{comment}{//Set\ the\ traction\ function}}
-\DoxyCodeLine{\ \ \ \ \ el\_pt-\/>traction\_fct\_pt()\ =\ \mbox{\hyperlink{namespaceGlobal__Parameters_a7dc25ca2abd48b7f1bffb2d6129f02bd}{Global\_Parameters::constant\_pressure}};}
-\DoxyCodeLine{\ \ \ \ \}}
-\DoxyCodeLine{\ \ \}}
-\DoxyCodeLine{\ }
-\DoxyCodeLine{\}\ \textcolor{comment}{//\ end\ of\ create\_traction\_elements}}
+\DoxyCodeLine{ \textcolor{comment}{// Loop over traction boundaries}}
+\DoxyCodeLine{ \textcolor{keywordtype}{unsigned} n=Solid\_traction\_boundary\_id.size();}
+\DoxyCodeLine{ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i=0;i<n;i++)}
+\DoxyCodeLine{  \{}
+\DoxyCodeLine{   \textcolor{comment}{// Get boundary ID}}
+\DoxyCodeLine{   \textcolor{keywordtype}{unsigned} b=Solid\_traction\_boundary\_id[i];}
+\DoxyCodeLine{   }
+\DoxyCodeLine{   \textcolor{comment}{// How many bulk elements are adjacent to boundary b?}}
+\DoxyCodeLine{   \textcolor{keywordtype}{unsigned} n\_element = Solid\_mesh\_pt-\/>nboundary\_element(b);}
+\DoxyCodeLine{   }
+\DoxyCodeLine{   \textcolor{comment}{// Loop over the bulk elements adjacent to boundary b}}
+\DoxyCodeLine{   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} e=0;e<n\_element;e++)}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{     \textcolor{comment}{// Get pointer to the bulk element that is adjacent to boundary b}}
+\DoxyCodeLine{     ELEMENT* bulk\_elem\_pt = \textcolor{keyword}{dynamic\_cast<}ELEMENT*\textcolor{keyword}{>}(}
+\DoxyCodeLine{      Solid\_mesh\_pt-\/>boundary\_element\_pt(b,e));}
+\DoxyCodeLine{     }
+\DoxyCodeLine{     \textcolor{comment}{//What is the index of the face of the element e along boundary b}}
+\DoxyCodeLine{     \textcolor{keywordtype}{int} face\_index = Solid\_mesh\_pt-\/>face\_index\_at\_boundary(b,e);}
+\DoxyCodeLine{     }
+\DoxyCodeLine{     \textcolor{comment}{// Create new element }}
+\DoxyCodeLine{     SolidTractionElement<ELEMENT>* el\_pt=}
+\DoxyCodeLine{      \textcolor{keyword}{new} SolidTractionElement<ELEMENT>(bulk\_elem\_pt,face\_index);}
+\DoxyCodeLine{     }
+\DoxyCodeLine{     \textcolor{comment}{// Add it to the mesh}}
+\DoxyCodeLine{     Solid\_traction\_mesh\_pt[i]-\/>add\_element\_pt(el\_pt);}
+\DoxyCodeLine{     }
+\DoxyCodeLine{     \textcolor{comment}{//Set the traction function}}
+\DoxyCodeLine{     el\_pt-\/>traction\_fct\_pt() = \mbox{\hyperlink{namespaceGlobal__Parameters_a7dc25ca2abd48b7f1bffb2d6129f02bd}{Global\_Parameters::constant\_pressure}};}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{ }
+\DoxyCodeLine{\} \textcolor{comment}{// end of create\_traction\_elements}}
 
 \end{DoxyCodeInclude}
 
@@ -535,41 +535,41 @@ The post-\/processing routine outputs the deformed domain shape and the applied 
 \DoxyCodeLine{}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{comment}{//========================================================================}\textcolor{comment}{}}
-\DoxyCodeLine{\textcolor{comment}{///\ Doc\ the\ solution}}
+\DoxyCodeLine{\textcolor{comment}{/// Doc the solution}}
 \DoxyCodeLine{\textcolor{comment}{}\textcolor{comment}{//========================================================================}}
-\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class}\ ELEMENT>}
-\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUnstructuredSolidProblem_ab3d66fd61b69d12b4f159d763fc44f15}{UnstructuredSolidProblem<ELEMENT>::doc\_solution}}(DocInfo\&\ doc\_info)}
-\DoxyCodeLine{\{\ }
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class} ELEMENT>}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{classUnstructuredSolidProblem_ab3d66fd61b69d12b4f159d763fc44f15}{UnstructuredSolidProblem<ELEMENT>::doc\_solution}}(DocInfo\& doc\_info)}
+\DoxyCodeLine{\{ }
 \DoxyCodeLine{}
-\DoxyCodeLine{\ ofstream\ some\_file;}
-\DoxyCodeLine{\ \textcolor{keywordtype}{char}\ filename[100];}
+\DoxyCodeLine{ ofstream some\_file;}
+\DoxyCodeLine{ \textcolor{keywordtype}{char} filename[100];}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \textcolor{comment}{//\ Number\ of\ plot\ points}}
-\DoxyCodeLine{\ \textcolor{keywordtype}{unsigned}\ npts;}
-\DoxyCodeLine{\ npts=5;}
+\DoxyCodeLine{ \textcolor{comment}{// Number of plot points}}
+\DoxyCodeLine{ \textcolor{keywordtype}{unsigned} npts;}
+\DoxyCodeLine{ npts=5;}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \textcolor{comment}{//\ Output\ solid\ solution}}
-\DoxyCodeLine{\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{\ sprintf(filename,\textcolor{stringliteral}{"{}\%s/solid\_soln\%i.dat"{}},doc\_info.directory().c\_str(),}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ doc\_info.number());}
-\DoxyCodeLine{\ some\_file.open(filename);}
-\DoxyCodeLine{\ Solid\_mesh\_pt-\/>output(some\_file,npts);}
-\DoxyCodeLine{\ some\_file.close();}
+\DoxyCodeLine{ \textcolor{comment}{// Output solid solution}}
+\DoxyCodeLine{ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{ sprintf(filename,\textcolor{stringliteral}{"{}\%s/solid\_soln\%i.dat"{}},doc\_info.directory().c\_str(),}
+\DoxyCodeLine{         doc\_info.number());}
+\DoxyCodeLine{ some\_file.open(filename);}
+\DoxyCodeLine{ Solid\_mesh\_pt-\/>output(some\_file,npts);}
+\DoxyCodeLine{ some\_file.close();}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ }
-\DoxyCodeLine{\ \textcolor{comment}{//\ Output\ traction}}
-\DoxyCodeLine{\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{\ sprintf(filename,\textcolor{stringliteral}{"{}\%s/traction\%i.dat"{}},doc\_info.directory().c\_str(),}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ doc\_info.number());}
-\DoxyCodeLine{\ some\_file.open(filename);}
-\DoxyCodeLine{\ \textcolor{keywordtype}{unsigned}\ n=Solid\_traction\_boundary\_id.size();}
-\DoxyCodeLine{\ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ i=0;i<n;i++)}
-\DoxyCodeLine{\ \ \{}
-\DoxyCodeLine{\ \ \ Solid\_traction\_mesh\_pt[i]-\/>output(some\_file,npts);}
-\DoxyCodeLine{\ \ \}}
-\DoxyCodeLine{\ some\_file.close();}
+\DoxyCodeLine{    }
+\DoxyCodeLine{ \textcolor{comment}{// Output traction}}
+\DoxyCodeLine{ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{ sprintf(filename,\textcolor{stringliteral}{"{}\%s/traction\%i.dat"{}},doc\_info.directory().c\_str(),}
+\DoxyCodeLine{         doc\_info.number());}
+\DoxyCodeLine{ some\_file.open(filename);}
+\DoxyCodeLine{ \textcolor{keywordtype}{unsigned} n=Solid\_traction\_boundary\_id.size();}
+\DoxyCodeLine{ \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i=0;i<n;i++)}
+\DoxyCodeLine{  \{}
+\DoxyCodeLine{   Solid\_traction\_mesh\_pt[i]-\/>output(some\_file,npts);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{ some\_file.close();}
 \DoxyCodeLine{}
-\DoxyCodeLine{\}\ \textcolor{comment}{//\ end\ doc}}
+\DoxyCodeLine{\} \textcolor{comment}{// end doc}}
 
 \end{DoxyCodeInclude}
 
