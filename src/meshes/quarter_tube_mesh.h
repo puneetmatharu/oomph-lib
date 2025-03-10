@@ -26,6 +26,8 @@
 #ifndef OOMPH_QUARTER_TUBE_MESH_HEADER
 #define OOMPH_QUARTER_TUBE_MESH_HEADER
 
+#include "generic/element_factory.h"
+
 // Headers
 #include "generic/refineable_brick_mesh.h"
 #include "generic/macro_element.h"
@@ -59,7 +61,6 @@ namespace oomph
   ///                 The toplogy must remain that of a quarter tube,
   ///                 or the mesh generation will break.
   //====================================================================
-  template<class ELEMENT>
   class QuarterTubeMesh : public virtual BrickMeshBase
   {
   public:
@@ -153,9 +154,8 @@ namespace oomph
   ///               line parametrised by \f$ \xi_0 =  \xi_0^{hi} \f$
   ///               on the geometric object that specifies the wall.
   //=============================================================
-  template<class ELEMENT>
-  class RefineableQuarterTubeMesh : public virtual QuarterTubeMesh<ELEMENT>,
-                                    public RefineableBrickMesh<ELEMENT>
+  class RefineableQuarterTubeMesh : public virtual QuarterTubeMesh,
+                                    public RefineableBrickMesh
 
   {
   public:
@@ -173,26 +173,23 @@ namespace oomph
       const Vector<double>& xi_hi,
       const unsigned& nlayer,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : QuarterTubeMesh<ELEMENT>(
+      : QuarterTubeMesh(
           wall_pt, xi_lo, fract_mid, xi_hi, nlayer, time_stepper_pt)
     {
       // Loop over all elements and set macro element pointer
-      for (unsigned ielem = 0; ielem < QuarterTubeMesh<ELEMENT>::nelement();
-           ielem++)
+      for (unsigned ielem = 0; ielem < QuarterTubeMesh::nelement(); ielem++)
       {
-        dynamic_cast<RefineableQElement<3>*>(
-          QuarterTubeMesh<ELEMENT>::element_pt(ielem))
+        dynamic_cast<RefineableQElement<3>*>(QuarterTubeMesh::element_pt(ielem))
           ->set_macro_elem_pt(this->Domain_pt->macro_element_pt(ielem));
       }
 
       // Setup Octree forest: Turn elements into individual octrees
       // and plant in forest
       Vector<TreeRoot*> trees_pt;
-      for (unsigned iel = 0; iel < QuarterTubeMesh<ELEMENT>::nelement(); iel++)
+      for (unsigned iel = 0; iel < QuarterTubeMesh::nelement(); iel++)
       {
-        FiniteElement* el_pt = QuarterTubeMesh<ELEMENT>::finite_element_pt(iel);
-        ELEMENT* ref_el_pt = dynamic_cast<ELEMENT*>(el_pt);
-        OcTreeRoot* octree_root_pt = new OcTreeRoot(ref_el_pt);
+        OcTreeRoot* octree_root_pt = new OcTreeRoot(
+          dynamic_cast<RefineableElement*>(this->element_pt(iel)));
         trees_pt.push_back(octree_root_pt);
       }
       this->Forest_pt = new OcTreeForest(trees_pt);
@@ -230,10 +227,9 @@ namespace oomph
   //========================================================================
   /// MacroElementNodeUpdate version of RefineableQuarterTubeMesh
   //========================================================================
-  template<class ELEMENT>
   class MacroElementNodeUpdateRefineableQuarterTubeMesh
     : public virtual MacroElementNodeUpdateMesh,
-      public virtual RefineableQuarterTubeMesh<ELEMENT>
+      public virtual RefineableQuarterTubeMesh
   {
   public:
     /// Constructor: Pass pointer to geometric object, start and
@@ -251,13 +247,13 @@ namespace oomph
       const unsigned& nlayer,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : MacroElementNodeUpdateMesh(),
-        RefineableQuarterTubeMesh<ELEMENT>(
+        RefineableQuarterTubeMesh(
           wall_pt, xi_lo, fract_mid, xi_hi, nlayer, time_stepper_pt),
-        QuarterTubeMesh<ELEMENT>(
+        QuarterTubeMesh(
           wall_pt, xi_lo, fract_mid, xi_hi, nlayer, time_stepper_pt)
     {
 #ifdef PARANOID
-      ELEMENT* el_pt = new ELEMENT;
+      ELEMENT* el_pt = element_factory_pt->new_element();
       if (dynamic_cast<MacroElementNodeUpdateElementBase*>(el_pt) == 0)
       {
         std::ostringstream error_message;
@@ -325,7 +321,8 @@ namespace oomph
       for (unsigned i = 0; i < n_element; i++)
       {
         // Upcast from FiniteElement to the present element
-        ELEMENT* el_pt = dynamic_cast<ELEMENT*>(this->element_pt(i));
+        auto* el_pt =
+          dynamic_cast<MacroElementNodeUpdateElement*>(this->element_pt(i));
 
 #ifdef PARANOID
         // Check if cast is successful
@@ -426,10 +423,8 @@ namespace oomph
   /// Note: it is assumed the cross section down the tube is
   /// uniform when setup_algebraic_node_update() is called.
   //========================================================================
-  template<class ELEMENT>
-  class AlgebraicRefineableQuarterTubeMesh
-    : public virtual AlgebraicMesh,
-      public RefineableQuarterTubeMesh<ELEMENT>
+  class AlgebraicRefineableQuarterTubeMesh : public virtual AlgebraicMesh,
+                                             public RefineableQuarterTubeMesh
   {
   public:
     /// Constructor: Pass pointer to geometric object, start and
@@ -447,14 +442,14 @@ namespace oomph
       const unsigned& nlayer,
       const double centre_box_size = 1.0,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : QuarterTubeMesh<ELEMENT>(
+      : QuarterTubeMesh(
           wall_pt, xi_lo, fract_mid, xi_hi, nlayer, time_stepper_pt),
-        RefineableQuarterTubeMesh<ELEMENT>(
+        RefineableQuarterTubeMesh(
           wall_pt, xi_lo, fract_mid, xi_hi, nlayer, time_stepper_pt),
         Centre_box_size(centre_box_size)
     {
 #ifdef PARANOID
-      ELEMENT* el_pt = new ELEMENT;
+      ELEMENT* el_pt = element_factory_pt->new_element();
       if (dynamic_cast<AlgebraicElementBase*>(el_pt) == 0)
       {
         std::ostringstream error_message;
@@ -641,5 +636,4 @@ namespace oomph
   };
 
 } // namespace oomph
-#include "quarter_tube_mesh.template.cc"
 #endif

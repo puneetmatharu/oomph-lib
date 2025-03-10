@@ -26,6 +26,8 @@
 #ifndef OOMPH_ONE_D_LAGRANGIAN_MESH_HEADER
 #define OOMPH_ONE_D_LAGRANGIAN_MESH_HEADER
 
+#include "generic/element_factory.h"
+
 // OOMPH-LIB headers
 #include "generic/mesh.h"
 #include "generic/geom_objects.h"
@@ -40,8 +42,7 @@ namespace oomph
   /// 1D mesh parametrised in terms of a 1D Lagrangian coordinate.
   /// The Eulerian positions of the nodes are determined by the GeomObject.
   //=======================================================================
-  template<class ELEMENT>
-  class OneDLagrangianMesh : public OneDMesh<ELEMENT>, public SolidMesh
+  class OneDLagrangianMesh : public OneDMesh, public SolidMesh
   {
   private:
     /// Undeformed Eulerian shape

@@ -26,6 +26,8 @@
 #ifndef OOMPH_CYLINDER_WITH_FLAG_MESH_HEADER
 #define OOMPH_CYLINDER_WITH_FLAG_MESH_HEADER
 
+#include "generic/element_factory.h"
+
 // Include the domain header
 #include "cylinder_with_flag_domain.h"
 
@@ -42,7 +44,6 @@ namespace oomph
   /// Domain-based mesh for cylinder with flag as in Turek
   /// benchmark.
   //=============================================================
-  template<class ELEMENT>
   class CylinderWithFlagMesh : public virtual Mesh, public virtual QuadMeshBase
   {
   public:
@@ -52,6 +53,7 @@ namespace oomph
     /// of the centre of the cylinder and its radius. Timestepper defaults to
     /// Steady default timestepper.
     CylinderWithFlagMesh(
+      std::unique_ptr<ElementFactoryBase> element_factory_pt,
       Circle* cylinder_pt,
       GeomObject* top_flag_pt,
       GeomObject* bottom_flag_pt,
@@ -91,9 +93,8 @@ namespace oomph
   //===================================================================
   /// Refineable version of CylinderWithFlagMesh.
   //===================================================================
-  template<class ELEMENT>
-  class RefineableCylinderWithFlagMesh : public CylinderWithFlagMesh<ELEMENT>,
-                                         public RefineableQuadMesh<ELEMENT>
+  class RefineableCylinderWithFlagMesh : public CylinderWithFlagMesh,
+                                         public RefineableQuadMesh
   {
   public:
     /// Constructor. Pass the pointers to the GeomObjects that
@@ -102,6 +103,7 @@ namespace oomph
     /// of the centre of the cylinder and its radius. Timestepper defaults to
     /// Steady default timestepper.
     RefineableCylinderWithFlagMesh(
+      std::unique_ptr<ElementFactoryBase> element_factory_pt,
       Circle* cylinder_pt,
       GeomObject* top_flag_pt,
       GeomObject* bottom_flag_pt,
@@ -114,18 +116,19 @@ namespace oomph
       const double& centre_y,
       const double& a,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : CylinderWithFlagMesh<ELEMENT>(cylinder_pt,
-                                      top_flag_pt,
-                                      bottom_flag_pt,
-                                      tip_flag_pt,
-                                      length,
-                                      height,
-                                      flag_length,
-                                      flag_height,
-                                      centre_x,
-                                      centre_y,
-                                      a,
-                                      time_stepper_pt)
+      : CylinderWithFlagMesh(element_factory_pt,
+                             cylinder_pt,
+                             top_flag_pt,
+                             bottom_flag_pt,
+                             tip_flag_pt,
+                             length,
+                             height,
+                             flag_length,
+                             flag_height,
+                             centre_x,
+                             centre_y,
+                             a,
+                             time_stepper_pt)
     {
       // Nodal positions etc. were created in constructor for
       // Cylinder...<...>. Need to setup adaptive information.
@@ -147,10 +150,8 @@ namespace oomph
   //===================================================================
   /// Algebraic version of CylinderWithFlagMesh.
   //===================================================================
-  template<class ELEMENT>
-  class AlgebraicCylinderWithFlagMesh
-    : public AlgebraicMesh,
-      public virtual CylinderWithFlagMesh<ELEMENT>
+  class AlgebraicCylinderWithFlagMesh : public AlgebraicMesh,
+                                        public virtual CylinderWithFlagMesh
   {
   public:
     /// Constructor. Pass the pointers to the GeomObjects that
@@ -159,6 +160,7 @@ namespace oomph
     /// of the centre of the cylinder and its radius. Timestepper defaults to
     /// Steady default timestepper.
     AlgebraicCylinderWithFlagMesh(
+      std::unique_ptr<ElementFactoryBase> element_factory_pt,
       Circle* cylinder_pt,
       GeomObject* top_flag_pt,
       GeomObject* bottom_flag_pt,
@@ -171,18 +173,19 @@ namespace oomph
       const double& centre_y,
       const double& a,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : CylinderWithFlagMesh<ELEMENT>(cylinder_pt,
-                                      top_flag_pt,
-                                      bottom_flag_pt,
-                                      tip_flag_pt,
-                                      length,
-                                      height,
-                                      flag_length,
-                                      flag_height,
-                                      centre_x,
-                                      centre_y,
-                                      a,
-                                      time_stepper_pt),
+      : CylinderWithFlagMesh(element_factory_pt,
+                             cylinder_pt,
+                             top_flag_pt,
+                             bottom_flag_pt,
+                             tip_flag_pt,
+                             length,
+                             height,
+                             flag_length,
+                             flag_height,
+                             centre_x,
+                             centre_y,
+                             a,
+                             time_stepper_pt),
         Cylinder_pt(cylinder_pt),
         Top_flag_pt(top_flag_pt),
         Bottom_flag_pt(bottom_flag_pt),
@@ -343,10 +346,9 @@ namespace oomph
   //===================================================================
   /// Refineable version of  AlgebraicCylinderWithFlagMesh
   //===================================================================
-  template<class ELEMENT>
   class RefineableAlgebraicCylinderWithFlagMesh
-    : public RefineableQuadMesh<ELEMENT>,
-      public virtual AlgebraicCylinderWithFlagMesh<ELEMENT>
+    : public RefineableQuadMesh,
+      public virtual AlgebraicCylinderWithFlagMesh
   {
   public:
     /// Constructor: Pass the pointers to the GeomObjects that
@@ -355,6 +357,7 @@ namespace oomph
     /// of the centre of the cylinder and its radius. Timestepper defaults to
     /// Steady default timestepper.
     RefineableAlgebraicCylinderWithFlagMesh(
+      std::unique_ptr<ElementFactoryBase> element_factory_pt,
       Circle* cylinder_pt,
       GeomObject* top_flag_pt,
       GeomObject* bottom_flag_pt,
@@ -367,7 +370,21 @@ namespace oomph
       const double& centre_y,
       const double& a,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : CylinderWithFlagMesh<ELEMENT>(cylinder_pt,
+      : CylinderWithFlagMesh(element_factory_pt,
+                             cylinder_pt,
+                             top_flag_pt,
+                             bottom_flag_pt,
+                             tip_flag_pt,
+                             length,
+                             height,
+                             flag_length,
+                             flag_height,
+                             centre_x,
+                             centre_y,
+                             a,
+                             time_stepper_pt),
+        AlgebraicCylinderWithFlagMesh(element_factory_pt,
+                                      cylinder_pt,
                                       top_flag_pt,
                                       bottom_flag_pt,
                                       tip_flag_pt,
@@ -378,19 +395,7 @@ namespace oomph
                                       centre_x,
                                       centre_y,
                                       a,
-                                      time_stepper_pt),
-        AlgebraicCylinderWithFlagMesh<ELEMENT>(cylinder_pt,
-                                               top_flag_pt,
-                                               bottom_flag_pt,
-                                               tip_flag_pt,
-                                               length,
-                                               height,
-                                               flag_length,
-                                               flag_height,
-                                               centre_x,
-                                               centre_y,
-                                               a,
-                                               time_stepper_pt)
+                                      time_stepper_pt)
     {
       // Build quadtree forest
       this->setup_quadtree_forest();
@@ -403,5 +408,4 @@ namespace oomph
 
 } // namespace oomph
 
-#include "cylinder_with_flag_mesh.template.cc"
 #endif

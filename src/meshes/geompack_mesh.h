@@ -26,6 +26,8 @@
 #ifndef OOMPH_GEOMPACK_MESH_HEADER
 #define OOMPH_GEOMPACK_MESH_HEADER
 
+#include "generic/element_factory.h"
+
 #include "generic/geompack_scaffold_mesh.h"
 
 namespace oomph
@@ -37,7 +39,6 @@ namespace oomph
   /// quads should be trivial (see the corresponding classes for
   /// triangular meshes).
   //========================================================================
-  template<class ELEMENT>
   class GeompackQuadMesh : public Mesh
   {
   public:
@@ -75,5 +76,4 @@ namespace oomph
 
 } // namespace oomph
 
-#include "geompack_mesh.template.cc"
 #endif

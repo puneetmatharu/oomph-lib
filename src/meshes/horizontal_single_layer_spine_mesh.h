@@ -26,6 +26,8 @@
 #ifndef OOMPH_HORIZONTAL_SINGLE_LAYER_SPINE_MESH_HEADER
 #define OOMPH_HORIZONTAL_SINGLE_LAYER_SPINE_MESH_HEADER
 
+#include "generic/element_factory.h"
+
 // oomph-lib includes
 #include "generic/spines.h"
 #include "rectangular_quadmesh.h"
@@ -41,8 +43,7 @@ namespace oomph
   /// and the information required to update their position. Additional
   /// equations must be specified in order to determine how the spines move.
   //======================================================================
-  template<class ELEMENT>
-  class HorizontalSingleLayerSpineMesh : public RectangularQuadMesh<ELEMENT>,
+  class HorizontalSingleLayerSpineMesh : public RectangularQuadMesh,
                                          public SpineMesh
   {
   public:
@@ -80,5 +81,4 @@ namespace oomph
 
 } // namespace oomph
 
-#include "horizontal_single_layer_spine_mesh.template.cc"
 #endif

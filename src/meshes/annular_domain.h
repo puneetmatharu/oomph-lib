@@ -49,23 +49,7 @@ namespace oomph
                   const unsigned& nr,
                   const double& a,
                   const double& h,
-                  const double& phi)
-      : Azimuthal_fraction(azimuthal_fraction),
-        Inner_radius(a),
-        Thickness(h),
-        Ntheta(ntheta),
-        Nr(nr),
-        Phi(phi)
-    {
-      const unsigned n_macro = ntheta * nr;
-      Macro_element_pt.resize(n_macro);
-
-      // Create the macro elements
-      for (unsigned i = 0; i < n_macro; i++)
-      {
-        Macro_element_pt[i] = new QMacroElement<2>(this, i);
-      }
-    }
+                  const double& phi);
 
     /// Broken copy constructor
     AnnularDomain(const AnnularDomain&) = delete;
@@ -75,7 +59,6 @@ namespace oomph
 
     /// Destructor: Empty; cleanup done in base class
     ~AnnularDomain() {}
-
 
     /// Vector representation of the  i_macro-th macro element
     /// boundary i_direct (N/S/W/E) at time level t

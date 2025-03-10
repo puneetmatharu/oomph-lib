@@ -28,6 +28,8 @@
 #ifndef OOMPH_FSI_DRIVEN_CAVITY_MESH_HEADER
 #define OOMPH_FSI_DRIVEN_CAVITY_MESH_HEADER
 
+#include "generic/element_factory.h"
+
 // Generic includes
 #include "generic/refineable_quad_mesh.h"
 #include "generic/macro_element.h"
@@ -59,8 +61,7 @@ namespace oomph
   /// - Boundary 4 is the rigid part of the left wall
   /// - Boundary 5 is the gap above the moving lid on the left wall
   //========================================================================
-  template<class ELEMENT>
-  class FSIDrivenCavityMesh : public SimpleRectangularQuadMesh<ELEMENT>
+  class FSIDrivenCavityMesh : public SimpleRectangularQuadMesh
   {
   public:
     /// Constructor: Pass number of elements, number of elements,
@@ -113,10 +114,8 @@ namespace oomph
   /// - Boundary 4 is the rigid part of the left wall
   /// - Boundary 5 is the gap above the moving lid on the left wall
   //====================================================================
-  template<class ELEMENT>
-  class RefineableFSIDrivenCavityMesh
-    : public virtual FSIDrivenCavityMesh<ELEMENT>,
-      public RefineableQuadMesh<ELEMENT>
+  class RefineableFSIDrivenCavityMesh : public virtual FSIDrivenCavityMesh,
+                                        public RefineableQuadMesh
   {
   public:
     /// Constructor: Pass number of elements, lengths, pointer to
@@ -129,7 +128,7 @@ namespace oomph
       const double& gap_fraction,
       GeomObject* wall_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : FSIDrivenCavityMesh<ELEMENT>(
+      : FSIDrivenCavityMesh(
           nx, ny, lx, ly, gap_fraction, wall_pt, time_stepper_pt)
     {
       // Build quadtree forest
@@ -149,10 +148,8 @@ namespace oomph
   /// - Boundary 4 is the rigid part of the left wall
   /// - Boundary 5 is the gap above the moving lid on the left wall
   //=================================================================
-  template<class ELEMENT>
-  class AlgebraicFSIDrivenCavityMesh
-    : public virtual FSIDrivenCavityMesh<ELEMENT>,
-      public AlgebraicMesh
+  class AlgebraicFSIDrivenCavityMesh : public virtual FSIDrivenCavityMesh,
+                                       public AlgebraicMesh
   {
   public:
     /// Constructor: Pass number of elements, lengths, pointer to
@@ -166,7 +163,7 @@ namespace oomph
       const double& gap_fraction,
       GeomObject* wall_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : FSIDrivenCavityMesh<ELEMENT>(
+      : FSIDrivenCavityMesh(
           nx, ny, lx, ly, gap_fraction, wall_pt, time_stepper_pt)
     {
       // Add the geometric object to the list associated with this AlgebraicMesh
@@ -207,10 +204,9 @@ namespace oomph
   /// - Boundary 4 is the rigid part of the left wall
   /// - Boundary 5 is the gap above the moving lid on the left wall
   //=================================================================
-  template<class ELEMENT>
   class RefineableAlgebraicFSIDrivenCavityMesh
-    : public RefineableQuadMesh<ELEMENT>,
-      public virtual AlgebraicFSIDrivenCavityMesh<ELEMENT>
+    : public RefineableQuadMesh,
+      public virtual AlgebraicFSIDrivenCavityMesh
   {
   public:
     /// Constructor: Pass number of elements, lengths, pointer to
@@ -224,9 +220,9 @@ namespace oomph
       const double& gap_fraction,
       GeomObject* wall_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : FSIDrivenCavityMesh<ELEMENT>(
+      : FSIDrivenCavityMesh(
           nx, ny, lx, ly, gap_fraction, wall_pt, time_stepper_pt),
-        AlgebraicFSIDrivenCavityMesh<ELEMENT>(
+        AlgebraicFSIDrivenCavityMesh(
           nx, ny, lx, ly, gap_fraction, wall_pt, time_stepper_pt)
     {
       // Build quadtree forest
@@ -240,5 +236,4 @@ namespace oomph
 
 } // namespace oomph
 
-#include "fsi_driven_cavity_mesh.template.cc"
 #endif

@@ -26,6 +26,8 @@
 #ifndef OOMPH_CHANNEL_SPINE_MESH_HEADER
 #define OOMPH_CHANNEL_SPINE_MESH_HEADER
 
+#include "generic/element_factory.h"
+
 // oomph-lib includes
 #include "generic/spines.h"
 #include "rectangular_quadmesh.h"
@@ -38,8 +40,7 @@ namespace oomph
   /// of the left and right regions (0,2) and another GeomObject is passed
   /// to the constructor to define the height in the central region.
   //======================================================================
-  template<class ELEMENT>
-  class ChannelSpineMesh : public RectangularQuadMesh<ELEMENT>, public SpineMesh
+  class ChannelSpineMesh : public RectangularQuadMesh, public SpineMesh
   {
   public:
     /// Constructor: Pass number of elements in x-direction in regions
@@ -47,7 +48,8 @@ namespace oomph
     /// regions 0,1 and 2, height mesh, pointer to the GeomObject defining the
     /// heightof the central region and pointer to timestepper (defaults to
     /// Steady timestepper)
-    ChannelSpineMesh(const unsigned& nx0,
+    ChannelSpineMesh(std::unique_ptr<ElementFactoryBase> element_factory_pt,
+                     const unsigned& nx0,
                      const unsigned& nx1,
                      const unsigned& nx2,
                      const unsigned& ny,
@@ -64,7 +66,8 @@ namespace oomph
     /// heightof the central region, a boolean flag to indicate whether or not
     /// the mesh is periodic and pointer to timestepper (defaults to Steady
     /// timestepper)
-    ChannelSpineMesh(const unsigned& nx0,
+    ChannelSpineMesh(std::unique_ptr<ElementFactoryBase> element_factory_pt,
+                     const unsigned& nx0,
                      const unsigned& nx1,
                      const unsigned& nx2,
                      const unsigned& ny,

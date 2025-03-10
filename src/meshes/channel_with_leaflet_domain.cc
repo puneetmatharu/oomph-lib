@@ -482,8 +482,6 @@ namespace oomph
     double y0, y1;
     y0 = double(i) * (Htot - Hleaflet) / double(Ny2) + Hleaflet;
     y1 = double(i + 1) * (Htot - Hleaflet) / double(Ny2) + Hleaflet;
-    ;
-
     Vector<double> r_vert(2);
     r_vert[0] = -Lleft + X_0;
     r_vert[1] = y0 + (1.0 + zeta[0]) / 2.0 * (y1 - y0);
@@ -526,8 +524,6 @@ namespace oomph
     double y0, y1;
     y0 = double(i) * (Htot - Hleaflet) / double(Ny2) + Hleaflet;
     y1 = double(i + 1) * (Htot - Hleaflet) / double(Ny2) + Hleaflet;
-    ;
-
     Vector<double> r_vert(2);
     r_vert[0] = -Lleft + X_0;
     r_vert[1] = y0 + (1.0 + zeta[0]) / 2.0 * (y1 - y0);
@@ -621,8 +617,6 @@ namespace oomph
     double y0, y1;
     y0 = double(i) * (Htot - Hleaflet) / double(Ny2) + Hleaflet;
     y1 = double(i + 1) * (Htot - Hleaflet) / double(Ny2) + Hleaflet;
-    ;
-
     Vector<double> r_vert(2);
     r_vert[0] = Lright + X_0;
     r_vert[1] = y0 + (1.0 + zeta[0]) / 2.0 * (y1 - y0);
@@ -665,8 +659,6 @@ namespace oomph
     double y0, y1;
     y0 = double(i) * (Htot - Hleaflet) / double(Ny2) + Hleaflet;
     y1 = double(i + 1) * (Htot - Hleaflet) / double(Ny2) + Hleaflet;
-    ;
-
     Vector<double> r_vert(2);
     r_vert[0] = Lright + X_0;
     r_vert[1] = y0 + (1.0 + zeta[0]) / 2.0 * (y1 - y0);

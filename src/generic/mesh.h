@@ -47,6 +47,7 @@
 #include "Vector.h"
 #include "nodes.h"
 #include "elements.h"
+#include "element_factory.h"
 #include "timesteppers.h"
 #include "generalised_timesteppers.h"
 #include "matrices.h"
@@ -2825,9 +2826,11 @@ namespace oomph
     /// of nodes along a 1D element edge). Can be omitted if the mesh
     /// can handle any number in which case this test is skipped.
     //=================================================================
-    template<class GEOM_ELEMENT_BASE, class ELEMENT>
-    void assert_geometric_element(const unsigned& dim,
-                                  const unsigned& nnode_1d = 0)
+    template<class GEOM_ELEMENT_BASE>
+    void assert_geometric_element(
+      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const unsigned& dim,
+      const unsigned& nnode_1d = 0)
     {
       // Only do tests in paranoia mode
 #ifndef PARANOID
@@ -2835,7 +2838,7 @@ namespace oomph
 #endif
 
       // Instantiate element
-      ELEMENT* el_pt = new ELEMENT;
+      auto* el_pt = element_factory_pt->new_element();
 
       // Can we cast to required geometric element base type
       if (dynamic_cast<GEOM_ELEMENT_BASE*>(el_pt) == 0)

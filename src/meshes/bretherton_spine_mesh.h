@@ -26,6 +26,8 @@
 #ifndef OOMPH_BRETHERTON_SPINE_MESH_HEADER
 #define OOMPH_BRETHERTON_SPINE_MESH_HEADER
 
+#include "generic/element_factory.h"
+
 // The mesh
 #include "single_layer_spine_mesh.h"
 #include "simple_rectangular_quadmesh.h"
@@ -40,8 +42,7 @@ namespace oomph
   /// SpineLineFluidInterfaceElement<SpineElement<QCrouzeixRaviartElement<2> > >
   ///
   //============================================================================
-  template<class ELEMENT, class INTERFACE_ELEMENT>
-  class BrethertonSpineMesh : public SingleLayerSpineMesh<ELEMENT>
+  class BrethertonSpineMesh : public SingleLayerSpineMesh
   {
   public:
     /// Constructor. Arguments:
@@ -61,6 +62,7 @@ namespace oomph
     /// wall
     /// - time_stepper_pt: Pointer to timestepper; defaults to Steady
     BrethertonSpineMesh(
+      std::unique_ptr<ElementFactoryBase> element_factory_pt,
       const unsigned& nx1,
       const unsigned& nx2,
       const unsigned& nx3,
@@ -180,7 +182,7 @@ namespace oomph
     /// Pointer to control element (just under the symmetry line
     /// near the bubble tip, so the bubble tip is located at
     /// s=[1.0,1.0] in this element.
-    ELEMENT* control_element_pt()
+    FiniteElement* control_element_pt()
     {
       return Control_element_pt;
     }
@@ -531,7 +533,7 @@ namespace oomph
     /// Pointer to control element (just under the symmetry line
     /// near the bubble tip; the bubble tip is located at s=[1.0,1.0]
     /// in this element
-    ELEMENT* Control_element_pt;
+    FiniteElement* Control_element_pt;
 
     /// Vector of pointers to element in the fluid layer
     Vector<FiniteElement*> Bulk_element_pt;
@@ -542,5 +544,4 @@ namespace oomph
 
 } // namespace oomph
 
-#include "bretherton_spine_mesh.template.cc"
 #endif

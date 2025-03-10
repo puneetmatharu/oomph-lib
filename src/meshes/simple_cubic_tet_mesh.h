@@ -26,6 +26,8 @@
 #ifndef OOMPH_SIMPLE_CUBIC_TET_MESH_HEADER
 #define OOMPH_SIMPLE_CUBIC_TET_MESH_HEADER
 
+#include "generic/element_factory.h"
+
 #include "generic/Telements.h"
 #include "generic/tet_mesh.h"
 #include "generic/simple_cubic_scaffold_tet_mesh.h"
@@ -35,7 +37,6 @@ namespace oomph
   //===================================================================
   /// MySimple 3D tet mesh for TElements
   //===================================================================
-  template<class ELEMENT>
   class SimpleCubicTetMesh : public TetMeshBase
   {
   public:
@@ -52,7 +53,8 @@ namespace oomph
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
     {
       // Mesh can only be built with 3D Telements.
-      MeshChecker::assert_geometric_element<TElementGeometricBase, ELEMENT>(3);
+      MeshChecker::assert_geometric_element<TElementGeometricBase>(
+        element_factory_pt, 3);
 
       std::ostringstream warn_message;
       warn_message
@@ -89,5 +91,4 @@ namespace oomph
 
 } // namespace oomph
 
-#include "simple_cubic_tet_mesh.template.cc"
 #endif

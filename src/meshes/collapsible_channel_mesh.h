@@ -27,6 +27,8 @@
 #ifndef OOMPH_COLLAPSIBLE_CHANNEL_MESH_HEADER
 #define OOMPH_COLLAPSIBLE_CHANNEL_MESH_HEADER
 
+#include "generic/element_factory.h"
+
 // Generic includes
 #include "generic/refineable_quad_mesh.h"
 #include "generic/macro_element.h"
@@ -59,8 +61,7 @@ namespace oomph
   /// The curvilinear ("collapsible") segment is defined by
   /// a \c GeomObject.
   //========================================================================
-  template<class ELEMENT>
-  class CollapsibleChannelMesh : public SimpleRectangularQuadMesh<ELEMENT>
+  class CollapsibleChannelMesh : public SimpleRectangularQuadMesh
   {
   public:
     /// Constructor: Pass number of elements in upstream/collapsible/
@@ -69,6 +70,7 @@ namespace oomph
     /// GeomObject that defines the collapsible segment and pointer to
     /// TimeStepper (defaults to the default timestepper, Steady).
     CollapsibleChannelMesh(
+      std::unique_ptr<ElementFactoryBase> element_factory_pt,
       const unsigned& nup,
       const unsigned& ncollapsible,
       const unsigned& ndown,
@@ -176,15 +178,15 @@ namespace oomph
   /// The curvilinear ("collapsible") segment is defined by
   /// a \c GeomObject.
   //====================================================================
-  template<class ELEMENT>
   class RefineableCollapsibleChannelMesh
-    : public virtual CollapsibleChannelMesh<ELEMENT>,
-      public RefineableQuadMesh<ELEMENT>
+    : public virtual CollapsibleChannelMesh,
+      public RefineableQuadMesh
   {
   public:
     /// Constructor: Pass number of elements, lengths, pointer to
     /// geometric object that describes the wall and timestepper
     RefineableCollapsibleChannelMesh(
+      std::unique_ptr<ElementFactoryBase> element_factory_pt,
       const unsigned& nup,
       const unsigned& ncollapsible,
       const unsigned& ndown,
@@ -195,16 +197,17 @@ namespace oomph
       const double& ly,
       GeomObject* wall_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : CollapsibleChannelMesh<ELEMENT>(nup,
-                                        ncollapsible,
-                                        ndown,
-                                        ny,
-                                        lup,
-                                        lcollapsible,
-                                        ldown,
-                                        ly,
-                                        wall_pt,
-                                        time_stepper_pt)
+      : CollapsibleChannelMesh(element_factory_pt,
+                               nup,
+                               ncollapsible,
+                               ndown,
+                               ny,
+                               lup,
+                               lcollapsible,
+                               ldown,
+                               ly,
+                               wall_pt,
+                               time_stepper_pt)
     {
       // Build quadtree forest
       this->setup_quadtree_forest();
@@ -229,10 +232,9 @@ namespace oomph
   /// the element (whose type is specified by the template parameter)
   /// must inherit from MacroElementNodeUpdateElementBase.
   //========================================================================
-  template<class ELEMENT>
   class MacroElementNodeUpdateCollapsibleChannelMesh
     : public virtual MacroElementNodeUpdateMesh,
-      public virtual CollapsibleChannelMesh<ELEMENT>
+      public virtual CollapsibleChannelMesh
   {
   public:
     /// Constructor: Pass numbers of elements and dimensions of the
@@ -240,6 +242,7 @@ namespace oomph
     /// geometric object that represents the wall and pointer to
     /// timestepper (defaults to Steady).
     MacroElementNodeUpdateCollapsibleChannelMesh(
+      std::unique_ptr<ElementFactoryBase> element_factory_pt,
       const unsigned& nup,
       const unsigned& ncollapsible,
       const unsigned& ndown,
@@ -250,19 +253,20 @@ namespace oomph
       const double& ly,
       GeomObject* wall_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : CollapsibleChannelMesh<ELEMENT>(nup,
-                                        ncollapsible,
-                                        ndown,
-                                        ny,
-                                        lup,
-                                        lcollapsible,
-                                        ldown,
-                                        ly,
-                                        wall_pt,
-                                        time_stepper_pt)
+      : CollapsibleChannelMesh(element_factory_pt,
+                               nup,
+                               ncollapsible,
+                               ndown,
+                               ny,
+                               lup,
+                               lcollapsible,
+                               ldown,
+                               ly,
+                               wall_pt,
+                               time_stepper_pt)
     {
 #ifdef PARANOID
-      ELEMENT* el_pt = new ELEMENT;
+      ELEMENT* el_pt = element_factory_pt->new_element();
       if (dynamic_cast<MacroElementNodeUpdateElementBase*>(el_pt) == 0)
       {
         std::ostringstream error_message;
@@ -290,7 +294,8 @@ namespace oomph
       for (unsigned i = 0; i < n_element; i++)
       {
         // Upcast from FiniteElement to the present element
-        ELEMENT* el_pt = dynamic_cast<ELEMENT*>(this->element_pt(i));
+        auto* el_pt =
+          dynamic_cast<MacroElementNodeUpdateElement*>(this->element_pt(i));
 
 #ifdef PARANOID
         // Check if cast is successful
@@ -355,10 +360,9 @@ namespace oomph
   /// the element (whose type is specified by the template parameter)
   /// must inherit from MacroElementNodeUpdateElementBase.
   //========================================================================
-  template<class ELEMENT>
   class MacroElementNodeUpdateRefineableCollapsibleChannelMesh
-    : public virtual MacroElementNodeUpdateCollapsibleChannelMesh<ELEMENT>,
-      public virtual RefineableQuadMesh<ELEMENT>
+    : public virtual MacroElementNodeUpdateCollapsibleChannelMesh,
+      public virtual RefineableQuadMesh
   {
   public:
     /// Constructor: Pass numbers of elements and dimensions of the
@@ -366,6 +370,7 @@ namespace oomph
     /// geometric object that represents the wall and pointer to
     /// timestepper (defaults to Steady).
     MacroElementNodeUpdateRefineableCollapsibleChannelMesh(
+      std::unique_ptr<ElementFactoryBase> element_factory_pt,
       const unsigned& nup,
       const unsigned& ncollapsible,
       const unsigned& ndown,
@@ -376,26 +381,28 @@ namespace oomph
       const double& ly,
       GeomObject* wall_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : CollapsibleChannelMesh<ELEMENT>(nup,
-                                        ncollapsible,
-                                        ndown,
-                                        ny,
-                                        lup,
-                                        lcollapsible,
-                                        ldown,
-                                        ly,
-                                        wall_pt,
-                                        time_stepper_pt),
-        MacroElementNodeUpdateCollapsibleChannelMesh<ELEMENT>(nup,
-                                                              ncollapsible,
-                                                              ndown,
-                                                              ny,
-                                                              lup,
-                                                              lcollapsible,
-                                                              ldown,
-                                                              ly,
-                                                              wall_pt,
-                                                              time_stepper_pt)
+      : CollapsibleChannelMesh(element_factory_pt,
+                               nup,
+                               ncollapsible,
+                               ndown,
+                               ny,
+                               lup,
+                               lcollapsible,
+                               ldown,
+                               ly,
+                               wall_pt,
+                               time_stepper_pt),
+        MacroElementNodeUpdateCollapsibleChannelMesh(element_factory_pt,
+                                                     nup,
+                                                     ncollapsible,
+                                                     ndown,
+                                                     ny,
+                                                     lup,
+                                                     lcollapsible,
+                                                     ldown,
+                                                     ly,
+                                                     wall_pt,
+                                                     time_stepper_pt)
     {
       // Build quadtree forest
       this->setup_quadtree_forest();
@@ -414,10 +421,8 @@ namespace oomph
   //========start_of_algebraic_collapsible_channel_mesh==============
   /// Collapsible channel mesh with algebraic node update
   //=================================================================
-  template<class ELEMENT>
-  class AlgebraicCollapsibleChannelMesh
-    : public virtual CollapsibleChannelMesh<ELEMENT>,
-      public AlgebraicMesh
+  class AlgebraicCollapsibleChannelMesh : public virtual CollapsibleChannelMesh,
+                                          public AlgebraicMesh
   {
   public:
     /// Constructor: Pass number of elements in upstream/collapsible/
@@ -426,6 +431,7 @@ namespace oomph
     /// GeomObject that defines the collapsible segment and pointer to
     /// TimeStepper (defaults to the default timestepper, Steady).
     AlgebraicCollapsibleChannelMesh(
+      std::unique_ptr<ElementFactoryBase> element_factory_pt,
       const unsigned& nup,
       const unsigned& ncollapsible,
       const unsigned& ndown,
@@ -436,16 +442,17 @@ namespace oomph
       const double& ly,
       GeomObject* wall_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : CollapsibleChannelMesh<ELEMENT>(nup,
-                                        ncollapsible,
-                                        ndown,
-                                        ny,
-                                        lup,
-                                        lcollapsible,
-                                        ldown,
-                                        ly,
-                                        wall_pt,
-                                        time_stepper_pt)
+      : CollapsibleChannelMesh(element_factory_pt,
+                               nup,
+                               ncollapsible,
+                               ndown,
+                               ny,
+                               lup,
+                               lcollapsible,
+                               ldown,
+                               ly,
+                               wall_pt,
+                               time_stepper_pt)
     {
       // Add the geometric object to the list associated with this AlgebraicMesh
       AlgebraicMesh::add_geom_object_list_pt(wall_pt);
@@ -464,6 +471,7 @@ namespace oomph
     /// GeomObject that defines the collapsible segment and pointer to
     /// TimeStepper (defaults to the default timestepper, Steady).
     AlgebraicCollapsibleChannelMesh(
+      std::unique_ptr<ElementFactoryBase> element_factory_pt,
       const unsigned& nup,
       const unsigned& ncollapsible,
       const unsigned& ndown,
@@ -475,16 +483,17 @@ namespace oomph
       GeomObject* wall_pt,
       CollapsibleChannelDomain::BLSquashFctPt bl_squash_function_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : CollapsibleChannelMesh<ELEMENT>(nup,
-                                        ncollapsible,
-                                        ndown,
-                                        ny,
-                                        lup,
-                                        lcollapsible,
-                                        ldown,
-                                        ly,
-                                        wall_pt,
-                                        time_stepper_pt)
+      : CollapsibleChannelMesh(element_factory_pt,
+                               nup,
+                               ncollapsible,
+                               ndown,
+                               ny,
+                               lup,
+                               lcollapsible,
+                               ldown,
+                               ly,
+                               wall_pt,
+                               time_stepper_pt)
     {
       // Add the geometric object to the list associated with this AlgebraicMesh
       AlgebraicMesh::add_geom_object_list_pt(wall_pt);
@@ -493,7 +502,7 @@ namespace oomph
       this->Domain_pt->bl_squash_fct_pt() = bl_squash_function_pt;
 
       // Do MacroElement-based node update
-      CollapsibleChannelMesh<ELEMENT>::node_update();
+      CollapsibleChannelMesh::node_update();
 
       // Setup algebraic node update operations
       setup_algebraic_node_update();
@@ -575,10 +584,9 @@ namespace oomph
   /// Refineable version of the CollapsibleChannel mesh with
   /// algebraic node update.
   //=================================================================
-  template<class ELEMENT>
   class RefineableAlgebraicCollapsibleChannelMesh
-    : public RefineableQuadMesh<ELEMENT>,
-      public virtual AlgebraicCollapsibleChannelMesh<ELEMENT>
+    : public RefineableQuadMesh,
+      public virtual AlgebraicCollapsibleChannelMesh
   {
   public:
     /// Constructor: Pass number of elements in upstream/collapsible/
@@ -587,6 +595,7 @@ namespace oomph
     /// GeomObject that defines the collapsible segment and pointer to
     /// TimeStepper (defaults to the default timestepper, Steady).
     RefineableAlgebraicCollapsibleChannelMesh(
+      std::unique_ptr<ElementFactoryBase> element_factory_pt,
       const unsigned& nup,
       const unsigned& ncollapsible,
       const unsigned& ndown,
@@ -597,7 +606,19 @@ namespace oomph
       const double& ly,
       GeomObject* wall_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : CollapsibleChannelMesh<ELEMENT>(nup,
+      : CollapsibleChannelMesh(element_factory_pt,
+                               nup,
+                               ncollapsible,
+                               ndown,
+                               ny,
+                               lup,
+                               lcollapsible,
+                               ldown,
+                               ly,
+                               wall_pt,
+                               time_stepper_pt),
+        AlgebraicCollapsibleChannelMesh(element_factory_pt,
+                                        nup,
                                         ncollapsible,
                                         ndown,
                                         ny,
@@ -606,17 +627,7 @@ namespace oomph
                                         ldown,
                                         ly,
                                         wall_pt,
-                                        time_stepper_pt),
-        AlgebraicCollapsibleChannelMesh<ELEMENT>(nup,
-                                                 ncollapsible,
-                                                 ndown,
-                                                 ny,
-                                                 lup,
-                                                 lcollapsible,
-                                                 ldown,
-                                                 ly,
-                                                 wall_pt,
-                                                 time_stepper_pt)
+                                        time_stepper_pt)
     {
       // Build quadtree forest
       this->setup_quadtree_forest();
@@ -629,6 +640,7 @@ namespace oomph
     /// GeomObject that defines the collapsible segment and pointer to
     /// TimeStepper (defaults to the default timestepper, Steady).
     RefineableAlgebraicCollapsibleChannelMesh(
+      std::unique_ptr<ElementFactoryBase> element_factory_pt,
       const unsigned& nup,
       const unsigned& ncollapsible,
       const unsigned& ndown,
@@ -640,7 +652,19 @@ namespace oomph
       GeomObject* wall_pt,
       CollapsibleChannelDomain::BLSquashFctPt bl_squash_function_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : CollapsibleChannelMesh<ELEMENT>(nup,
+      : CollapsibleChannelMesh(element_factory_pt,
+                               nup,
+                               ncollapsible,
+                               ndown,
+                               ny,
+                               lup,
+                               lcollapsible,
+                               ldown,
+                               ly,
+                               wall_pt,
+                               time_stepper_pt),
+        AlgebraicCollapsibleChannelMesh(element_factory_pt,
+                                        nup,
                                         ncollapsible,
                                         ndown,
                                         ny,
@@ -649,18 +673,8 @@ namespace oomph
                                         ldown,
                                         ly,
                                         wall_pt,
-                                        time_stepper_pt),
-        AlgebraicCollapsibleChannelMesh<ELEMENT>(nup,
-                                                 ncollapsible,
-                                                 ndown,
-                                                 ny,
-                                                 lup,
-                                                 lcollapsible,
-                                                 ldown,
-                                                 ly,
-                                                 wall_pt,
-                                                 bl_squash_function_pt,
-                                                 time_stepper_pt)
+                                        bl_squash_function_pt,
+                                        time_stepper_pt)
     {
       // Build quadtree forest
       this->setup_quadtree_forest();
@@ -673,5 +687,4 @@ namespace oomph
 
 } // namespace oomph
 
-#include "collapsible_channel_mesh.template.cc"
 #endif

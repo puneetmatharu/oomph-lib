@@ -26,6 +26,8 @@
 #ifndef OOMPH_TUBE_MESH_HEADER
 #define OOMPH_TUBE_MESH_HEADER
 
+#include "generic/element_factory.h"
+
 // Headers
 #include "generic/refineable_brick_mesh.h"
 #include "generic/macro_element.h"
@@ -51,7 +53,6 @@ namespace oomph
   /// - Boundary 2: The out flow, represented by \f$\xi_0 = \xi_0^{hi}\f$.
   ///
   //====================================================================
-  template<class ELEMENT>
   class TubeMesh : public virtual BrickMeshBase
   {
   public:
@@ -118,9 +119,7 @@ namespace oomph
   /// - Boundary 2: The out flow, represented by \f$\xi_0 = \xi_0^{hi}\f$.
   ///
   //=============================================================
-  template<class ELEMENT>
-  class RefineableTubeMesh : public TubeMesh<ELEMENT>,
-                             public RefineableBrickMesh<ELEMENT>
+  class RefineableTubeMesh : public TubeMesh, public RefineableBrickMesh
 
   {
   public:
@@ -139,29 +138,28 @@ namespace oomph
       const Vector<double>& radius_box,
       const unsigned& nlayer,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : TubeMesh<ELEMENT>(wall_pt,
-                          centreline_limits,
-                          theta_positions,
-                          radius_box,
-                          nlayer,
-                          time_stepper_pt)
+      : TubeMesh(wall_pt,
+                 centreline_limits,
+                 theta_positions,
+                 radius_box,
+                 nlayer,
+                 time_stepper_pt)
     {
       // Loop over all elements and set macro element pointer
-      for (unsigned ielem = 0; ielem < TubeMesh<ELEMENT>::nelement(); ielem++)
+      for (unsigned ielem = 0; ielem < TubeMesh::nelement(); ielem++)
       {
-        dynamic_cast<RefineableQElement<3>*>(
-          TubeMesh<ELEMENT>::element_pt(ielem))
+        dynamic_cast<RefineableQElement<3>*>(this->element_pt(ielem))
           ->set_macro_elem_pt(this->Domain_pt->macro_element_pt(ielem));
       }
 
       // Setup Octree forest: Turn elements into individual octrees
       // and plant in forest
       Vector<TreeRoot*> trees_pt;
-      for (unsigned iel = 0; iel < TubeMesh<ELEMENT>::nelement(); iel++)
+      for (unsigned iel = 0; iel < this->nelement(); iel++)
       {
-        FiniteElement* el_pt = TubeMesh<ELEMENT>::finite_element_pt(iel);
-        ELEMENT* ref_el_pt = dynamic_cast<ELEMENT*>(el_pt);
-        OcTreeRoot* octree_root_pt = new OcTreeRoot(ref_el_pt);
+        FiniteElement* el_pt = this->finite_element_pt(iel);
+        OcTreeRoot* octree_root_pt =
+          new OcTreeRoot(dynamic_cast<RefineableElement*>(el_pt));
         trees_pt.push_back(octree_root_pt);
       }
       this->Forest_pt = new OcTreeForest(trees_pt);

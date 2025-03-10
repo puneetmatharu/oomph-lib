@@ -28,6 +28,33 @@
 
 namespace oomph
 {
+  //=================================================================
+  /// Constructor: Specify azimuthal fraction (1.0 is 360 degrees)
+  /// number of macro elements in azimuthal and radial direction,
+  /// inner radius and thickness. Rotate mesh by angle phi.
+  //=================================================================
+  AnnularDomain::AnnularDomain(const double& azimuthal_fraction,
+                               const unsigned& ntheta,
+                               const unsigned& nr,
+                               const double& a,
+                               const double& h,
+                               const double& phi)
+    : Azimuthal_fraction(azimuthal_fraction),
+      Inner_radius(a),
+      Thickness(h),
+      Ntheta(ntheta),
+      Nr(nr),
+      Phi(phi)
+  {
+    const unsigned n_macro = ntheta * nr;
+    Macro_element_pt.resize(n_macro);
+
+    // Create the macro elements
+    for (unsigned i = 0; i < n_macro; i++)
+    {
+      Macro_element_pt[i] = new QMacroElement<2>(this, i);
+    }
+  }
 
   //=================================================================
   /// Vector representation of the  imacro-th macro element

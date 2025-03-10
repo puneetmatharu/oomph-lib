@@ -26,6 +26,8 @@
 #ifndef OOMPH_THIN_LAYER_BRICK_ON_TET_MESH_HEADER
 #define OOMPH_THIN_LAYER_BRICK_ON_TET_MESH_HEADER
 
+#include "generic/element_factory.h"
+
 #include "generic/brick_mesh.h"
 #include "generic/refineable_brick_mesh.h"
 
@@ -36,7 +38,6 @@ namespace oomph
   /// used in FSI problems where the tet mesh is the fluid mesh and this
   /// mesh acts as the solid mesh that surrounds the FSI interface.
   //========================================================================
-  template<class ELEMENT>
   class ThinLayerBrickOnTetMesh : public virtual BrickMeshBase
   {
   public:
@@ -120,10 +121,9 @@ namespace oomph
   /// used in FSI problems where the tet mesh is the fluid mesh and this
   /// mesh acts as the solid mesh that surrounds the FSI interface.
   //========================================================================
-  template<class ELEMENT>
   class RefineableThinLayerBrickOnTetMesh
-    : public virtual ThinLayerBrickOnTetMesh<ELEMENT>,
-      public virtual RefineableBrickMesh<ELEMENT>
+    : public virtual ThinLayerBrickOnTetMesh,
+      public virtual RefineableBrickMesh
   {
   public:
     /// Function pointer to function that specifies the wall thickness
@@ -151,12 +151,12 @@ namespace oomph
       const unsigned& nlayer,
       const Vector<Vector<unsigned>>& in_out_boundary_id,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : ThinLayerBrickOnTetMesh<ELEMENT>(tet_mesh_pt,
-                                         boundary_ids,
-                                         thickness_fct_pt,
-                                         nlayer,
-                                         in_out_boundary_id,
-                                         time_stepper_pt)
+      : ThinLayerBrickOnTetMesh(tet_mesh_pt,
+                                boundary_ids,
+                                thickness_fct_pt,
+                                nlayer,
+                                in_out_boundary_id,
+                                time_stepper_pt)
     {
       // Nodal positions etc. were created in constructor for
       // nonrefineable mesh. Only need to setup quadtree forest
@@ -174,10 +174,8 @@ namespace oomph
   /// used in FSI problems where the tet mesh is the fluid mesh and this
   /// mesh acts as the solid mesh that surrounds the FSI interface.
   //========================================================================
-  template<class ELEMENT>
-  class SolidThinLayerBrickOnTetMesh
-    : public virtual ThinLayerBrickOnTetMesh<ELEMENT>,
-      public virtual SolidMesh
+  class SolidThinLayerBrickOnTetMesh : public virtual ThinLayerBrickOnTetMesh,
+                                       public virtual SolidMesh
   {
   public:
     /// Function pointer to function that specifies the wall thickness
@@ -205,12 +203,12 @@ namespace oomph
       const unsigned& nlayer,
       const Vector<Vector<unsigned>>& in_out_boundary_id,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : ThinLayerBrickOnTetMesh<ELEMENT>(tet_mesh_pt,
-                                         boundary_ids,
-                                         thickness_fct_pt,
-                                         nlayer,
-                                         in_out_boundary_id,
-                                         time_stepper_pt)
+      : ThinLayerBrickOnTetMesh(tet_mesh_pt,
+                                boundary_ids,
+                                thickness_fct_pt,
+                                nlayer,
+                                in_out_boundary_id,
+                                time_stepper_pt)
     {
       // Make the current configuration the undeformed one by
       // setting the nodal Lagrangian coordinates to their current
@@ -229,10 +227,9 @@ namespace oomph
   /// Typically used in FSI problems where the tet mesh is the fluid mesh and
   /// this mesh acts as the solid mesh that surrounds the FSI interface.
   //========================================================================
-  template<class ELEMENT>
   class RefineableSolidThinLayerBrickOnTetMesh
-    : public virtual ThinLayerBrickOnTetMesh<ELEMENT>,
-      public virtual RefineableBrickMesh<ELEMENT>,
+    : public virtual ThinLayerBrickOnTetMesh,
+      public virtual RefineableBrickMesh,
       public virtual SolidMesh
   {
   public:
@@ -261,12 +258,12 @@ namespace oomph
       const unsigned& nlayer,
       const Vector<Vector<unsigned>>& in_out_boundary_id,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : ThinLayerBrickOnTetMesh<ELEMENT>(tet_mesh_pt,
-                                         boundary_ids,
-                                         thickness_fct_pt,
-                                         nlayer,
-                                         in_out_boundary_id,
-                                         time_stepper_pt)
+      : ThinLayerBrickOnTetMesh(tet_mesh_pt,
+                                boundary_ids,
+                                thickness_fct_pt,
+                                nlayer,
+                                in_out_boundary_id,
+                                time_stepper_pt)
     {
       // Make the current configuration the undeformed one by
       // setting the nodal Lagrangian coordinates to their current
@@ -281,5 +278,4 @@ namespace oomph
 
 } // namespace oomph
 
-#include "thin_layer_brick_on_tet_mesh.template.cc"
 #endif

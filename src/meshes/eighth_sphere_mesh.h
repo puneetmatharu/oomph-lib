@@ -26,6 +26,8 @@
 #ifndef OOMPH_EIGHTH_SPHERE_MESH_HEADER
 #define OOMPH_EIGHTH_SPHERE_MESH_HEADER
 
+#include "generic/element_factory.h"
+
 // Headers
 #include "generic/refineable_brick_mesh.h"
 #include "generic/macro_element.h"
@@ -49,13 +51,13 @@ namespace oomph
   /// - Boundary 2: Plane z=0
   /// - Boundary 3: The surface of the sphere.
   //======================================================================
-  template<class ELEMENT>
   class EighthSphereMesh : public virtual BrickMeshBase
   {
   public:
     /// Constructor: Pass radius and timestepper; defaults to
     /// static default timestepper
-    EighthSphereMesh(const double& radius,
+    EighthSphereMesh(std::unique_ptr<ElementFactoryBase> element_factory_pt,
+                     const double& radius,
                      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
 
     /// Destructor
@@ -83,24 +85,24 @@ namespace oomph
   /// - Boundary 2: Plane z=0
   /// - Boundary 3: The surface of the sphere.
   //======================================================================
-  template<class ELEMENT>
-  class RefineableEighthSphereMesh : public EighthSphereMesh<ELEMENT>,
-                                     public virtual RefineableBrickMesh<ELEMENT>
+  class RefineableEighthSphereMesh : public EighthSphereMesh,
+                                     public virtual RefineableBrickMesh
   {
   public:
     /// Constructor: Pass radius and timestepper; defaults to
     /// static default timestepper
     RefineableEighthSphereMesh(
+      std::unique_ptr<ElementFactoryBase> element_factory_pt,
       const double& radius,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : EighthSphereMesh<ELEMENT>(radius, time_stepper_pt)
+      : EighthSphereMesh(element_factory_pt, radius, time_stepper_pt)
     {
       // Loop over all elements and set macro element pointer
       unsigned nel = this->nelement();
       for (unsigned ielem = 0; ielem < nel; ielem++)
       {
-        dynamic_cast<RefineableQElement<3>*>(this->element_pt(ielem))
-          ->set_macro_elem_pt(this->Domain_pt->macro_element_pt(ielem));
+        this->finite_element_pt(ielem)->set_macro_elem_pt(
+          this->Domain_pt->macro_element_pt(ielem));
       }
 
       // Associate the elements with octrees and plant in forest
@@ -109,8 +111,8 @@ namespace oomph
       for (unsigned e = 0; e < nel; e++)
       {
         FiniteElement* el_pt = this->finite_element_pt(e);
-        ELEMENT* ref_el_pt = dynamic_cast<ELEMENT*>(el_pt);
-        OcTreeRoot* octree_root_pt = new OcTreeRoot(ref_el_pt);
+        OcTreeRoot* octree_root_pt =
+          new OcTreeRoot(dynamic_cast<RefineableElement*>(el_pt));
         tree_pt.push_back(octree_root_pt);
       }
 

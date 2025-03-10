@@ -26,6 +26,8 @@
 #ifndef OOMPH_TWO_LAYER_SPINE_MESH_HEADER
 #define OOMPH_TWO_LAYER_SPINE_MESH_HEADER
 
+#include "generic/element_factory.h"
+
 // The mesh
 #include "generic/spines.h"
 #include "rectangular_quadmesh.h"
@@ -54,9 +56,7 @@ namespace oomph
   /// is given, but additional equations must be specified in order to
   /// completely specify the problem.
   //======================================================================
-  template<class ELEMENT>
-  class TwoLayerSpineMesh : public RectangularQuadMesh<ELEMENT>,
-                            public SpineMesh
+  class TwoLayerSpineMesh : public RectangularQuadMesh, public SpineMesh
   {
   public:
     /// Constructor: Pass number of elements in x-direction, number of
@@ -269,5 +269,4 @@ namespace oomph
 
 } // namespace oomph
 
-#include "two_layer_spine_mesh.template.cc"
 #endif

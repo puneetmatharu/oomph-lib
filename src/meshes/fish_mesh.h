@@ -26,6 +26,8 @@
 #ifndef OOMPH_FISH_MESH_HEADER
 #define OOMPH_FISH_MESH_HEADER
 
+#include "generic/element_factory.h"
+
 // Headers
 #include "generic/refineable_quad_mesh.h"
 #include "generic/macro_element.h"
@@ -49,7 +51,6 @@ namespace oomph
   /// Fish shaped mesh. The geometry is defined by
   /// the Domain object FishDomain.
   //=================================================================
-  template<class ELEMENT>
   class FishMesh : public virtual QuadMeshBase
   {
   public:
@@ -120,16 +121,14 @@ namespace oomph
   /// Refineable fish shaped mesh. The geometry is defined by
   /// the Domain object FishDomain.
   //=============================start_adaptive_fish_mesh============
-  template<class ELEMENT>
-  class RefineableFishMesh : public virtual FishMesh<ELEMENT>,
-                             public RefineableQuadMesh<ELEMENT>
+  class RefineableFishMesh : public virtual FishMesh, public RefineableQuadMesh
   {
   public:
     /// Constructor: Pass pointer to timestepper -- defaults to (Steady)
     /// default timestepper defined in the Mesh base class
     RefineableFishMesh(
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : FishMesh<ELEMENT>(time_stepper_pt)
+      : FishMesh(time_stepper_pt)
     {
       // Nodal positions etc. were created in constructor for
       // FishMesh<...>. Only need to setup adaptive information.
@@ -146,7 +145,7 @@ namespace oomph
     RefineableFishMesh(
       GeomObject* back_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : FishMesh<ELEMENT>(back_pt, time_stepper_pt)
+      : FishMesh(back_pt, time_stepper_pt)
     {
       // Nodal positions etc. were created in constructor for
       // FishMesh<...>. Only need to setup adaptive information.
@@ -188,10 +187,9 @@ namespace oomph
   /// the element (whose type is specified by the template parameter)
   /// must inherit from MacroElementNodeUpdateElementBase.
   //========================================================================
-  template<class ELEMENT>
   class MacroElementNodeUpdateRefineableFishMesh
     : public virtual MacroElementNodeUpdateMesh,
-      public virtual RefineableFishMesh<ELEMENT>
+      public virtual RefineableFishMesh
   {
   public:
     /// Constructor: Pass pointer GeomObject that defines
@@ -200,11 +198,10 @@ namespace oomph
     MacroElementNodeUpdateRefineableFishMesh(
       GeomObject* back_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : FishMesh<ELEMENT>(back_pt, time_stepper_pt),
-        RefineableFishMesh<ELEMENT>(time_stepper_pt)
+      : FishMesh(back_pt, time_stepper_pt), RefineableFishMesh(time_stepper_pt)
     {
 #ifdef PARANOID
-      ELEMENT* el_pt = new ELEMENT;
+      ELEMENT* el_pt = element_factory_pt->new_element();
       if (dynamic_cast<MacroElementNodeUpdateElementBase*>(el_pt) == 0)
       {
         std::ostringstream error_message;
@@ -232,7 +229,8 @@ namespace oomph
       for (unsigned i = 0; i < n_element; i++)
       {
         // Upcast from FiniteElement to the present element
-        ELEMENT* el_pt = dynamic_cast<ELEMENT*>(this->element_pt(i));
+        auto* el_pt =
+          dynamic_cast<MacroElementNodeUpdateElement*>(this->element_pt(i));
 
 #ifdef PARANOID
         // Check if cast is successful
@@ -315,15 +313,13 @@ namespace oomph
   //=================================================================
   /// Fish shaped mesh with algebraic node update function for nodes.
   //=================================================================
-  template<class ELEMENT>
-  class AlgebraicFishMesh : public AlgebraicMesh,
-                            public virtual FishMesh<ELEMENT>
+  class AlgebraicFishMesh : public AlgebraicMesh, public virtual FishMesh
   {
   public:
     /// Constructor: Pass pointer to timestepper.
     /// (defaults to (Steady) default timestepper defined in Mesh)
     AlgebraicFishMesh(TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : FishMesh<ELEMENT>(time_stepper_pt)
+      : FishMesh(time_stepper_pt)
     {
       // Setup algebraic node update operations
       setup_algebraic_node_update();
@@ -334,7 +330,7 @@ namespace oomph
     /// (defaults to (Steady) default timestepper defined in Mesh).
     AlgebraicFishMesh(GeomObject* back_pt,
                       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : FishMesh<ELEMENT>(back_pt, time_stepper_pt)
+      : FishMesh(back_pt, time_stepper_pt)
     {
       // Add the geometric object to the list associated with this AlgebraicMesh
       AlgebraicMesh::add_geom_object_list_pt(back_pt);
@@ -476,9 +472,8 @@ namespace oomph
   //=================================================================
   /// Refineable fish shaped mesh with algebraic node update function.
   //=================================================================
-  template<class ELEMENT>
-  class AlgebraicRefineableFishMesh : public AlgebraicFishMesh<ELEMENT>,
-                                      public RefineableFishMesh<ELEMENT>
+  class AlgebraicRefineableFishMesh : public AlgebraicFishMesh,
+                                      public RefineableFishMesh
   {
   public:
     /// Constructor: Pass pointer to timestepper.
@@ -489,9 +484,9 @@ namespace oomph
     // base constructor again and simply add the extra functionality.
     AlgebraicRefineableFishMesh(
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : FishMesh<ELEMENT>(time_stepper_pt),
-        AlgebraicFishMesh<ELEMENT>(time_stepper_pt),
-        RefineableFishMesh<ELEMENT>(time_stepper_pt)
+      : FishMesh(time_stepper_pt),
+        AlgebraicFishMesh(time_stepper_pt),
+        RefineableFishMesh(time_stepper_pt)
     {
     }
 
@@ -506,9 +501,9 @@ namespace oomph
     AlgebraicRefineableFishMesh(
       GeomObject* back_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : FishMesh<ELEMENT>(back_pt, time_stepper_pt),
-        AlgebraicFishMesh<ELEMENT>(back_pt, time_stepper_pt),
-        RefineableFishMesh<ELEMENT>(back_pt, time_stepper_pt)
+      : FishMesh(back_pt, time_stepper_pt),
+        AlgebraicFishMesh(back_pt, time_stepper_pt),
+        RefineableFishMesh(back_pt, time_stepper_pt)
     {
     }
 
@@ -520,11 +515,10 @@ namespace oomph
     /// in the AlgebraicFishMesh (where the bool flag is explained)
     void node_update(const bool& update_all_solid_nodes = false)
     {
-      AlgebraicFishMesh<ELEMENT>::node_update(update_all_solid_nodes);
+      AlgebraicFishMesh::node_update(update_all_solid_nodes);
     }
   };
 
 } // namespace oomph
 
-#include "fish_mesh.template.cc"
 #endif

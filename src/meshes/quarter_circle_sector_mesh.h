@@ -26,12 +26,15 @@
 #ifndef OOMPH_QUARTER_CIRCLE_SECTOR_MESH_HEADER
 #define OOMPH_QUARTER_CIRCLE_SECTOR_MESH_HEADER
 
+#include "generic/element_factory.h"
+
 #include "generic/refineable_quad_mesh.h"
 #include "generic/macro_element.h"
 #include "generic/domain.h"
 #include "generic/algebraic_elements.h"
 #include "generic/quad_mesh.h"
 #include "generic/macro_element_node_update_element.h"
+#include "generic/element_factory.h"
 
 // Include the headers file for domain
 #include "quarter_circle_sector_domain.h"
@@ -79,7 +82,6 @@ namespace oomph
   /// Nodal positions are determined via macro-element-based representation
   /// of the Domain (as a QuarterCircleSectorDomain).
   //====================================================================
-  template<class ELEMENT>
   class QuarterCircleSectorMesh : public virtual QuadMeshBase
   {
   public:
@@ -89,6 +91,7 @@ namespace oomph
     /// which the dividing line is to be placed, and the timestepper
     /// (defaults to (Steady) default timestepper defined in Mesh)
     QuarterCircleSectorMesh(
+      std::unique_ptr<ElementFactoryBase> element_factory_pt,
       GeomObject* wall_pt,
       const double& xi_lo,
       const double& fract_mid,
@@ -176,10 +179,8 @@ namespace oomph
   /// Domain is parametrised by three macro elements as sketched.
   ///
   //====================================================================
-  template<class ELEMENT>
-  class RefineableQuarterCircleSectorMesh
-    : public QuarterCircleSectorMesh<ELEMENT>,
-      public virtual RefineableQuadMesh<ELEMENT>
+  class RefineableQuarterCircleSectorMesh : public QuarterCircleSectorMesh,
+                                            public virtual RefineableQuadMesh
   {
   public:
     /// Constructor: Pass pointer to geometric object that
@@ -189,13 +190,14 @@ namespace oomph
     /// (defaults to (Steady) default timestepper defined in Mesh).
     /// Adds refinement data to elements of QuarterCircleSectorMesh.
     RefineableQuarterCircleSectorMesh(
+      std::unique_ptr<ElementFactoryBase> element_factory_pt,
       GeomObject* wall_pt,
       const double& xi_lo,
       const double& fract_mid,
       const double& xi_hi,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : QuarterCircleSectorMesh<ELEMENT>(
-          wall_pt, xi_lo, fract_mid, xi_hi, time_stepper_pt)
+      : QuarterCircleSectorMesh(
+          element_factory_pt, wall_pt, xi_lo, fract_mid, xi_hi, time_stepper_pt)
     {
       // Basic mesh has been built -- just need to setup the
       // adaptivity information:
@@ -249,10 +251,9 @@ namespace oomph
   /// Domain is parametrised by three macro elements as sketched. Elements
   /// need to be derived from MacroElementNodeUpdateElementBase.
   //========================================================================
-  template<class ELEMENT>
   class MacroElementNodeUpdateRefineableQuarterCircleSectorMesh
     : public virtual MacroElementNodeUpdateMesh,
-      public virtual RefineableQuarterCircleSectorMesh<ELEMENT>
+      public virtual RefineableQuarterCircleSectorMesh
   {
   public:
     /// Constructor: Pass pointer to geometric object, start and
@@ -263,17 +264,18 @@ namespace oomph
     /// constructor for the underlying  RefineableQuarterCircleSectorMesh)
     /// and the algebraic node update functions for nodes.
     MacroElementNodeUpdateRefineableQuarterCircleSectorMesh(
+      std::unique_ptr<ElementFactoryBase> element_factory_pt,
       GeomObject* wall_pt,
       const double& xi_lo,
       const double& fract_mid,
       const double& xi_hi,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : MacroElementNodeUpdateMesh(),
-        RefineableQuarterCircleSectorMesh<ELEMENT>(
-          wall_pt, xi_lo, fract_mid, xi_hi, time_stepper_pt)
+        RefineableQuarterCircleSectorMesh(
+          element_factory_pt, wall_pt, xi_lo, fract_mid, xi_hi, time_stepper_pt)
     {
 #ifdef PARANOID
-      ELEMENT* el_pt = new ELEMENT;
+      ELEMENT* el_pt = element_factory_pt->new_element();
       if (dynamic_cast<MacroElementNodeUpdateElementBase*>(el_pt) == 0)
       {
         std::ostringstream error_message;
@@ -342,7 +344,8 @@ namespace oomph
       for (unsigned i = 0; i < n_element; i++)
       {
         // Upcast from FiniteElement to the present element
-        ELEMENT* el_pt = dynamic_cast<ELEMENT*>(this->element_pt(i));
+        auto el_pt =
+          dynamic_cast<MacroElementNodeUpdateElementBase*>(this->element_pt(i));
 
 #ifdef PARANOID
         // Check if cast is successful
@@ -429,10 +432,9 @@ namespace oomph
   /// RefineableQuarterCircleSectorMesh which forms the basis for
   /// this mesh, we implement algebraic node update functions for the nodes.
   //========================================================================
-  template<class ELEMENT>
   class AlgebraicRefineableQuarterCircleSectorMesh
     : public virtual AlgebraicMesh,
-      public RefineableQuarterCircleSectorMesh<ELEMENT>
+      public RefineableQuarterCircleSectorMesh
   {
   public:
     /// Constructor: Pass pointer to geometric object, start and
@@ -443,16 +445,17 @@ namespace oomph
     /// constructor for the underlying  RefineableQuarterCircleSectorMesh)
     /// and the algebraic update functions for nodes.
     AlgebraicRefineableQuarterCircleSectorMesh(
+      std::unique_ptr<ElementFactoryBase> element_factory_pt,
       GeomObject* wall_pt,
       const double& xi_lo,
       const double& fract_mid,
       const double& xi_hi,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : RefineableQuarterCircleSectorMesh<ELEMENT>(
-          wall_pt, xi_lo, fract_mid, xi_hi, time_stepper_pt)
+      : RefineableQuarterCircleSectorMesh(
+          element_factory_pt, wall_pt, xi_lo, fract_mid, xi_hi, time_stepper_pt)
     {
 #ifdef PARANOID
-      ELEMENT* el_pt = new ELEMENT;
+      auto el_pt = element_factory_pt->new_element();
       if (dynamic_cast<AlgebraicElementBase*>(el_pt) == 0)
       {
         std::ostringstream error_message;
@@ -656,5 +659,4 @@ namespace oomph
 
 } // namespace oomph
 
-#include "quarter_circle_sector_mesh.template.cc"
 #endif

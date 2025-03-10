@@ -26,6 +26,8 @@
 #ifndef OOMPH_SINGLE_LAYER_CUBIC_SPINE_MESH_HEADER
 #define OOMPH_SINGLE_LAYER_CUBIC_SPINE_MESH_HEADER
 
+#include "generic/element_factory.h"
+
 // oomph-lib includes
 #include "generic/spines.h"
 #include "simple_cubic_mesh.h"
@@ -42,9 +44,7 @@ namespace oomph
   /// numeration of the nodes on the boundaries 0 and 5 (bottom and top)
   /// coincides with the numeration of the spines
   //======================================================================
-  template<class ELEMENT>
-  class SingleLayerCubicSpineMesh : public SimpleCubicMesh<ELEMENT>,
-                                    public SpineMesh
+  class SingleLayerCubicSpineMesh : public SimpleCubicMesh, public SpineMesh
   {
   public:
     /// Constructor: Pass number of elements in x-direction, number of
@@ -81,5 +81,4 @@ namespace oomph
 
 } // namespace oomph
 
-#include "single_layer_cubic_spine_mesh.template.cc"
 #endif

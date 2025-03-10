@@ -1,27 +1,9 @@
-# ==============================================================================
-# NOTE:
-#
-# Mesh files generally come in two parts: *.h and *.template.cc. Usually there
-# are no *.cc files because meshes are fully templated. It therefore doesn't
-# make any sense to compile mesh sources into a library. Instead, we combine the
-# two files into a combined mesh header, *.h, which can be included into a
-# driver code. This means that the entire code (headers and function
-# implementations) can get (re-)compiled with the appropriate element types in
-# each specific driver code. If the constant re-compilation of the (possibly
-# lengthy) mesh sources in *.template.cc gets too costly, then *.h and
-# *.template.cc can be included in a separate file where the instantiation of a
-# mesh with a specific element type can be enforced with a template statement.
 # ------------------------------------------------------------------------------
-# Provide Domain definitions in their respective headers; don't write the
-# definitions in source files. If you provide the definitions outside of the
-# class, make sure to mark it as "inline" otherwise you may well get warnings
-# about duplicate symbols!
-# ==============================================================================
 list(APPEND CMAKE_MESSAGE_INDENT " ")
 message(VERBOSE "Entered meshes subdirectory")
 
-# Define the templated headers
-set(TEMPLATE_HEADERS
+# Define the headers
+set(HEADERS
     one_d_mesh.h
     simple_rectangular_quadmesh.h
     rectangular_quadmesh.h
@@ -123,15 +105,74 @@ set(NON_MESH_HEADERS
     annular_domain.h
     rectangle_with_hole_domain.h)
 
+# Define the sources
+set(SOURCES
+    one_d_mesh.cc
+    simple_rectangular_quadmesh.cc
+    rectangular_quadmesh.cc
+    quarter_circle_sector_mesh.cc
+    fish_mesh.cc
+    one_d_lagrangian_mesh.cc
+    two_layer_spine_mesh.cc
+    single_layer_spine_mesh.cc
+    bretherton_spine_mesh.cc
+    quarter_tube_mesh.cc
+    eighth_sphere_mesh.cc
+    channel_spine_mesh.cc
+    collapsible_channel_mesh.cc
+    triangle_mesh.cc
+    geompack_mesh.cc
+    tetgen_mesh.cc
+    simple_rectangular_tri_mesh.cc
+    simple_cubic_tet_mesh.cc
+    simple_cubic_mesh.cc
+    single_layer_cubic_spine_mesh.cc
+    channel_with_leaflet_mesh.cc
+    cylinder_with_flag_mesh.cc
+    fsi_driven_cavity_mesh.cc
+    hermite_element_quad_mesh.cc
+    circular_shell_mesh.cc
+    tube_mesh.cc
+    backward_step_mesh.cc
+    full_circle_mesh.cc
+    horizontal_single_layer_spine_mesh.cc
+    xda_tet_mesh.cc
+    thin_layer_brick_on_tet_mesh.cc
+    brick_from_tet_mesh.cc
+    quarter_pipe_mesh.cc
+    annular_mesh.cc
+    rectangle_with_hole_mesh.cc
+    quad_from_triangle_mesh.cc
+    refineable_tetgen_mesh.cc
+    gmsh_tet_mesh.cc
+    rectangle_with_moving_cylinder_mesh.cc
+    extruded_cube_mesh_from_quad_mesh_with_macro_elements.cc
+    collapsible_channel_domain.cc
+    fish_domain.cc
+    channel_with_leaflet_domain.cc
+    quarter_tube_domain.cc
+    eighth_sphere_domain.cc
+    quarter_circle_sector_domain.cc
+    cylinder_with_flag_domain.cc
+    topologically_rectangular_domain.cc
+    tube_domain.cc
+    full_circle_domain.cc
+    quarter_pipe_domain.cc
+    annular_domain.cc
+    rectangle_with_hole_domain.cc)
+
 # Set the name of the library
 set(LIBNAME meshes)
 
-# Import the CreateGenericLibrary module to handle the library creation
+# We depend on the generic library
+set(LINKLIBS generic)
+
+# Import the OomphLibraryConfig module to handle the library creation
 include(OomphLibraryConfig)
 oomph_library_config(
   LIBNAME ${LIBNAME}
-  HEADERS ${TEMPLATE_HEADERS} ${NON_MESH_HEADERS}
-  HEADERS_NO_COMBINE ${TEMPLATE_IMPL_HEADERS}
+  HEADERS ${HEADERS}
+  SOURCES ${SOURCES}
   LINKLIBS ${LINKLIBS})
 
 # The meshes library relies on the generic library.

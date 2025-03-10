@@ -27,6 +27,8 @@
 #ifndef OOMPH_QUARTER_PIPE_MESH_TEMPLATE_HEADER
 #define OOMPH_QUARTER_PIPE_MESH_TEMPLATE_HEADER
 
+#include "generic/element_factory.h"
+
 // Generic oomph-lib includes
 #include "generic/mesh.h"
 #include "generic/brick_mesh.h"
@@ -46,8 +48,7 @@ namespace oomph
   /// theta: azimuthal direction
   /// z: axis direction
   //================================================================
-  template<class ELEMENT>
-  class QuarterPipeMesh : public virtual SimpleCubicMesh<ELEMENT>
+  class QuarterPipeMesh : public virtual SimpleCubicMesh
   {
   public:
     /// Constructor: Pass number of elements in various directions,
@@ -110,9 +111,8 @@ namespace oomph
   //================================================================
   /// Refineable quarter pipe mesh class
   //================================================================
-  template<class ELEMENT>
-  class RefineableQuarterPipeMesh : public virtual QuarterPipeMesh<ELEMENT>,
-                                    public RefineableBrickMesh<ELEMENT>
+  class RefineableQuarterPipeMesh : public virtual QuarterPipeMesh,
+                                    public RefineableBrickMesh
   {
   public:
     /// Constructor: Pass number of elements in various directions,
@@ -125,19 +125,16 @@ namespace oomph
       const double& rmax,
       const double& length,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : SimpleCubicMesh<ELEMENT>(
-          ntheta, nr, nz, 1.0, 1.0, 1.0, time_stepper_pt),
-        QuarterPipeMesh<ELEMENT>(
-          ntheta, nr, nz, rmin, rmax, length, time_stepper_pt)
+      : SimpleCubicMesh(ntheta, nr, nz, 1.0, 1.0, 1.0, time_stepper_pt),
+        QuarterPipeMesh(ntheta, nr, nz, rmin, rmax, length, time_stepper_pt)
     {
       // Setup Octree forest: Turn elements into individual octrees
       // and plant in forest
       Vector<TreeRoot*> trees_pt;
       for (unsigned iel = 0; iel < (nr * ntheta * nz); iel++)
       {
-        FiniteElement* el_pt = QuarterPipeMesh<ELEMENT>::finite_element_pt(iel);
-        ELEMENT* ref_el_pt = dynamic_cast<ELEMENT*>(el_pt);
-        OcTreeRoot* octree_root_pt = new OcTreeRoot(ref_el_pt);
+        OcTreeRoot* octree_root_pt = new OcTreeRoot(
+          dynamic_cast<RefineableElement*>(this->element_pt(iel)));
         trees_pt.push_back(octree_root_pt);
       }
 
@@ -161,8 +158,7 @@ namespace oomph
   /// Non refineable elastic quarter pipe mesh class
   /// setup lagrangian coordinates for solid mechanics problems
   //================================================================
-  template<class ELEMENT>
-  class ElasticQuarterPipeMesh : public virtual QuarterPipeMesh<ELEMENT>,
+  class ElasticQuarterPipeMesh : public virtual QuarterPipeMesh,
                                  public virtual SolidMesh
   {
   public:
@@ -178,10 +174,8 @@ namespace oomph
       const double& rmax,
       const double& length,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : SimpleCubicMesh<ELEMENT>(
-          ntheta, nr, nz, 1.0, 1.0, 1.0, time_stepper_pt),
-        QuarterPipeMesh<ELEMENT>(
-          ntheta, nr, nz, rmin, rmax, length, time_stepper_pt)
+      : SimpleCubicMesh(ntheta, nr, nz, 1.0, 1.0, 1.0, time_stepper_pt),
+        QuarterPipeMesh(ntheta, nr, nz, rmin, rmax, length, time_stepper_pt)
     {
       /// Make the current configuration the undeformed one by
       /// setting the nodal Lagrangian coordinates to their current
@@ -198,10 +192,9 @@ namespace oomph
   //================================================================
   /// Refineable elastic quarter pipe mesh class
   //================================================================
-  template<class ELEMENT>
   class ElasticRefineableQuarterPipeMesh
-    : public virtual ElasticQuarterPipeMesh<ELEMENT>,
-      public RefineableBrickMesh<ELEMENT>
+    : public virtual ElasticQuarterPipeMesh,
+      public RefineableBrickMesh
   {
   public:
     /// Constructor:  Pass number of elements in various directions,
@@ -216,11 +209,9 @@ namespace oomph
       const double& rmax,
       const double& length,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : SimpleCubicMesh<ELEMENT>(
-          ntheta, nr, nz, 1.0, 1.0, 1.0, time_stepper_pt),
-        QuarterPipeMesh<ELEMENT>(
-          ntheta, nr, nz, rmin, rmax, length, time_stepper_pt),
-        ElasticQuarterPipeMesh<ELEMENT>(
+      : SimpleCubicMesh(ntheta, nr, nz, 1.0, 1.0, 1.0, time_stepper_pt),
+        QuarterPipeMesh(ntheta, nr, nz, rmin, rmax, length, time_stepper_pt),
+        ElasticQuarterPipeMesh(
           ntheta, nr, nz, rmin, rmax, length, time_stepper_pt)
     {
       // Setup Octree forest: Turn elements into individual octrees
@@ -228,9 +219,8 @@ namespace oomph
       Vector<TreeRoot*> trees_pt;
       for (unsigned iel = 0; iel < (nr * ntheta * nz); iel++)
       {
-        FiniteElement* el_pt = QuarterPipeMesh<ELEMENT>::finite_element_pt(iel);
-        ELEMENT* ref_el_pt = dynamic_cast<ELEMENT*>(el_pt);
-        OcTreeRoot* octree_root_pt = new OcTreeRoot(ref_el_pt);
+        OcTreeRoot* octree_root_pt = new OcTreeRoot(
+          dynamic_cast<RefineableElement*>(this->element_pt(iel)));
         trees_pt.push_back(octree_root_pt);
       }
       this->Forest_pt = new OcTreeForest(trees_pt);
@@ -240,7 +230,8 @@ namespace oomph
       for (unsigned e = 0; e < n_element; e++)
       {
         // Get pointer to full element type
-        ELEMENT* el_pt = dynamic_cast<ELEMENT*>(this->element_pt(e));
+        auto* el_pt =
+          dynamic_cast<RefineableSolidElement*>(this->element_pt(e));
 
         // Set pointer to macro element so the curvlinear boundaries
         // of the undeformed mesh/domain get picked up during adaptive
@@ -259,5 +250,4 @@ namespace oomph
 
 } // namespace oomph
 
-#include "quarter_pipe_mesh.template.cc"
 #endif

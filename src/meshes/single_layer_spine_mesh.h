@@ -26,6 +26,8 @@
 #ifndef OOMPH_SINGLE_LAYER_SPINE_MESH_HEADER
 #define OOMPH_SINGLE_LAYER_SPINE_MESH_HEADER
 
+#include "generic/element_factory.h"
+
 // oomph-lib includes
 #include "generic/spines.h"
 #include "rectangular_quadmesh.h"
@@ -41,9 +43,7 @@ namespace oomph
   /// Equations that determine the spine heights (even if they are pinned)
   /// must be specified externally or else there will be problems.
   //======================================================================
-  template<class ELEMENT>
-  class SingleLayerSpineMesh : public RectangularQuadMesh<ELEMENT>,
-                               public SpineMesh
+  class SingleLayerSpineMesh : public RectangularQuadMesh, public SpineMesh
   {
   public:
     /// Constructor: Pass number of elements in x-direction, number of
@@ -90,5 +90,4 @@ namespace oomph
 
 } // namespace oomph
 
-#include "single_layer_spine_mesh.template.cc"
 #endif

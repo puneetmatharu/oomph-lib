@@ -33,29 +33,33 @@
 // Include the headers file for domain
 #include "annular_domain.h"
 
+// Include the element factory
+#include "generic/element_factory.h"
+
 namespace oomph
 {
   //===================================================================
   /// 2D annular mesh with a unit circle in the middle and a layer
   /// of thickness h surrounding it.
   //==================================================================
-  template<class ELEMENT>
-  class TwoDAnnularMesh : public virtual RectangularQuadMesh<ELEMENT>
+  class TwoDAnnularMesh : public virtual RectangularQuadMesh
   {
   public:
     /// Constructor
-    TwoDAnnularMesh(const bool& periodic,
+    TwoDAnnularMesh(std::unique_ptr<ElementFactoryBase> element_factory_pt,
+                    const bool& periodic,
                     const double& azimuthal_fraction,
                     const unsigned& ntheta,
                     const unsigned& nr,
                     const double& a,
                     const double& h,
                     TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : RectangularQuadMesh<ELEMENT>(
-          ntheta, nr, 1.0, 1.0, periodic, time_stepper_pt)
+      : RectangularQuadMesh(
+          element_factory_pt, ntheta, nr, 1.0, 1.0, periodic, time_stepper_pt)
     {
       // Mesh can only be built with 2D Qelements.
-      MeshChecker::assert_geometric_element<QElementGeometricBase, ELEMENT>(2);
+      MeshChecker::assert_geometric_element<QElementGeometricBase>(
+        element_factory_pt, 2);
 
       // Wrap mesh into annular shape
       double phi = 0.0;
@@ -63,7 +67,8 @@ namespace oomph
     }
 
     /// Constructor; rotate mesh by angle phi.
-    TwoDAnnularMesh(const bool& periodic,
+    TwoDAnnularMesh(std::unique_ptr<ElementFactoryBase> element_factory_pt,
+                    const bool& periodic,
                     const double& azimuthal_fraction,
                     const unsigned& ntheta,
                     const unsigned& nr,
@@ -71,11 +76,12 @@ namespace oomph
                     const double& h,
                     const double& phi,
                     TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : RectangularQuadMesh<ELEMENT>(
-          ntheta, nr, 1.0, 1.0, periodic, time_stepper_pt)
+      : RectangularQuadMesh(
+          element_factory_pt, ntheta, nr, 1.0, 1.0, periodic, time_stepper_pt)
     {
       // Mesh can only be built with 2D Qelements.
-      MeshChecker::assert_geometric_element<QElementGeometricBase, ELEMENT>(2);
+      MeshChecker::assert_geometric_element<QElementGeometricBase>(
+        element_factory_pt, 2);
 
       // Wrap mesh into annular shape
       wrap_into_annular_shape(a, h, azimuthal_fraction, phi);
@@ -98,13 +104,13 @@ namespace oomph
   /// Refineable 2D annular mesh with a unit circle in the middle and a layer
   /// of thickness h surrounding it.
   //==================================================================
-  template<class ELEMENT>
-  class RefineableTwoDAnnularMesh : public virtual TwoDAnnularMesh<ELEMENT>,
-                                    public virtual RefineableQuadMesh<ELEMENT>
+  class RefineableTwoDAnnularMesh : public virtual TwoDAnnularMesh,
+                                    public virtual RefineableQuadMesh
   {
   public:
     /// Constructor
     RefineableTwoDAnnularMesh(
+      std::unique_ptr<ElementFactoryBase> element_factory_pt,
       const bool& periodic,
       const double& azimuthal_fraction,
       const unsigned& ntheta,
@@ -112,13 +118,20 @@ namespace oomph
       const double& a,
       const double& h,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : RectangularQuadMesh<ELEMENT>(
-          ntheta, nr, 1.0, 1.0, periodic, time_stepper_pt),
-        TwoDAnnularMesh<ELEMENT>(
-          periodic, azimuthal_fraction, ntheta, nr, a, h, time_stepper_pt)
+      : RectangularQuadMesh(
+          element_factory_pt, ntheta, nr, 1.0, 1.0, periodic, time_stepper_pt),
+        TwoDAnnularMesh(element_factory_pt,
+                        periodic,
+                        azimuthal_fraction,
+                        ntheta,
+                        nr,
+                        a,
+                        h,
+                        time_stepper_pt)
     {
       // Mesh can only be built with 2D Qelements.
-      MeshChecker::assert_geometric_element<QElementGeometricBase, ELEMENT>(2);
+      MeshChecker::assert_geometric_element<QElementGeometricBase>(
+        element_factory_pt, 2);
 
       // Build macro element-based domain
       double phi = 0.0;
@@ -147,14 +160,15 @@ namespace oomph
         Vector<TreeRoot*> right_root_pt(nr);
         for (unsigned i = 0; i < nr; i++)
         {
-          left_root_pt[i] = dynamic_cast<ELEMENT*>(this->element_pt(i * ntheta))
-                              ->tree_pt()
-                              ->root_pt();
-
-          right_root_pt[i] =
-            dynamic_cast<ELEMENT*>(this->element_pt((i + 1) * ntheta - 1))
+          left_root_pt[i] =
+            dynamic_cast<RefineableElement*>(this->element_pt(i * ntheta))
               ->tree_pt()
               ->root_pt();
+
+          right_root_pt[i] = dynamic_cast<RefineableElement*>(
+                               this->element_pt((i + 1) * ntheta - 1))
+                               ->tree_pt()
+                               ->root_pt();
         }
 
         // Set the neighbour and periodicity
@@ -180,13 +194,13 @@ namespace oomph
       const double& h,
       const double& phi,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : RectangularQuadMesh<ELEMENT>(
-          ntheta, nr, 1.0, 1.0, periodic, time_stepper_pt),
-        TwoDAnnularMesh<ELEMENT>(
+      : RectangularQuadMesh(ntheta, nr, 1.0, 1.0, periodic, time_stepper_pt),
+        TwoDAnnularMesh(
           periodic, azimuthal_fraction, ntheta, nr, a, h, phi, time_stepper_pt)
     {
       // Mesh can only be built with 2D Qelements.
-      MeshChecker::assert_geometric_element<QElementGeometricBase, ELEMENT>(2);
+      MeshChecker::assert_geometric_element<QElementGeometricBase>(
+        element_factory_pt, 2);
 
       // Build macro element-based domain
       Domain_pt = new AnnularDomain(azimuthal_fraction, ntheta, nr, a, h, phi);
@@ -214,14 +228,15 @@ namespace oomph
         Vector<TreeRoot*> right_root_pt(nr);
         for (unsigned i = 0; i < nr; i++)
         {
-          left_root_pt[i] = dynamic_cast<ELEMENT*>(this->element_pt(i * ntheta))
-                              ->tree_pt()
-                              ->root_pt();
-
-          right_root_pt[i] =
-            dynamic_cast<ELEMENT*>(this->element_pt((i + 1) * ntheta - 1))
+          left_root_pt[i] =
+            dynamic_cast<RefineableElement*>(this->element_pt(i * ntheta))
               ->tree_pt()
               ->root_pt();
+
+          right_root_pt[i] = dynamic_cast<RefineableElement*>(
+                               this->element_pt((i + 1) * ntheta - 1))
+                               ->tree_pt()
+                               ->root_pt();
         }
 
         // Set the neighbour and periodicity

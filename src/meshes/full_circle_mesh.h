@@ -27,6 +27,8 @@
 #ifndef OOMPH_FULL_CIRCLE_MESH_HEADER
 #define OOMPH_FULL_CIRCLE_MESH_HEADER
 
+#include "generic/element_factory.h"
+
 // Headers
 #include "generic/refineable_quad_mesh.h"
 
@@ -45,7 +47,6 @@ namespace oomph
   /// .
   ///
   //====================================================================
-  template<class ELEMENT>
   class FullCircleMesh : public virtual QuadMeshBase
   {
   public:
@@ -106,9 +107,8 @@ namespace oomph
   /// .
   ///
   //=============================================================
-  template<class ELEMENT>
-  class RefineableFullCircleMesh : public FullCircleMesh<ELEMENT>,
-                                   public RefineableQuadMesh<ELEMENT>
+  class RefineableFullCircleMesh : public FullCircleMesh,
+                                   public RefineableQuadMesh
 
   {
   public:
@@ -125,26 +125,22 @@ namespace oomph
       const Vector<double>& theta_positions,
       const Vector<double>& radius_box,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : FullCircleMesh<ELEMENT>(
-          wall_pt, theta_positions, radius_box, time_stepper_pt)
+      : FullCircleMesh(wall_pt, theta_positions, radius_box, time_stepper_pt)
     {
       // Loop over all elements and set macro element pointer
-      for (unsigned ielem = 0; ielem < FullCircleMesh<ELEMENT>::nelement();
-           ielem++)
+      for (unsigned ielem = 0; ielem < FullCircleMesh::nelement(); ielem++)
       {
-        dynamic_cast<RefineableQElement<2>*>(
-          FullCircleMesh<ELEMENT>::element_pt(ielem))
+        dynamic_cast<RefineableQElement<2>*>(FullCircleMesh::element_pt(ielem))
           ->set_macro_elem_pt(this->Domain_pt->macro_element_pt(ielem));
       }
 
       // Setup Quadtree forest: Turn elements into individual octrees
       // and plant in forest
       Vector<TreeRoot*> trees_pt;
-      for (unsigned iel = 0; iel < FullCircleMesh<ELEMENT>::nelement(); iel++)
+      for (unsigned iel = 0; iel < FullCircleMesh::nelement(); iel++)
       {
-        FiniteElement* el_pt = FullCircleMesh<ELEMENT>::finite_element_pt(iel);
-        ELEMENT* ref_el_pt = dynamic_cast<ELEMENT*>(el_pt);
-        QuadTreeRoot* quadtree_root_pt = new QuadTreeRoot(ref_el_pt);
+        QuadTreeRoot* quadtree_root_pt = new QuadTreeRoot(
+          dynamic_cast<RefineableElement*>(this->element_pt(iel)));
         trees_pt.push_back(quadtree_root_pt);
       }
 
@@ -172,5 +168,4 @@ namespace oomph
   };
 
 } // namespace oomph
-#include "full_circle_mesh.template.cc"
 #endif
