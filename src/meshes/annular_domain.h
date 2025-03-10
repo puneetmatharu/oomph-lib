@@ -26,6 +26,8 @@
 #ifndef OOMPH_ANNULAR_DOMAIN_HEADER
 #define OOMPH_ANNULAR_DOMAIN_HEADER
 
+#include "generic/element_factory.h"
+
 // Generic oomph-lib includes
 #include "generic/quadtree.h"
 #include "generic/domain.h"
@@ -104,93 +106,6 @@ namespace oomph
     /// Rotation angle
     double Phi;
   };
-
-
-  /////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////
-
-  //=================================================================
-  /// Vector representation of the  imacro-th macro element
-  /// boundary idirect (N/S/W/E) at time level t
-  /// (t=0: present; t>0: previous): f(s)
-  //=================================================================
-  void AnnularDomain::macro_element_boundary(const unsigned& t,
-                                             const unsigned& imacro,
-                                             const unsigned& idirect,
-                                             const Vector<double>& s,
-                                             Vector<double>& f)
-  {
-    using namespace QuadTreeNames;
-
-    // Get coordinates of macro element
-    unsigned i_theta = imacro % Ntheta;
-    unsigned i_r = (imacro - i_theta) / Ntheta;
-
-    // Angle and radius limits
-    double theta_lo = Azimuthal_fraction * 2.0 * MathematicalConstants::Pi *
-                      double(i_theta) / double(Ntheta);
-
-    double theta_hi = Azimuthal_fraction * 2.0 * MathematicalConstants::Pi *
-                      double(i_theta + 1) / double(Ntheta);
-
-    // Revert direction (convoluted -- don't ask. It mirrors what happens
-    // in the mesh...
-    theta_lo = -MathematicalConstants::Pi +
-               Azimuthal_fraction * 2.0 * MathematicalConstants::Pi - theta_lo;
-    theta_hi = -MathematicalConstants::Pi +
-               Azimuthal_fraction * 2.0 * MathematicalConstants::Pi - theta_hi;
-
-    double r_lo = Inner_radius + Thickness * double(i_r) / double(Nr);
-    double r_hi = Inner_radius + Thickness * double(i_r + 1) / double(Nr);
-
-    // Actual radius and angle
-    double r = 0.0;
-    double theta = 0.0;
-
-    // Which direction?
-    switch (idirect)
-    {
-      case N:
-
-        theta = theta_lo + 0.5 * (s[0] + 1.0) * (theta_hi - theta_lo);
-        r = r_hi;
-
-        break;
-
-      case S:
-
-        theta = theta_lo + 0.5 * (s[0] + 1.0) * (theta_hi - theta_lo);
-        r = r_lo;
-
-        break;
-
-      case W:
-
-        theta = theta_lo;
-        r = r_lo + 0.5 * (s[0] + 1.0) * (r_hi - r_lo);
-
-        break;
-
-      case E:
-
-        theta = theta_hi;
-        r = r_lo + 0.5 * (s[0] + 1.0) * (r_hi - r_lo);
-
-        break;
-
-      default:
-        std::ostringstream error_stream;
-        error_stream << "idirect is " << idirect << " not one of N, S, W, E"
-                     << std::endl;
-
-        throw OomphLibError(
-          error_stream.str(), OOMPH_CURRENT_FUNCTION, OOMPH_EXCEPTION_LOCATION);
-    }
-
-    f[0] = r * cos(theta + Phi);
-    f[1] = r * sin(theta + Phi);
-  }
 
 } // namespace oomph
 
