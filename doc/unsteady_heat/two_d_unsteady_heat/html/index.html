@@ -114,7 +114,7 @@
   history values".</li>
 <li>Optionally: (Re-)implementing the empty virtual functions <code>Problem::actions_before_implicit_timestep()</code> and <code>Problem::actions_after_implicit_timestep()</code>, e.g. to update time-dependent boundary conditions before each timestep.</li>
 </ul>
-<p>Once these steps have been performed, <code>oomph-lib's</code> unsteady Newton solver, <code>Problem::unsteady_newton_solve(...)</code>, may be called to advance the solution from its state at time <picture><source srcset="form_0_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ t $" src="form_0.png" width="5" height="9"/></picture> to its new state at <picture><source srcset="form_1_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ t \ + $" src="form_1.png" width="19" height="10"/></picture> <code>dt</code>.</p>
+<p>Once these steps have been performed, <code>oomph-lib's</code> unsteady Newton solver, <code>Problem::unsteady_newton_solve(...)</code>, may be called to advance the solution from its state at time <img class="formulaInl" alt="$ t $" src="form_0.png" width="5" height="9"/> to its new state at <img class="formulaInl" alt="$ t \ + $" src="form_1.png" width="19" height="10"/> <code>dt</code>.</p>
 <hr  />
  <hr  />
 <h1><a class="anchor" id="example"></a>
@@ -123,36 +123,36 @@ The example problem</h1>
 <center> <table class="doxtable">
 <tr>
 <td><center> <b>The two-dimensional unsteady heat equation in a square domain.</b> </center> Solve  <p class="formulaDsp">
-<picture><source srcset="form_2_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+<img class="formulaDsp" alt="\[
 \sum_{i=1}^2\frac{\partial^2 u}{\partial x_i^2} 
 = \frac{\partial u}{\partial t} + f\left(x_1,x_2,t\right),
  \ \ \ \ \ \ \ \ \ \ (1)
-\]" src="form_2.png" width="216" height="38"/></picture>
+\]" src="form_2.png" width="216" height="38"/>
 </p>
- in the square domain <picture><source srcset="form_3_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ D = \{x_i \in [0,1]; i=1,2 \} $" src="form_3.png" width="135" height="14"/></picture>, subject to the Dirichlet boundary conditions  <p class="formulaDsp">
-<picture><source srcset="form_4_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+ in the square domain <img class="formulaInl" alt="$ D = \{x_i \in [0,1]; i=1,2 \} $" src="form_3.png" width="135" height="14"/>, subject to the Dirichlet boundary conditions  <p class="formulaDsp">
+<img class="formulaDsp" alt="\[
 \left. u\right|_{\partial D}=g_0
 \ \ \ \ \ \ \ \ \ \ (2)
-\]" src="form_4.png" width="110" height="14"/></picture>
+\]" src="form_4.png" width="110" height="14"/>
 </p>
  and initial conditions  <p class="formulaDsp">
-<picture><source srcset="form_5_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+<img class="formulaDsp" alt="\[
 u(x_1,x_2,t=0)=h_0(x_1,x_2),
 \ \ \ \ \ \ \ \ \ \ (3)
-\]" src="form_5.png" width="214" height="14"/></picture>
+\]" src="form_5.png" width="214" height="14"/>
 </p>
- where the functions <picture><source srcset="form_6_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ g_0 $" src="form_6.png" width="13" height="9"/></picture> and <picture><source srcset="form_7_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ h_0 $" src="form_7.png" width="13" height="13"/></picture> are given.   </td></tr>
+ where the functions <img class="formulaInl" alt="$ g_0 $" src="form_6.png" width="13" height="9"/> and <img class="formulaInl" alt="$ h_0 $" src="form_7.png" width="13" height="13"/> are given.   </td></tr>
 </table>
 <br  />
- </center><p>Here we consider the unforced case, <picture><source srcset="form_8_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ f=0 $" src="form_8.png" width="30" height="13"/></picture>, and choose boundary and initial conditions that are consistent with the exact solution  </p><p class="formulaDsp">
-<picture><source srcset="form_9_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+ </center><p>Here we consider the unforced case, <img class="formulaInl" alt="$ f=0 $" src="form_8.png" width="30" height="13"/>, and choose boundary and initial conditions that are consistent with the exact solution  </p><p class="formulaDsp">
+<img class="formulaDsp" alt="\[
 u_0(x_1,x_2,t) = e^{-Kt}\sin\left( \sqrt{K} \left( x_1 \cos \Phi + x_2 \sin
 \Phi\right)\right),
  \ \ \ \ \ \ \ \ \ \ (4)
-\]" src="form_9.png" width="339" height="24"/></picture>
+\]" src="form_9.png" width="339" height="24"/>
 </p>
-<p> where <picture><source srcset="form_10_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ K $" src="form_10.png" width="11" height="10"/></picture> and <picture><source srcset="form_11_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \Phi $" src="form_11.png" width="9" height="10"/></picture> are constants, controlling the decay rate of the solution and its spatial orientation, respectively.</p>
-<p>The figure below shows a plot of computed and exact solutions at time <picture><source srcset="form_12_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ t = 0.01 $" src="form_12.png" width="44" height="9"/></picture> (for an animation <br  />
+<p> where <img class="formulaInl" alt="$ K $" src="form_10.png" width="11" height="10"/> and <img class="formulaInl" alt="$ \Phi $" src="form_11.png" width="9" height="10"/> are constants, controlling the decay rate of the solution and its spatial orientation, respectively.</p>
+<p>The figure below shows a plot of computed and exact solutions at time <img class="formulaInl" alt="$ t = 0.01 $" src="form_12.png" width="44" height="9"/> (for an animation <br  />
  <a href="../figures/unsteady_heat_soln.avi">click here</a>).</p>
 <div class="image">
 <img src="unsteady_heat_soln.gif" alt=""/>
@@ -282,7 +282,7 @@ The driver code</h1>
 <div class="line"> </div>
 <div class="line"> </div>
 <div class="line">}; <span class="comment">// end of main</span></div>
-</div><!-- fragment --><p> In this loop, each call to the unsteady Newton solver, <code>Problem::unsteady_newton_solve(...)</code>, advances the solution from its current state, at time <picture><source srcset="form_13_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ t = $" src="form_13.png" width="19" height="9"/></picture> <code>Problem::time_pt()-&gt;time()</code>, to <picture><source srcset="form_1_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ t \ + $" src="form_1.png" width="19" height="10"/></picture> <code>dt</code>. The unsteady Newton solver automatically "shifts" the history values "backwards" and advances the value of the continuous time.</p>
+</div><!-- fragment --><p> In this loop, each call to the unsteady Newton solver, <code>Problem::unsteady_newton_solve(...)</code>, advances the solution from its current state, at time <img class="formulaInl" alt="$ t = $" src="form_13.png" width="19" height="9"/> <code>Problem::time_pt()-&gt;time()</code>, to <img class="formulaInl" alt="$ t \ + $" src="form_1.png" width="19" height="10"/> <code>dt</code>. The unsteady Newton solver automatically "shifts" the history values "backwards" and advances the value of the continuous time.</p>
 <hr  />
  <hr  />
 <h1><a class="anchor" id="problem"></a>
@@ -679,8 +679,8 @@ Post-processing</h1>
 Comments and Exercises</h1>
 <p>The current example only illustrates the most basic timestepping procedures. In subsequent examples we will demonstrate <code>oomph-lib's</code> <br  />
  <a href="../../two_d_unsteady_heat2/html/index.html">dump and restart functions,</a> <a href="../../two_d_unsteady_heat_t_adapt/html/index.html">the use of adaptive timestepping,</a> <a href="../../two_d_unsteady_heat_adapt/html/index.html">the use of spatial adaptivity,</a> <a href="../../two_d_unsteady_heat_ALE/html/index.html">computations in moving domains,</a> and <a href="../../two_d_unsteady_heat_2adapt/html/index.html">the combination of temporal and spatial adaptivity</a>.</p>
-<p>We stress that setting the initial conditions in a "real" problem often presents a delicate step, especially if higher-order timesteppers from the BDF family are used. This is because in the absence of a known exact solution, the initial condition (3) only provides enough information to determine a single "history value" at each node &ndash; the value at the initial time. <code>oomph-lib's</code> timestepping procedures provide several functions that allow the simulation to be initiated with an "impulsive start", corresponding to a past history in which the boundary condition (3) describes the system's state for all <picture><source srcset="form_14_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ t \le 0$" src="form_14.png" width="29" height="11"/></picture> rather than only at <picture><source srcset="form_15_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ t =
-0$" src="form_15.png" width="29" height="9"/></picture> . For instance, the top-level function <code>Problem::assign_initial_values_impulsive()</code> sets the "history values" of all <code>Data</code> objects and the <code>Nodes'</code> "positional history values" to values that are appropriate for an impulsive start from the currently assigned nodal values and positions. The following exercises aim to explore this functionality.</p>
+<p>We stress that setting the initial conditions in a "real" problem often presents a delicate step, especially if higher-order timesteppers from the BDF family are used. This is because in the absence of a known exact solution, the initial condition (3) only provides enough information to determine a single "history value" at each node &ndash; the value at the initial time. <code>oomph-lib's</code> timestepping procedures provide several functions that allow the simulation to be initiated with an "impulsive start", corresponding to a past history in which the boundary condition (3) describes the system's state for all <img class="formulaInl" alt="$ t \le 0$" src="form_14.png" width="29" height="11"/> rather than only at <img class="formulaInl" alt="$ t =
+0$" src="form_15.png" width="29" height="9"/> . For instance, the top-level function <code>Problem::assign_initial_values_impulsive()</code> sets the "history values" of all <code>Data</code> objects and the <code>Nodes'</code> "positional history values" to values that are appropriate for an impulsive start from the currently assigned nodal values and positions. The following exercises aim to explore this functionality.</p>
 <h2><a class="anchor" id="exercises"></a>
 Exercises</h2>
 <ol type="1">
@@ -741,7 +741,7 @@ PDF file</h1>
     <footer>
       <div class="container">
         <div class="text-muted" style="float:right;">Generated by <a href="http://www.doxygen.org/index.html">
-          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Tue Jun 17 2025 05:52:37
+          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Tue Jun 17 2025 07:28:09
         </div>
       </div>
     </footer>

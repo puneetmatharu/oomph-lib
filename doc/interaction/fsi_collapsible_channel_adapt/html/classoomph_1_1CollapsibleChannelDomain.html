@@ -191,7 +191,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:abc7b20efd68bdd11f1bea5df79ae579d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function that implements axial spacing of macro elements.  <br /></td></tr>
 <tr class="separator:abc7b20efd68bdd11f1bea5df79ae579d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c0a5bd21e12fbcc1cdd753c0f205da2" id="r_a2c0a5bd21e12fbcc1cdd753c0f205da2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1MacroElementNodeUpdateCollapsibleChannelMesh.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1CollapsibleChannelDomain.html#a2c0a5bd21e12fbcc1cdd753c0f205da2">macro_element_boundary</a> (<a class="el" href="classoomph_1_1MacroElementNodeUpdateCollapsibleChannelMesh.html">const</a> <a class="el" href="classoomph_1_1MacroElementNodeUpdateCollapsibleChannelMesh.html">unsigned</a> &amp;<a class="el" href="classoomph_1_1MacroElementNodeUpdateCollapsibleChannelMesh.html">t</a>, <a class="el" href="classoomph_1_1MacroElementNodeUpdateCollapsibleChannelMesh.html">const</a> <a class="el" href="classoomph_1_1MacroElementNodeUpdateCollapsibleChannelMesh.html">unsigned</a> &amp;<a class="el" href="classoomph_1_1MacroElementNodeUpdateCollapsibleChannelMesh.html">imacro</a>, <a class="el" href="classoomph_1_1MacroElementNodeUpdateCollapsibleChannelMesh.html">const</a> <a class="el" href="classoomph_1_1MacroElementNodeUpdateCollapsibleChannelMesh.html">unsigned</a> &amp;<a class="el" href="classoomph_1_1MacroElementNodeUpdateCollapsibleChannelMesh.html">idirect</a>, <a class="el" href="classoomph_1_1MacroElementNodeUpdateCollapsibleChannelMesh.html">const</a> <a class="el" href="classoomph_1_1MacroElementNodeUpdateCollapsibleChannelMesh.html">Vector</a>&lt; <a class="el" href="classoomph_1_1MacroElementNodeUpdateCollapsibleChannelMesh.html">double</a> &gt; &amp;<a class="el" href="classoomph_1_1MacroElementNodeUpdateCollapsibleChannelMesh.html">zeta</a>, <a class="el" href="classoomph_1_1MacroElementNodeUpdateCollapsibleChannelMesh.html">Vector</a>&lt; <a class="el" href="classoomph_1_1MacroElementNodeUpdateCollapsibleChannelMesh.html">double</a> &gt; &amp;<a class="el" href="classoomph_1_1MacroElementNodeUpdateCollapsibleChannelMesh.html">r</a>)</td></tr>
-<tr class="memdesc:a2c0a5bd21e12fbcc1cdd753c0f205da2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector representation of the imacro-th macro element boundary idirect (N/S/W/E) at time level t (t=0: present; t&gt;0: previous): <picture><source srcset="form_18_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ {\bf r}({\bf zeta}) $" src="form_18.png" width="41" height="14"/></picture> Note that the local coordinate <b>zeta</b> is a 1D Vector rather than a scalar &ndash; this is unavoidable because this function implements the pure virtual function in the Domain base class.  <br /></td></tr>
+<tr class="memdesc:a2c0a5bd21e12fbcc1cdd753c0f205da2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector representation of the imacro-th macro element boundary idirect (N/S/W/E) at time level t (t=0: present; t&gt;0: previous): <img class="formulaInl" alt="$ {\bf r}({\bf zeta}) $" src="form_18.png" width="41" height="14"/> Note that the local coordinate <b>zeta</b> is a 1D Vector rather than a scalar &ndash; this is unavoidable because this function implements the pure virtual function in the Domain base class.  <br /></td></tr>
 <tr class="separator:a2c0a5bd21e12fbcc1cdd753c0f205da2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91008f47dd3c4eb8a78842df88d9c9e4" id="r_a91008f47dd3c4eb8a78842df88d9c9e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1MacroElementNodeUpdateCollapsibleChannelMesh.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1CollapsibleChannelDomain.html#a91008f47dd3c4eb8a78842df88d9c9e4">enable_rotate_domain</a> ()</td></tr>
 <tr class="separator:a91008f47dd3c4eb8a78842df88d9c9e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -825,7 +825,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Vector representation of the imacro-th macro element boundary idirect (N/S/W/E) at time level t (t=0: present; t&gt;0: previous): <picture><source srcset="form_18_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ {\bf r}({\bf zeta}) $" src="form_18.png" width="41" height="14"/></picture> Note that the local coordinate <b>zeta</b> is a 1D Vector rather than a scalar &ndash; this is unavoidable because this function implements the pure virtual function in the Domain base class. </p>
+<p>Vector representation of the imacro-th macro element boundary idirect (N/S/W/E) at time level t (t=0: present; t&gt;0: previous): <img class="formulaInl" alt="$ {\bf r}({\bf zeta}) $" src="form_18.png" width="41" height="14"/> Note that the local coordinate <b>zeta</b> is a 1D Vector rather than a scalar &ndash; this is unavoidable because this function implements the pure virtual function in the Domain base class. </p>
 
 <p class="definition">Definition at line <a class="el" href="collapsible__channel__domain_8h_source.html#l00339">339</a> of file <a class="el" href="collapsible__channel__domain_8h_source.html">collapsible_channel_domain.h</a>.</p>
 
@@ -1012,7 +1012,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Eastern boundary of the macro element imacro in the collapsible section. </p>
-<p>Eastern edge of the macro element in the collapsible part of the channel; <picture><source srcset="form_19_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \zeta \in [-1,1] $" src="form_19.png" width="55" height="14"/></picture>. </p>
+<p>Eastern edge of the macro element in the collapsible part of the channel; <img class="formulaInl" alt="$ \zeta \in [-1,1] $" src="form_19.png" width="55" height="14"/>. </p>
 
 <p class="definition">Definition at line <a class="el" href="collapsible__channel__domain_8h_source.html#l00727">727</a> of file <a class="el" href="collapsible__channel__domain_8h_source.html">collapsible_channel_domain.h</a>.</p>
 
@@ -1069,7 +1069,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Eastern boundary of the macro element imacro in the upstream (part=0) or downstream (part=1) sections. </p>
-<p>Eastern edge of the macro element in the straight parts of the channel; <picture><source srcset="form_19_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \zeta \in [-1,1] $" src="form_19.png" width="55" height="14"/></picture> part=0 in the upstream part, part=1 in the downstream part. </p>
+<p>Eastern edge of the macro element in the straight parts of the channel; <img class="formulaInl" alt="$ \zeta \in [-1,1] $" src="form_19.png" width="55" height="14"/> part=0 in the upstream part, part=1 in the downstream part. </p>
 
 <p class="definition">Definition at line <a class="el" href="collapsible__channel__domain_8h_source.html#l00536">536</a> of file <a class="el" href="collapsible__channel__domain_8h_source.html">collapsible_channel_domain.h</a>.</p>
 
@@ -1126,7 +1126,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Northern boundary of the macro element imacro in the collapsible section. </p>
-<p>Northern edge of the macro element in the collapsible part of the channel; <picture><source srcset="form_19_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \zeta \in [-1,1] $" src="form_19.png" width="55" height="14"/></picture>. </p>
+<p>Northern edge of the macro element in the collapsible part of the channel; <img class="formulaInl" alt="$ \zeta \in [-1,1] $" src="form_19.png" width="55" height="14"/>. </p>
 
 <p class="definition">Definition at line <a class="el" href="collapsible__channel__domain_8h_source.html#l00762">762</a> of file <a class="el" href="collapsible__channel__domain_8h_source.html">collapsible_channel_domain.h</a>.</p>
 
@@ -1183,7 +1183,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Northern boundary of the macro element imacro in the upstream (part=0) or downstream (part=1) sections. </p>
-<p>Northern edge of the macro element in the straight parts of the channel; <picture><source srcset="form_19_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \zeta \in [-1,1] $" src="form_19.png" width="55" height="14"/></picture> part=0 in the left part, part=1 in the right part. </p>
+<p>Northern edge of the macro element in the straight parts of the channel; <img class="formulaInl" alt="$ \zeta \in [-1,1] $" src="form_19.png" width="55" height="14"/> part=0 in the left part, part=1 in the right part. </p>
 
 <p class="definition">Definition at line <a class="el" href="collapsible__channel__domain_8h_source.html#l00587">587</a> of file <a class="el" href="collapsible__channel__domain_8h_source.html">collapsible_channel_domain.h</a>.</p>
 
@@ -1240,7 +1240,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Southern boundary of the macro element imacro in the collapsible section. </p>
-<p>Southern edge of the macro element in the collapsible part of the channel; <picture><source srcset="form_19_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \zeta \in [-1,1] $" src="form_19.png" width="55" height="14"/></picture>. </p>
+<p>Southern edge of the macro element in the collapsible part of the channel; <img class="formulaInl" alt="$ \zeta \in [-1,1] $" src="form_19.png" width="55" height="14"/>. </p>
 
 <p class="definition">Definition at line <a class="el" href="collapsible__channel__domain_8h_source.html#l00798">798</a> of file <a class="el" href="collapsible__channel__domain_8h_source.html">collapsible_channel_domain.h</a>.</p>
 
@@ -1297,7 +1297,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Southern boundary of the macro element imacro in the upstream (part=0) or downstream (part=1) sections. </p>
-<p>Southern edge of the macro element in the straight parts of the channel; <picture><source srcset="form_19_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \zeta \in [-1,1] $" src="form_19.png" width="55" height="14"/></picture> part=0 in the left part, part=1 in the right part. </p>
+<p>Southern edge of the macro element in the straight parts of the channel; <img class="formulaInl" alt="$ \zeta \in [-1,1] $" src="form_19.png" width="55" height="14"/> part=0 in the left part, part=1 in the right part. </p>
 
 <p class="definition">Definition at line <a class="el" href="collapsible__channel__domain_8h_source.html#l00640">640</a> of file <a class="el" href="collapsible__channel__domain_8h_source.html">collapsible_channel_domain.h</a>.</p>
 
@@ -1354,7 +1354,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Western boundary of the macro element imacro in the collapsible section. </p>
-<p>Western edge of the macro element in the collapsible part of the channel; <picture><source srcset="form_19_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \zeta \in [-1,1] $" src="form_19.png" width="55" height="14"/></picture>. </p>
+<p>Western edge of the macro element in the collapsible part of the channel; <img class="formulaInl" alt="$ \zeta \in [-1,1] $" src="form_19.png" width="55" height="14"/>. </p>
 
 <p class="definition">Definition at line <a class="el" href="collapsible__channel__domain_8h_source.html#l00692">692</a> of file <a class="el" href="collapsible__channel__domain_8h_source.html">collapsible_channel_domain.h</a>.</p>
 
@@ -1411,7 +1411,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Western boundary of the macro element imacro in the upstream (part=0) or downstream (part=1) sections. </p>
-<p>Western edge of the macro element in the upstream (part=0) or downstream (part=1) parts of the channel; <picture><source srcset="form_19_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \zeta \in [-1,1] $" src="form_19.png" width="55" height="14"/></picture>. </p>
+<p>Western edge of the macro element in the upstream (part=0) or downstream (part=1) parts of the channel; <img class="formulaInl" alt="$ \zeta \in [-1,1] $" src="form_19.png" width="55" height="14"/>. </p>
 
 <p class="definition">Definition at line <a class="el" href="collapsible__channel__domain_8h_source.html#l00485">485</a> of file <a class="el" href="collapsible__channel__domain_8h_source.html">collapsible_channel_domain.h</a>.</p>
 
@@ -1887,7 +1887,7 @@ Private Attributes</h2></td></tr>
     <footer>
       <div class="container">
         <div class="text-muted" style="float:right;">Generated by <a href="http://www.doxygen.org/index.html">
-          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Tue Jun 17 2025 05:34:28
+          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Tue Jun 17 2025 07:14:18
         </div>
       </div>
     </footer>

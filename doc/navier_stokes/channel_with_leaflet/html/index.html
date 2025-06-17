@@ -112,38 +112,38 @@
  <hr  />
 <h1><a class="anchor" id="the_problem"></a>
 The Problem</h1>
-<p>The figure below shows a sketch of the problem: A 2D channel of height <picture><source srcset="form_0_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ H^*_{tot}$" src="form_0.png" width="23" height="14"/></picture> and length <picture><source srcset="form_1_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ L^*_{left} + L^*_{right} $" src="form_1.png" width="74" height="16"/></picture> is partially occluded by a (zero-thickness) leaflet of height <picture><source srcset="form_2_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ H^*_{leaflet} $" src="form_2.png" width="41" height="16"/></picture>. The leaflet is parametrised by a Lagrangian coordinate <picture><source srcset="form_3_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \xi^* $" src="form_3.png" width="11" height="13"/></picture> so that the position vector to a material point on the leaflet is given by <picture><source srcset="form_4_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ {\bf R}^*_w(\xi^*,t^*) $" src="form_4.png" width="56" height="14"/></picture>, and we assume that the leaflet performs time-periodic oscillations with period <picture><source srcset="form_5_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ T^*. $" src="form_5.png" width="19" height="10"/></picture> Steady Poiseuille flow with average velocity <picture><source srcset="form_6_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ U^* $" src="form_6.png" width="15" height="10"/></picture> is imposed at the left end of the channel while we assume that the outflow is parallel and axially traction-free.</p>
+<p>The figure below shows a sketch of the problem: A 2D channel of height <img class="formulaInl" alt="$ H^*_{tot}$" src="form_0.png" width="23" height="14"/> and length <img class="formulaInl" alt="$ L^*_{left} + L^*_{right} $" src="form_1.png" width="74" height="16"/> is partially occluded by a (zero-thickness) leaflet of height <img class="formulaInl" alt="$ H^*_{leaflet} $" src="form_2.png" width="41" height="16"/>. The leaflet is parametrised by a Lagrangian coordinate <img class="formulaInl" alt="$ \xi^* $" src="form_3.png" width="11" height="13"/> so that the position vector to a material point on the leaflet is given by <img class="formulaInl" alt="$ {\bf R}^*_w(\xi^*,t^*) $" src="form_4.png" width="56" height="14"/>, and we assume that the leaflet performs time-periodic oscillations with period <img class="formulaInl" alt="$ T^*. $" src="form_5.png" width="19" height="10"/> Steady Poiseuille flow with average velocity <img class="formulaInl" alt="$ U^* $" src="form_6.png" width="15" height="10"/> is imposed at the left end of the channel while we assume that the outflow is parallel and axially traction-free.</p>
 <div class="image">
 <img src="channel_with_leaflet_dim.gif" alt=""/>
 <div class="caption">
 Sketch of the problem in dimensional </div></div>
- <p>We non-dimensionalise all length and coordinates on the channel width, <picture><source srcset="form_7_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ H^*_{tot}
-$" src="form_7.png" width="23" height="14"/></picture> , time on the natural timescale of the flow, <picture><source srcset="form_8_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ H^*_{tot}/U^* $" src="form_8.png" width="44" height="14"/></picture>, the velocities on the mean velocity, <picture><source srcset="form_6_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ U^* $" src="form_6.png" width="15" height="10"/></picture>, and the pressure on the viscous scale. The problem is then governed by the non-dimensional Navier-Stokes equations  </p><p class="formulaDsp">
-<picture><source srcset="form_9_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+ <p>We non-dimensionalise all length and coordinates on the channel width, <img class="formulaInl" alt="$ H^*_{tot}
+$" src="form_7.png" width="23" height="14"/> , time on the natural timescale of the flow, <img class="formulaInl" alt="$ H^*_{tot}/U^* $" src="form_8.png" width="44" height="14"/>, the velocities on the mean velocity, <img class="formulaInl" alt="$ U^* $" src="form_6.png" width="15" height="10"/>, and the pressure on the viscous scale. The problem is then governed by the non-dimensional Navier-Stokes equations  </p><p class="formulaDsp">
+<img class="formulaDsp" alt="\[
 Re \left( St \frac{\partial u_i}{\partial t} + 
 u_j \frac{\partial u_i}{\partial x_j} \right) =
 - \frac{\partial p}{\partial x_i}  +
 \frac{\partial }{\partial x_j} \left[ \left(
 \frac{\partial u_i}{\partial x_j} +  
 \frac{\partial u_j}{\partial x_i} \right) \right],
-\]" src="form_9.png" width="306" height="31"/></picture>
+\]" src="form_9.png" width="306" height="31"/>
 </p>
-<p> where <picture><source srcset="form_10_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ Re = \rho U^* H_0^* / \mu $" src="form_10.png" width="85" height="14"/></picture> and <picture><source srcset="form_11_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ St = 1 $" src="form_11.png" width="35" height="10"/></picture>, and </p><center>  <p class="formulaDsp">
-<picture><source srcset="form_12_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+<p> where <img class="formulaInl" alt="$ Re = \rho U^* H_0^* / \mu $" src="form_10.png" width="85" height="14"/> and <img class="formulaInl" alt="$ St = 1 $" src="form_11.png" width="35" height="10"/>, and </p><center>  <p class="formulaDsp">
+<img class="formulaDsp" alt="\[
 \frac{\partial u_i}{\partial x_i} = 0,
-\]" src="form_12.png" width="48" height="29"/></picture>
+\]" src="form_12.png" width="48" height="29"/>
 </p>
  </center><p> subject to parabolic inflow </p><center>  <p class="formulaDsp">
-<picture><source srcset="form_13_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+<img class="formulaDsp" alt="\[
 {\bf u} = 6 x_2 (1-x_2) {\bf e}_1
-\]" src="form_13.png" width="99" height="14"/></picture>
+\]" src="form_13.png" width="99" height="14"/>
 </p>
- </center><p> at the inflow cross-section; parallel, axially-traction-free outflow at the outlet; and no-slip on the stationary channel walls, <picture><source srcset="form_14_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ {\bf u} = {\bf 0} $" src="form_14.png" width="31" height="9"/></picture>. The no-slip condition on the leaflet is </p><center>  <p class="formulaDsp">
-<picture><source srcset="form_15_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+ </center><p> at the inflow cross-section; parallel, axially-traction-free outflow at the outlet; and no-slip on the stationary channel walls, <img class="formulaInl" alt="$ {\bf u} = {\bf 0} $" src="form_14.png" width="31" height="9"/>. The no-slip condition on the leaflet is </p><center>  <p class="formulaDsp">
+<img class="formulaDsp" alt="\[
 {\bf u} = \frac{\partial {\bf R}_w(\xi,t)}{\partial t}
-\]" src="form_15.png" width="79" height="29"/></picture>
+\]" src="form_15.png" width="79" height="29"/>
 </p>
- </center><p> and the leaflet performs oscillations with non-dimensional period <picture><source srcset="form_16_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ T = T^* U^* / H^*_{tot} $" src="form_16.png" width="86" height="14"/></picture>. Here is a sketch of the non-dimensional version of the problem:</p>
+ </center><p> and the leaflet performs oscillations with non-dimensional period <img class="formulaInl" alt="$ T = T^* U^* / H^*_{tot} $" src="form_16.png" width="86" height="14"/>. Here is a sketch of the non-dimensional version of the problem:</p>
 <div class="image">
 <img src="channel_with_leaflet.gif" alt=""/>
 <div class="caption">
@@ -154,7 +154,7 @@ Sketch of the problem in dimensionless variables. </div></div>
 <h1><a class="anchor" id="results"></a>
 Results</h1>
 <p>The figure below shows a snapshot of the flow field <br  />
- (pressure contours and instantaneous streamlines) for a Reynolds number of <picture><source srcset="form_17_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ Re=20 $" src="form_17.png" width="44" height="10"/></picture> and an oscillation period of <picture><source srcset="form_18_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ T=20 $" src="form_18.png" width="39" height="9"/></picture>, as well as the corresponding fluid mesh. Note how <code>oomph-lib's</code> automatic mesh adaptation has refined the mesh near the tip of the leaflet where the pressure has a singularity.</p>
+ (pressure contours and instantaneous streamlines) for a Reynolds number of <img class="formulaInl" alt="$ Re=20 $" src="form_17.png" width="44" height="10"/> and an oscillation period of <img class="formulaInl" alt="$ T=20 $" src="form_18.png" width="39" height="9"/>, as well as the corresponding fluid mesh. Note how <code>oomph-lib's</code> automatic mesh adaptation has refined the mesh near the tip of the leaflet where the pressure has a singularity.</p>
 <div class="image">
 <img src="channel_with_leaflet_flow_cropped.gif" alt=""/>
 <div class="caption">
@@ -181,7 +181,7 @@ The global parameters</h1>
  <hr  />
 <h1><a class="anchor" id="leaflet"></a>
 Specification of the leaflet geometry</h1>
-<p>We specify the leaflet geometry and its time-dependent motion by representing it as a <code>GeomObject</code>. The <code>GeomObject</code> has one Lagrangian and two Eulerian coordinates, and its geometry is characterised by its length, the x-coordinate of its origin, <picture><source srcset="form_19_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ X_0 $" src="form_19.png" width="16" height="13"/></picture>, and the period and amplitude of the horizontal and vertical tip deflection.</p>
+<p>We specify the leaflet geometry and its time-dependent motion by representing it as a <code>GeomObject</code>. The <code>GeomObject</code> has one Lagrangian and two Eulerian coordinates, and its geometry is characterised by its length, the x-coordinate of its origin, <img class="formulaInl" alt="$ X_0 $" src="form_19.png" width="16" height="13"/>, and the period and amplitude of the horizontal and vertical tip deflection.</p>
  <div class="fragment"><div class="line"><span class="comment">//===start_of_leaflet_class===========================================</span></div>
 <div class="line"><span class="comment">/// GeomObject representing a vertical leaflet that performs</span><span class="comment"></span></div>
 <div class="line"><span class="comment">/// bending and stretching oscillations. </span></div>
@@ -744,7 +744,7 @@ PDF file</h1>
     <footer>
       <div class="container">
         <div class="text-muted" style="float:right;">Generated by <a href="http://www.doxygen.org/index.html">
-          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Tue Jun 17 2025 05:46:17
+          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Tue Jun 17 2025 07:23:11
         </div>
       </div>
     </footer>

@@ -110,30 +110,30 @@
 <div class="textblock"><p>Following the numerous 2D problems discussed in earlier examples we now demonstrate that the solution of 3D problems is just as easy. For this purpose we discuss the adaptive solution of the 3D Poisson problem </p><center> <table class="doxtable">
 <tr>
 <td><center> <b>Three-dimensional model Poisson problem</b> </center> Solve  <p class="formulaDsp">
-<picture><source srcset="form_0_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+<img class="formulaDsp" alt="\[
 \sum_{i=1}^3 \frac{\partial^2u}{\partial x_i^2} = f(x_1,x_2,x_3),
  \ \ \ \ \ \ \ \ \ \ (1)
-\]" src="form_0.png" width="189" height="38"/></picture>
+\]" src="form_0.png" width="189" height="38"/>
 </p>
- in the "eighth-of-a-sphere" domain <picture><source srcset="form_1_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$D$" src="form_1.png" width="10" height="10"/></picture>, with Dirichlet boundary conditions  <p class="formulaDsp">
-<picture><source srcset="form_2_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+ in the "eighth-of-a-sphere" domain <img class="formulaInl" alt="$D$" src="form_1.png" width="10" height="10"/>, with Dirichlet boundary conditions  <p class="formulaDsp">
+<img class="formulaDsp" alt="\[
 \left. u\right|_{\partial D}=u_0 
 \ \ \ \ \ \ \ \ \ \ (2)
-\]" src="form_2.png" width="113" height="14"/></picture>
+\]" src="form_2.png" width="113" height="14"/>
 </p>
- where the function <picture><source srcset="form_3_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ u_0 $" src="form_3.png" width="14" height="9"/></picture> is given.   </td></tr>
+ where the function <img class="formulaInl" alt="$ u_0 $" src="form_3.png" width="14" height="9"/> is given.   </td></tr>
 </table>
 <br  />
  </center><p>We choose a source function and boundary conditions for which  </p><p class="formulaDsp">
-<picture><source srcset="form_4_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+<img class="formulaDsp" alt="\[
 u_0(x_1,x_2,x_3) = 
 \tanh\left(1-\alpha(({\bf x}-{\bf x_0}) \cdot {\bf N})\right),
 \ \ \ \ \ \ \ \ \  (3)
-\]" src="form_4.png" width="291" height="14"/></picture>
+\]" src="form_4.png" width="291" height="14"/>
 </p>
-<p> is the exact solution. Here where <picture><source srcset="form_5_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="${\bf x} = (x_1,x_2,x_3)$" src="form_5.png" width="84" height="14"/></picture> <br  />
- is the vector of the spatial coordinates, and the vectors <picture><source srcset="form_6_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="${\bf x}_0 = \left(x_1^{(0)},x_2^{(0)},x_3^{(0)}\right)$" src="form_6.png" width="116" height="24"/></picture> and <picture><source srcset="form_7_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="${\bf N}_0 = (N_1,N_2,N_3)$" src="form_7.png" width="101" height="14"/></picture> are constants. For large values of the constant <picture><source srcset="form_8_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \alpha $" src="form_8.png" width="8" height="6"/></picture> the solution varies rapidly across the plane through <picture><source srcset="form_9_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="${\bf x}_0$" src="form_9.png" width="14" height="9"/></picture> whose normal is given by <picture><source srcset="form_10_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="${\bf N}$" src="form_10.png" width="13" height="10"/></picture>.</p>
-<p>Here are some plots of the exact and computed solutions for <picture><source srcset="form_11_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="${\bf x}_0 = (0,0,0)$" src="form_11.png" width="70" height="14"/></picture>, <picture><source srcset="form_12_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="${\bf N}_0 = 1/\sqrt{3} \ (-1,-1,1)$" src="form_12.png" width="126" height="15"/></picture>, and <picture><source srcset="form_13_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \alpha=50$" src="form_13.png" width="36" height="9"/></picture> at various levels of mesh refinement. Note that the plot of the exact solution was produced by setting the nodal values to the exact solution, obtained by evaluating (3) at the nodal positions. The elements' basis functions were then used to interpolate between the nodal values. On the coarse meshes, the interpolation between the "exact" nodal values is clearly inadequate to resolve the rapid variation of the solution.</p>
+<p> is the exact solution. Here where <img class="formulaInl" alt="${\bf x} = (x_1,x_2,x_3)$" src="form_5.png" width="84" height="14"/> <br  />
+ is the vector of the spatial coordinates, and the vectors <img class="formulaInl" alt="${\bf x}_0 = \left(x_1^{(0)},x_2^{(0)},x_3^{(0)}\right)$" src="form_6.png" width="116" height="24"/> and <img class="formulaInl" alt="${\bf N}_0 = (N_1,N_2,N_3)$" src="form_7.png" width="101" height="14"/> are constants. For large values of the constant <img class="formulaInl" alt="$ \alpha $" src="form_8.png" width="8" height="6"/> the solution varies rapidly across the plane through <img class="formulaInl" alt="${\bf x}_0$" src="form_9.png" width="14" height="9"/> whose normal is given by <img class="formulaInl" alt="${\bf N}$" src="form_10.png" width="13" height="10"/>.</p>
+<p>Here are some plots of the exact and computed solutions for <img class="formulaInl" alt="${\bf x}_0 = (0,0,0)$" src="form_11.png" width="70" height="14"/>, <img class="formulaInl" alt="${\bf N}_0 = 1/\sqrt{3} \ (-1,-1,1)$" src="form_12.png" width="126" height="15"/>, and <img class="formulaInl" alt="$ \alpha=50$" src="form_13.png" width="36" height="9"/> at various levels of mesh refinement. Note that the plot of the exact solution was produced by setting the nodal values to the exact solution, obtained by evaluating (3) at the nodal positions. The elements' basis functions were then used to interpolate between the nodal values. On the coarse meshes, the interpolation between the "exact" nodal values is clearly inadequate to resolve the rapid variation of the solution.</p>
 <div class="image">
 <img src="eight_sphere_poisson.gif" alt=""/>
 <div class="caption">
@@ -392,7 +392,7 @@ The problem class</h1>
  <hr  />
 <h1><a class="anchor" id="constructor"></a>
 The Problem constructor</h1>
-<p>In the <code>Problem</code> constructor, we set the "steepness parameter" <picture><source srcset="form_8_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \alpha $" src="form_8.png" width="8" height="6"/></picture> to a large value and create the mesh for a a sphere of radius 5. Next, we create the error estimator and pass it to the adaptive mesh.</p>
+<p>In the <code>Problem</code> constructor, we set the "steepness parameter" <img class="formulaInl" alt="$ \alpha $" src="form_8.png" width="8" height="6"/> to a large value and create the mesh for a a sphere of radius 5. Next, we create the error estimator and pass it to the adaptive mesh.</p>
 <div class="fragment"><div class="line"><span class="comment">//====================start_of_constructor================================</span></div>
 <div class="line"><span class="comment">/// Constructor for Poisson problem on eighth of a sphere mesh</span></div>
 <div class="line"><span class="comment">//========================================================================</span></div>
@@ -564,7 +564,7 @@ PDF file</h1>
     <footer>
       <div class="container">
         <div class="text-muted" style="float:right;">Generated by <a href="http://www.doxygen.org/index.html">
-          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Tue Jun 17 2025 05:49:30
+          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Tue Jun 17 2025 07:25:43
         </div>
       </div>
     </footer>

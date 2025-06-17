@@ -107,7 +107,7 @@
   <div class="headertitle"><div class="title">Demo problem: Bending of a cantilever beam </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>In this example we solve a classical solid mechanics problem, the bending of a cantilever beam, subject to a pressure loading on its upper face and/or gravity. We assume that the material behaves like a generalised Hookean solid with elastic modulus <picture><source srcset="form_0_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ E^* $" src="form_0.png" width="15" height="10"/></picture> and Poisson's ratio <picture><source srcset="form_1_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \nu $" src="form_1.png" width="6" height="6"/></picture> Here is a sketch:</p>
+<div class="textblock"><p>In this example we solve a classical solid mechanics problem, the bending of a cantilever beam, subject to a pressure loading on its upper face and/or gravity. We assume that the material behaves like a generalised Hookean solid with elastic modulus <img class="formulaInl" alt="$ E^* $" src="form_0.png" width="15" height="10"/> and Poisson's ratio <img class="formulaInl" alt="$ \nu $" src="form_1.png" width="6" height="6"/> Here is a sketch:</p>
 <div class="image">
 <img src="airy_cantilever_sketch.gif" alt=""/>
 <div class="caption">
@@ -118,12 +118,12 @@ Sketch of the problem. </div></div>
  </p><hr  />
 <h1><a class="anchor" id="results"></a>
 Results</h1>
-<p>The following figure shows an animation of beam's deformation in response to an increase in the uniform pressure, <picture><source srcset="form_2_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ P $" src="form_2.png" width="10" height="10"/></picture>, at zero gravity, <picture><source srcset="form_3_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ g=0 $" src="form_3.png" width="30" height="11"/></picture>. The colour contours represent the magnitude of the "horizontal" component of the 2nd Piola-Kirchhoff stress tensor, <picture><source srcset="form_4_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \sigma_{11} $" src="form_4.png" width="16" height="9"/></picture> . Its approximately linear variation across the beam's thickness indicates a bending-type stress distribution with the stress being positive (tensile) at the top and negative (compressive) at the bottom.</p>
+<p>The following figure shows an animation of beam's deformation in response to an increase in the uniform pressure, <img class="formulaInl" alt="$ P $" src="form_2.png" width="10" height="10"/>, at zero gravity, <img class="formulaInl" alt="$ g=0 $" src="form_3.png" width="30" height="11"/>. The colour contours represent the magnitude of the "horizontal" component of the 2nd Piola-Kirchhoff stress tensor, <img class="formulaInl" alt="$ \sigma_{11} $" src="form_4.png" width="16" height="9"/> . Its approximately linear variation across the beam's thickness indicates a bending-type stress distribution with the stress being positive (tensile) at the top and negative (compressive) at the bottom.</p>
 <div class="image">
 <img src="beam_animation.gif" alt=""/>
 <div class="caption">
 Animation of the beam's deformation with contours of its `horizontal' stress component. </div></div>
- <p>The next figure shows a comparison of the computational predictions for <picture><source srcset="form_4_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \sigma_{11} $" src="form_4.png" width="16" height="9"/></picture> (in green), and the approximate analytical solution (in red).</p>
+ <p>The next figure shows a comparison of the computational predictions for <img class="formulaInl" alt="$ \sigma_{11} $" src="form_4.png" width="16" height="9"/> (in green), and the approximate analytical solution (in red).</p>
 <div class="image">
 <img src="stress_comparison.gif" alt=""/>
 <div class="caption">
@@ -134,7 +134,7 @@ Comparison of the computed distribution of the `horizontal' stress (in green) ag
  </p><hr  />
 <h1><a class="anchor" id="global"></a>
 Global parameters and functions</h1>
-<p>As usual, we define a namespace, <code><a class="el" href="namespaceGlobal__Physical__Variables.html" title="Global variables.">Global_Physical_Variables</a></code>, to define the problem parameters: the dimensions of the cantilever beam, (a pointer to) a constitutive equation, and its parameters <picture><source srcset="form_5_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ E $" src="form_5.png" width="10" height="10"/></picture> and <picture><source srcset="form_1_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \nu $" src="form_1.png" width="6" height="6"/></picture>.</p>
+<p>As usual, we define a namespace, <code><a class="el" href="namespaceGlobal__Physical__Variables.html" title="Global variables.">Global_Physical_Variables</a></code>, to define the problem parameters: the dimensions of the cantilever beam, (a pointer to) a constitutive equation, and its parameters <img class="formulaInl" alt="$ E $" src="form_5.png" width="10" height="10"/> and <img class="formulaInl" alt="$ \nu $" src="form_1.png" width="6" height="6"/>.</p>
  <div class="fragment"><div class="line"><span class="comment">//=======start_namespace==========================================</span></div>
 <div class="line"><span class="comment">/// Global variables</span></div>
 <div class="line"><span class="comment">//================================================================</span></div>
@@ -161,7 +161,7 @@ Global parameters and functions</h1>
 <div class="ttc" id="anamespaceGlobal__Physical__Variables_html_a3962c36313826b19f216f6bbbdd6a477"><div class="ttname"><a href="namespaceGlobal__Physical__Variables.html#a3962c36313826b19f216f6bbbdd6a477">Global_Physical_Variables::Nu</a></div><div class="ttdeci">double Nu</div><div class="ttdoc">Poisson's ratio.</div><div class="ttdef"><b>Definition</b> <a href="airy__cantilever_8cc_source.html#l00164">airy_cantilever.cc:164</a></div></div>
 <div class="ttc" id="anamespaceGlobal__Physical__Variables_html_a5d5f19442938130d36ee7476ae25049c"><div class="ttname"><a href="namespaceGlobal__Physical__Variables.html#a5d5f19442938130d36ee7476ae25049c">Global_Physical_Variables::Constitutive_law_pt</a></div><div class="ttdeci">ConstitutiveLaw * Constitutive_law_pt</div><div class="ttdoc">Pointer to constitutive law.</div><div class="ttdef"><b>Definition</b> <a href="airy__cantilever_8cc_source.html#l00158">airy_cantilever.cc:158</a></div></div>
 <div class="ttc" id="anamespaceGlobal__Physical__Variables_html_af6e07423e22c0991084d9a2f43727805"><div class="ttname"><a href="namespaceGlobal__Physical__Variables.html#af6e07423e22c0991084d9a2f43727805">Global_Physical_Variables::H</a></div><div class="ttdeci">double H</div><div class="ttdoc">Half height of beam.</div><div class="ttdef"><b>Definition</b> <a href="airy__cantilever_8cc_source.html#l00152">airy_cantilever.cc:152</a></div></div>
-</div><!-- fragment --><p>We refer to the document <a href="../../solid_theory/html/index.html">"Solid mechanics: Theory and implementation"</a> for a detailed discussion of the non-dimensionalisation and merely recall that by setting <picture><source srcset="form_6_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ E = 1$" src="form_6.png" width="33" height="10"/></picture>, we imply that all stresses are non-dimensionalised with the structure's dimensional Young's modulus <picture><source srcset="form_0_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ E^* $" src="form_0.png" width="15" height="10"/></picture>. Similarly, by setting the half-thickness of the beam to 0.5, we imply that the beam's dimensional thickness, <picture><source srcset="form_7_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ 2H^*$" src="form_7.png" width="23" height="10"/></picture> is used to non-dimensionalise all lengths.</p>
+</div><!-- fragment --><p>We refer to the document <a href="../../solid_theory/html/index.html">"Solid mechanics: Theory and implementation"</a> for a detailed discussion of the non-dimensionalisation and merely recall that by setting <img class="formulaInl" alt="$ E = 1$" src="form_6.png" width="33" height="10"/>, we imply that all stresses are non-dimensionalised with the structure's dimensional Young's modulus <img class="formulaInl" alt="$ E^* $" src="form_0.png" width="15" height="10"/>. Similarly, by setting the half-thickness of the beam to 0.5, we imply that the beam's dimensional thickness, <img class="formulaInl" alt="$ 2H^*$" src="form_7.png" width="23" height="10"/> is used to non-dimensionalise all lengths.</p>
 <p>Next, we define a function that defines the constant pressure load on the upper face of the cantilever,</p>
 <div class="fragment"><div class="line"><span class="comment"> /// Uniform pressure</span></div>
 <div class="line"> <span class="keywordtype">double</span> P = 0.0;</div>
@@ -180,7 +180,7 @@ Global parameters and functions</h1>
 <div class="line">    traction[i] = -P*n[i];</div>
 <div class="line">   }</div>
 <div class="line"> } <span class="comment">// end traction</span></div>
-</div><!-- fragment --><p> and a gravitational body force, acting in the negative <picture><source srcset="form_8_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ x_2 $" src="form_8.png" width="13" height="9"/></picture> -direction,</p>
+</div><!-- fragment --><p> and a gravitational body force, acting in the negative <img class="formulaInl" alt="$ x_2 $" src="form_8.png" width="13" height="9"/> -direction,</p>
 <div class="fragment"><div class="line"><span class="comment"> /// Non-dim gravity</span></div>
 <div class="line"> <span class="keywordtype">double</span> Gravity=0.0;</div>
 <div class="line"><span class="comment"></span> </div>
@@ -710,7 +710,7 @@ Exercises</h2>
 <hr  />
 <h2><a class="anchor" id="com"></a>
 Comment: Customising an element's output function</h2>
-<p>In the driver code discussed above we used the "wrapper" class <code>MySolidElement</code> to customise the solid elements' output function so that each element outputs its shape and the three independent components of the second Piola Kirchhoff stress, <picture><source srcset="form_9_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \sigma_{11},  \sigma_{12} $" src="form_9.png" width="40" height="9"/></picture> and <picture><source srcset="form_10_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \sigma_{22}. $" src="form_10.png" width="20" height="9"/></picture></p>
+<p>In the driver code discussed above we used the "wrapper" class <code>MySolidElement</code> to customise the solid elements' output function so that each element outputs its shape and the three independent components of the second Piola Kirchhoff stress, <img class="formulaInl" alt="$ \sigma_{11},  \sigma_{12} $" src="form_9.png" width="40" height="9"/> and <img class="formulaInl" alt="$ \sigma_{22}. $" src="form_10.png" width="20" height="9"/></p>
 <p>Here is the implementation: The "wrapping" element inherits from the element type specified by the template parameter and calls its constructor (recall that element constructors are always argument-free!).</p>
  <div class="fragment"><div class="line"><span class="comment">//=================start_wrapper==================================</span></div>
 <div class="line"><span class="comment">/// Wrapper class for solid elements to modify their output </span><span class="comment"></span></div>
@@ -724,7 +724,7 @@ Comment: Customising an element's output function</h2>
 <div class="line"><span class="comment"></span> </div>
 <div class="line"><span class="comment"> /// Constructor: Call constructor of underlying element</span></div>
 <div class="line"><span class="comment"></span> MySolidElement() : ELEMENT() {};</div>
-</div><!-- fragment --><p> We then overload the (virtual) output function so that the element outputs its shape, i.e. the <picture><source srcset="form_11_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ x $" src="form_11.png" width="8" height="6"/></picture> and <picture><source srcset="form_12_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ y $" src="form_12.png" width="8" height="9"/></picture> coordinates of its plot points, and the three independent components of the second Piola Kirchhoff stress at those points. Other than that, the element behaves exactly as the underlying "wrapped" element.</p>
+</div><!-- fragment --><p> We then overload the (virtual) output function so that the element outputs its shape, i.e. the <img class="formulaInl" alt="$ x $" src="form_11.png" width="8" height="6"/> and <img class="formulaInl" alt="$ y $" src="form_12.png" width="8" height="9"/> coordinates of its plot points, and the three independent components of the second Piola Kirchhoff stress at those points. Other than that, the element behaves exactly as the underlying "wrapped" element.</p>
 <div class="fragment"><div class="line"><span class="comment"></span> </div>
 <div class="line"><span class="comment"> /// Overload output function:</span></div>
 <div class="line"><span class="comment"></span> <span class="keywordtype">void</span> output(std::ostream &amp;outfile, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp;n_plot)</div>
@@ -852,7 +852,7 @@ PDF file</h1>
     <footer>
       <div class="container">
         <div class="text-muted" style="float:right;">Generated by <a href="http://www.doxygen.org/index.html">
-          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Tue Jun 17 2025 05:51:17
+          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Tue Jun 17 2025 07:26:48
         </div>
       </div>
     </footer>

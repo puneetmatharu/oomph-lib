@@ -143,7 +143,7 @@ Visualisation of the mesh with showme. </div></div>
  <hr  />
 <h1><a class="anchor" id="results"></a>
 Results</h1>
-<p>The animation shown below illustrates the flow field (streamlines and pressure contours) for Reynolds numbers of <picture><source srcset="form_0_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ Re=0, 5, 10, ... $" src="form_0.png" width="84" height="13"/></picture> An increase in Reynolds number increases the length of the recirculation region behind the obstacle; furthermore, the sharp corner at the "leading edge" of the obstacle creates very low pressures just downstream of the corner.</p>
+<p>The animation shown below illustrates the flow field (streamlines and pressure contours) for Reynolds numbers of <img class="formulaInl" alt="$ Re=0, 5, 10, ... $" src="form_0.png" width="84" height="13"/> An increase in Reynolds number increases the length of the recirculation region behind the obstacle; furthermore, the sharp corner at the "leading edge" of the obstacle creates very low pressures just downstream of the corner.</p>
 <div class="image">
 <img src="stream.gif" alt=""/>
 <div class="caption">
@@ -551,11 +551,11 @@ Comments and Exercises</h1>
 What is the Reynolds number?</h2>
 <p>The problem considered here is a "toy"-problem, devised to illustrate the use of unstructured meshes in fluids problems. The specific non-dimensionalisation and parameter values are therefore of secondary importance. However, since <code>oomph-lib's</code> implementation of the Navier-Stokes equations is based on their non-dimensional form it is important to clarify the meaning of the Reynolds number in the present problem.</p>
 <p><a href="../../driven_cavity/html/index.html#equation">Recall</a> that the Reynolds number is defined as  </p><p class="formulaDsp">
-<picture><source srcset="form_1_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+<img class="formulaDsp" alt="\[
 Re = \frac{\rho {\cal U} {\cal L}}{\mu}
-\]" src="form_1.png" width="59" height="30"/></picture>
+\]" src="form_1.png" width="59" height="30"/>
 </p>
-<p> where <picture><source srcset="form_2_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \rho $" src="form_2.png" width="8" height="9"/></picture> and <picture><source srcset="form_3_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \mu $" src="form_3.png" width="9" height="9"/></picture> are the fluid density and viscosity, respectively. <picture><source srcset="form_4_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ {\cal L} $" src="form_4.png" width="10" height="10"/></picture> is the reference length chosen for the non-dimensionalisation of the coordinates. In the present problem, where the domain boundaries were simply drawn in <a href="http://en.wikipedia.org/wiki/Xfig">xfig </a>, no specific reference length was identified, but inspection of the maximum and minimum y-coordinates of the inflow boundary in the mesh plot shows that the inflow boundary has a (dimensional) length of <picture><source srcset="form_5_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ (4.0875 - 0.1125) {\cal L} = 3.975 {\cal L}. $" src="form_5.png" width="159" height="14"/></picture> In the non-dimensional version of the Navier-Stokes equations, all velocities are non-dimensionalised with a reference velocity <picture><source srcset="form_6_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ {\cal U} $" src="form_6.png" width="10" height="11"/></picture>. When we applied the inflow boundary conditions, we chose the (dimensionless) inflow profile such that its integral over the inflow boundary yields a value of 1. The velocity scale <picture><source srcset="form_6_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ {\cal U} $" src="form_6.png" width="10" height="11"/></picture> may therefore be interpreted as a (dimensional) average inflow velocity through the channel, <a class="el" href="classElasticTriangleMesh.html#a4c24e9abbde344d34e1e08fb3319d7b6" title="Constructor:">i.e</a>. the volume flux divided by the reference length scale.</p>
+<p> where <img class="formulaInl" alt="$ \rho $" src="form_2.png" width="8" height="9"/> and <img class="formulaInl" alt="$ \mu $" src="form_3.png" width="9" height="9"/> are the fluid density and viscosity, respectively. <img class="formulaInl" alt="$ {\cal L} $" src="form_4.png" width="10" height="10"/> is the reference length chosen for the non-dimensionalisation of the coordinates. In the present problem, where the domain boundaries were simply drawn in <a href="http://en.wikipedia.org/wiki/Xfig">xfig </a>, no specific reference length was identified, but inspection of the maximum and minimum y-coordinates of the inflow boundary in the mesh plot shows that the inflow boundary has a (dimensional) length of <img class="formulaInl" alt="$ (4.0875 - 0.1125) {\cal L} = 3.975 {\cal L}. $" src="form_5.png" width="159" height="14"/> In the non-dimensional version of the Navier-Stokes equations, all velocities are non-dimensionalised with a reference velocity <img class="formulaInl" alt="$ {\cal U} $" src="form_6.png" width="10" height="11"/>. When we applied the inflow boundary conditions, we chose the (dimensionless) inflow profile such that its integral over the inflow boundary yields a value of 1. The velocity scale <img class="formulaInl" alt="$ {\cal U} $" src="form_6.png" width="10" height="11"/> may therefore be interpreted as a (dimensional) average inflow velocity through the channel, <a class="el" href="classElasticTriangleMesh.html#a4c24e9abbde344d34e1e08fb3319d7b6" title="Constructor:">i.e</a>. the volume flux divided by the reference length scale.</p>
 <hr  />
 <h2><a class="anchor" id="bound2"></a>
 Identification/assignment of mesh boundaries</h2>
@@ -647,7 +647,7 @@ PDF file</h1>
     <footer>
       <div class="container">
         <div class="text-muted" style="float:right;">Generated by <a href="http://www.doxygen.org/index.html">
-          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Tue Jun 17 2025 05:46:32
+          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Tue Jun 17 2025 07:23:20
         </div>
       </div>
     </footer>

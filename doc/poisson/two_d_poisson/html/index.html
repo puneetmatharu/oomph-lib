@@ -110,44 +110,44 @@
 <div class="textblock"><p>In this document, we demonstrate how to solve a 2D Poisson problem using existing objects from the <code>oomph-lib</code> library: </p><center> <table class="doxtable">
 <tr>
 <td><center> <b>Two-dimensional model Poisson problem</b> </center> Solve  <p class="formulaDsp">
-<picture><source srcset="form_0_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+<img class="formulaDsp" alt="\[
 \sum_{i=1}^2 \frac{\partial^2u}{\partial x_i^2} = f(x_1,x_2),
  \ \ \ \ \ \ \ \ \ \ (1)
-\]" src="form_0.png" width="170" height="38"/></picture>
+\]" src="form_0.png" width="170" height="38"/>
 </p>
- in the rectangular domain <picture><source srcset="form_1_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$D =\left\{ (x_1,x_2) \in 
-[0,1] \times [0,2]\right\}$" src="form_1.png" width="160" height="14"/></picture>, with Dirichlet boundary conditions  <p class="formulaDsp">
-<picture><source srcset="form_2_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+ in the rectangular domain <img class="formulaInl" alt="$D =\left\{ (x_1,x_2) \in 
+[0,1] \times [0,2]\right\}$" src="form_1.png" width="160" height="14"/>, with Dirichlet boundary conditions  <p class="formulaDsp">
+<img class="formulaDsp" alt="\[
 \left. u\right|_{\partial D}=u_0 
 \ \ \ \ \ \ \ \ \ \ (2)
-\]" src="form_2.png" width="113" height="14"/></picture>
+\]" src="form_2.png" width="113" height="14"/>
 </p>
- where the function <picture><source srcset="form_3_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ u_0 $" src="form_3.png" width="14" height="9"/></picture> is given.   </td></tr>
+ where the function <img class="formulaInl" alt="$ u_0 $" src="form_3.png" width="14" height="9"/> is given.   </td></tr>
 </table>
 <br  />
  </center><p>We provide a detailed discussion of the driver code <a href="../../../../demo_drivers/poisson/two_d_poisson/two_d_poisson.cc">two_d_poisson.cc</a> which solves the problem for  </p><p class="formulaDsp">
-<picture><source srcset="form_4_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+<img class="formulaDsp" alt="\[
 u_0(x_1,x_2) = \tanh(1-\alpha(x_1 \tan\Phi - x_2)),
 \ \ \ \ \ \ \ \ \  (3)
-\]" src="form_4.png" width="274" height="14"/></picture>
+\]" src="form_4.png" width="274" height="14"/>
 </p>
 <p> and  </p><p class="formulaDsp">
-<picture><source srcset="form_5_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+<img class="formulaDsp" alt="\[
 f(x_1,x_2) = \sum_{i=1}^2 \frac{\partial^2 u_0}{\partial x_i^2},
 \ \ \ \ \ \ \ \ \  (4)
-\]" src="form_5.png" width="171" height="38"/></picture>
+\]" src="form_5.png" width="171" height="38"/>
 </p>
-<p> so that <picture><source srcset="form_6_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$u_0(x_1,x_2) $" src="form_6.png" width="54" height="14"/></picture> represents the exact solution of the problem. For large values of <picture><source srcset="form_7_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \alpha $" src="form_7.png" width="8" height="6"/></picture> the solution approaches a step function  </p><p class="formulaDsp">
-<picture><source srcset="form_8_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaDsp" alt="\[
+<p> so that <img class="formulaInl" alt="$u_0(x_1,x_2) $" src="form_6.png" width="54" height="14"/> represents the exact solution of the problem. For large values of <img class="formulaInl" alt="$ \alpha $" src="form_7.png" width="8" height="6"/> the solution approaches a step function  </p><p class="formulaDsp">
+<img class="formulaDsp" alt="\[
 u_{step}(x_1,x_2) = \left\{
 \begin{array}{rl}
 -1 &amp; \mbox {for $x_2 &lt; x_1 \ \tan\Phi$} \\
 1 &amp; \mbox {for $x_2 &gt; x_1 \ \tan\Phi$} 
 \end{array}
  \right.
-\]" src="form_8.png" width="224" height="31"/></picture>
+\]" src="form_8.png" width="224" height="31"/>
 </p>
-<p> which presents a serious challenge for any numerical method. The figure below compares the numerical and exact solutions for <picture><source srcset="form_9_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \alpha = 1 $" src="form_9.png" width="30" height="9"/></picture> and <picture><source srcset="form_10_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\Phi = 45^o$" src="form_10.png" width="43" height="10"/></picture>.</p>
+<p> which presents a serious challenge for any numerical method. The figure below compares the numerical and exact solutions for <img class="formulaInl" alt="$ \alpha = 1 $" src="form_9.png" width="30" height="9"/> and <img class="formulaInl" alt="$\Phi = 45^o$" src="form_10.png" width="43" height="10"/>.</p>
 <div class="image">
 <img src="two_d_poisson_soln.gif" alt=""/>
 <div class="caption">
@@ -157,7 +157,7 @@ Plot of the solution </div></div>
  </p><hr  />
 <h1><a class="anchor" id="global"></a>
 Global parameters and functions</h1>
-<p>Following our usual practice, we use a namespace, <code><a class="el" href="namespaceTanhSolnForPoisson.html" title="Namespace for exact solution for Poisson equation with &quot;sharp step&quot;.">TanhSolnForPoisson</a></code>, to define the source function (4) and the exact solution (3). Both functions permit arbitrary values of the tangent <picture><source srcset="form_11_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \tan \Phi $" src="form_11.png" width="30" height="10"/></picture> and the steepness parameter <picture><source srcset="form_7_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \alpha $" src="form_7.png" width="8" height="6"/></picture>, which are stored in <a class="el" href="namespaceTanhSolnForPoisson.html#a785ccd00a727125a5138fbbcac173294" title="Parameter for angle Phi of &quot;step&quot;.">TanhSolnForPoisson::TanPhi</a> and <a class="el" href="namespaceTanhSolnForPoisson.html#ae676ccd186d5df119cce811596d949c1" title="Parameter for steepness of &quot;step&quot;.">TanhSolnForPoisson::Alpha</a>, respectively, so that the "user" can set their values from the driver code.</p>
+<p>Following our usual practice, we use a namespace, <code><a class="el" href="namespaceTanhSolnForPoisson.html" title="Namespace for exact solution for Poisson equation with &quot;sharp step&quot;.">TanhSolnForPoisson</a></code>, to define the source function (4) and the exact solution (3). Both functions permit arbitrary values of the tangent <img class="formulaInl" alt="$ \tan \Phi $" src="form_11.png" width="30" height="10"/> and the steepness parameter <img class="formulaInl" alt="$ \alpha $" src="form_7.png" width="8" height="6"/>, which are stored in <a class="el" href="namespaceTanhSolnForPoisson.html#a785ccd00a727125a5138fbbcac173294" title="Parameter for angle Phi of &quot;step&quot;.">TanhSolnForPoisson::TanPhi</a> and <a class="el" href="namespaceTanhSolnForPoisson.html#ae676ccd186d5df119cce811596d949c1" title="Parameter for steepness of &quot;step&quot;.">TanhSolnForPoisson::Alpha</a>, respectively, so that the "user" can set their values from the driver code.</p>
  <div class="fragment"><div class="line"><span class="comment">//===== start_of_namespace=============================================</span></div>
 <div class="line"><span class="comment">/// Namespace for exact solution for Poisson equation with &quot;sharp step&quot; </span></div>
 <div class="line"><span class="comment">//=====================================================================</span></div>
@@ -197,7 +197,7 @@ Global parameters and functions</h1>
 The driver code</h1>
 <p>In order to solve the 2D Poisson problem using <code>oomph-lib</code>, we represent the mathematical problem defined by equations (1) and (2) in a specific <code>Problem</code> object, <code><a class="el" href="classPoissonProblem.html" title="2D Poisson problem on rectangular domain, discretised with 2D QPoisson elements. The specific type of...">PoissonProblem</a></code>. <code>oomph-lib</code> provides a variety of 2D Poisson elements (e.g. 2D quadrilateral elements with bi-linear, bi-quadratic and bi-cubic representations for the unknown function) and we pass the specific element type as a template parameter to the <code>Problem</code>. In the driver code, listed below, we use the <code>QPoissonElement&lt;2,3&gt;</code>, a nine-node (bi-quadratic) 2D Poisson element.</p>
 <p>The next few lines of the <code><a class="el" href="two__d__poisson_8cc.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="Driver code for 2D Poisson problem.">main()</a></code> function create a <code>DocInfo</code> object &ndash; an <code>oomph-lib</code> object that collates various items of data that can be used to label output files: Here we specify that the output files are to be written to the directory "RESLT", and that the first batch of output files should be labelled with the identifier "0". See the discussion of the postprocessing routine <code>doc_solution(...)</code> for details. [<b>Note:</b> While the ability to specify an output directory from the driver code is useful, it does rely on the "user" having created the directory before the code is executed. We could use the C++ <code>system(...)</code> function to issue a system command which creates the directory if it does not exist. Since this would make the code non-portable, we only issue a warning suggesting the likely cause of the problem if the output file cannot be opened. If you want to make absolutely sure that the output directory does exist and can be written to, you can change this forgiving behaviour with the function <code>DocInfo::directory_must_exist()</code>. This function provides access to a boolean flag which is set to <code>false</code> by default. If set to <code>true</code>, the code execution terminates with <code>assert(false)</code> if the directory specified with <code>DocInfo::set_directory(...)</code> cannot be written to.]</p>
-<p>Next we execute the <code>Problem::self_test()</code> function to check whether the <code>Problem</code> has been correctly initialised. If this test is passed, we proceed to the solution. We choose the angle of the "step" as 45 degrees (corresponding to <picture><source srcset="form_12_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \tan \Phi = 1 $" src="form_12.png" width="53" height="10"/></picture>) and then solve the problem for a number of values of the steepness parameter <picture><source srcset="form_13_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \alpha. $" src="form_13.png" width="10" height="6"/></picture> We document each solution with the post-processing routine <code>doc_solution(...)</code> which accesses the step number and the output directory via the <code>DocInfo</code> object.</p>
+<p>Next we execute the <code>Problem::self_test()</code> function to check whether the <code>Problem</code> has been correctly initialised. If this test is passed, we proceed to the solution. We choose the angle of the "step" as 45 degrees (corresponding to <img class="formulaInl" alt="$ \tan \Phi = 1 $" src="form_12.png" width="53" height="10"/>) and then solve the problem for a number of values of the steepness parameter <img class="formulaInl" alt="$ \alpha. $" src="form_13.png" width="10" height="6"/> We document each solution with the post-processing routine <code>doc_solution(...)</code> which accesses the step number and the output directory via the <code>DocInfo</code> object.</p>
  <div class="fragment"><div class="line"><span class="comment">//===== start_of_main=====================================================</span></div>
 <div class="line"><span class="comment">/// Driver code for 2D Poisson problem</span></div>
 <div class="line"><span class="comment">//========================================================================</span></div>
@@ -324,7 +324,7 @@ The problem class</h1>
  <hr  />
 <h1><a class="anchor" id="constructor"></a>
 The Problem constructor</h1>
-<p>In the <code>Problem</code> constructor, we start by discretising the rectangular domain, using <code>oomph-lib's</code> <code>SimpleRectangularQuadMesh</code> object. The arguments of this object's constructor are the number of elements (whose type is specified by the template parameter), and the domain lengths in the <picture><source srcset="form_14_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$x_1 $" src="form_14.png" width="13" height="9"/></picture> and <picture><source srcset="form_15_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$x_2 $" src="form_15.png" width="13" height="9"/></picture> directions, respectively.</p>
+<p>In the <code>Problem</code> constructor, we start by discretising the rectangular domain, using <code>oomph-lib's</code> <code>SimpleRectangularQuadMesh</code> object. The arguments of this object's constructor are the number of elements (whose type is specified by the template parameter), and the domain lengths in the <img class="formulaInl" alt="$x_1 $" src="form_14.png" width="13" height="9"/> and <img class="formulaInl" alt="$x_2 $" src="form_15.png" width="13" height="9"/> directions, respectively.</p>
 <p>The subsequent lines of code pin the nodal values along the entire domain boundary. In the <a href="../../../poisson/one_d_poisson/html/index.html">1D example</a> considered earlier, the identification of the nodes on the domain boundaries was trivial. In higher-dimensional problems, this task can become rather involved. <code>oomph-lib's</code> <code>Mesh</code> base class provides the helper function <code>Mesh::boundary_node_pt(...)</code> giving (pointer-based) access to nodes on specified mesh boundaries. [The total number of boundaries can be obtained from <code>Mesh::nboundary()</code>, while the number of nodes on a specific boundary is available from <code>Mesh::nboundary_node(...)</code>.] The nested loops over the mesh boundaries and the nodes on these boundaries therefore provide a convenient and completely generic method of accessing all boundary nodes.</p>
 <p>Finally we loop over all elements to assign the source function pointer, and then call the generic <code>Problem::assign_eqn_numbers()</code> routine to set up the equation numbers.</p>
 <div class="fragment"><div class="line"><span class="comment">//=====start_of_constructor===============================================</span></div>
@@ -390,7 +390,7 @@ The Problem constructor</h1>
  <hr  />
 <h1><a class="anchor" id="actions_before"></a>
 "Actions before solve"</h1>
-<p>We use <code>Problem::actions_before_newton_solve()</code> to update the boundary conditions in response to possible changes in the problem parameters. We use the exact solution, specified in <code>TanhSolnForPoisson::get_exact_u(...)</code>, to determine the boundary values that are appropriate for the current values of <picture><source srcset="form_7_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \alpha $" src="form_7.png" width="8" height="6"/></picture> and <picture><source srcset="form_11_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \tan \Phi $" src="form_11.png" width="30" height="10"/></picture>.</p>
+<p>We use <code>Problem::actions_before_newton_solve()</code> to update the boundary conditions in response to possible changes in the problem parameters. We use the exact solution, specified in <code>TanhSolnForPoisson::get_exact_u(...)</code>, to determine the boundary values that are appropriate for the current values of <img class="formulaInl" alt="$ \alpha $" src="form_7.png" width="8" height="6"/> and <img class="formulaInl" alt="$ \tan \Phi $" src="form_11.png" width="30" height="10"/>.</p>
 <div class="fragment"><div class="line"><span class="comment">//========================================start_of_actions_before_newton_solve===</span></div>
 <div class="line"><span class="comment">/// Update the problem specs before solve: (Re-)set boundary conditions</span><span class="comment"></span></div>
 <div class="line"><span class="comment">/// to the values from the exact solution.</span></div>
@@ -490,7 +490,7 @@ Comments and exercises</h1>
 <img src="alpha.gif" alt=""/>
 <div class="caption">
 Plot of the solution for different values of the steepness parameter </div></div>
-  How many elements are required to resolve the solution with <picture><source srcset="form_16_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \alpha = 10 $" src="form_16.png" width="36" height="9"/></picture> as accurately as in the case of <picture><source srcset="form_17_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ \alpha = 1$" src="form_17.png" width="30" height="9"/></picture>? [<b>Note:</b> Since the solution has steep gradients only in a very narrow region, uniform mesh refinement is an extremely wasteful method of improving the accuracy of the computed solution. <code>oomph-lib</code> provides powerful mesh adaptation routines which perform fully-automatic mesh refinement and unrefinement, based on a posteriori error estimates of the solution. We will demonstrate these in <a href="../../../poisson/fish_poisson/html/index.html">another example.</a>]</li>
+  How many elements are required to resolve the solution with <img class="formulaInl" alt="$ \alpha = 10 $" src="form_16.png" width="36" height="9"/> as accurately as in the case of <img class="formulaInl" alt="$ \alpha = 1$" src="form_17.png" width="30" height="9"/>? [<b>Note:</b> Since the solution has steep gradients only in a very narrow region, uniform mesh refinement is an extremely wasteful method of improving the accuracy of the computed solution. <code>oomph-lib</code> provides powerful mesh adaptation routines which perform fully-automatic mesh refinement and unrefinement, based on a posteriori error estimates of the solution. We will demonstrate these in <a href="../../../poisson/fish_poisson/html/index.html">another example.</a>]</li>
 <li>Repeat the numerical experiments with different element types. Replace the nine-node Poisson element, <code>QPoissonElement&lt;2,3&gt;</code>, by its lower- and higher-order counterparts <code>QPoissonElement&lt;2,2&gt;</code> and <code>QPoissonElement&lt;2,4&gt;</code>, respectively. Compare the total number of degrees of freedom, the errors, and the run-times for the different discretisations.</li>
 </ol>
 <h2><a class="anchor" id="precompile_mesh"></a>
@@ -629,7 +629,7 @@ PDF file</h1>
     <footer>
       <div class="container">
         <div class="text-muted" style="float:right;">Generated by <a href="http://www.doxygen.org/index.html">
-          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Tue Jun 17 2025 05:48:37
+          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Tue Jun 17 2025 07:25:13
         </div>
       </div>
     </footer>
