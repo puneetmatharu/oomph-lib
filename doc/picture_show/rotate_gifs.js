@@ -372,11 +372,6 @@ var figures = [
 {
 "title": " Example problem: Spatially and temporally adaptive solution of the 2D unsteady heat equation with flux boundary conditions in a moving domain.",
 "link": "../unsteady_heat/two_d_unsteady_heat_2adapt/figures/../html/index.html ",
-"gif": "../unsteady_heat/two_d_unsteady_heat_2adapt/figures/domain.gif"
-},
-{
-"title": " Example problem: Spatially and temporally adaptive solution of the 2D unsteady heat equation with flux boundary conditions in a moving domain.",
-"link": "../unsteady_heat/two_d_unsteady_heat_2adapt/figures/../html/index.html ",
 "gif": "../unsteady_heat/two_d_unsteady_heat_2adapt/figures/trace_target1e-3.gif"
 },
 {
