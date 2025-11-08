@@ -171,7 +171,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:adc29c3a91cc31401c7ba5922a600284c" id="r_adc29c3a91cc31401c7ba5922a600284c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1SpineNode.html">SpineNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SpineMesh.html#adc29c3a91cc31401c7ba5922a600284c">element_node_pt</a> (<a class="el" href="classoomph_1_1TAdvectionDiffusionReactionElement.html">const</a> <a class="el" href="classoomph_1_1TAdvectionDiffusionReactionElement.html">unsigned</a> <a class="el" href="classoomph_1_1TAdvectionDiffusionReactionElement.html">long</a> &amp;<a class="el" href="cfortran_8h.html#a37cd013acc76697829c324bdd8562d82">e</a>, <a class="el" href="classoomph_1_1TAdvectionDiffusionReactionElement.html">const</a> <a class="el" href="classoomph_1_1TAdvectionDiffusionReactionElement.html">unsigned</a> &amp;<a class="el" href="classoomph_1_1TAdvectionDiffusionReactionElement.html">n</a>)</td></tr>
 <tr class="memdesc:adc29c3a91cc31401c7ba5922a600284c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the n-th local <a class="el" href="classoomph_1_1SpineNode.html" title="Class for nodes that live on spines. The assumption is that each Node lies at a fixed fraction on a s...">SpineNode</a> in element e. This is required to cast the nodes in a spine mesh to be SpineNodes and therefore allow access to the extra <a class="el" href="classoomph_1_1SpineNode.html" title="Class for nodes that live on spines. The assumption is that each Node lies at a fixed fraction on a s...">SpineNode</a> data.  <br /></td></tr>
 <tr class="separator:adc29c3a91cc31401c7ba5922a600284c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad969000be2d963bb4427bbde89ac47c2" id="r_ad969000be2d963bb4427bbde89ac47c2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1TAdvectionDiffusionReactionElement.html">unsigned</a> <a class="el" href="classoomph_1_1TAdvectionDiffusionReactionElement.html">long</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SpineMesh.html#ad969000be2d963bb4427bbde89ac47c2">assign_global_spine_eqn_numbers</a> (<a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; <a class="el" href="classoomph_1_1TAdvectionDiffusionReactionElement.html">double</a> * &gt; &amp;Dof_pt)</td></tr>
+<tr class="memitem:ad969000be2d963bb4427bbde89ac47c2" id="r_ad969000be2d963bb4427bbde89ac47c2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1TAdvectionDiffusionReactionElement.html">virtual</a> <a class="el" href="classoomph_1_1TAdvectionDiffusionReactionElement.html">unsigned</a> <a class="el" href="classoomph_1_1TAdvectionDiffusionReactionElement.html">long</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SpineMesh.html#ad969000be2d963bb4427bbde89ac47c2">assign_global_spine_eqn_numbers</a> (<a class="el" href="classoomph_1_1Vector.html">Vector</a>&lt; <a class="el" href="classoomph_1_1TAdvectionDiffusionReactionElement.html">double</a> * &gt; &amp;Dof_pt)</td></tr>
 <tr class="memdesc:ad969000be2d963bb4427bbde89ac47c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assign spines to Spine_pt vector of element.  <br /></td></tr>
 <tr class="separator:ad969000be2d963bb4427bbde89ac47c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94766043ec96db8388476b62556bad16" id="r_a94766043ec96db8388476b62556bad16"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classoomph_1_1TAdvectionDiffusionReactionElement.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoomph_1_1SpineMesh.html#a94766043ec96db8388476b62556bad16">describe_spine_dofs</a> (std::ostream &amp;<a class="el" href="classoomph_1_1TAdvectionDiffusionReactionElement.html">out</a>, <a class="el" href="classoomph_1_1TAdvectionDiffusionReactionElement.html">const</a> std::string &amp;<a class="el" href="classoomph_1_1TAdvectionDiffusionReactionElement.html">current_string</a>) <a class="el" href="classoomph_1_1TAdvectionDiffusionReactionElement.html">const</a></td></tr>
@@ -892,6 +892,9 @@ Additional Inherited Members</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classoomph_1_1TAdvectionDiffusionReactionElement.html">unsigned</a> <a class="el" href="classoomph_1_1TAdvectionDiffusionReactionElement.html">long</a> oomph::SpineMesh::assign_global_spine_eqn_numbers </td>
@@ -901,6 +904,11 @@ Additional Inherited Members</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Assign spines to Spine_pt vector of element. </p>
@@ -1243,7 +1251,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classoomph_1_1Mesh.html#a52c30b4ebc67038e137a5de1c5d422e5">oomph::Mesh</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="spines_8h_source.html#l00721">721</a> of file <a class="el" href="spines_8h_source.html">spines.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="spines_8h_source.html#l00722">722</a> of file <a class="el" href="spines_8h_source.html">spines.h</a>.</p>
 
 <p class="reference">References <a class="el" href="spines_8cc_source.html#l00171">set_spine_time_stepper()</a>.</p>
 
@@ -1282,7 +1290,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="cfortran_8h_source.html#l00603">i</a>, <a class="el" href="spines_8h_source.html#l00635">nspine()</a>, and <a class="el" href="spines_8h_source.html#l00616">Spine_pt</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="spines_8h_source.html#l00721">set_mesh_level_time_stepper()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="spines_8h_source.html#l00722">set_mesh_level_time_stepper()</a>.</p>
 
 </div>
 </div>
@@ -1445,7 +1453,7 @@ Additional Inherited Members</h2></td></tr>
     <footer>
       <div class="container">
         <div class="text-muted" style="float:right;">Generated by <a href="http://www.doxygen.org/index.html">
-          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Tue Jun 17 2025 15:12:45
+          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Sat Nov 8 2025 19:17:59
         </div>
       </div>
     </footer>

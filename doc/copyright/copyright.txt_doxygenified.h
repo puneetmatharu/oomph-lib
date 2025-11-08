@@ -52,13 +52,15 @@ These are:
 <li><a href="https://github.com/OpenMathLib/OpenBLAS">OpenBLAS</a></li>
 <li><a href="https://github.com/boostorg/boost">Boost</a></li>
 <li><a href="https://github.com/CGAL/cgal/">CGAL</a></li>
+<li><a href="https://github.com/hypre-space/hypre/">HYPRE</a></li>
+<li><a href="https://mumps-solver.org/index.php">MUMPS</a> (built via
+a fork of the <a href="https://github.com/scivision/mumps">Scivision
+MUMPS via CMake</a> project)
 <li><a href="https://github.com/KarypisLab/GKlib">GKlib</a></li>
 <li><a href="https://github.com/KarypisLab/METIS">METIS</A>
 <li><a href="https://github.com/KarypisLab/ParMETIS">ParMETIS</a></li>
 <li><a href="https://github.com/xiaoyeli/superlu">SuperLU</a></li>
-<li><a href="https://github.com/xiaoyeli/superlu_dist">SuperLU_DIST</a></li>
-<li><a href="https://github.com/puneetmatharu/mumps/">MUMPS</a></li>
-<li><a href="https://github.com/hypre-space/hypre/">HYPRE</a></li>
+<li><a href="https://github.com/xiaoyeli/superlu_dist">SuperLU_dist</a></li>
 <li><a href="https://github.com/trilinos/Trilinos/">Trilinos</a></li>
 </ul>
 
