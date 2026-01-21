@@ -35,7 +35,7 @@ namespace oomph
   /// centre of the cylinder and its radius. Timestepper defaults to Steady
   /// default timestepper.
   //=============================================================
-  CylinderWithFlagMesh::CylinderWithFlagMesh(
+  CylinderWithFlagTFMesh::CylinderWithFlagTFMesh(
     std::unique_ptr<ElementFactoryBase> element_factory_pt,
     Circle* cylinder_pt,
     GeomObject* top_flag_pt,
@@ -874,7 +874,7 @@ namespace oomph
   //=================================================================
   /// Setup algebraic node update
   //=================================================================
-  void AlgebraicCylinderWithFlagMesh::setup_algebraic_node_update()
+  void AlgebraicCylinderWithFlagTFMesh::setup_algebraic_node_update()
   {
     // The update function requires six parameters in some cases:
     Vector<double> ref_value(6);
@@ -1297,7 +1297,7 @@ namespace oomph
   //=================================================================
   /// The algebraic node update function
   //=================================================================
-  void AlgebraicCylinderWithFlagMesh::algebraic_node_update(
+  void AlgebraicCylinderWithFlagTFMesh::algebraic_node_update(
     const unsigned& t, AlgebraicNode*& node_pt)
   {
     unsigned id = node_pt->node_update_fct_id();
@@ -1353,8 +1353,8 @@ namespace oomph
   //=================================================================
   /// Node update for region I
   //=================================================================
-  void AlgebraicCylinderWithFlagMesh::node_update_I(const unsigned& t,
-                                                    AlgebraicNode*& node_pt)
+  void AlgebraicCylinderWithFlagTFMesh::node_update_I(const unsigned& t,
+                                                      AlgebraicNode*& node_pt)
   {
     // Extract reference values for update by copy construction
     Vector<double> ref_value(node_pt->vector_ref_value());
@@ -1390,8 +1390,8 @@ namespace oomph
   //=================================================================
   /// Node update for region II
   //=================================================================
-  void AlgebraicCylinderWithFlagMesh::node_update_II(const unsigned& t,
-                                                     AlgebraicNode*& node_pt)
+  void AlgebraicCylinderWithFlagTFMesh::node_update_II(const unsigned& t,
+                                                       AlgebraicNode*& node_pt)
   {
     // Extract reference values for update by copy construction
     Vector<double> ref_value(node_pt->vector_ref_value());
@@ -1425,8 +1425,8 @@ namespace oomph
   //=================================================================
   /// Node update for region III
   //=================================================================
-  void AlgebraicCylinderWithFlagMesh::node_update_III(const unsigned& t,
-                                                      AlgebraicNode*& node_pt)
+  void AlgebraicCylinderWithFlagTFMesh::node_update_III(const unsigned& t,
+                                                        AlgebraicNode*& node_pt)
   {
     // useful points
     Vector<double> p15(2);
@@ -1470,8 +1470,8 @@ namespace oomph
   //=================================================================
   /// Node update for region IV
   //=================================================================
-  void AlgebraicCylinderWithFlagMesh::node_update_IV(const unsigned& t,
-                                                     AlgebraicNode*& node_pt)
+  void AlgebraicCylinderWithFlagTFMesh::node_update_IV(const unsigned& t,
+                                                       AlgebraicNode*& node_pt)
   {
     // Useful points
     Vector<double> p15(2);
@@ -1517,8 +1517,8 @@ namespace oomph
   //=================================================================
   /// Node update for region V
   //=================================================================
-  void AlgebraicCylinderWithFlagMesh::node_update_V(const unsigned& t,
-                                                    AlgebraicNode*& node_pt)
+  void AlgebraicCylinderWithFlagTFMesh::node_update_V(const unsigned& t,
+                                                      AlgebraicNode*& node_pt)
   {
     // Useful points
     Vector<double> p31(2);
@@ -1565,8 +1565,8 @@ namespace oomph
   //=================================================================
   /// Node update for region VI
   //=================================================================
-  void AlgebraicCylinderWithFlagMesh::node_update_VI(const unsigned& t,
-                                                     AlgebraicNode*& node_pt)
+  void AlgebraicCylinderWithFlagTFMesh::node_update_VI(const unsigned& t,
+                                                       AlgebraicNode*& node_pt)
   {
     // Extract reference values for update by copy construction
     Vector<double> ref_value(node_pt->vector_ref_value());
@@ -1605,8 +1605,8 @@ namespace oomph
   //=================================================================
   /// Node update for region VII
   //=================================================================
-  void AlgebraicCylinderWithFlagMesh::node_update_VII(const unsigned& t,
-                                                      AlgebraicNode*& node_pt)
+  void AlgebraicCylinderWithFlagTFMesh::node_update_VII(const unsigned& t,
+                                                        AlgebraicNode*& node_pt)
   {
     // Extract reference values for update by copy construction
     Vector<double> ref_value(node_pt->vector_ref_value());
@@ -1647,8 +1647,8 @@ namespace oomph
   //=================================================================
   /// Node update for region VIII
   //=================================================================
-  void AlgebraicCylinderWithFlagMesh::node_update_VIII(const unsigned& t,
-                                                       AlgebraicNode*& node_pt)
+  void AlgebraicCylinderWithFlagTFMesh::node_update_VIII(
+    const unsigned& t, AlgebraicNode*& node_pt)
   {
     // Useful point
     Vector<double> p11(2);
@@ -1732,8 +1732,8 @@ namespace oomph
   //=================================================================
   /// Node update for region IX
   //=================================================================
-  void AlgebraicCylinderWithFlagMesh::node_update_IX(const unsigned& t,
-                                                     AlgebraicNode*& node_pt)
+  void AlgebraicCylinderWithFlagTFMesh::node_update_IX(const unsigned& t,
+                                                       AlgebraicNode*& node_pt)
   {
     // Useful point
     Vector<double> p37(2);
@@ -1820,7 +1820,7 @@ namespace oomph
   //===================================================================
   ///  Update the node update functions
   //===================================================================
-  void RefineableAlgebraicCylinderWithFlagMesh::update_node_update(
+  void RefineableAlgebraicCylinderWithFlagTFMesh::update_node_update(
     AlgebraicNode*& node_pt)
   {
     // Extract ID

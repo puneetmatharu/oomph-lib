@@ -32,7 +32,7 @@ namespace oomph
   //======================================================================
   /// Adapt problem based on specified elemental error estimates
   //======================================================================
-  void RefineableGmshTetMesh::adapt(const Vector<double>& elem_error)
+  void RefineableGmshTetTFMesh::adapt(const Vector<double>& elem_error)
   {
     double t_start = 0.0;
 
@@ -83,7 +83,7 @@ namespace oomph
       }
 
       // Are we dealing with a solid mesh?
-      SolidMesh* solid_mesh_pt = dynamic_cast<SolidMesh*>(this);
+      SolidTFMesh* solid_mesh_pt = dynamic_cast<SolidTFMesh*>(this);
 
       // If the mesh is a solid mesh then do the mapping based on the
       // Eulerian coordinates
@@ -279,10 +279,10 @@ namespace oomph
 
       // Build new mesh, reading area information from file
       bool use_mesh_grading_from_file = true;
-      RefineableGmshTetMesh* new_mesh_pt =
-        new RefineableGmshTetMesh(this->Gmsh_parameters_pt,
-                                  use_mesh_grading_from_file,
-                                  this->Time_stepper_pt);
+      RefineableGmshTetTFMesh* new_mesh_pt =
+        new RefineableGmshTetTFMesh(this->Gmsh_parameters_pt,
+                                    use_mesh_grading_from_file,
+                                    this->Time_stepper_pt);
 
       /* // keep around for debugging */
       /* unsigned nplot=5; */
@@ -455,7 +455,7 @@ namespace oomph
                         OOMPH_EXCEPTION_LOCATION);
 
         // Reset Lagrangian coordinates
-        dynamic_cast<SolidMesh*>(this)->set_lagrangian_nodal_coordinates();
+        dynamic_cast<SolidTFMesh*>(this)->set_lagrangian_nodal_coordinates();
       }
 
       double max_area;

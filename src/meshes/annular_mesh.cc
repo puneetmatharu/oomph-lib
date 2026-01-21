@@ -31,7 +31,7 @@ namespace oomph
   //==================================================================
   /// Helper function to Wrap mesh into annular shape
   //==================================================================
-  void TwoDAnnularMesh::wrap_into_annular_shape(
+  void TwoDAnnularTFMesh::wrap_into_annular_shape(
     const double& a,
     const double& h,
     const double& azimuthal_fraction,

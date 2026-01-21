@@ -32,7 +32,7 @@ namespace oomph
   /// Constructor: Pass pointer to timestepper.
   /// (defaults to (Steady) default timestepper defined in Mesh)
   //=================================================================
-  FishMesh::FishMesh(TimeStepper* time_stepper_pt)
+  FishTFMesh::FishTFMesh(TimeStepper* time_stepper_pt)
   {
     // Mesh can only be built with 2D Qelements.
     MeshChecker::assert_geometric_element<QElementGeometricBase>(
@@ -56,7 +56,7 @@ namespace oomph
   /// the fish's back and pointer to timestepper.
   /// (defaults to (Steady) default timestepper defined in Mesh)
   //=================================================================
-  FishMesh::FishMesh(GeomObject* back_pt, TimeStepper* time_stepper_pt)
+  FishTFMesh::FishTFMesh(GeomObject* back_pt, TimeStepper* time_stepper_pt)
     : Back_pt(back_pt)
   {
     // Mesh can only be built with 2D Qelements.
@@ -74,14 +74,14 @@ namespace oomph
   /// Build the mesh, using the geometric object that
   /// defines the fish's back.
   //=================================================================
-  void FishMesh::build_mesh(TimeStepper* time_stepper_pt)
+  void FishTFMesh::build_mesh(TimeStepper* time_stepper_pt)
   {
     // Mesh can only be built with 2D Qelements.
     MeshChecker::assert_geometric_element<QElementGeometricBase>(
       element_factory_pt, 2);
 
     // Build domain: Pass the pointer to the geometric object that
-    // represents the fish's back (pointed to by the FishMesh's
+    // represents the fish's back (pointed to by the FishTFMesh's
     // private data member, Back_pt, and the values of the
     // Lagrangian coordinate along this object at the "tail"
     // and the "nose":
@@ -633,7 +633,7 @@ namespace oomph
   ///  Setup all the information that's required for spatial adaptivity:
   /// Build quadtree forest.
   //========================================================================
-  void RefineableFishMesh::setup_adaptivity()
+  void RefineableFishTFMesh::setup_adaptivity()
   {
     // Setup quadtree forest
     this->setup_quadtree_forest();
@@ -652,7 +652,7 @@ namespace oomph
   /// from the fish's back and the upper edge of the fin. Nodes
   /// in the lower half are placed symmetrically.
   //======================================================================
-  void AlgebraicFishMesh::setup_algebraic_node_update()
+  void AlgebraicFishTFMesh::setup_algebraic_node_update()
   {
 #ifdef PARANOID
     /// Pointer to algebraic element in lower body
@@ -662,7 +662,7 @@ namespace oomph
     if (lower_body_pt == 0)
     {
       std::ostringstream error_message;
-      error_message << "Element in AlgebraicFishMesh must be\n"
+      error_message << "Element in AlgebraicFishTFMesh must be\n"
                     << "derived from AlgebraicElementBase\n"
                     << "but it is of type: "
                     << typeid(Mesh::element_pt(0)).name() << std::endl;
@@ -856,8 +856,8 @@ namespace oomph
   /// Algebraic update function: Update in (upper or lower) body
   /// according to wall shape at time level t (t=0: present; t>0: previous)
   //======================================================================
-  void AlgebraicFishMesh::node_update_in_body(const unsigned& t,
-                                              AlgebraicNode*& node_pt)
+  void AlgebraicFishTFMesh::node_update_in_body(const unsigned& t,
+                                                AlgebraicNode*& node_pt)
   {
     // Pointer to geometric object that represents the fish back:
     GeomObject* back_pt = node_pt->geom_object_pt(unsigned(0));
@@ -910,8 +910,8 @@ namespace oomph
   /// Algebraic update function: Update in (upper or lower) fin
   /// according to wall shape at time level t (t=0: present; t>0: previous)
   //======================================================================
-  void AlgebraicFishMesh::node_update_in_fin(const unsigned& t,
-                                             AlgebraicNode*& node_pt)
+  void AlgebraicFishTFMesh::node_update_in_fin(const unsigned& t,
+                                               AlgebraicNode*& node_pt)
   {
     // Pointer to geometric object that represents the fish back:
     GeomObject* back_pt = node_pt->geom_object_pt(unsigned(0));

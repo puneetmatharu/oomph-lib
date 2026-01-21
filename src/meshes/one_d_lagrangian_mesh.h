@@ -42,7 +42,7 @@ namespace oomph
   /// 1D mesh parametrised in terms of a 1D Lagrangian coordinate.
   /// The Eulerian positions of the nodes are determined by the GeomObject.
   //=======================================================================
-  class OneDLagrangianMesh : public OneDMesh, public SolidMesh
+  class OneDLagrangianTFMesh : public OneDTFMesh, public SolidTFMesh
   {
   private:
     /// Undeformed Eulerian shape
@@ -59,7 +59,7 @@ namespace oomph
     /// pointer to GeomObject that defines the undeformed Eulerian position,
     /// and the timestepper -- defaults to (Steady) default timestepper defined
     /// in the Mesh base class
-    OneDLagrangianMesh(
+    OneDLagrangianTFMesh(
       const unsigned& n_element,
       const double& length,
       GeomObject* undef_eulerian_posn_pt,
@@ -69,7 +69,7 @@ namespace oomph
     /// pointer to GeomObject that defines the undeformed Eulerian position,
     /// and the timestepper -- defaults to (Steady) default timestepper defined
     /// in the Mesh base class
-    OneDLagrangianMesh(
+    OneDLagrangianTFMesh(
       const unsigned& n_element,
       const double& xmin,
       const double& xmax,
@@ -79,5 +79,4 @@ namespace oomph
 
 } // namespace oomph
 
-#include "one_d_lagrangian_mesh.template.cc"
 #endif

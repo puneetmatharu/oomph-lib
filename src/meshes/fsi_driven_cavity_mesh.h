@@ -46,7 +46,7 @@ namespace oomph
 {
   //========================================================================
   /// Mesh for W. Wall's FSI driven cavity problem.
-  /// The mesh is derived from the \c SimpleRectangularQuadMesh
+  /// The mesh is derived from the \c SimpleRectangularQuadTFMesh
   /// so it's node and element numbering scheme is the same
   /// as in that mesh. Only the boundaries are numbered differently
   /// to allow the easy identification of the "collapsible" segment.
@@ -61,14 +61,14 @@ namespace oomph
   /// - Boundary 4 is the rigid part of the left wall
   /// - Boundary 5 is the gap above the moving lid on the left wall
   //========================================================================
-  class FSIDrivenCavityMesh : public SimpleRectangularQuadMesh
+  class FSIDrivenCavityTFMesh : public SimpleRectangularQuadTFMesh
   {
   public:
     /// Constructor: Pass number of elements, number of elements,
     /// fractional height of the gap above the moving wall,
     /// pointer to GeomObject that defines the collapsible segment and pointer
     /// to TimeStepper (defaults to the default timestepper, Steady).
-    FSIDrivenCavityMesh(
+    FSIDrivenCavityTFMesh(
       const unsigned& nx,
       const unsigned& ny,
       const double& lx,
@@ -98,8 +98,8 @@ namespace oomph
   /////////////////////////////////////////////////////////////////////
 
   //===================================================================
-  /// Refineable version of FSIDrivenCavityMesh.
-  /// The mesh is derived from the \c SimpleRectangularQuadMesh
+  /// Refineable version of FSIDrivenCavityTFMesh.
+  /// The mesh is derived from the \c SimpleRectangularQuadTFMesh
   /// so it's node and element numbering scheme is the same
   /// as in that mesh. Only the boundaries are numbered differently
   /// to allow the easy identification of the "collapsible" segment.
@@ -114,13 +114,13 @@ namespace oomph
   /// - Boundary 4 is the rigid part of the left wall
   /// - Boundary 5 is the gap above the moving lid on the left wall
   //====================================================================
-  class RefineableFSIDrivenCavityMesh : public virtual FSIDrivenCavityMesh,
-                                        public RefineableQuadMesh
+  class RefineableFSIDrivenCavityTFMesh : public virtual FSIDrivenCavityTFMesh,
+                                          public RefineableQuadTFMesh
   {
   public:
     /// Constructor: Pass number of elements, lengths, pointer to
     /// geometric object that describes the wall and timestepper
-    RefineableFSIDrivenCavityMesh(
+    RefineableFSIDrivenCavityTFMesh(
       const unsigned& nx,
       const unsigned& ny,
       const double& lx,
@@ -128,7 +128,7 @@ namespace oomph
       const double& gap_fraction,
       GeomObject* wall_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : FSIDrivenCavityMesh(
+      : FSIDrivenCavityTFMesh(
           nx, ny, lx, ly, gap_fraction, wall_pt, time_stepper_pt)
     {
       // Build quadtree forest
@@ -136,11 +136,11 @@ namespace oomph
     }
 
     /// Destructor(empty)
-    ~RefineableFSIDrivenCavityMesh() {}
+    ~RefineableFSIDrivenCavityTFMesh() {}
   };
 
   //=================================================================
-  /// / Alebraic node update version of FSIDrivenCavityMesh
+  /// / Alebraic node update version of FSIDrivenCavityTFMesh
   /// - Boundary 0 is the moving lid.
   /// - Boundary 1 is the gap above the moving lid on the right wall
   /// - Boundary 2 is the rigid part of the right wall
@@ -148,14 +148,14 @@ namespace oomph
   /// - Boundary 4 is the rigid part of the left wall
   /// - Boundary 5 is the gap above the moving lid on the left wall
   //=================================================================
-  class AlgebraicFSIDrivenCavityMesh : public virtual FSIDrivenCavityMesh,
-                                       public AlgebraicMesh
+  class AlgebraicFSIDrivenCavityTFMesh : public virtual FSIDrivenCavityTFMesh,
+                                         public AlgebraicTFMesh
   {
   public:
     /// Constructor: Pass number of elements, lengths, pointer to
     /// GeomObject that defines the collapsible segment and pointer to
     /// TimeStepper (defaults to the default timestepper, Steady).
-    AlgebraicFSIDrivenCavityMesh(
+    AlgebraicFSIDrivenCavityTFMesh(
       const unsigned& nx,
       const unsigned& ny,
       const double& lx,
@@ -163,18 +163,19 @@ namespace oomph
       const double& gap_fraction,
       GeomObject* wall_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : FSIDrivenCavityMesh(
+      : FSIDrivenCavityTFMesh(
           nx, ny, lx, ly, gap_fraction, wall_pt, time_stepper_pt)
     {
-      // Add the geometric object to the list associated with this AlgebraicMesh
-      AlgebraicMesh::add_geom_object_list_pt(wall_pt);
+      // Add the geometric object to the list associated with this
+      // AlgebraicTFMesh
+      AlgebraicTFMesh::add_geom_object_list_pt(wall_pt);
 
       // Setup algebraic node update operations
       setup_algebraic_node_update();
     }
 
     /// Destructor: empty
-    virtual ~AlgebraicFSIDrivenCavityMesh() {}
+    virtual ~AlgebraicFSIDrivenCavityTFMesh() {}
 
     /// Update nodal position at time level t (t=0: present;
     /// t>0: previous)
@@ -196,7 +197,7 @@ namespace oomph
   ///////////////////////////////////////////////////////////////////////////
 
   //=================================================================
-  /// Refineable version algebraic FSIDrivenCavityMesh.
+  /// Refineable version algebraic FSIDrivenCavityTFMesh.
   /// - Boundary 0 is the moving lid.
   /// - Boundary 1 is the gap above the moving lid on the right wall
   /// - Boundary 2 is the rigid part of the right wall
@@ -204,15 +205,15 @@ namespace oomph
   /// - Boundary 4 is the rigid part of the left wall
   /// - Boundary 5 is the gap above the moving lid on the left wall
   //=================================================================
-  class RefineableAlgebraicFSIDrivenCavityMesh
-    : public RefineableQuadMesh,
-      public virtual AlgebraicFSIDrivenCavityMesh
+  class RefineableAlgebraicFSIDrivenCavityTFMesh
+    : public RefineableQuadTFMesh,
+      public virtual AlgebraicFSIDrivenCavityTFMesh
   {
   public:
     /// Constructor: Pass number of elements, lengths, pointer to
     /// GeomObject that defines the collapsible segment and pointer to
     /// TimeStepper (defaults to the default timestepper, Steady).
-    RefineableAlgebraicFSIDrivenCavityMesh(
+    RefineableAlgebraicFSIDrivenCavityTFMesh(
       const unsigned& nx,
       const unsigned& ny,
       const double& lx,
@@ -220,9 +221,9 @@ namespace oomph
       const double& gap_fraction,
       GeomObject* wall_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : FSIDrivenCavityMesh(
+      : FSIDrivenCavityTFMesh(
           nx, ny, lx, ly, gap_fraction, wall_pt, time_stepper_pt),
-        AlgebraicFSIDrivenCavityMesh(
+        AlgebraicFSIDrivenCavityTFMesh(
           nx, ny, lx, ly, gap_fraction, wall_pt, time_stepper_pt)
     {
       // Build quadtree forest

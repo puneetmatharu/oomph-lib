@@ -55,13 +55,13 @@ namespace oomph
   ///
   /// Timestepper defaults to Steady.
   //=======================================================================
-  class SimpleRectangularQuadMesh : public virtual QuadMeshBase
+  class SimpleRectangularQuadTFMesh : public virtual QuadMeshBase
   {
   public:
     /// Constructor: Pass number of elements in the horizontal
     /// and vertical directions, and the corresponding dimensions.
     /// Timestepper defaults to Steady.
-    SimpleRectangularQuadMesh(
+    SimpleRectangularQuadTFMesh(
       const unsigned& Nx,
       const unsigned& Ny,
       const double& Lx,

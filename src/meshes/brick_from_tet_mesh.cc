@@ -30,11 +30,11 @@ namespace oomph
 {
   //=======================================================================
   /// Build fct: Pass pointer to existing tet mesh and timestepper
-  /// Specialisation for XdaTetMesh<TElement<3,3> >
+  /// Specialisation for XdaTetTFMesh<TElement<3,3> >
   //=======================================================================
-  void BrickFromTetMesh::build_mesh(
+  void BrickFromTetTFMesh::build_mesh(
     std::unique_ptr<ElementFactoryBase> element_factory_pt,
-    XdaTetMesh* tet_mesh_pt,
+    XdaTetTFMesh* tet_mesh_pt,
     TimeStepper* time_stepper_pt)
   {
     // Mesh can only be built with 3D Qelements.
@@ -214,7 +214,7 @@ namespace oomph
       {
         std::ostringstream error_stream;
         error_stream
-          << "BrickFromTetMesh can only built from tet mesh containing\n"
+          << "BrickFromTetTFMesh can only built from tet mesh containing\n"
           << "ten-noded tets.\n";
         throw OomphLibError(
           error_stream.str(), OOMPH_CURRENT_FUNCTION, OOMPH_EXCEPTION_LOCATION);
@@ -4452,7 +4452,7 @@ namespace oomph
                 std::ostringstream error_stream;
                 error_stream
                   << "Tet-element cannot be cast to SolidTElement<3,3>.\n"
-                  << "BrickFromTetMesh can only be built from\n"
+                  << "BrickFromTetTFMesh can only be built from\n"
                   << "mesh containing quadratic tets.\n"
                   << std::endl;
                 throw OomphLibError(error_stream.str(),
@@ -4470,7 +4470,7 @@ namespace oomph
               {
                 std::ostringstream error_stream;
                 error_stream << "Tet-element cannot be cast to TElement<3,3>.\n"
-                             << "BrickFromTetMesh can only be built from\n"
+                             << "BrickFromTetTFMesh can only be built from\n"
                              << "mesh containing quadratic tets.\n"
                              << std::endl;
                 throw OomphLibError(error_stream.str(),
@@ -4613,7 +4613,7 @@ namespace oomph
             }
 
             // Provide possibility for translation -- may need to add
-            // face index to this; see ThinLayerBrickOnTetMesh.
+            // face index to this; see ThinLayerBrickOnTetTFMesh.
             Vector<unsigned> translate(19);
 
             // Initialise with identity mapping
@@ -4699,7 +4699,7 @@ namespace oomph
                   << "accessible). If not, the Face may be inverted in which \n"
                   << "case you should re-implement the translation scheme,\n"
                   << "following the pattern used in the "
-                     "ThinLayerBrickOnTetMesh."
+                     "ThinLayerBrickOnTetTFMesh."
                   << "\nThe required code fragements are already here but \n"
                   << "the translation is the unit map.\n"
                   << "To aid the diagnostics, the files full_brick[0-3].dat\n"
@@ -4797,11 +4797,11 @@ namespace oomph
 
   //=======================================================================
   /// Build fct: Pass pointer to existing tet mesh and timestepper
-  /// Specialisation for TetgenMesh<TElement<3,3> >
+  /// Specialisation for TetgenTFMesh<TElement<3,3> >
   //=======================================================================
-  void BrickFromTetMesh::build_mesh(
+  void BrickFromTetTFMesh::build_mesh(
     std::unique_ptr<ElementFactoryBase> element_factory_pt,
-    TetgenMesh<TElement<3, 3>>* tet_mesh_pt,
+    TetgenTFMesh<TElement<3, 3>>* tet_mesh_pt,
     TimeStepper* time_stepper_pt)
   {
     // Mesh can only be built with 3D Qelements.
@@ -4981,7 +4981,7 @@ namespace oomph
       {
         std::ostringstream error_stream;
         error_stream
-          << "BrickFromTetMesh can only built from tet mesh containing\n"
+          << "BrickFromTetTFMesh can only built from tet mesh containing\n"
           << "ten-noded tets.\n";
         throw OomphLibError(
           error_stream.str(), OOMPH_CURRENT_FUNCTION, OOMPH_EXCEPTION_LOCATION);
@@ -9219,7 +9219,7 @@ namespace oomph
                 std::ostringstream error_stream;
                 error_stream
                   << "Tet-element cannot be cast to SolidTElement<3,3>.\n"
-                  << "BrickFromTetMesh can only be built from\n"
+                  << "BrickFromTetTFMesh can only be built from\n"
                   << "mesh containing quadratic tets.\n"
                   << std::endl;
                 throw OomphLibError(error_stream.str(),
@@ -9237,7 +9237,7 @@ namespace oomph
               {
                 std::ostringstream error_stream;
                 error_stream << "Tet-element cannot be cast to TElement<3,3>.\n"
-                             << "BrickFromTetMesh can only be built from\n"
+                             << "BrickFromTetTFMesh can only be built from\n"
                              << "mesh containing quadratic tets.\n"
                              << std::endl;
                 throw OomphLibError(error_stream.str(),
@@ -9380,7 +9380,7 @@ namespace oomph
             }
 
             // Provide possibility for translation -- may need to add
-            // face index to this; see ThinLayerBrickOnTetMesh.
+            // face index to this; see ThinLayerBrickOnTetTFMesh.
             Vector<unsigned> translate(19);
 
             // Initialise with identity mapping
@@ -9466,7 +9466,7 @@ namespace oomph
                   << "accessible). If not, the Face may be inverted in which \n"
                   << "case you should re-implement the translation scheme,\n"
                   << "following the pattern used in the "
-                     "ThinLayerBrickOnTetMesh."
+                     "ThinLayerBrickOnTetTFMesh."
                   << "\nThe required code fragements are already here but \n"
                   << "the translation is the unit map.\n"
                   << "To aid the diagnostics, the files full_brick[0-3].dat\n"

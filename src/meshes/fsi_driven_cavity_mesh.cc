@@ -33,14 +33,14 @@ namespace oomph
   /// that defines the collapsible segment and pointer to TimeStepper
   /// (defaults to the default timestepper, Steady).
   //========================================================================
-  FSIDrivenCavityMesh::FSIDrivenCavityMesh(const unsigned& nx,
-                                           const unsigned& ny,
-                                           const double& lx,
-                                           const double& ly,
-                                           const double& gap_fraction,
-                                           GeomObject* wall_pt,
-                                           TimeStepper* time_stepper_pt)
-    : SimpleRectangularQuadMesh(nx, ny, lx, ly, time_stepper_pt),
+  FSIDrivenCavityTFMesh::FSIDrivenCavityTFMesh(const unsigned& nx,
+                                               const unsigned& ny,
+                                               const double& lx,
+                                               const double& ly,
+                                               const double& gap_fraction,
+                                               GeomObject* wall_pt,
+                                               TimeStepper* time_stepper_pt)
+    : SimpleRectangularQuadTFMesh(nx, ny, lx, ly, time_stepper_pt),
       Nx(nx),
       Ny(ny),
       Gap_fraction(gap_fraction),
@@ -53,7 +53,7 @@ namespace oomph
     // Update the boundary numbering scheme and set boundary coordinate
     //-----------------------------------------------------------------
 
-    // (Note: The original SimpleRectangularQuadMesh had four boundaries.
+    // (Note: The original SimpleRectangularQuadTFMesh had four boundaries.
     // We need to overwrite the boundary lookup scheme for the current
     // mesh so that the collapsible segment becomes identifiable).
     // While we're doing this, we're also setting up a boundary
@@ -191,7 +191,7 @@ namespace oomph
   /// Perform algebraic mesh update at time level t (t=0: present;
   /// t>0: previous)
   //=================================================================
-  void AlgebraicFSIDrivenCavityMesh::algebraic_node_update(
+  void AlgebraicFSIDrivenCavityTFMesh::algebraic_node_update(
     const unsigned& t, AlgebraicNode*& node_pt)
   {
 #ifdef PARANOID
@@ -218,7 +218,7 @@ namespace oomph
       error_message += "in your application, remove this warning ";
       error_message += "or recompile with PARNOID switched off.";
 
-      std::string function_name = "AlgebraicFSIDrivenCavityMesh::";
+      std::string function_name = "AlgebraicFSIDrivenCavityTFMesh::";
       function_name += "algebraic_node_update()";
 
       throw OomphLibError(
@@ -271,14 +271,14 @@ namespace oomph
   /// Setup algebraic mesh update -- assumes that mesh has
   /// initially been set up with a flush upper wall.
   //=================================================================
-  void AlgebraicFSIDrivenCavityMesh::setup_algebraic_node_update()
+  void AlgebraicFSIDrivenCavityTFMesh::setup_algebraic_node_update()
   {
     // Loop over all nodes in mesh
     unsigned nnod = this->nnode();
     for (unsigned j = 0; j < nnod; j++)
     {
       // Get pointer to node -- recall that that Mesh::node_pt(...) has been
-      // overloaded in the AlgebraicMesh class to return a pointer to
+      // overloaded in the AlgebraicTFMesh class to return a pointer to
       // an AlgebraicNode.
       AlgebraicNode* nod_pt = node_pt(j);
 
@@ -372,7 +372,7 @@ namespace oomph
   /// Update the geometric references that are used
   /// to update node after mesh adaptation.
   //=================================================================
-  void RefineableAlgebraicFSIDrivenCavityMesh::update_node_update(
+  void RefineableAlgebraicFSIDrivenCavityTFMesh::update_node_update(
     AlgebraicNode*& node_pt)
   {
     // Extract reference values for node update by copy construction

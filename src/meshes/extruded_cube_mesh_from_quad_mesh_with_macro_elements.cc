@@ -36,7 +36,7 @@ namespace oomph
   /// element does NOT lie on any boundaries, this function simply
   /// returns a vector of size zero.
   //========================================================================
-  Vector<std::pair<unsigned, int>> ExtrudedCubeMeshFromQuadMesh::
+  Vector<std::pair<unsigned, int>> ExtrudedCubeMeshFromQuadTFMesh::
     get_element_boundary_information(QuadMeshBase* quad_mesh_pt,
                                      FiniteElement* quad_el_pt)
   {
@@ -90,8 +90,8 @@ namespace oomph
   /// eb_5 where eb_4 is the "front" face and eb5 is the "back" face. The
   /// boundaries eb_i here satisfy eb_i = (b_i) x [Zmin,Zmax].
   //========================================================================
-  void ExtrudedCubeMeshFromQuadMesh::build_mesh(QuadMeshBase* quad_mesh_pt,
-                                                TimeStepper* time_stepper_pt)
+  void ExtrudedCubeMeshFromQuadTFMesh::build_mesh(QuadMeshBase* quad_mesh_pt,
+                                                  TimeStepper* time_stepper_pt)
   {
     // Mesh can only be built with 3D Qelements.
     MeshChecker::assert_geometric_element<QElementGeometricBase>(
@@ -104,7 +104,7 @@ namespace oomph
       std::ostringstream error_message;
 
       // Create the error message
-      error_message << "Extrude2DQuadMeshTo3DCubeMesh needs at least two "
+      error_message << "Extrude2DQuadMeshTo3DCubeTFMesh needs at least two "
                     << "elements in each,\ncoordinate direction. You have "
                     << "specified Nz=" << Nz << std::endl;
 
@@ -175,7 +175,7 @@ namespace oomph
 
       // Create the error message
       error_message
-        << "Extrude2DQuadMeshTo3DCubeMesh needs the number of "
+        << "Extrude2DQuadMeshTo3DCubeTFMesh needs the number of "
         << "nodes (in the 2D element) in one direction\n to match "
         << "the number of nodes in one direction in the 3D element!";
 
@@ -800,7 +800,7 @@ namespace oomph
                 // case in which it might lie on a mesh boundary; when the Node
                 // is the ONLY Node in the element that lies on the boundary.
                 // It's a slightly odd scenario but can easily occur on meshes
-                // created using the QuadFromTriangleMesh class.
+                // created using the QuadFromTriangleTFMesh class.
                 Node* quad_node_pt =
                   quad_el_pt->node_pt(quad_local_node_number);
 

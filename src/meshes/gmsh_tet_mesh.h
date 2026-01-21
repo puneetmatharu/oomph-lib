@@ -354,22 +354,22 @@ namespace oomph
   //////////////////////////////////////////////////////////////////////////
 
   /// Forward declaration
-  class GmshTetMesh;
+  class GmshTetTFMesh;
 
   //=========================================================================
   // Gmsh-based Tet scaffold mesh
   //=========================================================================
-  class GmshTetScaffoldMesh : public virtual TetMeshBase, public virtual Mesh
+  class GmshTetScaffoldTFMesh : public virtual TetMeshBase, public virtual Mesh
   {
   public:
     /// We're friends with the actual mesh
-    friend class GmshTetMesh;
+    friend class GmshTetTFMesh;
 
     /// Build mesh, based on specified parameters. If boolean is set
     /// to true, the target element sizes are read from file (used during
     /// adaptation; otherwise uniform target size is used).
-    GmshTetScaffoldMesh(GmshParameters* gmsh_parameters_pt,
-                        const bool& use_mesh_grading_from_file)
+    GmshTetScaffoldTFMesh(GmshParameters* gmsh_parameters_pt,
+                          const bool& use_mesh_grading_from_file)
       : Gmsh_parameters_pt(gmsh_parameters_pt)
     {
       double t_start = TimingHelpers::timer();
@@ -1624,12 +1624,12 @@ namespace oomph
   //=========================================================================
   // Gmsh-based Tet Mesh
   //=========================================================================
-  class GmshTetMesh : public virtual TetMeshBase, public virtual Mesh
+  class GmshTetTFMesh : public virtual TetMeshBase, public virtual Mesh
   {
   public:
     /// Constructor
-    GmshTetMesh(GmshParameters* gmsh_parameters_pt,
-                TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+    GmshTetTFMesh(GmshParameters* gmsh_parameters_pt,
+                  TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : Gmsh_parameters_pt(gmsh_parameters_pt)
     {
       bool use_mesh_grading_from_file = false;
@@ -1639,9 +1639,9 @@ namespace oomph
     /// Constructor. If boolean is set
     /// to true, the target element sizes are read from file (used during
     /// adaptation; otherwise uniform target size is used).
-    GmshTetMesh(GmshParameters* gmsh_parameters_pt,
-                const bool& use_mesh_grading_from_file,
-                TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+    GmshTetTFMesh(GmshParameters* gmsh_parameters_pt,
+                  const bool& use_mesh_grading_from_file,
+                  TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : Gmsh_parameters_pt(gmsh_parameters_pt)
     {
       build_it(time_stepper_pt, use_mesh_grading_from_file);
@@ -1723,8 +1723,8 @@ namespace oomph
       }
 
       // Build scaffold
-      GmshTetScaffoldMesh* tmp_scaffold_mesh_pt =
-        new GmshTetScaffoldMesh(Gmsh_parameters_pt, use_mesh_grading_from_file);
+      GmshTetScaffoldTFMesh* tmp_scaffold_mesh_pt = new GmshTetScaffoldTFMesh(
+        Gmsh_parameters_pt, use_mesh_grading_from_file);
 
       // Convert mesh from scaffold to actual mesh
       build_from_scaffold(tmp_scaffold_mesh_pt, time_stepper_pt);
@@ -1752,7 +1752,7 @@ namespace oomph
 
   private:
     /// Build unstructured tet gmesh mesh based on output from scaffold
-    void build_from_scaffold(GmshTetScaffoldMesh* tmp_scaffold_mesh_pt,
+    void build_from_scaffold(GmshTetScaffoldTFMesh* tmp_scaffold_mesh_pt,
                              TimeStepper* time_stepper_pt)
     {
       // Mesh can only be built with 3D Telements.
@@ -2239,31 +2239,31 @@ namespace oomph
   //=========================================================================
   // Refineable Gmsh-based Tet Mesh
   //=========================================================================
-  class RefineableGmshTetMesh : public virtual GmshTetMesh,
-                                public virtual RefineableTetMeshBase
+  class RefineableGmshTetTFMesh : public virtual GmshTetTFMesh,
+                                  public virtual RefineableTetMeshBase
   {
   public:
     /// Constructor. If boolean is set
     /// to true, the target element sizes are read from file (used during
     /// adaptation; otherwise uniform target size is used).
-    RefineableGmshTetMesh(
+    RefineableGmshTetTFMesh(
       GmshParameters* gmsh_parameters_pt,
       const bool& use_mesh_grading_from_file,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : GmshTetMesh(
+      : GmshTetTFMesh(
           gmsh_parameters_pt, use_mesh_grading_from_file, time_stepper_pt)
     {
       initialise_adaptation_data();
     }
 
     /// Constructor
-    RefineableGmshTetMesh(
+    RefineableGmshTetTFMesh(
       GmshParameters* gmsh_parameters_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : GmshTetMesh(gmsh_parameters_pt,
-                    false, // Don't read mesh size data from file
-                           // unless explicitly requested.
-                    time_stepper_pt)
+      : GmshTetTFMesh(gmsh_parameters_pt,
+                      false, // Don't read mesh size data from file
+                             // unless explicitly requested.
+                      time_stepper_pt)
     {
       initialise_adaptation_data();
     }

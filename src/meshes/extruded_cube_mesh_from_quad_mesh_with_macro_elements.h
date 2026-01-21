@@ -23,7 +23,7 @@
 // LIC// The authors may be contacted at oomph-lib@maths.man.ac.uk.
 // LIC//
 // LIC//====================================================================
-// Header file for ExtrudedCubeMeshFromQuadMesh class
+// Header file for ExtrudedCubeMeshFromQuadTFMesh class
 #ifndef OOMPH_EXTRUDED_CUBE_MESH_FROM_QUAD_MESH_WITH_MACRO_ELEMENTS_HEADER
 #define OOMPH_EXTRUDED_CUBE_MESH_FROM_QUAD_MESH_WITH_MACRO_ELEMENTS_HEADER
 
@@ -93,7 +93,7 @@ namespace oomph
   /// Mesh class that takes a 2D mesh consisting of quadrilateral
   /// elements and "extrudes" it in the z-direction.
   //=======================================================================
-  class ExtrudedCubeMeshFromQuadMesh : public virtual BrickMeshBase
+  class ExtrudedCubeMeshFromQuadTFMesh : public virtual BrickMeshBase
   {
   public:
     /// Constructor: Pass a mesh consisting of quad elements,
@@ -101,7 +101,7 @@ namespace oomph
     /// corresponding length in this direction. Assumes that the back
     /// lower left corner is located at (0,0,0). Timestepper defaults
     /// to the Steady timestepper.
-    ExtrudedCubeMeshFromQuadMesh(
+    ExtrudedCubeMeshFromQuadTFMesh(
       QuadMeshBase* quad_mesh_pt,
       const unsigned& nz,
       const double& lz,
@@ -117,7 +117,7 @@ namespace oomph
     /// specify the number of elements in the z direction, and the
     /// corresponding minimum and maximum z-value of the mesh. Again,
     /// timestepper defaults to Steady.
-    ExtrudedCubeMeshFromQuadMesh(
+    ExtrudedCubeMeshFromQuadTFMesh(
       QuadMeshBase* quad_mesh_pt,
       const unsigned& nz,
       const double& zmin,
@@ -135,7 +135,7 @@ namespace oomph
     /// which in turn creates extruded macro elements. As we're responsible
     /// for creating the domain, we need to kill it and it'll kill the
     /// extruded macro elements...
-    ~ExtrudedCubeMeshFromQuadMesh()
+    ~ExtrudedCubeMeshFromQuadTFMesh()
     {
       // Are there any extruded domains?
       if (Extruded_domain_pt.size() > 0)
@@ -153,7 +153,7 @@ namespace oomph
           Extruded_domain_pt[i] = 0;
         }
       } // if (Extruded_domain_pt.size()>0)
-    } // End of ExtrudedCubeMeshFromQuadMesh
+    } // End of ExtrudedCubeMeshFromQuadTFMesh
 
 
     /// Return the value of the z-coordinate at the node given by the
@@ -214,9 +214,9 @@ namespace oomph
   /// Mesh class that takes a 2D mesh, "extrudes" it in the z-direction and
   /// also makes the resulting mesh refineable.
   //=======================================================================
-  class RefineableExtrudedCubeMeshFromQuadMesh
-    : public virtual ExtrudedCubeMeshFromQuadMesh,
-      public virtual RefineableBrickMesh
+  class RefineableExtrudedCubeMeshFromQuadTFMesh
+    : public virtual ExtrudedCubeMeshFromQuadTFMesh,
+      public virtual RefineableBrickTFMesh
   {
   public:
     /// Constructor: Pass a mesh consisting of quad elements,
@@ -224,12 +224,12 @@ namespace oomph
     /// corresponding length in this direction. Assumes that the back
     /// lower left corner is located at (0,0,0). Timestepper defaults
     /// to the Steady timestepper.
-    RefineableExtrudedCubeMeshFromQuadMesh(
+    RefineableExtrudedCubeMeshFromQuadTFMesh(
       QuadMeshBase* quad_mesh_pt,
       const unsigned& nz,
       const double& lz,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : ExtrudedCubeMeshFromQuadMesh(quad_mesh_pt, nz, lz, time_stepper_pt)
+      : ExtrudedCubeMeshFromQuadTFMesh(quad_mesh_pt, nz, lz, time_stepper_pt)
     {
       // Nodal positions etc. were created in constructor for
       // base class Only need to setup octree forest
@@ -241,13 +241,13 @@ namespace oomph
     /// specify the number of elements in the z direction, and the
     /// corresponding minimum and maximum z-value of the mesh. Again,
     /// timestepper defaults to Steady.
-    RefineableExtrudedCubeMeshFromQuadMesh(
+    RefineableExtrudedCubeMeshFromQuadTFMesh(
       QuadMeshBase* quad_mesh_pt,
       const unsigned& nz,
       const double& zmin,
       const double& zmax,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : ExtrudedCubeMeshFromQuadMesh(
+      : ExtrudedCubeMeshFromQuadTFMesh(
           quad_mesh_pt, nz, zmin, zmax, time_stepper_pt)
     {
       // Nodal positions etc. were created in constructor for

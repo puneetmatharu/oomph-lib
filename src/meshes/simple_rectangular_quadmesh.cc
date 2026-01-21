@@ -43,7 +43,7 @@ namespace oomph
   ///
   /// Timestepper defaults to Steady.
   //=======================================================================
-  SimpleRectangularQuadMesh::SimpleRectangularQuadMesh(
+  SimpleRectangularQuadTFMesh::SimpleRectangularQuadTFMesh(
     const unsigned& Nx,
     const unsigned& Ny,
     const double& Lx,

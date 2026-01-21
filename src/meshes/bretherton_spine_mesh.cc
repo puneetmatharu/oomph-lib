@@ -46,7 +46,7 @@ namespace oomph
   /// wall
   /// - time_stepper_pt: Pointer to timestepper; defaults to Static
   //======================================================================
-  BrethertonSpineMesh::BrethertonSpineMesh(
+  BrethertonSpineTFMesh::BrethertonSpineTFMesh(
     std::unique_ptr<ElementFactoryBase> element_factory_pt,
     const unsigned& nx1,
     const unsigned& nx2,
@@ -61,12 +61,12 @@ namespace oomph
     const double& zeta_transition_end,
     const double& zeta_end,
     TimeStepper* time_stepper_pt)
-    : SingleLayerSpineMesh(element_factory_pt,
-                           2 * (nx1 + nx2 + nhalf),
-                           nh,
-                           1.0,
-                           h,
-                           time_stepper_pt),
+    : SingleLayerSpineTFMesh(element_factory_pt,
+                             2 * (nx1 + nx2 + nhalf),
+                             nh,
+                             1.0,
+                             h,
+                             time_stepper_pt),
       Nx1(nx1),
       Nx2(nx2),
       Nx3(nx3),
@@ -165,7 +165,7 @@ namespace oomph
 
     // Reorder elements: Vertical stacks of elements, each topped by
     // their interface element -- this is (currently) identical to the
-    // version in the SingleLayerSpineMesh but it's important
+    // version in the SingleLayerSpineTFMesh but it's important
     // that element reordering is maintained in exactly this form
     // so to be on the safe side, we move the function in here.
     initial_element_reorder();
@@ -755,10 +755,10 @@ namespace oomph
     // Now add the rectangular mesh in the channel ahead of the finger tip
     //--------------------------------------------------------------------
 
-    // Build a temporary version of a SimpleRectangularQuadMesh as
+    // Build a temporary version of a SimpleRectangularQuadTFMesh as
     // a unit square
-    SimpleRectangularQuadMesh* aux_mesh_pt =
-      new SimpleRectangularQuadMesh(Nx3, 2 * nhalf, 1.0, 1.0, time_stepper_pt);
+    SimpleRectangularQuadTFMesh* aux_mesh_pt = new SimpleRectangularQuadTFMesh(
+      Nx3, 2 * nhalf, 1.0, 1.0, time_stepper_pt);
 
     // Wipe the boundary information in the auxilliary mesh
     aux_mesh_pt->remove_boundary_nodes();
@@ -1005,11 +1005,11 @@ namespace oomph
   //======================================================================
   /// Reorder elements: Vertical stacks of elements, each topped by
   /// their interface element -- this is (currently) identical to the
-  /// version in the SingleLayerSpineMesh but it's important
+  /// version in the SingleLayerSpineTFMesh but it's important
   /// that element reordering is maintained in exactly this form
   /// so to be on the safe side, we move the function in here.
   //======================================================================
-  void BrethertonSpineMesh::initial_element_reorder()
+  void BrethertonSpineTFMesh::initial_element_reorder()
   {
     unsigned Nx = this->Nx;
     unsigned Ny = this->Ny;
@@ -1045,7 +1045,7 @@ namespace oomph
   /// Calculate the distance from the spine base to the free surface, i.e.
   /// the spine height.
   //=======================================================================
-  double BrethertonSpineMesh::find_distance_to_free_surface(
+  double BrethertonSpineTFMesh::find_distance_to_free_surface(
     GeomObject* const& fs_geom_object_pt,
     Vector<double>& initial_zeta,
     const Vector<double>& spine_base,
@@ -1136,7 +1136,7 @@ namespace oomph
   //=======================================================================
   /// Reposition the spines that emenate from the lower wall
   //=======================================================================
-  void BrethertonSpineMesh::reposition_spines(
+  void BrethertonSpineTFMesh::reposition_spines(
     const double& zeta_lo_transition_start,
     const double& zeta_lo_transition_end,
     const double& zeta_up_transition_start,
@@ -1701,7 +1701,7 @@ namespace oomph
     // Clean up all the memory
     // Can delete the Geometric object
     delete fs_geom_object_pt;
-    // Need to be careful with the FaceMesh, because we can't delete the nodes
+    // Need to be careful with the FaceTFMesh, because we can't delete the nodes
     // Loop
     for (unsigned e = n_face_element; e > 0; e--)
     {

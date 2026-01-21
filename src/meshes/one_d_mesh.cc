@@ -30,7 +30,7 @@ namespace oomph
 {
   /// The generic mesh construction routine --- this contains all the hard
   /// work and is called by all constructors
-  void OneDMesh::build_mesh(TimeStepper* time_stepper_pt)
+  void OneDTFMesh::build_mesh(TimeStepper* time_stepper_pt)
   {
     // Set the length of the domain
     Length = Xmax - Xmin;

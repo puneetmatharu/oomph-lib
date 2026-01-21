@@ -34,7 +34,7 @@ namespace oomph
   /// and spacing functions. The function should be called in all constuctors
   /// of any derived classes.
   //===========================================================================
-  void RectangularQuadMesh::build_mesh(TimeStepper* time_stepper_pt)
+  void RectangularQuadTFMesh::build_mesh(TimeStepper* time_stepper_pt)
   {
     // Mesh can only be built with 2D Qelements.
     MeshChecker::assert_geometric_element<QElementGeometricBase>(
@@ -825,7 +825,7 @@ namespace oomph
   /// (more efficient during the frontal solution if the domain
   /// is long in the x-direction.
   //============================================================================
-  void RectangularQuadMesh::element_reorder()
+  void RectangularQuadTFMesh::element_reorder()
   {
     // Find out how many elements there are
     unsigned long Nelement = nelement();

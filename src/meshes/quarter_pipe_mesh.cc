@@ -32,14 +32,14 @@ namespace oomph
   /// Constructor: Pass number of elements in various directions,
   /// the inner and outer radius and the length of the tube
   //====================================================================
-  QuarterPipeMesh::QuarterPipeMesh(const unsigned& ntheta,
-                                   const unsigned& nr,
-                                   const unsigned& nz,
-                                   const double& rmin,
-                                   const double& rmax,
-                                   const double& length,
-                                   TimeStepper* time_stepper_pt)
-    : SimpleCubicMesh(ntheta, nr, nz, 1.0, 1.0, length, time_stepper_pt)
+  QuarterPipeTFMesh::QuarterPipeTFMesh(const unsigned& ntheta,
+                                       const unsigned& nr,
+                                       const unsigned& nz,
+                                       const double& rmin,
+                                       const double& rmax,
+                                       const double& length,
+                                       TimeStepper* time_stepper_pt)
+    : SimpleCubicTFMesh(ntheta, nr, nz, 1.0, 1.0, length, time_stepper_pt)
   {
     // Mesh can only be built with 3D Qelements.
     MeshChecker::assert_geometric_element<QElementGeometricBase>(

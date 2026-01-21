@@ -35,8 +35,8 @@ namespace oomph
   //========================================================================
   /// Build unstructured tet mesh based on output from scaffold
   //========================================================================
-  void TetgenMesh::build_from_scaffold(TimeStepper* time_stepper_pt,
-                                       const bool& use_attributes)
+  void TetgenTFMesh::build_from_scaffold(TimeStepper* time_stepper_pt,
+                                         const bool& use_attributes)
   {
     // Mesh can only be built with 3D Telements.
     MeshChecker::assert_geometric_element<TElementGeometricBase>(
@@ -805,7 +805,7 @@ namespace oomph
   /// Helper function to set up the reverse look up scheme for facets.
   /// This is used to set up boundary coordinates.
   //=====================================================================
-  void TetgenMesh::setup_reverse_lookup_schemes_for_faceted_surface(
+  void TetgenTFMesh::setup_reverse_lookup_schemes_for_faceted_surface(
     TetMeshFacetedSurface* const& faceted_surface_pt)
   {
     // Set up reverse lookup scheme for a given faceted surface
@@ -840,8 +840,8 @@ namespace oomph
   /// Transfer tetgenio data from the input to the output
   /// The output is assumed to have been constructed and "empty"
   //=========================================================================
-  void TetgenMesh::deep_copy_of_tetgenio(tetgenio* const& input_pt,
-                                         tetgenio*& output_pt)
+  void TetgenTFMesh::deep_copy_of_tetgenio(tetgenio* const& input_pt,
+                                           tetgenio*& output_pt)
   {
     // Copy data values
     output_pt->firstnumber = input_pt->firstnumber;

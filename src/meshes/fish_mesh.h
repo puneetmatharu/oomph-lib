@@ -51,22 +51,22 @@ namespace oomph
   /// Fish shaped mesh. The geometry is defined by
   /// the Domain object FishDomain.
   //=================================================================
-  class FishMesh : public virtual QuadMeshBase
+  class FishTFMesh : public virtual QuadMeshBase
   {
   public:
     /// Constructor: Pass pointer to timestepper
     /// (defaults to the (Steady) default timestepper defined in Mesh)
-    FishMesh(TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
+    FishTFMesh(TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
 
     /// Constructor: Pass pointer GeomObject that defines
     /// the fish's back and pointer to timestepper
     /// (defaults to the (Steady) default timestepper defined in Mesh)
-    FishMesh(GeomObject* back_pt,
-             TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
+    FishTFMesh(GeomObject* back_pt,
+               TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
 
     /// Destructor: Kill the geom object that represents the fish's back
     /// (if necessary)
-    virtual ~FishMesh()
+    virtual ~FishTFMesh()
     {
       if (Must_kill_fish_back)
       {
@@ -121,17 +121,18 @@ namespace oomph
   /// Refineable fish shaped mesh. The geometry is defined by
   /// the Domain object FishDomain.
   //=============================start_adaptive_fish_mesh============
-  class RefineableFishMesh : public virtual FishMesh, public RefineableQuadMesh
+  class RefineableFishTFMesh : public virtual FishTFMesh,
+                               public RefineableQuadTFMesh
   {
   public:
     /// Constructor: Pass pointer to timestepper -- defaults to (Steady)
     /// default timestepper defined in the Mesh base class
-    RefineableFishMesh(
+    RefineableFishTFMesh(
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : FishMesh(time_stepper_pt)
+      : FishTFMesh(time_stepper_pt)
     {
       // Nodal positions etc. were created in constructor for
-      // FishMesh<...>. Only need to setup adaptive information.
+      // FishTFMesh<...>. Only need to setup adaptive information.
 
       // Do what it says....
       setup_adaptivity();
@@ -142,13 +143,13 @@ namespace oomph
     /// Constructor: Pass pointer GeomObject that defines
     /// the fish's back and pointer to timestepper
     /// (defaults to (Steady) default timestepper defined in Mesh)
-    RefineableFishMesh(
+    RefineableFishTFMesh(
       GeomObject* back_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : FishMesh(back_pt, time_stepper_pt)
+      : FishTFMesh(back_pt, time_stepper_pt)
     {
       // Nodal positions etc. were created in constructor for
-      // FishMesh<...>. Only need to setup adaptive information.
+      // FishTFMesh<...>. Only need to setup adaptive information.
 
       // Do what it says....
       setup_adaptivity();
@@ -156,7 +157,7 @@ namespace oomph
 
     /// Destructor: Empty -- all cleanup gets handled in the base
     /// classes
-    virtual ~RefineableFishMesh() {}
+    virtual ~RefineableFishTFMesh() {}
 
   protected:
     /// Setup all the information that's required for spatial adaptivity:
@@ -170,7 +171,7 @@ namespace oomph
 
   ////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////
-  // MacroElementNodeUpdate-version of RefineableFishMesh
+  // MacroElementNodeUpdate-version of RefineableFishTFMesh
   ////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////
 
@@ -187,18 +188,19 @@ namespace oomph
   /// the element (whose type is specified by the template parameter)
   /// must inherit from MacroElementNodeUpdateElementBase.
   //========================================================================
-  class MacroElementNodeUpdateRefineableFishMesh
-    : public virtual MacroElementNodeUpdateMesh,
-      public virtual RefineableFishMesh
+  class MacroElementNodeUpdateRefineableFishTFMesh
+    : public virtual MacroElementNodeUpdateTFMesh,
+      public virtual RefineableFishTFMesh
   {
   public:
     /// Constructor: Pass pointer GeomObject that defines
     /// the fish's back and pointer to timestepper
     /// (defaults to (Steady) default timestepper defined in Mesh).
-    MacroElementNodeUpdateRefineableFishMesh(
+    MacroElementNodeUpdateRefineableFishTFMesh(
       GeomObject* back_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : FishMesh(back_pt, time_stepper_pt), RefineableFishMesh(time_stepper_pt)
+      : FishTFMesh(back_pt, time_stepper_pt),
+        RefineableFishTFMesh(time_stepper_pt)
     {
 #ifdef PARANOID
       ELEMENT* el_pt = element_factory_pt->new_element();
@@ -206,14 +208,14 @@ namespace oomph
       {
         std::ostringstream error_message;
         error_message << "Base class for ELEMENT in "
-                      << "MacroElementNodeUpdateRefineableFishMesh needs"
+                      << "MacroElementNodeUpdateRefineableFishTFMesh needs"
                       << "to be of type MacroElementNodeUpdateElement!\n";
         error_message << "Whereas it is: typeid(el_pt).name()"
                       << typeid(el_pt).name() << std::endl;
 
         std::string function_name =
-          "MacroElementNodeUpdateRefineableFishMesh::\n";
-        function_name += "MacroElementNodeUpdateRefineableFishMesh()";
+          "MacroElementNodeUpdateRefineableFishTFMesh::\n";
+        function_name += "MacroElementNodeUpdateRefineableFishTFMesh()";
 
         throw OomphLibError(error_message.str(),
                             OOMPH_CURRENT_FUNCTION,
@@ -246,8 +248,8 @@ namespace oomph
           error_message << "but it is of type " << typeid(el_pt).name();
 
           std::string function_name =
-            "MacroElementNodeUpdateRefineableFishMesh::\n";
-          function_name += "MacroElementNodeUpdateRefinableFishMesh()";
+            "MacroElementNodeUpdateRefineableFishTFMesh::\n";
+          function_name += "MacroElementNodeUpdateRefinableFishTFMesh()";
 
           throw OomphLibError(error_message.str(),
                               OOMPH_CURRENT_FUNCTION,
@@ -266,14 +268,14 @@ namespace oomph
       // Add the geometric object(s) for the wall to the mesh's storage
       Vector<GeomObject*> geom_object_pt(1);
       geom_object_pt[0] = this->Back_pt;
-      MacroElementNodeUpdateMesh::set_geom_object_vector_pt(geom_object_pt);
+      MacroElementNodeUpdateTFMesh::set_geom_object_vector_pt(geom_object_pt);
 
       // Fill in the domain pointer to the mesh's storage in the base class
-      MacroElementNodeUpdateMesh::macro_domain_pt() = this->domain_pt();
+      MacroElementNodeUpdateTFMesh::macro_domain_pt() = this->domain_pt();
     }
 
     /// Destructor: empty
-    virtual ~MacroElementNodeUpdateRefineableFishMesh() {}
+    virtual ~MacroElementNodeUpdateRefineableFishTFMesh() {}
 
     /// Resolve mesh update: NodeUpdate current nodal
     /// positions via sparse MacroElement-based update.
@@ -286,20 +288,20 @@ namespace oomph
       if (update_all_solid_nodes)
       {
         std::string error_message =
-          "Doesn't make sense to use an MacroElementNodeUpdateMesh with\n";
+          "Doesn't make sense to use an MacroElementNodeUpdateTFMesh with\n";
         error_message +=
           "SolidElements so specifying update_all_solid_nodes=true\n";
         error_message += "doesn't make sense either\n";
 
         std::string function_name =
-          "MacroElementNodeUpdateRefineableFishMesh::";
+          "MacroElementNodeUpdateRefineableFishTFMesh::";
         function_name += "node_update()";
 
         throw OomphLibError(
           error_message, OOMPH_CURRENT_FUNCTION, OOMPH_EXCEPTION_LOCATION);
       }
 #endif
-      MacroElementNodeUpdateMesh::node_update();
+      MacroElementNodeUpdateTFMesh::node_update();
     }
   };
 
@@ -313,13 +315,14 @@ namespace oomph
   //=================================================================
   /// Fish shaped mesh with algebraic node update function for nodes.
   //=================================================================
-  class AlgebraicFishMesh : public AlgebraicMesh, public virtual FishMesh
+  class AlgebraicFishTFMesh : public AlgebraicTFMesh, public virtual FishTFMesh
   {
   public:
     /// Constructor: Pass pointer to timestepper.
     /// (defaults to (Steady) default timestepper defined in Mesh)
-    AlgebraicFishMesh(TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : FishMesh(time_stepper_pt)
+    AlgebraicFishTFMesh(
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : FishTFMesh(time_stepper_pt)
     {
       // Setup algebraic node update operations
       setup_algebraic_node_update();
@@ -328,19 +331,21 @@ namespace oomph
     /// Constructor: Pass pointer GeomObject that defines
     /// the fish's back and pointer to timestepper
     /// (defaults to (Steady) default timestepper defined in Mesh).
-    AlgebraicFishMesh(GeomObject* back_pt,
-                      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : FishMesh(back_pt, time_stepper_pt)
+    AlgebraicFishTFMesh(
+      GeomObject* back_pt,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : FishTFMesh(back_pt, time_stepper_pt)
     {
-      // Add the geometric object to the list associated with this AlgebraicMesh
-      AlgebraicMesh::add_geom_object_list_pt(back_pt);
+      // Add the geometric object to the list associated with this
+      // AlgebraicTFMesh
+      AlgebraicTFMesh::add_geom_object_list_pt(back_pt);
 
       // Setup algebraic node update operations
       setup_algebraic_node_update();
     }
 
     /// Destructor: empty
-    virtual ~AlgebraicFishMesh() {}
+    virtual ~AlgebraicFishTFMesh() {}
 
     /// Update nodal position at time level t (t=0: present;
     /// t>0: previous)
@@ -368,7 +373,7 @@ namespace oomph
                       << ", " << this->Upper_body << ", " << this->Lower_fin
                       << " or " << this->Upper_fin << std::endl;
         std::string function_name =
-          "AlgebraicFishMesh::algebraic_node_update()";
+          "AlgebraicFishTFMesh::algebraic_node_update()";
 
         throw OomphLibError(error_message.str(),
                             OOMPH_CURRENT_FUNCTION,
@@ -378,27 +383,27 @@ namespace oomph
 
     /// Resolve the node update function (we neither want the broken
     /// empty one in the Mesh base class nor the macro-element-based one in the
-    /// RefineableQuadMesh base class but the AlgebraicElement one). [It doesn't
-    /// make sense to use this mesh with SolidElements so we buffer the case if
-    /// update_all_solid_nodes is set to true.]
+    /// RefineableQuadTFMesh base class but the AlgebraicElement one). [It
+    /// doesn't make sense to use this mesh with SolidElements so we buffer the
+    /// case if update_all_solid_nodes is set to true.]
     virtual void node_update(const bool& update_all_solid_nodes = false)
     {
 #ifdef PARANOID
       if (update_all_solid_nodes)
       {
         std::string error_message =
-          "Doesn't make sense to use an AlgebraicMesh with\n";
+          "Doesn't make sense to use an AlgebraicTFMesh with\n";
         error_message +=
           "SolidElements so specifying update_all_solid_nodes=true\n";
         error_message += "doesn't make sense either\n";
 
-        std::string function_name = "AlgebraicFishMesh::node_update()";
+        std::string function_name = "AlgebraicFishTFMesh::node_update()";
 
         throw OomphLibError(
           error_message, OOMPH_CURRENT_FUNCTION, OOMPH_EXCEPTION_LOCATION);
       }
 #endif
-      AlgebraicMesh::node_update();
+      AlgebraicTFMesh::node_update();
     }
 
     /// Update the geometric references that are used
@@ -434,7 +439,7 @@ namespace oomph
       if ((geom_obj_pt != this->Back_pt) || (s[0] != zeta[0]))
       {
         std::ostringstream error_message;
-        error_message << "AlgebraicFishMesh only works with GeomObjects\n"
+        error_message << "AlgebraicFishTFMesh only works with GeomObjects\n"
                       << "that do not contain sub-elements (e.g. GeomObjects\n"
                       << "that represent a wall finite element mesh!\n"
                       << "Back_pt    : " << this->Back_pt << std::endl
@@ -472,21 +477,21 @@ namespace oomph
   //=================================================================
   /// Refineable fish shaped mesh with algebraic node update function.
   //=================================================================
-  class AlgebraicRefineableFishMesh : public AlgebraicFishMesh,
-                                      public RefineableFishMesh
+  class AlgebraicRefineableFishTFMesh : public AlgebraicFishTFMesh,
+                                        public RefineableFishTFMesh
   {
   public:
     /// Constructor: Pass pointer to timestepper.
     /// (defaults to (Steady) default timestepper defined in Mesh)
-    // Note: FishMesh is virtual base and its constructor is automatically
+    // Note: FishTFMesh is virtual base and its constructor is automatically
     // called first! --> this is where we need to build the mesh;
     // the constructors of the derived meshes don't call the
     // base constructor again and simply add the extra functionality.
-    AlgebraicRefineableFishMesh(
+    AlgebraicRefineableFishTFMesh(
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : FishMesh(time_stepper_pt),
-        AlgebraicFishMesh(time_stepper_pt),
-        RefineableFishMesh(time_stepper_pt)
+      : FishTFMesh(time_stepper_pt),
+        AlgebraicFishTFMesh(time_stepper_pt),
+        RefineableFishTFMesh(time_stepper_pt)
     {
     }
 
@@ -494,28 +499,28 @@ namespace oomph
     /// Constructor: Pass pointer GeomObject that defines
     /// the fish's back and pointer to timestepper.
     /// (defaults to (Steady) default timestepper defined in Mesh)
-    // Note: FishMesh is virtual base and its constructor is automatically
+    // Note: FishTFMesh is virtual base and its constructor is automatically
     // called first! --> this is where we need to build the mesh;
     // the constructors of the derived meshes don't call the
     // base constructor again and simply add the extra functionality.
-    AlgebraicRefineableFishMesh(
+    AlgebraicRefineableFishTFMesh(
       GeomObject* back_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : FishMesh(back_pt, time_stepper_pt),
-        AlgebraicFishMesh(back_pt, time_stepper_pt),
-        RefineableFishMesh(back_pt, time_stepper_pt)
+      : FishTFMesh(back_pt, time_stepper_pt),
+        AlgebraicFishTFMesh(back_pt, time_stepper_pt),
+        RefineableFishTFMesh(back_pt, time_stepper_pt)
     {
     }
 
 
     /// Destructor: empty
-    virtual ~AlgebraicRefineableFishMesh() {}
+    virtual ~AlgebraicRefineableFishTFMesh() {}
 
     /// Resolve node update function: Use the one defined
-    /// in the AlgebraicFishMesh (where the bool flag is explained)
+    /// in the AlgebraicFishTFMesh (where the bool flag is explained)
     void node_update(const bool& update_all_solid_nodes = false)
     {
-      AlgebraicFishMesh::node_update(update_all_solid_nodes);
+      AlgebraicFishTFMesh::node_update(update_all_solid_nodes);
     }
   };
 

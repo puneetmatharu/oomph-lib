@@ -34,10 +34,10 @@ namespace oomph
   /// The domain is specified by the GeomObject that
   /// identifies the entire volume.
   //====================================================================
-  FullCircleMesh::FullCircleMesh(GeomObject* area_pt,
-                                 const Vector<double>& theta_positions,
-                                 const Vector<double>& radius_box,
-                                 TimeStepper* time_stepper_pt)
+  FullCircleTFMesh::FullCircleTFMesh(GeomObject* area_pt,
+                                     const Vector<double>& theta_positions,
+                                     const Vector<double>& radius_box,
+                                     TimeStepper* time_stepper_pt)
     : Area_pt(area_pt)
   {
 // Check that the vectors are the correct sizes.
@@ -642,7 +642,7 @@ namespace oomph
       error_stream << "Error in killing nodes\n"
                    << "The most probable cause is that the domain is not\n"
                    << "compatible with the mesh.\n"
-                   << "For the FullCircleMesh, the domain must be\n"
+                   << "For the FullCircleTFMesh, the domain must be\n"
                    << "topologically consistent with a quarter tube with a\n"
                    << "non-curved centreline.\n";
       throw OomphLibError(

@@ -47,7 +47,7 @@ namespace oomph
   /// .
   ///
   //====================================================================
-  class FullCircleMesh : public virtual QuadMeshBase
+  class FullCircleTFMesh : public virtual QuadMeshBase
   {
   public:
     /// Constructor: Pass pointer to geometric object that
@@ -55,13 +55,13 @@ namespace oomph
     /// are to be placed, fractions of the radius for the central box
     /// at the dividing lines and the timestepper.
     /// Timestepper defaults to Steady dummy timestepper.
-    FullCircleMesh(GeomObject* wall_pt,
-                   const Vector<double>& theta_positions,
-                   const Vector<double>& radius_box,
-                   TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
+    FullCircleTFMesh(GeomObject* wall_pt,
+                     const Vector<double>& theta_positions,
+                     const Vector<double>& radius_box,
+                     TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
 
     /// Destructor: empty
-    virtual ~FullCircleMesh()
+    virtual ~FullCircleTFMesh()
     {
       delete Domain_pt;
     }
@@ -98,7 +98,7 @@ namespace oomph
   ////////////////////////////////////////////////////////////////////
 
   //=============================================================
-  /// Adaptative version of the FullCircleMesh base mesh.
+  /// Adaptative version of the FullCircleTFMesh base mesh.
   /// The domain is specified by the GeomObject that identifies
   /// the entire area
   ///
@@ -107,8 +107,8 @@ namespace oomph
   /// .
   ///
   //=============================================================
-  class RefineableFullCircleMesh : public FullCircleMesh,
-                                   public RefineableQuadMesh
+  class RefineableFullCircleTFMesh : public FullCircleTFMesh,
+                                     public RefineableQuadTFMesh
 
   {
   public:
@@ -120,24 +120,25 @@ namespace oomph
     /// at the dividing lines, the number of layers
     /// and the timestepper.
     /// Timestepper defaults to Steady dummy timestepper.
-    RefineableFullCircleMesh(
+    RefineableFullCircleTFMesh(
       GeomObject* wall_pt,
       const Vector<double>& theta_positions,
       const Vector<double>& radius_box,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : FullCircleMesh(wall_pt, theta_positions, radius_box, time_stepper_pt)
+      : FullCircleTFMesh(wall_pt, theta_positions, radius_box, time_stepper_pt)
     {
       // Loop over all elements and set macro element pointer
-      for (unsigned ielem = 0; ielem < FullCircleMesh::nelement(); ielem++)
+      for (unsigned ielem = 0; ielem < FullCircleTFMesh::nelement(); ielem++)
       {
-        dynamic_cast<RefineableQElement<2>*>(FullCircleMesh::element_pt(ielem))
+        dynamic_cast<RefineableQElement<2>*>(
+          FullCircleTFMesh::element_pt(ielem))
           ->set_macro_elem_pt(this->Domain_pt->macro_element_pt(ielem));
       }
 
       // Setup Quadtree forest: Turn elements into individual octrees
       // and plant in forest
       Vector<TreeRoot*> trees_pt;
-      for (unsigned iel = 0; iel < FullCircleMesh::nelement(); iel++)
+      for (unsigned iel = 0; iel < FullCircleTFMesh::nelement(); iel++)
       {
         QuadTreeRoot* quadtree_root_pt = new QuadTreeRoot(
           dynamic_cast<RefineableElement*>(this->element_pt(iel)));
@@ -164,7 +165,7 @@ namespace oomph
     }
 
     /// Destructor: empty
-    virtual ~RefineableFullCircleMesh() {}
+    virtual ~RefineableFullCircleTFMesh() {}
   };
 
 } // namespace oomph

@@ -904,11 +904,11 @@ namespace oomph
   /// \f$\zeta \in [0,2\pi]\f$ sweeps around the circumference
   /// in anticlockwise direction. Timestepper defaults to Steady
   /// default timestepper.
-  RectangleWithHoleAndAnnularRegionMesh::RectangleWithHoleAndAnnularRegionMesh(
-    GeomObject* cylinder_pt,
-    const double& annular_region_radius,
-    const double& length,
-    TimeStepper* time_stepper_pt)
+  RectangleWithHoleAndAnnularRegionTFMesh::
+    RectangleWithHoleAndAnnularRegionTFMesh(GeomObject* cylinder_pt,
+                                            const double& annular_region_radius,
+                                            const double& length,
+                                            TimeStepper* time_stepper_pt)
   {
     // Create the domain
     Domain_pt = new RectangleWithHoleAndAnnularRegionDomain(
@@ -1372,7 +1372,7 @@ namespace oomph
                       OOMPH_EXCEPTION_LOCATION);
     }
 #endif
-  } // End of RectangleWithHoleAndAnnularRegionMesh
+  } // End of RectangleWithHoleAndAnnularRegionTFMesh
 
   ////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////
@@ -1402,11 +1402,11 @@ namespace oomph
     Vector<Mesh*> all_temp_mesh_pt;
 
     // Build central mesh
-    Central_mesh_pt =
-      new RefineableRectangleWithHoleAndAnnularRegionMesh(cylinder_pt,
-                                                          annular_region_radius,
-                                                          length_of_central_box,
-                                                          time_stepper_pt);
+    Central_mesh_pt = new RefineableRectangleWithHoleAndAnnularRegionTFMesh(
+      cylinder_pt,
+      annular_region_radius,
+      length_of_central_box,
+      time_stepper_pt);
 
     // Add this mesh to the list of temproary meshes
     all_temp_mesh_pt.push_back(Central_mesh_pt);

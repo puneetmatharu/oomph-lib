@@ -40,7 +40,7 @@ namespace oomph
   /// SpineLineFluidInterfaceElement for 2D planar
   /// problems.
   //===========================================================================
-  ChannelSpineMesh::ChannelSpineMesh(
+  ChannelSpineTFMesh::ChannelSpineTFMesh(
     std::unique_ptr<ElementFactoryBase> element_factory_pt,
     const unsigned& nx0,
     const unsigned& nx1,
@@ -52,16 +52,16 @@ namespace oomph
     const double& h,
     GeomObject* wall_pt,
     TimeStepper* time_stepper_pt)
-    : RectangularQuadMesh(element_factory_pt,
-                          nx0 + nx1 + nx2,
-                          ny,
-                          0.0,
-                          lx0 + lx1 + lx2,
-                          0.0,
-                          h,
-                          false,
-                          false,
-                          time_stepper_pt),
+    : RectangularQuadTFMesh(element_factory_pt,
+                            nx0 + nx1 + nx2,
+                            ny,
+                            0.0,
+                            lx0 + lx1 + lx2,
+                            0.0,
+                            h,
+                            false,
+                            false,
+                            time_stepper_pt),
       Nx0(nx0),
       Nx1(nx1),
       Nx2(nx2),
@@ -78,7 +78,7 @@ namespace oomph
     MeshChecker::assert_geometric_element<SpineFiniteElement>(
       element_factory_pt, 2);
 
-    // We've called the "generic" constructor for the RectangularQuadMesh
+    // We've called the "generic" constructor for the RectangularQuadTFMesh
     // which doesn't do much...
 
     // Build the straight line object
@@ -98,7 +98,7 @@ namespace oomph
   /// and a surface layer of corresponding Spine interface elements (of type
   /// SpineLineFluidInterfaceElement).
   //===========================================================================
-  ChannelSpineMesh::ChannelSpineMesh(
+  ChannelSpineTFMesh::ChannelSpineTFMesh(
     std::unique_ptr<ElementFactoryBase> element_factory_pt,
     const unsigned& nx0,
     const unsigned& nx1,
@@ -111,16 +111,16 @@ namespace oomph
     GeomObject* wall_pt,
     const bool& periodic_in_x,
     TimeStepper* time_stepper_pt)
-    : RectangularQuadMesh(element_factory_pt,
-                          nx0 + nx1 + nx2,
-                          ny,
-                          0.0,
-                          lx0 + lx1 + lx2,
-                          0.0,
-                          h,
-                          periodic_in_x,
-                          false,
-                          time_stepper_pt),
+    : RectangularQuadTFMesh(element_factory_pt,
+                            nx0 + nx1 + nx2,
+                            ny,
+                            0.0,
+                            lx0 + lx1 + lx2,
+                            0.0,
+                            h,
+                            periodic_in_x,
+                            false,
+                            time_stepper_pt),
       Nx0(nx0),
       Nx1(nx1),
       Nx2(nx2),
@@ -137,7 +137,7 @@ namespace oomph
     MeshChecker::assert_geometric_element<SpineFiniteElement>(
       element_factory_pt, 2);
 
-    // We've called the "generic" constructor for the RectangularQuadMesh
+    // We've called the "generic" constructor for the RectangularQuadTFMesh
     // which doesn't do much...
 
     // Build the straight line object
@@ -151,12 +151,12 @@ namespace oomph
   /// Helper function that actually builds the channel-spine mesh
   /// based on the parameters set in the various constructors
   //===========================================================================
-  void ChannelSpineMesh::build_channel_spine_mesh(
+  void ChannelSpineTFMesh::build_channel_spine_mesh(
     std::unique_ptr<ElementFactoryBase> element_factory_pt,
     TimeStepper* time_stepper_pt)
   {
     // Build the underlying quad mesh:
-    RectangularQuadMesh::build_mesh(element_factory_pt, time_stepper_pt);
+    RectangularQuadTFMesh::build_mesh(element_factory_pt, time_stepper_pt);
 
     // Read out the number of elements in the x-direction and y-direction
     // and in each of the left, centre and right regions
@@ -685,7 +685,7 @@ namespace oomph
   /// Reorder the elements, so we loop over them vertically first
   /// (advantageous in "wide" domains if a frontal solver is used).
   //======================================================================
-  void ChannelSpineMesh::element_reorder()
+  void ChannelSpineTFMesh::element_reorder()
   {
     unsigned n_x = this->Nx;
     unsigned n_y = this->Ny;

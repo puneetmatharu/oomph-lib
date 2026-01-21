@@ -75,7 +75,7 @@ namespace oomph
 
   //=========================================================================
   /// Helper object for dealing with the parameters used for the
-  /// TriangleMesh objects
+  /// TriangleTFMesh objects
   //=========================================================================
   class TriangleMeshParameters
   {
@@ -405,11 +405,11 @@ namespace oomph
   /// from the triangle mesh generator Triangle.
   /// http://www.cs.cmu.edu/~quake/triangle.html
   //======================================================================
-  class TriangleMesh : public virtual TriangleMeshBase
+  class TriangleTFMesh : public virtual TriangleMeshBase
   {
   public:
     /// Empty constructor
-    TriangleMesh()
+    TriangleTFMesh()
     {
 #ifdef OOMPH_HAS_TRIANGLE_LIB
       // Using this constructor no Triangulateio object is built
@@ -431,7 +431,7 @@ namespace oomph
     }
 
     /// Constructor with the input files
-    TriangleMesh(
+    TriangleTFMesh(
       const std::string& node_file_name,
       const std::string& element_file_name,
       const std::string& poly_file_name,
@@ -476,7 +476,7 @@ namespace oomph
       Use_attributes = should_use_attributes;
 
       // Build scaffold
-      this->Tmp_mesh_pt = new TriangleScaffoldMesh(
+      this->Tmp_mesh_pt = new TriangleScaffoldTFMesh(
         node_file_name, element_file_name, poly_file_name);
 
       // Convert mesh from scaffold to actual mesh
@@ -500,8 +500,8 @@ namespace oomph
   public:
     /// Build mesh, based on the specifications on
     /// TriangleMeshParameters
-    TriangleMesh(TriangleMeshParameters& triangle_mesh_parameters,
-                 TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+    TriangleTFMesh(TriangleMeshParameters& triangle_mesh_parameters,
+                   TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
     {
       // Store the region target areas
       Regions_areas = triangle_mesh_parameters.target_area_for_region();
@@ -740,7 +740,7 @@ namespace oomph
 
     /// Build mesh from poly file, with specified target
     /// area for all elements.
-    TriangleMesh(
+    TriangleTFMesh(
       const std::string& poly_file_name,
       const double& element_area,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
@@ -764,7 +764,7 @@ namespace oomph
       std::string message =
         "This constructor hasn't been tested since last cleanup.\n";
       OomphLibWarning(
-        message, "TriangleMesh::TriangleMesh()", OOMPH_EXCEPTION_LOCATION);
+        message, "TriangleTFMesh::TriangleTFMesh()", OOMPH_EXCEPTION_LOCATION);
 
       // Store Timestepper used to build elements
       Time_stepper_pt = time_stepper_pt;
@@ -807,7 +807,7 @@ namespace oomph
       triangulate(triswitches, &triangle_in, &Triangulateio, 0);
 
       // Build scaffold
-      this->Tmp_mesh_pt = new TriangleScaffoldMesh(Triangulateio);
+      this->Tmp_mesh_pt = new TriangleScaffoldTFMesh(Triangulateio);
 
       // Convert mesh from scaffold to actual mesh
       build_from_scaffold(time_stepper_pt, use_attributes);
@@ -831,13 +831,13 @@ namespace oomph
 #endif
 
     /// Broken copy constructor
-    TriangleMesh(const TriangleMesh& dummy) = delete;
+    TriangleTFMesh(const TriangleTFMesh& dummy) = delete;
 
     /// Broken assignment operator
-    void operator=(const TriangleMesh&) = delete;
+    void operator=(const TriangleTFMesh&) = delete;
 
     /// Destructor
-    virtual ~TriangleMesh()
+    virtual ~TriangleTFMesh()
     {
 #ifdef OOMPH_HAS_TRIANGLE_LIB
       if (Triangulateio_exists)
@@ -916,7 +916,7 @@ namespace oomph
     /// in the new mesh (this) and assign initial and final boundary
     /// coordinates for the segments that create the boundary
     void identify_boundary_segments_and_assign_initial_zeta_values(
-      const unsigned& b, TriangleMesh* original_mesh_pt);
+      const unsigned& b, TriangleTFMesh* original_mesh_pt);
 
     /// In charge of sinchronize the boundary coordinates for
     /// internal boundaries that were split as part of the distribution
@@ -1035,7 +1035,7 @@ namespace oomph
       error_stream << "Empty default reestablish disributed info method "
                    << "called.\n";
       error_stream << "This should be overloaded in a specific "
-                   << "RefineableTriangleMesh\n";
+                   << "RefineableTriangleTFMesh\n";
       throw OomphLibError(
         error_stream.str(), OOMPH_CURRENT_FUNCTION, OOMPH_EXCEPTION_LOCATION);
     }
@@ -1100,7 +1100,7 @@ namespace oomph
       set_nboundary(nbound);
 
       // Now build the new scaffold
-      this->Tmp_mesh_pt = new TriangleScaffoldMesh(this->Triangulateio);
+      this->Tmp_mesh_pt = new TriangleScaffoldTFMesh(this->Triangulateio);
 
       // Triangulation has been created -- remember to wipe it!
       Triangulateio_exists = true;
@@ -1305,7 +1305,7 @@ namespace oomph
       triangulate(triswitches, &triangulate_io, &Triangulateio, 0);
 
       // Build scaffold
-      this->Tmp_mesh_pt = new TriangleScaffoldMesh(Triangulateio);
+      this->Tmp_mesh_pt = new TriangleScaffoldTFMesh(Triangulateio);
 
       // If we have filled holes then we must use the attributes
       if (!regions_coordinates.empty())
@@ -1337,7 +1337,7 @@ namespace oomph
 #endif // OOMPH_HAS_TRIANGLE_LIB
 
     /// Temporary scaffold mesh
-    TriangleScaffoldMesh* Tmp_mesh_pt;
+    TriangleScaffoldTFMesh* Tmp_mesh_pt;
 
     /// Vector storing oomph-lib node number
     /// for all vertex nodes in the TriangulateIO representation of the mesh
@@ -2036,7 +2036,7 @@ namespace oomph
 
     /// Establish the connections of the polylines previously marked
     /// as having connections. This connections were marked in the function
-    /// TriangleMesh::create_polylines_from_halo_elements_helper().
+    /// TriangleTFMesh::create_polylines_from_halo_elements_helper().
     void create_shared_polylines_connections();
 
     /// Creates the shared boundaries
@@ -2136,7 +2136,7 @@ namespace oomph
       std::ostringstream error_stream;
       error_stream << "Empty default load balancing function called.\n";
       error_stream << "This should be overloaded in a specific "
-                   << "RefineableTriangleMesh\n";
+                   << "RefineableTriangleTFMesh\n";
       throw OomphLibError(
         error_stream.str(), OOMPH_CURRENT_FUNCTION, OOMPH_EXCEPTION_LOCATION);
     }
@@ -2222,11 +2222,11 @@ namespace oomph
   //=========================================================================
   /// Unstructured refineable Triangle Mesh
   //=========================================================================
-  // Temporary flag to enable full annotation of RefineableTriangleMesh
+  // Temporary flag to enable full annotation of RefineableTriangleTFMesh
   // comms
   // #define ANNOTATE_REFINEABLE_TRIANGLE_MESH_COMMUNICATION
-  class RefineableTriangleMesh : public virtual TriangleMesh,
-                                 public virtual RefineableMeshBase
+  class RefineableTriangleTFMesh : public virtual TriangleTFMesh,
+                                   public virtual RefineableMeshBase
   {
   public:
     /// Function pointer to function that updates the
@@ -2248,10 +2248,10 @@ namespace oomph
 
     /// Build mesh, based on the specifications on
     /// TriangleMeshParameters
-    RefineableTriangleMesh(
+    RefineableTriangleTFMesh(
       TriangleMeshParameters& triangle_mesh_parameters,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : TriangleMesh(triangle_mesh_parameters, time_stepper_pt)
+      : TriangleTFMesh(triangle_mesh_parameters, time_stepper_pt)
     {
       // Initialise the data associated with adaptation
       initialise_adaptation_data();
@@ -2263,17 +2263,17 @@ namespace oomph
 #endif // #ifdef OOMPH_HAS_TRIANGLE_LIB
 
     /// Build mesh, based on the polyfiles
-    RefineableTriangleMesh(
+    RefineableTriangleTFMesh(
       const std::string& node_file_name,
       const std::string& element_file_name,
       const std::string& poly_file_name,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
       const bool& allow_automatic_creation_of_vertices_on_boundaries = true)
-      : TriangleMesh(node_file_name,
-                     element_file_name,
-                     poly_file_name,
-                     time_stepper_pt,
-                     allow_automatic_creation_of_vertices_on_boundaries)
+      : TriangleTFMesh(node_file_name,
+                       element_file_name,
+                       poly_file_name,
+                       time_stepper_pt,
+                       allow_automatic_creation_of_vertices_on_boundaries)
     {
       // Create and fill the data structures to give rise to polylines so that
       // the mesh can use the adapt methods
@@ -2292,8 +2292,8 @@ namespace oomph
     /// Build mesh from specified triangulation and
     /// associated target areas for elements in it
     /// NOTE: This is used ONLY during adaptation and should not be used
-    /// as a method of constructing a TriangleMesh object in demo drivers!
-    RefineableTriangleMesh(
+    /// as a method of constructing a TriangleTFMesh object in demo drivers!
+    RefineableTriangleTFMesh(
       const Vector<double>& target_area,
       TriangulateIO& triangulate_io,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
@@ -2350,7 +2350,7 @@ namespace oomph
       triangulate(triswitches, &triangle_refine, &this->Triangulateio, 0);
 
       // Build scaffold
-      this->Tmp_mesh_pt = new TriangleScaffoldMesh(this->Triangulateio);
+      this->Tmp_mesh_pt = new TriangleScaffoldTFMesh(this->Triangulateio);
 
       // Convert mesh from scaffold to actual mesh
       this->build_from_scaffold(time_stepper_pt, use_attributes);
@@ -2385,7 +2385,7 @@ namespace oomph
 #endif // #ifdef OOMPH_HAS_TRIANGLE_LIB
 
     /// Empty Destructor
-    virtual ~RefineableTriangleMesh() {}
+    virtual ~RefineableTriangleTFMesh() {}
 
     /// Enables info. and timings for tranferring of target
     /// areas
@@ -3348,7 +3348,7 @@ namespace oomph
 
 #ifdef ANNOTATE_REFINEABLE_TRIANGLE_MESH_COMMUNICATION
     /// Temporary vector of strings to enable full annotation of
-    /// RefineableTriangleMesh comms
+    /// RefineableTriangleTFMesh comms
     Vector<std::string> Flat_packed_unsigneds_string;
 #endif
 
@@ -3517,7 +3517,7 @@ namespace oomph
 #endif // #ifdef OOMPH_HAS_MPI
 
     /// Helper function that updates the input polygon's PSLG
-    /// by using the end-points of elements from FaceMesh(es) that are
+    /// by using the end-points of elements from FaceTFMesh(es) that are
     /// constructed for the boundaries associated with the segments of the
     /// polygon. Optional boolean is used to run it as test only (if
     /// true is specified as input) in which case polygon isn't actually
@@ -3527,7 +3527,7 @@ namespace oomph
                                         const bool& check_only = false);
 
     /// Helper function that updates the input open curve by using
-    /// end-points of elements from FaceMesh(es) that are constructed for the
+    /// end-points of elements from FaceTFMesh(es) that are constructed for the
     /// boundaries associated with the polylines. Optional boolean is used to
     /// run it as test only (if true is specified as input) in which case the
     /// polylines are not actually modified. Returned boolean indicates if
@@ -3546,7 +3546,7 @@ namespace oomph
       const bool& check_only = false);
 
     /// Snap the boundary nodes onto any curvilinear boundaries
-    void snap_nodes_onto_boundary(RefineableTriangleMesh*& new_mesh_pt,
+    void snap_nodes_onto_boundary(RefineableTriangleTFMesh*& new_mesh_pt,
                                   const unsigned& b);
 
     /// Helper function
@@ -3793,7 +3793,7 @@ namespace oomph
           << "overruled \nbecause the target area would have "
           << "been below \nthe minimum permitted area of " << Min_element_size
           << ".\nYou can change the minimum permitted area with the\n"
-          << "function RefineableTriangleMesh::min_element_size().\n\n";
+          << "function RefineableTriangleTFMesh::min_element_size().\n\n";
       }
       return min_angle;
     }
@@ -3862,8 +3862,8 @@ namespace oomph
   //=========================================================================
   /// Unstructured Triangle Mesh upgraded to solid mesh
   //=========================================================================
-  class SolidTriangleMesh : public virtual TriangleMesh,
-                            public virtual SolidMesh
+  class SolidTriangleTFMesh : public virtual TriangleTFMesh,
+                              public virtual SolidTFMesh
   {
   public:
 #ifdef OOMPH_HAS_TRIANGLE_LIB
@@ -3871,9 +3871,10 @@ namespace oomph
     /// Build mesh, based on closed curve that specifies
     /// the outer boundary of the domain and any number of internal
     /// clsed curves. Specify target area for uniform element size.
-    SolidTriangleMesh(TriangleMeshParameters& triangle_mesh_parameters,
-                      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : TriangleMesh(triangle_mesh_parameters, time_stepper_pt)
+    SolidTriangleTFMesh(
+      TriangleMeshParameters& triangle_mesh_parameters,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : TriangleTFMesh(triangle_mesh_parameters, time_stepper_pt)
     {
       // Assign the Lagrangian coordinates
       set_lagrangian_nodal_coordinates();
@@ -3881,24 +3882,24 @@ namespace oomph
 
 #endif // #ifdef OOMPH_HAS_TRIANGLE_LIB
 
-    SolidTriangleMesh(
+    SolidTriangleTFMesh(
       const std::string& node_file_name,
       const std::string& element_file_name,
       const std::string& poly_file_name,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
       const bool& allow_automatic_creation_of_vertices_on_boundaries = true)
-      : TriangleMesh(node_file_name,
-                     element_file_name,
-                     poly_file_name,
-                     time_stepper_pt,
-                     allow_automatic_creation_of_vertices_on_boundaries)
+      : TriangleTFMesh(node_file_name,
+                       element_file_name,
+                       poly_file_name,
+                       time_stepper_pt,
+                       allow_automatic_creation_of_vertices_on_boundaries)
     {
       // Assign the Lagrangian coordinates
       set_lagrangian_nodal_coordinates();
     }
 
     /// Empty Destructor
-    virtual ~SolidTriangleMesh() {}
+    virtual ~SolidTriangleTFMesh() {}
   };
 
 
@@ -3911,17 +3912,17 @@ namespace oomph
   //=========================================================================
   /// Unstructured refineable Triangle Mesh upgraded to solid mesh
   //=========================================================================
-  class RefineableSolidTriangleMesh : public virtual RefineableTriangleMesh,
-                                      public virtual SolidMesh
+  class RefineableSolidTriangleTFMesh : public virtual RefineableTriangleTFMesh,
+                                        public virtual SolidTFMesh
   {
   public:
     /// Build mesh, based on the specifications on
     /// TriangleMeshParameter
-    RefineableSolidTriangleMesh(
+    RefineableSolidTriangleTFMesh(
       TriangleMeshParameters& triangle_mesh_parameters,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : TriangleMesh(triangle_mesh_parameters, time_stepper_pt),
-        RefineableTriangleMesh(triangle_mesh_parameters, time_stepper_pt)
+      : TriangleTFMesh(triangle_mesh_parameters, time_stepper_pt),
+        RefineableTriangleTFMesh(triangle_mesh_parameters, time_stepper_pt)
     {
       // Assign the Lagrangian coordinates
       set_lagrangian_nodal_coordinates();
@@ -3929,14 +3930,14 @@ namespace oomph
 
     /// Build mesh from specified triangulation and
     /// associated target areas for elements in it.
-    RefineableSolidTriangleMesh(
+    RefineableSolidTriangleTFMesh(
       const Vector<double>& target_area,
       TriangulateIO& triangulate_io,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
       const bool& use_attributes = false,
       const bool& allow_automatic_creation_of_vertices_on_boundaries = true,
       OomphCommunicator* comm_pt = 0)
-      : RefineableTriangleMesh(
+      : RefineableTriangleTFMesh(
           target_area,
           triangulate_io,
           time_stepper_pt,
@@ -3949,7 +3950,7 @@ namespace oomph
     }
 
     /// Empty Destructor
-    virtual ~RefineableSolidTriangleMesh() {}
+    virtual ~RefineableSolidTriangleTFMesh() {}
   };
 
 #endif // #ifdef OOMPH_HAS_TRIANGLE_LIB

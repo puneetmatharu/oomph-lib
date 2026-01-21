@@ -42,7 +42,7 @@
 namespace oomph
 {
   //==========================================================================
-  /// RectangularQuadMesh is a two-dimensional mesh of Quad elements with Nx
+  /// RectangularQuadTFMesh is a two-dimensional mesh of Quad elements with Nx
   /// elements in the "x" (horizonal) direction and Ny elements in the "y"
   /// (vertical) direction. Two Constructors are provided. The basic constructor
   /// assumes that the lower-left-hand corner of the mesh is (0,0) and
@@ -56,7 +56,7 @@ namespace oomph
   ///
   /// It is also possible to make the solution periodic in the x direction.
   //===========================================================================
-  class RectangularQuadMesh : public virtual QuadMeshBase
+  class RectangularQuadTFMesh : public virtual QuadMeshBase
   {
   protected:
     // Mesh variables
@@ -91,7 +91,7 @@ namespace oomph
     /// The reason why this MUST be done is because the virtual spacing
     /// functions cannot be called in the base constructur, because they will
     /// not have been overloaded yet!!
-    RectangularQuadMesh(
+    RectangularQuadTFMesh(
       const unsigned& nx,
       const unsigned& ny,
       const double& xmin,
@@ -121,7 +121,7 @@ namespace oomph
     /// ny: number of elements in y direction; lx, length of domain in x
     /// direction (0,lx); ly, length of domain in y direction (0,ly)
     /// Also pass pointer to timestepper (defaults to Steady)
-    RectangularQuadMesh(
+    RectangularQuadTFMesh(
       const unsigned& nx,
       const unsigned& ny,
       const double& lx,
@@ -145,7 +145,7 @@ namespace oomph
 
     /// Constructor that allows the specification of minimum and maximum
     /// values of x and y coordinates
-    RectangularQuadMesh(
+    RectangularQuadTFMesh(
       const unsigned& nx,
       const unsigned& ny,
       const double& xmin,
@@ -174,7 +174,7 @@ namespace oomph
     /// direction (0,lx); ly, length of domain in y direction (0,ly)
     /// Boolean flag specifies if the mesh is periodic in the x-direction.
     /// Also pass pointer to timestepper (defaults to Steady)
-    RectangularQuadMesh(
+    RectangularQuadTFMesh(
       const unsigned& nx,
       const unsigned& ny,
       const double& lx,
@@ -200,7 +200,7 @@ namespace oomph
     /// Constructor that allows the specification of minimum and maximum
     /// values of x and y coordinates.
     /// Boolean flag specifies if the mesh is periodic in the x-direction.
-    RectangularQuadMesh(
+    RectangularQuadTFMesh(
       const unsigned& nx,
       const unsigned& ny,
       const double& xmin,
@@ -310,7 +310,7 @@ namespace oomph
   };
 
   //==========================================================================
-  /// Refineable version of the RectangularQuadMesh: A two-dimensional
+  /// Refineable version of the RectangularQuadTFMesh: A two-dimensional
   /// mesh of Quad elements with Nx elements in the "x" (horizonal)
   /// direction and Ny elements in the "y" (vertical) direction. Two
   /// Constructors are provided. The basic constructor
@@ -323,24 +323,24 @@ namespace oomph
   /// and y_spacing_function() may be overloaded to provide arbitrary node
   /// spacing. The default is uniformly spaced nodes in each direction.
   //===========================================================================
-  class RefineableRectangularQuadMesh : public virtual RectangularQuadMesh,
-                                        public RefineableQuadMesh
+  class RefineableRectangularQuadTFMesh : public virtual RectangularQuadTFMesh,
+                                          public RefineableQuadTFMesh
   {
   public:
     /// Simple constructor: nx: number of elements in x direction;
     /// ny: number of elements in y direction; lx, length of domain in x
     /// direction (0,lx); ly, length of domain in y direction (0,ly).
     /// Also pass pointer to timestepper (defaults to Steady)
-    RefineableRectangularQuadMesh(
+    RefineableRectangularQuadTFMesh(
       const unsigned& nx,
       const unsigned& ny,
       const double& lx,
       const double& ly,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : RectangularQuadMesh(nx, ny, lx, ly, time_stepper_pt)
+      : RectangularQuadTFMesh(nx, ny, lx, ly, time_stepper_pt)
     {
       // Nodal positions etc. were created in constructor for
-      // RectangularMesh<...>. Only need to setup quadtree forest
+      // RectangularTFMesh<...>. Only need to setup quadtree forest
       this->setup_quadtree_forest();
     }
 
@@ -349,24 +349,24 @@ namespace oomph
     /// direction (0,lx); ly, length of domain in y direction (0,ly);
     /// periodic_in_x, periodicity in x.
     /// Also pass pointer to timestepper (defaults to Steady)
-    RefineableRectangularQuadMesh(
+    RefineableRectangularQuadTFMesh(
       const unsigned& nx,
       const unsigned& ny,
       const double& lx,
       const double& ly,
       const bool& periodic_in_x,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : RectangularQuadMesh(nx, ny, lx, ly, periodic_in_x, time_stepper_pt)
+      : RectangularQuadTFMesh(nx, ny, lx, ly, periodic_in_x, time_stepper_pt)
     {
       // Nodal positions etc. were created in constructor for
-      // RectangularMesh<...>. Only need to setup quadtree forest
+      // RectangularTFMesh<...>. Only need to setup quadtree forest
       this->setup_quadtree_forest();
     }
 
     /// Constructor that allows the specification of minimum and maximum
     /// values of x and y coordinates
     /// Also pass pointer to timestepper (defaults to Steady)
-    RefineableRectangularQuadMesh(
+    RefineableRectangularQuadTFMesh(
       const unsigned& nx,
       const unsigned& ny,
       const double& xmin,
@@ -374,17 +374,17 @@ namespace oomph
       const double& ymin,
       const double& ymax,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : RectangularQuadMesh(nx, ny, xmin, xmax, ymin, ymax, time_stepper_pt)
+      : RectangularQuadTFMesh(nx, ny, xmin, xmax, ymin, ymax, time_stepper_pt)
     {
       // Nodal positions etc. were created in constructor for
-      // RectangularMesh<...>. Only need to setup quadtree forest
+      // RectangularTFMesh<...>. Only need to setup quadtree forest
       this->setup_quadtree_forest();
     }
 
     /// Constructor that allows the specification of minimum and maximum
     /// values of x and y coordinates and periodicity
     /// Also pass pointer to timestepper (defaults to Steady)
-    RefineableRectangularQuadMesh(
+    RefineableRectangularQuadTFMesh(
       const unsigned& nx,
       const unsigned& ny,
       const double& xmin,
@@ -393,11 +393,11 @@ namespace oomph
       const double& ymax,
       const bool& periodic_in_x,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : RectangularQuadMesh(
+      : RectangularQuadTFMesh(
           nx, ny, xmin, xmax, ymin, ymax, periodic_in_x, time_stepper_pt)
     {
       // Nodal positions etc. were created in constructor for
-      // RectangularMesh<...>. Only need to setup quadtree forest
+      // RectangularTFMesh<...>. Only need to setup quadtree forest
       this->setup_quadtree_forest();
     }
   };
@@ -410,27 +410,27 @@ namespace oomph
   //================================================================
   /// Elastic quad mesh with functionality to
   /// attach traction elements to the specified boundaries. We "upgrade"
-  /// the RectangularQuadMesh to become an
-  /// SolidMesh and equate the Eulerian and Lagrangian coordinates,
+  /// the RectangularQuadTFMesh to become an
+  /// SolidTFMesh and equate the Eulerian and Lagrangian coordinates,
   /// thus making the domain represented by the mesh the stress-free
   /// configuration.
   //================================================================
-  class ElasticRectangularQuadMesh : public virtual RectangularQuadMesh,
-                                     public virtual SolidMesh
+  class ElasticRectangularQuadTFMesh : public virtual RectangularQuadTFMesh,
+                                       public virtual SolidTFMesh
   {
   public:
     /// Constructor: Build mesh and copy Eulerian coords to Lagrangian
     /// ones so that the initial configuration is the stress-free one and
     /// assign boundary coordinates. Origin specifies
     /// an additional rigid-body displacement.
-    ElasticRectangularQuadMesh(
+    ElasticRectangularQuadTFMesh(
       const unsigned& nx,
       const unsigned& ny,
       const double& lx,
       const double& ly,
       const Vector<double>& origin,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : RectangularQuadMesh(nx, ny, lx, ly, time_stepper_pt)
+      : RectangularQuadTFMesh(nx, ny, lx, ly, time_stepper_pt)
     {
       // Translate the nodes
       unsigned nnod = nnode();
@@ -453,13 +453,13 @@ namespace oomph
     /// Constructor: Build mesh and copy Eulerian coords to Lagrangian
     /// ones so that the initial configuration is the stress-free one and
     /// assign boundary coordinates
-    ElasticRectangularQuadMesh(
+    ElasticRectangularQuadTFMesh(
       const unsigned& nx,
       const unsigned& ny,
       const double& lx,
       const double& ly,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : RectangularQuadMesh(nx, ny, lx, ly, time_stepper_pt)
+      : RectangularQuadTFMesh(nx, ny, lx, ly, time_stepper_pt)
     {
       // No shift
       Vector<double> origin(2, 0.0);
@@ -478,14 +478,14 @@ namespace oomph
     /// ones so that the initial configuration is the stress-free one and
     /// assign boundary coordinates. This includes a boolean flag to specify
     /// if the mesh is periodic in the x-direction
-    ElasticRectangularQuadMesh(
+    ElasticRectangularQuadTFMesh(
       const unsigned& nx,
       const unsigned& ny,
       const double& lx,
       const double& ly,
       const bool& periodic_in_x,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : RectangularQuadMesh(nx, ny, lx, ly, periodic_in_x, time_stepper_pt)
+      : RectangularQuadTFMesh(nx, ny, lx, ly, periodic_in_x, time_stepper_pt)
     {
       // No shift
       Vector<double> origin(2, 0.0);
@@ -553,30 +553,30 @@ namespace oomph
   //================================================================
   /// Elastic refineable quad mesh with functionality to
   /// attach traction elements to the specified boundaries. We "upgrade"
-  /// the RefineableRectangularQuadMesh to become an
-  /// SolidMesh and equate the Eulerian and Lagrangian coordinates,
+  /// the RefineableRectangularQuadTFMesh to become an
+  /// SolidTFMesh and equate the Eulerian and Lagrangian coordinates,
   /// thus making the domain represented by the mesh the stress-free
   /// configuration. We also move the mesh "down" by half the
   /// the "height" so x=0 is located on the centreline -- appropriate
   /// for the beam-type problems for which this mesh was developed.
   //================================================================
-  class ElasticRefineableRectangularQuadMesh
-    : public virtual ElasticRectangularQuadMesh,
-      public RefineableQuadMesh
+  class ElasticRefineableRectangularQuadTFMesh
+    : public virtual ElasticRectangularQuadTFMesh,
+      public RefineableQuadTFMesh
   {
   public:
     /// Constructor: Build mesh and copy Eulerian coords to Lagrangian
     /// ones so that the initial configuration is the stress-free one and
     /// assign boundary coordinates (variable Lagrangian coordinates along
     /// the relevant boundaries).
-    ElasticRefineableRectangularQuadMesh(
+    ElasticRefineableRectangularQuadTFMesh(
       const unsigned& nx,
       const unsigned& ny,
       const double& lx,
       const double& ly,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : RectangularQuadMesh(nx, ny, lx, ly, time_stepper_pt),
-        ElasticRectangularQuadMesh(nx, ny, lx, ly, time_stepper_pt)
+      : RectangularQuadTFMesh(nx, ny, lx, ly, time_stepper_pt),
+        ElasticRectangularQuadTFMesh(nx, ny, lx, ly, time_stepper_pt)
 
     {
       // Nodal positions etc. were created in base class.
@@ -589,15 +589,15 @@ namespace oomph
     /// ones so that the initial configuration is the stress-free one and
     /// assign boundary coordinates. This includes a boolean flag to specify
     /// if the mesh is periodic in the x-direction
-    ElasticRefineableRectangularQuadMesh(
+    ElasticRefineableRectangularQuadTFMesh(
       const unsigned& nx,
       const unsigned& ny,
       const double& lx,
       const double& ly,
       const bool& periodic_in_x,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : RectangularQuadMesh(nx, ny, lx, ly, periodic_in_x, time_stepper_pt),
-        ElasticRectangularQuadMesh(
+      : RectangularQuadTFMesh(nx, ny, lx, ly, periodic_in_x, time_stepper_pt),
+        ElasticRectangularQuadTFMesh(
           nx, ny, lx, ly, periodic_in_x, time_stepper_pt)
     {
       // Nodal positions etc. were created in base class.
@@ -611,15 +611,15 @@ namespace oomph
     /// assign boundary coordinates (variable Lagrangian coordinates along
     /// the relevant boundaries). Origin specifies an additional rigid-body
     /// displacement.
-    ElasticRefineableRectangularQuadMesh(
+    ElasticRefineableRectangularQuadTFMesh(
       const unsigned& nx,
       const unsigned& ny,
       const double& lx,
       const double& ly,
       const Vector<double>& origin,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : RectangularQuadMesh(nx, ny, lx, ly, time_stepper_pt),
-        ElasticRectangularQuadMesh(nx, ny, lx, ly, origin, time_stepper_pt)
+      : RectangularQuadTFMesh(nx, ny, lx, ly, time_stepper_pt),
+        ElasticRectangularQuadTFMesh(nx, ny, lx, ly, origin, time_stepper_pt)
 
     {
       // Nodal positions etc. were created in base class.

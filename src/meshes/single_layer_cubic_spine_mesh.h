@@ -44,14 +44,15 @@ namespace oomph
   /// numeration of the nodes on the boundaries 0 and 5 (bottom and top)
   /// coincides with the numeration of the spines
   //======================================================================
-  class SingleLayerCubicSpineMesh : public SimpleCubicMesh, public SpineMesh
+  class SingleLayerCubicSpineTFMesh : public SimpleCubicTFMesh,
+                                      public SpineTFMesh
   {
   public:
     /// Constructor: Pass number of elements in x-direction, number of
     /// elements in y-direction, number of elements in z-direction,
     /// lengths in x- and y- directions, height of layer, and pointer
     /// to timestepper (defaults to Steady timestepper)
-    SingleLayerCubicSpineMesh(
+    SingleLayerCubicSpineTFMesh(
       const unsigned& nx,
       const unsigned& ny,
       const unsigned& nz,
@@ -61,7 +62,7 @@ namespace oomph
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
 
     /// General node update function implements pure virtual function
-    /// defined in SpineMesh base class and performs specific node update
+    /// defined in SpineTFMesh base class and performs specific node update
     /// actions:  along vertical spines
     virtual void spine_node_update(SpineNode* spine_node_pt)
     {

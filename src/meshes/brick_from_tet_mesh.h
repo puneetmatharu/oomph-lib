@@ -56,23 +56,24 @@ namespace oomph
   /// tet gets split into four bricks. Can only be built with
   /// quadratic (27 node) elements.
   //=====================================================================
-  class BrickFromTetMesh : public virtual BrickMeshBase
+  class BrickFromTetTFMesh : public virtual BrickMeshBase
   {
   public:
     /// Constructor: Pass xda file name.
-    BrickFromTetMesh(std::unique_ptr<ElementFactoryBase> element_factory_pt,
-                     const std::string xda_file_name,
-                     TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+    BrickFromTetTFMesh(
+      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const std::string xda_file_name,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
     {
       // Mesh can only be built with 3D Qelements.
       MeshChecker::assert_geometric_element<QElementGeometricBase>(
         element_factory_pt, 3, 3);
 
       // Build temporary tet mesh
-      XdaTetMesh* tmp_mesh_pt =
-        new XdaTetMesh(make_element_factory_pt<TElement<3, 3>>(),
-                       xda_file_name,
-                       time_stepper_pt);
+      XdaTetTFMesh* tmp_mesh_pt =
+        new XdaTetTFMesh(make_element_factory_pt<TElement<3, 3>>(),
+                         xda_file_name,
+                         time_stepper_pt);
 
       // Actually build the mesh
       build_mesh(element_factory_pt, tmp_mesh_pt, time_stepper_pt);
@@ -82,20 +83,21 @@ namespace oomph
     }
 
     /// Constructor: Pass the files required for the tetgen mesh.
-    BrickFromTetMesh(std::unique_ptr<ElementFactoryBase> element_factory_pt,
-                     const std::string& node_file_name,
-                     const std::string& element_file_name,
-                     const std::string& face_file_name,
-                     const bool& split_corner_elements,
-                     TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
-                     const bool& use_attributes = false)
+    BrickFromTetTFMesh(
+      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const std::string& node_file_name,
+      const std::string& element_file_name,
+      const std::string& face_file_name,
+      const bool& split_corner_elements,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
+      const bool& use_attributes = false)
     {
       // Mesh can only be built with 3D Qelements.
       MeshChecker::assert_geometric_element<QElementGeometricBase>(
         element_factory_pt, 3, 3);
 
       // Build temporary tet mesh
-      TetgenMesh* tmp_mesh_pt = new TetgenMesh(
+      TetgenTFMesh* tmp_mesh_pt = new TetgenTFMesh(
         std::make_shared<DefaultElementFactory<TElement<3, 3>>>(),
         node_file_name,
         element_file_name,
@@ -113,19 +115,20 @@ namespace oomph
 
 
     /// Constructor: Pass xda file name. This returns a pointer to the
-    /// internally built XdaTetMesh for external use. Note that YOU
+    /// internally built XdaTetTFMesh for external use. Note that YOU
     /// are responsible for deleting this mesh.
-    BrickFromTetMesh(std::unique_ptr<ElementFactoryBase> element_factory_pt,
-                     const std::string xda_file_name,
-                     XdaTetMesh*& xda_tet_mesh_pt,
-                     TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+    BrickFromTetTFMesh(
+      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const std::string xda_file_name,
+      XdaTetTFMesh*& xda_tet_mesh_pt,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
     {
       // Mesh can only be built with 3D Qelements.
       MeshChecker::assert_geometric_element<QElementGeometricBase>(
         element_factory_pt, 3, 3);
 
       // Build temporary tet mesh
-      xda_tet_mesh_pt = new XdaTetMesh(
+      xda_tet_mesh_pt = new XdaTetTFMesh(
         std::make_shared<DefaultElementFactory<TElement<3, 3>>>(),
         xda_file_name,
         time_stepper_pt);
@@ -146,12 +149,12 @@ namespace oomph
   private:
     /// Build fct: Pass pointer to existing tet mesh.
     void build_mesh(std::unique_ptr<ElementFactoryBase> element_factory_pt,
-                    XdaTetMesh* tet_mesh_pt,
+                    XdaTetTFMesh* tet_mesh_pt,
                     TimeStepper* time_stepper_pt);
 
     /// Build fct: Pass pointer to existing tet mesh.
     void build_mesh(std::unique_ptr<ElementFactoryBase> element_factory_pt,
-                    TetgenMesh* tet_mesh_pt,
+                    TetgenTFMesh* tet_mesh_pt,
                     TimeStepper* time_stepper_pt);
 
     /// Vector of vectors containing the boundary IDs of
@@ -169,16 +172,16 @@ namespace oomph
   /// tet gets split into four bricks. Can only be built with
   /// quadratic (27 node) elements.
   //=====================================================================
-  class SolidBrickFromTetMesh : public virtual BrickFromTetMesh,
-                                public SolidMesh
+  class SolidBrickFromTetTFMesh : public virtual BrickFromTetTFMesh,
+                                  public SolidTFMesh
   {
   public:
     /// Constructor: Pass xda file name.
-    SolidBrickFromTetMesh(
+    SolidBrickFromTetTFMesh(
       std::unique_ptr<ElementFactoryBase> element_factory_pt,
       const std::string xda_file_name,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : BrickFromTetMesh(element_factory_pt, xda_file_name, time_stepper_pt)
+      : BrickFromTetTFMesh(element_factory_pt, xda_file_name, time_stepper_pt)
     {
       // Make the current configuration the undeformed one by
       // setting the nodal Lagrangian coordinates to their current
@@ -188,14 +191,14 @@ namespace oomph
 
 
     /// Constructor: Pass xda file name. This returns a pointer to the
-    /// internally built XdaTetMesh for external use. Note that YOU
+    /// internally built XdaTetTFMesh for external use. Note that YOU
     /// are responsible for deleting this mesh.
-    SolidBrickFromTetMesh(
+    SolidBrickFromTetTFMesh(
       std::unique_ptr<ElementFactoryBase> element_factory_pt,
       const std::string xda_file_name,
-      XdaTetMesh*& xda_tet_mesh_pt,
+      XdaTetTFMesh*& xda_tet_mesh_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : BrickFromTetMesh(
+      : BrickFromTetTFMesh(
           element_factory_pt, xda_file_name, xda_tet_mesh_pt, time_stepper_pt)
     {
       // Make the current configuration the undeformed one by
@@ -215,16 +218,16 @@ namespace oomph
   /// tet gets split into four bricks. Can only be built with
   /// quadratic (27 node) elements.
   //=====================================================================
-  class RefineableBrickFromTetMesh : public virtual BrickFromTetMesh,
-                                     public virtual RefineableBrickMesh
+  class RefineableBrickFromTetTFMesh : public virtual BrickFromTetTFMesh,
+                                       public virtual RefineableBrickTFMesh
   {
   public:
     /// Constructor: Pass xda file name.
-    RefineableBrickFromTetMesh(
+    RefineableBrickFromTetTFMesh(
       std::unique_ptr<ElementFactoryBase> element_factory_pt,
       const std::string xda_file_name,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : BrickFromTetMesh(element_factory_pt, xda_file_name, time_stepper_pt)
+      : BrickFromTetTFMesh(element_factory_pt, xda_file_name, time_stepper_pt)
     {
       // Nodal positions etc. were created in constructor for
       // nonrefineable mesh. Only need to setup quadtree forest
@@ -233,18 +236,18 @@ namespace oomph
 
 
     /// Constructor: Pass xda file name. This returns a pointer to the
-    /// internally built XdaTetMesh for external use. Note that YOU
+    /// internally built XdaTetTFMesh for external use. Note that YOU
     /// are responsible for deleting this mesh.
-    RefineableBrickFromTetMesh(
+    RefineableBrickFromTetTFMesh(
       std::unique_ptr<ElementFactoryBase> element_factory_pt,
       const std::string xda_file_name,
-      XdaTetMesh*& xda_tet_mesh_pt,
+      XdaTetTFMesh*& xda_tet_mesh_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : BrickFromTetMesh(
+      : BrickFromTetTFMesh(
           element_factory_pt, xda_file_name, xda_tet_mesh_pt, time_stepper_pt)
     {
       // Nodal positions etc. were created in constructor for
-      // RectangularMesh<...>. Only need to setup quadtree forest
+      // RectangularTFMesh<...>. Only need to setup quadtree forest
       this->setup_octree_forest();
     }
   };
@@ -259,18 +262,19 @@ namespace oomph
   /// mesh -- each tet gets split into four bricks. Can only be built with
   /// quadratic (27 node) elements.
   //=====================================================================
-  class RefineableSolidBrickFromTetMesh : public virtual BrickFromTetMesh,
-                                          public virtual RefineableBrickMesh,
-                                          public SolidMesh
+  class RefineableSolidBrickFromTetTFMesh
+    : public virtual BrickFromTetTFMesh,
+      public virtual RefineableBrickTFMesh,
+      public SolidTFMesh
 
   {
   public:
     /// Constructor: Pass xda file name.
-    RefineableSolidBrickFromTetMesh(
+    RefineableSolidBrickFromTetTFMesh(
       std::unique_ptr<ElementFactoryBase> element_factory_pt,
       const std::string xda_file_name,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : BrickFromTetMesh(element_factory_pt, xda_file_name, time_stepper_pt)
+      : BrickFromTetTFMesh(element_factory_pt, xda_file_name, time_stepper_pt)
     {
       // Make the current configuration the undeformed one by
       // setting the nodal Lagrangian coordinates to their current
@@ -284,14 +288,14 @@ namespace oomph
 
 
     /// Constructor: Pass xda file name. This returns a pointer to the
-    /// internally built XdaTetMesh for external use. Note that YOU
+    /// internally built XdaTetTFMesh for external use. Note that YOU
     /// are responsible for deleting this mesh.
-    RefineableSolidBrickFromTetMesh(
+    RefineableSolidBrickFromTetTFMesh(
       std::unique_ptr<ElementFactoryBase> element_factory_pt,
       const std::string xda_file_name,
-      XdaTetMesh*& xda_tet_mesh_pt,
+      XdaTetTFMesh*& xda_tet_mesh_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : BrickFromTetMesh(
+      : BrickFromTetTFMesh(
           element_factory_pt, xda_file_name, xda_tet_mesh_pt, time_stepper_pt)
     {
       // Make the current configuration the undeformed one by
@@ -300,12 +304,11 @@ namespace oomph
       set_lagrangian_nodal_coordinates();
 
       // Nodal positions etc. were created in constructor for
-      // RectangularMesh<...>. Only need to setup quadtree forest
+      // RectangularTFMesh<...>. Only need to setup quadtree forest
       this->setup_octree_forest();
     }
   };
 
 } // namespace oomph
 
-#include "brick_from_tet_mesh.template.cc"
 #endif

@@ -51,7 +51,7 @@ namespace oomph
   /// prescribed using the TopologicallyRectangularDomain. Non uniform node
   /// spacing can be prescribed using a function pointer.
   //=============================================================================
-  class HermiteQuadMesh : public Mesh
+  class HermiteQuadTFMesh : public Mesh
   {
   public:
     /// Mesh Spacing Function Pointer - an optional function pointer
@@ -72,11 +72,11 @@ namespace oomph
     ///                                the x direction (default = false);
     ///              time_stepper_pt : pointer to the time stepper (default = no
     ///                                timestepper);
-    HermiteQuadMesh(const unsigned& nx,
-                    const unsigned& ny,
-                    TopologicallyRectangularDomain* domain,
-                    const bool& periodic_in_x = false,
-                    TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+    HermiteQuadTFMesh(const unsigned& nx,
+                      const unsigned& ny,
+                      TopologicallyRectangularDomain* domain,
+                      const bool& periodic_in_x = false,
+                      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
     {
       // Mesh can only be built with 2D QHermiteElements.
       MeshChecker::assert_geometric_element<QHermiteElementBase>(
@@ -114,12 +114,12 @@ namespace oomph
     ///                                         (default = false);
     ///                       time_stepper_pt : pointer to the time stepper
     ///                                         (default = notimestepper);
-    HermiteQuadMesh(const unsigned& nx,
-                    const unsigned& ny,
-                    TopologicallyRectangularDomain* domain,
-                    const MeshSpacingFnPtr spacing_fn,
-                    const bool& periodic_in_x = false,
-                    TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+    HermiteQuadTFMesh(const unsigned& nx,
+                      const unsigned& ny,
+                      TopologicallyRectangularDomain* domain,
+                      const MeshSpacingFnPtr spacing_fn,
+                      const bool& periodic_in_x = false,
+                      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
     {
       // Mesh can only be built with 2D QHermiteElements.
       MeshChecker::assert_geometric_element<QHermiteElementBase>(
@@ -144,7 +144,7 @@ namespace oomph
     }
 
     /// Destructor - does nothing - handled in mesh base class
-    ~HermiteQuadMesh() {};
+    ~HermiteQuadTFMesh() {};
 
     /// Access function for number of elements in mesh in each dimension
     unsigned& nelement_in_dim(const unsigned& d)
@@ -207,7 +207,7 @@ namespace oomph
 
     /// Setup lookup schemes which establish whic elements are located
     /// next to mesh's boundaries (wrapper to suppress doc).
-    /// Specific version for HermiteQuadMesh to ensure that the order of the
+    /// Specific version for HermiteQuadTFMesh to ensure that the order of the
     /// elements in Boundary_element_pt matches the actual order along the
     /// boundary. This is required when hijacking the BiharmonicElement to apply
     /// the BiharmonicFluidBoundaryElement in
@@ -221,7 +221,7 @@ namespace oomph
 
     /// Setup lookup schemes which establish which elements are located
     /// next to which boundaries (Doc to outfile if it's open).
-    /// Specific version for HermiteQuadMesh to ensure that the order of the
+    /// Specific version for HermiteQuadTFMesh to ensure that the order of the
     /// elements in Boundary_element_pt matches the actual order along the
     /// boundary. This is required when hijacking the BiharmonicElement to apply
     /// the BiharmonicFluidBoundaryElement in

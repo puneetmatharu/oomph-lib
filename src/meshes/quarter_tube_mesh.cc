@@ -37,12 +37,12 @@ namespace oomph
   /// which the dividing line is to be placed, and the timestepper.
   /// Timestepper defaults to Static dummy timestepper.
   //====================================================================
-  QuarterTubeMesh::QuarterTubeMesh(GeomObject* wall_pt,
-                                   const Vector<double>& xi_lo,
-                                   const double& fract_mid,
-                                   const Vector<double>& xi_hi,
-                                   const unsigned& nlayer,
-                                   TimeStepper* time_stepper_pt)
+  QuarterTubeTFMesh::QuarterTubeTFMesh(GeomObject* wall_pt,
+                                       const Vector<double>& xi_lo,
+                                       const double& fract_mid,
+                                       const Vector<double>& xi_hi,
+                                       const unsigned& nlayer,
+                                       TimeStepper* time_stepper_pt)
     : Wall_pt(wall_pt), Xi_lo(xi_lo), Fract_mid(fract_mid), Xi_hi(xi_hi)
   {
     // Mesh can only be built with 3D Qelements.
@@ -599,7 +599,7 @@ namespace oomph
       error_stream << "Error in killing nodes\n"
                    << "The most probable cause is that the domain is not\n"
                    << "compatible with the mesh.\n"
-                   << "For the QuarterTubeMesh, the domain must be\n"
+                   << "For the QuarterTubeTFMesh, the domain must be\n"
                    << "topologically consistent with a quarter tube with a\n"
                    << "non-curved centreline.\n";
       throw OomphLibError(
@@ -612,7 +612,7 @@ namespace oomph
 
   ///////////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////
-  // Algebraic-mesh-version of RefineableQuarterTubeMesh
+  // Algebraic-mesh-version of RefineableQuarterTubeTFMesh
   ///////////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////
 
@@ -640,7 +640,7 @@ namespace oomph
   ///   are located on straight lines running from the edges of the
   ///   central region to the outer wall.
   //======================================================================
-  void AlgebraicRefineableQuarterTubeMesh<
+  void AlgebraicRefineableQuarterTubeTFMesh<
     ELEMENT>::setup_algebraic_node_update()
   {
 #ifdef PARANOID
@@ -652,11 +652,11 @@ namespace oomph
     {
       std::ostringstream error_message;
       error_message
-        << "Element in AlgebraicRefineableQuarterTubeMesh must be\n ";
+        << "Element in AlgebraicRefineableQuarterTubeTFMesh must be\n ";
       error_message << "derived from AlgebraicElementBase\n";
       error_message << "but it is of type:  "
                     << typeid(Mesh::element_pt(0)).name() << std::endl;
-      std::string function_name = "AlgebraicRefineableQuarterTubeMesh::";
+      std::string function_name = "AlgebraicRefineableQuarterTubeTFMesh::";
       function_name += "setup_algebraic_node_update()";
       throw OomphLibError(
         error_message.str(), OOMPH_CURRENT_FUNCTION, OOMPH_EXCEPTION_LOCATION);
@@ -727,14 +727,14 @@ namespace oomph
         // at bottom-right edge of wall
         Vector<double> xi(2);
         xi[0] = z;
-        xi[1] = QuarterTubeMesh::Xi_lo[1];
+        xi[1] = QuarterTubeTFMesh::Xi_lo[1];
         GeomObject* obj_br_pt;
         Vector<double> s_br(2);
         this->Wall_pt->locate_zeta(xi, obj_br_pt, s_br);
 
         // Find wall GeomObject/local coordinate
         // at top-left edge of wall
-        xi[1] = QuarterTubeMesh::Xi_hi[1];
+        xi[1] = QuarterTubeTFMesh::Xi_hi[1];
         GeomObject* obj_tl_pt;
         Vector<double> s_tl(2);
         this->Wall_pt->locate_zeta(xi, obj_tl_pt, s_tl);
@@ -804,9 +804,9 @@ namespace oomph
           double rho_1 = fract * double((n / nnodes_1d) % nnodes_1d);
 
           // Find coord of reference point on wall
-          xi[1] = QuarterTubeMesh::Xi_lo[1] +
-                  rho_1 * QuarterTubeMesh::Fract_mid *
-                    (QuarterTubeMesh::Xi_hi[1] - QuarterTubeMesh::Xi_lo[1]);
+          xi[1] = QuarterTubeTFMesh::Xi_lo[1] +
+                  rho_1 * QuarterTubeTFMesh::Fract_mid *
+                    (QuarterTubeTFMesh::Xi_hi[1] - QuarterTubeTFMesh::Xi_lo[1]);
 
           // Identify wall GeomObject and local coordinate of
           // reference point in GeomObject
@@ -875,9 +875,9 @@ namespace oomph
           double rho_1 = fract * double((n / nnodes_1d) % nnodes_1d);
 
           // Find coord of reference point on wall
-          xi[1] = QuarterTubeMesh::Xi_hi[1] +
-                  rho_0 * (1.0 - QuarterTubeMesh::Fract_mid) *
-                    (QuarterTubeMesh::Xi_lo[1] - QuarterTubeMesh::Xi_hi[1]);
+          xi[1] = QuarterTubeTFMesh::Xi_hi[1] +
+                  rho_0 * (1.0 - QuarterTubeTFMesh::Fract_mid) *
+                    (QuarterTubeTFMesh::Xi_lo[1] - QuarterTubeTFMesh::Xi_hi[1]);
 
           // Identify GeomObject and local coordinate at
           // reference point on wall
@@ -939,7 +939,7 @@ namespace oomph
   /// Algebraic update function: Update in central region according
   /// to wall shape at time level t (t=0: present; t>0: previous)
   //======================================================================
-  void AlgebraicRefineableQuarterTubeMesh::node_update_central_region(
+  void AlgebraicRefineableQuarterTubeTFMesh::node_update_central_region(
     const unsigned& t, AlgebraicNode*& node_pt)
   {
 #ifdef PARANOID
@@ -966,7 +966,7 @@ namespace oomph
       error_message += "in your application, remove this warning \n";
       error_message += "or recompile with PARNOID switched off.\n";
 
-      std::string function_name = "AlgebraicRefineableQuarterTubeMesh::";
+      std::string function_name = "AlgebraicRefineableQuarterTubeTFMesh::";
       function_name += "node_update_central_region()",
         throw OomphLibError(
           error_message, OOMPH_CURRENT_FUNCTION, OOMPH_EXCEPTION_LOCATION);
@@ -1026,7 +1026,7 @@ namespace oomph
   /// Algebraic update function: Update in lower-right region according
   /// to wall shape at time level t (t=0: present; t>0: previous)
   //====================================================================
-  void AlgebraicRefineableQuarterTubeMesh<
+  void AlgebraicRefineableQuarterTubeTFMesh<
     ELEMENT>::node_update_lower_right_region(const unsigned& t,
                                              AlgebraicNode*& node_pt)
   {
@@ -1054,7 +1054,8 @@ namespace oomph
       error_message += "in your application, remove this warning ";
       error_message += "or recompile with PARNOID switched off.";
 
-      std::string function_name = "AlgebraicRefineableQuarterTubeSectorMesh::";
+      std::string function_name =
+        "AlgebraicRefineableQuarterTubeSectorTFMesh::";
       function_name += "node_update_lower_right_region()",
         throw OomphLibError(
           error_message, OOMPH_CURRENT_FUNCTION, OOMPH_EXCEPTION_LOCATION);
@@ -1142,7 +1143,7 @@ namespace oomph
   /// Algebraic update function: Update in upper left region according
   /// to wall shape at time level t (t=0: present; t>0: previous)
   //====================================================================
-  void AlgebraicRefineableQuarterTubeMesh<
+  void AlgebraicRefineableQuarterTubeTFMesh<
     ELEMENT>::node_update_upper_left_region(const unsigned& t,
                                             AlgebraicNode*& node_pt)
   {
@@ -1170,7 +1171,7 @@ namespace oomph
       error_message += "in your application, remove this warning ";
       error_message += "or recompile with PARNOID switched off.";
 
-      std::string function_name = "AlgebraicRefineableQuarterTubeMesh::";
+      std::string function_name = "AlgebraicRefineableQuarterTubeTFMesh::";
       function_name += "node_update_upper_left_region()";
 
       throw OomphLibError(
@@ -1260,7 +1261,7 @@ namespace oomph
   /// Update algebraic update function for nodes in region defined by
   /// region_id.
   //======================================================================
-  void AlgebraicRefineableQuarterTubeMesh<
+  void AlgebraicRefineableQuarterTubeTFMesh<
     ELEMENT>::update_node_update_in_region(AlgebraicNode*& node_pt,
                                            int& region_id)
   {
@@ -1275,13 +1276,13 @@ namespace oomph
     node_pt->kill_node_update_info(region_id);
 
     // Fixed reference value: Start coordinate on wall
-    double xi_lo = QuarterTubeMesh::Xi_lo[1];
+    double xi_lo = QuarterTubeTFMesh::Xi_lo[1];
 
     // Fixed reference value: Fractional position of dividing line
-    double fract_mid = QuarterTubeMesh::Fract_mid;
+    double fract_mid = QuarterTubeTFMesh::Fract_mid;
 
     // Fixed reference value: End coordinate on wall
-    double xi_hi = QuarterTubeMesh::Xi_hi[1];
+    double xi_hi = QuarterTubeTFMesh::Xi_hi[1];
 
     // get initial z-coordinate of node
     // NOTE: use modified z found using axial_spacing_fct()

@@ -39,7 +39,7 @@ namespace oomph
   /// end of the leaflet. Timestepper defaults to Steady default
   /// Timestepper defined in the Mesh base class
   //===================================================================
-  ChannelWithLeafletMesh::ChannelWithLeafletMesh(
+  ChannelWithLeafletTFMesh::ChannelWithLeafletTFMesh(
     std::unique_ptr<ElementFactoryBase> element_factory_pt,
     GeomObject* leaflet_pt,
     const double& lleft,
@@ -51,7 +51,7 @@ namespace oomph
     const unsigned& ny1,
     const unsigned& ny2,
     TimeStepper* time_stepper_pt)
-    : SimpleRectangularQuadMesh(
+    : SimpleRectangularQuadTFMesh(
         nright + nleft, ny1 + ny2, lright + lleft, htot, time_stepper_pt)
   {
     // Mesh can only be built with 2D Qelements.
@@ -230,7 +230,7 @@ namespace oomph
   /// Setup algebraic node update.  Leaflet is
   /// assumed to be in its undeformed (straight vertical) position!
   //=================================================================
-  void AlgebraicChannelWithLeafletMesh::setup_algebraic_node_update()
+  void AlgebraicChannelWithLeafletTFMesh::setup_algebraic_node_update()
   {
     // Extract some reference lengths from the Domain.
     double hleaflet = this->domain_pt()->hleaflet();
@@ -396,7 +396,7 @@ namespace oomph
   //=================================================================
   /// Perform algebraic node update
   //=================================================================
-  void AlgebraicChannelWithLeafletMesh::algebraic_node_update(
+  void AlgebraicChannelWithLeafletTFMesh::algebraic_node_update(
     const unsigned& t, AlgebraicNode*& node_pt)
   {
     unsigned id = node_pt->node_update_fct_id();
@@ -425,7 +425,7 @@ namespace oomph
                       << ", but it should only be one of " << 1 << ", " << 2
                       << ", " << 3 << " or " << 4 << std::endl;
         std::string function_name =
-          "AlgebraicChannelWithLeafletMesh::algebraic_node_update()";
+          "AlgebraicChannelWithLeafletTFMesh::algebraic_node_update()";
 
         throw OomphLibError(error_message.str(),
                             OOMPH_CURRENT_FUNCTION,
@@ -437,8 +437,8 @@ namespace oomph
   //=================================================================
   /// Node update for region I
   //=================================================================
-  void AlgebraicChannelWithLeafletMesh::node_update_I(const unsigned& t,
-                                                      AlgebraicNode*& node_pt)
+  void AlgebraicChannelWithLeafletTFMesh::node_update_I(const unsigned& t,
+                                                        AlgebraicNode*& node_pt)
   {
     // relevant data of the domain for part I
     double lleft = this->domain_pt()->lleft();
@@ -477,8 +477,8 @@ namespace oomph
   //=================================================================
   /// Node update for region II
   //=================================================================
-  void AlgebraicChannelWithLeafletMesh::node_update_II(const unsigned& t,
-                                                       AlgebraicNode*& node_pt)
+  void AlgebraicChannelWithLeafletTFMesh::node_update_II(
+    const unsigned& t, AlgebraicNode*& node_pt)
   {
     // relevant data of the domain for part II
     double lright = this->domain_pt()->lright();
@@ -517,7 +517,7 @@ namespace oomph
   //=================================================================
   /// Slanted bound : helper function
   //=================================================================
-  void AlgebraicChannelWithLeafletMesh::slanted_bound_up(
+  void AlgebraicChannelWithLeafletTFMesh::slanted_bound_up(
     const unsigned& t, const Vector<double>& zeta, Vector<double>& r)
   {
     /// Coordinates of the point on the boundary beetween the upper
@@ -538,8 +538,8 @@ namespace oomph
   //=================================================================
   /// Node update for region III
   //=================================================================
-  void AlgebraicChannelWithLeafletMesh::node_update_III(const unsigned& t,
-                                                        AlgebraicNode*& node_pt)
+  void AlgebraicChannelWithLeafletTFMesh::node_update_III(
+    const unsigned& t, AlgebraicNode*& node_pt)
   {
     // relevant data of the domain for part I
     double lleft = this->domain_pt()->lleft();
@@ -571,8 +571,8 @@ namespace oomph
   //=================================================================
   /// Node update for region IV
   //=================================================================
-  void AlgebraicChannelWithLeafletMesh::node_update_IV(const unsigned& t,
-                                                       AlgebraicNode*& node_pt)
+  void AlgebraicChannelWithLeafletTFMesh::node_update_IV(
+    const unsigned& t, AlgebraicNode*& node_pt)
   {
     // relevant data of the domain for part I
     double lright = this->domain_pt()->lright();
@@ -610,7 +610,7 @@ namespace oomph
   //===================================================================
   ///  Update the node update functions
   //===================================================================
-  void RefineableAlgebraicChannelWithLeafletMesh::update_node_update(
+  void RefineableAlgebraicChannelWithLeafletTFMesh::update_node_update(
     AlgebraicNode*& node_pt)
   {
     // Extract ID

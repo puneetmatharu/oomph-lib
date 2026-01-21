@@ -35,7 +35,7 @@ namespace oomph
   /// quads should be trivial (see the corresponding classes for
   /// triangular meshes).
   //========================================================================
-  void GeompackQuadMesh::build_from_scaffold(TimeStepper* time_stepper_pt)
+  void GeompackQuadTFMesh::build_from_scaffold(TimeStepper* time_stepper_pt)
   {
     // Mesh can only be built with four-noded 2D Qelements.
     MeshChecker::assert_geometric_element<QElementGeometricBase>(
@@ -63,7 +63,7 @@ namespace oomph
     if (finite_element_pt(0)->nnode() != 4)
     {
       std::string error_message =
-        "GeompackQuadMesh can currently only deal with\n";
+        "GeompackQuadTFMesh can currently only deal with\n";
       error_message += "four noded quads! \n";
       error_message += "Generalisation to higher-order elements should be \n";
       error_message += "straightforward but hasn't been done yet.\n";

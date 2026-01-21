@@ -37,11 +37,12 @@ namespace oomph
   /// Nodal positions are determined via macro-element-based representation
   /// of the Domain (as a QuarterCircleSectorDomain).
   //====================================================================
-  QuarterCircleSectorMesh::QuarterCircleSectorMesh(GeomObject* wall_pt,
-                                                   const double& xi_lo,
-                                                   const double& fract_mid,
-                                                   const double& xi_hi,
-                                                   TimeStepper* time_stepper_pt)
+  QuarterCircleSectorTFMesh::QuarterCircleSectorTFMesh(
+    GeomObject* wall_pt,
+    const double& xi_lo,
+    const double& fract_mid,
+    const double& xi_hi,
+    TimeStepper* time_stepper_pt)
     : Wall_pt(wall_pt), Xi_lo(xi_lo), Fract_mid(fract_mid), Xi_hi(xi_hi)
   {
     // Mesh can only be built with 2D Qelements.
@@ -512,7 +513,7 @@ namespace oomph
 
   ///////////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////
-  // Algebraic-mesh-version of RefineableQuarterCircleSectorMesh
+  // Algebraic-mesh-version of RefineableQuarterCircleSectorTFMesh
   ///////////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////
 
@@ -532,7 +533,7 @@ namespace oomph
   ///   are located on straight lines running from the edges of the
   ///   central box to the outer wall.
   //======================================================================
-  void AlgebraicRefineableQuarterCircleSectorMesh<
+  void AlgebraicRefineableQuarterCircleSectorTFMesh<
     ELEMENT>::setup_algebraic_node_update()
   {
 #ifdef PARANOID
@@ -544,12 +545,12 @@ namespace oomph
     {
       std::ostringstream error_message;
       error_message
-        << "Element in AlgebraicRefineableQuarterCircleSectorMesh must be\n ";
+        << "Element in AlgebraicRefineableQuarterCircleSectorTFMesh must be\n ";
       error_message << "derived from AlgebraicElementBase\n";
       error_message << "but it is of type:  "
                     << typeid(Mesh::element_pt(0)).name() << std::endl;
       std::string function_name =
-        "AlgebraicRefineableQuarterCircleSectorMesh::";
+        "AlgebraicRefineableQuarterCircleSectorTFMesh::";
       function_name += "setup_algebraic_node_update()";
       throw OomphLibError(
         error_message.str(), OOMPH_CURRENT_FUNCTION, OOMPH_EXCEPTION_LOCATION);
@@ -566,8 +567,8 @@ namespace oomph
     // Get wall position in bottom right corner
     Vector<double> r_br(2);
     Vector<double> xi(1);
-    xi[0] = QuarterCircleSectorMesh::Xi_lo;
-    QuarterCircleSectorMesh::Wall_pt->position(xi, r_br);
+    xi[0] = QuarterCircleSectorTFMesh::Xi_lo;
+    QuarterCircleSectorTFMesh::Wall_pt->position(xi, r_br);
 
     // Establish fractional width of central box
     Lambda_x = x_box / r_br[0];
@@ -581,8 +582,8 @@ namespace oomph
 
     // Get wall position in top left corner
     Vector<double> r_tl(2);
-    xi[0] = QuarterCircleSectorMesh::Xi_hi;
-    QuarterCircleSectorMesh::Wall_pt->position(xi, r_tl);
+    xi[0] = QuarterCircleSectorTFMesh::Xi_hi;
+    QuarterCircleSectorTFMesh::Wall_pt->position(xi, r_tl);
 
     // Establish fractional height of central box
     Lambda_y = y_box / r_tl[1];
@@ -699,10 +700,10 @@ namespace oomph
 
           // Reference point on wall
           Vector<double> xi_wall(1);
-          xi_wall[0] =
-            QuarterCircleSectorMesh::Xi_lo +
-            rho_1 * QuarterCircleSectorMesh::Fract_mid *
-              (QuarterCircleSectorMesh::Xi_hi - QuarterCircleSectorMesh::Xi_lo);
+          xi_wall[0] = QuarterCircleSectorTFMesh::Xi_lo +
+                       rho_1 * QuarterCircleSectorTFMesh::Fract_mid *
+                         (QuarterCircleSectorTFMesh::Xi_hi -
+                          QuarterCircleSectorTFMesh::Xi_lo);
 
           // Identify wall element number and local coordinate of
           // reference point on wall
@@ -783,10 +784,10 @@ namespace oomph
 
           // Reference point on wall
           Vector<double> xi_wall(1);
-          xi_wall[0] =
-            QuarterCircleSectorMesh::Xi_hi +
-            rho_0 * (1.0 - QuarterCircleSectorMesh::Fract_mid) *
-              (QuarterCircleSectorMesh::Xi_lo - QuarterCircleSectorMesh::Xi_hi);
+          xi_wall[0] = QuarterCircleSectorTFMesh::Xi_hi +
+                       rho_0 * (1.0 - QuarterCircleSectorTFMesh::Fract_mid) *
+                         (QuarterCircleSectorTFMesh::Xi_lo -
+                          QuarterCircleSectorTFMesh::Xi_hi);
 
           // Identify wall element number and local coordinate of
           // reference point on wall
@@ -818,7 +819,7 @@ namespace oomph
   /// Algebraic update function: Update in central box according
   /// to wall shape at time level t (t=0: present; t>0: previous)
   //======================================================================
-  void AlgebraicRefineableQuarterCircleSectorMesh<
+  void AlgebraicRefineableQuarterCircleSectorTFMesh<
     ELEMENT>::node_update_in_central_box(const unsigned& t,
                                          AlgebraicNode*& node_pt)
   {
@@ -847,7 +848,7 @@ namespace oomph
       error_message += "or recompile with PARNOID switched off.\n";
 
       std::string function_name =
-        "AlgebraicRefineableQuarterCircleSectorMesh::";
+        "AlgebraicRefineableQuarterCircleSectorTFMesh::";
       function_name += "node_update_in_central_box()",
         throw OomphLibError(
           error_message, OOMPH_CURRENT_FUNCTION, OOMPH_EXCEPTION_LOCATION);
@@ -904,7 +905,7 @@ namespace oomph
   /// Algebraic update function: Update in lower right box according
   /// to wall shape at time level t (t=0: present; t>0: previous)
   //====================================================================
-  void AlgebraicRefineableQuarterCircleSectorMesh<
+  void AlgebraicRefineableQuarterCircleSectorTFMesh<
     ELEMENT>::node_update_in_lower_right_box(const unsigned& t,
                                              AlgebraicNode*& node_pt)
   {
@@ -933,7 +934,7 @@ namespace oomph
       error_message += "or recompile with PARNOID switched off.";
 
       std::string function_name =
-        "AlgebraicRefineableQuarterCircleSectorMesh::";
+        "AlgebraicRefineableQuarterCircleSectorTFMesh::";
       function_name += "node_update_in_lower_right_box()",
         throw OomphLibError(
           error_message, OOMPH_CURRENT_FUNCTION, OOMPH_EXCEPTION_LOCATION);
@@ -1011,7 +1012,7 @@ namespace oomph
   /// Algebraic update function: Update in upper left box according
   /// to wall shape at time level t (t=0: present; t>0: previous)
   //====================================================================
-  void AlgebraicRefineableQuarterCircleSectorMesh<
+  void AlgebraicRefineableQuarterCircleSectorTFMesh<
     ELEMENT>::node_update_in_upper_left_box(const unsigned& t,
                                             AlgebraicNode*& node_pt)
   {
@@ -1040,7 +1041,7 @@ namespace oomph
       error_message += "or recompile with PARNOID switched off.";
 
       std::string function_name =
-        "AlgebraicRefineableQuarterCircleSectorMesh::";
+        "AlgebraicRefineableQuarterCircleSectorTFMesh::";
       function_name += "node_update_in_upper_left_box()";
 
       throw OomphLibError(
@@ -1119,7 +1120,7 @@ namespace oomph
   //======================================================================
   /// Update algebraic update function for nodes in lower right box.
   //======================================================================
-  void AlgebraicRefineableQuarterCircleSectorMesh<
+  void AlgebraicRefineableQuarterCircleSectorTFMesh<
     ELEMENT>::update_node_update_in_lower_right_box(AlgebraicNode*& node_pt)
   {
     // Extract references for update in central box by copy construction
@@ -1133,13 +1134,13 @@ namespace oomph
     node_pt->kill_node_update_info(Lower_right_box);
 
     // Fixed reference value: Start coordinate on wall
-    double xi_lo = QuarterCircleSectorMesh::Xi_lo;
+    double xi_lo = QuarterCircleSectorTFMesh::Xi_lo;
 
     // Fixed reference value: Fractional position of dividing line
-    double fract_mid = QuarterCircleSectorMesh::Fract_mid;
+    double fract_mid = QuarterCircleSectorTFMesh::Fract_mid;
 
     // Fixed reference value: End coordinate on wall
-    double xi_hi = QuarterCircleSectorMesh::Xi_hi;
+    double xi_hi = QuarterCircleSectorTFMesh::Xi_hi;
 
     // Second reference value: fractional s1-position of node inside box
     double rho_1 = ref_value[1];
@@ -1214,7 +1215,7 @@ namespace oomph
   //======================================================================
   /// Update algebraic update function for nodes in upper left box
   //======================================================================
-  void AlgebraicRefineableQuarterCircleSectorMesh<
+  void AlgebraicRefineableQuarterCircleSectorTFMesh<
     ELEMENT>::update_node_update_in_upper_left_box(AlgebraicNode*& node_pt)
   {
     // Extract references for update in central box by copy construction
@@ -1228,13 +1229,13 @@ namespace oomph
     node_pt->kill_node_update_info(Upper_left_box);
 
     // Fixed reference value: Start coordinate on wall
-    double xi_lo = QuarterCircleSectorMesh::Xi_lo;
+    double xi_lo = QuarterCircleSectorTFMesh::Xi_lo;
 
     // Fixed reference value:  Fractional position of dividing line
-    double fract_mid = QuarterCircleSectorMesh::Fract_mid;
+    double fract_mid = QuarterCircleSectorTFMesh::Fract_mid;
 
     // Fixed reference value: End coordinate on wall
-    double xi_hi = QuarterCircleSectorMesh::Xi_hi;
+    double xi_hi = QuarterCircleSectorTFMesh::Xi_hi;
 
     // First reference value: fractional s0-position of node inside box
     double rho_0 = ref_value[0];

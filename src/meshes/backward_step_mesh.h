@@ -44,7 +44,7 @@ namespace oomph
   //=================================================================
   /// Backward step mesh
   //=================================================================
-  class BackwardStepQuadMesh : public virtual RectangularQuadMesh
+  class BackwardStepQuadTFMesh : public virtual RectangularQuadTFMesh
   {
   public:
     /// Pass overall number of elements in the horizontal
@@ -53,7 +53,7 @@ namespace oomph
     /// are cut out from the lower right corner to create the
     /// (reversed) backward step geometry. Timestepper defaults
     /// to Steady.
-    BackwardStepQuadMesh(
+    BackwardStepQuadTFMesh(
       std::unique_ptr<ElementFactoryBase> element_factory_pt,
       const unsigned& nx,
       const unsigned& ny,
@@ -62,14 +62,15 @@ namespace oomph
       const double& lx,
       const double& ly,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : RectangularQuadMesh(element_factory_pt, nx, ny, lx, ly, time_stepper_pt)
+      : RectangularQuadTFMesh(
+          element_factory_pt, nx, ny, lx, ly, time_stepper_pt)
     {
       // Do the actual build
       build_mesh(element_factory_pt, nx, ny, nx_cut_out, ny_cut_out, lx, ly);
     }
 
     /// Destructor: Empty
-    virtual ~BackwardStepQuadMesh() {}
+    virtual ~BackwardStepQuadTFMesh() {}
 
   private:
     /// Actual build function
@@ -90,8 +91,9 @@ namespace oomph
   //=================================================================
   /// Refineable backward step mesh
   //=================================================================
-  class RefineableBackwardStepQuadMesh : public virtual BackwardStepQuadMesh,
-                                         public RefineableQuadMesh
+  class RefineableBackwardStepQuadTFMesh
+    : public virtual BackwardStepQuadTFMesh,
+      public RefineableQuadTFMesh
   {
   public:
     /// Pass overall number of elements in the horizontal
@@ -100,7 +102,7 @@ namespace oomph
     /// are cut out from the lower right corner to create the
     /// (reversed) backward step geometry. Timestepper defaults
     /// to Steady.
-    RefineableBackwardStepQuadMesh(
+    RefineableBackwardStepQuadTFMesh(
       std::unique_ptr<ElementFactoryBase> element_factory_pt,
       const unsigned& nx,
       const unsigned& ny,
@@ -109,19 +111,19 @@ namespace oomph
       const double& lx,
       const double& ly,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : RectangularQuadMesh(
+      : RectangularQuadTFMesh(
           element_factory_pt, nx, ny, lx, ly, time_stepper_pt),
-        BackwardStepQuadMesh(element_factory_pt,
-                             nx,
-                             ny,
-                             nx_cut_out,
-                             ny_cut_out,
-                             lx,
-                             ly,
-                             time_stepper_pt)
+        BackwardStepQuadTFMesh(element_factory_pt,
+                               nx,
+                               ny,
+                               nx_cut_out,
+                               ny_cut_out,
+                               lx,
+                               ly,
+                               time_stepper_pt)
     {
       // Nodal positions etc. were created in constructor for
-      // SimpleRectangularQuadMesh<...> --> We only need to set up
+      // SimpleRectangularQuadTFMesh<...> --> We only need to set up
       // adaptivity information: Associate finite elements with their
       // QuadTrees and plant them in a QuadTreeForest:
       this->setup_quadtree_forest();
@@ -129,7 +131,7 @@ namespace oomph
     } // end of constructor
 
     /// Destructor: Empty
-    virtual ~RefineableBackwardStepQuadMesh() {}
+    virtual ~RefineableBackwardStepQuadTFMesh() {}
 
   }; // end of mesh
 

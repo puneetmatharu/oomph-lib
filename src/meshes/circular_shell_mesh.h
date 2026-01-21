@@ -46,24 +46,25 @@ namespace oomph
   /// A 2D solid mesh for (topologically) circular cylindrical shells.
   /// The shell is represented by two Lagrangian coordinates that correspond
   /// to z and theta in cylindrical polars. The required mesh is therefore a
-  /// 2D mesh and is therefore inherited from the generic RectangularQuadMesh
+  /// 2D mesh and is therefore inherited from the generic RectangularQuadTFMesh
   //=======================================================================
-  class CircularCylindricalShellMesh : public virtual RectangularQuadMesh,
-                                       public virtual SolidMesh
+  class CircularCylindricalShellTFMesh : public virtual RectangularQuadTFMesh,
+                                         public virtual SolidTFMesh
   {
   public:
     /// Typedef for fct that defines the axial stretching fct
     typedef double (*AxialBLStretchingFctPt)(const double& x);
 
     /// Constructor for the mesh -- uniformly spaced elements
-    CircularCylindricalShellMesh(
+    CircularCylindricalShellTFMesh(
       std::unique_ptr<ElementFactoryBase> element_factory_pt,
       const unsigned& nx,
       const unsigned& ny,
       const double& lx,
       const double& ly,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : RectangularQuadMesh(element_factory_pt, nx, ny, lx, ly, time_stepper_pt)
+      : RectangularQuadTFMesh(
+          element_factory_pt, nx, ny, lx, ly, time_stepper_pt)
     {
       // Use default stretching fct
       Axial_bl_stretching_fct_pt = 0;
@@ -80,7 +81,7 @@ namespace oomph
     /// Constructor for the mesh -- specify fct that maps axial
     ///  Lagr. coordinates to new positions to allow for better resolution of
     /// bending boundary layer
-    CircularCylindricalShellMesh(
+    CircularCylindricalShellTFMesh(
       std::unique_ptr<ElementFactoryBase> element_factory_pt,
       const unsigned& nx,
       const unsigned& ny,
@@ -88,7 +89,8 @@ namespace oomph
       const double& ly,
       AxialBLStretchingFctPt axial_bl_stretching_fct_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : RectangularQuadMesh(element_factory_pt, nx, ny, lx, ly, time_stepper_pt)
+      : RectangularQuadTFMesh(
+          element_factory_pt, nx, ny, lx, ly, time_stepper_pt)
     {
       // Apply stretching fct
       Axial_bl_stretching_fct_pt = axial_bl_stretching_fct_pt;
@@ -104,7 +106,7 @@ namespace oomph
     /// Constructor for the mesh. nx_bl azimuthal layers of
     /// elements near the ends are squashed to that axial extent
     /// of the elements changes from lx/nx to delta_bl.
-    CircularCylindricalShellMesh(
+    CircularCylindricalShellTFMesh(
       std::unique_ptr<ElementFactoryBase> element_factory_pt,
       const unsigned& nx,
       const unsigned& ny,
@@ -113,7 +115,8 @@ namespace oomph
       const unsigned& nx_bl,
       const double& delta_bl,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : RectangularQuadMesh(element_factory_pt, nx, ny, lx, ly, time_stepper_pt)
+      : RectangularQuadTFMesh(
+          element_factory_pt, nx, ny, lx, ly, time_stepper_pt)
     {
       // Use default stretching fct
       Axial_bl_stretching_fct_pt = 0;

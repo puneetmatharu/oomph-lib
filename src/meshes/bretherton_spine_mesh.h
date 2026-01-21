@@ -42,7 +42,7 @@ namespace oomph
   /// SpineLineFluidInterfaceElement<SpineElement<QCrouzeixRaviartElement<2> > >
   ///
   //============================================================================
-  class BrethertonSpineMesh : public SingleLayerSpineMesh
+  class BrethertonSpineTFMesh : public SingleLayerSpineTFMesh
   {
   public:
     /// Constructor. Arguments:
@@ -61,7 +61,7 @@ namespace oomph
     /// - upper_wall_pt: Pointer to geometric object that represents the upper
     /// wall
     /// - time_stepper_pt: Pointer to timestepper; defaults to Steady
-    BrethertonSpineMesh(
+    BrethertonSpineTFMesh(
       std::unique_ptr<ElementFactoryBase> element_factory_pt,
       const unsigned& nx1,
       const unsigned& nx2,
@@ -133,7 +133,7 @@ namespace oomph
     }
 
     /// General node update function implements pure virtual function
-    /// defined in SpineMesh base class and performs specific update
+    /// defined in SpineTFMesh base class and performs specific update
     /// actions, depending on the node update fct id stored for each node.
     void spine_node_update(SpineNode* spine_node_pt)
     {
@@ -481,7 +481,7 @@ namespace oomph
     /// Initial reordering elements of the elements -- before
     /// the channel mesh is added. Vertical stacks of elements, each topped by
     /// their interface element -- this is (currently) identical to the
-    /// version in the SingleLayerSpineMesh but it's important
+    /// version in the SingleLayerSpineTFMesh but it's important
     /// that the element reordering is maintained in exactly this form
     /// for the rest of the mesh generation process to work properly.
     /// Therefore we keep a copy of the function in here.

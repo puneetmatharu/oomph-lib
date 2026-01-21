@@ -55,8 +55,8 @@ namespace oomph
   /// this splitting, the subsequent mesh will consist of quadrilaterals
   /// whose shape which depend on the structure of the underlying mesh.
   //======================================================================
-  void QuadFromTriangleMesh::build_from_scaffold(
-    TriangleScaffoldMesh* tmp_mesh_pt,
+  void QuadFromTriangleTFMesh::build_from_scaffold(
+    TriangleScaffoldTFMesh* tmp_mesh_pt,
     TimeStepper* time_stepper_pt,
     const bool& use_attributes)
   {
@@ -1001,7 +1001,7 @@ namespace oomph
   //======================================================================
   /// Adapt problem based on specified elemental error estimates
   //======================================================================
-  void RefineableQuadFromTriangleMesh::adapt(const Vector<double>& elem_error)
+  void RefineableQuadFromTriangleTFMesh::adapt(const Vector<double>& elem_error)
   {
     // Call the adapt function from the TreeBasedRefineableMeshBase base class
     TreeBasedRefineableMeshBase::adapt(elem_error);

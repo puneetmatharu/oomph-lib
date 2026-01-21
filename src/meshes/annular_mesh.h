@@ -42,19 +42,19 @@ namespace oomph
   /// 2D annular mesh with a unit circle in the middle and a layer
   /// of thickness h surrounding it.
   //==================================================================
-  class TwoDAnnularMesh : public virtual RectangularQuadMesh
+  class TwoDAnnularTFMesh : public virtual RectangularQuadTFMesh
   {
   public:
     /// Constructor
-    TwoDAnnularMesh(std::unique_ptr<ElementFactoryBase> element_factory_pt,
-                    const bool& periodic,
-                    const double& azimuthal_fraction,
-                    const unsigned& ntheta,
-                    const unsigned& nr,
-                    const double& a,
-                    const double& h,
-                    TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : RectangularQuadMesh(
+    TwoDAnnularTFMesh(std::unique_ptr<ElementFactoryBase> element_factory_pt,
+                      const bool& periodic,
+                      const double& azimuthal_fraction,
+                      const unsigned& ntheta,
+                      const unsigned& nr,
+                      const double& a,
+                      const double& h,
+                      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangularQuadTFMesh(
           element_factory_pt, ntheta, nr, 1.0, 1.0, periodic, time_stepper_pt)
     {
       // Mesh can only be built with 2D Qelements.
@@ -67,16 +67,16 @@ namespace oomph
     }
 
     /// Constructor; rotate mesh by angle phi.
-    TwoDAnnularMesh(std::unique_ptr<ElementFactoryBase> element_factory_pt,
-                    const bool& periodic,
-                    const double& azimuthal_fraction,
-                    const unsigned& ntheta,
-                    const unsigned& nr,
-                    const double& a,
-                    const double& h,
-                    const double& phi,
-                    TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : RectangularQuadMesh(
+    TwoDAnnularTFMesh(std::unique_ptr<ElementFactoryBase> element_factory_pt,
+                      const bool& periodic,
+                      const double& azimuthal_fraction,
+                      const unsigned& ntheta,
+                      const unsigned& nr,
+                      const double& a,
+                      const double& h,
+                      const double& phi,
+                      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangularQuadTFMesh(
           element_factory_pt, ntheta, nr, 1.0, 1.0, periodic, time_stepper_pt)
     {
       // Mesh can only be built with 2D Qelements.
@@ -104,12 +104,12 @@ namespace oomph
   /// Refineable 2D annular mesh with a unit circle in the middle and a layer
   /// of thickness h surrounding it.
   //==================================================================
-  class RefineableTwoDAnnularMesh : public virtual TwoDAnnularMesh,
-                                    public virtual RefineableQuadMesh
+  class RefineableTwoDAnnularTFMesh : public virtual TwoDAnnularTFMesh,
+                                      public virtual RefineableQuadTFMesh
   {
   public:
     /// Constructor
-    RefineableTwoDAnnularMesh(
+    RefineableTwoDAnnularTFMesh(
       std::unique_ptr<ElementFactoryBase> element_factory_pt,
       const bool& periodic,
       const double& azimuthal_fraction,
@@ -118,16 +118,16 @@ namespace oomph
       const double& a,
       const double& h,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : RectangularQuadMesh(
+      : RectangularQuadTFMesh(
           element_factory_pt, ntheta, nr, 1.0, 1.0, periodic, time_stepper_pt),
-        TwoDAnnularMesh(element_factory_pt,
-                        periodic,
-                        azimuthal_fraction,
-                        ntheta,
-                        nr,
-                        a,
-                        h,
-                        time_stepper_pt)
+        TwoDAnnularTFMesh(element_factory_pt,
+                          periodic,
+                          azimuthal_fraction,
+                          ntheta,
+                          nr,
+                          a,
+                          h,
+                          time_stepper_pt)
     {
       // Mesh can only be built with 2D Qelements.
       MeshChecker::assert_geometric_element<QElementGeometricBase>(
@@ -149,7 +149,7 @@ namespace oomph
       this->node_update();
 
       // Nodal positions etc. were created in constructor for
-      // RectangularMesh<...>. Only need to setup quadtree forest
+      // RectangularTFMesh<...>. Only need to setup quadtree forest
       this->setup_quadtree_forest();
 
       // Setup the periodic neighbour information of the TreeRoots
@@ -185,7 +185,7 @@ namespace oomph
     }
 
     /// Constructor; rotate mesh by angle phi
-    RefineableTwoDAnnularMesh(
+    RefineableTwoDAnnularTFMesh(
       const bool& periodic,
       const double& azimuthal_fraction,
       const unsigned& ntheta,
@@ -194,8 +194,8 @@ namespace oomph
       const double& h,
       const double& phi,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : RectangularQuadMesh(ntheta, nr, 1.0, 1.0, periodic, time_stepper_pt),
-        TwoDAnnularMesh(
+      : RectangularQuadTFMesh(ntheta, nr, 1.0, 1.0, periodic, time_stepper_pt),
+        TwoDAnnularTFMesh(
           periodic, azimuthal_fraction, ntheta, nr, a, h, phi, time_stepper_pt)
     {
       // Mesh can only be built with 2D Qelements.
@@ -217,7 +217,7 @@ namespace oomph
       this->node_update();
 
       // Nodal positions etc. were created in constructor for
-      // RectangularMesh<...>. Only need to setup quadtree forest
+      // RectangularTFMesh<...>. Only need to setup quadtree forest
       this->setup_quadtree_forest();
 
       // Setup the periodic neighbour information of the TreeRoots
@@ -259,5 +259,4 @@ namespace oomph
 
 } // namespace oomph
 
-#include "annular_mesh.template.cc"
 #endif

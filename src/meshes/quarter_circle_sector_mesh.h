@@ -82,7 +82,7 @@ namespace oomph
   /// Nodal positions are determined via macro-element-based representation
   /// of the Domain (as a QuarterCircleSectorDomain).
   //====================================================================
-  class QuarterCircleSectorMesh : public virtual QuadMeshBase
+  class QuarterCircleSectorTFMesh : public virtual QuadMeshBase
   {
   public:
     /// Constructor: Pass pointer to geometric object that
@@ -90,7 +90,7 @@ namespace oomph
     /// geometric object, and the fraction along
     /// which the dividing line is to be placed, and the timestepper
     /// (defaults to (Steady) default timestepper defined in Mesh)
-    QuarterCircleSectorMesh(
+    QuarterCircleSectorTFMesh(
       std::unique_ptr<ElementFactoryBase> element_factory_pt,
       GeomObject* wall_pt,
       const double& xi_lo,
@@ -99,7 +99,7 @@ namespace oomph
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
 
     /// Destructor:
-    virtual ~QuarterCircleSectorMesh() {}
+    virtual ~QuarterCircleSectorTFMesh() {}
 
     /// Access function to GeomObject representing wall
     GeomObject*& wall_pt()
@@ -146,7 +146,7 @@ namespace oomph
   ////////////////////////////////////////////////////////////////////
 
   //====================================================================
-  /// 2D quarter ring mesh class inherited from RefineableQuadMesh.
+  /// 2D quarter ring mesh class inherited from RefineableQuadTFMesh.
   /// The domain is specified by the GeomObject that identifies boundary 1.
   ///
   ///
@@ -179,8 +179,9 @@ namespace oomph
   /// Domain is parametrised by three macro elements as sketched.
   ///
   //====================================================================
-  class RefineableQuarterCircleSectorMesh : public QuarterCircleSectorMesh,
-                                            public virtual RefineableQuadMesh
+  class RefineableQuarterCircleSectorTFMesh
+    : public QuarterCircleSectorTFMesh,
+      public virtual RefineableQuadTFMesh
   {
   public:
     /// Constructor: Pass pointer to geometric object that
@@ -188,15 +189,15 @@ namespace oomph
     /// geometric object, and the fraction along
     /// which the dividing line is to be placed, and the timestepper
     /// (defaults to (Steady) default timestepper defined in Mesh).
-    /// Adds refinement data to elements of QuarterCircleSectorMesh.
-    RefineableQuarterCircleSectorMesh(
+    /// Adds refinement data to elements of QuarterCircleSectorTFMesh.
+    RefineableQuarterCircleSectorTFMesh(
       std::unique_ptr<ElementFactoryBase> element_factory_pt,
       GeomObject* wall_pt,
       const double& xi_lo,
       const double& fract_mid,
       const double& xi_hi,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : QuarterCircleSectorMesh(
+      : QuarterCircleSectorTFMesh(
           element_factory_pt, wall_pt, xi_lo, fract_mid, xi_hi, time_stepper_pt)
     {
       // Basic mesh has been built -- just need to setup the
@@ -207,20 +208,20 @@ namespace oomph
     }
 
     /// Destructor: Empty
-    virtual ~RefineableQuarterCircleSectorMesh() {}
+    virtual ~RefineableQuarterCircleSectorTFMesh() {}
   };
 
 
   ////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////
-  // MacroElementNodeUpdate-version of RefineableQuarterCircleSectorMesh
+  // MacroElementNodeUpdate-version of RefineableQuarterCircleSectorTFMesh
   ////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////
 
   class MacroElementNodeUpdateNode;
 
   //========================================================================
-  /// MacroElementNodeUpdate version of RefineableQuarterCircleSectorMesh
+  /// MacroElementNodeUpdate version of RefineableQuarterCircleSectorTFMesh
   ///
   ///  \code
   ///                       ---___
@@ -251,9 +252,9 @@ namespace oomph
   /// Domain is parametrised by three macro elements as sketched. Elements
   /// need to be derived from MacroElementNodeUpdateElementBase.
   //========================================================================
-  class MacroElementNodeUpdateRefineableQuarterCircleSectorMesh
-    : public virtual MacroElementNodeUpdateMesh,
-      public virtual RefineableQuarterCircleSectorMesh
+  class MacroElementNodeUpdateRefineableQuarterCircleSectorTFMesh
+    : public virtual MacroElementNodeUpdateTFMesh,
+      public virtual RefineableQuarterCircleSectorTFMesh
   {
   public:
     /// Constructor: Pass pointer to geometric object, start and
@@ -261,17 +262,17 @@ namespace oomph
     /// which the dividing line is to be placed when updating the nodal
     /// positions, and timestepper (defaults to (Steady) default timestepper
     /// defined in Mesh). Setup the refineable mesh (by calling the
-    /// constructor for the underlying  RefineableQuarterCircleSectorMesh)
+    /// constructor for the underlying  RefineableQuarterCircleSectorTFMesh)
     /// and the algebraic node update functions for nodes.
-    MacroElementNodeUpdateRefineableQuarterCircleSectorMesh(
+    MacroElementNodeUpdateRefineableQuarterCircleSectorTFMesh(
       std::unique_ptr<ElementFactoryBase> element_factory_pt,
       GeomObject* wall_pt,
       const double& xi_lo,
       const double& fract_mid,
       const double& xi_hi,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : MacroElementNodeUpdateMesh(),
-        RefineableQuarterCircleSectorMesh(
+      : MacroElementNodeUpdateTFMesh(),
+        RefineableQuarterCircleSectorTFMesh(
           element_factory_pt, wall_pt, xi_lo, fract_mid, xi_hi, time_stepper_pt)
     {
 #ifdef PARANOID
@@ -281,15 +282,15 @@ namespace oomph
         std::ostringstream error_message;
         error_message
           << "Base class for ELEMENT in "
-          << "MacroElementNodeUpdateRefineableQuarterCircleSectorMesh needs"
+          << "MacroElementNodeUpdateRefineableQuarterCircleSectorTFMesh needs"
           << "to be of type MacroElementNodeUpdateElement!\n";
         error_message << "Whereas it is: typeid(el_pt).name()"
                       << typeid(el_pt).name() << std::endl;
 
         std::string function_name =
-          "MacroElementNodeUpdateRefineableQuaterCircleSectorMesh::\n";
+          "MacroElementNodeUpdateRefineableQuaterCircleSectorTFMesh::\n";
         function_name +=
-          "MacroElementNodeUpdateRefineableQuaterCircleSectorMesh()";
+          "MacroElementNodeUpdateRefineableQuaterCircleSectorTFMesh()";
 
         throw OomphLibError(error_message.str(),
                             OOMPH_CURRENT_FUNCTION,
@@ -305,7 +306,7 @@ namespace oomph
     }
 
     /// Destructor: empty
-    virtual ~MacroElementNodeUpdateRefineableQuarterCircleSectorMesh() {}
+    virtual ~MacroElementNodeUpdateRefineableQuarterCircleSectorTFMesh() {}
 
     /// Resolve mesh update: Update current nodal
     /// positions via sparse MacroElement-based update.
@@ -318,20 +319,20 @@ namespace oomph
       if (update_all_solid_nodes)
       {
         std::string error_message =
-          "Doesn't make sense to use an MacroElementNodeUpdateMesh with\n";
+          "Doesn't make sense to use an MacroElementNodeUpdateTFMesh with\n";
         error_message +=
           "SolidElements so specifying update_all_solid_nodes=true\n";
         error_message += "doesn't make sense either\n";
 
         std::string function_name =
-          "MacroElementNodeUpdateRefineableQuaterCircleSectorMesh::\n";
+          "MacroElementNodeUpdateRefineableQuaterCircleSectorTFMesh::\n";
         function_name += "node_update()";
 
         throw OomphLibError(
           error_message, OOMPH_CURRENT_FUNCTION, OOMPH_EXCEPTION_LOCATION);
       }
 #endif
-      MacroElementNodeUpdateMesh::node_update();
+      MacroElementNodeUpdateTFMesh::node_update();
     }
 
   private:
@@ -361,7 +362,7 @@ namespace oomph
           error_message << "but it is of type " << typeid(el_pt).name();
 
           std::string function_name =
-            "MacroElementNodeUpdateRefineableQuaterCircleSectorMesh::\n";
+            "MacroElementNodeUpdateRefineableQuaterCircleSectorTFMesh::\n";
           function_name += "setup_macro_element_node_update()";
 
           throw OomphLibError(error_message.str(),
@@ -381,24 +382,24 @@ namespace oomph
       // Add the geometric object(s) for the wall to the mesh's storage
       Vector<GeomObject*> geom_object_pt(1);
       geom_object_pt[0] = this->Wall_pt;
-      MacroElementNodeUpdateMesh::set_geom_object_vector_pt(geom_object_pt);
+      MacroElementNodeUpdateTFMesh::set_geom_object_vector_pt(geom_object_pt);
 
       // Fill in the domain pointer to the mesh's storage in the base class
-      MacroElementNodeUpdateMesh::macro_domain_pt() = this->domain_pt();
+      MacroElementNodeUpdateTFMesh::macro_domain_pt() = this->domain_pt();
     }
   };
 
 
   ///////////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////
-  // Algebraic-mesh-version of RefineableQuarterCircleSectorMesh
+  // Algebraic-mesh-version of RefineableQuarterCircleSectorTFMesh
   ///////////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////
 
   class AlgebraicNode;
 
   //========================================================================
-  /// Algebraic version of RefineableQuarterCircleSectorMesh
+  /// Algebraic version of RefineableQuarterCircleSectorTFMesh
   ///
   ///  \code
   ///                       ---___
@@ -429,12 +430,12 @@ namespace oomph
   /// Domain is parametrised by three macro elements as sketched. Elements
   /// need to be derived from AlgebraicElementBase. In addition
   /// to all the refinement procedures available for
-  /// RefineableQuarterCircleSectorMesh which forms the basis for
+  /// RefineableQuarterCircleSectorTFMesh which forms the basis for
   /// this mesh, we implement algebraic node update functions for the nodes.
   //========================================================================
-  class AlgebraicRefineableQuarterCircleSectorMesh
-    : public virtual AlgebraicMesh,
-      public RefineableQuarterCircleSectorMesh
+  class AlgebraicRefineableQuarterCircleSectorTFMesh
+    : public virtual AlgebraicTFMesh,
+      public RefineableQuarterCircleSectorTFMesh
   {
   public:
     /// Constructor: Pass pointer to geometric object, start and
@@ -442,16 +443,16 @@ namespace oomph
     /// which the dividing line is to be placed when updating the nodal
     /// positions, and timestepper (defaults to (Steady) default timestepper
     /// defined in Mesh). Setup the refineable mesh (by calling the
-    /// constructor for the underlying  RefineableQuarterCircleSectorMesh)
+    /// constructor for the underlying  RefineableQuarterCircleSectorTFMesh)
     /// and the algebraic update functions for nodes.
-    AlgebraicRefineableQuarterCircleSectorMesh(
+    AlgebraicRefineableQuarterCircleSectorTFMesh(
       std::unique_ptr<ElementFactoryBase> element_factory_pt,
       GeomObject* wall_pt,
       const double& xi_lo,
       const double& fract_mid,
       const double& xi_hi,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : RefineableQuarterCircleSectorMesh(
+      : RefineableQuarterCircleSectorTFMesh(
           element_factory_pt, wall_pt, xi_lo, fract_mid, xi_hi, time_stepper_pt)
     {
 #ifdef PARANOID
@@ -461,14 +462,14 @@ namespace oomph
         std::ostringstream error_message;
 
         error_message << "Base class for ELEMENT in "
-                      << "AlgebraicRefineableQuarterCircleSectorMesh needs"
+                      << "AlgebraicRefineableQuarterCircleSectorTFMesh needs"
                       << "to be of type AlgebraicElement!\n";
         error_message << "Whereas it is: typeid(el_pt).name()"
                       << typeid(el_pt).name() << std::endl;
 
         std::string function_name =
-          " AlgebraicRefineableQuarterCircleSectorMesh::\n";
-        function_name += "AlgebraicRefineableQuarterCircleSectorMesh()";
+          " AlgebraicRefineableQuarterCircleSectorTFMesh::\n";
+        function_name += "AlgebraicRefineableQuarterCircleSectorTFMesh()";
 
         throw OomphLibError(error_message.str(),
                             OOMPH_CURRENT_FUNCTION,
@@ -477,8 +478,9 @@ namespace oomph
       delete el_pt;
 #endif
 
-      // Add the geometric object to the list associated with this AlgebraicMesh
-      AlgebraicMesh::add_geom_object_list_pt(wall_pt);
+      // Add the geometric object to the list associated with this
+      // AlgebraicTFMesh
+      AlgebraicTFMesh::add_geom_object_list_pt(wall_pt);
 
       // Setup algebraic node update operations
       setup_algebraic_node_update();
@@ -487,7 +489,7 @@ namespace oomph
     /// Run self-test for algebraic mesh -- return 0/1 for OK/failure
     unsigned self_test()
     {
-      return AlgebraicMesh::self_test();
+      return AlgebraicTFMesh::self_test();
     }
 
     /// Resolve mesh update: Update current nodal
@@ -501,20 +503,20 @@ namespace oomph
       if (update_all_solid_nodes)
       {
         std::string error_message =
-          "Doesn't make sense to use an AlgebraicMesh with\n";
+          "Doesn't make sense to use an AlgebraicTFMesh with\n";
         error_message +=
           "SolidElements so specifying update_all_solid_nodes=true\n";
         error_message += "doesn't make sense either\n";
 
         std::string function_name =
-          " AlgebraicRefineableQuarterCircleSectorMesh::";
+          " AlgebraicRefineableQuarterCircleSectorTFMesh::";
         function_name += "node_update()";
 
         throw OomphLibError(
           error_message, OOMPH_CURRENT_FUNCTION, OOMPH_EXCEPTION_LOCATION);
       }
 #endif
-      AlgebraicMesh::node_update();
+      AlgebraicTFMesh::node_update();
     }
 
 
@@ -555,7 +557,7 @@ namespace oomph
                         << ", " << Lower_right_box << " or " << Upper_left_box
                         << std::endl;
           std::string function_name =
-            " AlgebraicRefineableQuarterCircleSectorMesh::";
+            " AlgebraicRefineableQuarterCircleSectorTFMesh::";
           function_name += "algebraic_node_update()";
 
           throw OomphLibError(error_message.str(),
@@ -605,7 +607,7 @@ namespace oomph
                           << std::endl;
 
             std::string function_name =
-              " AlgebraicRefineableQuarterCircleSectorMesh::";
+              " AlgebraicRefineableQuarterCircleSectorTFMesh::";
             function_name += "update_node_update()";
 
             throw OomphLibError(error_message.str(),

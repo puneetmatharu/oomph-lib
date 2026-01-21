@@ -45,7 +45,7 @@ namespace oomph
   //=============================================================
   /// Domain-based mesh for rectangular mesh with circular hole
   //=============================================================
-  class RectangleWithHoleMesh : public virtual Mesh
+  class RectangleWithHoleTFMesh : public virtual Mesh
   {
   public:
     /// Constructor: Pass pointer to geometric object that
@@ -54,7 +54,7 @@ namespace oomph
     /// \f$\zeta \in [0,2\pi]\f$ sweeps around the circumference
     /// in anticlockwise direction. Timestepper defaults to Steady
     /// default timestepper.
-    RectangleWithHoleMesh(
+    RectangleWithHoleTFMesh(
       GeomObject* cylinder_pt,
       const double& length,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
@@ -76,11 +76,11 @@ namespace oomph
   //////////////////////////////////////////////////////////////////////////
 
   //===================================================================
-  /// Refineable version of RectangleWithHoleMesh. For some reason
+  /// Refineable version of RectangleWithHoleTFMesh. For some reason
   /// this needs on uniform refinement to work...
   //===================================================================
-  class RefineableRectangleWithHoleMesh : public RectangleWithHoleMesh,
-                                          public RefineableQuadMesh
+  class RefineableRectangleWithHoleTFMesh : public RectangleWithHoleTFMesh,
+                                            public RefineableQuadTFMesh
   {
   public:
     /// Constructor. Pass pointer to geometric object that
@@ -89,7 +89,7 @@ namespace oomph
     /// \f$\zeta \in [0,2\pi]\f$ sweeps around the circumference
     /// in anticlockwise direction. Timestepper defaults to Steady
     /// default timestepper.
-    RefineableRectangleWithHoleMesh(
+    RefineableRectangleWithHoleTFMesh(
       GeomObject* cylinder_pt,
       const double& length,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);

@@ -68,12 +68,13 @@ namespace oomph
   /// from the triangle mesh generator Triangle.
   /// http://www.cs.cmu.edu/~quake/triangle.html
   //======================================================================
-  class QuadFromTriangleMesh : public virtual UnstructuredTwoDMeshGeometryBase,
-                               public virtual QuadMeshBase
+  class QuadFromTriangleTFMesh
+    : public virtual UnstructuredTwoDMeshGeometryBase,
+      public virtual QuadMeshBase
   {
   public:
     /// Empty constructor
-    QuadFromTriangleMesh()
+    QuadFromTriangleTFMesh()
     {
 #ifdef OOMPH_HAS_TRIANGLE_LIB
       // By default allow the automatic creation of vertices along the
@@ -87,7 +88,7 @@ namespace oomph
     }
 
     /// Constructor with the input files
-    QuadFromTriangleMesh(
+    QuadFromTriangleTFMesh(
       const std::string& node_file_name,
       const std::string& element_file_name,
       const std::string& poly_file_name,
@@ -110,7 +111,7 @@ namespace oomph
       this->Use_attributes = use_attributes;
 
       // Build scaffold
-      TriangleScaffoldMesh* tmp_mesh_pt = new TriangleScaffoldMesh(
+      TriangleScaffoldTFMesh* tmp_mesh_pt = new TriangleScaffoldTFMesh(
         node_file_name, element_file_name, poly_file_name);
 
       // Convert mesh from scaffold to actual mesh
@@ -133,7 +134,7 @@ namespace oomph
     /// Build mesh, based on the specifications on
     /// TriangleMeshParameters. All the actual work is done
     /// in UnstructuredTwoDMeshGeometryBase
-    QuadFromTriangleMesh(
+    QuadFromTriangleTFMesh(
       TriangleMeshParameters& triangle_mesh_parameters,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
     {
@@ -487,8 +488,8 @@ namespace oomph
 #endif
 
       // Build scaffold
-      TriangleScaffoldMesh* tmp_mesh_pt =
-        new TriangleScaffoldMesh(triangulate_out);
+      TriangleScaffoldTFMesh* tmp_mesh_pt =
+        new TriangleScaffoldTFMesh(triangulate_out);
 
       // If we have filled holes then we must use the attributes
       if (!regions_coordinates.empty())
@@ -519,13 +520,13 @@ namespace oomph
 #endif // OOMPH_HAS_TRIANGLE_LIB
 
     /// Broken copy constructor
-    QuadFromTriangleMesh(const QuadFromTriangleMesh& dummy) = delete;
+    QuadFromTriangleTFMesh(const QuadFromTriangleTFMesh& dummy) = delete;
 
     /// Broken assignment operator
-    void operator=(const QuadFromTriangleMesh&) = delete;
+    void operator=(const QuadFromTriangleTFMesh&) = delete;
 
     /// Empty destructor
-    ~QuadFromTriangleMesh()
+    ~QuadFromTriangleTFMesh()
     {
 #ifdef OOMPH_HAS_TRIANGLE_LIB
 
@@ -557,7 +558,7 @@ namespace oomph
     }
 
     /// Build the quad mesh from the given scaffold mesh
-    void build_from_scaffold(TriangleScaffoldMesh* tmp_mesh_pt,
+    void build_from_scaffold(TriangleScaffoldTFMesh* tmp_mesh_pt,
                              TimeStepper* time_stepper_pt,
                              const bool& use_attributes);
 
@@ -576,20 +577,21 @@ namespace oomph
 
 
   //=========================================================================
-  /// Unstructured refineable QuadFromTriangleMesh
+  /// Unstructured refineable QuadFromTriangleTFMesh
   //=========================================================================
-  class RefineableQuadFromTriangleMesh : public virtual QuadFromTriangleMesh,
-                                         public virtual RefineableQuadMesh
+  class RefineableQuadFromTriangleTFMesh
+    : public virtual QuadFromTriangleTFMesh,
+      public virtual RefineableQuadTFMesh
   {
   public:
 #ifdef OOMPH_HAS_TRIANGLE_LIB
 
     /// Build mesh, based on the specifications on
     /// TriangleMeshParameters
-    RefineableQuadFromTriangleMesh(
+    RefineableQuadFromTriangleTFMesh(
       TriangleMeshParameters& triangle_mesh_parameters,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : QuadFromTriangleMesh(triangle_mesh_parameters, time_stepper_pt)
+      : QuadFromTriangleTFMesh(triangle_mesh_parameters, time_stepper_pt)
     {
       this->setup_quadtree_forest();
     }
@@ -623,19 +625,19 @@ namespace oomph
     void adapt(const Vector<double>& elem_error);
 
     /// Build mesh, based on the polyfiles
-    RefineableQuadFromTriangleMesh(
+    RefineableQuadFromTriangleTFMesh(
       const std::string& node_file_name,
       const std::string& element_file_name,
       const std::string& poly_file_name,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : QuadFromTriangleMesh(
+      : QuadFromTriangleTFMesh(
           node_file_name, element_file_name, poly_file_name, time_stepper_pt)
     {
       this->setup_quadtree_forest();
     }
 
     /// Empty Destructor
-    virtual ~RefineableQuadFromTriangleMesh() {}
+    virtual ~RefineableQuadFromTriangleTFMesh() {}
   };
 
 
@@ -645,23 +647,23 @@ namespace oomph
 
 
   //=========================================================================
-  /// Unstructured QuadFromTriangleMesh upgraded to solid mesh
+  /// Unstructured QuadFromTriangleTFMesh upgraded to solid mesh
   //=========================================================================
-  class SolidQuadFromTriangleMesh : public virtual QuadFromTriangleMesh,
-                                    public virtual SolidMesh
+  class SolidQuadFromTriangleTFMesh : public virtual QuadFromTriangleTFMesh,
+                                      public virtual SolidTFMesh
   {
   public:
-    SolidQuadFromTriangleMesh(
+    SolidQuadFromTriangleTFMesh(
       const std::string& node_file_name,
       const std::string& element_file_name,
       const std::string& poly_file_name,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
       const bool& use_attributes = false)
-      : QuadFromTriangleMesh(node_file_name,
-                             element_file_name,
-                             poly_file_name,
-                             time_stepper_pt,
-                             use_attributes)
+      : QuadFromTriangleTFMesh(node_file_name,
+                               element_file_name,
+                               poly_file_name,
+                               time_stepper_pt,
+                               use_attributes)
     {
       // Assign the Lagrangian coordinates
       set_lagrangian_nodal_coordinates();
@@ -672,10 +674,10 @@ namespace oomph
     /// Build mesh, based on closed curve that specifies
     /// the outer boundary of the domain and any number of internal
     /// clsed curves. Specify target area for uniform element size.
-    SolidQuadFromTriangleMesh(
+    SolidQuadFromTriangleTFMesh(
       TriangleMeshParameters& triangle_mesh_parameters,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : QuadFromTriangleMesh(triangle_mesh_parameters, time_stepper_pt)
+      : QuadFromTriangleTFMesh(triangle_mesh_parameters, time_stepper_pt)
     {
       // Assign the Lagrangian coordinates
       set_lagrangian_nodal_coordinates();
@@ -684,7 +686,7 @@ namespace oomph
 #endif
 
     /// Empty Destructor
-    virtual ~SolidQuadFromTriangleMesh() {}
+    virtual ~SolidQuadFromTriangleTFMesh() {}
   };
 
 
@@ -694,26 +696,26 @@ namespace oomph
 
 
   //=========================================================================
-  /// Unstructured refineable QuadFromTriangleMesh upgraded to solid mesh
+  /// Unstructured refineable QuadFromTriangleTFMesh upgraded to solid mesh
   //=========================================================================
-  class RefineableSolidQuadFromTriangleMesh
-    : public virtual RefineableQuadFromTriangleMesh,
-      public virtual SolidMesh
+  class RefineableSolidQuadFromTriangleTFMesh
+    : public virtual RefineableQuadFromTriangleTFMesh,
+      public virtual SolidTFMesh
   {
   public:
     /// Build mesh from specified triangulation and associated
     /// target areas for elements in it.
-    RefineableSolidQuadFromTriangleMesh(
+    RefineableSolidQuadFromTriangleTFMesh(
       const std::string& node_file_name,
       const std::string& element_file_name,
       const std::string& poly_file_name,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
       const bool& use_attributes = false)
-      : RefineableQuadFromTriangleMesh(node_file_name,
-                                       element_file_name,
-                                       poly_file_name,
-                                       time_stepper_pt,
-                                       use_attributes)
+      : RefineableQuadFromTriangleTFMesh(node_file_name,
+                                         element_file_name,
+                                         poly_file_name,
+                                         time_stepper_pt,
+                                         use_attributes)
     {
       // Assign the Lagrangian coordinates
       set_lagrangian_nodal_coordinates();
@@ -723,12 +725,12 @@ namespace oomph
 
     /// Build mesh, based on the specifications on
     /// TriangleMeshParameter
-    RefineableSolidQuadFromTriangleMesh(
+    RefineableSolidQuadFromTriangleTFMesh(
       TriangleMeshParameters& triangle_mesh_parameters,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : QuadFromTriangleMesh(triangle_mesh_parameters, time_stepper_pt),
-        RefineableQuadFromTriangleMesh(triangle_mesh_parameters,
-                                       time_stepper_pt)
+      : QuadFromTriangleTFMesh(triangle_mesh_parameters, time_stepper_pt),
+        RefineableQuadFromTriangleTFMesh(triangle_mesh_parameters,
+                                         time_stepper_pt)
     {
       // Assign the Lagrangian coordinates
       set_lagrangian_nodal_coordinates();
@@ -737,7 +739,7 @@ namespace oomph
 #endif
 
     /// Empty Destructor
-    virtual ~RefineableSolidQuadFromTriangleMesh() {}
+    virtual ~RefineableSolidQuadFromTriangleTFMesh() {}
   };
 
 

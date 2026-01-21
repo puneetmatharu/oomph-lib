@@ -44,7 +44,7 @@ namespace oomph
   /// topologically rectangular problem - primarily contains functions to access
   /// the position of the global boundary relative to the macro element
   /// boundary, as well as first and second derivates of the global boundary wrt
-  /// the macro element boundary NOTE : suitable for HermiteElementQuadMesh
+  /// the macro element boundary NOTE : suitable for HermiteElementQuadTFMesh
   //=============================================================================
   class TopologicallyRectangularDomain : public Domain
   {

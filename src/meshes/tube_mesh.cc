@@ -33,12 +33,12 @@ namespace oomph
   /// The domain is specified by the GeomObject that
   /// identifies the entire volume.
   //====================================================================
-  TubeMesh::TubeMesh(GeomObject* volume_pt,
-                     const Vector<double>& centreline_limits,
-                     const Vector<double>& theta_positions,
-                     const Vector<double>& radius_box,
-                     const unsigned& nlayer,
-                     TimeStepper* time_stepper_pt)
+  TubeTFMesh::TubeTFMesh(GeomObject* volume_pt,
+                         const Vector<double>& centreline_limits,
+                         const Vector<double>& theta_positions,
+                         const Vector<double>& radius_box,
+                         const unsigned& nlayer,
+                         TimeStepper* time_stepper_pt)
     : Volume_pt(volume_pt)
   {
     // Mesh can only be built with 3D Qelements.
@@ -987,7 +987,7 @@ namespace oomph
       error_stream << "Error in killing nodes\n"
                    << "The most probable cause is that the domain is not\n"
                    << "compatible with the mesh.\n"
-                   << "For the TubeMesh, the domain must be\n"
+                   << "For the TubeTFMesh, the domain must be\n"
                    << "topologically consistent with a quarter tube with a\n"
                    << "non-curved centreline.\n";
       throw OomphLibError(

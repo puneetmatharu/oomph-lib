@@ -33,7 +33,7 @@ namespace oomph
   /// the mesh generation process, including all the tedious loops, counting
   /// spacing and boundary functions.
   //========================================================================
-  void SimpleCubicMesh::build_mesh(TimeStepper* time_stepper_pt)
+  void SimpleCubicTFMesh::build_mesh(TimeStepper* time_stepper_pt)
   {
     // Mesh can only be built with 3D Qelements.
     MeshChecker::assert_geometric_element<QElementGeometricBase>(
@@ -42,10 +42,10 @@ namespace oomph
     if ((Nx == 1) || (Ny == 1) || (Nz == 1))
     {
       std::ostringstream error_message;
-      error_message << "SimpleCubicMesh needs at least two elements in each,\n"
-                    << "coordinate direction. You have specified \n"
-                    << "Nx=" << Nx << "; Ny=" << Ny << "; Nz=" << Nz
-                    << std::endl;
+      error_message
+        << "SimpleCubicTFMesh needs at least two elements in each,\n"
+        << "coordinate direction. You have specified \n"
+        << "Nx=" << Nx << "; Ny=" << Ny << "; Nz=" << Nz << std::endl;
       throw OomphLibError(
         error_message.str(), OOMPH_CURRENT_FUNCTION, OOMPH_EXCEPTION_LOCATION);
     }

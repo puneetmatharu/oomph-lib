@@ -41,7 +41,7 @@ namespace oomph
   ///
   /// Ordering of elements: 'lower left' to 'lower right' then 'upwards'
   //====================================================================
-  SimpleRectangularTriMesh::SimpleRectangularTriMesh(
+  SimpleRectangularTriTFMesh::SimpleRectangularTriTFMesh(
     const unsigned& n_x,
     const unsigned& n_y,
     const double& l_x,

@@ -50,7 +50,7 @@ namespace oomph
   //========================================================================
   /// Tet mesh made of quadratic (ten node) tets built from xda input file.
   //========================================================================
-  class XdaTetMesh : public virtual TetMeshBase
+  class XdaTetTFMesh : public virtual TetMeshBase
   {
   public:
     /// Constructor: Pass name of xda file. Note that
@@ -60,8 +60,8 @@ namespace oomph
     /// a given boundary as specified in the xda input file can be
     /// obtained from the access function oomph_lib_boundary_ids(...).
     /// Timestepper defaults to steady pseudo-timestepper.
-    XdaTetMesh(const std::string xda_file_name,
-               TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
+    XdaTetTFMesh(const std::string xda_file_name,
+                 TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
 
     /// Setup boundary coordinate on boundary b while is
     /// temporarily flattened to simplex faces. Boundary coordinates are the
@@ -120,21 +120,22 @@ namespace oomph
   //==========================================================================
   /// Xda-based tet mesh upgraded to become a solid mesh.
   //=========================================================================
-  class SolidXdaTetMesh : public virtual XdaTetMesh, public virtual SolidMesh
+  class SolidXdaTetTFMesh : public virtual XdaTetTFMesh,
+                            public virtual SolidTFMesh
   {
   public:
     /// Constructor. Boundary coordinates are setup
     /// automatically.
-    SolidXdaTetMesh(const std::string xda_file_name,
-                    TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : XdaTetMesh(xda_file_name, time_stepper_pt)
+    SolidXdaTetTFMesh(const std::string xda_file_name,
+                      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : XdaTetTFMesh(xda_file_name, time_stepper_pt)
     {
       // Assign the Lagrangian coordinates
       set_lagrangian_nodal_coordinates();
     }
 
     /// Empty Destructor
-    virtual ~SolidXdaTetMesh() {}
+    virtual ~SolidXdaTetTFMesh() {}
   };
 
 
@@ -144,5 +145,4 @@ namespace oomph
 
 } // namespace oomph
 
-#include "xda_tet_mesh.template.cc"
 #endif

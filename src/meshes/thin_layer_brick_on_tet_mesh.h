@@ -38,7 +38,7 @@ namespace oomph
   /// used in FSI problems where the tet mesh is the fluid mesh and this
   /// mesh acts as the solid mesh that surrounds the FSI interface.
   //========================================================================
-  class ThinLayerBrickOnTetMesh : public virtual BrickMeshBase
+  class ThinLayerBrickOnTetTFMesh : public virtual BrickMeshBase
   {
   public:
     /// Function pointer to function that specifies the wall thickness
@@ -59,7 +59,7 @@ namespace oomph
     /// faces in the underlying fluid mesh. Finally, the "outer" boundary
     /// gets its own boundary ID.
     /// Timestepper defaults to steady pseudo-timestepper.
-    ThinLayerBrickOnTetMesh(
+    ThinLayerBrickOnTetTFMesh(
       Mesh* tet_mesh_pt,
       const Vector<unsigned>& boundary_ids,
       ThicknessFctPt thickness_fct_pt,
@@ -121,9 +121,9 @@ namespace oomph
   /// used in FSI problems where the tet mesh is the fluid mesh and this
   /// mesh acts as the solid mesh that surrounds the FSI interface.
   //========================================================================
-  class RefineableThinLayerBrickOnTetMesh
-    : public virtual ThinLayerBrickOnTetMesh,
-      public virtual RefineableBrickMesh
+  class RefineableThinLayerBrickOnTetTFMesh
+    : public virtual ThinLayerBrickOnTetTFMesh,
+      public virtual RefineableBrickTFMesh
   {
   public:
     /// Function pointer to function that specifies the wall thickness
@@ -144,19 +144,19 @@ namespace oomph
     /// faces in the underlying fluid mesh. Finally, the "outer" boundary
     /// gets its own boundary ID.
     /// Timestepper defaults to steady pseudo-timestepper.
-    RefineableThinLayerBrickOnTetMesh(
+    RefineableThinLayerBrickOnTetTFMesh(
       Mesh* tet_mesh_pt,
       const Vector<unsigned>& boundary_ids,
       ThicknessFctPt thickness_fct_pt,
       const unsigned& nlayer,
       const Vector<Vector<unsigned>>& in_out_boundary_id,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : ThinLayerBrickOnTetMesh(tet_mesh_pt,
-                                boundary_ids,
-                                thickness_fct_pt,
-                                nlayer,
-                                in_out_boundary_id,
-                                time_stepper_pt)
+      : ThinLayerBrickOnTetTFMesh(tet_mesh_pt,
+                                  boundary_ids,
+                                  thickness_fct_pt,
+                                  nlayer,
+                                  in_out_boundary_id,
+                                  time_stepper_pt)
     {
       // Nodal positions etc. were created in constructor for
       // nonrefineable mesh. Only need to setup quadtree forest
@@ -174,8 +174,9 @@ namespace oomph
   /// used in FSI problems where the tet mesh is the fluid mesh and this
   /// mesh acts as the solid mesh that surrounds the FSI interface.
   //========================================================================
-  class SolidThinLayerBrickOnTetMesh : public virtual ThinLayerBrickOnTetMesh,
-                                       public virtual SolidMesh
+  class SolidThinLayerBrickOnTetTFMesh
+    : public virtual ThinLayerBrickOnTetTFMesh,
+      public virtual SolidTFMesh
   {
   public:
     /// Function pointer to function that specifies the wall thickness
@@ -196,19 +197,19 @@ namespace oomph
     /// faces in the underlying fluid mesh. Finally, the "outer" boundary
     /// gets its own boundary ID.
     /// Timestepper defaults to steady pseudo-timestepper.
-    SolidThinLayerBrickOnTetMesh(
+    SolidThinLayerBrickOnTetTFMesh(
       Mesh* tet_mesh_pt,
       const Vector<unsigned>& boundary_ids,
       ThicknessFctPt thickness_fct_pt,
       const unsigned& nlayer,
       const Vector<Vector<unsigned>>& in_out_boundary_id,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : ThinLayerBrickOnTetMesh(tet_mesh_pt,
-                                boundary_ids,
-                                thickness_fct_pt,
-                                nlayer,
-                                in_out_boundary_id,
-                                time_stepper_pt)
+      : ThinLayerBrickOnTetTFMesh(tet_mesh_pt,
+                                  boundary_ids,
+                                  thickness_fct_pt,
+                                  nlayer,
+                                  in_out_boundary_id,
+                                  time_stepper_pt)
     {
       // Make the current configuration the undeformed one by
       // setting the nodal Lagrangian coordinates to their current
@@ -227,10 +228,10 @@ namespace oomph
   /// Typically used in FSI problems where the tet mesh is the fluid mesh and
   /// this mesh acts as the solid mesh that surrounds the FSI interface.
   //========================================================================
-  class RefineableSolidThinLayerBrickOnTetMesh
-    : public virtual ThinLayerBrickOnTetMesh,
-      public virtual RefineableBrickMesh,
-      public virtual SolidMesh
+  class RefineableSolidThinLayerBrickOnTetTFMesh
+    : public virtual ThinLayerBrickOnTetTFMesh,
+      public virtual RefineableBrickTFMesh,
+      public virtual SolidTFMesh
   {
   public:
     /// Function pointer to function that specifies the wall thickness
@@ -251,19 +252,19 @@ namespace oomph
     /// faces in the underlying fluid mesh. Finally, the "outer" boundary
     /// gets its own boundary ID.
     /// Timestepper defaults to steady pseudo-timestepper.
-    RefineableSolidThinLayerBrickOnTetMesh(
+    RefineableSolidThinLayerBrickOnTetTFMesh(
       Mesh* tet_mesh_pt,
       const Vector<unsigned>& boundary_ids,
       ThicknessFctPt thickness_fct_pt,
       const unsigned& nlayer,
       const Vector<Vector<unsigned>>& in_out_boundary_id,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : ThinLayerBrickOnTetMesh(tet_mesh_pt,
-                                boundary_ids,
-                                thickness_fct_pt,
-                                nlayer,
-                                in_out_boundary_id,
-                                time_stepper_pt)
+      : ThinLayerBrickOnTetTFMesh(tet_mesh_pt,
+                                  boundary_ids,
+                                  thickness_fct_pt,
+                                  nlayer,
+                                  in_out_boundary_id,
+                                  time_stepper_pt)
     {
       // Make the current configuration the undeformed one by
       // setting the nodal Lagrangian coordinates to their current

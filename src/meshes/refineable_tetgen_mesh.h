@@ -42,17 +42,17 @@
 namespace oomph
 {
   //=========================================================================
-  // Unstructured refineable TetgenMesh
+  // Unstructured refineable TetgenTFMesh
   //=========================================================================
-  class RefineableTetgenMesh : public virtual TetgenMesh,
-                               public virtual RefineableTetMeshBase
+  class RefineableTetgenTFMesh : public virtual TetgenTFMesh,
+                                 public virtual RefineableTetMeshBase
   {
   public:
     /// Build mesh, based on a TetMeshFacetedClosedSurface that specifies
     /// the outer boundary of the domain and any number of internal
     /// closed curves, specified by TetMeshFacetedSurfaces.
     /// Also specify target volume for uniform element size.
-    RefineableTetgenMesh(
+    RefineableTetgenTFMesh(
       TetMeshFacetedClosedSurface* const& outer_boundary_pt,
       Vector<TetMeshFacetedSurface*>& internal_closed_surface_pt,
       const double& element_volume,
@@ -60,13 +60,13 @@ namespace oomph
       const bool& use_attributes = false,
       const bool& split_corner_elements = false,
       Vector<double>* const& target_element_volume_in_region_pt = nullptr)
-      : TetgenMesh(outer_boundary_pt,
-                   internal_closed_surface_pt,
-                   element_volume,
-                   time_stepper_pt,
-                   use_attributes,
-                   split_corner_elements,
-                   target_element_volume_in_region_pt),
+      : TetgenTFMesh(outer_boundary_pt,
+                     internal_closed_surface_pt,
+                     element_volume,
+                     time_stepper_pt,
+                     use_attributes,
+                     split_corner_elements,
+                     target_element_volume_in_region_pt),
         Corner_elements_must_be_split(split_corner_elements)
     {
       // Initialise the data associated with adaptation
@@ -79,7 +79,7 @@ namespace oomph
     /// Element sizes are specified by vector tetgen_io is passed in
     /// from previous mesh (is then modified to build new mesh)
     /// Ditto with use_attributes, which comes from the previous mesh
-    RefineableTetgenMesh(
+    RefineableTetgenTFMesh(
       const Vector<double>& target_volume,
       tetgenio* const& tetgen_io_pt,
       TetMeshFacetedClosedSurface* const& outer_boundary_pt,
@@ -88,7 +88,7 @@ namespace oomph
       const bool& use_attributes = false)
     {
       // NOTE THERE IS A CERTAIN AMOUNT OF DUPLICATION BETWEEN THE
-      // CODE IN HERE AND THE ONE IN THE CONSTRUCTOR OF THE TetgenMesh
+      // CODE IN HERE AND THE ONE IN THE CONSTRUCTOR OF THE TetgenTFMesh
       // BUT THE FACT THAT WE HAVE TO MODIFY THE TETGENIO STRUCTURE
       // MEANS WE CAN'T QUITE RECYCLE THIS.
 
@@ -140,7 +140,7 @@ namespace oomph
       tetrahedralize(tetswitches, tetgen_input_pt, this->Tetgenio_pt);
 
       // Build scaffold
-      this->Tmp_mesh_pt = new TetgenScaffoldMesh(*this->Tetgenio_pt);
+      this->Tmp_mesh_pt = new TetgenScaffoldTFMesh(*this->Tetgenio_pt);
 
       // Convert mesh from scaffold to actual mesh
       this->build_from_scaffold(time_stepper_pt, use_attributes);
@@ -226,7 +226,7 @@ namespace oomph
 
   public:
     /// Empty Destructor
-    virtual ~RefineableTetgenMesh() {}
+    virtual ~RefineableTetgenTFMesh() {}
 
     /// Refine mesh uniformly and doc process
     void refine_uniformly(DocInfo& doc_info)
@@ -292,7 +292,7 @@ namespace oomph
     void surface_remesh_for_inner_hole_boundaries();
 
     /// Snap the boundary nodes onto any curvilinear boundaries
-    void snap_nodes_onto_boundary(RefineableTetgenMesh*& new_mesh_pt,
+    void snap_nodes_onto_boundary(RefineableTetgenTFMesh*& new_mesh_pt,
                                   const unsigned& b);
 
     /// Disable projection of solution onto new mesh during adaptation
@@ -312,32 +312,32 @@ namespace oomph
   //=========================================================================
   // Unstructured refineable Tetgen Mesh upgraded to solid mesh
   //=========================================================================
-  class RefineableSolidTetgenMesh : public virtual RefineableTetgenMesh,
-                                    public virtual SolidMesh
+  class RefineableSolidTetgenTFMesh : public virtual RefineableTetgenTFMesh,
+                                      public virtual SolidTFMesh
   {
   public:
     /// Build mesh, based on closed curve that specifies
     /// the outer boundary of the domain and any number of internal
     /// closed curves. Specify target area for uniform element size.
-    RefineableSolidTetgenMesh(
+    RefineableSolidTetgenTFMesh(
       TetMeshFacetedClosedSurface* const& outer_boundary_pt,
       Vector<TetMeshFacetedSurface*>& internal_closed_surface_pt,
       const double& element_volume,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
       const bool& use_attributes = false,
       const bool& split_corner_elements = false)
-      : TetgenMesh(outer_boundary_pt,
-                   internal_closed_surface_pt,
-                   element_volume,
-                   time_stepper_pt,
-                   use_attributes,
-                   split_corner_elements),
-        RefineableTetgenMesh(outer_boundary_pt,
-                             internal_closed_surface_pt,
-                             element_volume,
-                             time_stepper_pt,
-                             use_attributes,
-                             split_corner_elements)
+      : TetgenTFMesh(outer_boundary_pt,
+                     internal_closed_surface_pt,
+                     element_volume,
+                     time_stepper_pt,
+                     use_attributes,
+                     split_corner_elements),
+        RefineableTetgenTFMesh(outer_boundary_pt,
+                               internal_closed_surface_pt,
+                               element_volume,
+                               time_stepper_pt,
+                               use_attributes,
+                               split_corner_elements)
 
     {
       // Assign the Lagrangian coordinates
@@ -347,19 +347,19 @@ namespace oomph
 
     /// Build mesh from specified triangulation and
     /// associated target areas for elements in it.
-    RefineableSolidTetgenMesh(
+    RefineableSolidTetgenTFMesh(
       const Vector<double>& target_volume,
       tetgenio* const& tetgen_io_pt,
       TetMeshFacetedClosedSurface* const& outer_boundary_pt,
       Vector<TetMeshFacetedSurface*>& internal_surface_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
       const bool& use_attributes = false)
-      : RefineableTetgenMesh(target_volume,
-                             tetgen_io_pt,
-                             outer_boundary_pt,
-                             internal_surface_pt,
-                             time_stepper_pt,
-                             use_attributes)
+      : RefineableTetgenTFMesh(target_volume,
+                               tetgen_io_pt,
+                               outer_boundary_pt,
+                               internal_surface_pt,
+                               time_stepper_pt,
+                               use_attributes)
 
     {
       // Assign the Lagrangian coordinates
@@ -367,11 +367,10 @@ namespace oomph
     }
 
     /// Empty Destructor
-    virtual ~RefineableSolidTetgenMesh() {}
+    virtual ~RefineableSolidTetgenTFMesh() {}
   };
 
 
 } // namespace oomph
 
-#include "refineable_tetgen_mesh.template.cc"
 #endif

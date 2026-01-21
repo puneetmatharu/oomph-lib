@@ -32,8 +32,8 @@ namespace oomph
   /// Build with the help of the scaffold mesh coming
   /// from the triangle mesh generator Triangle.
   //======================================================================
-  void TriangleMesh::build_from_scaffold(TimeStepper* time_stepper_pt,
-                                         const bool& use_attributes)
+  void TriangleTFMesh::build_from_scaffold(TimeStepper* time_stepper_pt,
+                                           const bool& use_attributes)
   {
     // Mesh can only be built with 2D Telements.
     MeshChecker::assert_geometric_element<TElementGeometricBase>(
@@ -374,8 +374,9 @@ namespace oomph
   /// in the new mesh (this) and assign initial and final boundary
   /// coordinates for the segments that create the boundary
   //======================================================================
-  void TriangleMesh::identify_boundary_segments_and_assign_initial_zeta_values(
-    const unsigned& b, TriangleMesh* original_mesh_pt)
+  void TriangleTFMesh::
+    identify_boundary_segments_and_assign_initial_zeta_values(
+      const unsigned& b, TriangleTFMesh* original_mesh_pt)
   {
     // ------------------------------------------------------------------
     // First: Get the face elements associated with the current boundary
@@ -600,10 +601,11 @@ namespace oomph
         << "boundary (" << b << ") is different\n"
         << "from the real number of face elements in the container ("
         << face_el_pt.size() << ")\n";
-      throw OomphLibError(error_message.str(),
-                          "TriangleMesh::identify_boundary_segments_and_assign_"
-                          "initial_zeta_values()",
-                          OOMPH_EXCEPTION_LOCATION);
+      throw OomphLibError(
+        error_message.str(),
+        "TriangleTFMesh::identify_boundary_segments_and_assign_"
+        "initial_zeta_values()",
+        OOMPH_EXCEPTION_LOCATION);
     }
 #endif
 
@@ -652,10 +654,11 @@ namespace oomph
         << "considered when computing the face elements\n\n"
         << "The number of found halo face elements is: " << nhalo_face_element
         << "\n\n";
-      throw OomphLibError(error_message.str(),
-                          "TriangleMesh::identify_boundary_segments_and_assign_"
-                          "initial_zeta_values()",
-                          OOMPH_EXCEPTION_LOCATION);
+      throw OomphLibError(
+        error_message.str(),
+        "TriangleTFMesh::identify_boundary_segments_and_assign_"
+        "initial_zeta_values()",
+        OOMPH_EXCEPTION_LOCATION);
     }
 #endif
 
@@ -719,7 +722,7 @@ namespace oomph
         error_message
           << "Could not find an initial face element for the current segment\n";
         throw OomphLibError(error_message.str(),
-                            "TriangleMesh::identify_boundary_segments_and_"
+                            "TriangleTFMesh::identify_boundary_segments_and_"
                             "assign_initial_zeta_values()",
                             OOMPH_EXCEPTION_LOCATION);
       }
@@ -847,10 +850,11 @@ namespace oomph
       error_message
         << "The number of segments is zero, but the number of nonhalo\n"
         << "elements is: (" << nnon_halo_face_elements << ")\n";
-      throw OomphLibError(error_message.str(),
-                          "TriangleMesh::identify_boundary_segments_and_assign_"
-                          "initial_zeta_values()",
-                          OOMPH_EXCEPTION_LOCATION);
+      throw OomphLibError(
+        error_message.str(),
+        "TriangleTFMesh::identify_boundary_segments_and_assign_"
+        "initial_zeta_values()",
+        OOMPH_EXCEPTION_LOCATION);
     } // if (nnon_halo_face_elements > 0 && nsegments == 0)
 #endif
 
@@ -864,7 +868,7 @@ namespace oomph
         std::ostringstream error_message;
         error_message << "The (" << is << ")-th segment has no elements\n";
         throw OomphLibError(error_message.str(),
-                            "TriangleMesh::identify_boundary_segments_and_"
+                            "TriangleTFMesh::identify_boundary_segments_and_"
                             "assign_initial_zeta_values()",
                             OOMPH_EXCEPTION_LOCATION);
       } // if (segment_sorted_ele_pt[is].size() == 0)
@@ -1822,7 +1826,7 @@ namespace oomph
   /// and also the initial zeta values for each segment (the initial
   /// and final boundary nodes coordinates)
   //======================================================================
-  void TriangleMesh::
+  void TriangleTFMesh::
     compute_boundary_segments_connectivity_and_initial_zeta_values(
       const unsigned& b)
   {
@@ -2569,7 +2573,7 @@ namespace oomph
             << "the processor holding\nthe non-halo counterpart is "
             << "negative!\n";
           throw OomphLibError(error_message.str(),
-                              "TriangleMesh::compute_boundary_segments_"
+                              "TriangleTFMesh::compute_boundary_segments_"
                               "connectivity_and_initial_zeta_values()",
                               OOMPH_EXCEPTION_LOCATION);
         }
@@ -2611,7 +2615,7 @@ namespace oomph
             << "found in the vector of halo\nelements associated with "
             << "the (" << right_processor << ") processor.\n\n";
           throw OomphLibError(error_message.str(),
-                              "TriangleMesh::compute_boundary_segments_"
+                              "TriangleTFMesh::compute_boundary_segments_"
                               "connectivity_and_initial_zeta_values()",
                               OOMPH_EXCEPTION_LOCATION);
         }
@@ -2634,7 +2638,7 @@ namespace oomph
             << ") is marked as halo,\n"
             << "but the face element created from it is nonhalo\n";
           throw OomphLibError(error_message.str(),
-                              "TriangleMesh::compute_boundary_segments_"
+                              "TriangleTFMesh::compute_boundary_segments_"
                               "connectivity_and_initial_zeta_values()",
                               OOMPH_EXCEPTION_LOCATION);
         } // if (tmp_right_bulk_ele_pt->is_halo())
@@ -2675,7 +2679,7 @@ namespace oomph
             << "found in the vector of haloed\nelements associated with "
             << "the (" << right_processor << ") processor.\n\n";
           throw OomphLibError(error_message.str(),
-                              "TriangleMesh::compute_boundary_segments_"
+                              "TriangleTFMesh::compute_boundary_segments_"
                               "connectivity_and_initial_zeta_values()",
                               OOMPH_EXCEPTION_LOCATION);
         }
@@ -3192,7 +3196,7 @@ namespace oomph
               << "The corresponding processor and segment to the left of "
               << "the current left\nmost segment was not found\n";
             throw OomphLibError(error_message.str(),
-                                "TriangleMesh::compute_boundary_segments_"
+                                "TriangleTFMesh::compute_boundary_segments_"
                                 "connectivity_and_initial_zeta_values()",
                                 OOMPH_EXCEPTION_LOCATION);
           }
@@ -3336,7 +3340,7 @@ namespace oomph
               << "The corresponding processor and segment to the right of "
               << "the current right\nmost segment was not found\n";
             throw OomphLibError(error_message.str(),
-                                "TriangleMesh::compute_boundary_segments_"
+                                "TriangleTFMesh::compute_boundary_segments_"
                                 "connectivity_and_initial_zeta_values()",
                                 OOMPH_EXCEPTION_LOCATION);
           }
@@ -3690,7 +3694,7 @@ namespace oomph
         error_message << "The first face element in the (" << is
                       << ")-th segment is halo\n";
         throw OomphLibError(error_message.str(),
-                            "TriangleMesh::compute_boundary_segments_"
+                            "TriangleTFMesh::compute_boundary_segments_"
                             "connectivity_and_initial_zeta_values()",
                             OOMPH_EXCEPTION_LOCATION);
       } // if (tmp_first_bulk_ele_pt->is_halo())
@@ -3718,7 +3722,7 @@ namespace oomph
         error_message << "The last face element in the (" << is
                       << ")-th segment is halo\n";
         throw OomphLibError(error_message.str(),
-                            "TriangleMesh::compute_boundary_segments_"
+                            "TriangleTFMesh::compute_boundary_segments_"
                             "connectivity_and_initial_zeta_values()",
                             OOMPH_EXCEPTION_LOCATION);
       } // if (tmp_first_bulk_ele_pt->is_halo())
@@ -3805,7 +3809,7 @@ namespace oomph
                     << ") representing\n"
                     << "the\nsegments is different!!!\n\n";
       throw OomphLibError(error_message.str(),
-                          "TriangleMesh::compute_boundary_segments_"
+                          "TriangleTFMesh::compute_boundary_segments_"
                           "connectivity_and_initial_zeta_values()",
                           OOMPH_EXCEPTION_LOCATION);
     }
@@ -4072,7 +4076,7 @@ namespace oomph
   /// with the nonhalo elements, therefore the boundary coordinates
   /// need to be re-assigned to be passed to the new meshes
   //======================================================================
-  void TriangleMesh::re_assign_initial_zeta_values_for_internal_boundary(
+  void TriangleTFMesh::re_assign_initial_zeta_values_for_internal_boundary(
     const unsigned& b,
     Vector<std::list<FiniteElement*>>& old_segment_sorted_ele_pt,
     std::map<FiniteElement*, bool>& old_is_inverted)
@@ -4354,10 +4358,10 @@ namespace oomph
         std::ostringstream error_message;
         error_message
           << "Could not find an initial face element for the current segment\n";
-        throw OomphLibError(
-          error_message.str(),
-          "TriangleMesh::re_assign_initial_zeta_values_for_internal_boundary()",
-          OOMPH_EXCEPTION_LOCATION);
+        throw OomphLibError(error_message.str(),
+                            "TriangleTFMesh::re_assign_initial_zeta_values_for_"
+                            "internal_boundary()",
+                            OOMPH_EXCEPTION_LOCATION);
       }
 #endif
 
@@ -4504,10 +4508,10 @@ namespace oomph
       {
         std::ostringstream error_message;
         error_message << "The (" << is << ")-th segment has no elements\n";
-        throw OomphLibError(
-          error_message.str(),
-          "TriangleMesh::re_assign_initial_zeta_values_for_internal_boundary()",
-          OOMPH_EXCEPTION_LOCATION);
+        throw OomphLibError(error_message.str(),
+                            "TriangleTFMesh::re_assign_initial_zeta_values_for_"
+                            "internal_boundary()",
+                            OOMPH_EXCEPTION_LOCATION);
       } // if (segment_sorted_ele_pt[is].size() == 0)
 #endif
 
@@ -5115,7 +5119,7 @@ namespace oomph
               << "Found first seg node:" << found_first_old_seg_node << "\n"
               << "Found last seg node:" << found_last_old_seg_node << "\n\n";
             throw OomphLibError(error_message.str(),
-                                "TriangleMesh::re_assign_initial_zeta_values_"
+                                "TriangleTFMesh::re_assign_initial_zeta_values_"
                                 "for_internal_boundary()",
                                 OOMPH_EXCEPTION_LOCATION);
           }
@@ -5241,7 +5245,7 @@ namespace oomph
                     << nsegments << ")\n\n";
       throw OomphLibError(
         error_message.str(),
-        "TriangleMesh::re_assign_initial_zeta_values_for_internal_boundary()",
+        "TriangleTFMesh::re_assign_initial_zeta_values_for_internal_boundary()",
         OOMPH_EXCEPTION_LOCATION);
     } // if (re_assigned_segments != nsegments)
 #endif
@@ -5263,7 +5267,7 @@ namespace oomph
   /// should be in charge of selecting nonhalo elements and deleting the face
   /// elements created by this method
   /// =====================================================================
-  void TriangleMesh::select_boundary_face_elements(
+  void TriangleTFMesh::select_boundary_face_elements(
     Vector<FiniteElement*>& face_ele_pt,
     const unsigned& b,
     bool& is_internal_boundary,
@@ -5591,7 +5595,7 @@ namespace oomph
   /// process. Called after setup_boundary_coordinates() for the
   /// original mesh only
   /// ========================================================================
-  void TriangleMesh::synchronize_boundary_coordinates(const unsigned& b)
+  void TriangleTFMesh::synchronize_boundary_coordinates(const unsigned& b)
   {
     // ------------------------------------------------------------------
     // First: Get the face elements associated with the current boundary
@@ -5888,7 +5892,7 @@ namespace oomph
         << "Number of boundary elements: (" << nbound_ele << ")\n"
         << "Number of nonrepeated boundary elements: (" << nface_ele << ")\n";
       throw OomphLibError(error_message.str(),
-                          "TriangleMesh::synchronize_boundary_coordinates()",
+                          "TriangleTFMesh::synchronize_boundary_coordinates()",
                           OOMPH_EXCEPTION_LOCATION);
     }
 #endif
@@ -5986,7 +5990,7 @@ namespace oomph
                   << "charge was found to be -1\n\n";
                 throw OomphLibError(
                   error_message.str(),
-                  "TriangleMesh::synchronize_boundary_coordinates()",
+                  "TriangleTFMesh::synchronize_boundary_coordinates()",
                   OOMPH_EXCEPTION_LOCATION);
               }
 #endif
@@ -6027,7 +6031,7 @@ namespace oomph
                   << ") was not found!!!\n\n";
                 throw OomphLibError(
                   error_message.str(),
-                  "TriangleMesh::synchronize_boundary_coordinates()",
+                  "TriangleTFMesh::synchronize_boundary_coordinates()",
                   OOMPH_EXCEPTION_LOCATION);
               }
 #endif
@@ -6107,7 +6111,7 @@ namespace oomph
             << face_halo_node_id[ip].size() << ")!!!\n\n";
           throw OomphLibError(
             error_message.str(),
-            "TriangleMesh::synchronize_boundary_coordinates()",
+            "TriangleTFMesh::synchronize_boundary_coordinates()",
             OOMPH_EXCEPTION_LOCATION);
         }
 #endif
@@ -6262,7 +6266,7 @@ namespace oomph
                         << nflat_double_receive << ")!!!\n\n";
           throw OomphLibError(
             error_message.str(),
-            "TriangleMesh::synchronize_boundary_coordinates()",
+            "TriangleTFMesh::synchronize_boundary_coordinates()",
             OOMPH_EXCEPTION_LOCATION);
         }
 #endif
@@ -6492,7 +6496,7 @@ namespace oomph
                         << nflat_double_receive << ")!!!\n\n";
           throw OomphLibError(
             error_message.str(),
-            "TriangleMesh::synchronize_boundary_coordinates()",
+            "TriangleTFMesh::synchronize_boundary_coordinates()",
             OOMPH_EXCEPTION_LOCATION);
         }
 #endif
@@ -6548,7 +6552,7 @@ namespace oomph
   /// distribution process (only apply for internal boundaries that
   /// have one face element at each side of the boundary)
   //======================================================================
-  void TriangleMesh::
+  void TriangleTFMesh::
     re_scale_re_assigned_initial_zeta_values_for_internal_boundary(
       const unsigned& b)
   {
@@ -6762,7 +6766,7 @@ namespace oomph
         << face_el_pt.size() << ")\n";
       //<< "Possible memory leak\n"
       throw OomphLibError(error_message.str(),
-                          "TriangleMesh::re_scale_re_assigned_initial_zeta_"
+                          "TriangleTFMesh::re_scale_re_assigned_initial_zeta_"
                           "values_for_internal_boundary()",
                           OOMPH_EXCEPTION_LOCATION);
     }
@@ -6830,7 +6834,7 @@ namespace oomph
           << "Could not find an initial face element for the current segment\n";
         // << "----- Possible memory leak -----\n";
         throw OomphLibError(error_message.str(),
-                            "TriangleMesh::re_scale_re_assigned_initial_zeta_"
+                            "TriangleTFMesh::re_scale_re_assigned_initial_zeta_"
                             "values_for_internal_boundary()",
                             OOMPH_EXCEPTION_LOCATION);
       }
@@ -6942,7 +6946,7 @@ namespace oomph
         << "The number of segments is zero, but the number of nonhalo\n"
         << "elements is: (" << nnon_halo_face_elements << ")\n";
       throw OomphLibError(error_message.str(),
-                          "TriangleMesh::re_scale_re_assigned_initial_zeta_"
+                          "TriangleTFMesh::re_scale_re_assigned_initial_zeta_"
                           "values_for_internal_boundary()",
                           OOMPH_EXCEPTION_LOCATION);
     } // if (nnon_halo_face_elements > 0 && nsegments == 0)
@@ -6967,7 +6971,7 @@ namespace oomph
         std::ostringstream error_message;
         error_message << "The (" << is << ")-th segment has no elements\n";
         throw OomphLibError(error_message.str(),
-                            "TriangleMesh::re_scale_re_assigned_initial_zeta_"
+                            "TriangleTFMesh::re_scale_re_assigned_initial_zeta_"
                             "values_for_internal_boundary()",
                             OOMPH_EXCEPTION_LOCATION);
       } // if (segment_sorted_ele_pt[is].size() == 0)
@@ -7180,9 +7184,9 @@ namespace oomph
   //========================================================================
   /// Create TriangulateIO object via the .poly file
   //========================================================================
-  void TriangleMesh::build_triangulateio(const std::string& poly_file_name,
-                                         TriangulateIO& triangulate_io,
-                                         bool& use_attributes)
+  void TriangleTFMesh::build_triangulateio(const std::string& poly_file_name,
+                                           TriangulateIO& triangulate_io,
+                                           bool& use_attributes)
   {
     // Process poly file
     // -----------------
@@ -7417,7 +7421,8 @@ namespace oomph
   //======================================================================
   /// Used to dump info. related with distributed triangle meshes
   //======================================================================
-  void TriangleMesh::dump_distributed_info_for_restart(std::ostream& dump_file)
+  void TriangleTFMesh::dump_distributed_info_for_restart(
+    std::ostream& dump_file)
   {
     // First check that the mesh is distributed
     if (this->is_mesh_distributed())
@@ -7559,7 +7564,7 @@ namespace oomph
               << "one-dimensioned zeta containers\n\n";
             throw OomphLibError(
               error_message.str(),
-              "TriangleMesh::dump_distributed_info_for_restart()",
+              "TriangleTFMesh::dump_distributed_info_for_restart()",
               OOMPH_EXCEPTION_LOCATION);
           }
 #endif
@@ -7658,7 +7663,7 @@ namespace oomph
   //======================================================================
   /// Used to read info. related with distributed triangle meshes
   //======================================================================
-  void TriangleMesh::read_distributed_info_for_restart(
+  void TriangleTFMesh::read_distributed_info_for_restart(
     std::istream& restart_file)
   {
     // First check that the mesh is distributed
@@ -7676,9 +7681,10 @@ namespace oomph
           << "file used for restarting is different\nfrom the number of "
           << "boundaries (" << this->nboundary() << ") on the current "
           << "mesh!!!\n\n\n";
-        throw OomphLibError(error_message.str(),
-                            "TriangleMesh::read_distributed_info_for_restart()",
-                            OOMPH_EXCEPTION_LOCATION);
+        throw OomphLibError(
+          error_message.str(),
+          "TriangleTFMesh::read_distributed_info_for_restart()",
+          OOMPH_EXCEPTION_LOCATION);
       }
 #endif
 
@@ -7715,9 +7721,10 @@ namespace oomph
           << ") (read from the restart file) is different\nfrom the "
           << "number of current used processors ("
           << this->communicator_pt()->nproc() << ")\n\n";
-        throw OomphLibError(error_message.str(),
-                            "TriangleMesh::read_distributed_info_for_restart()",
-                            OOMPH_EXCEPTION_LOCATION);
+        throw OomphLibError(
+          error_message.str(),
+          "TriangleTFMesh::read_distributed_info_for_restart()",
+          OOMPH_EXCEPTION_LOCATION);
       }
 #endif
 
@@ -7891,7 +7898,7 @@ namespace oomph
               << "segment's zeta values\n\n";
             throw OomphLibError(
               error_message.str(),
-              "TriangleMesh::read_distributed_info_for_restart()",
+              "TriangleTFMesh::read_distributed_info_for_restart()",
               OOMPH_EXCEPTION_LOCATION);
           }
 #endif
@@ -7991,8 +7998,8 @@ namespace oomph
   // Output the nodes on the boundaries and their / respective boundary
   // coordinates(into separate tecplot / zones)
   //===================================================================
-  void TriangleMesh::output_boundary_coordinates(const unsigned& b,
-                                                 std::ostream& outfile)
+  void TriangleTFMesh::output_boundary_coordinates(const unsigned& b,
+                                                   std::ostream& outfile)
   {
     // First get all the elements adjacent to the given boundary, then
     // the face elements and extract the nodes on the boundaries using
@@ -8107,7 +8114,7 @@ namespace oomph
   // them to create the new polygons that represent the distributed
   // domain
   //====================================================================
-  void TriangleMesh::create_distributed_domain_representation(
+  void TriangleTFMesh::create_distributed_domain_representation(
     Vector<TriangleMeshPolygon*>& polygons_pt,
     Vector<TriangleMeshOpenCurve*>& open_curves_pt)
   {
@@ -8606,7 +8613,7 @@ namespace oomph
   // Take the polylines from the shared boundaries and the boundaries
   // to create polygons
   //======================================================================
-  void TriangleMesh::create_tmp_polygons_helper(
+  void TriangleTFMesh::create_tmp_polygons_helper(
     Vector<Vector<TriangleMeshPolyLine*>>& polylines_pt,
     Vector<TriangleMeshPolygon*>& polygons_pt)
   {
@@ -8666,7 +8673,7 @@ namespace oomph
         err << "The root curve to create a polygon from the shared and "
             << "original boundaries was not found!!!\n";
         throw OomphLibError(err.str(),
-                            "TriangleMesh::create_tmp_polygons_helper()",
+                            "TriangleTFMesh::create_tmp_polygons_helper()",
                             OOMPH_EXCEPTION_LOCATION);
       }
 #endif
@@ -8950,7 +8957,7 @@ namespace oomph
           } // for (it != list_building_polygon_pt.end())
 
           throw OomphLibError(error_message.str(),
-                              "TriangleMesh::create_tmp_polygons_helper()",
+                              "TriangleTFMesh::create_tmp_polygons_helper()",
                               OOMPH_EXCEPTION_LOCATION);
 
         } // if (!polygon_created)
@@ -9005,7 +9012,7 @@ namespace oomph
   // new temporaly representations of open curves with the bits of
   // original curves not overlapped by shared boundaries
   //======================================================================
-  void TriangleMesh::create_tmp_open_curves_helper(
+  void TriangleTFMesh::create_tmp_open_curves_helper(
     Vector<Vector<TriangleMeshPolyLine*>>& sorted_open_curves_pt,
     Vector<TriangleMeshPolyLine*>& unsorted_shared_to_internal_poly_pt,
     Vector<TriangleMeshOpenCurve*>& open_curves_pt)
@@ -9044,7 +9051,7 @@ namespace oomph
   // nodes or with itself polyline nodes. In case that there is a
   // connection, get the boundary id to which connects
   //======================================================================
-  const int TriangleMesh::check_connections_of_polyline_nodes(
+  const int TriangleTFMesh::check_connections_of_polyline_nodes(
     std::set<FiniteElement*>& element_in_processor_pt,
     const int& root_edge_bnd_id,
     std::map<std::pair<Node*, Node*>, bool>& overlapped_face,
@@ -9479,11 +9486,11 @@ namespace oomph
   //======================================================================
   // Establish the connections of the polylines previously
   // marked as having connections. This connections were created in the
-  // function TriangleMesh::create_polylines_from_halo_elements_helper().
+  // function TriangleTFMesh::create_polylines_from_halo_elements_helper().
   // In case of doing load balancing the connections were created by the
-  // function RefineableTriangleMesh::create_new_shared_boundaries()
+  // function RefineableTriangleTFMesh::create_new_shared_boundaries()
   // ======================================================================
-  void TriangleMesh::create_shared_polylines_connections()
+  void TriangleTFMesh::create_shared_polylines_connections()
   {
     // Get the rank of the current processor
     const unsigned my_rank = this->communicator_pt()->my_rank();
@@ -9654,7 +9661,7 @@ namespace oomph
                   << "There should not be split shared boundaries\n\n";
                 throw OomphLibError(
                   error.str(),
-                  "TriangleMesh::create_shared_polylines_connections()",
+                  "TriangleTFMesh::create_shared_polylines_connections()",
                   OOMPH_EXCEPTION_LOCATION);
               }
             } // if (!connecting_to_an_split_boundary)
@@ -9714,7 +9721,7 @@ namespace oomph
                   }
                   throw OomphLibError(
                     error.str(),
-                    "TriangleMesh::create_shared_polylines_connections()",
+                    "TriangleTFMesh::create_shared_polylines_connections()",
                     OOMPH_EXCEPTION_LOCATION);
                 } // if (!found_vertex_index)
 
@@ -9829,7 +9836,7 @@ namespace oomph
 
                   throw OomphLibError(
                     error.str(),
-                    "TriangleMesh::create_shared_polylines_connections()",
+                    "TriangleTFMesh::create_shared_polylines_connections()",
                     OOMPH_EXCEPTION_LOCATION);
 
                 } // if (!found_vertex_index)
@@ -9866,7 +9873,7 @@ namespace oomph
                   << "represent it.\n";
                 throw OomphLibError(
                   error_message.str(),
-                  "TriangleMesh::create_shared_polylines_connections()",
+                  "TriangleTFMesh::create_shared_polylines_connections()",
                   OOMPH_EXCEPTION_LOCATION);
               } // if (nsub_poly <= 1)
 #endif
@@ -9947,7 +9954,7 @@ namespace oomph
                   } // for (p < nsub_poly)
                   throw OomphLibError(
                     error.str(),
-                    "TriangleMesh::create_shared_polylines_connections()",
+                    "TriangleTFMesh::create_shared_polylines_connections()",
                     OOMPH_EXCEPTION_LOCATION);
                 } // if (!found_vertex_index)
 #endif
@@ -10134,7 +10141,7 @@ namespace oomph
 
                   throw OomphLibError(
                     error.str(),
-                    "TriangleMesh::create_shared_polylines_connections()",
+                    "TriangleTFMesh::create_shared_polylines_connections()",
                     OOMPH_EXCEPTION_LOCATION);
                 } // if (!found_vertex_index)
 #endif
@@ -10279,7 +10286,7 @@ namespace oomph
                   << "There should not be split shared boundaries\n\n";
                 throw OomphLibError(
                   error.str(),
-                  "TriangleMesh::create_shared_polylines_connections()",
+                  "TriangleTFMesh::create_shared_polylines_connections()",
                   OOMPH_EXCEPTION_LOCATION);
               }
             } // if (!connecting_to_an_split_boundary)
@@ -10340,7 +10347,7 @@ namespace oomph
                   }
                   throw OomphLibError(
                     error.str(),
-                    "TriangleMesh::create_shared_polylines_connections()",
+                    "TriangleTFMesh::create_shared_polylines_connections()",
                     OOMPH_EXCEPTION_LOCATION);
                 } // if (!found_vertex_index)
 
@@ -10455,7 +10462,7 @@ namespace oomph
 
                   throw OomphLibError(
                     error.str(),
-                    "TriangleMesh::create_shared_polylines_connections()",
+                    "TriangleTFMesh::create_shared_polylines_connections()",
                     OOMPH_EXCEPTION_LOCATION);
 
                 } // if (!found_vertex_index)
@@ -10492,7 +10499,7 @@ namespace oomph
                   << "represent it.\n";
                 throw OomphLibError(
                   error_message.str(),
-                  "TriangleMesh::create_shared_polylines_connections()",
+                  "TriangleTFMesh::create_shared_polylines_connections()",
                   OOMPH_EXCEPTION_LOCATION);
               } // if (nsub_poly <= 1)
 #endif
@@ -10574,7 +10581,7 @@ namespace oomph
                   } // for (p < nsub_poly)
                   throw OomphLibError(
                     error.str(),
-                    "TriangleMesh::create_shared_polylines_connections()",
+                    "TriangleTFMesh::create_shared_polylines_connections()",
                     OOMPH_EXCEPTION_LOCATION);
                 } // if (!found_vertex_index)
 #endif
@@ -10761,7 +10768,7 @@ namespace oomph
 
                   throw OomphLibError(
                     error.str(),
-                    "TriangleMesh::create_shared_polylines_connections()",
+                    "TriangleTFMesh::create_shared_polylines_connections()",
                     OOMPH_EXCEPTION_LOCATION);
                 } // if (!found_vertex_index)
 #endif
@@ -10790,7 +10797,7 @@ namespace oomph
   // Compute the holes left by the halo elements, those adjacent
   // to the shared boundaries
   //=======================================================================
-  void TriangleMesh::compute_holes_left_by_halo_elements_helper(
+  void TriangleTFMesh::compute_holes_left_by_halo_elements_helper(
     Vector<Vector<double>>& output_holes_coordinates)
   {
     // Storage for number of processors and current processor
@@ -10898,7 +10905,7 @@ namespace oomph
   // is required since Triangle can not deal with vertices that define
   // holes outside the new outer polygons of the domain)
   //======================================================================
-  void TriangleMesh::update_holes_information_helper(
+  void TriangleTFMesh::update_holes_information_helper(
     Vector<TriangleMeshPolygon*>& polygons_pt,
     Vector<Vector<double>>& output_holes_coordinates)
   {
@@ -11307,7 +11314,7 @@ namespace oomph
   // Sorts the polylines so they be contiguous and then we can
   // create a closed or open curve from them
   //======================================================================
-  void TriangleMesh::sort_polylines_helper(
+  void TriangleTFMesh::sort_polylines_helper(
     Vector<TriangleMeshPolyLine*>& unsorted_polylines_pt,
     Vector<Vector<TriangleMeshPolyLine*>>& sorted_polylines_pt)
   {
@@ -11455,7 +11462,7 @@ namespace oomph
               << "Sorted polylines: (" << n_sorted_polylines << ")\n"
               << "Unsorted polylines: (" << n_unsorted_polylines << ")\n";
           throw OomphLibError(err.str(),
-                              "TriangleMesh::sort_polylines_helper()",
+                              "TriangleTFMesh::sort_polylines_helper()",
                               OOMPH_EXCEPTION_LOCATION);
         }
 #endif
@@ -11497,7 +11504,7 @@ namespace oomph
           << "Sorted polylines: " << n_sorted_polylines
           << "\nUnsorted polylines: " << n_unsorted_polylines;
       throw OomphLibError(err.str(),
-                          "TriangleMesh::sort_polylines_helper()",
+                          "TriangleTFMesh::sort_polylines_helper()",
                           OOMPH_EXCEPTION_LOCATION);
     }
 #endif
@@ -11506,7 +11513,7 @@ namespace oomph
   //======================================================================
   // Creates the shared boundaries
   //======================================================================
-  void TriangleMesh::create_shared_boundaries(
+  void TriangleTFMesh::create_shared_boundaries(
     OomphCommunicator* comm_pt,
     const Vector<unsigned>& element_domain,
     const Vector<GeneralisedElement*>& backed_up_el_pt,
@@ -11583,7 +11590,7 @@ namespace oomph
   /// Gets the halo elements on all processors, these elements are then used
   /// on the function that computes the shared boundaries among the processors
   //======================================================================
-  void TriangleMesh::get_halo_elements_on_all_procs(
+  void TriangleTFMesh::get_halo_elements_on_all_procs(
     const unsigned& nproc,
     const Vector<unsigned>& element_domain,
     const Vector<GeneralisedElement*>& backed_up_el_pt,
@@ -11671,7 +11678,7 @@ namespace oomph
   // on a boundary (used to mark shared boundaries that lie on
   // internal boundaries)
   //====================================================================
-  void TriangleMesh::get_element_edges_on_boundary(
+  void TriangleTFMesh::get_element_edges_on_boundary(
     std::map<std::pair<Node*, Node*>, unsigned>& element_edges_on_boundary)
   {
     // The number of original boundaries
@@ -11735,7 +11742,7 @@ namespace oomph
   // that is why the three dimensions in the structure
   // output_polylines_pt[iproc][ncurve][npolyline]
   // ======================================================================
-  void TriangleMesh::create_polylines_from_halo_elements_helper(
+  void TriangleTFMesh::create_polylines_from_halo_elements_helper(
     const Vector<unsigned>& element_domain,
     std::map<GeneralisedElement*, unsigned>& element_to_global_index,
     std::set<FiniteElement*>& element_in_processor_pt,
@@ -11849,7 +11856,7 @@ namespace oomph
                 << iproc << ") : (" << nhalo_elements_jproc_with_iproc << ")\n";
             throw OomphLibError(
               err.str(),
-              "TriangleMesh::create_polylines_from_halo_elements_helper()",
+              "TriangleTFMesh::create_polylines_from_halo_elements_helper()",
               OOMPH_EXCEPTION_LOCATION);
           }
 #endif
@@ -11898,7 +11905,7 @@ namespace oomph
                   << iproc << ") with processor (" << jproc << ").\n";
               throw OomphLibError(
                 err.str(),
-                "TriangleMesh::create_polylines_from_halo_elements_helper()",
+                "TriangleTFMesh::create_polylines_from_halo_elements_helper()",
                 OOMPH_EXCEPTION_LOCATION);
             }
 #endif
@@ -11914,7 +11921,7 @@ namespace oomph
                   << "FiniteElement type.\n";
               throw OomphLibError(
                 err.str(),
-                "TriangleMesh::create_polylines_from_halo_elements_helper()",
+                "TriangleTFMesh::create_polylines_from_halo_elements_helper()",
                 OOMPH_EXCEPTION_LOCATION);
             }
 
@@ -11934,7 +11941,7 @@ namespace oomph
                   << "elements with less than three nodes\n";
               throw OomphLibError(
                 err.str(),
-                "TriangleMesh::create_polylines_from_halo_elements_helper()",
+                "TriangleTFMesh::create_polylines_from_halo_elements_helper()",
                 OOMPH_EXCEPTION_LOCATION);
             }
 #endif
@@ -12006,7 +12013,7 @@ namespace oomph
                   << jproc << ") with processor (" << iproc << ").\n";
               throw OomphLibError(
                 err.str(),
-                "TriangleMesh::create_polylines_from_halo_elements_helper()",
+                "TriangleTFMesh::create_polylines_from_halo_elements_helper()",
                 OOMPH_EXCEPTION_LOCATION);
             }
 #endif
@@ -12021,7 +12028,7 @@ namespace oomph
                   << "FiniteElement type.\n";
               throw OomphLibError(
                 err.str(),
-                "TriangleMesh::create_polylines_from_halo_elements_helper()",
+                "TriangleTFMesh::create_polylines_from_halo_elements_helper()",
                 OOMPH_EXCEPTION_LOCATION);
             }
 
@@ -12041,7 +12048,7 @@ namespace oomph
                   << "elements with less than three nodes\n";
               throw OomphLibError(
                 err.str(),
-                "TriangleMesh::create_polylines_from_halo_elements_helper()",
+                "TriangleTFMesh::create_polylines_from_halo_elements_helper()",
                 OOMPH_EXCEPTION_LOCATION);
             }
 #endif
@@ -12190,7 +12197,7 @@ namespace oomph
                       << ", " << jhalo_edge[1]->x(1) << ")\n\n"
                       << "The nodes coordinates should be the same!!!\n";
                   throw OomphLibError(err.str(),
-                                      "TriangleMesh::create_polylines_from_"
+                                      "TriangleTFMesh::create_polylines_from_"
                                       "halo_elements_helper()",
                                       OOMPH_EXCEPTION_LOCATION);
                 }
@@ -12260,7 +12267,7 @@ namespace oomph
                       << ", " << jhalo_edge[1]->x(1) << ")\n\n"
                       << "The nodes coordinates should be the same!!!\n";
                   throw OomphLibError(err.str(),
-                                      "TriangleMesh::create_polylines_from_"
+                                      "TriangleTFMesh::create_polylines_from_"
                                       "halo_elements_helper()",
                                       OOMPH_EXCEPTION_LOCATION);
                 } // if (face_index_haloi_ele == -1 ||
@@ -12318,7 +12325,7 @@ namespace oomph
                       << ", " << jhalo_edge[1]->x(1) << ")\n\n"
                       << "The nodes coordinates should be the same!!!\n";
                   throw OomphLibError(err.str(),
-                                      "TriangleMesh::create_polylines_from_"
+                                      "TriangleTFMesh::create_polylines_from_"
                                       "halo_elements_helper()",
                                       OOMPH_EXCEPTION_LOCATION);
                 }
@@ -12388,7 +12395,7 @@ namespace oomph
                       << ", " << jhalo_edge[1]->x(1) << ")\n\n"
                       << "The nodes coordinates should be the same!!!\n";
                   throw OomphLibError(err.str(),
-                                      "TriangleMesh::create_polylines_from_"
+                                      "TriangleTFMesh::create_polylines_from_"
                                       "halo_elements_helper()",
                                       OOMPH_EXCEPTION_LOCATION);
                 } // if (face_index_haloi_ele == -1 ||
@@ -12466,7 +12473,7 @@ namespace oomph
             << "# of edge elements: (" << nedge_element << ")\n\n";
           throw OomphLibError(
             error_message.str(),
-            "TriangleMesh::create_polylines_from_halo_elements_helper()",
+            "TriangleTFMesh::create_polylines_from_halo_elements_helper()",
             OOMPH_EXCEPTION_LOCATION);
         }
 
@@ -12487,7 +12494,7 @@ namespace oomph
             << "# of edge element faces: (" << nedge_element_face << ")\n\n";
           throw OomphLibError(
             error_message.str(),
-            "TriangleMesh::create_polylines_from_halo_elements_helper()",
+            "TriangleTFMesh::create_polylines_from_halo_elements_helper()",
             OOMPH_EXCEPTION_LOCATION);
         }
 
@@ -12507,7 +12514,7 @@ namespace oomph
             << "# of edge boundaries ids: (" << nedge_boundary << ")\n\n";
           throw OomphLibError(
             error_message.str(),
-            "TriangleMesh::create_polylines_from_halo_elements_helper()",
+            "TriangleTFMesh::create_polylines_from_halo_elements_helper()",
             OOMPH_EXCEPTION_LOCATION);
         }
 
@@ -12537,7 +12544,7 @@ namespace oomph
               << edge_boundary[iproc][jproc][se] << ")\n\n";
             throw OomphLibError(
               error_message.str(),
-              "TriangleMesh::create_polylines_from_halo_elements_helper()",
+              "TriangleTFMesh::create_polylines_from_halo_elements_helper()",
               OOMPH_EXCEPTION_LOCATION);
           }
 
@@ -12722,7 +12729,7 @@ namespace oomph
             // << "----- Possible memory leak -----\n";
             throw OomphLibError(
               error_message.str(),
-              "TriangleMesh::create_polylines_from_halo_elements_helper()",
+              "TriangleTFMesh::create_polylines_from_halo_elements_helper()",
               OOMPH_EXCEPTION_LOCATION);
           }
 #endif
@@ -13229,7 +13236,7 @@ namespace oomph
   // Break any possible loop created by the sorted list of nodes
   // that is used to create a new shared polyline
   // ======================================================================
-  void TriangleMesh::break_loops_on_shared_polyline_helper(
+  void TriangleTFMesh::break_loops_on_shared_polyline_helper(
     const unsigned& initial_shd_bnd_id,
     std::list<Node*>& input_nodes,
     Vector<FiniteElement*>& input_boundary_element_pt,
@@ -13396,7 +13403,7 @@ namespace oomph
           << "found and no loop\nwas identified\n\n";
         throw OomphLibError(
           error_message.str(),
-          "TriangleMesh::break_loops_on_shared_polyline_helper()",
+          "TriangleTFMesh::break_loops_on_shared_polyline_helper()",
           OOMPH_EXCEPTION_LOCATION);
       }
 #endif
@@ -13838,7 +13845,7 @@ namespace oomph
             << "This configuration is not supported\n";
           throw OomphLibError(
             error_message.str(),
-            "TriangleMesh::break_loops_on_shared_polyline_helper()",
+            "TriangleTFMesh::break_loops_on_shared_polyline_helper()",
             OOMPH_EXCEPTION_LOCATION);
         }
 #endif
@@ -13891,7 +13898,7 @@ namespace oomph
               << "itself should be marked\n\n";
             throw OomphLibError(
               error_message.str(),
-              "TriangleMesh::break_loops_on_shared_polyline_helper()",
+              "TriangleTFMesh::break_loops_on_shared_polyline_helper()",
               OOMPH_EXCEPTION_LOCATION);
           }
 #endif
@@ -14111,7 +14118,7 @@ namespace oomph
             << "shared polyline or with any other polyline\n\n";
           throw OomphLibError(
             error_message.str(),
-            "TriangleMesh::break_loops_on_shared_polyline_helper()",
+            "TriangleTFMesh::break_loops_on_shared_polyline_helper()",
             OOMPH_EXCEPTION_LOCATION);
         }
         else if (input_connect_to_the_right == -1)
@@ -14125,7 +14132,7 @@ namespace oomph
             << "polyline\n\n";
           throw OomphLibError(
             error_message.str(),
-            "TriangleMesh::break_loops_on_shared_polyline_helper()",
+            "TriangleTFMesh::break_loops_on_shared_polyline_helper()",
             OOMPH_EXCEPTION_LOCATION);
         }
         // Connected with itself
@@ -14152,7 +14159,7 @@ namespace oomph
   // Break any possible loop created by the sorted list of nodes
   // that is used to create a new shared polyline
   // ======================================================================
-  void TriangleMesh::break_loops_on_shared_polyline_load_balance_helper(
+  void TriangleTFMesh::break_loops_on_shared_polyline_load_balance_helper(
     const unsigned& initial_shd_bnd_id,
     std::list<Node*>& input_nodes,
     Vector<FiniteElement*>& input_boundary_element_pt,
@@ -14272,7 +14279,7 @@ namespace oomph
         << "(or repeated nodes)\n";
       throw OomphLibError(
         error_message.str(),
-        "TriangleMesh::break_loops_on_shared_polyline_load_balance_helper()",
+        "TriangleTFMesh::break_loops_on_shared_polyline_load_balance_helper()",
         OOMPH_EXCEPTION_LOCATION);
     }
 #endif
@@ -14307,10 +14314,10 @@ namespace oomph
           << ") indicates a connection\n"
           << "with the same polyline.\n However, only one sub-polyline was "
           << "found and no loops\nwere identified\n\n";
-        throw OomphLibError(
-          error_message.str(),
-          "TriangleMesh::break_loops_on_shared_polyline_load_balance_helper()",
-          OOMPH_EXCEPTION_LOCATION);
+        throw OomphLibError(error_message.str(),
+                            "TriangleTFMesh::break_loops_on_shared_polyline_"
+                            "load_balance_helper()",
+                            OOMPH_EXCEPTION_LOCATION);
       }
 #endif
 
@@ -14333,10 +14340,10 @@ namespace oomph
           << ") indicates a connection\n"
           << "with the same polyline.\n However, only one sub-polyline was "
           << "found and no loops\nwere identified\n\n";
-        throw OomphLibError(
-          error_message.str(),
-          "TriangleMesh::break_loops_on_shared_polyline_load_balance_helper()",
-          OOMPH_EXCEPTION_LOCATION);
+        throw OomphLibError(error_message.str(),
+                            "TriangleTFMesh::break_loops_on_shared_polyline_"
+                            "load_balance_helper()",
+                            OOMPH_EXCEPTION_LOCATION);
       }
 #endif
 
@@ -14567,7 +14574,7 @@ namespace oomph
         << "loops at the load balance stage\n\n";
       throw OomphLibError(
         error_message.str(),
-        "TriangleMesh::break_loops_on_shared_polyline_load_balance_helper()",
+        "TriangleTFMesh::break_loops_on_shared_polyline_load_balance_helper()",
         OOMPH_EXCEPTION_LOCATION);
     }
 #endif
@@ -14578,7 +14585,7 @@ namespace oomph
   // that keep all the information associated with the creationg of the
   // shared boundary
   // ======================================================================
-  void TriangleMesh::create_shared_polyline(
+  void TriangleTFMesh::create_shared_polyline(
     const unsigned& my_rank,
     const unsigned& shd_bnd_id,
     const unsigned& iproc,
@@ -14681,7 +14688,7 @@ namespace oomph
           << n_shared_boundary_elements << ")\n"
           << "Number of face indexes: (" << n_face_index << ")\n\n";
         throw OomphLibError(error_message.str(),
-                            "TriangleMesh::create_shared_polyline()",
+                            "TriangleTFMesh::create_shared_polyline()",
                             OOMPH_EXCEPTION_LOCATION);
       } // if (n_shared_boundary_elements != n_face_index)
 #endif
@@ -14755,7 +14762,7 @@ namespace oomph
             << "The current flag value for connection to the left is: ("
             << connect_to_the_left_flag << ")\n\n";
           throw OomphLibError(error_message.str(),
-                              "TriangleMesh::create_shared_polyline()",
+                              "TriangleTFMesh::create_shared_polyline()",
                               OOMPH_EXCEPTION_LOCATION);
         } // if (connect_to_the_left_flag != -1)
       } // if (connect_to_the_left_flag < 0)
@@ -14775,7 +14782,7 @@ namespace oomph
             << "The current flag value for connection to the right is: ("
             << connect_to_the_right_flag << ")\n\n";
           throw OomphLibError(error_message.str(),
-                              "TriangleMesh::create_shared_polyline()",
+                              "TriangleTFMesh::create_shared_polyline()",
                               OOMPH_EXCEPTION_LOCATION);
         } // if (connect_to_the_right_flag != -1)
       } // if (connect_to_the_right_flag < 0)
@@ -14820,7 +14827,7 @@ namespace oomph
   /// Reset the boundary elements info. after load balance have
   /// taken place
   //======================================================================
-  void TriangleMesh::reset_boundary_element_info(
+  void TriangleTFMesh::reset_boundary_element_info(
     Vector<unsigned>& ntmp_boundary_elements,
     Vector<Vector<unsigned>>& ntmp_boundary_elements_in_region,
     Vector<FiniteElement*>& deleted_elements)
@@ -15013,7 +15020,7 @@ namespace oomph
   //========================================================================
   /// Build a new TriangulateIO object based on target areas specified
   //========================================================================
-  void RefineableTriangleMesh::refine_triangulateio(
+  void RefineableTriangleTFMesh::refine_triangulateio(
     TriangulateIO& triangulate_io,
     const Vector<double>& target_area,
     struct TriangulateIO& triangle_refine)
@@ -15246,7 +15253,7 @@ namespace oomph
   // Sort the nodes on shared boundaries so that the processors that share
   // a boundary agree with the order of the nodes on the boundary
   //======================================================================
-  void RefineableTriangleMesh::sort_nodes_on_shared_boundaries()
+  void RefineableTriangleTFMesh::sort_nodes_on_shared_boundaries()
   {
     // Get the shared boundaries in this processor
     Vector<unsigned> my_rank_shared_boundaries_ids;
@@ -15353,7 +15360,7 @@ namespace oomph
   // process (the updating of shared nodes is optional and performed by
   // default)
   //========================================================================
-  void RefineableTriangleMesh::reset_shared_boundary_elements_and_nodes(
+  void RefineableTriangleTFMesh::reset_shared_boundary_elements_and_nodes(
     const bool flush_elements,
     const bool update_elements,
     const bool flush_nodes,
@@ -15436,7 +15443,7 @@ namespace oomph
   // Sort the nodes on shared boundaries so that the processors that share
   // a boundary agree with the order of the nodes on the boundary
   //======================================================================
-  void RefineableTriangleMesh::reset_halo_haloed_scheme()
+  void RefineableTriangleTFMesh::reset_halo_haloed_scheme()
   {
     // Get the number of processors
     unsigned nproc = this->communicator_pt()->nproc();
@@ -16009,7 +16016,7 @@ namespace oomph
   // between this (my_rank) and other processors BUT there is not a
   // shared boundary between this and the other processor
   // ======================================================================
-  void RefineableTriangleMesh::compute_global_node_names_and_shared_nodes(
+  void RefineableTriangleTFMesh::compute_global_node_names_and_shared_nodes(
     Vector<Vector<Vector<std::map<unsigned, Node*>>>>&
       other_proc_shd_bnd_node_pt,
     Vector<Vector<Vector<unsigned>>>& global_node_names,
@@ -17003,7 +17010,7 @@ namespace oomph
   // shared node, and send the info. to the related processors. We
   // need to do this so that at the reset of halo(ed) info. stage,
   // the info. is updated
-  void RefineableTriangleMesh::send_boundary_node_info_of_shared_nodes(
+  void RefineableTriangleTFMesh::send_boundary_node_info_of_shared_nodes(
     Vector<Vector<Vector<unsigned>>>& global_node_names,
     std::map<Vector<unsigned>, unsigned>& node_name_to_global_index,
     Vector<Node*>& global_shared_node_pt)
@@ -17601,7 +17608,7 @@ namespace oomph
   // processors that have no shared boundaries in common but have
   // shared nodes
   // ======================================================================
-  void RefineableTriangleMesh::reset_halo_haloed_scheme_helper(
+  void RefineableTriangleTFMesh::reset_halo_haloed_scheme_helper(
     Vector<Vector<Vector<std::map<unsigned, Node*>>>>&
       other_proc_shd_bnd_node_pt,
     Vector<Vector<Node*>>& iproc_currently_created_nodes_pt,
@@ -17937,7 +17944,7 @@ namespace oomph
   /// an haloed element. This info. involves the association of the element
   /// to a boundary or region.
   //========================================================================
-  void RefineableTriangleMesh<
+  void RefineableTriangleTFMesh<
     ELEMENT>::get_required_elemental_information_helper(unsigned& iproc,
                                                         FiniteElement* ele_pt)
   {
@@ -18274,7 +18281,7 @@ namespace oomph
   /// haloed node so that a fully-functional halo node (and therefore element)
   /// can be created on the receiving process
   //========================================================================
-  void RefineableTriangleMesh::get_required_nodal_information_helper(
+  void RefineableTriangleTFMesh::get_required_nodal_information_helper(
     unsigned& iproc, Node* nod_pt)
   {
     unsigned my_rank = this->communicator_pt()->my_rank();
@@ -18464,7 +18471,7 @@ namespace oomph
                       << nod_pt->x(1) << ").\n";
         throw OomphLibError(
           error_message.str(),
-          "RefineableTriangleMesh::get_required_nodal_information_helper()",
+          "RefineableTriangleTFMesh::get_required_nodal_information_helper()",
           OOMPH_EXCEPTION_LOCATION);
       }
 #endif
@@ -18653,7 +18660,7 @@ namespace oomph
                         << nod_pt->x(1) << ").\n";
           throw OomphLibError(
             error_message.str(),
-            "RefineableTriangleMesh::get_required_nodal_information_helper()",
+            "RefineableTriangleTFMesh::get_required_nodal_information_helper()",
             OOMPH_EXCEPTION_LOCATION);
         }
 #endif
@@ -18676,7 +18683,7 @@ namespace oomph
                       << counter_shd_bnd_with_other_procs_have_node << ")\n";
         throw OomphLibError(
           error_message.str(),
-          "RefineableTriangleMesh::get_required_nodal_information_helper()",
+          "RefineableTriangleTFMesh::get_required_nodal_information_helper()",
           OOMPH_EXCEPTION_LOCATION);
       } // if (counter_shd_bnd_with_other_procs_have_node !=
         // nshared_boundaries_with_other_processors_have_node)
@@ -18744,7 +18751,7 @@ namespace oomph
       if (alg_nod_pt != 0)
       {
         // The external mesh should be algebraic
-        AlgebraicMesh* alg_mesh_pt = dynamic_cast<AlgebraicMesh*>(this);
+        AlgebraicTFMesh* alg_mesh_pt = dynamic_cast<AlgebraicTFMesh*>(this);
 
         // Get default node update function ID
         unsigned update_id = alg_nod_pt->node_update_fct_id();
@@ -18846,8 +18853,8 @@ namespace oomph
   //==========start of add_haloed_node_helper===============================
   /// Helper to add external haloed node that is not a master
   //========================================================================
-  void RefineableTriangleMesh::add_haloed_node_helper(unsigned& iproc,
-                                                      Node* nod_pt)
+  void RefineableTriangleTFMesh::add_haloed_node_helper(unsigned& iproc,
+                                                        Node* nod_pt)
   {
     // Attempt to add this node as a haloed node
     const unsigned n_haloed_nod = this->nhaloed_node(iproc);
@@ -18897,7 +18904,7 @@ namespace oomph
   /// Send the information of the elements that will be created on the other
   /// processor
   //======================================================================
-  void RefineableTriangleMesh::send_and_receive_elements_nodes_info(
+  void RefineableTriangleTFMesh::send_and_receive_elements_nodes_info(
     int& send_proc, int& recv_proc)
   {
     // Get the communicator of the mesh
@@ -19052,7 +19059,7 @@ namespace oomph
   /// Creates (halo) element on the loop process based on the
   /// information received from each processor
   //=====================================================================
-  void RefineableTriangleMesh::create_halo_element(
+  void RefineableTriangleTFMesh::create_halo_element(
     unsigned& iproc,
     Vector<Node*>& new_nodes_on_domain,
     Vector<Vector<Vector<std::map<unsigned, Node*>>>>&
@@ -19139,8 +19146,8 @@ namespace oomph
   /// This function is in charge of verify if the element is associated to
   /// a boundary
   //======================================================================
-  void RefineableTriangleMesh::add_halo_element_helper(unsigned& iproc,
-                                                       FiniteElement* ele_pt)
+  void RefineableTriangleTFMesh::add_halo_element_helper(unsigned& iproc,
+                                                         FiniteElement* ele_pt)
   {
 #ifdef ANNOTATE_REFINEABLE_TRIANGLE_MESH_COMMUNICATION
     oomph_info << "Rec:" << Counter_for_flat_packed_unsigneds
@@ -19299,7 +19306,7 @@ namespace oomph
   //========start of add_halo_node_helper==========================
   /// Helper function to add halo node
   //===============================================================
-  void RefineableTriangleMesh::add_halo_node_helper(
+  void RefineableTriangleTFMesh::add_halo_node_helper(
     Node*& new_nod_pt,
     Vector<Node*>& new_nodes_on_domain,
     Vector<Vector<Vector<std::map<unsigned, Node*>>>>&
@@ -19354,7 +19361,7 @@ namespace oomph
   // Helper function which constructs a new external halo node (on new element)
   // with the required information sent from the haloed process
   //========================================================================
-  void RefineableTriangleMesh::construct_new_halo_node_helper(
+  void RefineableTriangleTFMesh::construct_new_halo_node_helper(
     Node*& new_nod_pt,
     Vector<Node*>& new_nodes_on_domain,
     Vector<Vector<Vector<std::map<unsigned, Node*>>>>&
@@ -19446,7 +19453,7 @@ namespace oomph
           << "that flag is (" << node_on_original_boundaries << ").\n\n";
         throw OomphLibError(
           error_message.str(),
-          "RefineableTriangleMesh::construct_new_halo_node_helper()",
+          "RefineableTriangleTFMesh::construct_new_halo_node_helper()",
           OOMPH_EXCEPTION_LOCATION);
       } // if (node_on_original_boundaries != 0)
     }
@@ -19516,7 +19523,7 @@ namespace oomph
           << "that flag is (" << is_node_on_shared_boundary << ").\n\n";
         throw OomphLibError(
           error_message.str(),
-          "RefineableTriangleMesh::construct_new_halo_node_helper()",
+          "RefineableTriangleTFMesh::construct_new_halo_node_helper()",
           OOMPH_EXCEPTION_LOCATION);
       } // if (node_on_shared_boundary != 0)
     }
@@ -19628,7 +19635,7 @@ namespace oomph
           << is_the_node_in_shared_boundaries_with_other_processors << ").\n\n";
         throw OomphLibError(
           error_message.str(),
-          "RefineableTriangleMesh::construct_new_halo_node_helper()",
+          "RefineableTriangleTFMesh::construct_new_halo_node_helper()",
           OOMPH_EXCEPTION_LOCATION);
       }
     }
@@ -19942,8 +19949,8 @@ namespace oomph
       // not yet have been set up properly
       if (new_alg_nod_pt != 0)
       {
-        // The AlgebraicMesh is the external mesh
-        AlgebraicMesh* alg_mesh_pt = dynamic_cast<AlgebraicMesh*>(this);
+        // The AlgebraicTFMesh is the external mesh
+        AlgebraicTFMesh* alg_mesh_pt = dynamic_cast<AlgebraicTFMesh*>(this);
 
         /// The first entry of All_alg_nodal_info contains
         /// the default node update id
@@ -20010,7 +20017,7 @@ namespace oomph
 #endif
           unsigned geom_index =
             Flat_packed_unsigneds[Counter_for_flat_packed_unsigneds++];
-          // This index indicates which of the AlgebraicMesh's
+          // This index indicates which of the AlgebraicTFMesh's
           // stored geometric objects should be used
           // (0 is a null pointer; everything else should have
           //  been filled in by the specific Mesh).  If it
@@ -20050,9 +20057,9 @@ namespace oomph
           Vector<GeomObject*> geom_object_vector_pt;
 
           // Access the required geom objects from the
-          // MacroElementNodeUpdateMesh
-          MacroElementNodeUpdateMesh* macro_mesh_pt =
-            dynamic_cast<MacroElementNodeUpdateMesh*>(this);
+          // MacroElementNodeUpdateTFMesh
+          MacroElementNodeUpdateTFMesh* macro_mesh_pt =
+            dynamic_cast<MacroElementNodeUpdateTFMesh*>(this);
           geom_object_vector_pt = macro_mesh_pt->geom_object_vector_pt();
 
           // Get local coordinate of node in new element
@@ -20240,7 +20247,7 @@ namespace oomph
   // Helper function that assigns/updates the references to the node so
   // that it can be found with any other reference
   //========================================================================
-  void RefineableTriangleMesh::update_other_proc_shd_bnd_node_helper(
+  void RefineableTriangleTFMesh::update_other_proc_shd_bnd_node_helper(
     Node*& new_node_pt,
     Vector<Vector<Vector<std::map<unsigned, Node*>>>>&
       other_proc_shd_bnd_node_pt,
@@ -20388,7 +20395,7 @@ namespace oomph
   /// Performs the load balancing for unstructured meshes, the
   /// load balancing strategy is based on mesh migration
   //======================================================================
-  void RefineableTriangleMesh::load_balance(
+  void RefineableTriangleTFMesh::load_balance(
     const Vector<unsigned>& target_domain_for_local_non_halo_element)
   {
     oomph_info << "Load balance (unstructured mesh) [BEGIN]" << std::endl;
@@ -22485,7 +22492,7 @@ namespace oomph
   /// intersection between them to get the shared boundary
   /// elements from the first and second group
   //======================================================================
-  void RefineableTriangleMesh::get_shared_boundary_elements_and_face_indexes(
+  void RefineableTriangleTFMesh::get_shared_boundary_elements_and_face_indexes(
     const Vector<FiniteElement*>& first_element_pt,
     const Vector<FiniteElement*>& second_element_pt,
     Vector<FiniteElement*>& first_shared_boundary_element_pt,
@@ -22636,7 +22643,7 @@ namespace oomph
   /// charge of computing the shared boundaries ids of each processor
   /// and send that info. to all the processors
   //======================================================================
-  void RefineableTriangleMesh::create_new_shared_boundaries(
+  void RefineableTriangleTFMesh::create_new_shared_boundaries(
     std::set<FiniteElement*>& element_in_processor_pt,
     Vector<Vector<FiniteElement*>>& new_shared_boundary_element_pt,
     Vector<Vector<unsigned>>& new_shared_boundary_element_face_index)
@@ -23053,7 +23060,7 @@ namespace oomph
             << "N. ele after sorting: (" << tmp_n_face_ele << ")\n";
           throw OomphLibError(
             error_stream.str(),
-            "RefineableTriangleMesh::create_new_shared_boundaries()",
+            "RefineableTriangleTFMesh::create_new_shared_boundaries()",
             OOMPH_EXCEPTION_LOCATION);
         }
 #endif
@@ -24778,7 +24785,7 @@ namespace oomph
   // degree of the node is computed from the global graph created by the
   // shared boundaries of all processors
   //======================================================================
-  void RefineableTriangleMesh::compute_shared_node_degree_helper(
+  void RefineableTriangleTFMesh::compute_shared_node_degree_helper(
     Vector<Vector<FiniteElement*>>& unsorted_face_ele_pt,
     std::map<Node*, unsigned>& global_node_degree)
   {
@@ -25025,7 +25032,7 @@ namespace oomph
                 << "Current jproc: (" << jproc << ")\n\n";
               throw OomphLibError(
                 error_stream.str(),
-                "RefineableTriangleMesh::compute_shared_node_degree_helper()",
+                "RefineableTriangleTFMesh::compute_shared_node_degree_helper()",
                 OOMPH_EXCEPTION_LOCATION);
             }
 
@@ -25110,7 +25117,7 @@ namespace oomph
           << "more or less info. than the one that is being decoded\n\n";
         throw OomphLibError(
           error_stream.str(),
-          "RefineableTriangleMesh::compute_shared_node_degree_helper()",
+          "RefineableTriangleTFMesh::compute_shared_node_degree_helper()",
           OOMPH_EXCEPTION_LOCATION);
       }
 #endif
@@ -25154,7 +25161,7 @@ namespace oomph
               << ")\n\n";
             throw OomphLibError(
               error_stream.str(),
-              "RefineableTriangleMesh::compute_shared_node_degree_helper()",
+              "RefineableTriangleTFMesh::compute_shared_node_degree_helper()",
               OOMPH_EXCEPTION_LOCATION);
           } // if (n_shd_nodes_iproc_jproc != n_shd_nodes_jproc_iproc)
 #endif
@@ -25431,10 +25438,11 @@ namespace oomph
                     << "iproc processor: (" << iproc << ")\n"
                     << "jproc processor: (" << jproc << ")\n"
                     << "Local node: (" << ishd << ")\n\n";
-                  throw OomphLibError(error_stream.str(),
-                                      "RefineableTriangleMesh::compute_shared_"
-                                      "node_degree_helper()",
-                                      OOMPH_EXCEPTION_LOCATION);
+                  throw OomphLibError(
+                    error_stream.str(),
+                    "RefineableTriangleTFMesh::compute_shared_"
+                    "node_degree_helper()",
+                    OOMPH_EXCEPTION_LOCATION);
                 }
 
                 // Check if the local nodes have a global node
@@ -25448,10 +25456,11 @@ namespace oomph
                     << "iproc processor: (" << iproc << ")\n"
                     << "jproc processor: (" << jproc << ")\n"
                     << "Local node: (" << jshd << ")\n\n";
-                  throw OomphLibError(error_stream.str(),
-                                      "RefineableTriangleMesh::compute_shared_"
-                                      "node_degree_helper()",
-                                      OOMPH_EXCEPTION_LOCATION);
+                  throw OomphLibError(
+                    error_stream.str(),
+                    "RefineableTriangleTFMesh::compute_shared_"
+                    "node_degree_helper()",
+                    OOMPH_EXCEPTION_LOCATION);
                 }
 #endif
                 // Get the unsigned version of the indexes
@@ -25527,7 +25536,7 @@ namespace oomph
                 << "Local node: (" << ishd << ")\n\n";
               throw OomphLibError(
                 error_stream.str(),
-                "RefineableTriangleMesh::compute_shared_node_degree_helper()",
+                "RefineableTriangleTFMesh::compute_shared_node_degree_helper()",
                 OOMPH_EXCEPTION_LOCATION);
             }
 #endif
@@ -25736,7 +25745,7 @@ namespace oomph
                 << shd_node_pt->x(1) << ")\n\n";
               throw OomphLibError(
                 error_stream.str(),
-                "RefineableTriangleMesh::compute_shared_node_degree_helper()",
+                "RefineableTriangleTFMesh::compute_shared_node_degree_helper()",
                 OOMPH_EXCEPTION_LOCATION);
             }
 
@@ -25764,7 +25773,7 @@ namespace oomph
         << "more or less info. than the one that is being decoded\n\n";
       throw OomphLibError(
         error_stream.str(),
-        "RefineableTriangleMesh::compute_shared_node_degree_helper()",
+        "RefineableTriangleTFMesh::compute_shared_node_degree_helper()",
         OOMPH_EXCEPTION_LOCATION);
     }
 #endif
@@ -25776,11 +25785,12 @@ namespace oomph
   // that represent the graph created by the shared edges between each
   // pair of processors
   // ======================================================================
-  void RefineableTriangleMesh::create_adjacency_matrix_new_shared_edges_helper(
-    Vector<Vector<FiniteElement*>>& unsorted_face_ele_pt,
-    Vector<Vector<Node*>>& tmp_sorted_shared_node_pt,
-    std::map<Node*, Vector<Vector<unsigned>>>& node_alias,
-    Vector<Vector<Vector<unsigned>>>& adjacency_matrix)
+  void RefineableTriangleTFMesh::
+    create_adjacency_matrix_new_shared_edges_helper(
+      Vector<Vector<FiniteElement*>>& unsorted_face_ele_pt,
+      Vector<Vector<Node*>>& tmp_sorted_shared_node_pt,
+      std::map<Node*, Vector<Vector<unsigned>>>& node_alias,
+      Vector<Vector<Vector<unsigned>>>& adjacency_matrix)
   {
     // Get the number of processors and the rank
     const unsigned nproc = this->communicator_pt()->nproc();
@@ -25960,7 +25970,7 @@ namespace oomph
   /// Get the nodes on the shared boundary (b), these are stored
   /// in the segment they belong
   //======================================================================
-  void RefineableTriangleMesh::get_shared_boundary_segment_nodes_helper(
+  void RefineableTriangleTFMesh::get_shared_boundary_segment_nodes_helper(
     const unsigned& shd_bnd_id, Vector<Vector<Node*>>& tmp_segment_nodes)
   {
     // Clear the data structure were to return the nodes
@@ -26037,7 +26047,7 @@ namespace oomph
         << ")\n for the current boundary (" << shd_bnd_id << ")\n\n";
       throw OomphLibError(
         error_message.str(),
-        "RefineableTriangleMesh::get_shared_boundary_segment_nodes_helper()",
+        "RefineableTriangleTFMesh::get_shared_boundary_segment_nodes_helper()",
         OOMPH_EXCEPTION_LOCATION);
     }
 
@@ -26053,7 +26063,7 @@ namespace oomph
         << ")\n for the current boundary (" << shd_bnd_id << ")\n\n";
       throw OomphLibError(
         error_message.str(),
-        "RefineableTriangleMesh::get_shared_boundary_segment_nodes_helper()",
+        "RefineableTriangleTFMesh::get_shared_boundary_segment_nodes_helper()",
         OOMPH_EXCEPTION_LOCATION);
     }
 
@@ -26135,7 +26145,7 @@ namespace oomph
                     << "current boundary (" << shd_bnd_id << ")\n\n";
       throw OomphLibError(
         error_message.str(),
-        "RefineableTriangleMesh::get_shared_boundary_segment_nodes_helper()",
+        "RefineableTriangleTFMesh::get_shared_boundary_segment_nodes_helper()",
         OOMPH_EXCEPTION_LOCATION);
     }
 #endif // #ifdef PARANOID
@@ -26288,7 +26298,7 @@ namespace oomph
   /// This info. involves the association of the element to a boundary or
   /// region.
   //========================================================================
-  void RefineableTriangleMesh::
+  void RefineableTriangleTFMesh::
     get_required_elemental_information_load_balance_helper(
       unsigned& iproc,
       Vector<Vector<FiniteElement*>>& f_haloed_ele_pt,
@@ -26329,7 +26339,7 @@ namespace oomph
               << "A triangular element can not have more than two of its faces "
               << "on a boundary!!!\n\n";
             throw OomphLibError(error_message.str(),
-                                "RefineableTriangleMesh::get_required_"
+                                "RefineableTriangleTFMesh::get_required_"
                                 "elemental_information_helper()",
                                 OOMPH_EXCEPTION_LOCATION);
           }
@@ -26453,7 +26463,7 @@ namespace oomph
                                    "than two of its\n"
                                 << "faces on a boundary!!!\n\n";
                   throw OomphLibError(error_message.str(),
-                                      "RefineableTriangleMesh::get_required_"
+                                      "RefineableTriangleTFMesh::get_required_"
                                       "elemental_information_helper()",
                                       OOMPH_EXCEPTION_LOCATION);
                 } // if (counter_face_indexes_in_regions > 2)
@@ -26679,7 +26689,7 @@ namespace oomph
   /// Helper function to add nodes on a new domain as a result of
   /// load balance
   //======================================================================
-  void RefineableTriangleMesh::add_node_load_balance_helper(
+  void RefineableTriangleTFMesh::add_node_load_balance_helper(
     unsigned& iproc,
     Vector<Vector<FiniteElement*>>& f_halo_ele_pt,
     Vector<Node*>& new_nodes_on_domain,
@@ -26735,7 +26745,7 @@ namespace oomph
   /// haloed node so that a fully-functional halo node (and therefore element)
   /// can be created on the receiving process
   //========================================================================
-  void RefineableTriangleMesh::
+  void RefineableTriangleTFMesh::
     get_required_nodal_information_load_balance_helper(
       Vector<Vector<FiniteElement*>>& f_halo_ele_pt,
       unsigned& iproc,
@@ -26928,7 +26938,7 @@ namespace oomph
                       << nod_pt->x(1) << ").\n";
         throw OomphLibError(
           error_message.str(),
-          "RefineableTriangleMesh::get_required_nodal_information_helper()",
+          "RefineableTriangleTFMesh::get_required_nodal_information_helper()",
           OOMPH_EXCEPTION_LOCATION);
       }
 #endif
@@ -27117,7 +27127,7 @@ namespace oomph
                         << nod_pt->x(1) << ").\n";
           throw OomphLibError(
             error_message.str(),
-            "RefineableTriangleMesh::get_required_nodal_information_helper()",
+            "RefineableTriangleTFMesh::get_required_nodal_information_helper()",
             OOMPH_EXCEPTION_LOCATION);
         }
 #endif
@@ -27140,7 +27150,7 @@ namespace oomph
                       << counter_shd_bnd_with_other_procs_have_node << ")\n";
         throw OomphLibError(
           error_message.str(),
-          "RefineableTriangleMesh::get_required_nodal_information_helper()",
+          "RefineableTriangleTFMesh::get_required_nodal_information_helper()",
           OOMPH_EXCEPTION_LOCATION);
       } // if (counter_shd_bnd_with_other_procs_have_node !=
         // nshared_boundaries_with_other_processors_have_node)
@@ -27321,7 +27331,7 @@ namespace oomph
       if (alg_nod_pt != 0)
       {
         // The external mesh should be algebraic
-        AlgebraicMesh* alg_mesh_pt = dynamic_cast<AlgebraicMesh*>(this);
+        AlgebraicTFMesh* alg_mesh_pt = dynamic_cast<AlgebraicTFMesh*>(this);
 
         // Get default node update function ID
         unsigned update_id = alg_nod_pt->node_update_fct_id();
@@ -27426,7 +27436,7 @@ namespace oomph
   /// process based on the info received in
   /// send_and_received_elements_nodes_info
   //======================================================================
-  void RefineableTriangleMesh::create_element_load_balance_helper(
+  void RefineableTriangleTFMesh::create_element_load_balance_helper(
     unsigned& iproc,
     Vector<Vector<FiniteElement*>>& f_haloed_ele_pt,
     Vector<Vector<std::map<unsigned, FiniteElement*>>>&
@@ -27508,7 +27518,7 @@ namespace oomph
   /// This function is in charge of verify if the element is associated
   /// to a boundary and associate to it if that is the case
   //======================================================================
-  void RefineableTriangleMesh::add_element_load_balance_helper(
+  void RefineableTriangleTFMesh::add_element_load_balance_helper(
     const unsigned& iproc,
     Vector<Vector<std::map<unsigned, FiniteElement*>>>&
       received_old_haloed_element_pt,
@@ -27647,7 +27657,7 @@ namespace oomph
           << "that flag is (" << is_on_original_boundary << ").\n\n";
         throw OomphLibError(
           error_message.str(),
-          "RefineableTriangleMesh::add_element_load_balance_helper()",
+          "RefineableTriangleTFMesh::add_element_load_balance_helper()",
           OOMPH_EXCEPTION_LOCATION);
       } // if (is_on_shared_boundary != 0)
     }
@@ -27718,7 +27728,7 @@ namespace oomph
           << "that flag is (" << is_on_shared_boundary << ").\n\n";
         throw OomphLibError(
           error_message.str(),
-          "RefineableTriangleMesh::add_element_load_balance_helper()",
+          "RefineableTriangleTFMesh::add_element_load_balance_helper()",
           OOMPH_EXCEPTION_LOCATION);
       } // if (is_on_shared_boundary != 0)
     }
@@ -27764,7 +27774,7 @@ namespace oomph
   //======================================================================
   /// Helper function to add a new node from load balance
   //======================================================================
-  void RefineableTriangleMesh::add_received_node_load_balance_helper(
+  void RefineableTriangleTFMesh::add_received_node_load_balance_helper(
     Node*& new_nod_pt,
     Vector<Vector<FiniteElement*>>& f_haloed_ele_pt,
     Vector<Vector<std::map<unsigned, FiniteElement*>>>&
@@ -27827,7 +27837,7 @@ namespace oomph
   /// element) with the information sent from the load balance
   /// process
   //======================================================================
-  void RefineableTriangleMesh::construct_new_node_load_balance_helper(
+  void RefineableTriangleTFMesh::construct_new_node_load_balance_helper(
     Node*& new_nod_pt,
     Vector<Vector<FiniteElement*>>& f_haloed_ele_pt,
     Vector<Vector<std::map<unsigned, FiniteElement*>>>&
@@ -27927,7 +27937,7 @@ namespace oomph
           << "that flag is (" << node_on_original_boundaries << ").\n\n";
         throw OomphLibError(
           error_message.str(),
-          "RefineableTriangleMesh::construct_new_halo_node_helper()",
+          "RefineableTriangleTFMesh::construct_new_halo_node_helper()",
           OOMPH_EXCEPTION_LOCATION);
       } // if (node_on_original_boundaries != 0)
     }
@@ -27997,7 +28007,7 @@ namespace oomph
           << "that flag is (" << is_node_on_shared_boundary << ").\n\n";
         throw OomphLibError(
           error_message.str(),
-          "RefineableTriangleMesh::construct_new_halo_node_helper()",
+          "RefineableTriangleTFMesh::construct_new_halo_node_helper()",
           OOMPH_EXCEPTION_LOCATION);
       } // if (node_on_shared_boundary != 0)
     }
@@ -28109,7 +28119,7 @@ namespace oomph
           << is_the_node_in_shared_boundaries_with_other_processors << ").\n\n";
         throw OomphLibError(
           error_message.str(),
-          "RefineableTriangleMesh::construct_new_node_load_balance_helper()",
+          "RefineableTriangleTFMesh::construct_new_node_load_balance_helper()",
           OOMPH_EXCEPTION_LOCATION);
       }
     }
@@ -28244,10 +28254,10 @@ namespace oomph
                           << ")\n";
           }
           error_message << "\n";
-          throw OomphLibError(
-            error_message.str(),
-            "RefineableTriangleMesh::construct_new_node_load_balance_helper()",
-            OOMPH_EXCEPTION_LOCATION);
+          throw OomphLibError(error_message.str(),
+                              "RefineableTriangleTFMesh::construct_new_node_"
+                              "load_balance_helper()",
+                              OOMPH_EXCEPTION_LOCATION);
         }
 #endif
 
@@ -28327,10 +28337,11 @@ namespace oomph
                               << ")\n";
               }
               error_message << "\n";
-              throw OomphLibError(error_message.str(),
-                                  "RefineableTriangleMesh::construct_new_node_"
-                                  "load_balance_helper()",
-                                  OOMPH_EXCEPTION_LOCATION);
+              throw OomphLibError(
+                error_message.str(),
+                "RefineableTriangleTFMesh::construct_new_node_"
+                "load_balance_helper()",
+                OOMPH_EXCEPTION_LOCATION);
             }
 #endif
 
@@ -28498,7 +28509,7 @@ namespace oomph
               << "repeated!!!\n";
             throw OomphLibError(
               error_message.str(),
-              "RefineableTriangleMesh::construct_new_halo_node_helper()",
+              "RefineableTriangleTFMesh::construct_new_halo_node_helper()",
               OOMPH_EXCEPTION_LOCATION);
 
           } // if (found_node_pt[j-1] != found_node_pt[j])
@@ -28532,7 +28543,7 @@ namespace oomph
               << "repeated!!!\n";
             throw OomphLibError(
               error_message.str(),
-              "RefineableTriangleMesh::construct_new_halo_node_helper()",
+              "RefineableTriangleTFMesh::construct_new_halo_node_helper()",
               OOMPH_EXCEPTION_LOCATION);
           } // if (found_node_pt[0] != new_nod_pt)
 
@@ -28666,8 +28677,8 @@ namespace oomph
       // not yet have been set up properly
       if (new_alg_nod_pt != 0)
       {
-        // The AlgebraicMesh is the external mesh
-        AlgebraicMesh* alg_mesh_pt = dynamic_cast<AlgebraicMesh*>(this);
+        // The AlgebraicTFMesh is the external mesh
+        AlgebraicTFMesh* alg_mesh_pt = dynamic_cast<AlgebraicTFMesh*>(this);
 
         /// The first entry of All_alg_nodal_info contains
         /// the default node update id
@@ -28734,7 +28745,7 @@ namespace oomph
 #endif
           unsigned geom_index =
             Flat_packed_unsigneds[Counter_for_flat_packed_unsigneds++];
-          // This index indicates which of the AlgebraicMesh's
+          // This index indicates which of the AlgebraicTFMesh's
           // stored geometric objects should be used
           // (0 is a null pointer; everything else should have
           //  been filled in by the specific Mesh).  If it
@@ -28781,9 +28792,9 @@ namespace oomph
           Vector<GeomObject*> geom_object_vector_pt;
 
           // Access the required geom objects from the
-          // MacroElementNodeUpdateMesh
-          MacroElementNodeUpdateMesh* macro_mesh_pt =
-            dynamic_cast<MacroElementNodeUpdateMesh*>(this);
+          // MacroElementNodeUpdateTFMesh
+          MacroElementNodeUpdateTFMesh* macro_mesh_pt =
+            dynamic_cast<MacroElementNodeUpdateTFMesh*>(this);
           geom_object_vector_pt = macro_mesh_pt->geom_object_vector_pt();
 
           // Get local coordinate of node in new element
@@ -28994,7 +29005,7 @@ namespace oomph
   /// re-set the number of segments per boundary after load balance has
   /// taken place)
   //======================================================================
-  void RefineableTriangleMesh::get_boundary_segment_nodes_helper(
+  void RefineableTriangleTFMesh::get_boundary_segment_nodes_helper(
     const unsigned& b, Vector<Vector<Node*>>& tmp_segment_nodes)
   {
     // Clear the data structure were to return the nodes
@@ -29221,7 +29232,7 @@ namespace oomph
         << face_el_pt.size() << ")\n";
       throw OomphLibError(
         error_message.str(),
-        "RefineableTriangleMesh::get_boundary_segment_nodes_helper()",
+        "RefineableTriangleTFMesh::get_boundary_segment_nodes_helper()",
         OOMPH_EXCEPTION_LOCATION);
     }
 #endif
@@ -29323,7 +29334,7 @@ namespace oomph
                            "current segment\n";
           throw OomphLibError(
             error_message.str(),
-            "RefineableTriangleMesh::get_boundary_segment_nodes_helper()",
+            "RefineableTriangleTFMesh::get_boundary_segment_nodes_helper()",
             OOMPH_EXCEPTION_LOCATION);
         }
 #endif
@@ -29429,7 +29440,7 @@ namespace oomph
           << "elements is: (" << nnon_halo_face_elements << ")\n";
         throw OomphLibError(
           error_message.str(),
-          "RefineableTriangleMesh::get_boundary_segment_nodes_helper()",
+          "RefineableTriangleTFMesh::get_boundary_segment_nodes_helper()",
           OOMPH_EXCEPTION_LOCATION);
       } // if (nnon_halo_face_elements > 0 && nsegments == 0)
 #endif
@@ -29450,7 +29461,7 @@ namespace oomph
           error_message << "The (" << is << ")-th segment has no elements\n";
           throw OomphLibError(
             error_message.str(),
-            "RefineableTriangleMesh::get_boundary_segment_nodes_helper()",
+            "RefineableTriangleTFMesh::get_boundary_segment_nodes_helper()",
             OOMPH_EXCEPTION_LOCATION);
         } // if (segment_sorted_ele_pt[is].size() == 0)
 #endif
@@ -29516,7 +29527,7 @@ namespace oomph
   /// sections for parallel mesh adaptation are clearly identified by
   /// checking whether the mesh is distributed or not
   //======================================================================
-  void RefineableTriangleMesh::adapt(const Vector<double>& elem_error)
+  void RefineableTriangleTFMesh::adapt(const Vector<double>& elem_error)
   {
     double t_start_overall = TimingHelpers::timer();
 
@@ -30091,13 +30102,13 @@ namespace oomph
       // ==============================================================
 
       // Are we dealing with a solid mesh?
-      SolidMesh* solid_mesh_pt = dynamic_cast<SolidMesh*>(this);
+      SolidTFMesh* solid_mesh_pt = dynamic_cast<SolidTFMesh*>(this);
 
       // Build temporary uniform background mesh
       //----------------------------------------
       // with area set by maximum required area
       //---------------------------------------
-      RefineableTriangleMesh* tmp_new_mesh_pt = 0;
+      RefineableTriangleTFMesh* tmp_new_mesh_pt = 0;
 
       // The storage for the new temporary boundaries representation to
       // create the background mesh
@@ -30162,7 +30173,7 @@ namespace oomph
 
       // ----------------------------------------------------------------
       // Gather all the information and use the TriangleMeshParameters
-      // object which help us on the manage of all TriangleMesh object's
+      // object which help us on the manage of all TriangleTFMesh object's
       // information
 
       // Create the TriangleMeshParameters objects with the outer boundary
@@ -30218,13 +30229,13 @@ namespace oomph
 
       if (solid_mesh_pt != 0)
       {
-        tmp_new_mesh_pt = new RefineableSolidTriangleMesh(
+        tmp_new_mesh_pt = new RefineableSolidTriangleTFMesh(
           triangle_mesh_parameters, this->Time_stepper_pt);
       }
       else
       {
-        tmp_new_mesh_pt = new RefineableTriangleMesh(triangle_mesh_parameters,
-                                                     this->Time_stepper_pt);
+        tmp_new_mesh_pt = new RefineableTriangleTFMesh(triangle_mesh_parameters,
+                                                       this->Time_stepper_pt);
       }
 
       if (Print_timings_level_adaptation > 2)
@@ -30377,7 +30388,7 @@ namespace oomph
       // Get the TriangulateIO object associated with that mesh
       TriangulateIO tmp_new_triangulateio =
         tmp_new_mesh_pt->triangulateio_representation();
-      RefineableTriangleMesh* new_mesh_pt = 0;
+      RefineableTriangleTFMesh* new_mesh_pt = 0;
 
       // If the mesh is a solid mesh then do the mapping based on the
       // Eulerian coordinates
@@ -30707,7 +30718,7 @@ namespace oomph
                             << " " << x[1] << " ] that's not even \n"
                             << "located within the bin boundaries.\n";
               throw OomphLibError(error_message.str(),
-                                  "RefineableTriangleMesh::adapt()",
+                                  "RefineableTriangleTFMesh::adapt()",
                                   OOMPH_EXCEPTION_LOCATION);
             } // if (bin_number<0)
             else
@@ -30934,7 +30945,7 @@ namespace oomph
         // Solid mesh?
         if (solid_mesh_pt != 0)
         {
-          new_mesh_pt = new RefineableSolidTriangleMesh(
+          new_mesh_pt = new RefineableSolidTriangleTFMesh(
             new_target_area,
             tmp_new_triangulateio,
             this->Time_stepper_pt,
@@ -30945,7 +30956,7 @@ namespace oomph
         // No solid mesh
         else
         {
-          new_mesh_pt = new RefineableTriangleMesh(
+          new_mesh_pt = new RefineableTriangleTFMesh(
             new_target_area,
             tmp_new_triangulateio,
             this->Time_stepper_pt,
@@ -31785,7 +31796,7 @@ namespace oomph
   /// the unrefienment/refinement polyline methods. In charge of
   /// filling the Boundary_connections_pt structure
   //=========================================================================
-  void RefineableTriangleMesh::add_vertices_for_non_deletion()
+  void RefineableTriangleTFMesh::add_vertices_for_non_deletion()
   {
     // Clear any previous information
     // Boundary_chunk_connections_pt.clear();
@@ -32494,7 +32505,7 @@ namespace oomph
   /// repeated in the destination boundary to the list of non
   /// delete-able vertices in the destination boundary
   //=========================================================================
-  void RefineableTriangleMesh::add_non_delete_vertices_from_boundary_helper(
+  void RefineableTriangleTFMesh::add_non_delete_vertices_from_boundary_helper(
     Vector<Vector<Node*>> src_bound_segment_node_pt,
     Vector<Vector<Node*>> dst_bound_segment_node_pt,
     const unsigned& dst_bnd_id,
@@ -32579,7 +32590,7 @@ namespace oomph
   //  on the shared boundaries. Unrefinement of shared boundaries is
   //  performed only if the candidate node is not marked for non deletion
   //=========================================================================
-  const void RefineableTriangleMesh<
+  const void RefineableTriangleTFMesh<
     ELEMENT>::synchronize_shared_boundary_connections()
   {
     // Get the number of processors
@@ -32954,7 +32965,7 @@ namespace oomph
   /// the new vertices numbers of the temporary representation of the
   //  boundaries to connect.
   //=========================================================================
-  void RefineableTriangleMesh::create_temporary_boundary_connections(
+  void RefineableTriangleTFMesh::create_temporary_boundary_connections(
     Vector<TriangleMeshPolygon*>& tmp_outer_polygons_pt,
     Vector<TriangleMeshOpenCurve*>& tmp_open_curves_pt)
   {
@@ -33078,7 +33089,7 @@ namespace oomph
   /// part of the new domain representation, so the connection would
   /// exist)
   //=========================================================================
-  void RefineableTriangleMesh::restore_boundary_connections(
+  void RefineableTriangleTFMesh::restore_boundary_connections(
     Vector<TriangleMeshPolyLine*>& resume_initial_connection_polyline_pt,
     Vector<TriangleMeshPolyLine*>& resume_final_connection_polyline_pt)
   {
@@ -33197,7 +33208,7 @@ namespace oomph
   /// destination boundary does no longer exist because of the distribution
   /// process
   //=========================================================================
-  void RefineableTriangleMesh::restore_polyline_connections_helper(
+  void RefineableTriangleTFMesh::restore_polyline_connections_helper(
     TriangleMeshPolyLine* polyline_pt,
     Vector<TriangleMeshPolyLine*>& resume_initial_connection_polyline_pt,
     Vector<TriangleMeshPolyLine*>& resume_final_connection_polyline_pt)
@@ -33261,7 +33272,7 @@ namespace oomph
           }
           throw OomphLibError(
             error_message.str(),
-            "RefineableTriangleMesh::restore_polyline_connections_helper()",
+            "RefineableTriangleTFMesh::restore_polyline_connections_helper()",
             OOMPH_EXCEPTION_LOCATION);
         } // if (dst_bnd_id_initial >= init_shd_bnd_id)
 
@@ -33410,7 +33421,7 @@ namespace oomph
                         << "represent it.\n";
           throw OomphLibError(
             error_message.str(),
-            "RefineableTriangleMesh::restore_polyline_connections_helper()",
+            "RefineableTriangleTFMesh::restore_polyline_connections_helper()",
             OOMPH_EXCEPTION_LOCATION);
         } // if (nsub_poly <= 1)
 #endif
@@ -33553,7 +33564,7 @@ namespace oomph
           }
           throw OomphLibError(
             error_message.str(),
-            "RefineableTriangleMesh::restore_polyline_connections_helper()",
+            "RefineableTriangleTFMesh::restore_polyline_connections_helper()",
             OOMPH_EXCEPTION_LOCATION);
 #endif
 
@@ -33629,7 +33640,7 @@ namespace oomph
           }
           throw OomphLibError(
             error_message.str(),
-            "RefineableTriangleMesh::restore_polyline_connections_helper()",
+            "RefineableTriangleTFMesh::restore_polyline_connections_helper()",
             OOMPH_EXCEPTION_LOCATION);
         } // if (dst_bnd_id_initial >= init_shd_bnd_id)
 
@@ -33777,7 +33788,7 @@ namespace oomph
                         << "represent it.\n";
           throw OomphLibError(
             error_message.str(),
-            "RefineableTriangleMesh::restore_polyline_connections_helper()",
+            "RefineableTriangleTFMesh::restore_polyline_connections_helper()",
             OOMPH_EXCEPTION_LOCATION);
         } // if (nsub_poly <= 1)
 #endif
@@ -33920,7 +33931,7 @@ namespace oomph
           }
           throw OomphLibError(
             error_message.str(),
-            "RefineableTriangleMesh::restore_polyline_connections_helper()",
+            "RefineableTriangleTFMesh::restore_polyline_connections_helper()",
             OOMPH_EXCEPTION_LOCATION);
 #endif
         } // else if (this->is_mesh_distributed())
@@ -33948,7 +33959,7 @@ namespace oomph
   /// the new domain representation therefore the connection would
   /// exist
   //=========================================================================
-  void RefineableTriangleMesh::resume_boundary_connections(
+  void RefineableTriangleTFMesh::resume_boundary_connections(
     Vector<TriangleMeshPolyLine*>& resume_initial_connection_polyline_pt,
     Vector<TriangleMeshPolyLine*>& resume_final_connection_polyline_pt)
   {
@@ -33990,7 +34001,7 @@ namespace oomph
   /// Gets the associated vertex number according to the vertex
   /// coordinates on the destination boundary
   //=========================================================================
-  bool RefineableTriangleMesh::get_connected_vertex_number_on_dst_boundary(
+  bool RefineableTriangleTFMesh::get_connected_vertex_number_on_dst_boundary(
     Vector<double>& vertex_coordinates,
     const unsigned& dst_bnd_id,
     unsigned& vertex_number)
@@ -34028,14 +34039,14 @@ namespace oomph
 
   //=========================================================================
   /// Helper function that updates the input polygon's PSLG
-  /// by using the end-points of elements from FaceMesh(es) that are
+  /// by using the end-points of elements from FaceTFMesh(es) that are
   /// constructed for the boundaries associated with the segments of the
   /// polygon. Optional boolean is used to run it as test only (if
   /// true is specified as input) in which case polygon isn't actually
   /// modified. Returned boolean indicates if polygon was (or would have
   /// been -- if called with check_only=false) changed.
   //=========================================================================
-  bool RefineableTriangleMesh::update_polygon_using_face_mesh(
+  bool RefineableTriangleTFMesh::update_polygon_using_face_mesh(
     TriangleMeshPolygon* polygon_pt, const bool& check_only)
   {
 #ifdef PARANOID
@@ -34512,14 +34523,14 @@ namespace oomph
 
   //=========================================================================
   /// Helper function that updates the input open curve by using
-  /// end-points of elements from FaceMesh(es) that are constructed for the
+  /// end-points of elements from FaceTFMesh(es) that are constructed for the
   /// boundaries associated with the polylines. Optional boolean is used to
   /// run it as test only (if true is specified as input) in which case the
   /// polylines are not actually modified. Returned boolean indicates if
   /// polylines were (or would have been -- if called with check_only=false)
   /// changed.
   //=========================================================================
-  bool RefineableTriangleMesh::update_open_curve_using_face_mesh(
+  bool RefineableTriangleTFMesh::update_open_curve_using_face_mesh(
     TriangleMeshOpenCurve* open_polyline_pt, const bool& check_only)
   {
 #ifdef PARANOID
@@ -35002,7 +35013,7 @@ namespace oomph
   /// actually modified. Returned boolean indicates if polyline was (or
   /// would have been -- if called with check_only=false) changed.
   //=========================================================================
-  bool RefineableTriangleMesh::unrefine_boundary(
+  bool RefineableTriangleTFMesh::unrefine_boundary(
     const unsigned& b,
     const unsigned& c,
     Vector<Vector<double>>& vector_bnd_vertices,
@@ -35296,7 +35307,7 @@ namespace oomph
   /// actually modified. Returned boolean indicates if polyline was (or
   /// would have been -- if called with check_only=false) changed.
   //=========================================================================
-  bool RefineableTriangleMesh::refine_boundary(
+  bool RefineableTriangleTFMesh::refine_boundary(
     Mesh* face_mesh_pt,
     Vector<Vector<double>>& vector_bnd_vertices,
     double& refinement_tolerance,
@@ -35441,7 +35452,7 @@ namespace oomph
   // the current curve section in case that any segment on it does not
   // fulfils the requirement
   //=========================================================================
-  bool RefineableTriangleMesh::apply_max_length_constraint(
+  bool RefineableTriangleTFMesh::apply_max_length_constraint(
     Mesh* face_mesh_pt,
     Vector<Vector<double>>& vector_bnd_vertices,
     double& max_length_constraint)
@@ -35558,7 +35569,7 @@ namespace oomph
   /// boundary id. It means that the elements are not sorted along the
   /// boundary
   //=========================================================================
-  void RefineableTriangleMesh::create_unsorted_face_mesh_representation(
+  void RefineableTriangleTFMesh::create_unsorted_face_mesh_representation(
     const unsigned& boundary_id, Mesh* face_mesh_pt)
   {
     // Create a face mesh adjacent to specified boundary.
@@ -35588,7 +35599,7 @@ namespace oomph
   /// Creates a sorted face mesh representation of the specified PolyLine
   /// It means that the elements are sorted along the boundary
   //=========================================================================
-  void RefineableTriangleMesh::create_sorted_face_mesh_representation(
+  void RefineableTriangleTFMesh::create_sorted_face_mesh_representation(
     const unsigned& boundary_id,
     Mesh* face_mesh_pt,
     std::map<FiniteElement*, bool>& is_inverted,
@@ -35778,7 +35789,7 @@ namespace oomph
   /// possibly with segments re-distributed between polylines
   /// to maintain an approximately even sub-division of the polygon
   //=========================================================================
-  void RefineableTriangleMesh::get_face_mesh_representation(
+  void RefineableTriangleTFMesh::get_face_mesh_representation(
     TriangleMeshPolygon* polygon_pt, Vector<Mesh*>& face_mesh_pt)
   {
     // Number of polylines
@@ -35821,9 +35832,10 @@ namespace oomph
       warn_message
         << "Can't currently re-distribute segments between polylines if there\n"
         << "are multiple regions; returning..." << std::endl;
-      OomphLibWarning(warn_message.str(),
-                      "RefineableTriangleMesh::get_face_mesh_representation()",
-                      OOMPH_EXCEPTION_LOCATION);
+      OomphLibWarning(
+        warn_message.str(),
+        "RefineableTriangleTFMesh::get_face_mesh_representation()",
+        OOMPH_EXCEPTION_LOCATION);
       return;
     }
 
@@ -35835,9 +35847,10 @@ namespace oomph
         << "Over-ruling re-distribution of segments between polylines\n"
         << "because at least one boundary is associated with a GeomObject."
         << "Returning..." << std::endl;
-      OomphLibWarning(warn_message.str(),
-                      "RefineableTriangleMesh::get_face_mesh_representation()",
-                      OOMPH_EXCEPTION_LOCATION);
+      OomphLibWarning(
+        warn_message.str(),
+        "RefineableTriangleTFMesh::get_face_mesh_representation()",
+        OOMPH_EXCEPTION_LOCATION);
       return;
     }
 
@@ -36305,7 +36318,7 @@ namespace oomph
   //=========================================================================
   /// Helper function to construct face mesh representation of all polylines
   //=========================================================================
-  void RefineableTriangleMesh::get_face_mesh_representation(
+  void RefineableTriangleTFMesh::get_face_mesh_representation(
     TriangleMeshOpenCurve* open_polyline_pt, Vector<Mesh*>& face_mesh_pt)
   {
     // Number of polylines
@@ -36330,7 +36343,7 @@ namespace oomph
   /// modified. Returned boolean indicates if PSLG was (or would have
   /// been -- if called with check_only=false) changed.
   //======================================================================
-  bool RefineableTriangleMesh<
+  bool RefineableTriangleTFMesh<
     ELEMENT>::surface_remesh_for_inner_hole_boundaries(Vector<Vector<double>>&
                                                          internal_point_coord,
                                                        const bool& check_only)
@@ -36518,7 +36531,7 @@ namespace oomph
   /// Create the polylines and fill associate data structures, used when
   /// creating from a mesh from polyfiles
   //======================================================================
-  void RefineableTriangleMesh::create_polylines_from_polyfiles(
+  void RefineableTriangleTFMesh::create_polylines_from_polyfiles(
     const std::string& node_file_name, const std::string& poly_file_name)
   {
     // Get the nodes coordinates (the index of the nodes to build the
@@ -37535,7 +37548,7 @@ namespace oomph
   /// Updates the polygon but using the elements area instead of
   /// the default refinement and unrefinement methods
   //======================================================================
-  bool RefineableTriangleMesh::update_polygon_using_elements_area(
+  bool RefineableTriangleTFMesh::update_polygon_using_elements_area(
     TriangleMeshPolygon*& polygon_pt, const Vector<double>& target_area)
   {
     // Verify that there was a change on the polygon representation
@@ -37692,7 +37705,7 @@ namespace oomph
           // << "----- Possible memory leak -----\n";
           throw OomphLibError(
             error_message.str(),
-            "RefineableTriangleMesh::update_polygon_using_elements_area()",
+            "RefineableTriangleTFMesh::update_polygon_using_elements_area()",
             OOMPH_EXCEPTION_LOCATION);
         }
 #endif
@@ -37798,7 +37811,7 @@ namespace oomph
                         << ")-th boundary was not found!!!";
           throw OomphLibError(
             error_message.str(),
-            "RefineableTriangleMesh::update_polygon_using_elements_area()",
+            "RefineableTriangleTFMesh::update_polygon_using_elements_area()",
             OOMPH_EXCEPTION_LOCATION);
         }
 #endif
@@ -37924,10 +37937,11 @@ namespace oomph
                                 << ")-th face element "
                                 << "on\nthe (" << bound
                                 << ")-th boundary was not found!!!";
-                  throw OomphLibError(error_message.str(),
-                                      "RefineableTriangleMesh::update_polygon_"
-                                      "using_elements_area()",
-                                      OOMPH_EXCEPTION_LOCATION);
+                  throw OomphLibError(
+                    error_message.str(),
+                    "RefineableTriangleTFMesh::update_polygon_"
+                    "using_elements_area()",
+                    OOMPH_EXCEPTION_LOCATION);
                 }
 #endif
 
@@ -38496,7 +38510,7 @@ namespace oomph
   /// Updates the open curve but using the elements area instead
   /// of the default refinement and unrefinement methods
   //======================================================================
-  bool RefineableTriangleMesh::update_open_curve_using_elements_area(
+  bool RefineableTriangleTFMesh::update_open_curve_using_elements_area(
     TriangleMeshOpenCurve*& open_curve_pt, const Vector<double>& target_area)
   {
     // Verify if there was a change on the open curve representation
@@ -38644,10 +38658,10 @@ namespace oomph
               << "(" << left_node_pt->x(0) << ", " << left_node_pt->x(1) << ") "
               << "and (" << right_node_pt->x(0) << "," << right_node_pt->x(1)
               << ")\n\n";
-            throw OomphLibError(
-              error_message.str(),
-              "RefineableTriangleMesh::update_open_curve_using_elements_area()",
-              OOMPH_EXCEPTION_LOCATION);
+            throw OomphLibError(error_message.str(),
+                                "RefineableTriangleTFMesh::update_open_curve_"
+                                "using_elements_area()",
+                                OOMPH_EXCEPTION_LOCATION);
           }
 #endif
         } // if (!face_ele_done[ele_face_pt])
@@ -39771,7 +39785,7 @@ namespace oomph
   /// Updates the polylines using the elements area as
   /// constraint for the number of points along the boundaries
   //======================================================================
-  bool RefineableTriangleMesh::update_shared_curve_using_elements_area(
+  bool RefineableTriangleTFMesh::update_shared_curve_using_elements_area(
     Vector<TriangleMeshPolyLine*>& vector_polyline_pt,
     const Vector<double>& target_areas)
   {
@@ -40327,7 +40341,7 @@ namespace oomph
       // polyline there are two bulk elements, a halo and a haloed
       // element, each with an associated target area. Review the
       // function
-      // TriangleMesh::create_polylines_from_halo_elements_helper() to
+      // TriangleTFMesh::create_polylines_from_halo_elements_helper() to
       // check how the shared boundaries were created
       Vector<double> polyline_target_area(n_segments);
       // Loop over the segments in the shared polyline
@@ -40434,7 +40448,7 @@ namespace oomph
   /// on the specified boundary by using the provided vertices
   /// representation and the associated target area.
   //=========================================================================
-  bool RefineableTriangleMesh::unrefine_boundary_constrained_by_target_area(
+  bool RefineableTriangleTFMesh::unrefine_boundary_constrained_by_target_area(
     const unsigned& b,
     const unsigned& c,
     Vector<Vector<double>>& vector_bnd_vertices,
@@ -40688,7 +40702,7 @@ namespace oomph
   /// on the specified boundary by using the provided vertices
   /// representation and the associated elements target area.
   //=========================================================================
-  bool RefineableTriangleMesh::refine_boundary_constrained_by_target_area(
+  bool RefineableTriangleTFMesh::refine_boundary_constrained_by_target_area(
     MeshAsGeomObject* mesh_geom_obj_pt,
     Vector<Vector<double>>& vector_bnd_vertices,
     double& refinement_tolerance,
@@ -40828,7 +40842,7 @@ namespace oomph
   /// NOTE: This is the version that applies unrefinement to shared
   /// boundaries
   //======================================================================
-  bool RefineableTriangleMesh::
+  bool RefineableTriangleTFMesh::
     unrefine_shared_boundary_constrained_by_target_area(
       const unsigned& b,
       const unsigned& c,
@@ -41036,7 +41050,7 @@ namespace oomph
   /// NOTE: This is the version that applies refinement to shared
   /// boundaries
   //======================================================================
-  bool RefineableTriangleMesh::
+  bool RefineableTriangleTFMesh::
     refine_shared_boundary_constrained_by_target_area(
       Vector<Vector<double>>& vector_bnd_vertices,
       Vector<double>& area_constraint)
@@ -41138,7 +41152,7 @@ namespace oomph
   //======================================================================
   /// Updates the polylines representation after restart
   //======================================================================
-  void RefineableTriangleMesh::update_polygon_after_restart(
+  void RefineableTriangleTFMesh::update_polygon_after_restart(
     TriangleMeshPolygon*& polygon_pt)
   {
     // **********************************************************************
@@ -41288,7 +41302,7 @@ namespace oomph
           // << "----- Possible memory leak -----\n";
           throw OomphLibError(
             error_message.str(),
-            "RefineableTriangleMesh::update_polygon_after_restart()",
+            "RefineableTriangleTFMesh::update_polygon_after_restart()",
             OOMPH_EXCEPTION_LOCATION);
         }
 #endif
@@ -41516,7 +41530,7 @@ namespace oomph
           << "Number of counted sub-boundaries: (" << nsub_boundaries << ")\n";
         throw OomphLibError(
           error_message.str(),
-          "RefineableTriangleMesh::update_polygon_after_restart()",
+          "RefineableTriangleTFMesh::update_polygon_after_restart()",
           OOMPH_EXCEPTION_LOCATION);
       }
 #endif
@@ -41715,10 +41729,10 @@ namespace oomph
                       << ") and\nfirst vertex of polyline (" << bound
                       << ").\nThis should have failed when first trying to"
                       << " construct the\npolygon.\n";
-                    throw OomphLibError(
-                      error_stream.str(),
-                      "RefineableTriangleMesh::update_polygon_after_restart()",
-                      OOMPH_EXCEPTION_LOCATION);
+                    throw OomphLibError(error_stream.str(),
+                                        "RefineableTriangleTFMesh::update_"
+                                        "polygon_after_restart()",
+                                        OOMPH_EXCEPTION_LOCATION);
                   }
                   else
                   {
@@ -41760,7 +41774,7 @@ namespace oomph
                   << "polygon.\n";
                 throw OomphLibError(
                   error_stream.str(),
-                  "RefineableTriangleMesh::update_polygon_after_restart()",
+                  "RefineableTriangleTFMesh::update_polygon_after_restart()",
                   OOMPH_EXCEPTION_LOCATION);
               }
             }
@@ -41909,7 +41923,7 @@ namespace oomph
   //======================================================================
   /// Updates the open curve representation after restart
   //======================================================================
-  void RefineableTriangleMesh::update_open_curve_after_restart(
+  void RefineableTriangleTFMesh::update_open_curve_after_restart(
     TriangleMeshOpenCurve*& open_curve_pt)
   {
     // **********************************************************************
@@ -42048,7 +42062,7 @@ namespace oomph
               << ")\n\n";
             throw OomphLibError(
               error_message.str(),
-              "RefineableTriangleMesh::update_open_curve_after_restart()",
+              "RefineableTriangleTFMesh::update_open_curve_after_restart()",
               OOMPH_EXCEPTION_LOCATION);
           }
 #endif
@@ -42458,7 +42472,7 @@ namespace oomph
           << ninternal_to_shared_boundaries << ")\n\n";
         throw OomphLibError(
           error_message.str(),
-          "RefineableTriangleMesh::update_open_curve_after_restart()",
+          "RefineableTriangleTFMesh::update_open_curve_after_restart()",
           OOMPH_EXCEPTION_LOCATION);
       }
 #endif
@@ -42476,7 +42490,7 @@ namespace oomph
           << ")\n\n";
         throw OomphLibError(
           error_message.str(),
-          "RefineableTriangleMesh::update_open_curve_after_restart()",
+          "RefineableTriangleTFMesh::update_open_curve_after_restart()",
           OOMPH_EXCEPTION_LOCATION);
       }
 #endif
@@ -42674,7 +42688,7 @@ namespace oomph
                       << ").\nThis should have failed when first trying to "
                       << "construct the\npolygon.\n";
                     throw OomphLibError(error_stream.str(),
-                                        "RefineableTriangleMesh::update_open_"
+                                        "RefineableTriangleTFMesh::update_open_"
                                         "curve_after_restart()",
                                         OOMPH_EXCEPTION_LOCATION);
                   }
@@ -42718,7 +42732,7 @@ namespace oomph
                   << "polygon.\n";
                 throw OomphLibError(
                   error_stream.str(),
-                  "RefineableTriangleMesh::update_open_curve_after_restart()",
+                  "RefineableTriangleTFMesh::update_open_curve_after_restart()",
                   OOMPH_EXCEPTION_LOCATION);
               }
             }
@@ -42887,7 +42901,7 @@ namespace oomph
   //======================================================================
   /// Updates the shared polylines representation after restart
   //======================================================================
-  void RefineableTriangleMesh::update_shared_curve_after_restart(
+  void RefineableTriangleTFMesh::update_shared_curve_after_restart(
     Vector<TriangleMeshPolyLine*>& vector_polyline_pt)
   {
     // Go through all the shared boundaries/polylines
@@ -43094,7 +43108,7 @@ namespace oomph
           << nunsorted_edges << ") for the current boundary (" << b << ")\n\n";
         throw OomphLibError(
           error_message.str(),
-          "RefineableTriangleMesh::update_shared_curve_after_restart()",
+          "RefineableTriangleTFMesh::update_shared_curve_after_restart()",
           OOMPH_EXCEPTION_LOCATION);
       }
 #endif
@@ -43301,7 +43315,7 @@ namespace oomph
   // number of elements on the shared boundaries that go to internal
   // boundaries
   //===================================================================
-  void RefineableTriangleMesh<
+  void RefineableTriangleTFMesh<
     ELEMENT>::fill_boundary_elements_and_nodes_for_internal_boundaries()
   {
     // Dummy file
@@ -43313,7 +43327,7 @@ namespace oomph
   // Fill the boundary elements structures when dealing with
   // shared boundaries that overlap internal boundaries
   //===================================================================
-  void RefineableTriangleMesh::
+  void RefineableTriangleTFMesh::
     fill_boundary_elements_and_nodes_for_internal_boundaries(
       std::ofstream& outfile)
   {
@@ -43527,8 +43541,8 @@ namespace oomph
   //======================================================================
   /// Move the boundary nodes onto the boundary defined by the old mesh
   //======================================================================
-  void RefineableTriangleMesh::snap_nodes_onto_boundary(
-    RefineableTriangleMesh*& new_mesh_pt, const unsigned& b)
+  void RefineableTriangleTFMesh::snap_nodes_onto_boundary(
+    RefineableTriangleTFMesh*& new_mesh_pt, const unsigned& b)
   {
     // Quick return
     if (!boundary_coordinate_exists(b))
@@ -43778,7 +43792,7 @@ namespace oomph
                      << new_boundary_node[n_new_boundary_segment_node - 1][2]
                      << "\n";
         OomphLibWarning(error_stream.str(),
-                        "RefineableTriangleMesh::snap_nodes_onto_boundary()",
+                        "RefineableTriangleTFMesh::snap_nodes_onto_boundary()",
                         OOMPH_EXCEPTION_LOCATION);
       }
 #endif
@@ -43844,7 +43858,7 @@ namespace oomph
         {
           throw OomphLibError(
             "New boundary coordinate not assigned\n",
-            "RefineableTriangleMesh::snap_nodes_onto_boundary()",
+            "RefineableTriangleTFMesh::snap_nodes_onto_boundary()",
             OOMPH_EXCEPTION_LOCATION);
         }
 

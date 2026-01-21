@@ -25,10 +25,6 @@
 // LIC//====================================================================
 // the mesh assembly functions for the hermite element quad mesh
 
-#ifndef OOMPH_HERMITE_ELEMENT_QUAD_MESH_HEADER
-#error __FILE__ should only be included from hermite_element_quad_mesh.h.
-#endif // OOMPH_HERMITE_ELEMENT_QUAD_MESH_HEADER
-
 // Config header
 #ifdef HAVE_CONFIG_H
 #include <oomph-lib-config.h>
@@ -44,9 +40,9 @@ namespace oomph
   /// dx_i/ds_1 & d2x_i/ds_0ds_1 for i = 1,2). Takes the x,y coordinates of the
   /// node from which its position can be determined.
   //=============================================================================
-  void HermiteQuadMesh::set_position_of_node(const unsigned& node_num_x,
-                                             const unsigned& node_num_y,
-                                             Node* node_pt)
+  void HermiteQuadTFMesh::set_position_of_node(const unsigned& node_num_x,
+                                               const unsigned& node_num_y,
+                                               Node* node_pt)
   {
     // get the generalised macro element position of the node
     DenseMatrix<double> m_gen(4, 2);
@@ -110,7 +106,7 @@ namespace oomph
   /// on boundary vector for the node to be the generalised position of the node
   /// in macro element coordinates
   //=============================================================================
-  void HermiteQuadMesh::set_position_of_boundary_node(
+  void HermiteQuadTFMesh::set_position_of_boundary_node(
     const unsigned& node_num_x,
     const unsigned& node_num_y,
     BoundaryNode<Node>* node_pt)
@@ -191,7 +187,7 @@ namespace oomph
   ///                        2 - dm_i/ds_1
   ///                        3 - d2m_i/ds_0ds_1    (where i is index 1 of m_gen)
   //=============================================================================
-  void HermiteQuadMesh::generalised_macro_element_position_of_node(
+  void HermiteQuadTFMesh::generalised_macro_element_position_of_node(
     const unsigned& node_num_x,
     const unsigned& node_num_y,
     DenseMatrix<double>& m_gen)
@@ -592,7 +588,7 @@ namespace oomph
   //=============================================================================
   /// Generic mesh construction function to build the mesh
   //=============================================================================
-  void HermiteQuadMesh::build_mesh(TimeStepper* time_stepper_pt)
+  void HermiteQuadTFMesh::build_mesh(TimeStepper* time_stepper_pt)
   {
     // Mesh can only be built with 2D QHermiteElements.
     MeshChecker::assert_geometric_element<QHermiteElementBase>(
@@ -1240,13 +1236,13 @@ namespace oomph
   //=============================================================================
   /// Setup lookup schemes which establish which elements are located
   /// next to which boundaries (Doc to outfile if it's open). Specific version
-  /// for HermiteQuadMesh to ensure that the order of the elements in
+  /// for HermiteQuadTFMesh to ensure that the order of the elements in
   /// Boundary_element_pt matches the actual order along the boundary. This is
   /// required when hijacking the BiharmonicElement to apply the
   /// BiharmonicFluidBoundaryElement in
   /// BiharmonicFluidProblem::impose_traction_free_edge(...)
   //================================================================
-  void HermiteQuadMesh::setup_boundary_element_info(std::ostream& outfile)
+  void HermiteQuadTFMesh::setup_boundary_element_info(std::ostream& outfile)
   {
     bool doc = false;
     if (outfile) doc = true;

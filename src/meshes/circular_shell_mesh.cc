@@ -31,7 +31,7 @@ namespace oomph
   //=======================================================================
   /// Mesh build fct
   //=======================================================================
-  void CircularCylindricalShellMesh::build_mesh(
+  void CircularCylindricalShellTFMesh::build_mesh(
     std::unique_ptr<ElementFactoryBase> element_factory_pt,
     const unsigned& nx,
     const unsigned& ny,
@@ -116,7 +116,7 @@ namespace oomph
   //=======================================================================
   /// Set the undeformed coordinates of the nodes
   //=======================================================================
-  void CircularCylindricalShellMesh::assign_undeformed_positions(
+  void CircularCylindricalShellTFMesh::assign_undeformed_positions(
     GeomObject* const& undeformed_midplane_pt)
   {
     // Loop over nodes in elements
@@ -192,13 +192,13 @@ namespace oomph
 // /// ly  : length in theta direction
 // //=======================================================================
 // template <class ELEMENT>
-// CircularCylindricalShellMesh::CircularCylindricalShellMesh(
+// CircularCylindricalShellTFMesh::CircularCylindricalShellTFMesh(
 //  const unsigned &nx,
 //  const unsigned &ny,
 //  const double &lx,
 //  const double &ly,
 //  TimeStepper* time_stepper_pt) :
-//  RectangularQuadMesh(nx,ny,lx,ly,time_stepper_pt)
+//  RectangularQuadTFMesh(nx,ny,lx,ly,time_stepper_pt)
 // {
 //  //Find out how many nodes there are
 //  unsigned n_node = nnode();
@@ -237,7 +237,7 @@ namespace oomph
 // /// Set the undeformed coordinates of the nodes
 // //=======================================================================
 // template <class ELEMENT>
-// void CircularCylindricalShellMesh::assign_undeformed_positions(
+// void CircularCylindricalShellTFMesh::assign_undeformed_positions(
 //  GeomObject* const &undeformed_midplane_pt)
 // {
 //  //Find out how many nodes there are

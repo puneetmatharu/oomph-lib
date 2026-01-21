@@ -36,11 +36,11 @@ namespace oomph
   ///                         the initial Eulerian position of the mesh.
   /// time_stepper_pt  : timestepper
   //=======================================================================
-  OneDLagrangianMesh::OneDLagrangianMesh(const unsigned& n_element,
-                                         const double& length,
-                                         GeomObject* undef_eulerian_posn_pt,
-                                         TimeStepper* time_stepper_pt)
-    : OneDMesh(n_element, length, time_stepper_pt),
+  OneDLagrangianTFMesh::OneDLagrangianTFMesh(const unsigned& n_element,
+                                             const double& length,
+                                             GeomObject* undef_eulerian_posn_pt,
+                                             TimeStepper* time_stepper_pt)
+    : OneDTFMesh(n_element, length, time_stepper_pt),
       Undef_eulerian_posn_pt(undef_eulerian_posn_pt)
   {
     // Mesh can only be built with 1D Qelements.
@@ -66,12 +66,12 @@ namespace oomph
   ///                         the initial Eulerian position of the mesh.
   /// time_stepper_pt  : timestepper
   //==================================================
-  OneDLagrangianMesh::OneDLagrangianMesh(const unsigned& n_element,
-                                         const double& xmin,
-                                         const double& xmax,
-                                         GeomObject* undef_eulerian_posn_pt,
-                                         TimeStepper* time_stepper_pt)
-    : OneDMesh(n_element, xmin, xmax, time_stepper_pt),
+  OneDLagrangianTFMesh::OneDLagrangianTFMesh(const unsigned& n_element,
+                                             const double& xmin,
+                                             const double& xmax,
+                                             GeomObject* undef_eulerian_posn_pt,
+                                             TimeStepper* time_stepper_pt)
+    : OneDTFMesh(n_element, xmin, xmax, time_stepper_pt),
       Undef_eulerian_posn_pt(undef_eulerian_posn_pt)
   {
     // Mesh can only be built with 1D Qelements.
@@ -94,7 +94,7 @@ namespace oomph
   /// the elements have length 2 in local coordinates.
   /// N.B. This only works for QHermiteElements at the moment
   //=====================================================================
-  void OneDLagrangianMesh::assign_default_element_gradients()
+  void OneDLagrangianTFMesh::assign_default_element_gradients()
   {
     // Find cast pointer to first element
     auto* cast_element_pt =
@@ -110,7 +110,7 @@ namespace oomph
       // Read out the number of linear points in the element
       unsigned n_p = cast_element_pt->nnode_1d();
       // Set the values of the distance between each node
-      double xstep = OneDMesh::Length / double((n_p - 1) * OneDMesh::N);
+      double xstep = OneDTFMesh::Length / double((n_p - 1) * OneDTFMesh::N);
       // Loop over the nodes and set the slopes
       unsigned long n_node = nnode();
       for (unsigned long n = 0; n < n_node; n++)
@@ -123,7 +123,7 @@ namespace oomph
   //======================================================================
   /// Set the initial (2D Eulerian!) positions of the nodes
   //======================================================================
-  void OneDLagrangianMesh::assign_undeformed_positions()
+  void OneDLagrangianTFMesh::assign_undeformed_positions()
   {
     // Lagrangian coordinate
     Vector<double> xi(1);
@@ -172,7 +172,7 @@ namespace oomph
           // and the 0.5 comes from the fact that our reference element has
           // length 2.0
           node_pt(n)->x_gen(1, i) =
-            0.5 * a(0, i) * (OneDMesh::Length / double(OneDMesh::N));
+            0.5 * a(0, i) * (OneDTFMesh::Length / double(OneDTFMesh::N));
         }
       }
     }

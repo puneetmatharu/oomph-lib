@@ -39,13 +39,14 @@ namespace oomph
   /// quads should be trivial (see the corresponding classes for
   /// triangular meshes).
   //========================================================================
-  class GeompackQuadMesh : public Mesh
+  class GeompackQuadTFMesh : public Mesh
   {
   public:
     /// Constructor with the input files
-    GeompackQuadMesh(const std::string& mesh_file_name,
-                     const std::string& curve_file_name,
-                     TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+    GeompackQuadTFMesh(
+      const std::string& mesh_file_name,
+      const std::string& curve_file_name,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
     {
       // Mesh can only be built with four-noded 2D Qelements.
       MeshChecker::assert_geometric_element<QElementGeometricBase, ELEMENT>(2,
@@ -53,7 +54,7 @@ namespace oomph
 
       // Build scaffold
       Tmp_mesh_pt =
-        new GeompackQuadScaffoldMesh(mesh_file_name, curve_file_name);
+        new GeompackQuadScaffoldTFMesh(mesh_file_name, curve_file_name);
 
       // Convert mesh from scaffold to actual mesh
       build_from_scaffold(time_stepper_pt);
@@ -64,11 +65,11 @@ namespace oomph
     }
 
     /// Empty destructor
-    ~GeompackQuadMesh() {}
+    ~GeompackQuadTFMesh() {}
 
   private:
     /// Temporary scaffold mesh
-    GeompackQuadScaffoldMesh* Tmp_mesh_pt;
+    GeompackQuadScaffoldTFMesh* Tmp_mesh_pt;
 
     /// Build mesh from scaffold
     void build_from_scaffold(TimeStepper* time_stepper_pt);

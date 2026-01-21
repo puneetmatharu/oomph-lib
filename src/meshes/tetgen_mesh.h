@@ -44,15 +44,15 @@
 
 namespace oomph
 {
-  //=========start of TetgenMesh class======================================
+  //=========start of TetgenTFMesh class======================================
   ///  Unstructured tet mesh based on output from Tetgen:
   /// http://wias-berlin.de/software/tetgen/
   //========================================================================
-  class TetgenMesh : public virtual TetMeshBase
+  class TetgenTFMesh : public virtual TetMeshBase
   {
   public:
     /// Empty constructor
-    TetgenMesh()
+    TetgenTFMesh()
     {
       // Mesh can only be built with 3D Telements.
       MeshChecker::assert_geometric_element<TElementGeometricBase>(
@@ -60,11 +60,11 @@ namespace oomph
     }
 
     /// Constructor with the input files
-    TetgenMesh(const std::string& node_file_name,
-               const std::string& element_file_name,
-               const std::string& face_file_name,
-               TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
-               const bool& use_attributes = false)
+    TetgenTFMesh(const std::string& node_file_name,
+                 const std::string& element_file_name,
+                 const std::string& face_file_name,
+                 TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
+                 const bool& use_attributes = false)
       : Tetgenio_exists(false), Tetgenio_pt(nullptr)
     {
       // Mesh can only be built with 3D Telements.
@@ -78,7 +78,7 @@ namespace oomph
       Time_stepper_pt = time_stepper_pt;
 
       // Build scaffold
-      Tmp_mesh_pt = new TetgenScaffoldMesh(
+      Tmp_mesh_pt = new TetgenScaffoldTFMesh(
         node_file_name, element_file_name, face_file_name);
 
       // Convert mesh from scaffold to actual mesh
@@ -99,9 +99,9 @@ namespace oomph
 
 
     /// Constructor with tetgenio data structure
-    TetgenMesh(tetgenio& tetgen_data,
-               TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
-               const bool& use_attributes = false)
+    TetgenTFMesh(tetgenio& tetgen_data,
+                 TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
+                 const bool& use_attributes = false)
 
     {
       // Mesh can only be built with 3D Telements.
@@ -119,7 +119,7 @@ namespace oomph
       Tetgenio_pt = 0;
 
       // Build scaffold
-      Tmp_mesh_pt = new TetgenScaffoldMesh(tetgen_data);
+      Tmp_mesh_pt = new TetgenScaffoldTFMesh(tetgen_data);
 
       // Convert mesh from scaffold to actual mesh
       build_from_scaffold(time_stepper_pt, use_attributes);
@@ -147,12 +147,12 @@ namespace oomph
     /// problems in fluids problems where the application of
     /// boundary conditions at such "corner" elements can
     /// overconstrain the solution.
-    TetgenMesh(const std::string& node_file_name,
-               const std::string& element_file_name,
-               const std::string& face_file_name,
-               const bool& split_corner_elements,
-               TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
-               const bool& use_attributes = false)
+    TetgenTFMesh(const std::string& node_file_name,
+                 const std::string& element_file_name,
+                 const std::string& face_file_name,
+                 const bool& split_corner_elements,
+                 TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
+                 const bool& use_attributes = false)
 
     {
       // Mesh can only be built with 3D Telements.
@@ -170,7 +170,7 @@ namespace oomph
       this->Tetgenio_pt = 0;
 
       // Build scaffold
-      Tmp_mesh_pt = new TetgenScaffoldMesh(
+      Tmp_mesh_pt = new TetgenScaffoldTFMesh(
         node_file_name, element_file_name, face_file_name);
 
       // Convert mesh from scaffold to actual mesh
@@ -204,10 +204,10 @@ namespace oomph
     /// problems in fluids problems where the application of
     /// boundary conditions at such "corner" elements can
     /// overconstrain the solution.
-    TetgenMesh(tetgenio& tetgen_data,
-               const bool& split_corner_elements,
-               TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
-               const bool& use_attributes = false)
+    TetgenTFMesh(tetgenio& tetgen_data,
+                 const bool& split_corner_elements,
+                 TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
+                 const bool& use_attributes = false)
 
     {
       // Mesh can only be built with 3D Telements.
@@ -225,7 +225,7 @@ namespace oomph
       this->Tetgenio_pt = nullptr;
 
       // Build scaffold
-      Tmp_mesh_pt = new TetgenScaffoldMesh(tetgen_data);
+      Tmp_mesh_pt = new TetgenScaffoldTFMesh(tetgen_data);
 
       // Convert mesh from scaffold to actual mesh
       build_from_scaffold(time_stepper_pt, use_attributes);
@@ -255,7 +255,7 @@ namespace oomph
     /// boundaries, specified by TetMeshFacetedSurfaces.
     /// Also specify target size for uniform element size.
     /// Optionally specify the target element volume in each region.
-    TetgenMesh(
+    TetgenTFMesh(
       TetMeshFacetedClosedSurface* const& outer_boundary_pt,
       Vector<TetMeshFacetedSurface*>& internal_surface_pt,
       const double& element_volume,
@@ -384,7 +384,7 @@ namespace oomph
       tetrahedralize(tetswitches, &in, this->Tetgenio_pt);
 
       // Build scaffold
-      Tmp_mesh_pt = new TetgenScaffoldMesh(*this->Tetgenio_pt);
+      Tmp_mesh_pt = new TetgenScaffoldTFMesh(*this->Tetgenio_pt);
 
       // If any of the objects are different regions then we need to use
       // the atributes
@@ -692,7 +692,7 @@ namespace oomph
     }
 
     /// Empty destructor
-    ~TetgenMesh()
+    ~TetgenTFMesh()
     {
       if (Tetgenio_exists)
       {
@@ -749,7 +749,7 @@ namespace oomph
       TetMeshFacetedSurface* const& faceted_surface_pt);
 
     /// Temporary scaffold mesh
-    TetgenScaffoldMesh* Tmp_mesh_pt;
+    TetgenScaffoldTFMesh* Tmp_mesh_pt;
 
     /// Boolean to indicate whether a tetgenio representation of the
     /// mesh exists
@@ -773,23 +773,24 @@ namespace oomph
   /// Tetgen-based mesh upgraded to become a solid mesh. Automatically
   /// enumerates all boundaries.
   //=========================================================================
-  class SolidTetgenMesh : public virtual TetgenMesh, public virtual SolidMesh
+  class SolidTetgenTFMesh : public virtual TetgenTFMesh,
+                            public virtual SolidTFMesh
   {
   public:
     /// Constructor. Boundary coordinates are setup
     /// automatically.
-    SolidTetgenMesh(const std::string& node_file_name,
-                    const std::string& element_file_name,
-                    const std::string& face_file_name,
-                    const bool& split_corner_elements,
-                    TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
-                    const bool& use_attributes = false)
-      : TetgenMesh(node_file_name,
-                   element_file_name,
-                   face_file_name,
-                   split_corner_elements,
-                   time_stepper_pt,
-                   use_attributes)
+    SolidTetgenTFMesh(const std::string& node_file_name,
+                      const std::string& element_file_name,
+                      const std::string& face_file_name,
+                      const bool& split_corner_elements,
+                      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
+                      const bool& use_attributes = false)
+      : TetgenTFMesh(node_file_name,
+                     element_file_name,
+                     face_file_name,
+                     split_corner_elements,
+                     time_stepper_pt,
+                     use_attributes)
     {
       // Assign the Lagrangian coordinates
       set_lagrangian_nodal_coordinates();
@@ -798,19 +799,19 @@ namespace oomph
     /// Constructor. Boundary coordinates are re-setup
     /// automatically, with the orientation of the outer unit
     /// normal determined by switch_normal.
-    SolidTetgenMesh(const std::string& node_file_name,
-                    const std::string& element_file_name,
-                    const std::string& face_file_name,
-                    const bool& split_corner_elements,
-                    const bool& switch_normal,
-                    TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
-                    const bool& use_attributes = false)
-      : TetgenMesh(node_file_name,
-                   element_file_name,
-                   face_file_name,
-                   split_corner_elements,
-                   time_stepper_pt,
-                   use_attributes)
+    SolidTetgenTFMesh(const std::string& node_file_name,
+                      const std::string& element_file_name,
+                      const std::string& face_file_name,
+                      const bool& split_corner_elements,
+                      const bool& switch_normal,
+                      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
+                      const bool& use_attributes = false)
+      : TetgenTFMesh(node_file_name,
+                     element_file_name,
+                     face_file_name,
+                     split_corner_elements,
+                     time_stepper_pt,
+                     use_attributes)
     {
       // Assign the Lagrangian coordinates
       set_lagrangian_nodal_coordinates();
@@ -825,7 +826,7 @@ namespace oomph
     }
 
     /// Empty Destructor
-    virtual ~SolidTetgenMesh() {}
+    virtual ~SolidTetgenTFMesh() {}
   };
 
 } // namespace oomph

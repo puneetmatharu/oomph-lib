@@ -44,19 +44,19 @@ namespace oomph
   //=======================================================================
   /// Simple cubic 3D Brick mesh class.
   //=======================================================================
-  class SimpleCubicMesh : public virtual BrickMeshBase
+  class SimpleCubicTFMesh : public virtual BrickMeshBase
   {
   public:
     /// Constructor: Pass number of elements in the x, y, and z
     /// directions, and the corresponding dimensions. Assume that the back lower
     /// left corner is located at (0,0,0) Timestepper defaults to Steady.
-    SimpleCubicMesh(const unsigned& nx,
-                    const unsigned& ny,
-                    const unsigned& nz,
-                    const double& lx,
-                    const double& ly,
-                    const double& lz,
-                    TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+    SimpleCubicTFMesh(const unsigned& nx,
+                      const unsigned& ny,
+                      const unsigned& nz,
+                      const double& lx,
+                      const double& ly,
+                      const double& lz,
+                      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : Nx(nx),
         Ny(ny),
         Nz(nz),
@@ -78,16 +78,16 @@ namespace oomph
     /// Constructor: Pass the number of elements in the x,y and z
     /// directions and the correspoding minimum and maximum values of the
     /// coordinates in each direction
-    SimpleCubicMesh(const unsigned& nx,
-                    const unsigned& ny,
-                    const unsigned& nz,
-                    const double& xmin,
-                    const double& xmax,
-                    const double& ymin,
-                    const double& ymax,
-                    const double& zmin,
-                    const double& zmax,
-                    TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+    SimpleCubicTFMesh(const unsigned& nx,
+                      const unsigned& ny,
+                      const unsigned& nz,
+                      const double& xmin,
+                      const double& xmax,
+                      const double& ymin,
+                      const double& ymax,
+                      const double& zmin,
+                      const double& zmax,
+                      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : Nx(nx),
         Ny(ny),
         Nz(nz),
@@ -164,14 +164,14 @@ namespace oomph
   //=======================================================================
   /// Refineable version of simple cubic 3D Brick mesh class.
   //=======================================================================
-  class RefineableSimpleCubicMesh : public virtual SimpleCubicMesh,
-                                    public virtual RefineableBrickMesh
+  class RefineableSimpleCubicTFMesh : public virtual SimpleCubicTFMesh,
+                                      public virtual RefineableBrickTFMesh
   {
   public:
     /// Constructor: Pass number of elements in the x, y, and z
     /// directions, and the corresponding dimensions. Assume that the back lower
     /// left corner is located at (0,0,0) Timestepper defaults to Steady.
-    RefineableSimpleCubicMesh(
+    RefineableSimpleCubicTFMesh(
       const unsigned& nx,
       const unsigned& ny,
       const unsigned& nz,
@@ -179,7 +179,7 @@ namespace oomph
       const double& ly,
       const double& lz,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : SimpleCubicMesh(nx, ny, nz, lx, ly, lz, time_stepper_pt)
+      : SimpleCubicTFMesh(nx, ny, nz, lx, ly, lz, time_stepper_pt)
     {
       // Nodal positions etc. were created in constructor for
       // base class Only need to setup octree forest
@@ -190,7 +190,7 @@ namespace oomph
     /// Constructor: Pass the number of elements in the x,y and z
     /// directions and the correspoding minimum and maximum values of the
     /// coordinates in each direction.
-    RefineableSimpleCubicMesh(
+    RefineableSimpleCubicTFMesh(
       const unsigned& nx,
       const unsigned& ny,
       const unsigned& nz,
@@ -201,7 +201,7 @@ namespace oomph
       const double& zmin,
       const double& zmax,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : SimpleCubicMesh(
+      : SimpleCubicTFMesh(
           nx, ny, nz, xmin, xmax, ymin, ymax, zmin, zmax, time_stepper_pt)
     {
       // Nodal positions etc. were created in constructor for

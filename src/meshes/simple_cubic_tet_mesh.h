@@ -37,13 +37,13 @@ namespace oomph
   //===================================================================
   /// MySimple 3D tet mesh for TElements
   //===================================================================
-  class SimpleCubicTetMesh : public TetMeshBase
+  class SimpleCubicTetTFMesh : public TetMeshBase
   {
   public:
     /// Constructor: Pass number of element blocks
     /// in the x, y and z directions and the corresponding dimensions.
     /// Timestepper defaults to Steady.
-    SimpleCubicTetMesh(
+    SimpleCubicTetTFMesh(
       const unsigned& n_x,
       const unsigned& n_y,
       const unsigned& n_z,
@@ -58,18 +58,18 @@ namespace oomph
 
       std::ostringstream warn_message;
       warn_message
-        << "Note: The SimpleCubicTetMesh() is quite inefficient.\n"
+        << "Note: The SimpleCubicTetTFMesh() is quite inefficient.\n"
         << "      If your code takes a long time in the constructor\n"
         << "      consider using another tet mesh\n";
       OomphLibWarning(warn_message.str(),
-                      "SimpleCubicTetMesh::SimpleCubicTetMesh()",
+                      "SimpleCubicTetTFMesh::SimpleCubicTetTFMesh()",
                       OOMPH_EXCEPTION_LOCATION);
       oomph_info << "Starting mesh construction..." << std::endl;
       double start_t = TimingHelpers::timer();
 
       // Build scaffold mesh
       Tmp_mesh_pt =
-        new SimpleCubicScaffoldTetMesh(n_x, n_y, n_z, l_x, l_y, l_z);
+        new SimpleCubicScaffoldTetTFMesh(n_x, n_y, n_z, l_x, l_y, l_z);
 
       // Build actual mesh from scaffold mesh
       build_from_scaffold(time_stepper_pt);

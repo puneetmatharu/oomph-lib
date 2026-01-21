@@ -43,13 +43,14 @@ namespace oomph
   /// Equations that determine the spine heights (even if they are pinned)
   /// must be specified externally or else there will be problems.
   //======================================================================
-  class SingleLayerSpineMesh : public RectangularQuadMesh, public SpineMesh
+  class SingleLayerSpineTFMesh : public RectangularQuadTFMesh,
+                                 public SpineTFMesh
   {
   public:
     /// Constructor: Pass number of elements in x-direction, number of
     /// elements in y-direction, axial length, height of layer, and pointer
     /// to timestepper (defaults to Steady timestepper)
-    SingleLayerSpineMesh(
+    SingleLayerSpineTFMesh(
       const unsigned& nx,
       const unsigned& ny,
       const double& lx,
@@ -61,7 +62,7 @@ namespace oomph
     /// elements in y-direction, axial length, height of layer, a boolean
     /// flag to make the mesh periodic in the x-direction, and a pointer
     /// to timestepper (defaults to Steady timestepper)
-    SingleLayerSpineMesh(
+    SingleLayerSpineTFMesh(
       const unsigned& nx,
       const unsigned& ny,
       const double& lx,
@@ -70,7 +71,7 @@ namespace oomph
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
 
     /// General node update function implements pure virtual function
-    /// defined in SpineMesh base class and performs specific node update
+    /// defined in SpineTFMesh base class and performs specific node update
     /// actions:  along vertical spines
     virtual void spine_node_update(SpineNode* spine_node_pt)
     {

@@ -56,14 +56,14 @@ namespace oomph
   /// is given, but additional equations must be specified in order to
   /// completely specify the problem.
   //======================================================================
-  class TwoLayerSpineMesh : public RectangularQuadMesh, public SpineMesh
+  class TwoLayerSpineTFMesh : public RectangularQuadTFMesh, public SpineTFMesh
   {
   public:
     /// Constructor: Pass number of elements in x-direction, number of
     /// elements in y-direction in bottom and top layer, respectively,
     /// axial length and height of top and bottom layers and pointer
     /// to timestepper (defaults to Steady timestepper)
-    TwoLayerSpineMesh(
+    TwoLayerSpineTFMesh(
       const unsigned& nx,
       const unsigned& ny1,
       const unsigned& ny2,
@@ -78,7 +78,7 @@ namespace oomph
     /// axial length and height of top and bottom layers, a boolean
     /// flag to make the mesh periodic in the x-direction, and pointer
     /// to timestepper (defaults to Steady timestepper)
-    TwoLayerSpineMesh(
+    TwoLayerSpineTFMesh(
       const unsigned& nx,
       const unsigned& ny1,
       const unsigned& ny2,
@@ -95,7 +95,7 @@ namespace oomph
     /// flag to make the mesh periodic in the x-direction, a boolean flag to
     /// specify whether or not to call the "build_two_layer_mesh" function,
     /// and pointer to timestepper (defaults to Steady timestepper)
-    TwoLayerSpineMesh(
+    TwoLayerSpineTFMesh(
       const unsigned& nx,
       const unsigned& ny1,
       const unsigned& ny2,
@@ -169,7 +169,7 @@ namespace oomph
     }
 
     /// General node update function implements pure virtual function
-    /// defined in SpineMesh base class and performs specific update
+    /// defined in SpineTFMesh base class and performs specific update
     /// actions, depending on the node update fct id stored for each node.
     void spine_node_update(SpineNode* spine_node_pt)
     {

@@ -44,7 +44,7 @@ namespace oomph
   /// gets its own boundary ID.
   /// Timestepper defaults to steady pseudo-timestepper.
   //=====================================================================
-  ThinLayerBrickOnTetMesh::ThinLayerBrickOnTetMesh(
+  ThinLayerBrickOnTetTFMesh::ThinLayerBrickOnTetTFMesh(
     Mesh* tet_mesh_pt,
     const Vector<unsigned>& boundary_ids,
     ThicknessFctPt thickness_fct_pt,
@@ -333,7 +333,7 @@ namespace oomph
             std::ostringstream error_stream;
             error_stream
               << "Tet-element cannot be cast to SolidTElement<3,3>.\n"
-              << "ThinBrickOnTetMesh can only be erected on mesh containing\n"
+              << "ThinBrickOnTetTFMesh can only be erected on mesh containing\n"
               << "quadratic tets." << std::endl;
             throw OomphLibError(error_stream.str(),
                                 OOMPH_CURRENT_FUNCTION,
@@ -351,7 +351,7 @@ namespace oomph
             std::ostringstream error_stream;
             error_stream
               << "Tet-element cannot be cast to TElement<3,3>.\n"
-              << "ThinBrickOnTetMesh can only be erected on mesh containing\n"
+              << "ThinBrickOnTetTFMesh can only be erected on mesh containing\n"
               << "quadratic tets." << std::endl;
             throw OomphLibError(error_stream.str(),
                                 OOMPH_CURRENT_FUNCTION,

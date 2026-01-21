@@ -41,14 +41,14 @@ namespace oomph
   /// SpineLineFluidInterfaceElement for 2D planar
   /// problems.
   //===========================================================================
-  TwoLayerSpineMesh::TwoLayerSpineMesh(const unsigned& nx,
-                                       const unsigned& ny1,
-                                       const unsigned& ny2,
-                                       const double& lx,
-                                       const double& h1,
-                                       const double& h2,
-                                       TimeStepper* time_stepper_pt)
-    : RectangularQuadMesh(
+  TwoLayerSpineTFMesh::TwoLayerSpineTFMesh(const unsigned& nx,
+                                           const unsigned& ny1,
+                                           const unsigned& ny2,
+                                           const double& lx,
+                                           const double& h1,
+                                           const double& h2,
+                                           TimeStepper* time_stepper_pt)
+    : RectangularQuadTFMesh(
         nx, ny1 + ny2, 0.0, lx, 0.0, h1 + h2, false, false, time_stepper_pt)
   {
     // Mesh can only be built with 2D Qelements.
@@ -59,7 +59,7 @@ namespace oomph
     MeshChecker::assert_geometric_element<SpineFiniteElement>(
       element_factory_pt, 2);
 
-    // We've called the "generic" constructor for the RectangularQuadMesh
+    // We've called the "generic" constructor for the RectangularQuadTFMesh
     // which doesn't do much...
     // Now set up the parameters that characterise the mesh geometry
     // then call the build function
@@ -90,23 +90,23 @@ namespace oomph
   /// SpineLineFluidInterfaceElement for 2D planar
   /// problems.
   //===========================================================================
-  TwoLayerSpineMesh::TwoLayerSpineMesh(const unsigned& nx,
-                                       const unsigned& ny1,
-                                       const unsigned& ny2,
-                                       const double& lx,
-                                       const double& h1,
-                                       const double& h2,
-                                       const bool& periodic_in_x,
-                                       TimeStepper* time_stepper_pt)
-    : RectangularQuadMesh(nx,
-                          ny1 + ny2,
-                          0.0,
-                          lx,
-                          0.0,
-                          h1 + h2,
-                          periodic_in_x,
-                          false,
-                          time_stepper_pt)
+  TwoLayerSpineTFMesh::TwoLayerSpineTFMesh(const unsigned& nx,
+                                           const unsigned& ny1,
+                                           const unsigned& ny2,
+                                           const double& lx,
+                                           const double& h1,
+                                           const double& h2,
+                                           const bool& periodic_in_x,
+                                           TimeStepper* time_stepper_pt)
+    : RectangularQuadTFMesh(nx,
+                            ny1 + ny2,
+                            0.0,
+                            lx,
+                            0.0,
+                            h1 + h2,
+                            periodic_in_x,
+                            false,
+                            time_stepper_pt)
   {
     // Mesh can only be built with 2D Qelements.
     MeshChecker::assert_geometric_element<QElementGeometricBase>(
@@ -116,7 +116,7 @@ namespace oomph
     MeshChecker::assert_geometric_element<SpineFiniteElement>(
       element_factory_pt, 2);
 
-    // We've called the "generic" constructor for the RectangularQuadMesh
+    // We've called the "generic" constructor for the RectangularQuadTFMesh
     // which doesn't do much...
     // Now set up the parameters that characterise the mesh geometry
     // then call the constructor
@@ -148,24 +148,24 @@ namespace oomph
   /// SpineLineFluidInterfaceElement for 2D planar
   /// problems.
   //===========================================================================
-  TwoLayerSpineMesh::TwoLayerSpineMesh(const unsigned& nx,
-                                       const unsigned& ny1,
-                                       const unsigned& ny2,
-                                       const double& lx,
-                                       const double& h1,
-                                       const double& h2,
-                                       const bool& periodic_in_x,
-                                       const bool& build_mesh,
-                                       TimeStepper* time_stepper_pt)
-    : RectangularQuadMesh(nx,
-                          ny1 + ny2,
-                          0.0,
-                          lx,
-                          0.0,
-                          h1 + h2,
-                          periodic_in_x,
-                          false,
-                          time_stepper_pt)
+  TwoLayerSpineTFMesh::TwoLayerSpineTFMesh(const unsigned& nx,
+                                           const unsigned& ny1,
+                                           const unsigned& ny2,
+                                           const double& lx,
+                                           const double& h1,
+                                           const double& h2,
+                                           const bool& periodic_in_x,
+                                           const bool& build_mesh,
+                                           TimeStepper* time_stepper_pt)
+    : RectangularQuadTFMesh(nx,
+                            ny1 + ny2,
+                            0.0,
+                            lx,
+                            0.0,
+                            h1 + h2,
+                            periodic_in_x,
+                            false,
+                            time_stepper_pt)
   {
     // Mesh can only be built with 2D Qelements.
     MeshChecker::assert_geometric_element<QElementGeometricBase>(
@@ -175,7 +175,7 @@ namespace oomph
     MeshChecker::assert_geometric_element<SpineFiniteElement>(
       element_factory_pt, 2);
 
-    // We've called the "generic" constructor for the RectangularQuadMesh
+    // We've called the "generic" constructor for the RectangularQuadTFMesh
     // which doesn't do much...
     // Now set up the parameters that characterise the mesh geometry
     // then call the constructor
@@ -190,9 +190,9 @@ namespace oomph
 
     // Only build the mesh here if build_mesh=true
     // This is useful when calling this constructor from a derived class
-    // (such as Axisym2x6TwoLayerSpineMesh) where the mesh building
+    // (such as Axisym2x6TwoLayerSpineTFMesh) where the mesh building
     // needs to be called from *its* constructor and this constructor is
-    // only used to pass arguments to the RectangularQuadMesh constructor.
+    // only used to pass arguments to the RectangularQuadTFMesh constructor.
     if (build_mesh)
     {
       build_two_layer_mesh(time_stepper_pt);
@@ -203,10 +203,10 @@ namespace oomph
   /// The spacing function for the x co-ordinate, which is the
   /// same as the default function.
   //==================================================================
-  double TwoLayerSpineMesh::x_spacing_function(unsigned xelement,
-                                               unsigned xnode,
-                                               unsigned yelement,
-                                               unsigned ynode)
+  double TwoLayerSpineTFMesh::x_spacing_function(unsigned xelement,
+                                                 unsigned xnode,
+                                                 unsigned yelement,
+                                                 unsigned ynode)
   {
     // Calculate the values of equal increments in nodal values
     double xstep = (this->Xmax - this->Xmin) / ((this->Np - 1) * this->Nx);
@@ -218,18 +218,18 @@ namespace oomph
   /// The spacing function for the y co-ordinates, which splits
   /// the region into two regions (1 and 2), according to the
   /// heights H1 and H2, with Ny1 and Ny2 elements respectively.
-  double TwoLayerSpineMesh::y_spacing_function(unsigned xelement,
-                                               unsigned xnode,
-                                               unsigned yelement,
-                                               unsigned ynode)
+  double TwoLayerSpineTFMesh::y_spacing_function(unsigned xelement,
+                                                 unsigned xnode,
+                                                 unsigned yelement,
+                                                 unsigned ynode)
   {
     // Set up some spacing parameters
     // The lower region a starts at Ymin
-    double Ymin = RectangularQuadMesh::Ymin;
+    double Ymin = RectangularQuadTFMesh::Ymin;
     // The upper region a ends at Ymax
-    double Ymax = RectangularQuadMesh::Ymax;
+    double Ymax = RectangularQuadTFMesh::Ymax;
     // Number of nodes per element
-    unsigned n_p = RectangularQuadMesh::Np;
+    unsigned n_p = RectangularQuadTFMesh::Np;
     // The lower region starts at Ymin
     double y1init = Ymin;
     // The upper region starts at H1 - Ymin
@@ -257,10 +257,10 @@ namespace oomph
   /// Helper function that actually builds the two-layer spine mesh
   /// based on the parameters set in the various constructors
   //===========================================================================
-  void TwoLayerSpineMesh::build_two_layer_mesh(TimeStepper* time_stepper_pt)
+  void TwoLayerSpineTFMesh::build_two_layer_mesh(TimeStepper* time_stepper_pt)
   {
     // Build the underlying quad mesh:
-    RectangularQuadMesh::build_mesh(time_stepper_pt);
+    RectangularQuadTFMesh::build_mesh(time_stepper_pt);
 
     // Reset the number of boundaries
     set_nboundary(7);
@@ -687,7 +687,7 @@ namespace oomph
   /// (advantageous in "wide" domains if a frontal solver is used).
   //======================================================================
   /*template <class ELEMENT, >
-void TwoLayerSpineMesh::element_reorder()
+void TwoLayerSpineTFMesh::element_reorder()
 {
 
  unsigned Nx = this->Nx;

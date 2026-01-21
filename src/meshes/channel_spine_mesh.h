@@ -40,7 +40,7 @@ namespace oomph
   /// of the left and right regions (0,2) and another GeomObject is passed
   /// to the constructor to define the height in the central region.
   //======================================================================
-  class ChannelSpineMesh : public RectangularQuadMesh, public SpineMesh
+  class ChannelSpineTFMesh : public RectangularQuadTFMesh, public SpineTFMesh
   {
   public:
     /// Constructor: Pass number of elements in x-direction in regions
@@ -48,17 +48,18 @@ namespace oomph
     /// regions 0,1 and 2, height mesh, pointer to the GeomObject defining the
     /// heightof the central region and pointer to timestepper (defaults to
     /// Steady timestepper)
-    ChannelSpineMesh(std::unique_ptr<ElementFactoryBase> element_factory_pt,
-                     const unsigned& nx0,
-                     const unsigned& nx1,
-                     const unsigned& nx2,
-                     const unsigned& ny,
-                     const double& lx0,
-                     const double& lx1,
-                     const double& lx2,
-                     const double& h,
-                     GeomObject* wall_pt,
-                     TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
+    ChannelSpineTFMesh(
+      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const unsigned& nx0,
+      const unsigned& nx1,
+      const unsigned& nx2,
+      const unsigned& ny,
+      const double& lx0,
+      const double& lx1,
+      const double& lx2,
+      const double& h,
+      GeomObject* wall_pt,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
 
     /// Constructor: Pass number of elements in x-direction in regions
     /// 0,1 and 2, number of elements in y-direction, length in x direction in
@@ -66,18 +67,19 @@ namespace oomph
     /// heightof the central region, a boolean flag to indicate whether or not
     /// the mesh is periodic and pointer to timestepper (defaults to Steady
     /// timestepper)
-    ChannelSpineMesh(std::unique_ptr<ElementFactoryBase> element_factory_pt,
-                     const unsigned& nx0,
-                     const unsigned& nx1,
-                     const unsigned& nx2,
-                     const unsigned& ny,
-                     const double& lx0,
-                     const double& lx1,
-                     const double& lx2,
-                     const double& h,
-                     GeomObject* wall_pt,
-                     const bool& periodic_in_x,
-                     TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
+    ChannelSpineTFMesh(
+      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const unsigned& nx0,
+      const unsigned& nx1,
+      const unsigned& nx2,
+      const unsigned& ny,
+      const double& lx0,
+      const double& lx1,
+      const double& lx2,
+      const double& h,
+      GeomObject* wall_pt,
+      const bool& periodic_in_x,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
 
     /// Access functions for pointers to the \f$ i \f$ -th element in
     /// the left region.
@@ -131,7 +133,7 @@ namespace oomph
     void element_reorder();
 
     /// General node update function implements pure virtual function
-    /// defined in SpineMesh base class and performs specific node update
+    /// defined in SpineTFMesh base class and performs specific node update
     /// actions: along vertical spines
     virtual void spine_node_update(SpineNode* spine_node_pt)
     {
@@ -323,5 +325,4 @@ namespace oomph
 
 } // namespace oomph
 
-#include "channel_spine_mesh.template.cc"
 #endif

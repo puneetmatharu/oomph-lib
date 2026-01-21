@@ -40,12 +40,12 @@ namespace oomph
   /// must be specified externally or else there will be problems.
 
   //===========================================================================
-  SingleLayerSpineMesh::SingleLayerSpineMesh(const unsigned& nx,
-                                             const unsigned& ny,
-                                             const double& lx,
-                                             const double& h,
-                                             TimeStepper* time_stepper_pt)
-    : RectangularQuadMesh(
+  SingleLayerSpineTFMesh::SingleLayerSpineTFMesh(const unsigned& nx,
+                                                 const unsigned& ny,
+                                                 const double& lx,
+                                                 const double& h,
+                                                 TimeStepper* time_stepper_pt)
+    : RectangularQuadTFMesh(
         nx, ny, 0.0, lx, 0.0, h, false, false, time_stepper_pt)
   {
     // Mesh can only be built with 2D Qelements.
@@ -56,7 +56,7 @@ namespace oomph
     MeshChecker::assert_geometric_element<SpineFiniteElement>(
       element_factory_pt, 2);
 
-    // We've called the "generic" constructor for the RectangularQuadMesh
+    // We've called the "generic" constructor for the RectangularQuadTFMesh
     // which doesn't do much...
 
     // Now build the mesh:
@@ -75,13 +75,13 @@ namespace oomph
   /// Equations that determine the spine heights (even if they are pinned)
   /// must be specified externally or else there will be problems.
   //===========================================================================
-  SingleLayerSpineMesh::SingleLayerSpineMesh(const unsigned& nx,
-                                             const unsigned& ny,
-                                             const double& lx,
-                                             const double& h,
-                                             const bool& periodic_in_x,
-                                             TimeStepper* time_stepper_pt)
-    : RectangularQuadMesh(
+  SingleLayerSpineTFMesh::SingleLayerSpineTFMesh(const unsigned& nx,
+                                                 const unsigned& ny,
+                                                 const double& lx,
+                                                 const double& h,
+                                                 const bool& periodic_in_x,
+                                                 TimeStepper* time_stepper_pt)
+    : RectangularQuadTFMesh(
         nx, ny, 0.0, lx, 0.0, h, periodic_in_x, false, time_stepper_pt)
   {
     // Mesh can only be built with 2D Qelements.
@@ -92,7 +92,7 @@ namespace oomph
     MeshChecker::assert_geometric_element<SpineFiniteElement>(
       element_factory_pt, 2);
 
-    // We've called the "generic" constructor for the RectangularQuadMesh
+    // We've called the "generic" constructor for the RectangularQuadTFMesh
     // which doesn't do much...
 
     // Now build the mesh:
@@ -103,7 +103,7 @@ namespace oomph
   /// Helper function that actually builds the single-layer spine mesh
   /// based on the parameters set in the various constructors
   //===========================================================================
-  void SingleLayerSpineMesh::build_single_layer_mesh(
+  void SingleLayerSpineTFMesh::build_single_layer_mesh(
     TimeStepper* time_stepper_pt)
   {
     // Mesh can only be built with 2D Qelements.
@@ -111,7 +111,7 @@ namespace oomph
       element_factory_pt, 2);
 
     // Build the underlying quad mesh:
-    RectangularQuadMesh::build_mesh(time_stepper_pt);
+    RectangularQuadTFMesh::build_mesh(time_stepper_pt);
 
     // Read out the number of elements in the x-direction
     unsigned n_x = this->Nx;

@@ -35,7 +35,7 @@ namespace oomph
   /// the collapsible segment and pointer to TimeStepper (defaults to the
   /// default timestepper, Steady).
   //========================================================================
-  CollapsibleChannelMesh::CollapsibleChannelMesh(
+  CollapsibleChannelTFMesh::CollapsibleChannelTFMesh(
     std::unique_ptr<ElementFactoryBase> element_factory_pt,
     const unsigned& nup,
     const unsigned& ncollapsible,
@@ -47,12 +47,12 @@ namespace oomph
     const double& ly,
     GeomObject* wall_pt,
     TimeStepper* time_stepper_pt)
-    : SimpleRectangularQuadMesh(element_factory_pt,
-                                nup + ncollapsible + ndown,
-                                ny,
-                                lup + lcollapsible + ldown,
-                                ly,
-                                time_stepper_pt),
+    : SimpleRectangularQuadTFMesh(element_factory_pt,
+                                  nup + ncollapsible + ndown,
+                                  ny,
+                                  lup + lcollapsible + ldown,
+                                  ly,
+                                  time_stepper_pt),
       Nup(nup),
       Ncollapsible(ncollapsible),
       Ndown(ndown),
@@ -90,7 +90,7 @@ namespace oomph
     // Update the boundary numbering scheme and set boundary coordinate
     //-----------------------------------------------------------------
 
-    // (Note: The original SimpleRectangularQuadMesh had four boundaries.
+    // (Note: The original SimpleRectangularQuadTFMesh had four boundaries.
     // We need to overwrite the boundary lookup scheme for the current
     // mesh so that the collapsible segment becomes identifiable).
     // While we're doing this, we're also setting up a boundary
@@ -235,7 +235,7 @@ namespace oomph
   /// Perform algebraic mesh update at time level t (t=0: present;
   /// t>0: previous)
   //=================================================================
-  void AlgebraicCollapsibleChannelMesh::algebraic_node_update(
+  void AlgebraicCollapsibleChannelTFMesh::algebraic_node_update(
     const unsigned& t, AlgebraicNode*& node_pt)
   {
 #ifdef PARANOID
@@ -262,7 +262,7 @@ namespace oomph
       error_message += "in your application, remove this warning ";
       error_message += "or recompile with PARNOID switched off.";
 
-      std::string function_name = "AlgebraicCollapsibleChannelMesh::";
+      std::string function_name = "AlgebraicCollapsibleChannelTFMesh::";
       function_name += "algebraic_node_update()";
 
       throw OomphLibError(
@@ -315,7 +315,7 @@ namespace oomph
   /// Setup algebraic mesh update -- assumes that mesh has
   /// initially been set up with a flush upper wall
   //=================================================================
-  void AlgebraicCollapsibleChannelMesh::setup_algebraic_node_update()
+  void AlgebraicCollapsibleChannelTFMesh::setup_algebraic_node_update()
   {
     // Shorthand for some geometric data:
     double l_up = this->domain_pt()->l_up();
@@ -326,7 +326,7 @@ namespace oomph
     for (unsigned j = 0; j < nnod; j++)
     {
       // Get pointer to node -- recall that that Mesh::node_pt(...) has been
-      // overloaded in the AlgebraicMesh class to return a pointer to
+      // overloaded in the AlgebraicTFMesh class to return a pointer to
       // an AlgebraicNode.
       AlgebraicNode* nod_pt = node_pt(j);
 
@@ -425,7 +425,7 @@ namespace oomph
   /// Update the geometric references that are used
   /// to update node after mesh adaptation.
   //=================================================================
-  void RefineableAlgebraicCollapsibleChannelMesh::update_node_update(
+  void RefineableAlgebraicCollapsibleChannelTFMesh::update_node_update(
     AlgebraicNode*& node_pt)
   {
     // Extract reference values for node update by copy construction

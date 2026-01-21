@@ -37,7 +37,7 @@ namespace oomph
   /// in anticlockwise direction. Timestepper defaults to Steady
   /// default timestepper.
   //===========================================================================
-  RectangleWithHoleMesh::RectangleWithHoleMesh(
+  RectangleWithHoleTFMesh::RectangleWithHoleTFMesh(
     GeomObject* cylinder_pt,
     const double& length,
     TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
@@ -221,11 +221,11 @@ namespace oomph
   /// in anticlockwise direction. Timestepper defaults to Steady
   /// default timestepper.
   //===========================================================================
-  RefineableRectangleWithHoleMesh::RefineableRectangleWithHoleMesh(
+  RefineableRectangleWithHoleTFMesh::RefineableRectangleWithHoleTFMesh(
     GeomObject* cylinder_pt,
     const double& length,
     TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-    : RectangleWithHoleMesh(cylinder_pt, length, time_stepper_pt)
+    : RectangleWithHoleTFMesh(cylinder_pt, length, time_stepper_pt)
   {
     // Nodal positions etc. were created in constructor for
     // Cylinder...<...>. Need to setup adaptive information.
@@ -241,7 +241,7 @@ namespace oomph
     this->setup_boundary_element_info();
 
     // Nodal positions etc. were created in constructor for
-    // RectangularMesh<...>. Only need to setup quadtree forest
+    // RectangularTFMesh<...>. Only need to setup quadtree forest
     this->setup_quadtree_forest();
   }
 

@@ -49,16 +49,16 @@ namespace oomph
   /// .
   /// There is one node on each of these boundaries.
   //====================================================================
-  class OneDMesh : public virtual LineMeshBase
+  class OneDTFMesh : public virtual LineMeshBase
   {
   public:
     /// Constructor: Pass number of elements, n_element, length of
     /// domain, length, and pointer to timestepper (defaults to a Steady
     /// timestepper so we don't need to specify one in problems without
     /// time-dependence).
-    OneDMesh(const unsigned& n_element,
-             const double& length,
-             TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+    OneDTFMesh(const unsigned& n_element,
+               const double& length,
+               TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : Xmin(0.0), Xmax(length), N(n_element)
     {
       check_1d();
@@ -69,10 +69,10 @@ namespace oomph
     /// Constructor: Pass number of elements, n_element, minimum
     /// coordinate, xmin, maximum coordinate, xmax, and a pointer to a
     /// timestepper.
-    OneDMesh(const unsigned& n_element,
-             const double& xmin,
-             const double& xmax,
-             TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+    OneDTFMesh(const unsigned& n_element,
+               const double& xmin,
+               const double& xmax,
+               TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : Xmin(xmin), Xmax(xmax), N(n_element)
     {
       check_1d();
@@ -89,7 +89,7 @@ namespace oomph
       FiniteElement* el_pt = element_factory_pt->new_element();
       if (el_pt->dim() != 1)
       {
-        std::string err = "OneDMesh is only for 1D elements";
+        std::string err = "OneDTFMesh is only for 1D elements";
         throw OomphLibError(
           err, OOMPH_CURRENT_FUNCTION, OOMPH_EXCEPTION_LOCATION);
       }
@@ -115,20 +115,21 @@ namespace oomph
   };
 
   //====================================================================
-  /// Refineable version of the OneDMesh
+  /// Refineable version of the OneDTFMesh
   //====================================================================
-  class RefineableOneDMesh : public virtual OneDMesh, public RefineableLineMesh
+  class RefineableOneDTFMesh : public virtual OneDTFMesh,
+                               public RefineableLineTFMesh
   {
   public:
     /// Constructor: Pass number of elements, n_element, length of
     /// domain, length, and pointer to timestepper (defaults to Steady)
-    RefineableOneDMesh(
+    RefineableOneDTFMesh(
       const unsigned& n_element,
       const double& length,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : OneDMesh(n_element, length, time_stepper_pt)
+      : OneDTFMesh(n_element, length, time_stepper_pt)
     {
-      // Nodal positions etc. were created in constructor for OneDMesh<...>
+      // Nodal positions etc. were created in constructor for OneDTFMesh<...>
       // so only need to set up binary tree forest
       this->setup_binary_tree_forest();
     }
@@ -136,14 +137,14 @@ namespace oomph
     /// Constructor that allows the specification of minimum and
     /// maximum values of x coordinates. Also pass pointer to timestepper
     /// (defaults to Steady).
-    RefineableOneDMesh(
+    RefineableOneDTFMesh(
       const unsigned& n_element,
       const double& xmin,
       const double& xmax,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : OneDMesh(n_element, xmin, xmax, time_stepper_pt)
+      : OneDTFMesh(n_element, xmin, xmax, time_stepper_pt)
     {
-      // Nodal positions etc. were created in constructor for OneDMesh<...>
+      // Nodal positions etc. were created in constructor for OneDTFMesh<...>
       // so only need to set up binary tree forest
       this->setup_binary_tree_forest();
     }

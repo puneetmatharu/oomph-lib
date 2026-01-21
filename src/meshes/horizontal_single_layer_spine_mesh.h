@@ -43,14 +43,14 @@ namespace oomph
   /// and the information required to update their position. Additional
   /// equations must be specified in order to determine how the spines move.
   //======================================================================
-  class HorizontalSingleLayerSpineMesh : public RectangularQuadMesh,
-                                         public SpineMesh
+  class HorizontalSingleLayerSpineTFMesh : public RectangularQuadTFMesh,
+                                           public SpineTFMesh
   {
   public:
     /// Constructor: Pass number of elements in x-direction, number of
     /// elements in y-direction, axial length, height of layer, and pointer
     /// to timestepper (defaults to Steady timestepper)
-    HorizontalSingleLayerSpineMesh(
+    HorizontalSingleLayerSpineTFMesh(
       const unsigned& nx,
       const unsigned& ny,
       const double& lx,
@@ -59,7 +59,7 @@ namespace oomph
 
 
     /// General node update function implements pure virtual function
-    /// defined in SpineMesh base class and performs specific node update
+    /// defined in SpineTFMesh base class and performs specific node update
     /// actions:  along vertical spines
     virtual void spine_node_update(SpineNode* spine_node_pt)
     {

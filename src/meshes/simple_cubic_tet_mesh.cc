@@ -32,7 +32,7 @@ namespace oomph
   /// Simple tetrahedral mesh - with 24 tet elements constructed within a
   /// "brick" form for each element block.
   //====================================================================
-  void SimpleCubicTetMesh::build_from_scaffold(TimeStepper* time_stepper_pt)
+  void SimpleCubicTetTFMesh::build_from_scaffold(TimeStepper* time_stepper_pt)
   {
     // Mesh can only be built with 3D Telements.
     MeshChecker::assert_geometric_element<TElementGeometricBase>(

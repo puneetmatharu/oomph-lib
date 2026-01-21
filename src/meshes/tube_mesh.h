@@ -53,7 +53,7 @@ namespace oomph
   /// - Boundary 2: The out flow, represented by \f$\xi_0 = \xi_0^{hi}\f$.
   ///
   //====================================================================
-  class TubeMesh : public virtual BrickMeshBase
+  class TubeTFMesh : public virtual BrickMeshBase
   {
   public:
     /// Constructor: Pass pointer to geometric object that
@@ -63,15 +63,15 @@ namespace oomph
     /// at the dividing lines, the number of layers
     /// and the timestepper.
     /// Timestepper defaults to Steady dummy timestepper.
-    TubeMesh(GeomObject* wall_pt,
-             const Vector<double>& centreline_limits,
-             const Vector<double>& theta_positions,
-             const Vector<double>& radius_box,
-             const unsigned& nlayer,
-             TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
+    TubeTFMesh(GeomObject* wall_pt,
+               const Vector<double>& centreline_limits,
+               const Vector<double>& theta_positions,
+               const Vector<double>& radius_box,
+               const unsigned& nlayer,
+               TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
 
     /// Destructor: empty
-    virtual ~TubeMesh()
+    virtual ~TubeTFMesh()
     {
       delete Domain_pt;
     }
@@ -108,7 +108,7 @@ namespace oomph
   ////////////////////////////////////////////////////////////////////
 
   //=============================================================
-  /// Adaptative version of the TubeMesh base mesh.
+  /// Adaptative version of the TubeTFMesh base mesh.
   /// The domain is specified by the GeomObject that identifies
   /// the entire volume
   ///
@@ -119,7 +119,7 @@ namespace oomph
   /// - Boundary 2: The out flow, represented by \f$\xi_0 = \xi_0^{hi}\f$.
   ///
   //=============================================================
-  class RefineableTubeMesh : public TubeMesh, public RefineableBrickMesh
+  class RefineableTubeTFMesh : public TubeTFMesh, public RefineableBrickTFMesh
 
   {
   public:
@@ -131,22 +131,22 @@ namespace oomph
     /// at the dividing lines, the number of layers
     /// and the timestepper.
     /// Timestepper defaults to Steady dummy timestepper.
-    RefineableTubeMesh(
+    RefineableTubeTFMesh(
       GeomObject* wall_pt,
       const Vector<double>& centreline_limits,
       const Vector<double>& theta_positions,
       const Vector<double>& radius_box,
       const unsigned& nlayer,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : TubeMesh(wall_pt,
-                 centreline_limits,
-                 theta_positions,
-                 radius_box,
-                 nlayer,
-                 time_stepper_pt)
+      : TubeTFMesh(wall_pt,
+                   centreline_limits,
+                   theta_positions,
+                   radius_box,
+                   nlayer,
+                   time_stepper_pt)
     {
       // Loop over all elements and set macro element pointer
-      for (unsigned ielem = 0; ielem < TubeMesh::nelement(); ielem++)
+      for (unsigned ielem = 0; ielem < TubeTFMesh::nelement(); ielem++)
       {
         dynamic_cast<RefineableQElement<3>*>(this->element_pt(ielem))
           ->set_macro_elem_pt(this->Domain_pt->macro_element_pt(ielem));
@@ -182,9 +182,8 @@ namespace oomph
     }
 
     /// Destructor: empty
-    virtual ~RefineableTubeMesh() {}
+    virtual ~RefineableTubeTFMesh() {}
   };
 
 } // namespace oomph
-#include "tube_mesh.template.cc"
 #endif

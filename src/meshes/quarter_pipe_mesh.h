@@ -48,21 +48,22 @@ namespace oomph
   /// theta: azimuthal direction
   /// z: axis direction
   //================================================================
-  class QuarterPipeMesh : public virtual SimpleCubicMesh
+  class QuarterPipeTFMesh : public virtual SimpleCubicTFMesh
   {
   public:
     /// Constructor: Pass number of elements in various directions,
     /// the inner and outer radius and the length of the tube
-    QuarterPipeMesh(const unsigned& ntheta,
-                    const unsigned& nr,
-                    const unsigned& nz,
-                    const double& rmin,
-                    const double& rmax,
-                    const double& length,
-                    TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
+    QuarterPipeTFMesh(
+      const unsigned& ntheta,
+      const unsigned& nr,
+      const unsigned& nz,
+      const double& rmin,
+      const double& rmax,
+      const double& length,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
 
     /// Empty Destructor
-    virtual ~QuarterPipeMesh()
+    virtual ~QuarterPipeTFMesh()
     {
       delete Domain_pt;
     }
@@ -111,13 +112,13 @@ namespace oomph
   //================================================================
   /// Refineable quarter pipe mesh class
   //================================================================
-  class RefineableQuarterPipeMesh : public virtual QuarterPipeMesh,
-                                    public RefineableBrickMesh
+  class RefineableQuarterPipeTFMesh : public virtual QuarterPipeTFMesh,
+                                      public RefineableBrickTFMesh
   {
   public:
     /// Constructor: Pass number of elements in various directions,
     /// the inner and outer radius and the length of the tube
-    RefineableQuarterPipeMesh(
+    RefineableQuarterPipeTFMesh(
       const unsigned& ntheta,
       const unsigned& nr,
       const unsigned& nz,
@@ -125,8 +126,8 @@ namespace oomph
       const double& rmax,
       const double& length,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : SimpleCubicMesh(ntheta, nr, nz, 1.0, 1.0, 1.0, time_stepper_pt),
-        QuarterPipeMesh(ntheta, nr, nz, rmin, rmax, length, time_stepper_pt)
+      : SimpleCubicTFMesh(ntheta, nr, nz, 1.0, 1.0, 1.0, time_stepper_pt),
+        QuarterPipeTFMesh(ntheta, nr, nz, rmin, rmax, length, time_stepper_pt)
     {
       // Setup Octree forest: Turn elements into individual octrees
       // and plant in forest
@@ -142,7 +143,7 @@ namespace oomph
     }
 
     /// Destructor -- delete forest
-    virtual ~RefineableQuarterPipeMesh()
+    virtual ~RefineableQuarterPipeTFMesh()
     {
       delete this->Forest_pt;
     }
@@ -158,15 +159,15 @@ namespace oomph
   /// Non refineable elastic quarter pipe mesh class
   /// setup lagrangian coordinates for solid mechanics problems
   //================================================================
-  class ElasticQuarterPipeMesh : public virtual QuarterPipeMesh,
-                                 public virtual SolidMesh
+  class ElasticQuarterPipeTFMesh : public virtual QuarterPipeTFMesh,
+                                   public virtual SolidTFMesh
   {
   public:
     /// Constructor:  Pass number of elements in various directions,
     /// the inner and outer radius and the length of the tube.
     /// Builds mesh and copies Eulerian coords to Lagrangian
     /// ones so that the initial configuration is the stress-free one.
-    ElasticQuarterPipeMesh(
+    ElasticQuarterPipeTFMesh(
       const unsigned& ntheta,
       const unsigned& nr,
       const unsigned& nz,
@@ -174,8 +175,8 @@ namespace oomph
       const double& rmax,
       const double& length,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : SimpleCubicMesh(ntheta, nr, nz, 1.0, 1.0, 1.0, time_stepper_pt),
-        QuarterPipeMesh(ntheta, nr, nz, rmin, rmax, length, time_stepper_pt)
+      : SimpleCubicTFMesh(ntheta, nr, nz, 1.0, 1.0, 1.0, time_stepper_pt),
+        QuarterPipeTFMesh(ntheta, nr, nz, rmin, rmax, length, time_stepper_pt)
     {
       /// Make the current configuration the undeformed one by
       /// setting the nodal Lagrangian coordinates to their current
@@ -192,16 +193,16 @@ namespace oomph
   //================================================================
   /// Refineable elastic quarter pipe mesh class
   //================================================================
-  class ElasticRefineableQuarterPipeMesh
-    : public virtual ElasticQuarterPipeMesh,
-      public RefineableBrickMesh
+  class ElasticRefineableQuarterPipeTFMesh
+    : public virtual ElasticQuarterPipeTFMesh,
+      public RefineableBrickTFMesh
   {
   public:
     /// Constructor:  Pass number of elements in various directions,
     /// the inner and outer radius and the length of the tube.
     /// Builds mesh and copies Eulerian coords to Lagrangian
     /// ones so that the initial configuration is the stress-free one.
-    ElasticRefineableQuarterPipeMesh(
+    ElasticRefineableQuarterPipeTFMesh(
       const unsigned& ntheta,
       const unsigned& nr,
       const unsigned& nz,
@@ -209,9 +210,9 @@ namespace oomph
       const double& rmax,
       const double& length,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : SimpleCubicMesh(ntheta, nr, nz, 1.0, 1.0, 1.0, time_stepper_pt),
-        QuarterPipeMesh(ntheta, nr, nz, rmin, rmax, length, time_stepper_pt),
-        ElasticQuarterPipeMesh(
+      : SimpleCubicTFMesh(ntheta, nr, nz, 1.0, 1.0, 1.0, time_stepper_pt),
+        QuarterPipeTFMesh(ntheta, nr, nz, rmin, rmax, length, time_stepper_pt),
+        ElasticQuarterPipeTFMesh(
           ntheta, nr, nz, rmin, rmax, length, time_stepper_pt)
     {
       // Setup Octree forest: Turn elements into individual octrees

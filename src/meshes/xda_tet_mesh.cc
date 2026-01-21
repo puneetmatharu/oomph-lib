@@ -37,8 +37,8 @@ namespace oomph
   /// obtained from the access function oomph_lib_boundary_ids(...).
   /// Timestepper defaults to steady pseudo-timestepper.
   //======================================================================
-  XdaTetMesh::XdaTetMesh(const std::string xda_file_name,
-                         TimeStepper* time_stepper_pt)
+  XdaTetTFMesh::XdaTetTFMesh(const std::string xda_file_name,
+                             TimeStepper* time_stepper_pt)
   {
     // Mesh can only be built with 3D Telements.
     MeshChecker::assert_geometric_element<TElementGeometricBase>(
@@ -113,7 +113,7 @@ namespace oomph
     {
       std::ostringstream error_stream;
       error_stream
-        << "XdaTetMesh can currently only be built with quadratic tets "
+        << "XdaTetTFMesh can currently only be built with quadratic tets "
         << "with 10 nodes. The specified mesh file has " << nnod_el
         << "nodes per element.\n";
       throw OomphLibError(
@@ -332,9 +332,9 @@ namespace oomph
   /// the face elements (or its negative if switch_normal is set
   /// to true). Doc faces in output file.
   //======================================================================
-  void XdaTetMesh::setup_boundary_coordinates(const unsigned& b,
-                                              const bool& switch_normal,
-                                              std::ofstream& outfile)
+  void XdaTetTFMesh::setup_boundary_coordinates(const unsigned& b,
+                                                const bool& switch_normal,
+                                                std::ofstream& outfile)
   {
     // Temporary storage for face elements
     Vector<FiniteElement*> face_el_pt;

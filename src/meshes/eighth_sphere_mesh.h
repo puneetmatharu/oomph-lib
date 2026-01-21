@@ -51,17 +51,18 @@ namespace oomph
   /// - Boundary 2: Plane z=0
   /// - Boundary 3: The surface of the sphere.
   //======================================================================
-  class EighthSphereMesh : public virtual BrickMeshBase
+  class EighthSphereTFMesh : public virtual BrickMeshBase
   {
   public:
     /// Constructor: Pass radius and timestepper; defaults to
     /// static default timestepper
-    EighthSphereMesh(std::unique_ptr<ElementFactoryBase> element_factory_pt,
-                     const double& radius,
-                     TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
+    EighthSphereTFMesh(
+      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const double& radius,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
 
     /// Destructor
-    ~EighthSphereMesh()
+    ~EighthSphereTFMesh()
     {
       delete Domain_pt;
       Domain_pt = 0;
@@ -85,17 +86,17 @@ namespace oomph
   /// - Boundary 2: Plane z=0
   /// - Boundary 3: The surface of the sphere.
   //======================================================================
-  class RefineableEighthSphereMesh : public EighthSphereMesh,
-                                     public virtual RefineableBrickMesh
+  class RefineableEighthSphereTFMesh : public EighthSphereTFMesh,
+                                       public virtual RefineableBrickTFMesh
   {
   public:
     /// Constructor: Pass radius and timestepper; defaults to
     /// static default timestepper
-    RefineableEighthSphereMesh(
+    RefineableEighthSphereTFMesh(
       std::unique_ptr<ElementFactoryBase> element_factory_pt,
       const double& radius,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : EighthSphereMesh(element_factory_pt, radius, time_stepper_pt)
+      : EighthSphereTFMesh(element_factory_pt, radius, time_stepper_pt)
     {
       // Loop over all elements and set macro element pointer
       unsigned nel = this->nelement();
@@ -128,5 +129,4 @@ namespace oomph
 
 } // namespace oomph
 
-#include "eighth_sphere_mesh.template.cc"
 #endif

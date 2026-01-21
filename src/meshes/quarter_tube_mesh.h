@@ -61,7 +61,7 @@ namespace oomph
   ///                 The toplogy must remain that of a quarter tube,
   ///                 or the mesh generation will break.
   //====================================================================
-  class QuarterTubeMesh : public virtual BrickMeshBase
+  class QuarterTubeTFMesh : public virtual BrickMeshBase
   {
   public:
     /// Constructor: Pass pointer to geometric object that
@@ -69,15 +69,16 @@ namespace oomph
     /// geometric object, and the fraction along
     /// which the dividing line is to be placed, and the timestepper.
     /// Timestepper defaults to Steady dummy timestepper.
-    QuarterTubeMesh(GeomObject* wall_pt,
-                    const Vector<double>& xi_lo,
-                    const double& fract_mid,
-                    const Vector<double>& xi_hi,
-                    const unsigned& nlayer,
-                    TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
+    QuarterTubeTFMesh(
+      GeomObject* wall_pt,
+      const Vector<double>& xi_lo,
+      const double& fract_mid,
+      const Vector<double>& xi_hi,
+      const unsigned& nlayer,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
 
     /// Destructor: empty
-    virtual ~QuarterTubeMesh()
+    virtual ~QuarterTubeTFMesh()
     {
       delete Domain_pt;
     }
@@ -139,7 +140,7 @@ namespace oomph
   ////////////////////////////////////////////////////////////////////
 
   //=============================================================
-  /// Adaptative version of the QuarterTubeMesh base mesh.
+  /// Adaptative version of the QuarterTubeTFMesh base mesh.
   /// The domain is specified by the GeomObject that identifies
   /// boundary 3.
   ///
@@ -154,8 +155,8 @@ namespace oomph
   ///               line parametrised by \f$ \xi_0 =  \xi_0^{hi} \f$
   ///               on the geometric object that specifies the wall.
   //=============================================================
-  class RefineableQuarterTubeMesh : public virtual QuarterTubeMesh,
-                                    public RefineableBrickMesh
+  class RefineableQuarterTubeTFMesh : public virtual QuarterTubeTFMesh,
+                                      public RefineableBrickTFMesh
 
   {
   public:
@@ -166,27 +167,28 @@ namespace oomph
     /// geometric object, and the fraction along
     /// which the dividing line is to be placed, and the timestepper.
     /// Timestepper defaults to Steady dummy timestepper.
-    RefineableQuarterTubeMesh(
+    RefineableQuarterTubeTFMesh(
       GeomObject* wall_pt,
       const Vector<double>& xi_lo,
       const double& fract_mid,
       const Vector<double>& xi_hi,
       const unsigned& nlayer,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : QuarterTubeMesh(
+      : QuarterTubeTFMesh(
           wall_pt, xi_lo, fract_mid, xi_hi, nlayer, time_stepper_pt)
     {
       // Loop over all elements and set macro element pointer
-      for (unsigned ielem = 0; ielem < QuarterTubeMesh::nelement(); ielem++)
+      for (unsigned ielem = 0; ielem < QuarterTubeTFMesh::nelement(); ielem++)
       {
-        dynamic_cast<RefineableQElement<3>*>(QuarterTubeMesh::element_pt(ielem))
+        dynamic_cast<RefineableQElement<3>*>(
+          QuarterTubeTFMesh::element_pt(ielem))
           ->set_macro_elem_pt(this->Domain_pt->macro_element_pt(ielem));
       }
 
       // Setup Octree forest: Turn elements into individual octrees
       // and plant in forest
       Vector<TreeRoot*> trees_pt;
-      for (unsigned iel = 0; iel < QuarterTubeMesh::nelement(); iel++)
+      for (unsigned iel = 0; iel < QuarterTubeTFMesh::nelement(); iel++)
       {
         OcTreeRoot* octree_root_pt = new OcTreeRoot(
           dynamic_cast<RefineableElement*>(this->element_pt(iel)));
@@ -212,24 +214,24 @@ namespace oomph
     }
 
     /// Destructor: empty
-    virtual ~RefineableQuarterTubeMesh() {}
+    virtual ~RefineableQuarterTubeTFMesh() {}
   };
 
 
   ////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////
-  // MacroElementNodeUpdate-version of RefineableQuarterTubeMesh
+  // MacroElementNodeUpdate-version of RefineableQuarterTubeTFMesh
   ////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////
 
   class MacroElementNodeUpdateNode;
 
   //========================================================================
-  /// MacroElementNodeUpdate version of RefineableQuarterTubeMesh
+  /// MacroElementNodeUpdate version of RefineableQuarterTubeTFMesh
   //========================================================================
-  class MacroElementNodeUpdateRefineableQuarterTubeMesh
-    : public virtual MacroElementNodeUpdateMesh,
-      public virtual RefineableQuarterTubeMesh
+  class MacroElementNodeUpdateRefineableQuarterTubeTFMesh
+    : public virtual MacroElementNodeUpdateTFMesh,
+      public virtual RefineableQuarterTubeTFMesh
   {
   public:
     /// Constructor: Pass pointer to geometric object, start and
@@ -237,19 +239,19 @@ namespace oomph
     /// which the dividing line is to be placed when updating the nodal
     /// positions, and timestepper (defaults to (Steady) default timestepper
     /// defined in Mesh). Setup the refineable mesh (by calling the
-    /// constructor for the underlying  RefineableQuarterTubeMesh)
+    /// constructor for the underlying  RefineableQuarterTubeTFMesh)
     /// and the algebraic node update functions for nodes.
-    MacroElementNodeUpdateRefineableQuarterTubeMesh(
+    MacroElementNodeUpdateRefineableQuarterTubeTFMesh(
       GeomObject* wall_pt,
       const Vector<double>& xi_lo,
       const double& fract_mid,
       const Vector<double>& xi_hi,
       const unsigned& nlayer,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : MacroElementNodeUpdateMesh(),
-        RefineableQuarterTubeMesh(
+      : MacroElementNodeUpdateTFMesh(),
+        RefineableQuarterTubeTFMesh(
           wall_pt, xi_lo, fract_mid, xi_hi, nlayer, time_stepper_pt),
-        QuarterTubeMesh(
+        QuarterTubeTFMesh(
           wall_pt, xi_lo, fract_mid, xi_hi, nlayer, time_stepper_pt)
     {
 #ifdef PARANOID
@@ -257,16 +259,17 @@ namespace oomph
       if (dynamic_cast<MacroElementNodeUpdateElementBase*>(el_pt) == 0)
       {
         std::ostringstream error_message;
-        error_message << "Base class for ELEMENT in "
-                      << "MacroElementNodeUpdateRefineableQuarterTubeMesh needs"
-                      << "to be of type MacroElementNodeUpdateElement!\n";
+        error_message
+          << "Base class for ELEMENT in "
+          << "MacroElementNodeUpdateRefineableQuarterTubeTFMesh needs"
+          << "to be of type MacroElementNodeUpdateElement!\n";
         error_message << "Whereas it is: typeid(el_pt).name()"
                       << typeid(el_pt).name() << std::endl;
 
         std::string function_name =
-          "MacroElementNodeUpdateRefineableQuaterCircleSectorMesh::\n";
+          "MacroElementNodeUpdateRefineableQuaterCircleSectorTFMesh::\n";
         function_name +=
-          "MacroElementNodeUpdateRefineableQuaterCircleSectorMesh()";
+          "MacroElementNodeUpdateRefineableQuaterCircleSectorTFMesh()";
 
         throw OomphLibError(error_message.str(),
                             OOMPH_CURRENT_FUNCTION,
@@ -282,7 +285,7 @@ namespace oomph
     }
 
     /// Destructor: empty
-    virtual ~MacroElementNodeUpdateRefineableQuarterTubeMesh() {}
+    virtual ~MacroElementNodeUpdateRefineableQuarterTubeTFMesh() {}
 
     /// Resolve mesh update: Update current nodal
     /// positions via sparse MacroElement-based update.
@@ -295,20 +298,20 @@ namespace oomph
       if (update_all_solid_nodes)
       {
         std::string error_message =
-          "Doesn't make sense to use an MacroElementNodeUpdateMesh with\n";
+          "Doesn't make sense to use an MacroElementNodeUpdateTFMesh with\n";
         error_message +=
           "SolidElements so specifying update_all_solid_nodes=true\n";
         error_message += "doesn't make sense either\n";
 
         std::string function_name =
-          "MacroElementNodeUpdateRefineableQuaterCircleSectorMesh::\n";
+          "MacroElementNodeUpdateRefineableQuaterCircleSectorTFMesh::\n";
         function_name += "node_update()";
 
         throw OomphLibError(
           error_message, OOMPH_CURRENT_FUNCTION, OOMPH_EXCEPTION_LOCATION);
       }
 #endif
-      MacroElementNodeUpdateMesh::node_update();
+      MacroElementNodeUpdateTFMesh::node_update();
     }
 
   private:
@@ -338,7 +341,7 @@ namespace oomph
           error_message << "but it is of type " << typeid(el_pt).name();
 
           std::string function_name =
-            "MacroElementNodeUpdateRefineableQuaterCircleSectorMesh::\n";
+            "MacroElementNodeUpdateRefineableQuaterCircleSectorTFMesh::\n";
           function_name += "setup_macro_element_node_update()";
 
           throw OomphLibError(error_message.str(),
@@ -358,15 +361,15 @@ namespace oomph
       // Add the geometric object(s) for the wall to the mesh's storage
       Vector<GeomObject*> geom_object_pt(1);
       geom_object_pt[0] = this->Wall_pt;
-      MacroElementNodeUpdateMesh::set_geom_object_vector_pt(geom_object_pt);
+      MacroElementNodeUpdateTFMesh::set_geom_object_vector_pt(geom_object_pt);
 
       // Fill in the domain pointer to the mesh's storage in the base class
-      MacroElementNodeUpdateMesh::macro_domain_pt() = this->domain_pt();
+      MacroElementNodeUpdateTFMesh::macro_domain_pt() = this->domain_pt();
     }
   };
 
   //======================================================================
-  /// AlgebraicMesh version of RefineableQuarterTubeMesh
+  /// AlgebraicTFMesh version of RefineableQuarterTubeTFMesh
   //=====================================================================
 
   //====================================================================
@@ -386,7 +389,7 @@ namespace oomph
   //====================================================================
 
   //========================================================================
-  /// Algebraic version of RefineableQuarterTubeMesh
+  /// Algebraic version of RefineableQuarterTubeTFMesh
   ///
   /// Cross section through mesh looking along tube.........
   ///
@@ -417,14 +420,15 @@ namespace oomph
   ///
   /// Elements need to be derived from AlgebraicElementBase. In
   /// addition to the refinement procedures available for the
-  /// RefineableQuarterTubeMesh which forms the basis for this mesh,
+  /// RefineableQuarterTubeTFMesh which forms the basis for this mesh,
   /// three algebraic node update functions are implemented for the nodes
   /// in the three regions defined by the Domain MacroElements.
   /// Note: it is assumed the cross section down the tube is
   /// uniform when setup_algebraic_node_update() is called.
   //========================================================================
-  class AlgebraicRefineableQuarterTubeMesh : public virtual AlgebraicMesh,
-                                             public RefineableQuarterTubeMesh
+  class AlgebraicRefineableQuarterTubeTFMesh
+    : public virtual AlgebraicTFMesh,
+      public RefineableQuarterTubeTFMesh
   {
   public:
     /// Constructor: Pass pointer to geometric object, start and
@@ -433,8 +437,8 @@ namespace oomph
     /// region 1 and region 2 is to be placed, and timestepper
     /// (defaults to (Steady) default timestepper defined in Mesh).
     /// Sets up the refineable mesh (by calling the constructor for the
-    /// underlying RefineableQuarterTubeMesh).
-    AlgebraicRefineableQuarterTubeMesh(
+    /// underlying RefineableQuarterTubeTFMesh).
+    AlgebraicRefineableQuarterTubeTFMesh(
       GeomObject* wall_pt,
       const Vector<double>& xi_lo,
       const double& fract_mid,
@@ -442,9 +446,9 @@ namespace oomph
       const unsigned& nlayer,
       const double centre_box_size = 1.0,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : QuarterTubeMesh(
+      : QuarterTubeTFMesh(
           wall_pt, xi_lo, fract_mid, xi_hi, nlayer, time_stepper_pt),
-        RefineableQuarterTubeMesh(
+        RefineableQuarterTubeTFMesh(
           wall_pt, xi_lo, fract_mid, xi_hi, nlayer, time_stepper_pt),
         Centre_box_size(centre_box_size)
     {
@@ -455,13 +459,13 @@ namespace oomph
         std::ostringstream error_message;
 
         error_message << "Base class for ELEMENT in "
-                      << "AlgebraicRefineableQuarterTubeMesh needs"
+                      << "AlgebraicRefineableQuarterTubeTFMesh needs"
                       << "to be of type AlgebraicElement!\n";
         error_message << "Whereas it is: typeid(el_pt).name()"
                       << typeid(el_pt).name() << std::endl;
 
-        std::string function_name = " AlgebraicRefineableQuarterTubeMesh::\n";
-        function_name += "AlgebraicRefineableQuarterTubeMesh()";
+        std::string function_name = " AlgebraicRefineableQuarterTubeTFMesh::\n";
+        function_name += "AlgebraicRefineableQuarterTubeTFMesh()";
 
         throw OomphLibError(error_message.str(),
                             OOMPH_CURRENT_FUNCTION,
@@ -470,8 +474,9 @@ namespace oomph
       delete el_pt;
 #endif
 
-      // Add the geometric object to the list associated with this AlgebraicMesh
-      AlgebraicMesh::add_geom_object_list_pt(wall_pt);
+      // Add the geometric object to the list associated with this
+      // AlgebraicTFMesh
+      AlgebraicTFMesh::add_geom_object_list_pt(wall_pt);
 
       // Setup algebraic node update operations
       setup_algebraic_node_update();
@@ -483,22 +488,22 @@ namespace oomph
     /// Run self-test for algebraic mesh -- return 0/1 for OK/failure
     unsigned self_test()
     {
-      return AlgebraicMesh::self_test();
+      return AlgebraicTFMesh::self_test();
     }
 
     /// Broken version of the QuarterTubeDomain function
     /// Function is broken because axial spacing isn't implemented
-    /// yet for the Algebraic version of the RefineableQuarterTubeMesh.
+    /// yet for the Algebraic version of the RefineableQuarterTubeTFMesh.
     /// Note: this function must be used BEFORE algebraic_node_update(...)
     /// is called.
     QuarterTubeDomain::AxialSpacingFctPt& axial_spacing_fct_pt()
     {
       std::ostringstream error_message;
       error_message << "AxialSpacingFctPt has not been implemented "
-                    << "for the AlgebraicRefineableQuarterTubeMesh\n";
+                    << "for the AlgebraicRefineableQuarterTubeTFMesh\n";
 
       std::string function_name =
-        " AlgebraicRefineableQuarterTubeMesh::AxialSpacingFctPt()";
+        " AlgebraicRefineableQuarterTubeTFMesh::AxialSpacingFctPt()";
 
       throw OomphLibError(
         error_message.str(), OOMPH_CURRENT_FUNCTION, OOMPH_EXCEPTION_LOCATION);
@@ -517,12 +522,12 @@ namespace oomph
       if (update_all_solid_nodes)
       {
         std::string error_message =
-          "Doesn't make sense to use an AlgebraicMesh with\n";
+          "Doesn't make sense to use an AlgebraicTFMesh with\n";
         error_message +=
           "SolidElements so specifying update_all_solid_nodes=true\n";
         error_message += "doesn't make sense either\n";
 
-        std::string function_name = " AlgebraicRefineableQuarterTubeMesh::";
+        std::string function_name = " AlgebraicRefineableQuarterTubeTFMesh::";
         function_name += "node_update()";
 
         throw OomphLibError(
@@ -530,7 +535,7 @@ namespace oomph
       }
 #endif
 
-      AlgebraicMesh::node_update();
+      AlgebraicTFMesh::node_update();
     }
 
 
@@ -570,7 +575,7 @@ namespace oomph
                         << ", but it should only be one of " << Central_region
                         << ", " << Lower_right_region << " or "
                         << Upper_left_region << std::endl;
-          std::string function_name = " AlgebraicRefineableQuarterTubeMesh::";
+          std::string function_name = " AlgebraicRefineableQuarterTubeTFMesh::";
           function_name += "algebraic_node_update()";
 
           throw OomphLibError(error_message.str(),

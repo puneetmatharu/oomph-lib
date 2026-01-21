@@ -24,11 +24,6 @@
 // LIC//
 // LIC//====================================================================
 
-
-#ifndef OOMPH_REFINEABLE_TETGEN_MESH_HEADER
-#error __FILE__ should only be included from refineable_tetgen_mesh.h.
-#endif // OOMPH_REFINEABLE_TETGEN_MESH_HEADER
-
 // Config header
 #ifdef HAVE_CONFIG_H
 #include <oomph-lib-config.h>
@@ -43,10 +38,10 @@
 namespace oomph
 {
   /// Helper function that updates the input faceted surface
-  /// by using the flattened elements from FaceMesh(es) that are
+  /// by using the flattened elements from FaceTFMesh(es) that are
   /// constructed for the boundaries associated with the segments of the
   /// polygon.
-  void RefineableTetgenMesh::update_faceted_surface_using_face_mesh(
+  void RefineableTetgenTFMesh::update_faceted_surface_using_face_mesh(
     TetMeshFacetedSurface*& faceted_surface_pt)
   {
     // The easiest thing to do is simply to update the
@@ -222,7 +217,7 @@ namespace oomph
 
   /// Generate a new faceted representation of the inner hole
   /// boundaries
-  void RefineableTetgenMesh::surface_remesh_for_inner_hole_boundaries()
+  void RefineableTetgenTFMesh::surface_remesh_for_inner_hole_boundaries()
   {
     // Loop over the number of internal boundarys
     unsigned n_hole = this->Internal_surface_pt.size();
@@ -240,8 +235,8 @@ namespace oomph
   }
 
   /// Snap the boundary nodes onto any curvilinear boundaries
-  void RefineableTetgenMesh::snap_nodes_onto_boundary(
-    RefineableTetgenMesh*& new_mesh_pt, const unsigned& b)
+  void RefineableTetgenTFMesh::snap_nodes_onto_boundary(
+    RefineableTetgenTFMesh*& new_mesh_pt, const unsigned& b)
   {
     // Quick return
     if (!boundary_coordinate_exists(b))
@@ -441,7 +436,7 @@ namespace oomph
   //======================================================================
   /// Adapt problem based on specified elemental error estimates
   //======================================================================
-  void RefineableTetgenMesh::adapt(const Vector<double>& elem_error)
+  void RefineableTetgenTFMesh::adapt(const Vector<double>& elem_error)
   {
     double t_start = 0.0;
     // ###################################
@@ -503,19 +498,19 @@ namespace oomph
       // ###################################
 
       // Are we dealing with a solid mesh?
-      SolidMesh* solid_mesh_pt = dynamic_cast<SolidMesh*>(this);
+      SolidTFMesh* solid_mesh_pt = dynamic_cast<SolidTFMesh*>(this);
 
       // Build temporary uniform background mesh
       //----------------------------------------
       // with volume set by maximum required volume
       //---------------------------------------
-      RefineableTetgenMesh* tmp_new_mesh_pt = 0;
+      RefineableTetgenTFMesh* tmp_new_mesh_pt = 0;
       if (solid_mesh_pt != 0)
       {
-        throw OomphLibError("Solid RefineableTetgenMesh not done yet.",
+        throw OomphLibError("Solid RefineableTetgenTFMesh not done yet.",
                             OOMPH_CURRENT_FUNCTION,
                             OOMPH_EXCEPTION_LOCATION);
-        /* tmp_new_mesh_pt=new RefineableSolidTetgenMesh */
+        /* tmp_new_mesh_pt=new RefineableSolidTetgenTFMesh */
         /*  (closed_curve_pt, */
         /*   hole_pt, */
         /*   max_size, */
@@ -525,12 +520,12 @@ namespace oomph
       else
       {
         tmp_new_mesh_pt =
-          new RefineableTetgenMesh(this->Outer_boundary_pt,
-                                   this->Internal_surface_pt,
-                                   max_size,
-                                   this->Time_stepper_pt,
-                                   this->Use_attributes,
-                                   this->Corner_elements_must_be_split);
+          new RefineableTetgenTFMesh(this->Outer_boundary_pt,
+                                     this->Internal_surface_pt,
+                                     max_size,
+                                     this->Time_stepper_pt,
+                                     this->Use_attributes,
+                                     this->Corner_elements_must_be_split);
       }
 
       // ##################################################################
@@ -541,7 +536,7 @@ namespace oomph
 
       // Get the tetgenio object associated with that mesh
       tetgenio* tmp_new_tetgenio_pt = tmp_new_mesh_pt->tetgenio_pt();
-      RefineableTetgenMesh* new_mesh_pt = 0;
+      RefineableTetgenTFMesh* new_mesh_pt = 0;
 
       // If the mesh is a solid mesh then do the mapping based on the
       // Eulerian coordinates
@@ -915,11 +910,11 @@ namespace oomph
         if (solid_mesh_pt != 0)
         {
           std::ostringstream error_message;
-          error_message << "RefineableSolidTetgenMesh not implemented yet.\n";
+          error_message << "RefineableSolidTetgenTFMesh not implemented yet.\n";
           throw OomphLibError(error_message.str(),
                               OOMPH_CURRENT_FUNCTION,
                               OOMPH_EXCEPTION_LOCATION);
-          /* new_mesh_pt=new RefineableSolidTetgenMesh */
+          /* new_mesh_pt=new RefineableSolidTetgenTFMesh */
           /*  (new_target_area, */
           /*   tmp_new_triangulateio, */
           /*   this->Time_stepper_pt, */
@@ -928,12 +923,12 @@ namespace oomph
         // No solid mesh
         else
         {
-          new_mesh_pt = new RefineableTetgenMesh(new_target_size,
-                                                 tmp_new_tetgenio_pt,
-                                                 this->Outer_boundary_pt,
-                                                 this->Internal_surface_pt,
-                                                 this->Time_stepper_pt,
-                                                 this->Use_attributes);
+          new_mesh_pt = new RefineableTetgenTFMesh(new_target_size,
+                                                   tmp_new_tetgenio_pt,
+                                                   this->Outer_boundary_pt,
+                                                   this->Internal_surface_pt,
+                                                   this->Time_stepper_pt,
+                                                   this->Use_attributes);
         }
 
         // ##################################################################
@@ -1168,7 +1163,7 @@ namespace oomph
                         OOMPH_EXCEPTION_LOCATION);
 
         // Reset Lagrangian coordinates
-        dynamic_cast<SolidMesh*>(this)->set_lagrangian_nodal_coordinates();
+        dynamic_cast<SolidTFMesh*>(this)->set_lagrangian_nodal_coordinates();
       }
 
       double max_area;

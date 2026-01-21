@@ -32,7 +32,7 @@ namespace oomph
   /// Constructor for the eighth of a sphere mesh: Pass timestepper;
   /// defaults to static default timestepper.
   //======================================================================
-  EighthSphereMesh::EighthSphereMesh(
+  EighthSphereTFMesh::EighthSphereTFMesh(
     std::unique_ptr<ElementFactoryBase> element_factory_pt,
     const double& radius,
     TimeStepper* time_stepper_pt)

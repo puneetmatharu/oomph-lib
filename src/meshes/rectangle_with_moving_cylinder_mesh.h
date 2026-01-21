@@ -213,7 +213,7 @@ namespace oomph
   //=============================================================================
   /// Domain-based mesh for rectangular mesh with circular hole
   //=============================================================================
-  class RectangleWithHoleAndAnnularRegionMesh : public virtual Mesh
+  class RectangleWithHoleAndAnnularRegionTFMesh : public virtual Mesh
   {
   public:
     /// Constructor: Pass pointer to geometric object that
@@ -222,7 +222,7 @@ namespace oomph
     /// \f$\zeta \in [0,2\pi]\f$ sweeps around the circumference
     /// in anticlockwise direction. Timestepper defaults to Steady
     /// default timestepper.
-    RectangleWithHoleAndAnnularRegionMesh(
+    RectangleWithHoleAndAnnularRegionTFMesh(
       GeomObject* cylinder_pt,
       const double& annular_region_radius,
       const double& length,
@@ -230,7 +230,7 @@ namespace oomph
 
     /// Destructor: We made the Domain object so we have a responsibility
     /// for deleting it!
-    ~RectangleWithHoleAndAnnularRegionMesh()
+    ~RectangleWithHoleAndAnnularRegionTFMesh()
     {
       // If it's a non-null pointer (don't know why it shouldn't be but
       // still...)
@@ -242,7 +242,7 @@ namespace oomph
         // Make it a null pointer
         Domain_pt = 0;
       }
-    } // End of ~RectangleWithHoleAndAnnularRegionMesh
+    } // End of ~RectangleWithHoleAndAnnularRegionTFMesh
 
     /// Access function to the domain
     RectangleWithHoleAndAnnularRegionDomain* domain_pt()
@@ -261,13 +261,13 @@ namespace oomph
   ////////////////////////////////////////////////////////////////////////
 
   //=============================================================================
-  /// Refineable version of RectangleWithHoleAndAnnularRegionMesh. Applies one
+  /// Refineable version of RectangleWithHoleAndAnnularRegionTFMesh. Applies one
   /// uniform refinement immediately to avoid problems with the automatic
   /// applications of boundary conditions in subsequent refinements
   //=============================================================================
-  class RefineableRectangleWithHoleAndAnnularRegionMesh
-    : public RectangleWithHoleAndAnnularRegionMesh,
-      public RefineableQuadMesh
+  class RefineableRectangleWithHoleAndAnnularRegionTFMesh
+    : public RectangleWithHoleAndAnnularRegionTFMesh,
+      public RefineableQuadTFMesh
   {
   public:
     /// Constructor. Pass pointer to geometric object that
@@ -276,12 +276,12 @@ namespace oomph
     /// \f$\zeta \in [0,2\pi]\f$ sweeps around the circumference
     /// in anticlockwise direction. Timestepper defaults to Steady
     /// default timestepper.
-    RefineableRectangleWithHoleAndAnnularRegionMesh(
+    RefineableRectangleWithHoleAndAnnularRegionTFMesh(
       GeomObject* cylinder_pt,
       const double& annular_region_radius,
       const double& length,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : RectangleWithHoleAndAnnularRegionMesh(
+      : RectangleWithHoleAndAnnularRegionTFMesh(
           cylinder_pt, annular_region_radius, length, time_stepper_pt)
     {
       // Nodal positions etc. were created in constructor for
@@ -302,10 +302,10 @@ namespace oomph
 
       // Setup quadtree forest for mesh refinement
       this->setup_quadtree_forest();
-    } // End of RefineableRectangleWithHoleAndAnnularRegionMesh
+    } // End of RefineableRectangleWithHoleAndAnnularRegionTFMesh
 
     /// Destructor: Empty
-    virtual ~RefineableRectangleWithHoleAndAnnularRegionMesh() {}
+    virtual ~RefineableRectangleWithHoleAndAnnularRegionTFMesh() {}
   };
 
   ////////////////////////////////////////////////////////////////////////
@@ -315,7 +315,8 @@ namespace oomph
   //=============================================================================
   /// My Mesh
   //=============================================================================
-  class RefineableQuadMeshWithMovingCylinder : public virtual RefineableQuadMesh
+  class RefineableQuadMeshWithMovingCylinder
+    : public virtual RefineableQuadTFMesh
   {
   public:
     /// Constructor. Pass pointer to geometric object that represents the
@@ -349,7 +350,7 @@ namespace oomph
     /// constructor as it would delete the Domain pointer which might be needed
     /// after the whole mesh has been constructed (e.g. for the mesh extrusion
     /// machinery)...
-    RefineableRectangleWithHoleAndAnnularRegionMesh* Central_mesh_pt;
+    RefineableRectangleWithHoleAndAnnularRegionTFMesh* Central_mesh_pt;
 
     // Make the problem as coarse as possible
     bool Coarse_problem;

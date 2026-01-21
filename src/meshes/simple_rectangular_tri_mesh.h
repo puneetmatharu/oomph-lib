@@ -45,7 +45,7 @@ namespace oomph
   //===================================================================
   /// Simple 2D triangular mesh for TElements
   //===================================================================
-  class SimpleRectangularTriMesh : public virtual TriangleMeshBase
+  class SimpleRectangularTriTFMesh : public virtual TriangleMeshBase
   {
   public:
     /// Constructor
@@ -54,7 +54,7 @@ namespace oomph
     /// l_x  : length in the x direction
     /// l_y  : length in the y direction
     /// Ordering of elements: 'lower left' to 'lower right' then 'upwards'
-    SimpleRectangularTriMesh(
+    SimpleRectangularTriTFMesh(
       const unsigned& n_x,
       const unsigned& n_y,
       const double& l_x,
