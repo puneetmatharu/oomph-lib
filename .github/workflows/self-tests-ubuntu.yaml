@@ -140,6 +140,7 @@ jobs:
         id: deps
         run: |
           dpkg -s gfortran | grep Version | awk '{print "gfortran="$2}' > deps.txt
+          dpkg -s libc6 | grep Version | awk '{print "pthread="$2}' >> deps.txt
           if [ "${{ matrix.build_info.enable_mpi }}" = "ON" ]; then
             dpkg -s openmpi-bin | grep Version | awk '{print "openmpi-bin="$2}' >> deps.txt
             dpkg -s libopenmpi-dev | grep Version | awk '{print "libopenmpi-dev="$2}' >> deps.txt
@@ -160,8 +161,8 @@ jobs:
       # They must NOT just pull from main/development otherwise the hash key won't change
       # and thus neither will the cache.
       - name: Cache third-party libraries artifacts
-        uses: actions/cache/restore@v4
         id: tpl-cache
+        uses: actions/cache/restore@v4
         with:
           path: |
             external_distributions/install
