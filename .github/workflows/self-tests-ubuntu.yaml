@@ -140,6 +140,8 @@ jobs:
         id: deps
         run: |
           dpkg -s gfortran | grep Version | awk '{print "gfortran="$2}' > deps.txt
+          cc --version | head -n1 >> deps.txt
+          c++ --version | head -n1 >> deps.txt
           dpkg -s libc6 | grep Version | awk '{print "pthread="$2}' >> deps.txt
           if [ "${{ matrix.build_info.enable_mpi }}" = "ON" ]; then
             dpkg -s openmpi-bin | grep Version | awk '{print "openmpi-bin="$2}' >> deps.txt
