@@ -61,10 +61,12 @@ namespace oomph
   public:
     /// Constructor: Pass xda file name.
     BrickFromTetTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       const std::string xda_file_name,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
     {
+      set_element_factory_pt(element_factory_pt);
+
       // Mesh can only be built with 3D Qelements.
       MeshChecker::assert_geometric_element<QElementGeometricBase>(
         element_factory_pt, 3, 3);
@@ -76,7 +78,7 @@ namespace oomph
                          time_stepper_pt);
 
       // Actually build the mesh
-      build_mesh(element_factory_pt, tmp_mesh_pt, time_stepper_pt);
+      build_mesh(tmp_mesh_pt, time_stepper_pt);
 
       // Now kill the temporary mesh
       delete tmp_mesh_pt;
@@ -84,7 +86,7 @@ namespace oomph
 
     /// Constructor: Pass the files required for the tetgen mesh.
     BrickFromTetTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       const std::string& node_file_name,
       const std::string& element_file_name,
       const std::string& face_file_name,
@@ -92,6 +94,8 @@ namespace oomph
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
       const bool& use_attributes = false)
     {
+      set_element_factory_pt(element_factory_pt);
+
       // Mesh can only be built with 3D Qelements.
       MeshChecker::assert_geometric_element<QElementGeometricBase>(
         element_factory_pt, 3, 3);
@@ -107,7 +111,7 @@ namespace oomph
         use_attributes);
 
       // Actually build the mesh
-      build_mesh(element_factory_pt, tmp_mesh_pt, time_stepper_pt);
+      build_mesh(tmp_mesh_pt, time_stepper_pt);
 
       // Now kill the temporary mesh
       delete tmp_mesh_pt;
@@ -118,11 +122,13 @@ namespace oomph
     /// internally built XdaTetTFMesh for external use. Note that YOU
     /// are responsible for deleting this mesh.
     BrickFromTetTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       const std::string xda_file_name,
       XdaTetTFMesh*& xda_tet_mesh_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
     {
+      set_element_factory_pt(element_factory_pt);
+
       // Mesh can only be built with 3D Qelements.
       MeshChecker::assert_geometric_element<QElementGeometricBase>(
         element_factory_pt, 3, 3);
@@ -134,7 +140,7 @@ namespace oomph
         time_stepper_pt);
 
       // Actually build the brick mesh
-      build_mesh(element_factory_pt, xda_tet_mesh_pt, time_stepper_pt);
+      build_mesh(xda_tet_mesh_pt, time_stepper_pt);
 
       // Note that we're keeping the tet mesh alive for external use...
     }
@@ -148,14 +154,10 @@ namespace oomph
 
   private:
     /// Build fct: Pass pointer to existing tet mesh.
-    void build_mesh(std::unique_ptr<ElementFactoryBase> element_factory_pt,
-                    XdaTetTFMesh* tet_mesh_pt,
-                    TimeStepper* time_stepper_pt);
+    void build_mesh(XdaTetTFMesh* tet_mesh_pt, TimeStepper* time_stepper_pt);
 
     /// Build fct: Pass pointer to existing tet mesh.
-    void build_mesh(std::unique_ptr<ElementFactoryBase> element_factory_pt,
-                    TetgenTFMesh* tet_mesh_pt,
-                    TimeStepper* time_stepper_pt);
+    void build_mesh(TetgenTFMesh* tet_mesh_pt, TimeStepper* time_stepper_pt);
 
     /// Vector of vectors containing the boundary IDs of
     /// the overall boundary specified in the xda file.
@@ -178,7 +180,7 @@ namespace oomph
   public:
     /// Constructor: Pass xda file name.
     SolidBrickFromTetTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       const std::string xda_file_name,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : BrickFromTetTFMesh(element_factory_pt, xda_file_name, time_stepper_pt)
@@ -194,7 +196,7 @@ namespace oomph
     /// internally built XdaTetTFMesh for external use. Note that YOU
     /// are responsible for deleting this mesh.
     SolidBrickFromTetTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       const std::string xda_file_name,
       XdaTetTFMesh*& xda_tet_mesh_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
@@ -224,7 +226,7 @@ namespace oomph
   public:
     /// Constructor: Pass xda file name.
     RefineableBrickFromTetTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       const std::string xda_file_name,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : BrickFromTetTFMesh(element_factory_pt, xda_file_name, time_stepper_pt)
@@ -239,7 +241,7 @@ namespace oomph
     /// internally built XdaTetTFMesh for external use. Note that YOU
     /// are responsible for deleting this mesh.
     RefineableBrickFromTetTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       const std::string xda_file_name,
       XdaTetTFMesh*& xda_tet_mesh_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
@@ -271,7 +273,7 @@ namespace oomph
   public:
     /// Constructor: Pass xda file name.
     RefineableSolidBrickFromTetTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       const std::string xda_file_name,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : BrickFromTetTFMesh(element_factory_pt, xda_file_name, time_stepper_pt)
@@ -291,7 +293,7 @@ namespace oomph
     /// internally built XdaTetTFMesh for external use. Note that YOU
     /// are responsible for deleting this mesh.
     RefineableSolidBrickFromTetTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       const std::string xda_file_name,
       XdaTetTFMesh*& xda_tet_mesh_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)

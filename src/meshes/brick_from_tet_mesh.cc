@@ -32,14 +32,12 @@ namespace oomph
   /// Build fct: Pass pointer to existing tet mesh and timestepper
   /// Specialisation for XdaTetTFMesh<TElement<3,3> >
   //=======================================================================
-  void BrickFromTetTFMesh::build_mesh(
-    std::unique_ptr<ElementFactoryBase> element_factory_pt,
-    XdaTetTFMesh* tet_mesh_pt,
-    TimeStepper* time_stepper_pt)
+  void BrickFromTetTFMesh::build_mesh(XdaTetTFMesh* tet_mesh_pt,
+                                      TimeStepper* time_stepper_pt)
   {
     // Mesh can only be built with 3D Qelements.
     MeshChecker::assert_geometric_element<QElementGeometricBase>(
-      element_factory_pt, 3, 3);
+      this->element_factory_pt, 3, 3);
 
     // Figure out if the tet mesh is a solid mesh
     bool tet_mesh_is_solid_mesh = false;
@@ -350,7 +348,7 @@ namespace oomph
         }
 
         // Create actual zeroth brick element
-        FiniteElement* el_pt = element_factory_pt->new_element();
+        FiniteElement* el_pt = new_element();
         brick_el0_pt = el_pt;
         Element_pt.push_back(el_pt);
 
@@ -1411,7 +1409,7 @@ namespace oomph
         }
 
         // Create actual first brick element
-        FiniteElement* el_pt = element_factory_pt->new_element();
+        FiniteElement* el_pt = new_element();
         brick_el1_pt = el_pt;
         Element_pt.push_back(el_pt);
 
@@ -2447,7 +2445,7 @@ namespace oomph
         }
 
         // Create actual second brick element
-        FiniteElement* el_pt = element_factory_pt->new_element();
+        FiniteElement* el_pt = new_element();
         brick_el2_pt = el_pt;
         Element_pt.push_back(el_pt);
 
@@ -3473,7 +3471,7 @@ namespace oomph
         }
 
         // Create actual third brick element
-        FiniteElement* el_pt = element_factory_pt->new_element();
+        FiniteElement* el_pt = new_element();
         brick_el3_pt = el_pt;
         Element_pt.push_back(el_pt);
 
@@ -4799,14 +4797,12 @@ namespace oomph
   /// Build fct: Pass pointer to existing tet mesh and timestepper
   /// Specialisation for TetgenTFMesh<TElement<3,3> >
   //=======================================================================
-  void BrickFromTetTFMesh::build_mesh(
-    std::unique_ptr<ElementFactoryBase> element_factory_pt,
-    TetgenTFMesh<TElement<3, 3>>* tet_mesh_pt,
-    TimeStepper* time_stepper_pt)
+  void BrickFromTetTFMesh::build_mesh(TetgenTFMesh* tet_mesh_pt,
+                                      TimeStepper* time_stepper_pt)
   {
     // Mesh can only be built with 3D Qelements.
     MeshChecker::assert_geometric_element<QElementGeometricBase>(
-      element_factory_pt, 3, 3);
+      this->element_factory_pt, 3, 3);
 
     // Figure out if the tet mesh is a solid mesh
     bool tet_mesh_is_solid_mesh = false;
@@ -5117,7 +5113,7 @@ namespace oomph
         }
 
         // Create actual zeroth brick element
-        FiniteElement* el_pt = element_factory_pt->new_element();
+        FiniteElement* el_pt = new_element();
         brick_el0_pt = el_pt;
         Element_pt.push_back(el_pt);
 
@@ -6178,7 +6174,7 @@ namespace oomph
         }
 
         // Create actual first brick element
-        FiniteElement* el_pt = element_factory_pt->new_element();
+        FiniteElement* el_pt = new_element();
         brick_el1_pt = el_pt;
         Element_pt.push_back(el_pt);
 
@@ -7214,7 +7210,7 @@ namespace oomph
         }
 
         // Create actual second brick element
-        FiniteElement* el_pt = element_factory_pt->new_element();
+        FiniteElement* el_pt = new_element();
         brick_el2_pt = el_pt;
         Element_pt.push_back(el_pt);
 
@@ -8240,7 +8236,7 @@ namespace oomph
         }
 
         // Create actual third brick element
-        FiniteElement* el_pt = element_factory_pt->new_element();
+        FiniteElement* el_pt = new_element();
         brick_el3_pt = el_pt;
         Element_pt.push_back(el_pt);
 
