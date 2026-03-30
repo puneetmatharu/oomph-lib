@@ -91,7 +91,7 @@ namespace oomph
     /// which the dividing line is to be placed, and the timestepper
     /// (defaults to (Steady) default timestepper defined in Mesh)
     QuarterCircleSectorTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       GeomObject* wall_pt,
       const double& xi_lo,
       const double& fract_mid,
@@ -191,7 +191,7 @@ namespace oomph
     /// (defaults to (Steady) default timestepper defined in Mesh).
     /// Adds refinement data to elements of QuarterCircleSectorTFMesh.
     RefineableQuarterCircleSectorTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       GeomObject* wall_pt,
       const double& xi_lo,
       const double& fract_mid,
@@ -265,7 +265,7 @@ namespace oomph
     /// constructor for the underlying  RefineableQuarterCircleSectorTFMesh)
     /// and the algebraic node update functions for nodes.
     MacroElementNodeUpdateRefineableQuarterCircleSectorTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       GeomObject* wall_pt,
       const double& xi_lo,
       const double& fract_mid,
@@ -446,7 +446,7 @@ namespace oomph
     /// constructor for the underlying  RefineableQuarterCircleSectorTFMesh)
     /// and the algebraic update functions for nodes.
     AlgebraicRefineableQuarterCircleSectorTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       GeomObject* wall_pt,
       const double& xi_lo,
       const double& fract_mid,

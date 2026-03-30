@@ -38,6 +38,7 @@ namespace oomph
   /// of the Domain (as a QuarterCircleSectorDomain).
   //====================================================================
   QuarterCircleSectorTFMesh::QuarterCircleSectorTFMesh(
+    const ElementFactoryPt& element_factory_pt,
     GeomObject* wall_pt,
     const double& xi_lo,
     const double& fract_mid,
@@ -45,6 +46,8 @@ namespace oomph
     TimeStepper* time_stepper_pt)
     : Wall_pt(wall_pt), Xi_lo(xi_lo), Fract_mid(fract_mid), Xi_hi(xi_hi)
   {
+    set_element_factory_pt(element_factory_pt);
+
     // Mesh can only be built with 2D Qelements.
     MeshChecker::assert_geometric_element<QElementGeometricBase>(
       element_factory_pt, 2);
@@ -62,7 +65,7 @@ namespace oomph
     Element_pt.resize(3);
 
     // Create first element
-    Element_pt[0] = element_factory_pt->new_element();
+    Element_pt[0] = new_element();
 
     // Read out the number of linear points in the element
     unsigned n_p = this->finite_element_pt(0)->nnode_1d();
@@ -200,7 +203,7 @@ namespace oomph
     // SECOND ELEMENT (lower right corner)
     //
     // Create element
-    Element_pt[1] = element_factory_pt->new_element();
+    Element_pt[1] = new_element();
 
     // Loop over the first column (already exists!)
     //---------------------------------------------
@@ -339,7 +342,7 @@ namespace oomph
     // THIRD ELEMENT (upper left corner)
     //
     // Create element
-    Element_pt[2] = element_factory_pt->new_element();
+    Element_pt[2] = new_element();
 
     // Loop over the first row (has already been created via element 0)
     //-----------------------------------------------------------------
@@ -533,8 +536,8 @@ namespace oomph
   ///   are located on straight lines running from the edges of the
   ///   central box to the outer wall.
   //======================================================================
-  void AlgebraicRefineableQuarterCircleSectorTFMesh<
-    ELEMENT>::setup_algebraic_node_update()
+  void AlgebraicRefineableQuarterCircleSectorTFMesh::
+    setup_algebraic_node_update()
   {
 #ifdef PARANOID
     /// Pointer to algebraic element in central box
@@ -819,9 +822,8 @@ namespace oomph
   /// Algebraic update function: Update in central box according
   /// to wall shape at time level t (t=0: present; t>0: previous)
   //======================================================================
-  void AlgebraicRefineableQuarterCircleSectorTFMesh<
-    ELEMENT>::node_update_in_central_box(const unsigned& t,
-                                         AlgebraicNode*& node_pt)
+  void AlgebraicRefineableQuarterCircleSectorTFMesh::node_update_in_central_box(
+    const unsigned& t, AlgebraicNode*& node_pt)
   {
 #ifdef PARANOID
     // We're updating the nodal positions (!) at time level t
@@ -905,9 +907,8 @@ namespace oomph
   /// Algebraic update function: Update in lower right box according
   /// to wall shape at time level t (t=0: present; t>0: previous)
   //====================================================================
-  void AlgebraicRefineableQuarterCircleSectorTFMesh<
-    ELEMENT>::node_update_in_lower_right_box(const unsigned& t,
-                                             AlgebraicNode*& node_pt)
+  void AlgebraicRefineableQuarterCircleSectorTFMesh::
+    node_update_in_lower_right_box(const unsigned& t, AlgebraicNode*& node_pt)
   {
 #ifdef PARANOID
     // We're updating the nodal positions (!) at time level t
@@ -1012,9 +1013,8 @@ namespace oomph
   /// Algebraic update function: Update in upper left box according
   /// to wall shape at time level t (t=0: present; t>0: previous)
   //====================================================================
-  void AlgebraicRefineableQuarterCircleSectorTFMesh<
-    ELEMENT>::node_update_in_upper_left_box(const unsigned& t,
-                                            AlgebraicNode*& node_pt)
+  void AlgebraicRefineableQuarterCircleSectorTFMesh::
+    node_update_in_upper_left_box(const unsigned& t, AlgebraicNode*& node_pt)
   {
 #ifdef PARANOID
     // We're updating the nodal positions (!) at time level t
@@ -1120,8 +1120,8 @@ namespace oomph
   //======================================================================
   /// Update algebraic update function for nodes in lower right box.
   //======================================================================
-  void AlgebraicRefineableQuarterCircleSectorTFMesh<
-    ELEMENT>::update_node_update_in_lower_right_box(AlgebraicNode*& node_pt)
+  void AlgebraicRefineableQuarterCircleSectorTFMesh::
+    update_node_update_in_lower_right_box(AlgebraicNode*& node_pt)
   {
     // Extract references for update in central box by copy construction
     Vector<double> ref_value(node_pt->vector_ref_value(Lower_right_box));
@@ -1215,8 +1215,8 @@ namespace oomph
   //======================================================================
   /// Update algebraic update function for nodes in upper left box
   //======================================================================
-  void AlgebraicRefineableQuarterCircleSectorTFMesh<
-    ELEMENT>::update_node_update_in_upper_left_box(AlgebraicNode*& node_pt)
+  void AlgebraicRefineableQuarterCircleSectorTFMesh::
+    update_node_update_in_upper_left_box(AlgebraicNode*& node_pt)
   {
     // Extract references for update in central box by copy construction
     Vector<double> ref_value(node_pt->vector_ref_value(Upper_left_box));
