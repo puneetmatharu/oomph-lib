@@ -36,7 +36,7 @@ namespace oomph
   /// default timestepper.
   //=============================================================
   CylinderWithFlagTFMesh::CylinderWithFlagTFMesh(
-    std::unique_ptr<ElementFactoryBase> element_factory_pt,
+    const ElementFactoryPt& element_factory_pt,
     Circle* cylinder_pt,
     GeomObject* top_flag_pt,
     GeomObject* bottom_flag_pt,
@@ -50,13 +50,14 @@ namespace oomph
     const double& a,
     TimeStepper* time_stepper_pt)
   {
+    set_element_factory_pt(element_factory_pt);
+
     // Mesh can only be built with 2D Qelements.
     MeshChecker::assert_geometric_element<QElementGeometricBase>(
       element_factory_pt, 2);
 
     // Create the domain
-    Domain_pt = new CylinderWithFlagDomain(element_factory_pt,
-                                           cylinder_pt,
+    Domain_pt = new CylinderWithFlagDomain(cylinder_pt,
                                            top_flag_pt,
                                            bottom_flag_pt,
                                            tip_flag_pt,
@@ -84,7 +85,7 @@ namespace oomph
     for (unsigned e = 0; e < nmacro_element; e++)
     {
       // Create the FiniteElement and add to the Element_pt Vector
-      Element_pt.push_back(element_factory_pt->new_element());
+      Element_pt.push_back(new_element());
 
       // Read out the number of linear points in the element
       unsigned np = this->finite_element_pt(e)->nnode_1d();

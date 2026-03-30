@@ -54,7 +54,7 @@ namespace oomph
     /// of the centre of the cylinder and its radius. Timestepper defaults to
     /// Steady default timestepper.
     CylinderWithFlagTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       Circle* cylinder_pt,
       GeomObject* top_flag_pt,
       GeomObject* bottom_flag_pt,
@@ -104,7 +104,7 @@ namespace oomph
     /// of the centre of the cylinder and its radius. Timestepper defaults to
     /// Steady default timestepper.
     RefineableCylinderWithFlagTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       Circle* cylinder_pt,
       GeomObject* top_flag_pt,
       GeomObject* bottom_flag_pt,
@@ -161,7 +161,7 @@ namespace oomph
     /// of the centre of the cylinder and its radius. Timestepper defaults to
     /// Steady default timestepper.
     AlgebraicCylinderWithFlagTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       Circle* cylinder_pt,
       GeomObject* top_flag_pt,
       GeomObject* bottom_flag_pt,
@@ -358,7 +358,7 @@ namespace oomph
     /// of the centre of the cylinder and its radius. Timestepper defaults to
     /// Steady default timestepper.
     RefineableAlgebraicCylinderWithFlagTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       Circle* cylinder_pt,
       GeomObject* top_flag_pt,
       GeomObject* bottom_flag_pt,
