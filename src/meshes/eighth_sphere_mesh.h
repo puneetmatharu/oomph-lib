@@ -57,7 +57,7 @@ namespace oomph
     /// Constructor: Pass radius and timestepper; defaults to
     /// static default timestepper
     EighthSphereTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       const double& radius,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
 
@@ -93,7 +93,7 @@ namespace oomph
     /// Constructor: Pass radius and timestepper; defaults to
     /// static default timestepper
     RefineableEighthSphereTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       const double& radius,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : EighthSphereTFMesh(element_factory_pt, radius, time_stepper_pt)
@@ -107,18 +107,7 @@ namespace oomph
       }
 
       // Associate the elements with octrees and plant in forest
-      Vector<TreeRoot*> tree_pt;
-      OcTreeRoot::setup_static_data();
-      for (unsigned e = 0; e < nel; e++)
-      {
-        FiniteElement* el_pt = this->finite_element_pt(e);
-        OcTreeRoot* octree_root_pt =
-          new OcTreeRoot(dynamic_cast<RefineableElement*>(el_pt));
-        tree_pt.push_back(octree_root_pt);
-      }
-
-      // Plant in forest
-      this->Forest_pt = new OcTreeForest(tree_pt);
+      this->setup_octree_forest();
 
 #ifdef PARANOID
       // Run self test on octree forest

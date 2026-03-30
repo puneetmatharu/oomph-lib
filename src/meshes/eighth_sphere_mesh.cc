@@ -33,11 +33,13 @@ namespace oomph
   /// defaults to static default timestepper.
   //======================================================================
   EighthSphereTFMesh::EighthSphereTFMesh(
-    std::unique_ptr<ElementFactoryBase> element_factory_pt,
+    const ElementFactoryPt& element_factory_pt,
     const double& radius,
     TimeStepper* time_stepper_pt)
     : Radius(radius)
   {
+    set_element_factory_pt(element_factory_pt);
+
     // Mesh can only be built with 3D Qelements.
     MeshChecker::assert_geometric_element<QElementGeometricBase>(
       element_factory_pt, 3);
@@ -56,7 +58,7 @@ namespace oomph
 
     // Create first element
     //--------------------
-    this->Element_pt[0] = element_factory_pt->new_element();
+    this->Element_pt[0] = new_element();
 
     // Give it nodes
 
@@ -116,7 +118,7 @@ namespace oomph
 
     // Create a second element
     //------------------------
-    this->Element_pt[1] = element_factory_pt->new_element();
+    this->Element_pt[1] = new_element();
 
     // Give it nodes
 
@@ -184,7 +186,7 @@ namespace oomph
 
     // Create a third element
     //------------------------
-    this->Element_pt[2] = element_factory_pt->new_element();
+    this->Element_pt[2] = new_element();
 
     // Give it nodes
 
@@ -263,7 +265,7 @@ namespace oomph
 
     // Create the fourth element
     //-------------------------
-    this->Element_pt[3] = element_factory_pt->new_element();
+    this->Element_pt[3] = new_element();
 
     // Give it nodes
 

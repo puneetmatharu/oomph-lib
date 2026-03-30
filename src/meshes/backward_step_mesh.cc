@@ -36,18 +36,16 @@ namespace oomph
   /// (reversed) backward step geometry. Timestepper defaults
   /// to Steady.
   //=================================================================
-  void BackwardStepQuadTFMesh::build_mesh(
-    std::unique_ptr<ElementFactoryBase> element_factory_pt,
-    const unsigned& nx,
-    const unsigned& ny,
-    const unsigned& nx_cut_out,
-    const unsigned& ny_cut_out,
-    const double& lx,
-    const double& ly)
+  void BackwardStepQuadTFMesh::build_mesh(const unsigned& nx,
+                                          const unsigned& ny,
+                                          const unsigned& nx_cut_out,
+                                          const unsigned& ny_cut_out,
+                                          const double& lx,
+                                          const double& ly)
   {
     // Mesh can only be built with 2D Qelements.
     MeshChecker::assert_geometric_element<QElementGeometricBase>(
-      element_factory_pt, 2);
+      this->element_factory_pt, 2);
 
     // By default nobody's claiming any nodes
     std::map<Node*, bool> keep;

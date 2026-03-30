@@ -57,7 +57,7 @@ namespace oomph
 
     /// Constructor for the mesh -- uniformly spaced elements
     CircularCylindricalShellTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       const unsigned& nx,
       const unsigned& ny,
       const double& lx,
@@ -82,7 +82,7 @@ namespace oomph
     ///  Lagr. coordinates to new positions to allow for better resolution of
     /// bending boundary layer
     CircularCylindricalShellTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       const unsigned& nx,
       const unsigned& ny,
       const double& lx,
@@ -107,7 +107,7 @@ namespace oomph
     /// elements near the ends are squashed to that axial extent
     /// of the elements changes from lx/nx to delta_bl.
     CircularCylindricalShellTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       const unsigned& nx,
       const unsigned& ny,
       const double& lx,
@@ -126,7 +126,7 @@ namespace oomph
       Delta_bl = delta_bl;
 
       // Build mesh
-      this->build_mesh(element_factory_pt, nx, ny, lx, ly);
+      this->build_mesh(nx, ny, lx, ly);
     }
 
 
@@ -144,8 +144,7 @@ namespace oomph
 
   private:
     /// Mesh build helper fct
-    void build_mesh(std::unique_ptr<ElementFactoryBase> element_factory_pt,
-                    const unsigned& nx,
+    void build_mesh(const unsigned& nx,
                     const unsigned& ny,
                     const double& lx,
                     const double& ly);

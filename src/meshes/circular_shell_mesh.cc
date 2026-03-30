@@ -31,16 +31,14 @@ namespace oomph
   //=======================================================================
   /// Mesh build fct
   //=======================================================================
-  void CircularCylindricalShellTFMesh::build_mesh(
-    std::unique_ptr<ElementFactoryBase> element_factory_pt,
-    const unsigned& nx,
-    const unsigned& ny,
-    const double& lx,
-    const double& ly)
+  void CircularCylindricalShellTFMesh::build_mesh(const unsigned& nx,
+                                                  const unsigned& ny,
+                                                  const double& lx,
+                                                  const double& ly)
   {
     // Mesh can only be built with 2D Qelements.
     MeshChecker::assert_geometric_element<QElementGeometricBase>(
-      element_factory_pt, 2);
+      this->element_factory_pt, 2);
 
     // Find out how many nodes there are
     unsigned n_node = nnode();

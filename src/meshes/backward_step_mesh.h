@@ -54,7 +54,7 @@ namespace oomph
     /// (reversed) backward step geometry. Timestepper defaults
     /// to Steady.
     BackwardStepQuadTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       const unsigned& nx,
       const unsigned& ny,
       const unsigned& nx_cut_out,
@@ -66,7 +66,7 @@ namespace oomph
           element_factory_pt, nx, ny, lx, ly, time_stepper_pt)
     {
       // Do the actual build
-      build_mesh(element_factory_pt, nx, ny, nx_cut_out, ny_cut_out, lx, ly);
+      build_mesh(nx, ny, nx_cut_out, ny_cut_out, lx, ly);
     }
 
     /// Destructor: Empty
@@ -103,7 +103,7 @@ namespace oomph
     /// (reversed) backward step geometry. Timestepper defaults
     /// to Steady.
     RefineableBackwardStepQuadTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       const unsigned& nx,
       const unsigned& ny,
       const unsigned& nx_cut_out,
