@@ -29,6 +29,36 @@
 namespace oomph
 {
   //===========================================================================
+  /// Constructor for spine 3D mesh: Pass element factory, number of elements
+  /// in x-direction, number of elements in y-direction, number of elements in
+  /// z-direction, length, width and height of layer, and pointer to
+  /// timestepper (defaults to Static timestepper).
+  //===========================================================================
+  SingleLayerCubicSpineTFMesh::SingleLayerCubicSpineTFMesh(
+    const ElementFactoryPt& element_factory_pt,
+    const unsigned& nx,
+    const unsigned& ny,
+    const unsigned& nz,
+    const double& lx,
+    const double& ly,
+    const double& h,
+    TimeStepper* time_stepper_pt)
+    : SimpleCubicTFMesh(
+        element_factory_pt, nx, ny, nz, lx, ly, h, time_stepper_pt)
+  {
+    // Mesh can only be built with 3D Qelements.
+    MeshChecker::assert_geometric_element<QElementGeometricBase>(
+      element_factory_pt, 3);
+
+    // Mesh can only be built with spine elements
+    MeshChecker::assert_geometric_element<SpineFiniteElement>(
+      element_factory_pt, 3);
+
+    // Now build the single layer mesh on top of the existing mesh
+    build_single_layer_mesh(time_stepper_pt);
+  }
+
+  //===========================================================================
   /// Constructor for spine 3D mesh: Pass number of elements in x-direction,
   /// number of elements in y-direction, number elements in z-direction,
   /// length, width and height of layer,

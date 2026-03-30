@@ -48,6 +48,20 @@ namespace oomph
                                       public SpineTFMesh
   {
   public:
+    /// Constructor: Pass element factory, number of elements in x-direction,
+    /// number of elements in y-direction, number of elements in z-direction,
+    /// lengths in x- and y- directions, height of layer, and pointer to
+    /// timestepper (defaults to Steady timestepper)
+    SingleLayerCubicSpineTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const unsigned& nx,
+      const unsigned& ny,
+      const unsigned& nz,
+      const double& lx,
+      const double& ly,
+      const double& h,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
+
     /// Constructor: Pass number of elements in x-direction, number of
     /// elements in y-direction, number of elements in z-direction,
     /// lengths in x- and y- directions, height of layer, and pointer

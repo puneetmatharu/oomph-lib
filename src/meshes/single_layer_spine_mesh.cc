@@ -29,6 +29,45 @@
 namespace oomph
 {
   //===========================================================================
+  /// Constructor for spine 2D mesh: Pass element factory, number of elements
+  /// in x-direction, number of elements in y-direction, axial length and
+  /// height of layer, and pointer to timestepper (defaults to Static
+  /// timestepper).
+  //===========================================================================
+  SingleLayerSpineTFMesh::SingleLayerSpineTFMesh(
+    const ElementFactoryPt& element_factory_pt,
+    const unsigned& nx,
+    const unsigned& ny,
+    const double& lx,
+    const double& h,
+    TimeStepper* time_stepper_pt)
+    : RectangularQuadTFMesh(element_factory_pt,
+                            nx,
+                            ny,
+                            0.0,
+                            lx,
+                            0.0,
+                            h,
+                            false,
+                            false,
+                            time_stepper_pt)
+  {
+    // Mesh can only be built with 2D Qelements.
+    MeshChecker::assert_geometric_element<QElementGeometricBase>(
+      element_factory_pt, 2);
+
+    // Mesh can only be built with spine elements
+    MeshChecker::assert_geometric_element<SpineFiniteElement>(
+      element_factory_pt, 2);
+
+    // We've called the "generic" constructor for the RectangularQuadTFMesh
+    // which doesn't do much...
+
+    // Now build the mesh:
+    build_single_layer_mesh(time_stepper_pt);
+  }
+
+  //===========================================================================
   /// Constructor for spine 2D mesh: Pass number of elements in x-direction,
   /// number of elements in y-direction, axial length and height of layer,
   /// and pointer to timestepper (defaults to Static timestepper).
@@ -47,6 +86,46 @@ namespace oomph
                                                  TimeStepper* time_stepper_pt)
     : RectangularQuadTFMesh(
         nx, ny, 0.0, lx, 0.0, h, false, false, time_stepper_pt)
+  {
+    // Mesh can only be built with 2D Qelements.
+    MeshChecker::assert_geometric_element<QElementGeometricBase>(
+      element_factory_pt, 2);
+
+    // Mesh can only be built with spine elements
+    MeshChecker::assert_geometric_element<SpineFiniteElement>(
+      element_factory_pt, 2);
+
+    // We've called the "generic" constructor for the RectangularQuadTFMesh
+    // which doesn't do much...
+
+    // Now build the mesh:
+    build_single_layer_mesh(time_stepper_pt);
+  }
+
+  //===========================================================================
+  /// Constuctor for spine 2D mesh: Pass element factory, number of elements
+  /// in x-direction, number of elements in y-direction, axial length and
+  /// height of layer, a boolean flag to make the mesh periodic in the
+  /// x-direction, and pointer to timestepper (defaults to Static timestepper).
+  //===========================================================================
+  SingleLayerSpineTFMesh::SingleLayerSpineTFMesh(
+    const ElementFactoryPt& element_factory_pt,
+    const unsigned& nx,
+    const unsigned& ny,
+    const double& lx,
+    const double& h,
+    const bool& periodic_in_x,
+    TimeStepper* time_stepper_pt)
+    : RectangularQuadTFMesh(element_factory_pt,
+                            nx,
+                            ny,
+                            0.0,
+                            lx,
+                            0.0,
+                            h,
+                            periodic_in_x,
+                            false,
+                            time_stepper_pt)
   {
     // Mesh can only be built with 2D Qelements.
     MeshChecker::assert_geometric_element<QElementGeometricBase>(
