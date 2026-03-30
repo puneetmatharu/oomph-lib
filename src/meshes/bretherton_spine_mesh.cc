@@ -47,7 +47,9 @@ namespace oomph
   /// - time_stepper_pt: Pointer to timestepper; defaults to Static
   //======================================================================
   BrethertonSpineTFMesh::BrethertonSpineTFMesh(
-    std::unique_ptr<ElementFactoryBase> element_factory_pt,
+    const ElementFactoryPt& element_factory_pt,
+    const FaceElementFactoryPt& interface_element_factory_pt,
+    const FaceElementFactoryPt& free_surface_face_element_factory_pt,
     const unsigned& nx1,
     const unsigned& nx2,
     const unsigned& nx3,
@@ -67,6 +69,9 @@ namespace oomph
                              1.0,
                              h,
                              time_stepper_pt),
+      Interface_element_factory_pt(interface_element_factory_pt),
+      Free_surface_face_element_factory_pt(
+        free_surface_face_element_factory_pt),
       Nx1(nx1),
       Nx2(nx2),
       Nx3(nx3),
@@ -82,6 +87,14 @@ namespace oomph
       Spine_centre_fraction_pt(&Default_spine_centre_fraction),
       Default_spine_centre_fraction(0.5)
   {
+    if (Interface_element_factory_pt == 0)
+    {
+      throw OomphLibError(
+        "BrethertonSpineTFMesh requires an interface element factory",
+        OOMPH_CURRENT_FUNCTION,
+        OOMPH_EXCEPTION_LOCATION);
+    }
+
     // Add the created elements to the bulk domain
     unsigned n_bulk = this->nelement();
     Bulk_element_pt.resize(n_bulk);
@@ -152,8 +165,10 @@ namespace oomph
       {
         // Construct a new 1D line element on the face on which the local
         // coordinate 1 is fixed at its max. value (1) --- This is face 2
-        FiniteElement* interface_element_element_pt = new INTERFACE_ELEMENT(
-          this->finite_element_pt(n_x * (n_y - 1) + i), 2);
+        FaceElement* interface_element_element_pt =
+          Interface_element_factory_pt->new_element(
+            this->finite_element_pt(n_x * (n_y - 1) + i), 2);
+        interface_element_element_pt->set_boundary_number_in_bulk_mesh(4);
 
         // Push it back onto the stack
         this->Element_pt.push_back(interface_element_element_pt);
@@ -1142,21 +1157,19 @@ namespace oomph
     const double& zeta_up_transition_start,
     const double& zeta_up_transition_end)
   {
+    if (Free_surface_face_element_factory_pt == 0)
+    {
+      throw OomphLibError(
+        "BrethertonSpineTFMesh requires a free-surface face-element factory "
+        "for reposition_spines()",
+        OOMPH_CURRENT_FUNCTION,
+        OOMPH_EXCEPTION_LOCATION);
+    }
+
     // Firstly create a geometric object of the free surface
     Mesh* fs_mesh_pt = new Mesh;
-    this->template build_face_mesh<ELEMENT, FaceElementAsGeomObject>(
-      4, fs_mesh_pt);
-
-    // Loop over these new face elements and set the boundary number
-    // of the bulk mesh
+    this->build_face_mesh(4, fs_mesh_pt, Free_surface_face_element_factory_pt);
     unsigned n_face_element = fs_mesh_pt->nelement();
-    // Loop over the elements
-    for (unsigned e = 0; e < n_face_element; e++)
-    {
-      // Cast the element pointer to the correct thing!
-      dynamic_cast<FaceElementAsGeomObject*>(fs_mesh_pt->element_pt(e))
-        ->set_boundary_number_in_bulk_mesh(4);
-    }
 
     // Now make a single geometric object that represents the collection of
     // geometric objects that form the boundary of the bulk mesh. Two

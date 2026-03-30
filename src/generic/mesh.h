@@ -722,6 +722,60 @@ namespace oomph
 #endif
     }
 
+    /// Construct a Mesh of face elements along the b-th boundary of the mesh
+    /// using a runtime face-element factory.
+    void build_face_mesh(const unsigned& b,
+                         Mesh* const& face_mesh_pt,
+                         FaceElementFactoryBase& face_element_factory)
+    {
+      // Find the number of nodes on the boundary
+      unsigned nbound_node = nboundary_node(b);
+      // Loop over the boundary nodes and add them to face mesh node pointer
+      for (unsigned n = 0; n < nbound_node; n++)
+      {
+        face_mesh_pt->add_node_pt(boundary_node_pt(b, n));
+      }
+
+      // Find the number of elements next to the boundary
+      unsigned nbound_element = nboundary_element(b);
+      // Loop over the elements adjacent to boundary b
+      for (unsigned e = 0; e < nbound_element; e++)
+      {
+        FaceElement* face_element_pt = face_element_factory.new_element(
+          boundary_element_pt(b, e), face_index_at_boundary(b, e));
+
+        // Specify boundary id in bulk mesh (needed to extract boundary
+        // coordinate)
+        face_element_pt->set_boundary_number_in_bulk_mesh(b);
+
+        // Add the face element to the face mesh
+        face_mesh_pt->add_element_pt(face_element_pt);
+      }
+
+#ifdef OOMPH_HAS_MPI
+      // If the bulk mesh has been distributed then the face mesh is too
+      if (this->is_mesh_distributed())
+      {
+        face_mesh_pt->set_communicator_pt(this->communicator_pt());
+      }
+#endif
+    }
+
+    /// Convenience overload that takes a shared face-element factory handle.
+    void build_face_mesh(const unsigned& b,
+                         Mesh* const& face_mesh_pt,
+                         const FaceElementFactoryPt& face_element_factory)
+    {
+      if (face_element_factory == 0)
+      {
+        throw OomphLibError(
+          "Null face-element factory passed to build_face_mesh",
+          OOMPH_CURRENT_FUNCTION,
+          OOMPH_EXCEPTION_LOCATION);
+      }
+      build_face_mesh(b, face_mesh_pt, *face_element_factory);
+    }
+
     /// Self-test: Check elements and nodes. Return 0 for OK
     unsigned self_test();
 

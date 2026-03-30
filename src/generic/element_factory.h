@@ -84,6 +84,47 @@ namespace oomph
     return std::make_shared<ElementFactory<ELEMENT>>();
   }
 
+  //=======================================================================
+  /// Non-templated factory interface that produces FaceElement objects from
+  /// a bulk element and face index.
+  //=======================================================================
+  class FaceElementFactoryBase
+  {
+  public:
+    virtual ~FaceElementFactoryBase() = default;
+    virtual FaceElement* new_element(FiniteElement* element_pt,
+                                     const int& face_index) = 0;
+  };
+
+  /// Shared ownership handle for face element factories.
+  using FaceElementFactoryPt = std::shared_ptr<FaceElementFactoryBase>;
+
+  //=======================================================================
+  /// Templated factory implementation for concrete face element types.
+  //=======================================================================
+  template<typename FACE_ELEMENT>
+  class FaceElementFactory : public FaceElementFactoryBase
+  {
+    static_assert(std::is_base_of<FaceElement, FACE_ELEMENT>::value,
+                  "Template FACE_ELEMENT must derive from FaceElement");
+
+  public:
+    FaceElement* new_element(FiniteElement* element_pt,
+                             const int& face_index) override
+    {
+      return new FACE_ELEMENT(element_pt, face_index);
+    }
+  };
+
+  //=======================================================================
+  /// Helper function to create face element factories
+  //=======================================================================
+  template<class FACE_ELEMENT>
+  [[nodiscard]] inline FaceElementFactoryPt make_face_element_factory_pt()
+  {
+    return std::make_shared<FaceElementFactory<FACE_ELEMENT>>();
+  }
+
 } // namespace oomph
 
 #endif

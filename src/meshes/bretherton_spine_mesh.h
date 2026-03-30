@@ -62,7 +62,9 @@ namespace oomph
     /// wall
     /// - time_stepper_pt: Pointer to timestepper; defaults to Steady
     BrethertonSpineTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
+      const FaceElementFactoryPt& interface_element_factory_pt,
+      const FaceElementFactoryPt& free_surface_face_element_factory_pt,
       const unsigned& nx1,
       const unsigned& nx2,
       const unsigned& nx3,
@@ -486,6 +488,13 @@ namespace oomph
     /// for the rest of the mesh generation process to work properly.
     /// Therefore we keep a copy of the function in here.
     void initial_element_reorder();
+
+    /// Runtime factory used to create the free-surface interface elements.
+    FaceElementFactoryPt Interface_element_factory_pt;
+
+    /// Runtime factory used to build temporary free-surface face meshes during
+    /// spine repositioning.
+    FaceElementFactoryPt Free_surface_face_element_factory_pt;
 
     /// Number of elements along wall in deposited film region
     unsigned Nx1;
