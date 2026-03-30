@@ -46,7 +46,7 @@ namespace oomph
   {
   public:
     /// Constructor
-    TwoDAnnularTFMesh(std::unique_ptr<ElementFactoryBase> element_factory_pt,
+    TwoDAnnularTFMesh(const ElementFactoryPt& element_factory_pt,
                       const bool& periodic,
                       const double& azimuthal_fraction,
                       const unsigned& ntheta,
@@ -67,7 +67,7 @@ namespace oomph
     }
 
     /// Constructor; rotate mesh by angle phi.
-    TwoDAnnularTFMesh(std::unique_ptr<ElementFactoryBase> element_factory_pt,
+    TwoDAnnularTFMesh(const ElementFactoryPt& element_factory_pt,
                       const bool& periodic,
                       const double& azimuthal_fraction,
                       const unsigned& ntheta,
@@ -110,7 +110,7 @@ namespace oomph
   public:
     /// Constructor
     RefineableTwoDAnnularTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       const bool& periodic,
       const double& azimuthal_fraction,
       const unsigned& ntheta,
@@ -186,6 +186,7 @@ namespace oomph
 
     /// Constructor; rotate mesh by angle phi
     RefineableTwoDAnnularTFMesh(
+      const ElementFactoryPt& element_factory_pt,
       const bool& periodic,
       const double& azimuthal_fraction,
       const unsigned& ntheta,
@@ -194,9 +195,17 @@ namespace oomph
       const double& h,
       const double& phi,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : RectangularQuadTFMesh(ntheta, nr, 1.0, 1.0, periodic, time_stepper_pt),
-        TwoDAnnularTFMesh(
-          periodic, azimuthal_fraction, ntheta, nr, a, h, phi, time_stepper_pt)
+      : RectangularQuadTFMesh(
+          element_factory_pt, ntheta, nr, 1.0, 1.0, periodic, time_stepper_pt),
+        TwoDAnnularTFMesh(element_factory_pt,
+                          periodic,
+                          azimuthal_fraction,
+                          ntheta,
+                          nr,
+                          a,
+                          h,
+                          phi,
+                          time_stepper_pt)
     {
       // Mesh can only be built with 2D Qelements.
       MeshChecker::assert_geometric_element<QElementGeometricBase>(

@@ -36,7 +36,7 @@ namespace oomph
   /// default timestepper, Steady).
   //========================================================================
   CollapsibleChannelTFMesh::CollapsibleChannelTFMesh(
-    std::unique_ptr<ElementFactoryBase> element_factory_pt,
+    const ElementFactoryPt& element_factory_pt,
     const unsigned& nup,
     const unsigned& ncollapsible,
     const unsigned& ndown,

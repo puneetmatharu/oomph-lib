@@ -40,7 +40,7 @@ namespace oomph
   /// Timestepper defined in the Mesh base class
   //===================================================================
   ChannelWithLeafletTFMesh::ChannelWithLeafletTFMesh(
-    std::unique_ptr<ElementFactoryBase> element_factory_pt,
+    const ElementFactoryPt& element_factory_pt,
     GeomObject* leaflet_pt,
     const double& lleft,
     const double& lright,
@@ -51,8 +51,12 @@ namespace oomph
     const unsigned& ny1,
     const unsigned& ny2,
     TimeStepper* time_stepper_pt)
-    : SimpleRectangularQuadTFMesh(
-        nright + nleft, ny1 + ny2, lright + lleft, htot, time_stepper_pt)
+    : SimpleRectangularQuadTFMesh(element_factory_pt,
+                                  nright + nleft,
+                                  ny1 + ny2,
+                                  lright + lleft,
+                                  htot,
+                                  time_stepper_pt)
   {
     // Mesh can only be built with 2D Qelements.
     MeshChecker::assert_geometric_element<QElementGeometricBase>(

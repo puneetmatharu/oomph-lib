@@ -64,7 +64,7 @@ namespace oomph
     /// end of the leaflet. Timestepper defaults to Steady default
     /// Timestepper defined in the Mesh base class
     ChannelWithLeafletTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       GeomObject* leaflet_pt,
       const double& lleft,
       const double& lright,
@@ -116,7 +116,7 @@ namespace oomph
     /// end of the leaflet. Timestepper defaults to Steady default
     /// Timestepper defined in the Mesh base class
     RefineableChannelWithLeafletTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       GeomObject* leaflet_pt,
       const double& lleft,
       const double& lright,
@@ -177,7 +177,7 @@ namespace oomph
     /// end of the leaflet. Timestepper defaults to Steady default
     /// Timestepper defined in the Mesh base class
     MacroElementNodeUpdateChannelWithLeafletTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       GeomObject* leaflet_pt,
       const double& lleft,
       const double& lright,
@@ -230,7 +230,7 @@ namespace oomph
       {
         // Upcast from FiniteElement to the present element
         auto* el_pt =
-          dynamic_cast<MacroElementNodeUpdateElement*>(this->element_pt(i));
+          dynamic_cast<MacroElementNodeUpdateElementBase*>(this->element_pt(i));
 
 #ifdef PARANOID
         // Check if cast is successful
@@ -303,7 +303,7 @@ namespace oomph
     /// end of the leaflet. Timestepper defaults to Steady default
     /// Timestepper defined in the Mesh base class
     MacroElementNodeUpdateRefineableChannelWithLeafletTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       GeomObject* leaflet_pt,
       const double& lleft,
       const double& lright,
@@ -372,7 +372,7 @@ namespace oomph
     /// end of the leaflet. Timestepper defaults to Steady default
     /// Timestepper defined in the Mesh base class
     AlgebraicChannelWithLeafletTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       GeomObject* leaflet_pt,
       const double& lleft,
       const double& lright,
@@ -482,7 +482,7 @@ namespace oomph
     /// end of the leaflet. Timestepper defaults to Steady default
     /// Timestepper defined in the Mesh base class
     RefineableAlgebraicChannelWithLeafletTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       GeomObject* leaflet_pt,
       const double& lleft,
       const double& lright,
@@ -547,7 +547,7 @@ namespace oomph
     /// end of the leaflet. Timestepper defaults to Steady default
     /// Timestepper defined in the Mesh base class
     PseudoElasticChannelWithLeafletTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       GeomObject* leaflet_pt,
       const double& lleft,
       const double& lright,

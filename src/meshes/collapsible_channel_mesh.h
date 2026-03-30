@@ -70,7 +70,7 @@ namespace oomph
     /// GeomObject that defines the collapsible segment and pointer to
     /// TimeStepper (defaults to the default timestepper, Steady).
     CollapsibleChannelTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       const unsigned& nup,
       const unsigned& ncollapsible,
       const unsigned& ndown,
@@ -186,7 +186,7 @@ namespace oomph
     /// Constructor: Pass number of elements, lengths, pointer to
     /// geometric object that describes the wall and timestepper
     RefineableCollapsibleChannelTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       const unsigned& nup,
       const unsigned& ncollapsible,
       const unsigned& ndown,
@@ -242,7 +242,7 @@ namespace oomph
     /// geometric object that represents the wall and pointer to
     /// timestepper (defaults to Steady).
     MacroElementNodeUpdateCollapsibleChannelTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       const unsigned& nup,
       const unsigned& ncollapsible,
       const unsigned& ndown,
@@ -295,7 +295,7 @@ namespace oomph
       {
         // Upcast from FiniteElement to the present element
         auto* el_pt =
-          dynamic_cast<MacroElementNodeUpdateElement*>(this->element_pt(i));
+          dynamic_cast<MacroElementNodeUpdateElementBase*>(this->element_pt(i));
 
 #ifdef PARANOID
         // Check if cast is successful
@@ -370,7 +370,7 @@ namespace oomph
     /// geometric object that represents the wall and pointer to
     /// timestepper (defaults to Steady).
     MacroElementNodeUpdateRefineableCollapsibleChannelTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       const unsigned& nup,
       const unsigned& ncollapsible,
       const unsigned& ndown,
@@ -432,7 +432,7 @@ namespace oomph
     /// GeomObject that defines the collapsible segment and pointer to
     /// TimeStepper (defaults to the default timestepper, Steady).
     AlgebraicCollapsibleChannelTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       const unsigned& nup,
       const unsigned& ncollapsible,
       const unsigned& ndown,
@@ -473,7 +473,7 @@ namespace oomph
     /// GeomObject that defines the collapsible segment and pointer to
     /// TimeStepper (defaults to the default timestepper, Steady).
     AlgebraicCollapsibleChannelTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       const unsigned& nup,
       const unsigned& ncollapsible,
       const unsigned& ndown,
@@ -598,7 +598,7 @@ namespace oomph
     /// GeomObject that defines the collapsible segment and pointer to
     /// TimeStepper (defaults to the default timestepper, Steady).
     RefineableAlgebraicCollapsibleChannelTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       const unsigned& nup,
       const unsigned& ncollapsible,
       const unsigned& ndown,
@@ -643,7 +643,7 @@ namespace oomph
     /// GeomObject that defines the collapsible segment and pointer to
     /// TimeStepper (defaults to the default timestepper, Steady).
     RefineableAlgebraicCollapsibleChannelTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       const unsigned& nup,
       const unsigned& ncollapsible,
       const unsigned& ndown,
