@@ -29,6 +29,50 @@
 namespace oomph
 {
   //===========================================================================
+  /// Constructor for spine 2D mesh: Pass element factory, number of elements
+  /// in x-direction, number of elements in y-direction, axial length and
+  /// height of layer, and pointer to timestepper (defaults to Static
+  /// timestepper).
+  ///
+  /// The mesh contains a layer of spinified fluid elements and information
+  /// about how the internal node positions are affected by changes in spine
+  /// length. Additional equations that determine the spine heights must be
+  /// specified in order to use this mesh.
+  //===========================================================================
+  HorizontalSingleLayerSpineTFMesh::HorizontalSingleLayerSpineTFMesh(
+    const ElementFactoryPt& element_factory_pt,
+    const unsigned& nx,
+    const unsigned& ny,
+    const double& lx,
+    const double& h,
+    TimeStepper* time_stepper_pt)
+    : RectangularQuadTFMesh(element_factory_pt,
+                            nx,
+                            ny,
+                            0.0,
+                            lx,
+                            0.0,
+                            h,
+                            false,
+                            false,
+                            time_stepper_pt)
+  {
+    // Mesh can only be built with 2D Qelements.
+    MeshChecker::assert_geometric_element<QElementGeometricBase>(
+      element_factory_pt, 2);
+
+    // Mesh can only be built with spine elements
+    MeshChecker::assert_geometric_element<SpineFiniteElement>(
+      element_factory_pt, 2);
+
+    // We've called the "generic" constructor for the RectangularQuadTFMesh
+    // which doesn't do much...
+
+    // Now build the mesh:
+    build_horizontal_single_layer_mesh(time_stepper_pt);
+  }
+
+  //===========================================================================
   /// Constructor for spine 2D mesh: Pass number of elements in x-direction,
   /// number of elements in y-direction, axial length and height of layer,
   /// and pointer to timestepper (defaults to Static timestepper).
@@ -67,8 +111,8 @@ namespace oomph
   /// Helper function that actually builds the single-layer spine mesh
   /// based on the parameters set in the various constructors
   //===========================================================================
-  void HorizontalSingleLayerSpineTFMesh<
-    ELEMENT>::build_horizontal_single_layer_mesh(TimeStepper* time_stepper_pt)
+  void HorizontalSingleLayerSpineTFMesh::build_horizontal_single_layer_mesh(
+    TimeStepper* time_stepper_pt)
   {
     // Build the underlying quad mesh:
     RectangularQuadTFMesh::build_mesh(time_stepper_pt);
