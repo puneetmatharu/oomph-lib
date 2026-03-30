@@ -84,6 +84,32 @@ namespace oomph
     /// Generic mesh construction function: contains all the hard work
     void build_mesh(TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
 
+    RectangularQuadTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& xmin,
+      const double& xmax,
+      const double& ymin,
+      const double& ymax,
+      const bool& periodic_in_x,
+      const bool& build,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : Nx(nx),
+        Ny(ny),
+        Xmin(xmin),
+        Xmax(xmax),
+        Ymin(ymin),
+        Ymax(ymax),
+        Xperiodic(periodic_in_x)
+    {
+      set_element_factory_pt(element_factory_pt);
+      if (build)
+      {
+        build_mesh(time_stepper_pt);
+      }
+    }
+
     /// Constructor that allows the specification of minimum and maximum
     /// values of x and y coordinates and does not build the mesh
     /// This is intend to be used in derived classes that overload the
@@ -117,10 +143,54 @@ namespace oomph
     }
 
   public:
+    RectangularQuadTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& lx,
+      const double& ly,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : Nx(nx),
+        Ny(ny),
+        Xmin(0.0),
+        Xmax(lx),
+        Ymin(0.0),
+        Ymax(ly),
+        Xperiodic(false)
+    {
+      set_element_factory_pt(element_factory_pt);
+      MeshChecker::assert_geometric_element<QElementGeometricBase>(
+        element_factory_pt, 2);
+      build_mesh(time_stepper_pt);
+    }
+
     /// Simple constructor: nx: number of elements in x direction;
     /// ny: number of elements in y direction; lx, length of domain in x
     /// direction (0,lx); ly, length of domain in y direction (0,ly)
     /// Also pass pointer to timestepper (defaults to Steady)
+    RectangularQuadTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& xmin,
+      const double& xmax,
+      const double& ymin,
+      const double& ymax,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : Nx(nx),
+        Ny(ny),
+        Xmin(xmin),
+        Xmax(xmax),
+        Ymin(ymin),
+        Ymax(ymax),
+        Xperiodic(false)
+    {
+      set_element_factory_pt(element_factory_pt);
+      MeshChecker::assert_geometric_element<QElementGeometricBase>(
+        element_factory_pt, 2);
+      build_mesh(time_stepper_pt);
+    }
+
     RectangularQuadTFMesh(
       const unsigned& nx,
       const unsigned& ny,
@@ -145,6 +215,28 @@ namespace oomph
 
     /// Constructor that allows the specification of minimum and maximum
     /// values of x and y coordinates
+    RectangularQuadTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& lx,
+      const double& ly,
+      const bool& periodic_in_x,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : Nx(nx),
+        Ny(ny),
+        Xmin(0.0),
+        Xmax(lx),
+        Ymin(0.0),
+        Ymax(ly),
+        Xperiodic(periodic_in_x)
+    {
+      set_element_factory_pt(element_factory_pt);
+      MeshChecker::assert_geometric_element<QElementGeometricBase>(
+        element_factory_pt, 2);
+      build_mesh(time_stepper_pt);
+    }
+
     RectangularQuadTFMesh(
       const unsigned& nx,
       const unsigned& ny,
@@ -174,6 +266,30 @@ namespace oomph
     /// direction (0,lx); ly, length of domain in y direction (0,ly)
     /// Boolean flag specifies if the mesh is periodic in the x-direction.
     /// Also pass pointer to timestepper (defaults to Steady)
+    RectangularQuadTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& xmin,
+      const double& xmax,
+      const double& ymin,
+      const double& ymax,
+      const bool& periodic_in_x,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : Nx(nx),
+        Ny(ny),
+        Xmin(xmin),
+        Xmax(xmax),
+        Ymin(ymin),
+        Ymax(ymax),
+        Xperiodic(periodic_in_x)
+    {
+      set_element_factory_pt(element_factory_pt);
+      MeshChecker::assert_geometric_element<QElementGeometricBase>(
+        element_factory_pt, 2);
+      build_mesh(time_stepper_pt);
+    }
+
     RectangularQuadTFMesh(
       const unsigned& nx,
       const unsigned& ny,

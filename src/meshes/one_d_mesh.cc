@@ -42,7 +42,7 @@ namespace oomph
     Element_pt.resize(N);
 
     // Allocate memory for the first element
-    Element_pt[0] = element_factory_pt->new_element();
+    Element_pt[0] = new_element();
 
     // Read out the number of nodes in the element (the member function
     // nnode_1d() is implemented in QElement)
@@ -173,7 +173,7 @@ namespace oomph
       for (unsigned e = 1; e < (N - 1); e++)
       {
         // Allocate memory for the new element
-        Element_pt[e] = element_factory_pt->new_element();
+        Element_pt[e] = new_element();
 
         // The first node is the same as the last node in the neighbouring
         // element on the left
@@ -202,7 +202,7 @@ namespace oomph
       //--------------
 
       // Allocate memory for element
-      Element_pt[N - 1] = element_factory_pt->new_element();
+      Element_pt[N - 1] = new_element();
 
       // The first node is the same as the last node in the neighbouring
       // element on the left

@@ -49,6 +49,15 @@ namespace oomph
     TimeStepper* time_stepper_pt)
     : Nx(n_x), Ny(n_y), Lx(l_x), Ly(l_y)
   {
+    build_mesh(n_x, n_y, l_x, l_y, time_stepper_pt);
+  }
+
+  void SimpleRectangularTriTFMesh::build_mesh(const unsigned& n_x,
+                                              const unsigned& n_y,
+                                              const double& l_x,
+                                              const double& l_y,
+                                              TimeStepper* time_stepper_pt)
+  {
     using namespace MathematicalConstants;
 
     // Mesh can only be built with 2D Telements.
@@ -63,7 +72,7 @@ namespace oomph
     Element_pt.resize(n_element, 0);
 
     // Create first element
-    Element_pt[0] = element_factory_pt->new_element();
+    Element_pt[0] = new_element();
 
     // Currently this mesh only works for 3 and 6 noded triangles
     if ((finite_element_pt(0)->nnode_1d() != 2) &&
@@ -148,10 +157,10 @@ namespace oomph
           //------------------------------
           if (element_count != 0) // 0th element already exists
           {
-            Element_pt[element_count] = element_factory_pt->new_element();
+            Element_pt[element_count] = new_element();
           }
 
-          Element_pt[element_count + 1] = element_factory_pt->new_element();
+          Element_pt[element_count + 1] = new_element();
 
           // Allocate memory for nodes in the current box
           //--------------------------------------------

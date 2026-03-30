@@ -38,6 +38,7 @@
 #include "generic/matrices.h"
 #include "generic/quadtree.h"
 #include "generic/quad_mesh.h"
+#include "generic/Qelements.h"
 
 namespace oomph
 {
@@ -58,6 +59,20 @@ namespace oomph
   class SimpleRectangularQuadTFMesh : public virtual QuadMeshBase
   {
   public:
+    /// Constructor with runtime element factory.
+    SimpleRectangularQuadTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const unsigned& Nx,
+      const unsigned& Ny,
+      const double& Lx,
+      const double& Ly,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : NX(Nx), NY(Ny)
+    {
+      set_element_factory_pt(element_factory_pt);
+      build_mesh(Nx, Ny, Lx, Ly, time_stepper_pt);
+    }
+
     /// Constructor: Pass number of elements in the horizontal
     /// and vertical directions, and the corresponding dimensions.
     /// Timestepper defaults to Steady.
@@ -81,6 +96,13 @@ namespace oomph
     }
 
   private:
+    /// Shared implementation of the constructor logic.
+    void build_mesh(const unsigned& Nx,
+                    const unsigned& Ny,
+                    const double& Lx,
+                    const double& Ly,
+                    TimeStepper* time_stepper_pt);
+
     /// Number of elements in x direction
     unsigned NX;
 

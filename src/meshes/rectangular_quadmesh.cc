@@ -46,7 +46,7 @@ namespace oomph
     // Allocate the store for the elements
     Element_pt.resize(Nx * Ny);
     // Allocate the memory for the first element
-    Element_pt[0] = element_factory_pt->new_element();
+    Element_pt[0] = new_element();
 
     // Read out the number of linear points in the element
     Np = this->finite_element_pt(0)->nnode_1d();
@@ -171,7 +171,7 @@ namespace oomph
     for (unsigned j = 1; j < (Nx - 1); j++)
     {
       // Allocate memory for new element
-      Element_pt[j] = element_factory_pt->new_element();
+      Element_pt[j] = new_element();
       // Do first row of nodes
       // First column of nodes is same as neighbouring element
       finite_element_pt(j)->node_pt(0) =
@@ -239,7 +239,7 @@ namespace oomph
     if (Nx > 1)
     {
       // Allocate memory for element
-      Element_pt[Nx - 1] = element_factory_pt->new_element();
+      Element_pt[Nx - 1] = new_element();
 
       // First column of nodes is same as neighbouring element
       finite_element_pt(Nx - 1)->node_pt(0) =
@@ -362,7 +362,7 @@ namespace oomph
     {
       // Set the first element in the row
       // Allocate memory for element
-      Element_pt[Nx * i] = element_factory_pt->new_element();
+      Element_pt[Nx * i] = new_element();
 
       // The first row of nodes is copied from the element below
       for (unsigned l2 = 0; l2 < Np; l2++)
@@ -427,7 +427,7 @@ namespace oomph
       for (unsigned j = 1; j < (Nx - 1); j++)
       {
         // Allocate memory for new element
-        Element_pt[Nx * i + j] = element_factory_pt->new_element();
+        Element_pt[Nx * i + j] = new_element();
         // The first row is copied from the lower element
         for (unsigned l2 = 0; l2 < Np; l2++)
         {
@@ -463,7 +463,7 @@ namespace oomph
       if (Nx > 1)
       {
         // Allocate memory for element
-        Element_pt[Nx * i + Nx - 1] = element_factory_pt->new_element();
+        Element_pt[Nx * i + Nx - 1] = new_element();
         // The first row is copied from the lower element
         for (unsigned l2 = 0; l2 < Np; l2++)
         {
@@ -528,7 +528,7 @@ namespace oomph
     {
       // FIRST ELEMENT IN UPPER ROW (upper left corner)
       // Allocate memory for element
-      Element_pt[Nx * (Ny - 1)] = element_factory_pt->new_element();
+      Element_pt[Nx * (Ny - 1)] = new_element();
       // The first row of nodes is copied from the element below
       for (unsigned l2 = 0; l2 < Np; l2++)
       {
@@ -635,7 +635,7 @@ namespace oomph
       for (unsigned j = 1; j < (Nx - 1); j++)
       {
         // Allocate memory for element
-        Element_pt[Nx * (Ny - 1) + j] = element_factory_pt->new_element();
+        Element_pt[Nx * (Ny - 1) + j] = new_element();
         // The first row is copied from the lower element
         for (unsigned l2 = 0; l2 < Np; l2++)
         {
@@ -698,7 +698,7 @@ namespace oomph
       if (Nx > 1)
       {
         // Allocate memory for element
-        Element_pt[Nx * (Ny - 1) + Nx - 1] = element_factory_pt->new_element();
+        Element_pt[Nx * (Ny - 1) + Nx - 1] = new_element();
         // The first row is copied from the lower element
         for (unsigned l2 = 0; l2 < Np; l2++)
         {

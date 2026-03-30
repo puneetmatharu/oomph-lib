@@ -52,6 +52,18 @@ namespace oomph
   class OneDTFMesh : public virtual LineMeshBase
   {
   public:
+    /// Constructor with runtime element factory.
+    OneDTFMesh(const ElementFactoryPt& element_factory_pt,
+               const unsigned& n_element,
+               const double& length,
+               TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : Xmin(0.0), Xmax(length), N(n_element)
+    {
+      set_element_factory_pt(element_factory_pt);
+      check_1d();
+      build_mesh(time_stepper_pt);
+    }
+
     /// Constructor: Pass number of elements, n_element, length of
     /// domain, length, and pointer to timestepper (defaults to a Steady
     /// timestepper so we don't need to specify one in problems without
@@ -63,6 +75,19 @@ namespace oomph
     {
       check_1d();
 
+      build_mesh(time_stepper_pt);
+    }
+
+    /// Constructor with runtime element factory.
+    OneDTFMesh(const ElementFactoryPt& element_factory_pt,
+               const unsigned& n_element,
+               const double& xmin,
+               const double& xmax,
+               TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : Xmin(xmin), Xmax(xmax), N(n_element)
+    {
+      set_element_factory_pt(element_factory_pt);
+      check_1d();
       build_mesh(time_stepper_pt);
     }
 
@@ -86,7 +111,7 @@ namespace oomph
     void check_1d() const
     {
 #ifdef PARANOID
-      FiniteElement* el_pt = element_factory_pt->new_element();
+      FiniteElement* el_pt = new_element();
       if (el_pt->dim() != 1)
       {
         std::string err = "OneDTFMesh is only for 1D elements";
@@ -124,6 +149,16 @@ namespace oomph
     /// Constructor: Pass number of elements, n_element, length of
     /// domain, length, and pointer to timestepper (defaults to Steady)
     RefineableOneDTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const unsigned& n_element,
+      const double& length,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : OneDTFMesh(element_factory_pt, n_element, length, time_stepper_pt)
+    {
+      this->setup_binary_tree_forest();
+    }
+
+    RefineableOneDTFMesh(
       const unsigned& n_element,
       const double& length,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
@@ -137,6 +172,17 @@ namespace oomph
     /// Constructor that allows the specification of minimum and
     /// maximum values of x coordinates. Also pass pointer to timestepper
     /// (defaults to Steady).
+    RefineableOneDTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const unsigned& n_element,
+      const double& xmin,
+      const double& xmax,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : OneDTFMesh(element_factory_pt, n_element, xmin, xmax, time_stepper_pt)
+    {
+      this->setup_binary_tree_forest();
+    }
+
     RefineableOneDTFMesh(
       const unsigned& n_element,
       const double& xmin,

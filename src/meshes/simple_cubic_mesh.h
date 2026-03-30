@@ -47,6 +47,30 @@ namespace oomph
   class SimpleCubicTFMesh : public virtual BrickMeshBase
   {
   public:
+    SimpleCubicTFMesh(const ElementFactoryPt& element_factory_pt,
+                      const unsigned& nx,
+                      const unsigned& ny,
+                      const unsigned& nz,
+                      const double& lx,
+                      const double& ly,
+                      const double& lz,
+                      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : Nx(nx),
+        Ny(ny),
+        Nz(nz),
+        Xmin(0.0),
+        Xmax(lx),
+        Ymin(0.0),
+        Ymax(ly),
+        Zmin(0.0),
+        Zmax(lz)
+    {
+      set_element_factory_pt(element_factory_pt);
+      MeshChecker::assert_geometric_element<QElementGeometricBase>(
+        element_factory_pt, 3);
+      build_mesh(time_stepper_pt);
+    }
+
     /// Constructor: Pass number of elements in the x, y, and z
     /// directions, and the corresponding dimensions. Assume that the back lower
     /// left corner is located at (0,0,0) Timestepper defaults to Steady.
@@ -78,6 +102,33 @@ namespace oomph
     /// Constructor: Pass the number of elements in the x,y and z
     /// directions and the correspoding minimum and maximum values of the
     /// coordinates in each direction
+    SimpleCubicTFMesh(const ElementFactoryPt& element_factory_pt,
+                      const unsigned& nx,
+                      const unsigned& ny,
+                      const unsigned& nz,
+                      const double& xmin,
+                      const double& xmax,
+                      const double& ymin,
+                      const double& ymax,
+                      const double& zmin,
+                      const double& zmax,
+                      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : Nx(nx),
+        Ny(ny),
+        Nz(nz),
+        Xmin(xmin),
+        Xmax(xmax),
+        Ymin(ymin),
+        Ymax(ymax),
+        Zmin(zmin),
+        Zmax(zmax)
+    {
+      set_element_factory_pt(element_factory_pt);
+      MeshChecker::assert_geometric_element<QElementGeometricBase>(
+        element_factory_pt, 3);
+      build_mesh(time_stepper_pt);
+    }
+
     SimpleCubicTFMesh(const unsigned& nx,
                       const unsigned& ny,
                       const unsigned& nz,
@@ -172,6 +223,21 @@ namespace oomph
     /// directions, and the corresponding dimensions. Assume that the back lower
     /// left corner is located at (0,0,0) Timestepper defaults to Steady.
     RefineableSimpleCubicTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const unsigned& nx,
+      const unsigned& ny,
+      const unsigned& nz,
+      const double& lx,
+      const double& ly,
+      const double& lz,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : SimpleCubicTFMesh(
+          element_factory_pt, nx, ny, nz, lx, ly, lz, time_stepper_pt)
+    {
+      this->setup_octree_forest();
+    }
+
+    RefineableSimpleCubicTFMesh(
       const unsigned& nx,
       const unsigned& ny,
       const unsigned& nz,
@@ -190,6 +256,33 @@ namespace oomph
     /// Constructor: Pass the number of elements in the x,y and z
     /// directions and the correspoding minimum and maximum values of the
     /// coordinates in each direction.
+    RefineableSimpleCubicTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const unsigned& nx,
+      const unsigned& ny,
+      const unsigned& nz,
+      const double& xmin,
+      const double& xmax,
+      const double& ymin,
+      const double& ymax,
+      const double& zmin,
+      const double& zmax,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : SimpleCubicTFMesh(element_factory_pt,
+                          nx,
+                          ny,
+                          nz,
+                          xmin,
+                          xmax,
+                          ymin,
+                          ymax,
+                          zmin,
+                          zmax,
+                          time_stepper_pt)
+    {
+      this->setup_octree_forest();
+    }
+
     RefineableSimpleCubicTFMesh(
       const unsigned& nx,
       const unsigned& ny,

@@ -38,6 +38,7 @@
 
 // Oomph-lib includes
 #include "generic/mesh.h"
+#include "generic/Telements.h"
 #include "generic/triangle_mesh.h"
 
 namespace oomph
@@ -48,6 +49,20 @@ namespace oomph
   class SimpleRectangularTriTFMesh : public virtual TriangleMeshBase
   {
   public:
+    /// Constructor with runtime element factory.
+    SimpleRectangularTriTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const unsigned& n_x,
+      const unsigned& n_y,
+      const double& l_x,
+      const double& l_y,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : Nx(n_x), Ny(n_y), Lx(l_x), Ly(l_y)
+    {
+      set_element_factory_pt(element_factory_pt);
+      build_mesh(n_x, n_y, l_x, l_y, time_stepper_pt);
+    }
+
     /// Constructor
     /// n_x  : number of elements in the x direction;
     /// n_y  : number of elements in the y direction;
@@ -74,6 +89,13 @@ namespace oomph
     }
 
   private:
+    /// Shared implementation of the constructor logic.
+    void build_mesh(const unsigned& n_x,
+                    const unsigned& n_y,
+                    const double& l_x,
+                    const double& l_y,
+                    TimeStepper* time_stepper_pt);
+
     /// Number of elements in x direction
     unsigned Nx;
 

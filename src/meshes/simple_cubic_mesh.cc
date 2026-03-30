@@ -57,7 +57,7 @@ namespace oomph
     Element_pt.resize(Nx * Ny * Nz);
     // Create first element
     unsigned element_num = 0;
-    Element_pt[element_num] = element_factory_pt->new_element();
+    Element_pt[element_num] = new_element();
 
     // Read out the number of linear points in the element
     unsigned n_p = this->finite_element_pt(0)->nnode_1d();
@@ -334,7 +334,7 @@ namespace oomph
     {
       // Allocate memory for new element
       element_num = j;
-      Element_pt[element_num] = element_factory_pt->new_element();
+      Element_pt[element_num] = new_element();
 
       // We will begin with all the nodes at the plane z = 0
 
@@ -493,7 +493,7 @@ namespace oomph
 
     // Allocate memory for new element
     element_num = Nx - 1;
-    Element_pt[element_num] = element_factory_pt->new_element();
+    Element_pt[element_num] = new_element();
 
     // We will begin with all the nodes at the plane z = 0
 
@@ -766,7 +766,7 @@ namespace oomph
 
       // Allocate memory for element (z = 0) (x =0)
       element_num = Nx * i;
-      Element_pt[element_num] = element_factory_pt->new_element();
+      Element_pt[element_num] = new_element();
 
       // The first row of nodes is copied from the element below (at z=0)
       for (unsigned l2 = 0; l2 < n_p; l2++)
@@ -913,7 +913,7 @@ namespace oomph
       {
         // Allocate memory for new element
         element_num = Nx * i + j;
-        Element_pt[element_num] = element_factory_pt->new_element();
+        Element_pt[element_num] = new_element();
 
         // The first row is copied from the lower element
         for (unsigned l2 = 0; l2 < n_p; l2++)
@@ -1018,7 +1018,7 @@ namespace oomph
 
       // Allocate memory for element
       element_num = Nx * i + Nx - 1;
-      Element_pt[element_num] = element_factory_pt->new_element();
+      Element_pt[element_num] = new_element();
 
       // We begin with z =0
       // The first row is copied from the lower element
@@ -1184,7 +1184,7 @@ namespace oomph
 
     // Allocate memory for element
     element_num = Nx * (Ny - 1);
-    Element_pt[element_num] = element_factory_pt->new_element();
+    Element_pt[element_num] = new_element();
     // We begin with all the nodes for which z=0
     // The first row of nodes is copied from the element below
     for (unsigned l2 = 0; l2 < n_p; l2++)
@@ -1449,7 +1449,7 @@ namespace oomph
     {
       // Allocate memory for element
       element_num = Nx * (Ny - 1) + j;
-      Element_pt[element_num] = element_factory_pt->new_element();
+      Element_pt[element_num] = new_element();
       // The first row is copied from the lower element
       for (unsigned l2 = 0; l2 < n_p; l2++)
       {
@@ -1623,7 +1623,7 @@ namespace oomph
 
     // Allocate memory for element
     element_num = Nx * (Ny - 1) + Nx - 1;
-    Element_pt[element_num] = element_factory_pt->new_element();
+    Element_pt[element_num] = new_element();
 
     // We work first in the plane z =0
     // The first row is copied from the lower element
@@ -1919,7 +1919,7 @@ namespace oomph
       //----------------------------------
 
       element_num = k * Nx * Ny;
-      Element_pt[element_num] = element_factory_pt->new_element();
+      Element_pt[element_num] = new_element();
 
       // The lowest nodes are copied from the lower element
       for (unsigned l1 = 0; l1 < n_p; l1++)
@@ -2064,7 +2064,7 @@ namespace oomph
       {
         // Allocate memory for new element
         element_num = j + k * Nx * Ny;
-        Element_pt[element_num] = element_factory_pt->new_element();
+        Element_pt[element_num] = new_element();
 
         // The lowest nodes are copied from the lower element
         for (unsigned l1 = 0; l1 < n_p; l1++)
@@ -2164,7 +2164,7 @@ namespace oomph
 
       // Allocate memory for new element
       element_num = Nx - 1 + k * Nx * Ny;
-      Element_pt[element_num] = element_factory_pt->new_element();
+      Element_pt[element_num] = new_element();
 
       // The lowest nodes are copied from the lower element
       for (unsigned l1 = 0; l1 < n_p; l1++)
@@ -2321,7 +2321,7 @@ namespace oomph
 
         // Allocate memory for element (x =0)
         element_num = Nx * i + Nx * Ny * k;
-        Element_pt[element_num] = element_factory_pt->new_element();
+        Element_pt[element_num] = new_element();
 
         // The lowest nodes are copied from the lower element
         for (unsigned l1 = 0; l1 < n_p; l1++)
@@ -2419,7 +2419,7 @@ namespace oomph
         {
           // Allocate memory for new element
           element_num = Nx * i + j + k * Nx * Ny;
-          Element_pt[element_num] = element_factory_pt->new_element();
+          Element_pt[element_num] = new_element();
 
           // The lowest nodes are copied from the lower element
           for (unsigned l1 = 0; l1 < n_p; l1++)
@@ -2493,7 +2493,7 @@ namespace oomph
 
         // Allocate memory for element
         element_num = Nx * i + Nx - 1 + k * Nx * Ny;
-        Element_pt[element_num] = element_factory_pt->new_element();
+        Element_pt[element_num] = new_element();
 
         // The lowest nodes are copied from the lower element
         for (unsigned l1 = 0; l1 < n_p; l1++)
@@ -2602,7 +2602,7 @@ namespace oomph
 
       // Allocate memory for element
       element_num = Nx * (Ny - 1) + k * Nx * Ny;
-      Element_pt[element_num] = element_factory_pt->new_element();
+      Element_pt[element_num] = new_element();
 
       // The lowest nodes are copied from the lower element
       for (unsigned l1 = 0; l1 < n_p; l1++)
@@ -2755,7 +2755,7 @@ namespace oomph
       {
         // Allocate memory for element
         element_num = Nx * (Ny - 1) + j + k * Nx * Ny;
-        Element_pt[element_num] = element_factory_pt->new_element();
+        Element_pt[element_num] = new_element();
 
         // The lowest nodes are copied from the lower element
         for (unsigned l1 = 0; l1 < n_p; l1++)
@@ -2870,7 +2870,7 @@ namespace oomph
 
       // Allocate memory for element
       element_num = Nx * (Ny - 1) + Nx - 1 + k * Nx * Ny;
-      Element_pt[element_num] = element_factory_pt->new_element();
+      Element_pt[element_num] = new_element();
 
       // The lowest nodes are copied from the lower element
       for (unsigned l1 = 0; l1 < n_p; l1++)
@@ -3043,7 +3043,7 @@ namespace oomph
     //----------------------------------
 
     element_num = (Nz - 1) * Nx * Ny;
-    Element_pt[element_num] = element_factory_pt->new_element();
+    Element_pt[element_num] = new_element();
 
     // The lowest nodes are copied from the lower element
     for (unsigned l1 = 0; l1 < n_p; l1++)
@@ -3311,7 +3311,7 @@ namespace oomph
     {
       // Allocate memory for new element
       element_num = j + (Nz - 1) * Nx * Ny;
-      Element_pt[element_num] = element_factory_pt->new_element();
+      Element_pt[element_num] = new_element();
 
       // The lowest nodes are copied from the lower element
       for (unsigned l1 = 0; l1 < n_p; l1++)
@@ -3488,7 +3488,7 @@ namespace oomph
 
     // Allocate memory for new element
     element_num = Nx - 1 + (Nz - 1) * Nx * Ny;
-    Element_pt[element_num] = element_factory_pt->new_element();
+    Element_pt[element_num] = new_element();
 
     // The lowest nodes are copied from the lower element
     for (unsigned l1 = 0; l1 < n_p; l1++)
@@ -3780,7 +3780,7 @@ namespace oomph
 
       // Allocate memory for element (x =0)
       element_num = Nx * i + Nx * Ny * (Nz - 1);
-      Element_pt[element_num] = element_factory_pt->new_element();
+      Element_pt[element_num] = new_element();
 
       // The lowest nodes are copied from the lower element
       for (unsigned l1 = 0; l1 < n_p; l1++)
@@ -3951,7 +3951,7 @@ namespace oomph
       {
         // Allocate memory for new element
         element_num = Nx * i + j + (Nz - 1) * Nx * Ny;
-        Element_pt[element_num] = element_factory_pt->new_element();
+        Element_pt[element_num] = new_element();
 
         // The lowest nodes are copied from the lower element
         for (unsigned l1 = 0; l1 < n_p; l1++)
@@ -4078,7 +4078,7 @@ namespace oomph
 
       // Allocate memory for element
       element_num = Nx * i + Nx - 1 + (Nz - 1) * Nx * Ny;
-      Element_pt[element_num] = element_factory_pt->new_element();
+      Element_pt[element_num] = new_element();
 
       // The lowest nodes are copied from the lower element
       for (unsigned l1 = 0; l1 < n_p; l1++)
@@ -4266,7 +4266,7 @@ namespace oomph
 
     // Allocate memory for element
     element_num = Nx * (Ny - 1) + (Nz - 1) * Nx * Ny;
-    Element_pt[element_num] = element_factory_pt->new_element();
+    Element_pt[element_num] = new_element();
 
     // The lowest nodes are copied from the lower element
     for (unsigned l1 = 0; l1 < n_p; l1++)
@@ -4554,7 +4554,7 @@ namespace oomph
     {
       // Allocate memory for element
       element_num = Nx * (Ny - 1) + j + (Nz - 1) * Nx * Ny;
-      Element_pt[element_num] = element_factory_pt->new_element();
+      Element_pt[element_num] = new_element();
 
       // The lowest nodes are copied from the lower element
       for (unsigned l1 = 0; l1 < n_p; l1++)
@@ -4756,7 +4756,7 @@ namespace oomph
 
     // Allocate memory for element
     element_num = Nx * (Ny - 1) + Nx - 1 + (Nz - 1) * Nx * Ny;
-    Element_pt[element_num] = element_factory_pt->new_element();
+    Element_pt[element_num] = new_element();
 
     // The lowest nodes are copied from the lower element
     for (unsigned l1 = 0; l1 < n_p; l1++)
