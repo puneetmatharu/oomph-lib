@@ -49,7 +49,7 @@ namespace oomph
     /// heightof the central region and pointer to timestepper (defaults to
     /// Steady timestepper)
     ChannelSpineTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       const unsigned& nx0,
       const unsigned& nx1,
       const unsigned& nx2,
@@ -68,7 +68,7 @@ namespace oomph
     /// the mesh is periodic and pointer to timestepper (defaults to Steady
     /// timestepper)
     ChannelSpineTFMesh(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
+      const ElementFactoryPt& element_factory_pt,
       const unsigned& nx0,
       const unsigned& nx1,
       const unsigned& nx2,

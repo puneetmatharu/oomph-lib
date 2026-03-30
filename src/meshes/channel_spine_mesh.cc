@@ -41,7 +41,7 @@ namespace oomph
   /// problems.
   //===========================================================================
   ChannelSpineTFMesh::ChannelSpineTFMesh(
-    std::unique_ptr<ElementFactoryBase> element_factory_pt,
+    const ElementFactoryPt& element_factory_pt,
     const unsigned& nx0,
     const unsigned& nx1,
     const unsigned& nx2,
@@ -85,7 +85,7 @@ namespace oomph
     Straight_wall_pt = new StraightLine(h);
 
     // Now build the mesh:
-    build_channel_spine_mesh(element_factory_pt, time_stepper_pt);
+    build_channel_spine_mesh(time_stepper_pt);
   }
 
   //===========================================================================
@@ -99,7 +99,7 @@ namespace oomph
   /// SpineLineFluidInterfaceElement).
   //===========================================================================
   ChannelSpineTFMesh::ChannelSpineTFMesh(
-    std::unique_ptr<ElementFactoryBase> element_factory_pt,
+    const ElementFactoryPt& element_factory_pt,
     const unsigned& nx0,
     const unsigned& nx1,
     const unsigned& nx2,
@@ -152,11 +152,10 @@ namespace oomph
   /// based on the parameters set in the various constructors
   //===========================================================================
   void ChannelSpineTFMesh::build_channel_spine_mesh(
-    std::unique_ptr<ElementFactoryBase> element_factory_pt,
     TimeStepper* time_stepper_pt)
   {
     // Build the underlying quad mesh:
-    RectangularQuadTFMesh::build_mesh(element_factory_pt, time_stepper_pt);
+    RectangularQuadTFMesh::build_mesh(time_stepper_pt);
 
     // Read out the number of elements in the x-direction and y-direction
     // and in each of the left, centre and right regions
