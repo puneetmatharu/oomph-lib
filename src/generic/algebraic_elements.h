@@ -844,6 +844,9 @@ namespace oomph
     Vector<GeomObject*> Geom_object_list_pt;
   };
 
+  /// Template-free algebraic mesh alias used by the refactored mesh classes.
+  using AlgebraicTFMesh = AlgebraicMesh;
+
 
   ///////////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////

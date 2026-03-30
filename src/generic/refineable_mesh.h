@@ -728,16 +728,29 @@ namespace oomph
 
 #endif
 
-    /// Split all the elements in the mesh if required. This template
-    /// free interface will be overloaded in RefineableMesh<ELEMENT> so that any
-    /// new elements that are created will be of the correct type.
-    virtual void split_elements_if_required() = 0;
+    /// Split all the elements in the mesh if required using the runtime
+    /// factory stored on each refineable element.
+    void split_elements_if_required()
+    {
+      unsigned n_tree = this->Forest_pt->ntree();
+      for (unsigned long e = 0; e < n_tree; e++)
+      {
+        this->Forest_pt->tree_pt(e)->traverse_leaves(&Tree::split_if_required);
+      }
+    }
 
-    /// p-refine all the elements in the mesh if required. This template
-    /// free interface will be overloaded in RefineableMesh<ELEMENT> so that
-    /// any temporary copies of the element that are created will be of the
-    /// correct type.
-    virtual void p_refine_elements_if_required() = 0;
+    /// p-refine all the elements in the mesh if required using the runtime
+    /// factory stored on each refineable element.
+    void p_refine_elements_if_required()
+    {
+      Mesh* mesh_pt = this;
+      unsigned n_tree = this->Forest_pt->ntree();
+      for (unsigned long e = 0; e < n_tree; e++)
+      {
+        this->Forest_pt->tree_pt(e)->traverse_leaves(
+          &Tree::p_refine_if_required, mesh_pt);
+      }
+    }
 
     /// Complete the hanging node scheme recursively
     void complete_hanging_nodes(const int& ncont_interpolated_values);

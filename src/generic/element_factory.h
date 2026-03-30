@@ -29,7 +29,7 @@
 #ifndef OOMPH_ELEMENT_FACTORY_HEADER
 #define OOMPH_ELEMENT_FACTORY_HEADER
 
-// For std::unique_ptr and std::is_base_of
+// For std::shared_ptr and std::is_base_of
 #include <memory>
 #include <type_traits>
 
@@ -54,6 +54,10 @@ namespace oomph
     virtual FiniteElement* new_element() = 0;
   };
 
+  /// Shared ownership handle for element factories. Meshes, domains and
+  /// refineable elements may all need access to the same runtime factory.
+  using ElementFactoryPt = std::shared_ptr<ElementFactoryBase>;
+
   //=======================================================================
   /// Templated factory implementation.
   /// The static_assert ensures that ELEMENT derives from FiniteElement.
@@ -75,9 +79,9 @@ namespace oomph
   /// Helper function to create element factories
   //=======================================================================
   template<class ELEMENT>
-  [[nodiscard]] inline std::unique_ptr<ElementFactoryBase> make_element_factory_pt()
+  [[nodiscard]] inline ElementFactoryPt make_element_factory_pt()
   {
-    return std::make_unique<ElementFactory<ELEMENT>>();
+    return std::make_shared<ElementFactory<ELEMENT>>();
   }
 
 } // namespace oomph

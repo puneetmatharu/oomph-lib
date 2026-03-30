@@ -77,6 +77,9 @@ namespace oomph
 
 
   protected:
+    /// Runtime element factory used by template-free mesh implementations.
+    ElementFactoryPt element_factory_pt;
+
     /// Vector of Vector of pointers to nodes on the boundaries:
     /// Boundary_node_pt(b,n). Note that this is private to force
     /// the use of the add_boundary_node() function, which ensures
@@ -269,6 +272,33 @@ namespace oomph
       merge_meshes(sub_mesh_pt);
     }
 
+  protected:
+    /// Store the runtime element factory for this mesh.
+    void set_element_factory_pt(const ElementFactoryPt& element_factory_pt)
+    {
+      this->element_factory_pt = element_factory_pt;
+    }
+
+    /// Access the runtime element factory. Throws if none has been supplied.
+    ElementFactoryBase& element_factory() const
+    {
+      if (!element_factory_pt)
+      {
+        throw OomphLibError(
+          "No element factory has been supplied for this mesh",
+          OOMPH_CURRENT_FUNCTION,
+          OOMPH_EXCEPTION_LOCATION);
+      }
+      return *element_factory_pt;
+    }
+
+    /// Construct a new element via the runtime element factory.
+    FiniteElement* new_element() const
+    {
+      return element_factory().new_element();
+    }
+
+  public:
     /// Merge meshes.
     /// Note: This simply merges the meshes' elements and nodes (ignoring
     /// duplicates; no boundary information etc. is created).
@@ -2688,6 +2718,9 @@ namespace oomph
     static SolidICProblem Solid_IC_problem;
   };
 
+  /// Template-free solid mesh alias used by the refactored mesh classes.
+  using SolidTFMesh = SolidMesh;
+
 
   ///////////////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////
@@ -2827,10 +2860,9 @@ namespace oomph
     /// can handle any number in which case this test is skipped.
     //=================================================================
     template<class GEOM_ELEMENT_BASE>
-    void assert_geometric_element(
-      std::unique_ptr<ElementFactoryBase> element_factory_pt,
-      const unsigned& dim,
-      const unsigned& nnode_1d = 0)
+    void assert_geometric_element(const ElementFactoryPt& element_factory_pt,
+                                  const unsigned& dim,
+                                  const unsigned& nnode_1d = 0)
     {
       // Only do tests in paranoia mode
 #ifndef PARANOID

@@ -33,6 +33,56 @@
 namespace oomph
 {
   //===========================================================================
+  /// Template-free intermediate mesh class for line meshes that use runtime
+  /// element factories during refinement.
+  //===========================================================================
+  class RefineableLineTFMesh : public virtual TreeBasedRefineableMeshBase,
+                               public virtual LineMeshBase
+  {
+  public:
+    RefineableLineTFMesh()
+    {
+      BinaryTree::setup_static_data();
+    }
+
+    RefineableLineTFMesh(const RefineableLineTFMesh& dummy) = delete;
+
+    virtual ~RefineableLineTFMesh() {}
+
+    virtual void setup_tree_forest()
+    {
+      setup_binary_tree_forest();
+    }
+
+    void setup_binary_tree_forest()
+    {
+      if (this->Forest_pt != 0) delete this->Forest_pt;
+
+      Vector<TreeRoot*> trees_pt;
+      const unsigned n_element = this->nelement();
+
+      for (unsigned e = 0; e < n_element; e++)
+      {
+        RefineableElement* el_pt =
+          dynamic_cast<RefineableElement*>(this->element_pt(e));
+
+        if (el_pt == 0)
+        {
+          throw OomphLibError(
+            "Non-refineable element found in RefineableLineTFMesh",
+            OOMPH_CURRENT_FUNCTION,
+            OOMPH_EXCEPTION_LOCATION);
+        }
+
+        el_pt->set_element_factory_pt(this->element_factory_pt);
+        trees_pt.push_back(new BinaryTreeRoot(el_pt));
+      }
+
+      this->Forest_pt = new BinaryTreeForest(trees_pt);
+    }
+  };
+
+  //===========================================================================
   /// Intermediate mesh class that implements the mesh adaptation functions
   /// specified in the RefineableMesh class for meshes that contain the
   /// refineable variant of QElement s [The class ELEMENT provided as the

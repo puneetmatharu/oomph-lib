@@ -767,6 +767,9 @@ namespace oomph
     void read(std::ifstream& restart_file);
   };
 
+  /// Template-free spine mesh alias used by the refactored mesh classes.
+  using SpineTFMesh = SpineMesh;
+
 
   ///////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////

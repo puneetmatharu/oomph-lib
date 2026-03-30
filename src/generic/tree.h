@@ -151,12 +151,25 @@ namespace oomph
 
     /// If required, split the leaf and create its sons --
     /// criterion: bool object_pt()-> to_be_refined() = true
+    void split_if_required();
+
+    /// If required, split the leaf and create its sons --
+    /// criterion: bool object_pt()-> to_be_refined() = true
+    /// Deprecated templated entry point kept for compatibility while the
+    /// template-free refinement path is introduced.
     template<class ELEMENT>
     void split_if_required();
 
     /// If required, p-refine the leaf --
     /// criterion: bool object_pt()-> to_be_p_refined() = true
     /// or bool object_pt()-> to_be_p_unrefined() = true
+    void p_refine_if_required(Mesh*& mesh_pt);
+
+    /// If required, p-refine the leaf --
+    /// criterion: bool object_pt()-> to_be_p_refined() = true
+    /// or bool object_pt()-> to_be_p_unrefined() = true
+    /// Deprecated templated entry point kept for compatibility while the
+    /// template-free refinement path is introduced.
     template<class ELEMENT>
     void p_refine_if_required(Mesh*& mesh_pt);
 

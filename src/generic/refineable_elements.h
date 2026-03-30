@@ -35,6 +35,7 @@
 #endif
 
 #include "elements.h"
+#include "element_factory.h"
 #include "tree.h"
 
 namespace oomph
@@ -96,6 +97,9 @@ namespace oomph
   class RefineableElement : public virtual FiniteElement
   {
   protected:
+    /// Runtime factory for constructing further elements of the same type.
+    ElementFactoryPt Element_factory_pt;
+
     /// A pointer to a general tree object
     Tree* Tree_pt;
 
@@ -188,6 +192,7 @@ namespace oomph
     RefineableElement()
       : FiniteElement(),
         Tree_pt(0),
+        Element_factory_pt(),
         Refine_level(0),
         To_be_refined(false),
         Refinement_is_enabled(true),
@@ -217,6 +222,43 @@ namespace oomph
     void set_tree_pt(Tree* my_tree_pt)
     {
       Tree_pt = my_tree_pt;
+    }
+
+    /// Store the runtime element factory for this refineable element.
+    void set_element_factory_pt(const ElementFactoryPt& element_factory_pt)
+    {
+      Element_factory_pt = element_factory_pt;
+    }
+
+    /// Access the runtime element factory for this refineable element.
+    ElementFactoryBase& element_factory() const
+    {
+      if (!Element_factory_pt)
+      {
+        throw OomphLibError(
+          "No element factory has been supplied for this refineable element",
+          OOMPH_CURRENT_FUNCTION,
+          OOMPH_EXCEPTION_LOCATION);
+      }
+      return *Element_factory_pt;
+    }
+
+    /// Construct a new refineable element of the same runtime type as this one.
+    RefineableElement* new_refinement_element() const
+    {
+      RefineableElement* el_pt =
+        dynamic_cast<RefineableElement*>(element_factory().new_element());
+
+      if (el_pt == 0)
+      {
+        throw OomphLibError(
+          "Element factory created a non-refineable element during refinement",
+          OOMPH_CURRENT_FUNCTION,
+          OOMPH_EXCEPTION_LOCATION);
+      }
+
+      el_pt->set_element_factory_pt(Element_factory_pt);
+      return el_pt;
     }
 
     /// Set the number of sons that can be constructed by the element
@@ -266,6 +308,20 @@ namespace oomph
       {
         son_pt[i] = new ELEMENT;
         // Set the refinement level of the newly constructed son.
+        son_pt[i]->set_refinement_level(son_refine_level);
+      }
+    }
+
+    /// Split the element and construct sons via the stored runtime factory.
+    void split(Vector<RefineableElement*>& son_pt) const
+    {
+      int son_refine_level = Refine_level + 1;
+      unsigned n_sons = required_nsons();
+      son_pt.resize(n_sons);
+
+      for (unsigned i = 0; i < n_sons; i++)
+      {
+        son_pt[i] = new_refinement_element();
         son_pt[i]->set_refinement_level(son_refine_level);
       }
     }

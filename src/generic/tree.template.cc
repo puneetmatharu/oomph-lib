@@ -39,25 +39,10 @@
 namespace oomph
 {
   //================================================================
-  /// If required, split the leaf element and create its sons
-  ///
-  /// Split is performed if
-  ///
-  ///      object_pt()->to_be_refined()
-  ///
-  /// returns true.
-  ///
-  /// If this is the case, then we execute
-  ///
-  ///      object_pt()->split(new_elements_pt)
-  ///
-  /// to create the sons. Pointers to the son objects are then inserted
-  /// into the son pointers of the present element. This turns the
-  /// present element into a "grey" (=non-leaf) node.
-  ///
+  /// If required, split the leaf element and create its sons using the
+  /// runtime factory stored on the refineable element.
   //=================================================================
-  template<class ELEMENT>
-  void Tree::split_if_required()
+  inline void Tree::split_if_required()
   {
 #ifdef PARANOID
     if (Son_pt.size() != 0)
@@ -92,32 +77,46 @@ namespace oomph
       throw OomphLibError(
         error_message.str(), OOMPH_CURRENT_FUNCTION, OOMPH_EXCEPTION_LOCATION);
     }
-
 #endif
 
-    // Check if refinement is required
     if (Object_pt->to_be_refined())
     {
-      // Perform the split for the element in question and return Vector
-      // of pointers to the newly created elements
-      Vector<ELEMENT*> new_elements_pt;
+      Vector<RefineableElement*> new_elements_pt;
       Object_pt->split(new_elements_pt);
 
-      // Find the number of sons constructed by the element
       unsigned n_sons = new_elements_pt.size();
-
-      // Turn the new elements into QuadTrees and assign
-      // the pointers to the present element's sons
       Son_pt.resize(n_sons);
       Tree* father_pt = this;
       for (unsigned i_son = 0; i_son < n_sons; i_son++)
       {
         Son_pt[i_son] = construct_son(new_elements_pt[i_son], father_pt, i_son);
-        // Now that the son knows its position in the tree, we can set it
-        // up as a proper element (e.g. p-refineable stuff)
         Son_pt[i_son]->object_pt()->initial_setup();
       }
     }
+  }
+
+  //================================================================
+  /// If required, split the leaf element and create its sons
+  ///
+  /// Split is performed if
+  ///
+  ///      object_pt()->to_be_refined()
+  ///
+  /// returns true.
+  ///
+  /// If this is the case, then we execute
+  ///
+  ///      object_pt()->split(new_elements_pt)
+  ///
+  /// to create the sons. Pointers to the son objects are then inserted
+  /// into the son pointers of the present element. This turns the
+  /// present element into a "grey" (=non-leaf) node.
+  ///
+  //=================================================================
+  template<class ELEMENT>
+  void Tree::split_if_required()
+  {
+    split_if_required();
   }
 
 
@@ -146,6 +145,15 @@ namespace oomph
   //=================================================================
   template<class ELEMENT>
   void Tree::p_refine_if_required(Mesh*& mesh_pt)
+  {
+    p_refine_if_required(mesh_pt);
+  }
+
+  //================================================================
+  /// If required, p-refine/unrefine the leaf element via the runtime
+  /// factory stored on the refineable element.
+  //=================================================================
+  inline void Tree::p_refine_if_required(Mesh*& mesh_pt)
   {
 #ifdef PARANOID
     if (Son_pt.size() != 0)
@@ -183,7 +191,6 @@ namespace oomph
 
 #endif
 
-    // Cast to p-refineable element
     PRefineableElement* p_ref_obj_pt =
       dynamic_cast<PRefineableElement*>(Object_pt);
 
@@ -196,13 +203,10 @@ namespace oomph
     }
 
 
-    // Create a temporary clone of the element to be refined.
-    // This is required so that the element can read data from "itself"
-    // while it rebuilds itself with a new p-order. Only the information
-    // required for the p-refinement is copied across.
-
-    // Make new element (using ELEMENT's standard constructor)
-    ELEMENT* clone_pt = new ELEMENT();
+    // Create a temporary clone of the element to be refined. This is
+    // required so that the element can read data from "itself" while it
+    // rebuilds itself with a new p-order.
+    RefineableElement* clone_pt = Object_pt->new_refinement_element();
 
     // Do initial setup with myself as the clone's adopted father
     clone_pt->initial_setup(this);

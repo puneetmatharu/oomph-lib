@@ -35,6 +35,152 @@
 namespace oomph
 {
   //=======================================================================
+  /// Template-free intermediate mesh class for quad meshes that use runtime
+  /// element factories during refinement.
+  //=======================================================================
+  class RefineableQuadTFMesh : public virtual TreeBasedRefineableMeshBase,
+                               public virtual QuadMeshBase
+  {
+  public:
+    RefineableQuadTFMesh()
+    {
+      QuadTree::setup_static_data();
+    }
+
+    RefineableQuadTFMesh(const RefineableQuadTFMesh& dummy) = delete;
+
+    virtual ~RefineableQuadTFMesh() {}
+
+    virtual void setup_tree_forest()
+    {
+      setup_quadtree_forest();
+    }
+
+    void setup_quadtree_forest()
+    {
+      if (this->Forest_pt != 0)
+      {
+        // Fall back to the existing templated implementation path once the
+        // forest has already been created.
+        Vector<Tree*> all_tree_nodes_pt;
+        this->Forest_pt->stick_all_tree_nodes_into_vector(all_tree_nodes_pt);
+
+        unsigned local_min_ref = 0;
+        unsigned local_max_ref = 0;
+        this->get_refinement_levels(local_min_ref, local_max_ref);
+
+#ifdef OOMPH_HAS_MPI
+        int int_local_min_ref = local_min_ref;
+
+        if (this->nelement() == 0)
+        {
+          int_local_min_ref = INT_MAX;
+        }
+
+        int int_min_ref = 0;
+        MPI_Allreduce(&int_local_min_ref,
+                      &int_min_ref,
+                      1,
+                      MPI_INT,
+                      MPI_MIN,
+                      Comm_pt->mpi_comm());
+
+        unsigned min_ref = unsigned(int_min_ref);
+#else
+        unsigned min_ref = local_min_ref;
+#endif
+
+        if (this->nelement() == 0)
+        {
+          this->Forest_pt->flush_trees();
+          delete this->Forest_pt;
+          Vector<TreeRoot*> trees_pt;
+          this->Forest_pt = new QuadTreeForest(trees_pt);
+          return;
+        }
+
+        Vector<TreeRoot*> trees_pt;
+        unsigned n_tree_nodes = all_tree_nodes_pt.size();
+        for (unsigned e = 0; e < n_tree_nodes; e++)
+        {
+          Tree* tree_pt = all_tree_nodes_pt[e];
+          if (tree_pt->object_pt() != 0)
+          {
+            RefineableElement* el_pt =
+              dynamic_cast<RefineableElement*>(tree_pt->object_pt());
+            unsigned level = el_pt->refinement_level();
+
+            if (level < min_ref)
+            {
+              tree_pt->flush_sons();
+              delete tree_pt;
+              delete el_pt;
+            }
+            else if (level == min_ref)
+            {
+              unsigned n_sons = tree_pt->nsons();
+              Vector<Tree*> backed_up_sons(n_sons);
+              for (unsigned i_son = 0; i_son < n_sons; i_son++)
+              {
+                backed_up_sons[i_son] = tree_pt->son_pt(i_son);
+              }
+
+              el_pt->set_element_factory_pt(this->element_factory_pt);
+              QuadTreeRoot* tree_root_pt = new QuadTreeRoot(el_pt);
+              tree_root_pt->set_son_pt(backed_up_sons);
+
+              for (unsigned i_son = 0; i_son < n_sons; i_son++)
+              {
+                Tree* son_pt = backed_up_sons[i_son];
+                son_pt->set_father_pt(tree_root_pt);
+                son_pt->root_pt() = tree_root_pt;
+
+                Vector<Tree*> all_sons_pt;
+                son_pt->stick_all_tree_nodes_into_vector(all_sons_pt);
+                unsigned n = all_sons_pt.size();
+                for (unsigned i = 0; i < n; i++)
+                {
+                  all_sons_pt[i]->root_pt() = tree_root_pt;
+                }
+              }
+
+              trees_pt.push_back(tree_root_pt);
+              tree_pt->flush_sons();
+              delete tree_pt;
+            }
+          }
+        }
+
+        this->Forest_pt->flush_trees();
+        delete this->Forest_pt;
+        this->Forest_pt = new QuadTreeForest(trees_pt);
+      }
+      else
+      {
+        Vector<TreeRoot*> trees_pt;
+        const unsigned n_element = this->nelement();
+        for (unsigned e = 0; e < n_element; e++)
+        {
+          RefineableElement* el_pt =
+            dynamic_cast<RefineableElement*>(this->element_pt(e));
+          if (el_pt == 0)
+          {
+            throw OomphLibError(
+              "Non-refineable element found in RefineableQuadTFMesh",
+              OOMPH_CURRENT_FUNCTION,
+              OOMPH_EXCEPTION_LOCATION);
+          }
+
+          el_pt->set_element_factory_pt(this->element_factory_pt);
+          trees_pt.push_back(new QuadTreeRoot(el_pt));
+        }
+
+        this->Forest_pt = new QuadTreeForest(trees_pt);
+      }
+    }
+  };
+
+  //=======================================================================
   /// Intermediate mesh class that implements the mesh adaptation functions
   /// specified in the TreeBasedRefineableMesh class for meshes that contain the
   /// refineable variant of QElement s [The class ELEMENT provided

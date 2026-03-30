@@ -527,6 +527,10 @@ namespace oomph
     Domain* Macro_domain_pt;
   };
 
+  /// Template-free macro-element-node-update mesh alias used by the
+  /// refactored mesh classes.
+  using MacroElementNodeUpdateTFMesh = MacroElementNodeUpdateMesh;
+
 
   ///////////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////

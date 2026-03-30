@@ -43,6 +43,154 @@
 namespace oomph
 {
   //=======================================================================
+  /// Template-free intermediate mesh class for brick meshes that use runtime
+  /// element factories during refinement.
+  //=======================================================================
+  class RefineableBrickTFMesh : public virtual TreeBasedRefineableMeshBase,
+                                public virtual BrickMeshBase
+  {
+  public:
+    RefineableBrickTFMesh()
+    {
+      OcTree::setup_static_data();
+    }
+
+    RefineableBrickTFMesh(const RefineableBrickTFMesh& dummy) = delete;
+
+    void operator=(const RefineableBrickTFMesh&) = delete;
+
+    virtual ~RefineableBrickTFMesh() {}
+
+    virtual void setup_tree_forest()
+    {
+      setup_octree_forest();
+    }
+
+    void setup_octree_forest()
+    {
+      if (this->Forest_pt != 0)
+      {
+        Vector<Tree*> all_tree_nodes_pt;
+        this->Forest_pt->stick_all_tree_nodes_into_vector(all_tree_nodes_pt);
+
+        unsigned local_min_ref = 0;
+        unsigned local_max_ref = 0;
+        this->get_refinement_levels(local_min_ref, local_max_ref);
+
+        unsigned min_ref = local_min_ref;
+#ifdef OOMPH_HAS_MPI
+        if (Comm_pt != 0)
+        {
+          int int_local_min_ref = local_min_ref;
+          if (this->nelement() == 0)
+          {
+            int_local_min_ref = INT_MAX;
+          }
+          int int_min_ref = 0;
+          MPI_Allreduce(&int_local_min_ref,
+                        &int_min_ref,
+                        1,
+                        MPI_INT,
+                        MPI_MIN,
+                        Comm_pt->mpi_comm());
+          min_ref = int_min_ref;
+        }
+#endif
+
+        if (this->nelement() == 0)
+        {
+          this->Forest_pt->flush_trees();
+          delete this->Forest_pt;
+          Vector<TreeRoot*> trees_pt;
+          this->Forest_pt = new OcTreeForest(trees_pt);
+          return;
+        }
+
+        Vector<TreeRoot*> trees_pt;
+        unsigned n_tree_nodes = all_tree_nodes_pt.size();
+        for (unsigned e = 0; e < n_tree_nodes; e++)
+        {
+          Tree* tree_pt = all_tree_nodes_pt[e];
+          if (tree_pt->object_pt() != 0)
+          {
+            RefineableElement* el_pt =
+              dynamic_cast<RefineableElement*>(tree_pt->object_pt());
+            unsigned level = el_pt->refinement_level();
+
+            if (level < min_ref)
+            {
+              tree_pt->flush_sons();
+              delete tree_pt;
+              delete el_pt;
+            }
+            else if (level == min_ref)
+            {
+              unsigned n_sons = tree_pt->nsons();
+              Vector<Tree*> backed_up_sons(n_sons);
+              for (unsigned i_son = 0; i_son < n_sons; i_son++)
+              {
+                backed_up_sons[i_son] = tree_pt->son_pt(i_son);
+              }
+
+              el_pt->set_element_factory_pt(this->element_factory_pt);
+              OcTreeRoot* tree_root_pt = new OcTreeRoot(el_pt);
+              tree_root_pt->set_son_pt(backed_up_sons);
+
+              for (unsigned i_son = 0; i_son < n_sons; i_son++)
+              {
+                Tree* son_pt = backed_up_sons[i_son];
+                son_pt->set_father_pt(tree_root_pt);
+                son_pt->root_pt() = tree_root_pt;
+
+                Vector<Tree*> all_sons_pt;
+                son_pt->stick_all_tree_nodes_into_vector(all_sons_pt);
+                unsigned n = all_sons_pt.size();
+                for (unsigned i = 0; i < n; i++)
+                {
+                  all_sons_pt[i]->root_pt() = tree_root_pt;
+                }
+              }
+
+              trees_pt.push_back(tree_root_pt);
+              tree_pt->flush_sons();
+              delete tree_pt;
+            }
+          }
+          else
+          {
+            delete tree_pt;
+          }
+        }
+
+        delete this->Forest_pt;
+        this->Forest_pt = new OcTreeForest(trees_pt);
+      }
+      else
+      {
+        Vector<TreeRoot*> trees_pt;
+        unsigned n_element = this->nelement();
+        for (unsigned e = 0; e < n_element; e++)
+        {
+          RefineableElement* el_pt =
+            dynamic_cast<RefineableElement*>(this->element_pt(e));
+          if (el_pt == 0)
+          {
+            throw OomphLibError(
+              "Non-refineable element found in RefineableBrickTFMesh",
+              OOMPH_CURRENT_FUNCTION,
+              OOMPH_EXCEPTION_LOCATION);
+          }
+
+          el_pt->set_element_factory_pt(this->element_factory_pt);
+          trees_pt.push_back(new OcTreeRoot(el_pt));
+        }
+
+        this->Forest_pt = new OcTreeForest(trees_pt);
+      }
+    }
+  };
+
+  //=======================================================================
   /// Intermediate mesh class that implements the mesh adaptation functions
   /// specified in the TreeBasedRefineableMesh class for meshes that contain the
   /// refineable variant of QElement s [The class ELEMENT provided

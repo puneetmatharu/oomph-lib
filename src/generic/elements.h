@@ -4997,6 +4997,7 @@ namespace oomph
   /// The geometrical information for the face element must be specified
   /// by each "bulk" element using an explicit specialisation of this class.
   //=======================================================================
+  template<class ELEMENT>
   class FaceGeometry
   {
   };
@@ -5011,14 +5012,15 @@ namespace oomph
   /// Dummy FaceElement for use with purely geometric operations
   /// such as mesh generation.
   //======================================================================
-  class DummyFaceElement : public virtual FaceGeometry,
+  template<class ELEMENT>
+  class DummyFaceElement : public virtual FaceGeometry<ELEMENT>,
                            public virtual FaceElement
   {
   public:
     /// Constructor, which takes a "bulk" element and the
     /// face index
     DummyFaceElement(FiniteElement* const& element_pt, const int& face_index)
-      : FaceGeometry(), FaceElement()
+      : FaceGeometry<ELEMENT>(), FaceElement()
     {
       // Attach the geometrical information to the element. N.B. This function
       // also assigns nbulk_value from the required_nvalue of the bulk element
@@ -5027,7 +5029,7 @@ namespace oomph
 
 
     /// Constructor
-    DummyFaceElement() : FaceGeometry(), FaceElement() {}
+    DummyFaceElement() : FaceGeometry<ELEMENT>(), FaceElement() {}
 
 
     /// The "global" intrinsic coordinate of the element when
@@ -5116,11 +5118,13 @@ namespace oomph
   /// attached to a bulk element. Used mainly during unstructured
   /// mesh generation.
   //======================================================================
-  class FreeStandingFaceElement : public virtual FaceGeometry
+  template<class ELEMENT>
+  class FreeStandingFaceElement : public virtual FaceGeometry<ELEMENT>
   {
   public:
     /// Constructor
-    FreeStandingFaceElement() : FaceGeometry(), Boundary_number_in_bulk_mesh(0)
+    FreeStandingFaceElement()
+      : FaceGeometry<ELEMENT>(), Boundary_number_in_bulk_mesh(0)
     {
       // Check whether things have been set
 #ifdef PARANOID
