@@ -39,8 +39,10 @@ if(NOT IS_MULTI_CONFIG)
     if(OOMPH_OVERRIDE_EMPTY_CMAKE_BUILD_TYPE)
       message(
         STATUS
-          "No -DCMAKE_BUILD_TYPE was provided.  Falling back to the build type "
-          "used to compile oomph-lib (\"${OOMPH_CMAKE_BUILD_TYPE}\").\n"
+          "No -DCMAKE_BUILD_TYPE was provided. Falling back to the build type "
+          "used to compile oomph-lib (\"${OOMPH_CMAKE_BUILD_TYPE}\").")
+      message(
+        STATUS
           "Pass a build type explicitly, or disable this behaviour with "
           "-DOOMPH_OVERRIDE_EMPTY_CMAKE_BUILD_TYPE=OFF.")
       set(CMAKE_BUILD_TYPE "${OOMPH_CMAKE_BUILD_TYPE}" CACHE STRING
@@ -230,7 +232,7 @@ endif()
 if(OOMPH_HAS_CGAL AND (NOT CGAL_FOUND))
   # Boost. If the user wants, they can inspect the value of OOMPH_REQUIRED_BOOST_COMPONENTS
   # after calling find_package(oomphlib)
-  set(OOMPH_REQUIRED_BOOST_COMPONENTS thread system program_options)
+  set(OOMPH_REQUIRED_BOOST_COMPONENTS thread program_options)
   find_dependency(Boost 1.83.0 REQUIRED COMPONENTS ${OOMPH_REQUIRED_BOOST_COMPONENTS} GLOBAL PATHS ${OOMPH_USE_BOOST_FROM} NO_DEFAULT_PATH)
 
   # Make sure we just use Boost for the backend
