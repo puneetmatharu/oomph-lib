@@ -45,20 +45,23 @@ using namespace oomph;
 /// Triangle-based mesh upgraded to become a (pseudo-) solid mesh
 //=========================================================================
 template<class ELEMENT>
-class ElasticTriangleMesh : public virtual TriangleMesh<ELEMENT>,
-                            public virtual SolidMesh 
+class ElasticTriangleMesh : public virtual TriangleTFMesh,
+                            public virtual SolidMesh
 {
- 
+
 public:
- 
- /// Constructor: 
+
+ /// Constructor:
  ElasticTriangleMesh(const std::string& node_file_name,
                      const std::string& element_file_name,
                      const std::string& poly_file_name,
                      TimeStepper* time_stepper_pt=
-                     &Mesh::Default_TimeStepper) : 
- TriangleMesh<ELEMENT>(node_file_name,element_file_name,
-                       poly_file_name, time_stepper_pt)
+                     &Mesh::Default_TimeStepper) :
+ Mesh(make_element_factory_pt<ELEMENT>()),
+ UnstructuredTwoDMeshGeometryBase(
+   make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
+ TriangleTFMesh(node_file_name,element_file_name,
+                poly_file_name, time_stepper_pt)
   {
    //Assign the Lagrangian coordinates
    set_lagrangian_nodal_coordinates();
