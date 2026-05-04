@@ -178,6 +178,18 @@ namespace oomph
         this->Forest_pt = new QuadTreeForest(trees_pt);
       }
     }
+
+#ifdef OOMPH_HAS_MPI
+  protected:
+    /// Runtime-factory meshes cannot use the old templated helper path here.
+    /// The generic hanging-node synchronisation has already run; distributed
+    /// meshes with specialised nonuniform halo node requirements still need a
+    /// concrete templated mesh implementation.
+    void additional_synchronise_hanging_nodes(
+      const unsigned& ncont_interpolated_values)
+    {
+    }
+#endif
   };
 
   //=======================================================================

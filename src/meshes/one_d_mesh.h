@@ -196,6 +196,78 @@ namespace oomph
     }
   };
 
+  //====================================================================
+  /// Compatibility wrapper preserving the original templated OneDMesh API.
+  //====================================================================
+  template<class ELEMENT>
+  class OneDMesh : public OneDTFMesh
+  {
+  public:
+    OneDMesh(const unsigned& n_element,
+             const double& length,
+             TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : OneDTFMesh(make_element_factory_pt<ELEMENT>(),
+                   n_element,
+                   length,
+                   time_stepper_pt)
+    {
+    }
+
+    OneDMesh(const unsigned& n_element,
+             const double& xmin,
+             const double& xmax,
+             TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : OneDTFMesh(make_element_factory_pt<ELEMENT>(),
+                   n_element,
+                   xmin,
+                   xmax,
+                   time_stepper_pt)
+    {
+    }
+  };
+
+  //====================================================================
+  /// Compatibility wrapper preserving the original templated
+  /// RefineableOneDMesh API.
+  //====================================================================
+  template<class ELEMENT>
+  class RefineableOneDMesh : public RefineableOneDTFMesh
+  {
+  public:
+    RefineableOneDMesh(
+      const unsigned& n_element,
+      const double& length,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : OneDTFMesh(make_element_factory_pt<ELEMENT>(),
+                   n_element,
+                   length,
+                   time_stepper_pt),
+        RefineableOneDTFMesh(make_element_factory_pt<ELEMENT>(),
+                             n_element,
+                             length,
+                             time_stepper_pt)
+    {
+    }
+
+    RefineableOneDMesh(
+      const unsigned& n_element,
+      const double& xmin,
+      const double& xmax,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : OneDTFMesh(make_element_factory_pt<ELEMENT>(),
+                   n_element,
+                   xmin,
+                   xmax,
+                   time_stepper_pt),
+        RefineableOneDTFMesh(make_element_factory_pt<ELEMENT>(),
+                             n_element,
+                             xmin,
+                             xmax,
+                             time_stepper_pt)
+    {
+    }
+  };
+
 } // namespace oomph
 
 #endif

@@ -28,6 +28,7 @@
 
 #include "generic/element_factory.h"
 
+#include "generic/Telements.h"
 #include "generic/brick_mesh.h"
 #include "generic/refineable_brick_mesh.h"
 

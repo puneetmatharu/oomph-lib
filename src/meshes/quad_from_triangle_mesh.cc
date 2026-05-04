@@ -56,7 +56,7 @@ namespace oomph
   /// whose shape which depend on the structure of the underlying mesh.
   //======================================================================
   void QuadFromTriangleTFMesh::build_from_scaffold(
-    TriangleScaffoldTFMesh* tmp_mesh_pt,
+    TriangleScaffoldMesh* tmp_mesh_pt,
     TimeStepper* time_stepper_pt,
     const bool& use_attributes)
   {
@@ -79,7 +79,7 @@ namespace oomph
     Face_index_at_boundary.resize(nbound);
 
     // Create a quad element for nodal data
-    ELEMENT* temp_el_pt = element_factory_pt->new_element();
+    FiniteElement* temp_el_pt = element_factory_pt->new_element();
 
     // Get the number of nodes in a quad element
     unsigned nnode_el = temp_el_pt->nnode();
@@ -180,12 +180,12 @@ namespace oomph
       // Create element pointers and assign them to a vector
       //----------------------------------------------------
       // Make new quad elements of the type specified by the template parameter
-      ELEMENT* el0_pt = element_factory_pt->new_element();
-      ELEMENT* el1_pt = element_factory_pt->new_element();
-      ELEMENT* el2_pt = element_factory_pt->new_element();
+      FiniteElement* el0_pt = element_factory_pt->new_element();
+      FiniteElement* el1_pt = element_factory_pt->new_element();
+      FiniteElement* el2_pt = element_factory_pt->new_element();
 
-      // Create a vector of ELEMENTs to store el0_pt, el1_pt and el2_pt
-      Vector<ELEMENT*> el_vector_pt(3, 0);
+      // Create a vector of elements to store el0_pt, el1_pt and el2_pt
+      Vector<FiniteElement*> el_vector_pt(3, 0);
 
       // Assign the entries to el_vector_pt
       el_vector_pt[0] = el0_pt;
@@ -1014,5 +1014,3 @@ namespace oomph
 #endif
   } // End of adapt
 } // End of namespace oomph
-
-#endif // OOMPH_QUAD_FROM_TRIANGLE_MESH_TEMPLATE_HEADER

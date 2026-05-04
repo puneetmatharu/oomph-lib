@@ -119,7 +119,7 @@ namespace oomph
     Element_pt.resize(nelem);
 
     // Create  dummy element so we can determine the number of nodes
-    ELEMENT* dummy_el_pt = element_factory_pt->new_element();
+    FiniteElement* dummy_el_pt = element_factory_pt->new_element();
 
     // Read out the number of linear points in the element
     unsigned n_node_1d = dummy_el_pt->nnode_1d();

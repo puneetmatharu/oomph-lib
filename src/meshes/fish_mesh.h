@@ -203,7 +203,7 @@ namespace oomph
         RefineableFishTFMesh(time_stepper_pt)
     {
 #ifdef PARANOID
-      ELEMENT* el_pt = element_factory_pt->new_element();
+      FiniteElement* el_pt = element_factory_pt->new_element();
       if (dynamic_cast<MacroElementNodeUpdateElementBase*>(el_pt) == 0)
       {
         std::ostringstream error_message;
@@ -230,15 +230,13 @@ namespace oomph
       unsigned n_element = this->nelement();
       for (unsigned i = 0; i < n_element; i++)
       {
-        // Upcast from FiniteElement to the present element
+        // Upcast from FiniteElement to the macro node-update interface
         auto* el_pt =
-          dynamic_cast<MacroElementNodeUpdateElement*>(this->element_pt(i));
+          dynamic_cast<MacroElementNodeUpdateElementBase*>(this->element_pt(i));
 
 #ifdef PARANOID
         // Check if cast is successful
-        MacroElementNodeUpdateElementBase* m_el_pt =
-          dynamic_cast<MacroElementNodeUpdateElementBase*>(el_pt);
-        if (m_el_pt == 0)
+        if (el_pt == 0)
         {
           std::ostringstream error_message;
           error_message

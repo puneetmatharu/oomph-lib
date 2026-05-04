@@ -165,7 +165,7 @@ set(SOURCES
 set(LIBNAME meshes)
 
 # We depend on the generic library
-set(LINKLIBS generic)
+set(LINKLIBS generic rigid_body)
 
 # Import the OomphLibraryConfig module to handle the library creation
 include(OomphLibraryConfig)
@@ -173,6 +173,7 @@ oomph_library_config(
   LIBNAME ${LIBNAME}
   HEADERS ${HEADERS}
   SOURCES ${SOURCES}
+  HEADERS_NO_COMBINE ${NON_MESH_HEADERS}
   LINKLIBS ${LINKLIBS})
 
 # The meshes library relies on the generic library.

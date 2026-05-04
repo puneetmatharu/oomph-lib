@@ -295,14 +295,14 @@ namespace oomph
       t_start = TimingHelpers::timer();
       // ###################################
 
-      ProjectionProblem* project_problem_pt = 0;
+      ProjectionProblemRuntimeBase* project_problem_pt = 0;
 
       // Check that the projection step is not disabled
       if (!this->Gmsh_parameters_pt->projection_is_disabled())
       {
         // Project current solution onto new mesh
         //---------------------------------------
-        project_problem_pt = new ProjectionProblem;
+        project_problem_pt = this->projection_problem_factory().new_problem();
         project_problem_pt->mesh_pt() = new_mesh_pt;
         project_problem_pt->project(this);
 

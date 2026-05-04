@@ -63,7 +63,7 @@ namespace oomph
     Element_pt.resize(nelem);
 
     // Create  dummy element so we can determine the number of nodes
-    ELEMENT* dummy_el_pt = element_factory_pt->new_element();
+    FiniteElement* dummy_el_pt = element_factory_pt->new_element();
 
     // Read out the number of linear points in the element
     unsigned n_p = dummy_el_pt->nnode_1d();
@@ -640,8 +640,7 @@ namespace oomph
   ///   are located on straight lines running from the edges of the
   ///   central region to the outer wall.
   //======================================================================
-  void AlgebraicRefineableQuarterTubeTFMesh<
-    ELEMENT>::setup_algebraic_node_update()
+  void AlgebraicRefineableQuarterTubeTFMesh::setup_algebraic_node_update()
   {
 #ifdef PARANOID
     /// Pointer to first algebraic element in central region
@@ -1026,9 +1025,8 @@ namespace oomph
   /// Algebraic update function: Update in lower-right region according
   /// to wall shape at time level t (t=0: present; t>0: previous)
   //====================================================================
-  void AlgebraicRefineableQuarterTubeTFMesh<
-    ELEMENT>::node_update_lower_right_region(const unsigned& t,
-                                             AlgebraicNode*& node_pt)
+  void AlgebraicRefineableQuarterTubeTFMesh::node_update_lower_right_region(
+    const unsigned& t, AlgebraicNode*& node_pt)
   {
 #ifdef PARANOID
     // We're updating the nodal positions (!) at time level t
@@ -1143,9 +1141,8 @@ namespace oomph
   /// Algebraic update function: Update in upper left region according
   /// to wall shape at time level t (t=0: present; t>0: previous)
   //====================================================================
-  void AlgebraicRefineableQuarterTubeTFMesh<
-    ELEMENT>::node_update_upper_left_region(const unsigned& t,
-                                            AlgebraicNode*& node_pt)
+  void AlgebraicRefineableQuarterTubeTFMesh::node_update_upper_left_region(
+    const unsigned& t, AlgebraicNode*& node_pt)
   {
 #ifdef PARANOID
     // We're updating the nodal positions (!) at time level t
@@ -1261,9 +1258,8 @@ namespace oomph
   /// Update algebraic update function for nodes in region defined by
   /// region_id.
   //======================================================================
-  void AlgebraicRefineableQuarterTubeTFMesh<
-    ELEMENT>::update_node_update_in_region(AlgebraicNode*& node_pt,
-                                           int& region_id)
+  void AlgebraicRefineableQuarterTubeTFMesh::update_node_update_in_region(
+    AlgebraicNode*& node_pt, int& region_id)
   {
     // Extract references by copy construction
     Vector<double> ref_value(node_pt->vector_ref_value(region_id));

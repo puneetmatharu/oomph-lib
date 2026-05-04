@@ -276,7 +276,7 @@ namespace oomph
           element_factory_pt, wall_pt, xi_lo, fract_mid, xi_hi, time_stepper_pt)
     {
 #ifdef PARANOID
-      ELEMENT* el_pt = element_factory_pt->new_element();
+      FiniteElement* el_pt = element_factory_pt->new_element();
       if (dynamic_cast<MacroElementNodeUpdateElementBase*>(el_pt) == 0)
       {
         std::ostringstream error_message;

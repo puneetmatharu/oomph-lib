@@ -2243,6 +2243,14 @@ namespace oomph
                                   public virtual RefineableTetMeshBase
   {
   public:
+    /// Store the runtime factory used to build projection problems during
+    /// adaptation.
+    void set_projection_problem_factory_pt(
+      const ProjectionProblemFactoryPt& projection_problem_factory_pt)
+    {
+      Projection_problem_factory_pt = projection_problem_factory_pt;
+    }
+
     /// Constructor. If boolean is set
     /// to true, the target element sizes are read from file (used during
     /// adaptation; otherwise uniform target size is used).
@@ -2271,6 +2279,24 @@ namespace oomph
     /// Adapt mesh, based on elemental error provided
     void adapt(const Vector<double>& elem_error);
 
+  protected:
+    /// Access the runtime projection-problem factory.
+    ProjectionProblemFactoryBase& projection_problem_factory() const
+    {
+      if (Projection_problem_factory_pt == 0)
+      {
+        throw OomphLibError(
+          "No projection-problem factory has been supplied for this mesh",
+          OOMPH_CURRENT_FUNCTION,
+          OOMPH_EXCEPTION_LOCATION);
+      }
+      return *Projection_problem_factory_pt;
+    }
+
+    /// Runtime factory for projection problems.
+    ProjectionProblemFactoryPt Projection_problem_factory_pt;
+
+  public:
     /// Refine uniformly
     unsigned unrefine_uniformly()
     {

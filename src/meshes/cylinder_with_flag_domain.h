@@ -185,6 +185,8 @@ namespace oomph
     double A;
   };
 
+#ifndef OOMPH_SUPPRESS_INLINE_CYLINDER_WITH_FLAG_DOMAIN_DEFINITIONS
+
   //=======================================================================
   /// Constructor, Pass the pointers to the GeomObjects that parametrise
   /// the cylinder, the three edges of the flag, the length and height of the
@@ -1425,6 +1427,8 @@ namespace oomph
     }
 
   } // end of macro element boundary
+
+#endif
 } // namespace oomph
 
 #endif

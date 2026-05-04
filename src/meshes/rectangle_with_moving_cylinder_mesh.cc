@@ -905,11 +905,15 @@ namespace oomph
   /// in anticlockwise direction. Timestepper defaults to Steady
   /// default timestepper.
   RectangleWithHoleAndAnnularRegionTFMesh::
-    RectangleWithHoleAndAnnularRegionTFMesh(GeomObject* cylinder_pt,
-                                            const double& annular_region_radius,
-                                            const double& length,
-                                            TimeStepper* time_stepper_pt)
+    RectangleWithHoleAndAnnularRegionTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      GeomObject* cylinder_pt,
+      const double& annular_region_radius,
+      const double& length,
+      TimeStepper* time_stepper_pt)
   {
+    set_element_factory_pt(element_factory_pt);
+
     // Create the domain
     Domain_pt = new RectangleWithHoleAndAnnularRegionDomain(
       cylinder_pt, annular_region_radius, length);
@@ -1386,15 +1390,20 @@ namespace oomph
   /// in anticlockwise direction. Timestepper defaults to Steady
   /// default timestepper.
   //=============================================================================
-  RefineableQuadMeshWithMovingCylinder::RefineableQuadMeshWithMovingCylinder(
-    GeomObject* cylinder_pt,
-    const double& annular_region_radius,
-    const double& length_of_central_box,
-    const double& x_left,
-    const double& x_right,
-    const double& height,
-    TimeStepper* time_stepper_pt)
+  RefineableQuadMeshWithMovingCylinderTFMesh::
+    RefineableQuadMeshWithMovingCylinderTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const TwoDimensionalPMLMeshFactoryPt& pml_mesh_factory_pt,
+      GeomObject* cylinder_pt,
+      const double& annular_region_radius,
+      const double& length_of_central_box,
+      const double& x_left,
+      const double& x_right,
+      const double& height,
+      TimeStepper* time_stepper_pt)
   {
+    set_element_factory_pt(element_factory_pt);
+
     // Do you want a coarse problem?
     Coarse_problem = false; // true; // hierher
 
@@ -1403,6 +1412,7 @@ namespace oomph
 
     // Build central mesh
     Central_mesh_pt = new RefineableRectangleWithHoleAndAnnularRegionTFMesh(
+      element_factory_pt,
       cylinder_pt,
       annular_region_radius,
       length_of_central_box,
@@ -1435,7 +1445,7 @@ namespace oomph
     }
 
     Mesh* surrounding_right_mesh_pt =
-      TwoDimensionalPMLHelper::create_right_pml_mesh<PMLLayerElement>(
+      pml_mesh_factory_pt->create_right_pml_mesh(
         Central_mesh_pt, right_boundary_id, n_right, l_right, time_stepper_pt);
 
     all_temp_mesh_pt.push_back(surrounding_right_mesh_pt);
@@ -1463,9 +1473,8 @@ namespace oomph
     {
       n_top = 1;
     }
-    Mesh* surrounding_top_mesh_pt =
-      TwoDimensionalPMLHelper::create_top_pml_mesh<PMLLayerElement>(
-        Central_mesh_pt, top_boundary_id, n_top, l_top, time_stepper_pt);
+    Mesh* surrounding_top_mesh_pt = pml_mesh_factory_pt->create_top_pml_mesh(
+      Central_mesh_pt, top_boundary_id, n_top, l_top, time_stepper_pt);
     all_temp_mesh_pt.push_back(surrounding_top_mesh_pt);
 
     // Remove nodes from right and left boundaries (1 and 3)
@@ -1491,9 +1500,8 @@ namespace oomph
     {
       n_left = 1;
     }
-    Mesh* surrounding_left_mesh_pt =
-      TwoDimensionalPMLHelper::create_left_pml_mesh<PMLLayerElement>(
-        Central_mesh_pt, left_boundary_id, n_left, l_left, time_stepper_pt);
+    Mesh* surrounding_left_mesh_pt = pml_mesh_factory_pt->create_left_pml_mesh(
+      Central_mesh_pt, left_boundary_id, n_left, l_left, time_stepper_pt);
     all_temp_mesh_pt.push_back(surrounding_left_mesh_pt);
 
     // Remove nodes from top and bottom boundaries (0 and 2)
@@ -1520,12 +1528,11 @@ namespace oomph
       n_bottom = 1;
     }
     Mesh* surrounding_bottom_mesh_pt =
-      TwoDimensionalPMLHelper::create_bottom_pml_mesh<PMLLayerElement>(
-        Central_mesh_pt,
-        bottom_boundary_id,
-        n_bottom,
-        l_bottom,
-        time_stepper_pt);
+      pml_mesh_factory_pt->create_bottom_pml_mesh(Central_mesh_pt,
+                                                  bottom_boundary_id,
+                                                  n_bottom,
+                                                  l_bottom,
+                                                  time_stepper_pt);
     all_temp_mesh_pt.push_back(surrounding_bottom_mesh_pt);
 
     // Remove nodes from right and left boundaries (1 and 3)
@@ -1545,16 +1552,15 @@ namespace oomph
 
     // Build corner Surrounding meshes
     Mesh* surrounding_top_right_mesh_pt =
-      TwoDimensionalPMLHelper::create_top_right_pml_mesh<PMLLayerElement>(
-        surrounding_right_mesh_pt,
-        surrounding_top_mesh_pt,
-        Central_mesh_pt,
-        right_boundary_id,
-        time_stepper_pt);
+      pml_mesh_factory_pt->create_top_right_pml_mesh(surrounding_right_mesh_pt,
+                                                     surrounding_top_mesh_pt,
+                                                     Central_mesh_pt,
+                                                     right_boundary_id,
+                                                     time_stepper_pt);
     all_temp_mesh_pt.push_back(surrounding_top_right_mesh_pt);
 
     Mesh* surrounding_bottom_right_mesh_pt =
-      TwoDimensionalPMLHelper::create_bottom_right_pml_mesh<PMLLayerElement>(
+      pml_mesh_factory_pt->create_bottom_right_pml_mesh(
         surrounding_right_mesh_pt,
         surrounding_bottom_mesh_pt,
         Central_mesh_pt,
@@ -1563,16 +1569,15 @@ namespace oomph
     all_temp_mesh_pt.push_back(surrounding_bottom_right_mesh_pt);
 
     Mesh* surrounding_top_left_mesh_pt =
-      TwoDimensionalPMLHelper::create_top_left_pml_mesh<PMLLayerElement>(
-        surrounding_left_mesh_pt,
-        surrounding_top_mesh_pt,
-        Central_mesh_pt,
-        left_boundary_id,
-        time_stepper_pt);
+      pml_mesh_factory_pt->create_top_left_pml_mesh(surrounding_left_mesh_pt,
+                                                    surrounding_top_mesh_pt,
+                                                    Central_mesh_pt,
+                                                    left_boundary_id,
+                                                    time_stepper_pt);
     all_temp_mesh_pt.push_back(surrounding_top_left_mesh_pt);
 
     Mesh* surrounding_bottom_left_mesh_pt =
-      TwoDimensionalPMLHelper::create_bottom_left_pml_mesh<PMLLayerElement>(
+      pml_mesh_factory_pt->create_bottom_left_pml_mesh(
         surrounding_left_mesh_pt,
         surrounding_bottom_mesh_pt,
         Central_mesh_pt,

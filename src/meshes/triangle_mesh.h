@@ -49,6 +49,8 @@
 #include "generic/triangle_scaffold_mesh.h"
 #include "generic/triangle_mesh.h"
 #include "generic/refineable_mesh.h"
+#include "generic/projection.h"
+#include "generic/face_element_as_geometric_object.h"
 #include "../rigid_body/immersed_rigid_body_elements.h"
 
 namespace oomph
@@ -476,7 +478,7 @@ namespace oomph
       Use_attributes = should_use_attributes;
 
       // Build scaffold
-      this->Tmp_mesh_pt = new TriangleScaffoldTFMesh(
+      this->Tmp_mesh_pt = new TriangleScaffoldMesh(
         node_file_name, element_file_name, poly_file_name);
 
       // Convert mesh from scaffold to actual mesh
@@ -490,7 +492,7 @@ namespace oomph
       unsigned nb = nboundary();
       for (unsigned b = 0; b < nb; b++)
       {
-        this->template setup_boundary_coordinates(b);
+        this->setup_boundary_coordinates(b);
       }
     }
 
@@ -731,7 +733,7 @@ namespace oomph
 
       for (unsigned b = 0; b < nb; b++)
       {
-        this->template setup_boundary_coordinates(b);
+        this->setup_boundary_coordinates(b);
       }
 
       // Snap it!
@@ -807,7 +809,7 @@ namespace oomph
       triangulate(triswitches, &triangle_in, &Triangulateio, 0);
 
       // Build scaffold
-      this->Tmp_mesh_pt = new TriangleScaffoldTFMesh(Triangulateio);
+      this->Tmp_mesh_pt = new TriangleScaffoldMesh(Triangulateio);
 
       // Convert mesh from scaffold to actual mesh
       build_from_scaffold(time_stepper_pt, use_attributes);
@@ -824,7 +826,7 @@ namespace oomph
       unsigned nb = nboundary();
       for (unsigned b = 0; b < nb; b++)
       {
-        this->template setup_boundary_coordinates(b);
+        this->setup_boundary_coordinates(b);
       }
     }
 
@@ -1100,7 +1102,7 @@ namespace oomph
       set_nboundary(nbound);
 
       // Now build the new scaffold
-      this->Tmp_mesh_pt = new TriangleScaffoldTFMesh(this->Triangulateio);
+      this->Tmp_mesh_pt = new TriangleScaffoldMesh(this->Triangulateio);
 
       // Triangulation has been created -- remember to wipe it!
       Triangulateio_exists = true;
@@ -1134,7 +1136,7 @@ namespace oomph
       // Setup boundary coordinates for boundaries
       for (unsigned b = 0; b < nbound; b++)
       {
-        this->template setup_boundary_coordinates(b);
+        this->setup_boundary_coordinates(b);
       }
 
       // Snap nodes only if the mesh is not distributed, if the mesh is
@@ -1305,7 +1307,7 @@ namespace oomph
       triangulate(triswitches, &triangulate_io, &Triangulateio, 0);
 
       // Build scaffold
-      this->Tmp_mesh_pt = new TriangleScaffoldTFMesh(Triangulateio);
+      this->Tmp_mesh_pt = new TriangleScaffoldMesh(Triangulateio);
 
       // If we have filled holes then we must use the attributes
       if (!regions_coordinates.empty())
@@ -1337,7 +1339,7 @@ namespace oomph
 #endif // OOMPH_HAS_TRIANGLE_LIB
 
     /// Temporary scaffold mesh
-    TriangleScaffoldTFMesh* Tmp_mesh_pt;
+    TriangleScaffoldMesh* Tmp_mesh_pt;
 
     /// Vector storing oomph-lib node number
     /// for all vertex nodes in the TriangulateIO representation of the mesh
@@ -2148,6 +2150,22 @@ namespace oomph
       Vector<Vector<unsigned>>& ntmp_boundary_elements_in_region,
       Vector<FiniteElement*>& deleted_elements);
 
+#else
+
+  public:
+    /// In serial builds there are no shared boundaries; return one past the
+    /// original boundary range so shared-boundary tests are consistently false.
+    const unsigned initial_shared_boundary_id()
+    {
+      return this->nboundary();
+    }
+
+    /// In serial builds there are no shared boundaries.
+    const unsigned final_shared_boundary_id()
+    {
+      return this->nboundary();
+    }
+
 #endif // #ifdef OOMPH_HAS_MPI
 
   public:
@@ -2220,6 +2238,76 @@ namespace oomph
   //////////////////////////////////////////////////////////////////////
 
   //=========================================================================
+  /// Backwards-compatible templated Triangle mesh wrapper.
+  //=========================================================================
+  template<class ELEMENT>
+  class TriangleMesh : public virtual TriangleTFMesh
+  {
+  public:
+    /// Empty constructor
+    TriangleMesh()
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        UnstructuredTwoDMeshGeometryBase(
+          make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
+        TriangleTFMesh()
+    {
+    }
+
+    /// Constructor with the input files.
+    TriangleMesh(
+      const std::string& node_file_name,
+      const std::string& element_file_name,
+      const std::string& poly_file_name,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
+      const bool& allow_automatic_creation_of_vertices_on_boundaries = true)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        UnstructuredTwoDMeshGeometryBase(
+          make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
+        TriangleTFMesh(node_file_name,
+                       element_file_name,
+                       poly_file_name,
+                       time_stepper_pt,
+                       allow_automatic_creation_of_vertices_on_boundaries)
+    {
+    }
+
+#ifdef OOMPH_HAS_TRIANGLE_LIB
+
+    /// Build mesh, based on the specifications in TriangleMeshParameters.
+    TriangleMesh(TriangleMeshParameters& triangle_mesh_parameters,
+                 TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        UnstructuredTwoDMeshGeometryBase(
+          make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
+        TriangleTFMesh(triangle_mesh_parameters, time_stepper_pt)
+    {
+    }
+
+    /// Build mesh from poly file, with specified target area for all elements.
+    TriangleMesh(
+      const std::string& poly_file_name,
+      const double& element_area,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
+      const bool& allow_automatic_creation_of_vertices_on_boundaries = true)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        UnstructuredTwoDMeshGeometryBase(
+          make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
+        TriangleTFMesh(poly_file_name,
+                       element_area,
+                       time_stepper_pt,
+                       allow_automatic_creation_of_vertices_on_boundaries)
+    {
+    }
+
+#endif
+  };
+
+
+  //////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////
+
+  //=========================================================================
   /// Unstructured refineable Triangle Mesh
   //=========================================================================
   // Temporary flag to enable full annotation of RefineableTriangleTFMesh
@@ -2244,7 +2332,47 @@ namespace oomph
     typedef void (*InternalHolePointUpdateFctPt)(const unsigned& ihole,
                                                  TriangleMeshPolygon* poly_pt);
 
+    /// Store the runtime factory used to build face elements that double as
+    /// geometric objects during surface remeshing.
+    void set_face_element_as_geom_object_factory_pt(
+      const FaceElementFactoryPt& face_element_factory_pt)
+    {
+      Face_element_as_geom_object_factory_pt = face_element_factory_pt;
+    }
+
+    /// Store the runtime factory used to build projection problems during
+    /// adaptation.
+    void set_projection_problem_factory_pt(
+      const ProjectionProblemFactoryPt& projection_problem_factory_pt)
+    {
+      Projection_problem_factory_pt = projection_problem_factory_pt;
+    }
+
 #ifdef OOMPH_HAS_TRIANGLE_LIB
+
+    /// Build mesh with runtime factories, based on the specifications in
+    /// TriangleMeshParameters.
+    RefineableTriangleTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const FaceElementFactoryPt& dummy_face_element_factory_pt,
+      const FaceElementFactoryPt& face_element_as_geom_object_factory_pt,
+      const ProjectionProblemFactoryPt& projection_problem_factory_pt,
+      TriangleMeshParameters& triangle_mesh_parameters,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : Mesh(element_factory_pt),
+        UnstructuredTwoDMeshGeometryBase(dummy_face_element_factory_pt),
+        TriangleTFMesh(triangle_mesh_parameters, time_stepper_pt)
+    {
+      Face_element_as_geom_object_factory_pt =
+        face_element_as_geom_object_factory_pt;
+      Projection_problem_factory_pt = projection_problem_factory_pt;
+
+      // Initialise the data associated with adaptation
+      initialise_adaptation_data();
+
+      // Initialise the data associated with boundary refinements
+      initialise_boundary_refinement_data();
+    }
 
     /// Build mesh, based on the specifications on
     /// TriangleMeshParameters
@@ -2261,6 +2389,40 @@ namespace oomph
     }
 
 #endif // #ifdef OOMPH_HAS_TRIANGLE_LIB
+
+    /// Build mesh with runtime factories, based on the polyfiles.
+    RefineableTriangleTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const FaceElementFactoryPt& dummy_face_element_factory_pt,
+      const FaceElementFactoryPt& face_element_as_geom_object_factory_pt,
+      const ProjectionProblemFactoryPt& projection_problem_factory_pt,
+      const std::string& node_file_name,
+      const std::string& element_file_name,
+      const std::string& poly_file_name,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
+      const bool& allow_automatic_creation_of_vertices_on_boundaries = true)
+      : Mesh(element_factory_pt),
+        UnstructuredTwoDMeshGeometryBase(dummy_face_element_factory_pt),
+        TriangleTFMesh(node_file_name,
+                       element_file_name,
+                       poly_file_name,
+                       time_stepper_pt,
+                       allow_automatic_creation_of_vertices_on_boundaries)
+    {
+      Face_element_as_geom_object_factory_pt =
+        face_element_as_geom_object_factory_pt;
+      Projection_problem_factory_pt = projection_problem_factory_pt;
+
+      // Create and fill the data structures to give rise to polylines so that
+      // the mesh can use the adapt methods
+      create_polylines_from_polyfiles(node_file_name, poly_file_name);
+
+      // Initialise the data associated with adaptation
+      initialise_adaptation_data();
+
+      // Initialise the data associated with boundary refinements
+      initialise_boundary_refinement_data();
+    }
 
     /// Build mesh, based on the polyfiles
     RefineableTriangleTFMesh(
@@ -2293,6 +2455,104 @@ namespace oomph
     /// associated target areas for elements in it
     /// NOTE: This is used ONLY during adaptation and should not be used
     /// as a method of constructing a TriangleTFMesh object in demo drivers!
+    RefineableTriangleTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const FaceElementFactoryPt& dummy_face_element_factory_pt,
+      const FaceElementFactoryPt& face_element_as_geom_object_factory_pt,
+      const ProjectionProblemFactoryPt& projection_problem_factory_pt,
+      const Vector<double>& target_area,
+      TriangulateIO& triangulate_io,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
+      const bool& use_attributes = false,
+      const bool& allow_automatic_creation_of_vertices_on_boundaries = true,
+      OomphCommunicator* comm_pt = 0)
+      : Mesh(element_factory_pt),
+        UnstructuredTwoDMeshGeometryBase(dummy_face_element_factory_pt)
+    {
+      Face_element_as_geom_object_factory_pt =
+        face_element_as_geom_object_factory_pt;
+      Projection_problem_factory_pt = projection_problem_factory_pt;
+
+      // Initialise the data associated with adaptation
+      initialise_adaptation_data();
+
+      // Initialise the data associated with boundary refinements
+      initialise_boundary_refinement_data();
+
+      // Store Timestepper used to build elements
+      this->Time_stepper_pt = time_stepper_pt;
+
+      // Create triangulateio object to refine
+      TriangulateIO triangle_refine;
+
+      // Initialize triangulateio structure
+      TriangleHelper::initialise_triangulateio(this->Triangulateio);
+
+      // Triangulation has been created -- remember to wipe it!
+      this->Triangulateio_exists = true;
+
+      // Create refined  TriangulateIO structure based on target areas
+      this->refine_triangulateio(triangulate_io, target_area, triangle_refine);
+
+      // Input string for triangle
+      std::stringstream input_string_stream;
+      input_string_stream << "-pq30-ra";
+
+      // Verify if creation of new points on boundaries is allowed
+      if (!allow_automatic_creation_of_vertices_on_boundaries)
+      {
+        input_string_stream << " -YY";
+      }
+
+      // Copy the allowing of creation of points on the boundaries status
+      this->Allow_automatic_creation_of_vertices_on_boundaries =
+        allow_automatic_creation_of_vertices_on_boundaries;
+
+      // Store the attribute flag
+      this->Use_attributes = use_attributes;
+
+      // Convert to a *char required by the triangulate function
+      char triswitches[100];
+      snprintf(triswitches,
+               sizeof(triswitches),
+               "%s",
+               input_string_stream.str().c_str());
+
+      // Build triangulateio refined object
+      triangulate(triswitches, &triangle_refine, &this->Triangulateio, 0);
+
+      // Build scaffold
+      this->Tmp_mesh_pt = new TriangleScaffoldMesh(this->Triangulateio);
+
+      // Convert mesh from scaffold to actual mesh
+      this->build_from_scaffold(time_stepper_pt, use_attributes);
+
+      // Kill the scaffold
+      delete this->Tmp_mesh_pt;
+      this->Tmp_mesh_pt = 0;
+
+      // Cleanup but leave hole alone as it's still used
+      bool clear_hole_data = false;
+      TriangleHelper::clear_triangulateio(triangle_refine, clear_hole_data);
+
+#ifdef OOMPH_HAS_MPI
+      // Before calling setup boundary coordinates check if the mesh
+      // should be treated as a distributed mesh
+      if (comm_pt != 0)
+      {
+        // Set the communicator which will mark the mesh as distributed
+        this->set_communicator_pt(comm_pt);
+      }
+#endif
+
+      // Setup boundary coordinates for boundaries
+      unsigned nb = nboundary();
+      for (unsigned b = 0; b < nb; b++)
+      {
+        this->setup_boundary_coordinates(b);
+      }
+    }
+
     RefineableTriangleTFMesh(
       const Vector<double>& target_area,
       TriangulateIO& triangulate_io,
@@ -2350,7 +2610,7 @@ namespace oomph
       triangulate(triswitches, &triangle_refine, &this->Triangulateio, 0);
 
       // Build scaffold
-      this->Tmp_mesh_pt = new TriangleScaffoldTFMesh(this->Triangulateio);
+      this->Tmp_mesh_pt = new TriangleScaffoldMesh(this->Triangulateio);
 
       // Convert mesh from scaffold to actual mesh
       this->build_from_scaffold(time_stepper_pt, use_attributes);
@@ -2377,7 +2637,7 @@ namespace oomph
       unsigned nb = nboundary();
       for (unsigned b = 0; b < nb; b++)
       {
-        this->template setup_boundary_coordinates(b);
+        this->setup_boundary_coordinates(b);
       }
     }
 
@@ -2726,7 +2986,7 @@ namespace oomph
           if (this->boundary_geom_object_pt(b) != 0)
           {
             // Re-set the boundary coordinates
-            this->template setup_boundary_coordinates(b);
+            this->setup_boundary_coordinates(b);
           }
         }
 
@@ -3852,6 +4112,137 @@ namespace oomph
     /// to update the position of the central point in internal
     /// holes
     InternalHolePointUpdateFctPt Internal_hole_point_update_fct_pt;
+
+    /// Access the runtime factory for face elements used as geometric objects.
+    FaceElementFactoryBase& face_element_as_geom_object_factory() const
+    {
+      if (Face_element_as_geom_object_factory_pt == 0)
+      {
+        throw OomphLibError(
+          "No face-element-as-geom-object factory has been supplied for this "
+          "mesh",
+          OOMPH_CURRENT_FUNCTION,
+          OOMPH_EXCEPTION_LOCATION);
+      }
+      return *Face_element_as_geom_object_factory_pt;
+    }
+
+    /// Runtime factory for face elements used as geometric objects.
+    FaceElementFactoryPt Face_element_as_geom_object_factory_pt;
+
+    /// Access the runtime projection-problem factory.
+    ProjectionProblemFactoryBase& projection_problem_factory() const
+    {
+      if (Projection_problem_factory_pt == 0)
+      {
+        throw OomphLibError(
+          "No projection-problem factory has been supplied for this mesh",
+          OOMPH_CURRENT_FUNCTION,
+          OOMPH_EXCEPTION_LOCATION);
+      }
+      return *Projection_problem_factory_pt;
+    }
+
+    /// Runtime factory for projection problems.
+    ProjectionProblemFactoryPt Projection_problem_factory_pt;
+  };
+
+
+  /////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////
+
+  //=========================================================================
+  /// Backwards-compatible templated refineable Triangle mesh wrapper.
+  //=========================================================================
+  template<class ELEMENT>
+  class RefineableTriangleMesh : public virtual TriangleMesh<ELEMENT>,
+                                 public virtual RefineableTriangleTFMesh
+  {
+  public:
+#ifdef OOMPH_HAS_TRIANGLE_LIB
+    /// Build mesh, based on the specifications in TriangleMeshParameters.
+    RefineableTriangleMesh(
+      TriangleMeshParameters& triangle_mesh_parameters,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        UnstructuredTwoDMeshGeometryBase(
+          make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
+        TriangleTFMesh(triangle_mesh_parameters, time_stepper_pt),
+        TriangleMesh<ELEMENT>(triangle_mesh_parameters, time_stepper_pt),
+        RefineableTriangleTFMesh(
+          make_element_factory_pt<ELEMENT>(),
+          make_face_element_factory_pt<DummyFaceElement<ELEMENT>>(),
+          make_face_element_factory_pt<FaceElementAsGeomObject<ELEMENT>>(),
+          make_projection_problem_factory_pt<ProjectableElement<ELEMENT>>(),
+          triangle_mesh_parameters,
+          time_stepper_pt)
+    {
+    }
+
+#endif // #ifdef OOMPH_HAS_TRIANGLE_LIB
+
+    /// Build mesh, based on the polyfiles.
+    RefineableTriangleMesh(
+      const std::string& node_file_name,
+      const std::string& element_file_name,
+      const std::string& poly_file_name,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
+      const bool& allow_automatic_creation_of_vertices_on_boundaries = true)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        UnstructuredTwoDMeshGeometryBase(
+          make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
+        TriangleTFMesh(node_file_name,
+                       element_file_name,
+                       poly_file_name,
+                       time_stepper_pt,
+                       allow_automatic_creation_of_vertices_on_boundaries),
+        TriangleMesh<ELEMENT>(
+          node_file_name,
+          element_file_name,
+          poly_file_name,
+          time_stepper_pt,
+          allow_automatic_creation_of_vertices_on_boundaries),
+        RefineableTriangleTFMesh(
+          make_element_factory_pt<ELEMENT>(),
+          make_face_element_factory_pt<DummyFaceElement<ELEMENT>>(),
+          make_face_element_factory_pt<FaceElementAsGeomObject<ELEMENT>>(),
+          make_projection_problem_factory_pt<ProjectableElement<ELEMENT>>(),
+          node_file_name,
+          element_file_name,
+          poly_file_name,
+          time_stepper_pt,
+          allow_automatic_creation_of_vertices_on_boundaries)
+    {
+    }
+
+  protected:
+#ifdef OOMPH_HAS_TRIANGLE_LIB
+    /// Build mesh from specified triangulation and associated target areas.
+    RefineableTriangleMesh(
+      const Vector<double>& target_area,
+      TriangulateIO& triangulate_io,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
+      const bool& use_attributes = false,
+      const bool& allow_automatic_creation_of_vertices_on_boundaries = true,
+      OomphCommunicator* comm_pt = 0)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        UnstructuredTwoDMeshGeometryBase(
+          make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
+        RefineableTriangleTFMesh(
+          make_element_factory_pt<ELEMENT>(),
+          make_face_element_factory_pt<DummyFaceElement<ELEMENT>>(),
+          make_face_element_factory_pt<FaceElementAsGeomObject<ELEMENT>>(),
+          make_projection_problem_factory_pt<ProjectableElement<ELEMENT>>(),
+          target_area,
+          triangulate_io,
+          time_stepper_pt,
+          use_attributes,
+          allow_automatic_creation_of_vertices_on_boundaries,
+          comm_pt)
+    {
+    }
+#endif
   };
 
 
@@ -3907,6 +4298,66 @@ namespace oomph
   ////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////
 
+  //=========================================================================
+  /// Backwards-compatible templated solid Triangle mesh wrapper.
+  //=========================================================================
+  template<class ELEMENT>
+  class SolidTriangleMesh : public virtual TriangleMesh<ELEMENT>,
+                            public virtual SolidTFMesh
+  {
+  public:
+#ifdef OOMPH_HAS_TRIANGLE_LIB
+
+    /// Build mesh, based on closed curves and target areas in
+    /// TriangleMeshParameters.
+    SolidTriangleMesh(TriangleMeshParameters& triangle_mesh_parameters,
+                      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        UnstructuredTwoDMeshGeometryBase(
+          make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
+        TriangleTFMesh(triangle_mesh_parameters, time_stepper_pt),
+        TriangleMesh<ELEMENT>(triangle_mesh_parameters, time_stepper_pt)
+    {
+      // Assign the Lagrangian coordinates
+      set_lagrangian_nodal_coordinates();
+    }
+
+#endif // #ifdef OOMPH_HAS_TRIANGLE_LIB
+
+    SolidTriangleMesh(
+      const std::string& node_file_name,
+      const std::string& element_file_name,
+      const std::string& poly_file_name,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
+      const bool& allow_automatic_creation_of_vertices_on_boundaries = true)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        UnstructuredTwoDMeshGeometryBase(
+          make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
+        TriangleTFMesh(node_file_name,
+                       element_file_name,
+                       poly_file_name,
+                       time_stepper_pt,
+                       allow_automatic_creation_of_vertices_on_boundaries),
+        TriangleMesh<ELEMENT>(
+          node_file_name,
+          element_file_name,
+          poly_file_name,
+          time_stepper_pt,
+          allow_automatic_creation_of_vertices_on_boundaries)
+    {
+      // Assign the Lagrangian coordinates
+      set_lagrangian_nodal_coordinates();
+    }
+
+    /// Empty Destructor
+    virtual ~SolidTriangleMesh() {}
+  };
+
+
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+
 #ifdef OOMPH_HAS_TRIANGLE_LIB
 
   //=========================================================================
@@ -3916,6 +4367,29 @@ namespace oomph
                                         public virtual SolidTFMesh
   {
   public:
+    /// Build mesh with runtime factories, based on the specifications in
+    /// TriangleMeshParameters.
+    RefineableSolidTriangleTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const FaceElementFactoryPt& dummy_face_element_factory_pt,
+      const FaceElementFactoryPt& face_element_as_geom_object_factory_pt,
+      const ProjectionProblemFactoryPt& projection_problem_factory_pt,
+      TriangleMeshParameters& triangle_mesh_parameters,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : Mesh(element_factory_pt),
+        UnstructuredTwoDMeshGeometryBase(dummy_face_element_factory_pt),
+        TriangleTFMesh(triangle_mesh_parameters, time_stepper_pt),
+        RefineableTriangleTFMesh(element_factory_pt,
+                                 dummy_face_element_factory_pt,
+                                 face_element_as_geom_object_factory_pt,
+                                 projection_problem_factory_pt,
+                                 triangle_mesh_parameters,
+                                 time_stepper_pt)
+    {
+      // Assign the Lagrangian coordinates
+      set_lagrangian_nodal_coordinates();
+    }
+
     /// Build mesh, based on the specifications on
     /// TriangleMeshParameter
     RefineableSolidTriangleTFMesh(
@@ -3923,6 +4397,37 @@ namespace oomph
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : TriangleTFMesh(triangle_mesh_parameters, time_stepper_pt),
         RefineableTriangleTFMesh(triangle_mesh_parameters, time_stepper_pt)
+    {
+      // Assign the Lagrangian coordinates
+      set_lagrangian_nodal_coordinates();
+    }
+
+    /// Build mesh from specified triangulation and
+    /// associated target areas for elements in it.
+    RefineableSolidTriangleTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const FaceElementFactoryPt& dummy_face_element_factory_pt,
+      const FaceElementFactoryPt& face_element_as_geom_object_factory_pt,
+      const ProjectionProblemFactoryPt& projection_problem_factory_pt,
+      const Vector<double>& target_area,
+      TriangulateIO& triangulate_io,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
+      const bool& use_attributes = false,
+      const bool& allow_automatic_creation_of_vertices_on_boundaries = true,
+      OomphCommunicator* comm_pt = 0)
+      : Mesh(element_factory_pt),
+        UnstructuredTwoDMeshGeometryBase(dummy_face_element_factory_pt),
+        RefineableTriangleTFMesh(
+          element_factory_pt,
+          dummy_face_element_factory_pt,
+          face_element_as_geom_object_factory_pt,
+          projection_problem_factory_pt,
+          target_area,
+          triangulate_io,
+          time_stepper_pt,
+          use_attributes,
+          allow_automatic_creation_of_vertices_on_boundaries,
+          comm_pt)
     {
       // Assign the Lagrangian coordinates
       set_lagrangian_nodal_coordinates();
@@ -3951,6 +4456,78 @@ namespace oomph
 
     /// Empty Destructor
     virtual ~RefineableSolidTriangleTFMesh() {}
+  };
+
+  //=========================================================================
+  /// Backwards-compatible templated refineable solid Triangle mesh wrapper.
+  //=========================================================================
+  template<class ELEMENT>
+  class RefineableSolidTriangleMesh
+    : public virtual RefineableTriangleMesh<ELEMENT>,
+      public virtual SolidTFMesh
+  {
+  public:
+    /// Build mesh, based on the specifications in TriangleMeshParameters.
+    RefineableSolidTriangleMesh(
+      TriangleMeshParameters& triangle_mesh_parameters,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        UnstructuredTwoDMeshGeometryBase(
+          make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
+        TriangleTFMesh(triangle_mesh_parameters, time_stepper_pt),
+        TriangleMesh<ELEMENT>(triangle_mesh_parameters, time_stepper_pt),
+        RefineableTriangleTFMesh(
+          make_element_factory_pt<ELEMENT>(),
+          make_face_element_factory_pt<DummyFaceElement<ELEMENT>>(),
+          make_face_element_factory_pt<FaceElementAsGeomObject<ELEMENT>>(),
+          make_projection_problem_factory_pt<ProjectableElement<ELEMENT>>(),
+          triangle_mesh_parameters,
+          time_stepper_pt),
+        RefineableTriangleMesh<ELEMENT>(triangle_mesh_parameters,
+                                        time_stepper_pt)
+    {
+      // Assign the Lagrangian coordinates
+      set_lagrangian_nodal_coordinates();
+    }
+
+  protected:
+    /// Build mesh from specified triangulation and associated target areas.
+    RefineableSolidTriangleMesh(
+      const Vector<double>& target_area,
+      TriangulateIO& triangulate_io,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
+      const bool& use_attributes = false,
+      const bool& allow_automatic_creation_of_vertices_on_boundaries = true,
+      OomphCommunicator* comm_pt = 0)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        UnstructuredTwoDMeshGeometryBase(
+          make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
+        RefineableTriangleTFMesh(
+          make_element_factory_pt<ELEMENT>(),
+          make_face_element_factory_pt<DummyFaceElement<ELEMENT>>(),
+          make_face_element_factory_pt<FaceElementAsGeomObject<ELEMENT>>(),
+          make_projection_problem_factory_pt<ProjectableElement<ELEMENT>>(),
+          target_area,
+          triangulate_io,
+          time_stepper_pt,
+          use_attributes,
+          allow_automatic_creation_of_vertices_on_boundaries,
+          comm_pt),
+        RefineableTriangleMesh<ELEMENT>(
+          target_area,
+          triangulate_io,
+          time_stepper_pt,
+          use_attributes,
+          allow_automatic_creation_of_vertices_on_boundaries,
+          comm_pt)
+    {
+      // Assign the Lagrangian coordinates
+      set_lagrangian_nodal_coordinates();
+    }
+
+  public:
+    /// Empty Destructor
+    virtual ~RefineableSolidTriangleMesh() {}
   };
 
 #endif // #ifdef OOMPH_HAS_TRIANGLE_LIB

@@ -24,6 +24,7 @@
 // LIC//
 // LIC//====================================================================
 
+#define OOMPH_SUPPRESS_INLINE_CYLINDER_WITH_FLAG_DOMAIN_DEFINITIONS
 #include "cylinder_with_flag_domain.h"
 
 namespace oomph
@@ -35,17 +36,18 @@ namespace oomph
   ///  domain, the length and height of the flag, the coordinates of the
   /// centre of the cylinder and its radius.
   //=======================================================================
-  CylinderWithFlagDomain::CylinderWithFlagDomain(Circle* cylinder_pt,
-                                                 GeomObject* top_flag_pt,
-                                                 GeomObject* bottom_flag_pt,
-                                                 GeomObject* tip_flag_pt,
-                                                 const double& length,
-                                                 const double& height,
-                                                 const double& flag_length,
-                                                 const double& flag_height,
-                                                 const double& centre_x,
-                                                 const double& centre_y,
-                                                 const double& a)
+  inline CylinderWithFlagDomain::CylinderWithFlagDomain(
+    Circle* cylinder_pt,
+    GeomObject* top_flag_pt,
+    GeomObject* bottom_flag_pt,
+    GeomObject* tip_flag_pt,
+    const double& length,
+    const double& height,
+    const double& flag_length,
+    const double& flag_height,
+    const double& centre_x,
+    const double& centre_y,
+    const double& a)
     : Cylinder_pt(cylinder_pt),
       Top_flag_pt(top_flag_pt),
       Bottom_flag_pt(bottom_flag_pt),

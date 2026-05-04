@@ -90,6 +90,26 @@ namespace oomph
       TimeStepper* time_stepper_pt);
   };
 
+  //======================================================================
+  /// Compatibility wrapper preserving the original templated
+  /// HorizontalSingleLayerSpineMesh API.
+  //======================================================================
+  template<class ELEMENT>
+  class HorizontalSingleLayerSpineMesh : public HorizontalSingleLayerSpineTFMesh
+  {
+  public:
+    HorizontalSingleLayerSpineMesh(
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& lx,
+      const double& h,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : HorizontalSingleLayerSpineTFMesh(
+          make_element_factory_pt<ELEMENT>(), nx, ny, lx, h, time_stepper_pt)
+    {
+    }
+  };
+
 } // namespace oomph
 
 #endif

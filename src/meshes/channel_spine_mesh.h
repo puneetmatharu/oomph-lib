@@ -323,6 +323,65 @@ namespace oomph
     GeomObject* Straight_wall_pt;
   };
 
+  //======================================================================
+  /// Compatibility wrapper preserving the original templated
+  /// ChannelSpineMesh API.
+  //======================================================================
+  template<class ELEMENT>
+  class ChannelSpineMesh : public ChannelSpineTFMesh
+  {
+  public:
+    ChannelSpineMesh(const unsigned& nx0,
+                     const unsigned& nx1,
+                     const unsigned& nx2,
+                     const unsigned& ny,
+                     const double& lx0,
+                     const double& lx1,
+                     const double& lx2,
+                     const double& h,
+                     GeomObject* wall_pt,
+                     TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : ChannelSpineTFMesh(make_element_factory_pt<ELEMENT>(),
+                           nx0,
+                           nx1,
+                           nx2,
+                           ny,
+                           lx0,
+                           lx1,
+                           lx2,
+                           h,
+                           wall_pt,
+                           time_stepper_pt)
+    {
+    }
+
+    ChannelSpineMesh(const unsigned& nx0,
+                     const unsigned& nx1,
+                     const unsigned& nx2,
+                     const unsigned& ny,
+                     const double& lx0,
+                     const double& lx1,
+                     const double& lx2,
+                     const double& h,
+                     GeomObject* wall_pt,
+                     const bool& periodic_in_x,
+                     TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : ChannelSpineTFMesh(make_element_factory_pt<ELEMENT>(),
+                           nx0,
+                           nx1,
+                           nx2,
+                           ny,
+                           lx0,
+                           lx1,
+                           lx2,
+                           h,
+                           wall_pt,
+                           periodic_in_x,
+                           time_stepper_pt)
+    {
+    }
+  };
+
 } // namespace oomph
 
 #endif

@@ -5,6 +5,7 @@ message(VERBOSE "Entered src subdirectory")
 # The subdirectories to build
 set(SUBDIRS
     generic
+    rigid_body
     meshes
     poisson
     unsteady_heat
@@ -33,7 +34,6 @@ set(SUBDIRS
     mesh_smoothing
     helmholtz
     time_harmonic_linear_elasticity
-    rigid_body
     time_harmonic_fourier_decomposed_linear_elasticity
     fourier_decomposed_helmholtz
     foeppl_von_karman

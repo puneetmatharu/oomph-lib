@@ -54,6 +54,8 @@ namespace oomph
     /// Empty constructor
     TetgenTFMesh()
     {
+      set_default_tet_element_factories();
+
       // Mesh can only be built with 3D Telements.
       MeshChecker::assert_geometric_element<TElementGeometricBase>(
         element_factory_pt, 3);
@@ -67,6 +69,8 @@ namespace oomph
                  const bool& use_attributes = false)
       : Tetgenio_exists(false), Tetgenio_pt(nullptr)
     {
+      set_default_tet_element_factories();
+
       // Mesh can only be built with 3D Telements.
       MeshChecker::assert_geometric_element<TElementGeometricBase>(
         element_factory_pt, 3);
@@ -78,7 +82,7 @@ namespace oomph
       Time_stepper_pt = time_stepper_pt;
 
       // Build scaffold
-      Tmp_mesh_pt = new TetgenScaffoldTFMesh(
+      Tmp_mesh_pt = new TetgenScaffoldMesh(
         node_file_name, element_file_name, face_file_name);
 
       // Convert mesh from scaffold to actual mesh
@@ -104,6 +108,8 @@ namespace oomph
                  const bool& use_attributes = false)
 
     {
+      set_default_tet_element_factories();
+
       // Mesh can only be built with 3D Telements.
       MeshChecker::assert_geometric_element<TElementGeometricBase>(
         element_factory_pt, 3);
@@ -119,7 +125,7 @@ namespace oomph
       Tetgenio_pt = 0;
 
       // Build scaffold
-      Tmp_mesh_pt = new TetgenScaffoldTFMesh(tetgen_data);
+      Tmp_mesh_pt = new TetgenScaffoldMesh(tetgen_data);
 
       // Convert mesh from scaffold to actual mesh
       build_from_scaffold(time_stepper_pt, use_attributes);
@@ -155,6 +161,8 @@ namespace oomph
                  const bool& use_attributes = false)
 
     {
+      set_default_tet_element_factories();
+
       // Mesh can only be built with 3D Telements.
       MeshChecker::assert_geometric_element<TElementGeometricBase>(
         element_factory_pt, 3);
@@ -170,7 +178,7 @@ namespace oomph
       this->Tetgenio_pt = 0;
 
       // Build scaffold
-      Tmp_mesh_pt = new TetgenScaffoldTFMesh(
+      Tmp_mesh_pt = new TetgenScaffoldMesh(
         node_file_name, element_file_name, face_file_name);
 
       // Convert mesh from scaffold to actual mesh
@@ -210,6 +218,8 @@ namespace oomph
                  const bool& use_attributes = false)
 
     {
+      set_default_tet_element_factories();
+
       // Mesh can only be built with 3D Telements.
       MeshChecker::assert_geometric_element<TElementGeometricBase>(
         element_factory_pt, 3);
@@ -225,7 +235,7 @@ namespace oomph
       this->Tetgenio_pt = nullptr;
 
       // Build scaffold
-      Tmp_mesh_pt = new TetgenScaffoldTFMesh(tetgen_data);
+      Tmp_mesh_pt = new TetgenScaffoldMesh(tetgen_data);
 
       // Convert mesh from scaffold to actual mesh
       build_from_scaffold(time_stepper_pt, use_attributes);
@@ -264,6 +274,8 @@ namespace oomph
       const bool& split_corner_elements = false,
       Vector<double>* const& target_element_volume_in_region_pt = nullptr)
     {
+      set_default_tet_element_factories();
+
       // Mesh can only be built with 3D Telements.
       MeshChecker::assert_geometric_element<TElementGeometricBase>(
         element_factory_pt, 3);
@@ -384,7 +396,7 @@ namespace oomph
       tetrahedralize(tetswitches, &in, this->Tetgenio_pt);
 
       // Build scaffold
-      Tmp_mesh_pt = new TetgenScaffoldTFMesh(*this->Tetgenio_pt);
+      Tmp_mesh_pt = new TetgenScaffoldMesh(*this->Tetgenio_pt);
 
       // If any of the objects are different regions then we need to use
       // the atributes
@@ -740,6 +752,24 @@ namespace oomph
     void deep_copy_of_tetgenio(tetgenio* const& input_pt, tetgenio*& output_pt);
 
   protected:
+    /// Install default quadratic tet factories for the legacy non-factory
+    /// constructors. This preserves the old TetgenMesh behaviour when callers
+    /// use the compatibility API without injecting a factory explicitly; new
+    /// template-free call sites should pass the intended factories instead.
+    void set_default_tet_element_factories()
+    {
+      if (element_factory_pt == 0)
+      {
+        set_element_factory_pt(make_element_factory_pt<TElement<3, 3>>());
+      }
+
+      if (Dummy_face_element_factory_pt == 0)
+      {
+        set_dummy_face_element_factory_pt(
+          make_face_element_factory_pt<DummyFaceElement<TElement<3, 3>>>());
+      }
+    }
+
     /// Build mesh from scaffold
     void build_from_scaffold(TimeStepper* time_stepper_pt,
                              const bool& use_attributes);
@@ -749,7 +779,7 @@ namespace oomph
       TetMeshFacetedSurface* const& faceted_surface_pt);
 
     /// Temporary scaffold mesh
-    TetgenScaffoldTFMesh* Tmp_mesh_pt;
+    TetgenScaffoldMesh* Tmp_mesh_pt;
 
     /// Boolean to indicate whether a tetgenio representation of the
     /// mesh exists
@@ -821,7 +851,7 @@ namespace oomph
       unsigned nb = this->nboundary();
       for (unsigned b = 0; b < nb; b++)
       {
-        this->template setup_boundary_coordinates(b, switch_normal);
+        this->setup_boundary_coordinates(b, switch_normal);
       }
     }
 

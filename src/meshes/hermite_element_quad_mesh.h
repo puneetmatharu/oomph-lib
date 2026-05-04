@@ -72,12 +72,15 @@ namespace oomph
     ///                                the x direction (default = false);
     ///              time_stepper_pt : pointer to the time stepper (default = no
     ///                                timestepper);
-    HermiteQuadTFMesh(const unsigned& nx,
+    HermiteQuadTFMesh(const ElementFactoryPt& element_factory_pt,
+                      const unsigned& nx,
                       const unsigned& ny,
                       TopologicallyRectangularDomain* domain,
                       const bool& periodic_in_x = false,
                       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
     {
+      set_element_factory_pt(element_factory_pt);
+
       // Mesh can only be built with 2D QHermiteElements.
       MeshChecker::assert_geometric_element<QHermiteElementBase>(
         element_factory_pt, 2);
@@ -100,6 +103,20 @@ namespace oomph
       build_mesh(time_stepper_pt);
     }
 
+    HermiteQuadTFMesh(const unsigned& nx,
+                      const unsigned& ny,
+                      TopologicallyRectangularDomain* domain,
+                      const bool& periodic_in_x = false,
+                      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : HermiteQuadTFMesh(make_element_factory_pt<QHermiteElement<2>>(),
+                          nx,
+                          ny,
+                          domain,
+                          periodic_in_x,
+                          time_stepper_pt)
+    {
+    }
+
 
     /// Mesh Constructor (for a non-uniformly spaced mesh). Takes the
     /// following arguments : nx :              number of elements in x
@@ -114,13 +131,16 @@ namespace oomph
     ///                                         (default = false);
     ///                       time_stepper_pt : pointer to the time stepper
     ///                                         (default = notimestepper);
-    HermiteQuadTFMesh(const unsigned& nx,
+    HermiteQuadTFMesh(const ElementFactoryPt& element_factory_pt,
+                      const unsigned& nx,
                       const unsigned& ny,
                       TopologicallyRectangularDomain* domain,
                       const MeshSpacingFnPtr spacing_fn,
                       const bool& periodic_in_x = false,
                       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
     {
+      set_element_factory_pt(element_factory_pt);
+
       // Mesh can only be built with 2D QHermiteElements.
       MeshChecker::assert_geometric_element<QHermiteElementBase>(
         element_factory_pt, 2);
@@ -141,6 +161,22 @@ namespace oomph
 
       /// build the mesh
       build_mesh(time_stepper_pt);
+    }
+
+    HermiteQuadTFMesh(const unsigned& nx,
+                      const unsigned& ny,
+                      TopologicallyRectangularDomain* domain,
+                      const MeshSpacingFnPtr spacing_fn,
+                      const bool& periodic_in_x = false,
+                      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : HermiteQuadTFMesh(make_element_factory_pt<QHermiteElement<2>>(),
+                          nx,
+                          ny,
+                          domain,
+                          spacing_fn,
+                          periodic_in_x,
+                          time_stepper_pt)
+    {
     }
 
     /// Destructor - does nothing - handled in mesh base class
@@ -242,6 +278,54 @@ namespace oomph
 
     /// non uniform mesh spacing function pointer
     MeshSpacingFnPtr Node_spacing_fn;
+  };
+
+
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+
+  //=============================================================================
+  /// Backwards-compatible templated Hermite quad mesh wrapper.
+  //=============================================================================
+  template<class ELEMENT>
+  class HermiteQuadMesh : public HermiteQuadTFMesh
+  {
+  public:
+    /// Mesh spacing function pointer.
+    typedef typename HermiteQuadTFMesh::MeshSpacingFnPtr MeshSpacingFnPtr;
+
+    /// Constructor for a uniformly spaced mesh.
+    HermiteQuadMesh(const unsigned& nx,
+                    const unsigned& ny,
+                    TopologicallyRectangularDomain* domain,
+                    const bool& periodic_in_x = false,
+                    TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : HermiteQuadTFMesh(make_element_factory_pt<ELEMENT>(),
+                          nx,
+                          ny,
+                          domain,
+                          periodic_in_x,
+                          time_stepper_pt)
+    {
+    }
+
+    /// Constructor for a non-uniformly spaced mesh.
+    HermiteQuadMesh(const unsigned& nx,
+                    const unsigned& ny,
+                    TopologicallyRectangularDomain* domain,
+                    const MeshSpacingFnPtr spacing_fn,
+                    const bool& periodic_in_x = false,
+                    TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : HermiteQuadTFMesh(make_element_factory_pt<ELEMENT>(),
+                          nx,
+                          ny,
+                          domain,
+                          spacing_fn,
+                          periodic_in_x,
+                          time_stepper_pt)
+    {
+    }
   };
 } // namespace oomph
 

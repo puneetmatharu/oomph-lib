@@ -37,6 +37,7 @@
 #include "generic/tetgen_scaffold_mesh.h"
 #include "generic/tet_mesh.h"
 #include "generic/refineable_mesh.h"
+#include "generic/projection.h"
 #include "tetgen_mesh.h"
 
 namespace oomph
@@ -48,6 +49,22 @@ namespace oomph
                                  public virtual RefineableTetMeshBase
   {
   public:
+    /// Store the runtime factory used to build face elements that double as
+    /// geometric objects during surface remeshing.
+    void set_face_element_as_geom_object_factory_pt(
+      const FaceElementFactoryPt& face_element_factory_pt)
+    {
+      Face_element_as_geom_object_factory_pt = face_element_factory_pt;
+    }
+
+    /// Store the runtime factory used to build projection problems during
+    /// adaptation.
+    void set_projection_problem_factory_pt(
+      const ProjectionProblemFactoryPt& projection_problem_factory_pt)
+    {
+      Projection_problem_factory_pt = projection_problem_factory_pt;
+    }
+
     /// Build mesh, based on a TetMeshFacetedClosedSurface that specifies
     /// the outer boundary of the domain and any number of internal
     /// closed curves, specified by TetMeshFacetedSurfaces.
@@ -75,6 +92,39 @@ namespace oomph
 
 
   protected:
+    /// Access the runtime factory for face elements used as geometric objects.
+    FaceElementFactoryBase& face_element_as_geom_object_factory() const
+    {
+      if (Face_element_as_geom_object_factory_pt == 0)
+      {
+        throw OomphLibError(
+          "No face-element-as-geom-object factory has been supplied for this "
+          "mesh",
+          OOMPH_CURRENT_FUNCTION,
+          OOMPH_EXCEPTION_LOCATION);
+      }
+      return *Face_element_as_geom_object_factory_pt;
+    }
+
+    /// Runtime factory for face elements used as geometric objects.
+    FaceElementFactoryPt Face_element_as_geom_object_factory_pt;
+
+    /// Access the runtime projection-problem factory.
+    ProjectionProblemFactoryBase& projection_problem_factory() const
+    {
+      if (Projection_problem_factory_pt == 0)
+      {
+        throw OomphLibError(
+          "No projection-problem factory has been supplied for this mesh",
+          OOMPH_CURRENT_FUNCTION,
+          OOMPH_EXCEPTION_LOCATION);
+      }
+      return *Projection_problem_factory_pt;
+    }
+
+    /// Runtime factory for projection problems.
+    ProjectionProblemFactoryPt Projection_problem_factory_pt;
+
     /// Specialised constructor used during adaptation only.
     /// Element sizes are specified by vector tetgen_io is passed in
     /// from previous mesh (is then modified to build new mesh)
@@ -140,7 +190,7 @@ namespace oomph
       tetrahedralize(tetswitches, tetgen_input_pt, this->Tetgenio_pt);
 
       // Build scaffold
-      this->Tmp_mesh_pt = new TetgenScaffoldTFMesh(*this->Tetgenio_pt);
+      this->Tmp_mesh_pt = new TetgenScaffoldMesh(*this->Tetgenio_pt);
 
       // Convert mesh from scaffold to actual mesh
       this->build_from_scaffold(time_stepper_pt, use_attributes);
@@ -216,7 +266,7 @@ namespace oomph
       unsigned nb = nboundary();
       for (unsigned b = 0; b < nb; b++)
       {
-        this->template setup_boundary_coordinates(b);
+        this->setup_boundary_coordinates(b);
       }
 
       // Now snap onto geometric objects associated with triangular facets

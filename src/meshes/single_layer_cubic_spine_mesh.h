@@ -94,6 +94,34 @@ namespace oomph
     virtual void build_single_layer_mesh(TimeStepper* time_stepper_pt);
   };
 
+  //======================================================================
+  /// Compatibility wrapper preserving the original templated
+  /// SingleLayerCubicSpineMesh API.
+  //======================================================================
+  template<class ELEMENT>
+  class SingleLayerCubicSpineMesh : public SingleLayerCubicSpineTFMesh
+  {
+  public:
+    SingleLayerCubicSpineMesh(
+      const unsigned& nx,
+      const unsigned& ny,
+      const unsigned& nz,
+      const double& lx,
+      const double& ly,
+      const double& h,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : SingleLayerCubicSpineTFMesh(make_element_factory_pt<ELEMENT>(),
+                                    nx,
+                                    ny,
+                                    nz,
+                                    lx,
+                                    ly,
+                                    h,
+                                    time_stepper_pt)
+    {
+    }
+  };
+
 } // namespace oomph
 
 #endif

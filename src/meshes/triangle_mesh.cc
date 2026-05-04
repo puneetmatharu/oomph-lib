@@ -450,7 +450,8 @@ namespace oomph
             // the edge that this element represent has not been
             // already added
             FiniteElement* tmp_ele_pt =
-              new DummyFaceElement(bulk_elem_pt, face_index);
+              this->dummy_face_element_factory().new_element(bulk_elem_pt,
+                                                             face_index);
 
             const unsigned n_nodes = tmp_ele_pt->nnode();
 
@@ -539,7 +540,8 @@ namespace oomph
           // the edge that this element represents has not been
           // already added (only applies for internal boundaries)
           FiniteElement* tmp_ele_pt =
-            new DummyFaceElement(bulk_elem_pt, face_index);
+            this->dummy_face_element_factory().new_element(bulk_elem_pt,
+                                                           face_index);
 
           const unsigned n_nodes = tmp_ele_pt->nnode();
 
@@ -4145,7 +4147,8 @@ namespace oomph
             // edge that this element represent has not been already
             // added
             FiniteElement* tmp_ele_pt =
-              new DummyFaceElement(bulk_elem_pt, face_index);
+              this->dummy_face_element_factory().new_element(bulk_elem_pt,
+                                                             face_index);
 
             const unsigned n_nodes = tmp_ele_pt->nnode();
 
@@ -4228,7 +4231,8 @@ namespace oomph
           // edge that this element represents has not been already
           // added (only applies for internal boundaries)
           FiniteElement* tmp_ele_pt =
-            new DummyFaceElement(bulk_elem_pt, face_index);
+            this->dummy_face_element_factory().new_element(bulk_elem_pt,
+                                                           face_index);
 
           const unsigned n_nodes = tmp_ele_pt->nnode();
 
@@ -5320,7 +5324,8 @@ namespace oomph
 
             // Create the face element
             FiniteElement* tmp_face_el_pt =
-              new DummyFaceElement(bulk_ele_pt, face_index);
+              this->dummy_face_element_factory().new_element(bulk_ele_pt,
+                                                             face_index);
 
             // Associated the face element with the bulk
             face_to_bulk_element_pt[tmp_face_el_pt] = bulk_ele_pt;
@@ -5360,7 +5365,8 @@ namespace oomph
 
           // Create the face element
           FiniteElement* tmp_face_el_pt =
-            new DummyFaceElement(bulk_ele_pt, face_index);
+            this->dummy_face_element_factory().new_element(bulk_ele_pt,
+                                                           face_index);
 
           // Associated the face element with the bulk
           face_to_bulk_element_pt[tmp_face_el_pt] = bulk_ele_pt;
@@ -5647,7 +5653,8 @@ namespace oomph
 
             // Create the face element
             FiniteElement* tmp_face_el_pt =
-              new DummyFaceElement(bulk_ele_pt, face_index);
+              this->dummy_face_element_factory().new_element(bulk_ele_pt,
+                                                             face_index);
 
             // ... and add it to the tmp storage for all the face
             // elements, do not take care for repeated ones (at the
@@ -5684,7 +5691,8 @@ namespace oomph
 
           // Create the face element
           FiniteElement* tmp_face_el_pt =
-            new DummyFaceElement(bulk_ele_pt, face_index);
+            this->dummy_face_element_factory().new_element(bulk_ele_pt,
+                                                           face_index);
 
           // ... and add it to the tmp storage for all the face
           // elements, do not care for repeated ones (at the moment)
@@ -6620,7 +6628,8 @@ namespace oomph
             // edge that this element represent has not been already
             // added
             FiniteElement* tmp_ele_pt =
-              new DummyFaceElement(bulk_elem_pt, face_index);
+              this->dummy_face_element_factory().new_element(bulk_elem_pt,
+                                                             face_index);
 
             const unsigned n_nodes = tmp_ele_pt->nnode();
 
@@ -6704,7 +6713,8 @@ namespace oomph
           // edge that this element represents has not been already
           // added (only applies for internal boundaries)
           FiniteElement* tmp_ele_pt =
-            new DummyFaceElement(bulk_elem_pt, face_index);
+            this->dummy_face_element_factory().new_element(bulk_elem_pt,
+                                                           face_index);
 
           const unsigned n_nodes = tmp_ele_pt->nnode();
 
@@ -8023,7 +8033,8 @@ namespace oomph
         int face_index = this->face_index_at_boundary(b, e);
         // Create the face element
         FiniteElement* face_ele_pt =
-          new DummyFaceElement(bulk_ele_pt, face_index);
+          this->dummy_face_element_factory().new_element(bulk_ele_pt,
+                                                         face_index);
 
         // Get the number of nodes on the face element
         const unsigned n_nodes = face_ele_pt->nnode();
@@ -9155,7 +9166,8 @@ namespace oomph
                     int face_index = this->face_index_at_boundary(bb, e);
                     // Create the face element
                     FiniteElement* face_ele_pt =
-                      new DummyFaceElement(bulk_ele_pt, face_index);
+                      this->dummy_face_element_factory().new_element(
+                        bulk_ele_pt, face_index);
                     // Get the number of nodes in the face element
                     const unsigned n_node_face = face_ele_pt->nnode();
                     // Get the first and last node of the face element
@@ -9240,7 +9252,8 @@ namespace oomph
                   int face_index = this->face_index_at_boundary(bb, e);
                   // Create the face element
                   FiniteElement* face_ele_pt =
-                    new DummyFaceElement(bulk_ele_pt, face_index);
+                    this->dummy_face_element_factory().new_element(bulk_ele_pt,
+                                                                   face_index);
                   // Get the number of nodes in the face element
                   const unsigned n_node_face = face_ele_pt->nnode();
                   // Get the first and last node of the face element
@@ -11698,7 +11711,8 @@ namespace oomph
         int face_index = this->face_index_at_boundary(b, e);
         // Create the face element
         FiniteElement* face_ele_pt =
-          new DummyFaceElement(bulk_ele_pt, face_index);
+          this->dummy_face_element_factory().new_element(bulk_ele_pt,
+                                                         face_index);
         // Get the number of nodes on the face element
         const unsigned nnodes = face_ele_pt->nnode();
         // Get the first and last node
@@ -17944,9 +17958,8 @@ namespace oomph
   /// an haloed element. This info. involves the association of the element
   /// to a boundary or region.
   //========================================================================
-  void RefineableTriangleTFMesh<
-    ELEMENT>::get_required_elemental_information_helper(unsigned& iproc,
-                                                        FiniteElement* ele_pt)
+  void RefineableTriangleTFMesh::get_required_elemental_information_helper(
+    unsigned& iproc, FiniteElement* ele_pt)
   {
     // Check if the element is associated with the original boundaries
     const unsigned nbound = this->initial_shared_boundary_id();
@@ -22724,7 +22737,8 @@ namespace oomph
 
           // Create the face element
           FiniteElement* tmp_ele_pt =
-            new DummyFaceElement(bulk_ele_pt, face_index);
+            this->dummy_face_element_factory().new_element(bulk_ele_pt,
+                                                           face_index);
 
           // Before adding the face element to the vector check that is
           // not has been previously created
@@ -26005,7 +26019,7 @@ namespace oomph
       // Before adding the new element we need to ensure that the edge
       // that this element represents has not been already added
       FiniteElement* face_ele_pt =
-        new DummyFaceElement(bulk_ele_pt, face_index);
+        this->dummy_face_element_factory().new_element(bulk_ele_pt, face_index);
 
       // Nonhalo element
       if (!bulk_ele_pt->is_halo())
@@ -29076,7 +29090,8 @@ namespace oomph
             // edge that this element represents has not been already
             // added
             FiniteElement* tmp_ele_pt =
-              new DummyFaceElement(bulk_elem_pt, face_index);
+              this->dummy_face_element_factory().new_element(bulk_elem_pt,
+                                                             face_index);
 
             // Number of nodes in the face element
             const unsigned n_nodes = tmp_ele_pt->nnode();
@@ -29169,7 +29184,8 @@ namespace oomph
           // Before adding the new element we need to be sure that the
           // edge that this element represent has not been already added
           FiniteElement* tmp_ele_pt =
-            new DummyFaceElement(bulk_elem_pt, face_index);
+            this->dummy_face_element_factory().new_element(bulk_elem_pt,
+                                                           face_index);
 
           // Number of nodes in the face element
           const unsigned n_nodes = tmp_ele_pt->nnode();
@@ -29966,7 +29982,7 @@ namespace oomph
         // Does the boundary has an associated GeomObject
         if (this->boundary_geom_object_pt(b) == 0)
         {
-          this->template setup_boundary_coordinates(b);
+          this->setup_boundary_coordinates(b);
         }
 
         // ------------------------------------------
@@ -30230,12 +30246,22 @@ namespace oomph
       if (solid_mesh_pt != 0)
       {
         tmp_new_mesh_pt = new RefineableSolidTriangleTFMesh(
-          triangle_mesh_parameters, this->Time_stepper_pt);
+          this->element_factory_pt,
+          this->Dummy_face_element_factory_pt,
+          this->Face_element_as_geom_object_factory_pt,
+          this->Projection_problem_factory_pt,
+          triangle_mesh_parameters,
+          this->Time_stepper_pt);
       }
       else
       {
-        tmp_new_mesh_pt = new RefineableTriangleTFMesh(triangle_mesh_parameters,
-                                                       this->Time_stepper_pt);
+        tmp_new_mesh_pt = new RefineableTriangleTFMesh(
+          this->element_factory_pt,
+          this->Dummy_face_element_factory_pt,
+          this->Face_element_as_geom_object_factory_pt,
+          this->Projection_problem_factory_pt,
+          triangle_mesh_parameters,
+          this->Time_stepper_pt);
       }
 
       if (Print_timings_level_adaptation > 2)
@@ -30331,7 +30357,7 @@ namespace oomph
         // associated
         if (tmp_new_mesh_pt->boundary_geom_object_pt(b) != 0)
         {
-          tmp_new_mesh_pt->template setup_boundary_coordinates(b);
+          tmp_new_mesh_pt->setup_boundary_coordinates(b);
         }
       }
 
@@ -30946,6 +30972,10 @@ namespace oomph
         if (solid_mesh_pt != 0)
         {
           new_mesh_pt = new RefineableSolidTriangleTFMesh(
+            this->element_factory_pt,
+            this->Dummy_face_element_factory_pt,
+            this->Face_element_as_geom_object_factory_pt,
+            this->Projection_problem_factory_pt,
             new_target_area,
             tmp_new_triangulateio,
             this->Time_stepper_pt,
@@ -30957,6 +30987,10 @@ namespace oomph
         else
         {
           new_mesh_pt = new RefineableTriangleTFMesh(
+            this->element_factory_pt,
+            this->Dummy_face_element_factory_pt,
+            this->Face_element_as_geom_object_factory_pt,
+            this->Projection_problem_factory_pt,
             new_target_area,
             tmp_new_triangulateio,
             this->Time_stepper_pt,
@@ -31059,7 +31093,7 @@ namespace oomph
           // associated
           if (new_mesh_pt->boundary_geom_object_pt(b) != 0)
           {
-            new_mesh_pt->template setup_boundary_coordinates(b);
+            new_mesh_pt->setup_boundary_coordinates(b);
           }
         }
 
@@ -31253,7 +31287,8 @@ namespace oomph
 
         // Project current solution onto new mesh
         //---------------------------------------
-        ProjectionProblem* project_problem_pt = new ProjectionProblem;
+        ProjectionProblemRuntimeBase* project_problem_pt =
+          this->projection_problem_factory().new_problem();
 
         // Projection requires to be enabled as distributed if working
         // with a distributed mesh
@@ -32590,8 +32625,7 @@ namespace oomph
   //  on the shared boundaries. Unrefinement of shared boundaries is
   //  performed only if the candidate node is not marked for non deletion
   //=========================================================================
-  const void RefineableTriangleTFMesh<
-    ELEMENT>::synchronize_shared_boundary_connections()
+  const void RefineableTriangleTFMesh::synchronize_shared_boundary_connections()
   {
     // Get the number of processors
     const unsigned nproc = this->communicator_pt()->nproc();
@@ -35577,17 +35611,17 @@ namespace oomph
     // interpreted as GeomObjects
 
     // Build the face mesh
-    this->template build_face_mesh<ELEMENT, FaceElementAsGeomObject>(
-      boundary_id, face_mesh_pt);
+    this->build_face_mesh(
+      boundary_id, face_mesh_pt, this->face_element_as_geom_object_factory());
 
     // Find the total number of added elements
     unsigned n_element = face_mesh_pt->nelement();
     // Loop over the elements
     for (unsigned e = 0; e < n_element; e++)
     {
-      // Cast the element pointer to the correct thing!
-      FaceElementAsGeomObject* el_pt =
-        dynamic_cast<FaceElementAsGeomObject*>(face_mesh_pt->element_pt(e));
+      // Cast the element pointer to the face-element interface.
+      FaceElement* el_pt =
+        dynamic_cast<FaceElement*>(face_mesh_pt->element_pt(e));
 
       // Set bulk boundary number
       el_pt->set_boundary_number_in_bulk_mesh(boundary_id);
@@ -35747,8 +35781,8 @@ namespace oomph
     // inverted
 
     // Get the associated polyline representation to the boundary
-    TriangleMeshPolyLine* bnd_polyline =
-      this->Boundary_curve_section_pt[boundary_id];
+    TriangleMeshPolyLine* bnd_polyline = dynamic_cast<TriangleMeshPolyLine*>(
+      this->Boundary_curve_section_pt[boundary_id]);
 
     // Get the really first vertex
     Vector<double> first_vertex = bnd_polyline->vertex_coordinate(0);
@@ -36282,9 +36316,9 @@ namespace oomph
       unsigned n_face_element = face_mesh_pt[p]->nelement();
       for (unsigned e = 0; e < n_face_element; e++)
       {
-        // Cast the element pointer to the correct thing!
-        FaceElementAsGeomObject* el_pt = dynamic_cast<FaceElementAsGeomObject*>(
-          face_mesh_pt[p]->element_pt(e));
+        // Cast the element pointer to the face-element interface.
+        FaceElement* el_pt =
+          dynamic_cast<FaceElement*>(face_mesh_pt[p]->element_pt(e));
 
         // Set bulk boundary number
         el_pt->set_boundary_number_in_bulk_mesh(bound);
@@ -36301,7 +36335,7 @@ namespace oomph
       unsigned bound = polygon_pt->polyline_pt(p)->boundary_id();
 
       // Do it
-      this->template setup_boundary_coordinates(bound);
+      this->setup_boundary_coordinates(bound);
     }
 
     // Clean up
@@ -36343,10 +36377,8 @@ namespace oomph
   /// modified. Returned boolean indicates if PSLG was (or would have
   /// been -- if called with check_only=false) changed.
   //======================================================================
-  bool RefineableTriangleTFMesh<
-    ELEMENT>::surface_remesh_for_inner_hole_boundaries(Vector<Vector<double>>&
-                                                         internal_point_coord,
-                                                       const bool& check_only)
+  bool RefineableTriangleTFMesh::surface_remesh_for_inner_hole_boundaries(
+    Vector<Vector<double>>& internal_point_coord, const bool& check_only)
   {
     // Boolean to indicate whether an actual update of the internal
     // holes was performed
@@ -39835,7 +39867,8 @@ namespace oomph
         // Before adding the new element we need to ensure that the edge
         // that this element represents has not been already added
         FiniteElement* face_ele_pt =
-          new DummyFaceElement(bulk_ele_pt, face_index);
+          this->dummy_face_element_factory().new_element(bulk_ele_pt,
+                                                         face_index);
 
         // Establish the association between the bulk element and the
         // face element
@@ -43315,8 +43348,8 @@ namespace oomph
   // number of elements on the shared boundaries that go to internal
   // boundaries
   //===================================================================
-  void RefineableTriangleTFMesh<
-    ELEMENT>::fill_boundary_elements_and_nodes_for_internal_boundaries()
+  void RefineableTriangleTFMesh::
+    fill_boundary_elements_and_nodes_for_internal_boundaries()
   {
     // Dummy file
     std::ofstream some_file;
@@ -43532,7 +43565,7 @@ namespace oomph
       const unsigned overlaped_internal_bnd_id = (*it);
 
       // Re-setup boundary coordinates
-      this->template setup_boundary_coordinates(overlaped_internal_bnd_id);
+      this->setup_boundary_coordinates(overlaped_internal_bnd_id);
     }
   }
 
@@ -43577,7 +43610,8 @@ namespace oomph
         int face_index = this->face_index_at_boundary(b, e);
         // Create the face element
         FiniteElement* face_ele_pt =
-          new DummyFaceElement(bulk_ele_pt, face_index);
+          this->dummy_face_element_factory().new_element(bulk_ele_pt,
+                                                         face_index);
 
         // Get the number of nodes on the face element
         const unsigned nnodes = face_ele_pt->nnode();

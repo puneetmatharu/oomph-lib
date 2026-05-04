@@ -201,7 +201,7 @@ namespace oomph
                                  time_stepper_pt)
     {
 #ifdef PARANOID
-      ELEMENT* el_pt = element_factory_pt->new_element();
+      FiniteElement* el_pt = element_factory_pt->new_element();
       if (dynamic_cast<MacroElementNodeUpdateElementBase*>(el_pt) == 0)
       {
         std::ostringstream error_message;

@@ -111,7 +111,7 @@ namespace oomph
       this->Use_attributes = use_attributes;
 
       // Build scaffold
-      TriangleScaffoldTFMesh* tmp_mesh_pt = new TriangleScaffoldTFMesh(
+      TriangleScaffoldMesh* tmp_mesh_pt = new TriangleScaffoldMesh(
         node_file_name, element_file_name, poly_file_name);
 
       // Convert mesh from scaffold to actual mesh
@@ -125,7 +125,7 @@ namespace oomph
       unsigned nbound = nboundary();
       for (unsigned ibound = 0; ibound < nbound; ibound++)
       {
-        this->template setup_boundary_coordinates(ibound);
+        this->setup_boundary_coordinates(ibound);
       }
     }
 
@@ -360,7 +360,7 @@ namespace oomph
       unsigned nb = nboundary();
       for (unsigned b = 0; b < nb; b++)
       {
-        this->template setup_boundary_coordinates(b);
+        this->setup_boundary_coordinates(b);
       }
 
       // Snap it!
@@ -488,8 +488,8 @@ namespace oomph
 #endif
 
       // Build scaffold
-      TriangleScaffoldTFMesh* tmp_mesh_pt =
-        new TriangleScaffoldTFMesh(triangulate_out);
+      TriangleScaffoldMesh* tmp_mesh_pt =
+        new TriangleScaffoldMesh(triangulate_out);
 
       // If we have filled holes then we must use the attributes
       if (!regions_coordinates.empty())
@@ -558,7 +558,7 @@ namespace oomph
     }
 
     /// Build the quad mesh from the given scaffold mesh
-    void build_from_scaffold(TriangleScaffoldTFMesh* tmp_mesh_pt,
+    void build_from_scaffold(TriangleScaffoldMesh* tmp_mesh_pt,
                              TimeStepper* time_stepper_pt,
                              const bool& use_attributes);
 
@@ -629,9 +629,13 @@ namespace oomph
       const std::string& node_file_name,
       const std::string& element_file_name,
       const std::string& poly_file_name,
-      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : QuadFromTriangleTFMesh(
-          node_file_name, element_file_name, poly_file_name, time_stepper_pt)
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
+      const bool& use_attributes = false)
+      : QuadFromTriangleTFMesh(node_file_name,
+                               element_file_name,
+                               poly_file_name,
+                               time_stepper_pt,
+                               use_attributes)
     {
       this->setup_quadtree_forest();
     }

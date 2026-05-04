@@ -48,6 +48,14 @@ namespace oomph
   class RectangleWithHoleTFMesh : public virtual Mesh
   {
   public:
+    /// Constructor: Pass element factory, pointer to geometric object that
+    /// represents the cylinder, and the length and height of the domain.
+    RectangleWithHoleTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      GeomObject* cylinder_pt,
+      const double& length,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
+
     /// Constructor: Pass pointer to geometric object that
     /// represents the cylinder, the length and height of the domain.
     /// The GeomObject must be parametrised such that
@@ -57,7 +65,13 @@ namespace oomph
     RectangleWithHoleTFMesh(
       GeomObject* cylinder_pt,
       const double& length,
-      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangleWithHoleTFMesh(make_element_factory_pt<QElement<2, 3>>(),
+                                cylinder_pt,
+                                length,
+                                time_stepper_pt)
+    {
+    }
 
     /// Access function to the domain
     RectangleWithHoleDomain* domain_pt()
@@ -73,6 +87,32 @@ namespace oomph
 
   //////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////
+
+  //=============================================================
+  /// Backwards-compatible templated rectangular mesh with circular hole.
+  //=============================================================
+  template<class ELEMENT>
+  class RectangleWithHoleMesh : public RectangleWithHoleTFMesh
+  {
+  public:
+    /// Constructor: Pass pointer to geometric object that represents the
+    /// cylinder, the length and height of the domain.
+    RectangleWithHoleMesh(
+      GeomObject* cylinder_pt,
+      const double& length,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangleWithHoleTFMesh(make_element_factory_pt<ELEMENT>(),
+                                cylinder_pt,
+                                length,
+                                time_stepper_pt)
+    {
+    }
+  };
+
+
+  //////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////
 
   //===================================================================
@@ -83,17 +123,41 @@ namespace oomph
                                             public RefineableQuadTFMesh
   {
   public:
-    /// Constructor. Pass pointer to geometric object that
-    /// represents the cylinder, the length and height of the domain.
-    /// The GeomObject must be parametrised such that
-    /// \f$\zeta \in [0,2\pi]\f$ sweeps around the circumference
-    /// in anticlockwise direction. Timestepper defaults to Steady
-    /// default timestepper.
+    /// Constructor. Pass element factory, pointer to geometric object that
+    /// represents the cylinder, and the length and height of the domain.
     RefineableRectangleWithHoleTFMesh(
+      const ElementFactoryPt& element_factory_pt,
       GeomObject* cylinder_pt,
       const double& length,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
-  }
+  };
+
+
+  //////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////
+
+  //===================================================================
+  /// Backwards-compatible templated refineable rectangle-with-hole mesh.
+  //===================================================================
+  template<class ELEMENT>
+  class RefineableRectangleWithHoleMesh
+    : public RefineableRectangleWithHoleTFMesh
+  {
+  public:
+    /// Constructor. Pass pointer to geometric object that represents the
+    /// cylinder, the length and height of the domain.
+    RefineableRectangleWithHoleMesh(
+      GeomObject* cylinder_pt,
+      const double& length,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RefineableRectangleWithHoleTFMesh(make_element_factory_pt<ELEMENT>(),
+                                          cylinder_pt,
+                                          length,
+                                          time_stepper_pt)
+    {
+    }
+  };
 } // namespace oomph
 
 #endif

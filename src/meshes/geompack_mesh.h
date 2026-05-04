@@ -42,6 +42,31 @@ namespace oomph
   class GeompackQuadTFMesh : public Mesh
   {
   public:
+    /// Constructor with runtime element factory and input files.
+    GeompackQuadTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const std::string& mesh_file_name,
+      const std::string& curve_file_name,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+    {
+      set_element_factory_pt(element_factory_pt);
+
+      // Mesh can only be built with four-noded 2D Qelements.
+      MeshChecker::assert_geometric_element<QElementGeometricBase>(
+        element_factory_pt, 2, 2);
+
+      // Build scaffold
+      Tmp_mesh_pt =
+        new GeompackQuadScaffoldMesh(mesh_file_name, curve_file_name);
+
+      // Convert mesh from scaffold to actual mesh
+      build_from_scaffold(time_stepper_pt);
+
+      // Kill the scaffold
+      delete Tmp_mesh_pt;
+      Tmp_mesh_pt = 0;
+    }
+
     /// Constructor with the input files
     GeompackQuadTFMesh(
       const std::string& mesh_file_name,
@@ -49,12 +74,12 @@ namespace oomph
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
     {
       // Mesh can only be built with four-noded 2D Qelements.
-      MeshChecker::assert_geometric_element<QElementGeometricBase, ELEMENT>(2,
-                                                                            2);
+      MeshChecker::assert_geometric_element<QElementGeometricBase>(
+        element_factory_pt, 2, 2);
 
       // Build scaffold
       Tmp_mesh_pt =
-        new GeompackQuadScaffoldTFMesh(mesh_file_name, curve_file_name);
+        new GeompackQuadScaffoldMesh(mesh_file_name, curve_file_name);
 
       // Convert mesh from scaffold to actual mesh
       build_from_scaffold(time_stepper_pt);
@@ -69,10 +94,29 @@ namespace oomph
 
   private:
     /// Temporary scaffold mesh
-    GeompackQuadScaffoldTFMesh* Tmp_mesh_pt;
+    GeompackQuadScaffoldMesh* Tmp_mesh_pt;
 
     /// Build mesh from scaffold
     void build_from_scaffold(TimeStepper* time_stepper_pt);
+  };
+
+  //=======================================================================
+  /// Compatibility wrapper preserving the original templated
+  /// GeompackQuadMesh API.
+  //=======================================================================
+  template<class ELEMENT>
+  class GeompackQuadMesh : public GeompackQuadTFMesh
+  {
+  public:
+    GeompackQuadMesh(const std::string& mesh_file_name,
+                     const std::string& curve_file_name,
+                     TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : GeompackQuadTFMesh(make_element_factory_pt<ELEMENT>(),
+                           mesh_file_name,
+                           curve_file_name,
+                           time_stepper_pt)
+    {
+    }
   };
 
 } // namespace oomph

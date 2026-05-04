@@ -4459,7 +4459,9 @@ namespace oomph
               }
 #endif
               // Build the face element
-              face_el_pt = new DummyFaceElement(tet_el_pt, face_index);
+              face_el_pt = make_face_element_factory_pt<
+                             DummyFaceElement<SolidTElement<3, 3>>>()
+                             ->new_element(tet_el_pt, face_index);
             }
             else
             {
@@ -4478,7 +4480,9 @@ namespace oomph
 #endif
 
               // Build the face element
-              face_el_pt = new DummyFaceElement(tet_el_pt, face_index);
+              face_el_pt =
+                make_face_element_factory_pt<DummyFaceElement<TElement<3, 3>>>()
+                  ->new_element(tet_el_pt, face_index);
             }
 
             // Specify boundary id in bulk mesh (needed to extract
@@ -9224,7 +9228,9 @@ namespace oomph
               }
 #endif
               // Build the face element
-              face_el_pt = new DummyFaceElement(tet_el_pt, face_index);
+              face_el_pt = make_face_element_factory_pt<
+                             DummyFaceElement<SolidTElement<3, 3>>>()
+                             ->new_element(tet_el_pt, face_index);
             }
             else
             {
@@ -9243,7 +9249,9 @@ namespace oomph
 #endif
 
               // Build the face element
-              face_el_pt = new DummyFaceElement(tet_el_pt, face_index);
+              face_el_pt =
+                make_face_element_factory_pt<DummyFaceElement<TElement<3, 3>>>()
+                  ->new_element(tet_el_pt, face_index);
             }
 
             // Specify boundary id in bulk mesh (needed to extract

@@ -43,6 +43,7 @@
 #include <algorithm>
 
 #include "generic/mesh.h"
+#include "generic/Telements.h"
 #include "generic/tet_mesh.h"
 
 namespace oomph
@@ -53,6 +54,25 @@ namespace oomph
   class XdaTetTFMesh : public virtual TetMeshBase
   {
   public:
+    /// Constructor: Pass factory and name of xda file.
+    XdaTetTFMesh(const ElementFactoryPt& element_factory_pt,
+                 const FaceElementFactoryPt& dummy_face_element_factory_pt,
+                 const std::string xda_file_name,
+                 TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
+
+    /// Constructor: Pass factory and name of xda file. This overload is for
+    /// the default quadratic non-solid tet case.
+    XdaTetTFMesh(const ElementFactoryPt& element_factory_pt,
+                 const std::string xda_file_name,
+                 TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : XdaTetTFMesh(
+          element_factory_pt,
+          make_face_element_factory_pt<DummyFaceElement<TElement<3, 3>>>(),
+          xda_file_name,
+          time_stepper_pt)
+    {
+    }
+
     /// Constructor: Pass name of xda file. Note that
     /// all boundary elements get their own ID -- this is required for
     /// FSI problems. In this case; the vector containing the oomph-lib
@@ -61,7 +81,12 @@ namespace oomph
     /// obtained from the access function oomph_lib_boundary_ids(...).
     /// Timestepper defaults to steady pseudo-timestepper.
     XdaTetTFMesh(const std::string xda_file_name,
-                 TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
+                 TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : XdaTetTFMesh(make_element_factory_pt<TElement<3, 3>>(),
+                     xda_file_name,
+                     time_stepper_pt)
+    {
+    }
 
     /// Setup boundary coordinate on boundary b while is
     /// temporarily flattened to simplex faces. Boundary coordinates are the
@@ -117,6 +142,29 @@ namespace oomph
   ////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////
 
+  //========================================================================
+  /// Backwards-compatible xda tet mesh wrapper.
+  //========================================================================
+  template<class ELEMENT>
+  class XdaTetMesh : public XdaTetTFMesh
+  {
+  public:
+    /// Constructor: Pass name of xda file.
+    XdaTetMesh(const std::string xda_file_name,
+               TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : XdaTetTFMesh(make_element_factory_pt<ELEMENT>(),
+                     make_face_element_factory_pt<DummyFaceElement<ELEMENT>>(),
+                     xda_file_name,
+                     time_stepper_pt)
+    {
+    }
+  };
+
+
+  ////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////
+
   //==========================================================================
   /// Xda-based tet mesh upgraded to become a solid mesh.
   //=========================================================================
@@ -142,6 +190,26 @@ namespace oomph
   ////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////
+
+  //==========================================================================
+  /// Backwards-compatible solid xda-based tet mesh wrapper.
+  //=========================================================================
+  template<class ELEMENT>
+  class SolidXdaTetMesh : public XdaTetMesh<ELEMENT>, public virtual SolidTFMesh
+  {
+  public:
+    /// Constructor. Boundary coordinates are setup automatically.
+    SolidXdaTetMesh(const std::string xda_file_name,
+                    TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : XdaTetMesh<ELEMENT>(xda_file_name, time_stepper_pt)
+    {
+      // Assign the Lagrangian coordinates
+      set_lagrangian_nodal_coordinates();
+    }
+
+    /// Empty Destructor
+    virtual ~SolidXdaTetMesh() {}
+  };
 
 } // namespace oomph
 

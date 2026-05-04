@@ -443,6 +443,20 @@ namespace oomph
                                           public RefineableQuadTFMesh
   {
   public:
+    /// Simple constructor with runtime element factory.
+    RefineableRectangularQuadTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& lx,
+      const double& ly,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangularQuadTFMesh(
+          element_factory_pt, nx, ny, lx, ly, time_stepper_pt)
+    {
+      this->setup_quadtree_forest();
+    }
+
     /// Simple constructor: nx: number of elements in x direction;
     /// ny: number of elements in y direction; lx, length of domain in x
     /// direction (0,lx); ly, length of domain in y direction (0,ly).
@@ -457,6 +471,21 @@ namespace oomph
     {
       // Nodal positions etc. were created in constructor for
       // RectangularTFMesh<...>. Only need to setup quadtree forest
+      this->setup_quadtree_forest();
+    }
+
+    /// Simple periodic constructor with runtime element factory.
+    RefineableRectangularQuadTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& lx,
+      const double& ly,
+      const bool& periodic_in_x,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangularQuadTFMesh(
+          element_factory_pt, nx, ny, lx, ly, periodic_in_x, time_stepper_pt)
+    {
       this->setup_quadtree_forest();
     }
 
@@ -479,6 +508,22 @@ namespace oomph
       this->setup_quadtree_forest();
     }
 
+    /// Constructor with runtime element factory and min/max coordinates.
+    RefineableRectangularQuadTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& xmin,
+      const double& xmax,
+      const double& ymin,
+      const double& ymax,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangularQuadTFMesh(
+          element_factory_pt, nx, ny, xmin, xmax, ymin, ymax, time_stepper_pt)
+    {
+      this->setup_quadtree_forest();
+    }
+
     /// Constructor that allows the specification of minimum and maximum
     /// values of x and y coordinates
     /// Also pass pointer to timestepper (defaults to Steady)
@@ -494,6 +539,31 @@ namespace oomph
     {
       // Nodal positions etc. were created in constructor for
       // RectangularTFMesh<...>. Only need to setup quadtree forest
+      this->setup_quadtree_forest();
+    }
+
+    /// Constructor with runtime element factory, min/max coordinates and
+    /// periodicity.
+    RefineableRectangularQuadTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& xmin,
+      const double& xmax,
+      const double& ymin,
+      const double& ymax,
+      const bool& periodic_in_x,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangularQuadTFMesh(element_factory_pt,
+                              nx,
+                              ny,
+                              xmin,
+                              xmax,
+                              ymin,
+                              ymax,
+                              periodic_in_x,
+                              time_stepper_pt)
+    {
       this->setup_quadtree_forest();
     }
 
@@ -535,6 +605,29 @@ namespace oomph
                                        public virtual SolidTFMesh
   {
   public:
+    /// Constructor with runtime element factory.
+    ElasticRectangularQuadTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& lx,
+      const double& ly,
+      const Vector<double>& origin,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangularQuadTFMesh(
+          element_factory_pt, nx, ny, lx, ly, time_stepper_pt)
+    {
+      unsigned nnod = nnode();
+      for (unsigned j = 0; j < nnod; j++)
+      {
+        node_pt(j)->x(0) += origin[0];
+        node_pt(j)->x(1) += origin[1];
+      }
+
+      set_lagrangian_nodal_coordinates();
+      set_boundary_coordinates(origin);
+    }
+
     /// Constructor: Build mesh and copy Eulerian coords to Lagrangian
     /// ones so that the initial configuration is the stress-free one and
     /// assign boundary coordinates. Origin specifies
@@ -566,6 +659,22 @@ namespace oomph
     }
 
 
+    /// Constructor with runtime element factory.
+    ElasticRectangularQuadTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& lx,
+      const double& ly,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangularQuadTFMesh(
+          element_factory_pt, nx, ny, lx, ly, time_stepper_pt)
+    {
+      Vector<double> origin(2, 0.0);
+      set_lagrangian_nodal_coordinates();
+      set_boundary_coordinates(origin);
+    }
+
     /// Constructor: Build mesh and copy Eulerian coords to Lagrangian
     /// ones so that the initial configuration is the stress-free one and
     /// assign boundary coordinates
@@ -589,6 +698,23 @@ namespace oomph
       set_boundary_coordinates(origin);
     }
 
+
+    /// Periodic constructor with runtime element factory.
+    ElasticRectangularQuadTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& lx,
+      const double& ly,
+      const bool& periodic_in_x,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangularQuadTFMesh(
+          element_factory_pt, nx, ny, lx, ly, periodic_in_x, time_stepper_pt)
+    {
+      Vector<double> origin(2, 0.0);
+      set_lagrangian_nodal_coordinates();
+      set_boundary_coordinates(origin);
+    }
 
     /// Constructor: Build mesh and copy Eulerian coords to Lagrangian
     /// ones so that the initial configuration is the stress-free one and
@@ -681,6 +807,22 @@ namespace oomph
       public RefineableQuadTFMesh
   {
   public:
+    /// Constructor with runtime element factory.
+    ElasticRefineableRectangularQuadTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& lx,
+      const double& ly,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangularQuadTFMesh(
+          element_factory_pt, nx, ny, lx, ly, time_stepper_pt),
+        ElasticRectangularQuadTFMesh(
+          element_factory_pt, nx, ny, lx, ly, time_stepper_pt)
+    {
+      this->setup_quadtree_forest();
+    }
+
     /// Constructor: Build mesh and copy Eulerian coords to Lagrangian
     /// ones so that the initial configuration is the stress-free one and
     /// assign boundary coordinates (variable Lagrangian coordinates along
@@ -700,6 +842,23 @@ namespace oomph
       this->setup_quadtree_forest();
     }
 
+
+    /// Periodic constructor with runtime element factory.
+    ElasticRefineableRectangularQuadTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& lx,
+      const double& ly,
+      const bool& periodic_in_x,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangularQuadTFMesh(
+          element_factory_pt, nx, ny, lx, ly, periodic_in_x, time_stepper_pt),
+        ElasticRectangularQuadTFMesh(
+          element_factory_pt, nx, ny, lx, ly, periodic_in_x, time_stepper_pt)
+    {
+      this->setup_quadtree_forest();
+    }
 
     /// Constructor: Build mesh and copy Eulerian coords to Lagrangian
     /// ones so that the initial configuration is the stress-free one and
@@ -722,6 +881,23 @@ namespace oomph
     }
 
 
+    /// Constructor with runtime element factory and origin.
+    ElasticRefineableRectangularQuadTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& lx,
+      const double& ly,
+      const Vector<double>& origin,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangularQuadTFMesh(
+          element_factory_pt, nx, ny, lx, ly, time_stepper_pt),
+        ElasticRectangularQuadTFMesh(
+          element_factory_pt, nx, ny, lx, ly, origin, time_stepper_pt)
+    {
+      this->setup_quadtree_forest();
+    }
+
     /// Constructor: Build mesh and copy Eulerian coords to Lagrangian
     /// ones so that the initial configuration is the stress-free one and
     /// assign boundary coordinates (variable Lagrangian coordinates along
@@ -740,6 +916,309 @@ namespace oomph
     {
       // Nodal positions etc. were created in base class.
       // Only need to setup quadtree forest
+      this->setup_quadtree_forest();
+    }
+  };
+
+  //==========================================================================
+  /// Compatibility wrapper preserving the original templated
+  /// RectangularQuadMesh API.
+  //==========================================================================
+  template<class ELEMENT>
+  class RectangularQuadMesh : public RectangularQuadTFMesh
+  {
+  public:
+    RectangularQuadMesh(
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& lx,
+      const double& ly,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangularQuadTFMesh(
+          make_element_factory_pt<ELEMENT>(), nx, ny, lx, ly, time_stepper_pt)
+    {
+    }
+
+    RectangularQuadMesh(
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& xmin,
+      const double& xmax,
+      const double& ymin,
+      const double& ymax,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangularQuadTFMesh(make_element_factory_pt<ELEMENT>(),
+                              nx,
+                              ny,
+                              xmin,
+                              xmax,
+                              ymin,
+                              ymax,
+                              time_stepper_pt)
+    {
+    }
+
+    RectangularQuadMesh(
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& lx,
+      const double& ly,
+      const bool& periodic_in_x,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangularQuadTFMesh(make_element_factory_pt<ELEMENT>(),
+                              nx,
+                              ny,
+                              lx,
+                              ly,
+                              periodic_in_x,
+                              time_stepper_pt)
+    {
+    }
+
+    RectangularQuadMesh(
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& xmin,
+      const double& xmax,
+      const double& ymin,
+      const double& ymax,
+      const bool& periodic_in_x,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangularQuadTFMesh(make_element_factory_pt<ELEMENT>(),
+                              nx,
+                              ny,
+                              xmin,
+                              xmax,
+                              ymin,
+                              ymax,
+                              periodic_in_x,
+                              time_stepper_pt)
+    {
+    }
+
+    RectangularQuadMesh(
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& xmin,
+      const double& xmax,
+      const double& ymin,
+      const double& ymax,
+      const bool& periodic_in_x,
+      const bool& build,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangularQuadTFMesh(make_element_factory_pt<ELEMENT>(),
+                              nx,
+                              ny,
+                              xmin,
+                              xmax,
+                              ymin,
+                              ymax,
+                              periodic_in_x,
+                              build,
+                              time_stepper_pt)
+    {
+    }
+  };
+
+  //==========================================================================
+  /// Compatibility wrapper preserving the original templated
+  /// RefineableRectangularQuadMesh API.
+  //==========================================================================
+  template<class ELEMENT>
+  class RefineableRectangularQuadMesh
+    : public virtual RectangularQuadMesh<ELEMENT>,
+      public RefineableQuadTFMesh
+  {
+  public:
+    RefineableRectangularQuadMesh(
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& lx,
+      const double& ly,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangularQuadMesh<ELEMENT>(nx, ny, lx, ly, time_stepper_pt)
+    {
+      this->setup_quadtree_forest();
+    }
+
+    RefineableRectangularQuadMesh(
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& lx,
+      const double& ly,
+      const bool& periodic_in_x,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangularQuadMesh<ELEMENT>(
+          nx, ny, lx, ly, periodic_in_x, time_stepper_pt)
+    {
+      this->setup_quadtree_forest();
+    }
+
+    RefineableRectangularQuadMesh(
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& xmin,
+      const double& xmax,
+      const double& ymin,
+      const double& ymax,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangularQuadMesh<ELEMENT>(
+          nx, ny, xmin, xmax, ymin, ymax, time_stepper_pt)
+    {
+      this->setup_quadtree_forest();
+    }
+
+    RefineableRectangularQuadMesh(
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& xmin,
+      const double& xmax,
+      const double& ymin,
+      const double& ymax,
+      const bool& periodic_in_x,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangularQuadMesh<ELEMENT>(
+          nx, ny, xmin, xmax, ymin, ymax, periodic_in_x, time_stepper_pt)
+    {
+      this->setup_quadtree_forest();
+    }
+  };
+
+  //==========================================================================
+  /// Compatibility wrapper preserving the original templated
+  /// ElasticRectangularQuadMesh API.
+  //==========================================================================
+  template<class ELEMENT>
+  class ElasticRectangularQuadMesh
+    : public virtual RectangularQuadMesh<ELEMENT>,
+      public virtual SolidTFMesh
+  {
+  public:
+    ElasticRectangularQuadMesh(
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& lx,
+      const double& ly,
+      const Vector<double>& origin,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangularQuadMesh<ELEMENT>(nx, ny, lx, ly, time_stepper_pt)
+    {
+      unsigned nnod = nnode();
+      for (unsigned j = 0; j < nnod; j++)
+      {
+        node_pt(j)->x(0) += origin[0];
+        node_pt(j)->x(1) += origin[1];
+      }
+      set_lagrangian_nodal_coordinates();
+      set_boundary_coordinates(origin);
+    }
+
+    ElasticRectangularQuadMesh(
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& lx,
+      const double& ly,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangularQuadMesh<ELEMENT>(nx, ny, lx, ly, time_stepper_pt)
+    {
+      Vector<double> origin(2, 0.0);
+      set_lagrangian_nodal_coordinates();
+      set_boundary_coordinates(origin);
+    }
+
+    ElasticRectangularQuadMesh(
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& lx,
+      const double& ly,
+      const bool& periodic_in_x,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangularQuadMesh<ELEMENT>(
+          nx, ny, lx, ly, periodic_in_x, time_stepper_pt)
+    {
+      Vector<double> origin(2, 0.0);
+      set_lagrangian_nodal_coordinates();
+      set_boundary_coordinates(origin);
+    }
+
+  private:
+    void set_boundary_coordinates(const Vector<double>& origin)
+    {
+      Vector<double> zeta(1);
+
+      for (unsigned b = 0; b < 3; b += 2)
+      {
+        unsigned n_nod = nboundary_node(b);
+        for (unsigned i = 0; i < n_nod; i++)
+        {
+          zeta[0] = boundary_node_pt(b, i)->xi(0) - origin[0];
+          boundary_node_pt(b, i)->set_coordinates_on_boundary(b, zeta);
+        }
+        set_boundary_coordinate_exists(b);
+      }
+
+      for (unsigned b = 1; b < 4; b += 2)
+      {
+        unsigned n_nod = nboundary_node(b);
+        for (unsigned i = 0; i < n_nod; i++)
+        {
+          zeta[0] = boundary_node_pt(b, i)->xi(1) - origin[1] -
+                    0.5 * (this->Ymax - this->Ymin);
+          boundary_node_pt(b, i)->set_coordinates_on_boundary(b, zeta);
+        }
+        set_boundary_coordinate_exists(b);
+      }
+    }
+  };
+
+  //==========================================================================
+  /// Compatibility wrapper preserving the original templated
+  /// ElasticRefineableRectangularQuadMesh API.
+  //==========================================================================
+  template<class ELEMENT>
+  class ElasticRefineableRectangularQuadMesh
+    : public virtual ElasticRectangularQuadMesh<ELEMENT>,
+      public RefineableQuadTFMesh
+  {
+  public:
+    ElasticRefineableRectangularQuadMesh(
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& lx,
+      const double& ly,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangularQuadMesh<ELEMENT>(nx, ny, lx, ly, time_stepper_pt),
+        ElasticRectangularQuadMesh<ELEMENT>(nx, ny, lx, ly, time_stepper_pt)
+    {
+      this->setup_quadtree_forest();
+    }
+
+    ElasticRefineableRectangularQuadMesh(
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& lx,
+      const double& ly,
+      const bool& periodic_in_x,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangularQuadMesh<ELEMENT>(
+          nx, ny, lx, ly, periodic_in_x, time_stepper_pt),
+        ElasticRectangularQuadMesh<ELEMENT>(
+          nx, ny, lx, ly, periodic_in_x, time_stepper_pt)
+    {
+      this->setup_quadtree_forest();
+    }
+
+    ElasticRefineableRectangularQuadMesh(
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& lx,
+      const double& ly,
+      const Vector<double>& origin,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangularQuadMesh<ELEMENT>(nx, ny, lx, ly, time_stepper_pt),
+        ElasticRectangularQuadMesh<ELEMENT>(
+          nx, ny, lx, ly, origin, time_stepper_pt)
+    {
       this->setup_quadtree_forest();
     }
   };

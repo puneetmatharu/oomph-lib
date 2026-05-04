@@ -69,7 +69,7 @@ namespace oomph
 
       // Build scaffold mesh
       Tmp_mesh_pt =
-        new SimpleCubicScaffoldTetTFMesh(n_x, n_y, n_z, l_x, l_y, l_z);
+        new SimpleCubicScaffoldTetMesh(n_x, n_y, n_z, l_x, l_y, l_z);
 
       // Build actual mesh from scaffold mesh
       build_from_scaffold(time_stepper_pt);

@@ -59,6 +59,29 @@ namespace oomph
   class TwoLayerSpineTFMesh : public RectangularQuadTFMesh, public SpineTFMesh
   {
   public:
+    /// Constructor with runtime element factory.
+    TwoLayerSpineTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const unsigned& nx,
+      const unsigned& ny1,
+      const unsigned& ny2,
+      const double& lx,
+      const double& h1,
+      const double& h2,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
+
+    /// Constructor with runtime element factory.
+    TwoLayerSpineTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const unsigned& nx,
+      const unsigned& ny1,
+      const unsigned& ny2,
+      const double& lx,
+      const double& h1,
+      const double& h2,
+      const bool& periodic_in_x,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
+
     /// Constructor: Pass number of elements in x-direction, number of
     /// elements in y-direction in bottom and top layer, respectively,
     /// axial length and height of top and bottom layers and pointer
@@ -78,6 +101,18 @@ namespace oomph
     /// axial length and height of top and bottom layers, a boolean
     /// flag to make the mesh periodic in the x-direction, and pointer
     /// to timestepper (defaults to Steady timestepper)
+    TwoLayerSpineTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const unsigned& nx,
+      const unsigned& ny1,
+      const unsigned& ny2,
+      const double& lx,
+      const double& h1,
+      const double& h2,
+      const bool& periodic_in_x,
+      const bool& build_mesh,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
+
     TwoLayerSpineTFMesh(
       const unsigned& nx,
       const unsigned& ny1,
@@ -265,6 +300,75 @@ namespace oomph
     /// Helper function to actually build the two-layer spine mesh
     /// (called from various constructors)
     virtual void build_two_layer_mesh(TimeStepper* time_stepper_pt);
+  };
+
+  //======================================================================
+  /// Compatibility wrapper preserving the original templated
+  /// TwoLayerSpineMesh API.
+  //======================================================================
+  template<class ELEMENT>
+  class TwoLayerSpineMesh : public TwoLayerSpineTFMesh
+  {
+  public:
+    TwoLayerSpineMesh(const unsigned& nx,
+                      const unsigned& ny1,
+                      const unsigned& ny2,
+                      const double& lx,
+                      const double& h1,
+                      const double& h2,
+                      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : TwoLayerSpineTFMesh(make_element_factory_pt<ELEMENT>(),
+                            nx,
+                            ny1,
+                            ny2,
+                            lx,
+                            h1,
+                            h2,
+                            time_stepper_pt)
+    {
+    }
+
+    TwoLayerSpineMesh(const unsigned& nx,
+                      const unsigned& ny1,
+                      const unsigned& ny2,
+                      const double& lx,
+                      const double& h1,
+                      const double& h2,
+                      const bool& periodic_in_x,
+                      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : TwoLayerSpineTFMesh(make_element_factory_pt<ELEMENT>(),
+                            nx,
+                            ny1,
+                            ny2,
+                            lx,
+                            h1,
+                            h2,
+                            periodic_in_x,
+                            time_stepper_pt)
+    {
+    }
+
+    TwoLayerSpineMesh(const unsigned& nx,
+                      const unsigned& ny1,
+                      const unsigned& ny2,
+                      const double& lx,
+                      const double& h1,
+                      const double& h2,
+                      const bool& periodic_in_x,
+                      const bool& build_mesh,
+                      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : TwoLayerSpineTFMesh(make_element_factory_pt<ELEMENT>(),
+                            nx,
+                            ny1,
+                            ny2,
+                            lx,
+                            h1,
+                            h2,
+                            periodic_in_x,
+                            build_mesh,
+                            time_stepper_pt)
+    {
+    }
   };
 
 } // namespace oomph

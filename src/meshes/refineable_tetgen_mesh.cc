@@ -66,8 +66,8 @@ namespace oomph
       // The face mesh consists of FaceElements that may also be
       // interpreted as GeomObjects
       Mesh* face_mesh_pt = new Mesh;
-      this->template build_face_mesh<ELEMENT, FaceElementAsGeomObject>(
-        bound, face_mesh_pt);
+      this->build_face_mesh(
+        bound, face_mesh_pt, this->face_element_as_geom_object_factory());
 
       // Loop over these new face elements and tell them the boundary number
       // from the bulk fluid mesh -- this is required to they can
@@ -75,9 +75,9 @@ namespace oomph
       unsigned n_face_element = face_mesh_pt->nelement();
       for (unsigned e = 0; e < n_face_element; e++)
       {
-        // Cast the element pointer to the correct thing!
-        FaceElementAsGeomObject* el_pt =
-          dynamic_cast<FaceElementAsGeomObject*>(face_mesh_pt->element_pt(e));
+        // Cast the element pointer to the face-element interface.
+        FaceElement* el_pt =
+          dynamic_cast<FaceElement*>(face_mesh_pt->element_pt(e));
 
         // Set bulk boundary number
         el_pt->set_boundary_number_in_bulk_mesh(bound);
@@ -260,8 +260,8 @@ namespace oomph
     // The face mesh consists of FaceElements that may also be
     // interpreted as GeomObjects
     Mesh* face_mesh_pt = new Mesh;
-    this->template build_face_mesh<ELEMENT, FaceElementAsGeomObject>(
-      b, face_mesh_pt);
+    this->build_face_mesh(
+      b, face_mesh_pt, this->face_element_as_geom_object_factory());
 
     // Loop over these new face elements and tell them the boundary number
     // from the bulk fluid mesh -- this is required to they can
@@ -269,9 +269,9 @@ namespace oomph
     unsigned n_face_element = face_mesh_pt->nelement();
     for (unsigned e = 0; e < n_face_element; e++)
     {
-      // Cast the element pointer to the correct thing!
-      FaceElementAsGeomObject* el_pt =
-        dynamic_cast<FaceElementAsGeomObject*>(face_mesh_pt->element_pt(e));
+      // Cast the element pointer to the face-element interface.
+      FaceElement* el_pt =
+        dynamic_cast<FaceElement*>(face_mesh_pt->element_pt(e));
 
       // Set bulk boundary number
       el_pt->set_boundary_number_in_bulk_mesh(b);
@@ -281,8 +281,8 @@ namespace oomph
     // Compare face meshes
     {
       Mesh* new_face_mesh_pt = new Mesh;
-      new_mesh_pt->template build_face_mesh<ELEMENT, FaceElementAsGeomObject>(
-        b, new_face_mesh_pt);
+      new_mesh_pt->build_face_mesh(
+        b, new_face_mesh_pt, this->face_element_as_geom_object_factory());
 
       std::ostringstream filestring;
       filestring << "old_mesh_boundary" << b << ".dat";
@@ -997,7 +997,8 @@ namespace oomph
 
         // Project current solution onto new mesh
         //---------------------------------------
-        ProjectionProblem* project_problem_pt = new ProjectionProblem;
+        ProjectionProblemRuntimeBase* project_problem_pt =
+          this->projection_problem_factory().new_problem();
         project_problem_pt->mesh_pt() = new_mesh_pt;
         project_problem_pt->project(this);
         delete project_problem_pt;

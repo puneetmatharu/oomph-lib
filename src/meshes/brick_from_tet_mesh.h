@@ -101,14 +101,12 @@ namespace oomph
         element_factory_pt, 3, 3);
 
       // Build temporary tet mesh
-      TetgenTFMesh* tmp_mesh_pt = new TetgenTFMesh(
-        std::make_shared<DefaultElementFactory<TElement<3, 3>>>(),
-        node_file_name,
-        element_file_name,
-        face_file_name,
-        split_corner_elements,
-        time_stepper_pt,
-        use_attributes);
+      TetgenTFMesh* tmp_mesh_pt = new TetgenTFMesh(node_file_name,
+                                                   element_file_name,
+                                                   face_file_name,
+                                                   split_corner_elements,
+                                                   time_stepper_pt,
+                                                   use_attributes);
 
       // Actually build the mesh
       build_mesh(tmp_mesh_pt, time_stepper_pt);
@@ -134,10 +132,10 @@ namespace oomph
         element_factory_pt, 3, 3);
 
       // Build temporary tet mesh
-      xda_tet_mesh_pt = new XdaTetTFMesh(
-        std::make_shared<DefaultElementFactory<TElement<3, 3>>>(),
-        xda_file_name,
-        time_stepper_pt);
+      xda_tet_mesh_pt =
+        new XdaTetTFMesh(make_element_factory_pt<TElement<3, 3>>(),
+                         xda_file_name,
+                         time_stepper_pt);
 
       // Actually build the brick mesh
       build_mesh(xda_tet_mesh_pt, time_stepper_pt);

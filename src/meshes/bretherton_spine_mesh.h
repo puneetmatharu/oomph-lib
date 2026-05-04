@@ -551,6 +551,48 @@ namespace oomph
     Vector<FiniteElement*> Interface_element_pt;
   };
 
+  //======================================================================
+  /// Compatibility wrapper preserving the original templated
+  /// BrethertonSpineMesh API.
+  //======================================================================
+  template<class ELEMENT, class INTERFACE_ELEMENT>
+  class BrethertonSpineMesh : public BrethertonSpineTFMesh
+  {
+  public:
+    BrethertonSpineMesh(
+      const unsigned& nx1,
+      const unsigned& nx2,
+      const unsigned& nx3,
+      const unsigned& nh,
+      const unsigned& nhalf,
+      const double& h,
+      GeomObject* lower_wall_pt,
+      GeomObject* upper_wall_pt,
+      const double& zeta_start,
+      const double& zeta_transition_start,
+      const double& zeta_transition_end,
+      const double& zeta_end,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : BrethertonSpineTFMesh(make_element_factory_pt<ELEMENT>(),
+                              make_face_element_factory_pt<INTERFACE_ELEMENT>(),
+                              make_face_element_factory_pt<INTERFACE_ELEMENT>(),
+                              nx1,
+                              nx2,
+                              nx3,
+                              nh,
+                              nhalf,
+                              h,
+                              lower_wall_pt,
+                              upper_wall_pt,
+                              zeta_start,
+                              zeta_transition_start,
+                              zeta_transition_end,
+                              zeta_end,
+                              time_stepper_pt)
+    {
+    }
+  };
+
 } // namespace oomph
 
 #endif

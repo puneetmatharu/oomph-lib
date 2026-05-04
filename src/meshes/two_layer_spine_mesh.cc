@@ -29,6 +29,45 @@
 namespace oomph
 {
   //===========================================================================
+  /// Constuctor for spine 2D mesh: Pass element factory, number of elements in
+  /// x-direction, number of elements in y-direction in bottom and top layer,
+  /// axial length and height of top and bottom layers, and pointer to
+  /// timestepper.
+  //===========================================================================
+  TwoLayerSpineTFMesh::TwoLayerSpineTFMesh(
+    const ElementFactoryPt& element_factory_pt,
+    const unsigned& nx,
+    const unsigned& ny1,
+    const unsigned& ny2,
+    const double& lx,
+    const double& h1,
+    const double& h2,
+    TimeStepper* time_stepper_pt)
+    : RectangularQuadTFMesh(element_factory_pt,
+                            nx,
+                            ny1 + ny2,
+                            0.0,
+                            lx,
+                            0.0,
+                            h1 + h2,
+                            false,
+                            false,
+                            time_stepper_pt)
+  {
+    MeshChecker::assert_geometric_element<QElementGeometricBase>(
+      element_factory_pt, 2);
+    MeshChecker::assert_geometric_element<SpineFiniteElement>(
+      element_factory_pt, 2);
+
+    Ny1 = ny1;
+    Ny2 = ny2;
+    H1 = h1;
+    H2 = h2;
+
+    build_two_layer_mesh(time_stepper_pt);
+  }
+
+  //===========================================================================
   /// Constuctor for spine 2D mesh: Pass number of elements in x-direction,
   /// number of elements in y-direction in bottom and top layer, respectively,
   /// axial length and height of top and bottom layers, and pointer to
@@ -73,6 +112,46 @@ namespace oomph
     H2 = h2;
 
     // Now build the mesh:
+    build_two_layer_mesh(time_stepper_pt);
+  }
+
+  //===========================================================================
+  /// Constuctor for spine 2D mesh: Pass element factory, number of elements in
+  /// x-direction, number of elements in y-direction in bottom and top layer,
+  /// axial length and height of top and bottom layers, a periodicity flag, and
+  /// pointer to timestepper.
+  //===========================================================================
+  TwoLayerSpineTFMesh::TwoLayerSpineTFMesh(
+    const ElementFactoryPt& element_factory_pt,
+    const unsigned& nx,
+    const unsigned& ny1,
+    const unsigned& ny2,
+    const double& lx,
+    const double& h1,
+    const double& h2,
+    const bool& periodic_in_x,
+    TimeStepper* time_stepper_pt)
+    : RectangularQuadTFMesh(element_factory_pt,
+                            nx,
+                            ny1 + ny2,
+                            0.0,
+                            lx,
+                            0.0,
+                            h1 + h2,
+                            periodic_in_x,
+                            false,
+                            time_stepper_pt)
+  {
+    MeshChecker::assert_geometric_element<QElementGeometricBase>(
+      element_factory_pt, 2);
+    MeshChecker::assert_geometric_element<SpineFiniteElement>(
+      element_factory_pt, 2);
+
+    Ny1 = ny1;
+    Ny2 = ny2;
+    H1 = h1;
+    H2 = h2;
+
     build_two_layer_mesh(time_stepper_pt);
   }
 
@@ -131,6 +210,50 @@ namespace oomph
 
     // Now build the mesh:
     build_two_layer_mesh(time_stepper_pt);
+  }
+
+  //===========================================================================
+  /// Constuctor for spine 2D mesh: Pass element factory, number of elements in
+  /// x-direction, number of elements in y-direction in bottom and top layer,
+  /// axial length and height of top and bottom layers, a periodicity flag, an
+  /// optional build flag, and pointer to timestepper.
+  //===========================================================================
+  TwoLayerSpineTFMesh::TwoLayerSpineTFMesh(
+    const ElementFactoryPt& element_factory_pt,
+    const unsigned& nx,
+    const unsigned& ny1,
+    const unsigned& ny2,
+    const double& lx,
+    const double& h1,
+    const double& h2,
+    const bool& periodic_in_x,
+    const bool& build_mesh,
+    TimeStepper* time_stepper_pt)
+    : RectangularQuadTFMesh(element_factory_pt,
+                            nx,
+                            ny1 + ny2,
+                            0.0,
+                            lx,
+                            0.0,
+                            h1 + h2,
+                            periodic_in_x,
+                            false,
+                            time_stepper_pt)
+  {
+    MeshChecker::assert_geometric_element<QElementGeometricBase>(
+      element_factory_pt, 2);
+    MeshChecker::assert_geometric_element<SpineFiniteElement>(
+      element_factory_pt, 2);
+
+    Ny1 = ny1;
+    Ny2 = ny2;
+    H1 = h1;
+    H2 = h2;
+
+    if (build_mesh)
+    {
+      build_two_layer_mesh(time_stepper_pt);
+    }
   }
 
   //===========================================================================

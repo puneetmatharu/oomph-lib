@@ -37,9 +37,15 @@ namespace oomph
   /// obtained from the access function oomph_lib_boundary_ids(...).
   /// Timestepper defaults to steady pseudo-timestepper.
   //======================================================================
-  XdaTetTFMesh::XdaTetTFMesh(const std::string xda_file_name,
-                             TimeStepper* time_stepper_pt)
+  XdaTetTFMesh::XdaTetTFMesh(
+    const ElementFactoryPt& element_factory_pt,
+    const FaceElementFactoryPt& dummy_face_element_factory_pt,
+    const std::string xda_file_name,
+    TimeStepper* time_stepper_pt)
   {
+    set_element_factory_pt(element_factory_pt);
+    set_dummy_face_element_factory_pt(dummy_face_element_factory_pt);
+
     // Mesh can only be built with 3D Telements.
     MeshChecker::assert_geometric_element<TElementGeometricBase>(
       element_factory_pt, 3);
@@ -356,8 +362,8 @@ namespace oomph
         int face_index = this->face_index_at_boundary(b, e);
 
         // Create new face element
-        DummyFaceElement* el_pt =
-          new DummyFaceElement(bulk_elem_pt, face_index);
+        FaceElement* el_pt = this->dummy_face_element_factory().new_element(
+          bulk_elem_pt, face_index);
         face_el_pt.push_back(el_pt);
 
         // Backup nodal position
@@ -474,8 +480,7 @@ namespace oomph
       // Get (outer) unit normal to first face element
       Vector<double> normal(3);
       Vector<double> s(2, 0.0);
-      dynamic_cast<DummyFaceElement*>(face_el_pt[0])
-        ->outer_unit_normal(s, normal);
+      dynamic_cast<FaceElement*>(face_el_pt[0])->outer_unit_normal(s, normal);
 
       if (switch_normal)
       {
@@ -491,7 +496,7 @@ namespace oomph
       {
         // Get (outer) unit normal to face element
         Vector<double> my_normal(3);
-        dynamic_cast<DummyFaceElement*>(face_el_pt[0])
+        dynamic_cast<FaceElement*>(face_el_pt[0])
           ->outer_unit_normal(s, my_normal);
 
         // Dot product should be one!

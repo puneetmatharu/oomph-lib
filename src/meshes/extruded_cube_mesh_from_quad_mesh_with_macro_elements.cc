@@ -152,7 +152,7 @@ namespace oomph
     Element_pt.resize(n_element_in_quad_mesh * Nz);
 
     // Create the first element
-    ELEMENT* temp_el_pt = element_factory_pt->new_element();
+    FiniteElement* temp_el_pt = element_factory_pt->new_element();
 
     // Read out the number of linear points in the element (in one direction)
     unsigned n_node_1d = temp_el_pt->nnode_1d();
@@ -249,7 +249,7 @@ namespace oomph
         unsigned element_index = i * n_element_in_quad_mesh + e;
 
         // Create the e-th element in the i-th slice of the extruded mesh
-        ELEMENT* cube_el_pt = element_factory_pt->new_element();
+        FiniteElement* cube_el_pt = element_factory_pt->new_element();
 
         // Put it in global storage!
         Element_pt[element_index] = cube_el_pt;

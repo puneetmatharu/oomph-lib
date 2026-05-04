@@ -36,6 +36,7 @@
 
 #include "../generic/domain.h"
 #include "../generic/geom_objects.h"
+#include "../generic/pml_meshes.h"
 #include "../generic/refineable_quad_mesh.h"
 
 // Refineable quad mesh headers
@@ -44,6 +45,199 @@
 // Namespace extension
 namespace oomph
 {
+  //=======================================================================
+  /// Runtime factory for the PML meshes attached to the moving-cylinder mesh.
+  //=======================================================================
+  class TwoDimensionalPMLMeshFactoryBase
+  {
+  public:
+    virtual ~TwoDimensionalPMLMeshFactoryBase() = default;
+
+    virtual Mesh* create_right_pml_mesh(Mesh* bulk_mesh_pt,
+                                        const unsigned& right_boundary_id,
+                                        const unsigned& n_x_right_pml,
+                                        const double& width_x_right_pml,
+                                        TimeStepper* time_stepper_pt) = 0;
+
+    virtual Mesh* create_top_pml_mesh(Mesh* bulk_mesh_pt,
+                                      const unsigned& top_boundary_id,
+                                      const unsigned& n_y_top_pml,
+                                      const double& width_y_top_pml,
+                                      TimeStepper* time_stepper_pt) = 0;
+
+    virtual Mesh* create_left_pml_mesh(Mesh* bulk_mesh_pt,
+                                       const unsigned& left_boundary_id,
+                                       const unsigned& n_x_left_pml,
+                                       const double& width_x_left_pml,
+                                       TimeStepper* time_stepper_pt) = 0;
+
+    virtual Mesh* create_bottom_pml_mesh(Mesh* bulk_mesh_pt,
+                                         const unsigned& bottom_boundary_id,
+                                         const unsigned& n_y_bottom_pml,
+                                         const double& width_y_bottom_pml,
+                                         TimeStepper* time_stepper_pt) = 0;
+
+    virtual Mesh* create_top_right_pml_mesh(Mesh* pml_right_mesh_pt,
+                                            Mesh* pml_top_mesh_pt,
+                                            Mesh* bulk_mesh_pt,
+                                            const unsigned& right_boundary_id,
+                                            TimeStepper* time_stepper_pt) = 0;
+
+    virtual Mesh* create_bottom_right_pml_mesh(
+      Mesh* pml_right_mesh_pt,
+      Mesh* pml_bottom_mesh_pt,
+      Mesh* bulk_mesh_pt,
+      const unsigned& right_boundary_id,
+      TimeStepper* time_stepper_pt) = 0;
+
+    virtual Mesh* create_top_left_pml_mesh(Mesh* pml_left_mesh_pt,
+                                           Mesh* pml_top_mesh_pt,
+                                           Mesh* bulk_mesh_pt,
+                                           const unsigned& left_boundary_id,
+                                           TimeStepper* time_stepper_pt) = 0;
+
+    virtual Mesh* create_bottom_left_pml_mesh(Mesh* pml_left_mesh_pt,
+                                              Mesh* pml_bottom_mesh_pt,
+                                              Mesh* bulk_mesh_pt,
+                                              const unsigned& left_boundary_id,
+                                              TimeStepper* time_stepper_pt) = 0;
+  };
+
+  /// Shared ownership handle for PML mesh factories.
+  using TwoDimensionalPMLMeshFactoryPt =
+    std::shared_ptr<TwoDimensionalPMLMeshFactoryBase>;
+
+  //=======================================================================
+  /// Templated implementation of the PML mesh factory.
+  //=======================================================================
+  template<class ELEMENT>
+  class TwoDimensionalPMLMeshFactory : public TwoDimensionalPMLMeshFactoryBase
+  {
+  public:
+    Mesh* create_right_pml_mesh(Mesh* bulk_mesh_pt,
+                                const unsigned& right_boundary_id,
+                                const unsigned& n_x_right_pml,
+                                const double& width_x_right_pml,
+                                TimeStepper* time_stepper_pt) override
+    {
+      return TwoDimensionalPMLHelper::create_right_pml_mesh<
+        PMLLayerElement<ELEMENT>>(bulk_mesh_pt,
+                                  right_boundary_id,
+                                  n_x_right_pml,
+                                  width_x_right_pml,
+                                  time_stepper_pt);
+    }
+
+    Mesh* create_top_pml_mesh(Mesh* bulk_mesh_pt,
+                              const unsigned& top_boundary_id,
+                              const unsigned& n_y_top_pml,
+                              const double& width_y_top_pml,
+                              TimeStepper* time_stepper_pt) override
+    {
+      return TwoDimensionalPMLHelper::create_top_pml_mesh<
+        PMLLayerElement<ELEMENT>>(bulk_mesh_pt,
+                                  top_boundary_id,
+                                  n_y_top_pml,
+                                  width_y_top_pml,
+                                  time_stepper_pt);
+    }
+
+    Mesh* create_left_pml_mesh(Mesh* bulk_mesh_pt,
+                               const unsigned& left_boundary_id,
+                               const unsigned& n_x_left_pml,
+                               const double& width_x_left_pml,
+                               TimeStepper* time_stepper_pt) override
+    {
+      return TwoDimensionalPMLHelper::create_left_pml_mesh<
+        PMLLayerElement<ELEMENT>>(bulk_mesh_pt,
+                                  left_boundary_id,
+                                  n_x_left_pml,
+                                  width_x_left_pml,
+                                  time_stepper_pt);
+    }
+
+    Mesh* create_bottom_pml_mesh(Mesh* bulk_mesh_pt,
+                                 const unsigned& bottom_boundary_id,
+                                 const unsigned& n_y_bottom_pml,
+                                 const double& width_y_bottom_pml,
+                                 TimeStepper* time_stepper_pt) override
+    {
+      return TwoDimensionalPMLHelper::create_bottom_pml_mesh<
+        PMLLayerElement<ELEMENT>>(bulk_mesh_pt,
+                                  bottom_boundary_id,
+                                  n_y_bottom_pml,
+                                  width_y_bottom_pml,
+                                  time_stepper_pt);
+    }
+
+    Mesh* create_top_right_pml_mesh(Mesh* pml_right_mesh_pt,
+                                    Mesh* pml_top_mesh_pt,
+                                    Mesh* bulk_mesh_pt,
+                                    const unsigned& right_boundary_id,
+                                    TimeStepper* time_stepper_pt) override
+    {
+      return TwoDimensionalPMLHelper::create_top_right_pml_mesh<
+        PMLLayerElement<ELEMENT>>(pml_right_mesh_pt,
+                                  pml_top_mesh_pt,
+                                  bulk_mesh_pt,
+                                  right_boundary_id,
+                                  time_stepper_pt);
+    }
+
+    Mesh* create_bottom_right_pml_mesh(Mesh* pml_right_mesh_pt,
+                                       Mesh* pml_bottom_mesh_pt,
+                                       Mesh* bulk_mesh_pt,
+                                       const unsigned& right_boundary_id,
+                                       TimeStepper* time_stepper_pt) override
+    {
+      return TwoDimensionalPMLHelper::create_bottom_right_pml_mesh<
+        PMLLayerElement<ELEMENT>>(pml_right_mesh_pt,
+                                  pml_bottom_mesh_pt,
+                                  bulk_mesh_pt,
+                                  right_boundary_id,
+                                  time_stepper_pt);
+    }
+
+    Mesh* create_top_left_pml_mesh(Mesh* pml_left_mesh_pt,
+                                   Mesh* pml_top_mesh_pt,
+                                   Mesh* bulk_mesh_pt,
+                                   const unsigned& left_boundary_id,
+                                   TimeStepper* time_stepper_pt) override
+    {
+      return TwoDimensionalPMLHelper::create_top_left_pml_mesh<
+        PMLLayerElement<ELEMENT>>(pml_left_mesh_pt,
+                                  pml_top_mesh_pt,
+                                  bulk_mesh_pt,
+                                  left_boundary_id,
+                                  time_stepper_pt);
+    }
+
+    Mesh* create_bottom_left_pml_mesh(Mesh* pml_left_mesh_pt,
+                                      Mesh* pml_bottom_mesh_pt,
+                                      Mesh* bulk_mesh_pt,
+                                      const unsigned& left_boundary_id,
+                                      TimeStepper* time_stepper_pt) override
+    {
+      return TwoDimensionalPMLHelper::create_bottom_left_pml_mesh<
+        PMLLayerElement<ELEMENT>>(pml_left_mesh_pt,
+                                  pml_bottom_mesh_pt,
+                                  bulk_mesh_pt,
+                                  left_boundary_id,
+                                  time_stepper_pt);
+    }
+  };
+
+  /// Helper function to create PML mesh factories.
+  template<class ELEMENT>
+  [[nodiscard]] inline TwoDimensionalPMLMeshFactoryPt make_two_dimensional_pml_mesh_factory_pt()
+  {
+    return std::make_shared<TwoDimensionalPMLMeshFactory<ELEMENT>>();
+  }
+
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+
   //=============================================================================
   /// Rectangular domain with circular whole
   /// DRAIG: This looks like a redefinition of the
@@ -216,6 +410,15 @@ namespace oomph
   class RectangleWithHoleAndAnnularRegionTFMesh : public virtual Mesh
   {
   public:
+    /// Constructor: Pass element factory, pointer to geometric object that
+    /// represents the cylinder, the annular-region radius and domain length.
+    RectangleWithHoleAndAnnularRegionTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      GeomObject* cylinder_pt,
+      const double& annular_region_radius,
+      const double& length,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
+
     /// Constructor: Pass pointer to geometric object that
     /// represents the cylinder, the length and height of the domain.
     /// The GeomObject must be parametrised such that
@@ -226,7 +429,15 @@ namespace oomph
       GeomObject* cylinder_pt,
       const double& annular_region_radius,
       const double& length,
-      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangleWithHoleAndAnnularRegionTFMesh(
+          make_element_factory_pt<QElement<2, 3>>(),
+          cylinder_pt,
+          annular_region_radius,
+          length,
+          time_stepper_pt)
+    {
+    }
 
     /// Destructor: We made the Domain object so we have a responsibility
     /// for deleting it!
@@ -277,12 +488,16 @@ namespace oomph
     /// in anticlockwise direction. Timestepper defaults to Steady
     /// default timestepper.
     RefineableRectangleWithHoleAndAnnularRegionTFMesh(
+      const ElementFactoryPt& element_factory_pt,
       GeomObject* cylinder_pt,
       const double& annular_region_radius,
       const double& length,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : RectangleWithHoleAndAnnularRegionTFMesh(
-          cylinder_pt, annular_region_radius, length, time_stepper_pt)
+      : RectangleWithHoleAndAnnularRegionTFMesh(element_factory_pt,
+                                                cylinder_pt,
+                                                annular_region_radius,
+                                                length,
+                                                time_stepper_pt)
     {
       // Nodal positions etc. were created in constructor for
       // Cylinder...<...>. Need to set up adaptive information.
@@ -315,16 +530,15 @@ namespace oomph
   //=============================================================================
   /// My Mesh
   //=============================================================================
-  class RefineableQuadMeshWithMovingCylinder
+  class RefineableQuadMeshWithMovingCylinderTFMesh
     : public virtual RefineableQuadTFMesh
   {
   public:
-    /// Constructor. Pass pointer to geometric object that represents the
-    /// cylinder; hierher the length and height of the domain. The GeomObject
-    /// must be parametrised such that \f$\zeta \in [0,2\pi]\f$ sweeps around
-    /// the circumference in anticlockwise direction. Timestepper defaults to
-    /// Steady default timestepper.
-    RefineableQuadMeshWithMovingCylinder(
+    /// Constructor. Pass element and PML factories, pointer to geometric object
+    /// that represents the cylinder, and the domain dimensions.
+    RefineableQuadMeshWithMovingCylinderTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const TwoDimensionalPMLMeshFactoryPt& pml_mesh_factory_pt,
       GeomObject* cylinder_pt,
       const double& annular_region_radius,
       const double& length_of_central_box,
@@ -335,14 +549,14 @@ namespace oomph
 
     /// Destructor: Delete the part of the mesh which has a Domain
     /// representation
-    ~RefineableQuadMeshWithMovingCylinder()
+    ~RefineableQuadMeshWithMovingCylinderTFMesh()
     {
       // Delete the central mesh
       delete Central_mesh_pt;
 
       // Make it a null pointer
       Central_mesh_pt = 0;
-    } // End of ~RefineableQuadMeshWithMovingCylinder
+    } // End of ~RefineableQuadMeshWithMovingCylinderTFMesh
 
   private:
     /// Pointer to the part of the mesh which has a Domain
@@ -354,6 +568,43 @@ namespace oomph
 
     // Make the problem as coarse as possible
     bool Coarse_problem;
+  };
+
+
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+
+  //=============================================================================
+  /// Backwards-compatible templated moving-cylinder mesh wrapper.
+  //=============================================================================
+  template<class ELEMENT>
+  class RefineableQuadMeshWithMovingCylinder
+    : public RefineableQuadMeshWithMovingCylinderTFMesh
+  {
+  public:
+    /// Constructor. Pass pointer to geometric object that represents the
+    /// cylinder and the domain dimensions.
+    RefineableQuadMeshWithMovingCylinder(
+      GeomObject* cylinder_pt,
+      const double& annular_region_radius,
+      const double& length_of_central_box,
+      const double& x_left,
+      const double& x_right,
+      const double& height,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RefineableQuadMeshWithMovingCylinderTFMesh(
+          make_element_factory_pt<ELEMENT>(),
+          make_two_dimensional_pml_mesh_factory_pt<ELEMENT>(),
+          cylinder_pt,
+          annular_region_radius,
+          length_of_central_box,
+          x_left,
+          x_right,
+          height,
+          time_stepper_pt)
+    {
+    }
   };
 } // End of namespace oomph
 

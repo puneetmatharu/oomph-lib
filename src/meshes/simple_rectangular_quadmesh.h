@@ -110,6 +110,26 @@ namespace oomph
     unsigned NY;
   };
 
+  //=======================================================================
+  /// Compatibility wrapper preserving the original templated
+  /// SimpleRectangularQuadMesh API.
+  //=======================================================================
+  template<class ELEMENT>
+  class SimpleRectangularQuadMesh : public SimpleRectangularQuadTFMesh
+  {
+  public:
+    SimpleRectangularQuadMesh(
+      const unsigned& Nx,
+      const unsigned& Ny,
+      const double& Lx,
+      const double& Ly,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : SimpleRectangularQuadTFMesh(
+          make_element_factory_pt<ELEMENT>(), Nx, Ny, Lx, Ly, time_stepper_pt)
+    {
+    }
+  };
+
 } // namespace oomph
 
 #endif

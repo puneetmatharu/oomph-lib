@@ -38,10 +38,13 @@ namespace oomph
   /// default timestepper.
   //===========================================================================
   RectangleWithHoleTFMesh::RectangleWithHoleTFMesh(
+    const ElementFactoryPt& element_factory_pt,
     GeomObject* cylinder_pt,
     const double& length,
-    TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+    TimeStepper* time_stepper_pt)
   {
+    set_element_factory_pt(element_factory_pt);
+
     // Create the domain
     Domain_pt = new RectangleWithHoleDomain(cylinder_pt, length);
 
@@ -222,10 +225,12 @@ namespace oomph
   /// default timestepper.
   //===========================================================================
   RefineableRectangleWithHoleTFMesh::RefineableRectangleWithHoleTFMesh(
+    const ElementFactoryPt& element_factory_pt,
     GeomObject* cylinder_pt,
     const double& length,
-    TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-    : RectangleWithHoleTFMesh(cylinder_pt, length, time_stepper_pt)
+    TimeStepper* time_stepper_pt)
+    : RectangleWithHoleTFMesh(
+        element_factory_pt, cylinder_pt, length, time_stepper_pt)
   {
     // Nodal positions etc. were created in constructor for
     // Cylinder...<...>. Need to setup adaptive information.
@@ -245,5 +250,4 @@ namespace oomph
     this->setup_quadtree_forest();
   }
 
-};
 } // namespace oomph
