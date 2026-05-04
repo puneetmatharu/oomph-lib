@@ -312,10 +312,18 @@ namespace oomph
       return *element_factory_pt;
     }
 
-    /// Construct a new element via the runtime element factory.
+    /// Construct a new element via the runtime element factory. Refineable
+    /// elements also need their own factory pointer set so that h-refinement
+    /// can construct sons through new_refinement_element().
     FiniteElement* new_element() const
     {
-      return element_factory().new_element();
+      FiniteElement* el_pt = element_factory().new_element();
+      if (RefineableElement* ref_el_pt =
+            dynamic_cast<RefineableElement*>(el_pt))
+      {
+        ref_el_pt->set_element_factory_pt(element_factory_pt);
+      }
+      return el_pt;
     }
 
   public:
