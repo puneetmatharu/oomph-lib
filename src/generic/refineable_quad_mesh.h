@@ -243,6 +243,16 @@ namespace oomph
     /// as the root trees in the forest.
     void setup_quadtree_forest()
     {
+      // Backwards-compatibility: many user-defined meshes (e.g. those that
+      // pre-date the runtime element factory) build their initial elements
+      // with `new ELEMENT` directly, leaving Mesh::element_factory_pt and the
+      // elements' own Element_factory_pt unset. Refinement then trips
+      // RefineableElement::new_refinement_element(). Auto-install a factory
+      // for the known concrete ELEMENT type if none has been provided.
+      if (!this->element_factory_pt)
+      {
+        this->set_element_factory_pt(make_element_factory_pt<ELEMENT>());
+      }
       // A forst pointer is setup at least once when the mesh is initially
       // created in serial and stays around
       if (this->Forest_pt != 0)
@@ -342,6 +352,10 @@ namespace oomph
                 backed_up_sons[i_son] = tree_pt->son_pt(i_son);
               }
 
+              // Ensure the element knows about the runtime factory so
+              // subsequent refinement can construct sons.
+              el_pt->set_element_factory_pt(this->element_factory_pt);
+
               // Make the element into a new tree-root
               QuadTreeRoot* tree_root_pt = new QuadTreeRoot(el_pt);
 
@@ -410,6 +424,10 @@ namespace oomph
         {
           // Get pointer to full element type
           ELEMENT* el_pt = dynamic_cast<ELEMENT*>(this->element_pt(e));
+
+          // Ensure the element knows about the runtime factory so subsequent
+          // h-refinement can construct sons via new_refinement_element().
+          el_pt->set_element_factory_pt(this->element_factory_pt);
 
           // Build associated quadtree(root) -- pass pointer to corresponding
           // finite element and add the pointer to vector of quadtree (roots):

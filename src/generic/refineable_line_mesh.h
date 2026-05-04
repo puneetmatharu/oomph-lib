@@ -125,6 +125,14 @@ namespace oomph
     /// regards the currently active elements as the root trees in the forest.
     void setup_binary_tree_forest()
     {
+      // Auto-install a runtime element factory for ELEMENT if the user-built
+      // mesh hasn't supplied one. See RefineableQuadMesh::setup_quadtree_forest
+      // for rationale.
+      if (!this->element_factory_pt)
+      {
+        this->set_element_factory_pt(make_element_factory_pt<ELEMENT>());
+      }
+
       // This wipes all elements/binary trees in the tree representation
       // but leaves the leaf elements alone
       if (this->Forest_pt != 0) delete this->Forest_pt;
@@ -142,6 +150,10 @@ namespace oomph
       {
         // Get pointer to full element type
         ELEMENT* el_pt = dynamic_cast<ELEMENT*>(this->element_pt(e));
+
+        // Ensure the element knows about the runtime factory so subsequent
+        // h-refinement can construct sons via new_refinement_element().
+        el_pt->set_element_factory_pt(this->element_factory_pt);
 
         // Build associated binary tree(root) -- pass pointer to corresponding
         // finite element and add the pointer to vector of binary tree (roots):

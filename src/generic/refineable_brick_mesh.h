@@ -233,6 +233,13 @@ namespace oomph
     /// Do what it says...
     void setup_octree_forest()
     {
+      // Auto-install a runtime element factory for ELEMENT if the user-built
+      // mesh hasn't supplied one. See RefineableQuadMesh::setup_quadtree_forest
+      // for rationale.
+      if (!this->element_factory_pt)
+      {
+        this->set_element_factory_pt(make_element_factory_pt<ELEMENT>());
+      }
       if (this->Forest_pt != 0)
       {
         // Get all the tree nodes
@@ -328,6 +335,9 @@ namespace oomph
                 backed_up_sons[i_son] = tree_pt->son_pt(i_son);
               }
 
+              // Ensure the element knows about the runtime factory.
+              el_pt->set_element_factory_pt(this->element_factory_pt);
+
               // Make the element into a new treeroot
               OcTreeRoot* tree_root_pt = new OcTreeRoot(el_pt);
 
@@ -393,6 +403,10 @@ namespace oomph
         {
           // Get pointer to full element type
           ELEMENT* el_pt = dynamic_cast<ELEMENT*>(element_pt(iel));
+
+          // Ensure the element knows about the runtime factory so subsequent
+          // h-refinement can construct sons via new_refinement_element().
+          el_pt->set_element_factory_pt(this->element_factory_pt);
 
           // Build associated octree(root) -- pass pointer to corresponding
           // finite element and add the pointer to vector of octree (roots):
