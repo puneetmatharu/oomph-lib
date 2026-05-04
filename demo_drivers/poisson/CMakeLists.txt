@@ -23,6 +23,7 @@ include(CTest)
 set(SUBDIRS
     poisson_with_singularity
     one_d_poisson
+    one_d_poisson_template_free
     one_d_poisson_generic_only
     one_d_poisson_adapt
     one_d_poisson_hp_adapt
