@@ -109,20 +109,23 @@ namespace Global_Parameters
 /// Triangle-based mesh upgraded to become a solid mesh
 //=========================================================================
 template<class ELEMENT>
-class MySolidTriangleMesh : public virtual TriangleMesh<ELEMENT>, 
-                          public virtual SolidMesh 
+class MySolidTriangleMesh : public virtual TriangleTFMesh,
+                          public virtual SolidMesh
 {
- 
+
 public:
- 
- /// Constructor: 
+
+ /// Constructor:
  MySolidTriangleMesh(const std::string& node_file_name,
                      const std::string& element_file_name,
                      const std::string& poly_file_name,
                      TimeStepper* time_stepper_pt=
                      &Mesh::Default_TimeStepper) :
-  TriangleMesh<ELEMENT>(node_file_name,element_file_name,
-                        poly_file_name, time_stepper_pt)
+  Mesh(make_element_factory_pt<ELEMENT>()),
+  UnstructuredTwoDMeshGeometryBase(
+    make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
+  TriangleTFMesh(node_file_name,element_file_name,
+                 poly_file_name, time_stepper_pt)
   {
    //Assign the Lagrangian coordinates
    set_lagrangian_nodal_coordinates();
@@ -151,8 +154,8 @@ public:
     }// done boundary assignment
 
    // Identify the elements next to the newly created boundaries
-   TriangleMesh<ELEMENT>::setup_boundary_element_info();
-   
+   TriangleTFMesh::setup_boundary_element_info();
+
    // Setup boundary coordinates for boundaries 1 and 2
    this->template setup_boundary_coordinates<ELEMENT>(1);
    this->template setup_boundary_coordinates<ELEMENT>(2);
@@ -175,20 +178,23 @@ public:
 /// Triangle-based mesh upgraded to become a pseudo-solid mesh
 //=========================================================================
 template<class ELEMENT>
-class FluidTriangleMesh : public virtual TriangleMesh<ELEMENT>,
-                          public virtual SolidMesh 
+class FluidTriangleMesh : public virtual TriangleTFMesh,
+                          public virtual SolidMesh
 {
- 
+
 public:
- 
+
  /// Constructor
  FluidTriangleMesh(const std::string& node_file_name,
                    const std::string& element_file_name,
                    const std::string& poly_file_name,
                    TimeStepper* time_stepper_pt=
                    &Mesh::Default_TimeStepper) :
-  TriangleMesh<ELEMENT>(node_file_name,element_file_name,
-                        poly_file_name, time_stepper_pt)
+  Mesh(make_element_factory_pt<ELEMENT>()),
+  UnstructuredTwoDMeshGeometryBase(
+    make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
+  TriangleTFMesh(node_file_name,element_file_name,
+                 poly_file_name, time_stepper_pt)
   {
    //Assign the Lagrangian coordinates
    set_lagrangian_nodal_coordinates();
@@ -234,8 +240,8 @@ public:
        if (nod_pt->x(1)<0.2) this->add_boundary_node(0,nod_pt);
       }
     }
-   TriangleMesh<ELEMENT>::setup_boundary_element_info();
-   
+   TriangleTFMesh::setup_boundary_element_info();
+
    // Open a file to doc the FaceElements that are used to
    // create the boundary coordinates. The elements must
    // form a simply-connected line. This may not work
