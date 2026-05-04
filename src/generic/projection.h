@@ -45,6 +45,7 @@
 // Use a preconditioner for the iterative solver
 #include "preconditioner.h"
 #include "general_purpose_preconditioners.h"
+#include <memory>
 
 namespace oomph
 {
@@ -693,6 +694,9 @@ namespace oomph
   template<class PROJECTABLE_ELEMENT>
   class ProjectionProblem : public virtual Problem
   {
+    template<class FRIEND_PROJECTABLE_ELEMENT>
+    friend class ProjectionProblemRuntimeWrapper;
+
     // The classes are friend whether the templated element of the
     // friend class is the same or not as the templated element of the
     // ProjectionProblem class
@@ -1811,6 +1815,120 @@ namespace oomph
     Preconditioner* Preconditioner_projection_pt;
   };
 
+  //=======================================================================
+  /// Type-erased projection problem interface for template-free mesh code.
+  //=======================================================================
+  class ProjectionProblemRuntimeBase
+  {
+  public:
+    virtual ~ProjectionProblemRuntimeBase() = default;
+
+    virtual void enable_problem_distributed() = 0;
+
+    virtual void add_time_stepper_pt(TimeStepper* const& time_stepper_pt) = 0;
+
+    virtual Mesh*& mesh_pt() = 0;
+
+    virtual void disable_use_iterative_solver_for_projection() = 0;
+
+    virtual void project(Mesh* const& mesh_pt) = 0;
+  };
+
+  //=======================================================================
+  /// Runtime wrapper around a concrete ProjectionProblem instantiation.
+  //=======================================================================
+  template<class PROJECTABLE_ELEMENT>
+  class ProjectionProblemRuntimeWrapper : public ProjectionProblemRuntimeBase
+  {
+  public:
+    /// Constructor
+    ProjectionProblemRuntimeWrapper()
+      : Projection_problem_pt(new ProjectionProblem<PROJECTABLE_ELEMENT>)
+    {
+    }
+
+    /// Destructor
+    ~ProjectionProblemRuntimeWrapper() override
+    {
+      delete Projection_problem_pt;
+      Projection_problem_pt = 0;
+    }
+
+    /// Enable distributed projection problem
+    void enable_problem_distributed() override
+    {
+#ifdef OOMPH_HAS_MPI
+      Projection_problem_pt->enable_problem_distributed();
+#endif
+    }
+
+    /// Add timestepper
+    void add_time_stepper_pt(TimeStepper* const& time_stepper_pt) override
+    {
+      Projection_problem_pt->add_time_stepper_pt(time_stepper_pt);
+    }
+
+    /// Access mesh pointer
+    Mesh*& mesh_pt() override
+    {
+      return Projection_problem_pt->mesh_pt();
+    }
+
+    /// Disable iterative projection solver
+    void disable_use_iterative_solver_for_projection() override
+    {
+      Projection_problem_pt->disable_use_iterative_solver_for_projection();
+    }
+
+    /// Project from supplied mesh
+    void project(Mesh* const& mesh_pt) override
+    {
+      Projection_problem_pt->project(mesh_pt);
+    }
+
+  private:
+    /// Concrete projection problem
+    ProjectionProblem<PROJECTABLE_ELEMENT>* Projection_problem_pt;
+  };
+
+  //=======================================================================
+  /// Type-erased projection problem factory.
+  //=======================================================================
+  class ProjectionProblemFactoryBase
+  {
+  public:
+    virtual ~ProjectionProblemFactoryBase() = default;
+
+    /// Build a projection problem instance.
+    virtual ProjectionProblemRuntimeBase* new_problem() = 0;
+  };
+
+  /// Shared ownership handle for projection-problem factories.
+  using ProjectionProblemFactoryPt =
+    std::shared_ptr<ProjectionProblemFactoryBase>;
+
+  //=======================================================================
+  /// Projection problem factory for a concrete projectable element type.
+  //=======================================================================
+  template<class PROJECTABLE_ELEMENT>
+  class ProjectionProblemFactory : public ProjectionProblemFactoryBase
+  {
+  public:
+    /// Build a projection problem instance.
+    ProjectionProblemRuntimeBase* new_problem() override
+    {
+      return new ProjectionProblemRuntimeWrapper<PROJECTABLE_ELEMENT>;
+    }
+  };
+
+  //=======================================================================
+  /// Helper function to create projection-problem factories.
+  //=======================================================================
+  template<class PROJECTABLE_ELEMENT>
+  [[nodiscard]] inline ProjectionProblemFactoryPt make_projection_problem_factory_pt()
+  {
+    return std::make_shared<ProjectionProblemFactory<PROJECTABLE_ELEMENT>>();
+  }
 
 } // namespace oomph
 

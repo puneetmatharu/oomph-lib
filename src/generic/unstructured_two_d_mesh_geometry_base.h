@@ -1743,6 +1743,13 @@ namespace oomph
     /// Empty constructor
     UnstructuredTwoDMeshGeometryBase() {}
 
+    /// Constructor with runtime dummy face-element factory.
+    UnstructuredTwoDMeshGeometryBase(
+      const FaceElementFactoryPt& dummy_face_element_factory_pt)
+      : Dummy_face_element_factory_pt(dummy_face_element_factory_pt)
+    {
+    }
+
     /// Broken copy constructor
     UnstructuredTwoDMeshGeometryBase(
       const UnstructuredTwoDMeshGeometryBase& dummy) = delete;
@@ -1752,6 +1759,14 @@ namespace oomph
 
     /// Empty destructor
     ~UnstructuredTwoDMeshGeometryBase() {}
+
+    /// Store the runtime factory used to build dummy face elements for
+    /// boundary-coordinate setup.
+    void set_dummy_face_element_factory_pt(
+      const FaceElementFactoryPt& face_element_factory_pt)
+    {
+      Dummy_face_element_factory_pt = face_element_factory_pt;
+    }
 
     /// Return the number of regions specified by attributes
     unsigned nregion()
@@ -2438,6 +2453,33 @@ namespace oomph
     /// Boundary coordinate increases continously along
     /// polygonal boundary. It's zero at the lowest left
     /// node on the boundary.
+    void setup_boundary_coordinates(const unsigned& b)
+    {
+      // Dummy file
+      std::ofstream some_file;
+      setup_boundary_coordinates(b, some_file);
+    }
+
+    /// Setup boundary coordinate on boundary b. Doc Faces
+    /// in outfile.
+    /// Boundary coordinate increases continously along
+    /// polygonal boundary. It's zero at the lowest left
+    /// node on the boundary.
+    void setup_boundary_coordinates(const unsigned& b, std::ofstream& outfile)
+    {
+      setup_boundary_coordinates(
+        b, outfile, this->dummy_face_element_factory());
+    }
+
+    /// Setup boundary coordinate on boundary b using the supplied runtime
+    /// dummy face-element factory. Doc Faces in outfile.
+    void setup_boundary_coordinates(
+      const unsigned& b,
+      std::ofstream& outfile,
+      FaceElementFactoryBase& dummy_face_element_factory);
+
+    /// Backwards-compatible templated helper that creates a runtime dummy
+    /// face-element factory for the concrete bulk element type.
     template<class ELEMENT>
     void setup_boundary_coordinates(const unsigned& b)
     {
@@ -2452,10 +2494,32 @@ namespace oomph
     /// polygonal boundary. It's zero at the lowest left
     /// node on the boundary.
     template<class ELEMENT>
-    void setup_boundary_coordinates(const unsigned& b, std::ofstream& outfile);
+    void setup_boundary_coordinates(const unsigned& b, std::ofstream& outfile)
+    {
+      auto face_element_factory_pt =
+        make_face_element_factory_pt<DummyFaceElement<ELEMENT>>();
+      setup_boundary_coordinates(b, outfile, *face_element_factory_pt);
+    }
 
 
   protected:
+    /// Access the runtime dummy face-element factory.
+    FaceElementFactoryBase& dummy_face_element_factory() const
+    {
+      if (Dummy_face_element_factory_pt == 0)
+      {
+        throw OomphLibError(
+          "No dummy face-element factory has been supplied for this mesh",
+          OOMPH_CURRENT_FUNCTION,
+          OOMPH_EXCEPTION_LOCATION);
+      }
+      return *Dummy_face_element_factory_pt;
+    }
+
+    /// Runtime dummy face-element factory used during boundary-coordinate
+    /// setup.
+    FaceElementFactoryPt Dummy_face_element_factory_pt;
+
 #ifdef OOMPH_HAS_TRIANGLE_LIB
 
     /// Create TriangulateIO object from outer boundaries,
@@ -3847,9 +3911,10 @@ namespace oomph
   /// polygonal boundary. It's zero at the lexicographically
   /// smallest node on the boundary.
   //======================================================================
-  template<class ELEMENT>
-  void UnstructuredTwoDMeshGeometryBase::setup_boundary_coordinates(
-    const unsigned& b, std::ofstream& outfile)
+  inline void UnstructuredTwoDMeshGeometryBase::setup_boundary_coordinates(
+    const unsigned& b,
+    std::ofstream& outfile,
+    FaceElementFactoryBase& dummy_face_element_factory)
   {
     // Temporary storage for face elements
     Vector<FiniteElement*> face_el_pt;
@@ -3968,7 +4033,7 @@ namespace oomph
             // the edge that this element represent has not been
             // already added
             FiniteElement* tmp_ele_pt =
-              new DummyFaceElement<ELEMENT>(bulk_elem_pt, face_index);
+              dummy_face_element_factory.new_element(bulk_elem_pt, face_index);
 
             const unsigned n_nodes = tmp_ele_pt->nnode();
 
@@ -4092,7 +4157,7 @@ namespace oomph
           // Before adding the new element we need to be sure that the
           // edge that this element represent has not been already added
           FiniteElement* tmp_ele_pt =
-            new DummyFaceElement<ELEMENT>(bulk_elem_pt, face_index);
+            dummy_face_element_factory.new_element(bulk_elem_pt, face_index);
 
           const unsigned n_nodes = tmp_ele_pt->nnode();
 

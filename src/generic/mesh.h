@@ -259,6 +259,26 @@ namespace oomph
 #endif
     }
 
+    /// Constructor with runtime element factory.
+    Mesh(const ElementFactoryPt& element_factory_pt)
+      : element_factory_pt(element_factory_pt)
+    {
+      // Lookup scheme hasn't been setup yet
+      Lookup_for_elements_next_boundary_is_setup = false;
+#ifdef OOMPH_HAS_MPI
+      // Set defaults for distributed meshes
+
+      // Mesh hasn't been distributed: Null out pointer to communicator
+      Comm_pt = 0;
+      // Don't keep all objects as halos
+      Keep_all_elements_as_halos = false;
+      // Don't output halo elements
+      Output_halo_elements = false;
+      // Don't suppress automatic resizing of halo nodes
+      Resize_halo_nodes_not_required = false;
+#endif
+    }
+
     /// Constructor builds combined mesh from the meshes specified.
     /// Note: This simply merges the meshes' elements and nodes (ignoring
     /// duplicates; no boundary information etc. is created).

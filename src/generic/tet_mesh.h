@@ -858,6 +858,14 @@ namespace oomph
     /// Destructor (empty)
     virtual ~TetMeshBase() {}
 
+    /// Store the runtime factory used to build dummy face elements for
+    /// boundary-coordinate setup.
+    void set_dummy_face_element_factory_pt(
+      const FaceElementFactoryPt& face_element_factory_pt)
+    {
+      Dummy_face_element_factory_pt = face_element_factory_pt;
+    }
+
     /// Global static data that specifies the permitted
     /// error in the setup of the boundary coordinates
     static double Tolerance_for_boundary_finding;
@@ -884,7 +892,6 @@ namespace oomph
     ///          store the boundary coordinates of its vertices. They are needed
     ///          to interpolated intrinsic coordinates of an associated
     ///          GeomObject (if any) into the interior.
-    template<class ELEMENT>
     void setup_boundary_coordinates(const unsigned& b)
     {
       // Dummy file
@@ -892,7 +899,7 @@ namespace oomph
 
       // Don't switch the normal
       bool switch_normal = false;
-      this->setup_boundary_coordinates<ELEMENT>(b, switch_normal, some_file);
+      this->setup_boundary_coordinates(b, switch_normal, some_file);
     }
 
     /// Setup boundary coordinate on boundary b which is
@@ -915,14 +922,13 @@ namespace oomph
     ///          GeomObject (if any) into the interior.
     /// Final boolean argument allows switching of the direction of the outer
     /// unit normal.
-    template<class ELEMENT>
     void setup_boundary_coordinates(const unsigned& b,
                                     const bool& switch_normal)
     {
       // Dummy file
       std::ofstream some_file;
 
-      this->setup_boundary_coordinates<ELEMENT>(b, switch_normal, some_file);
+      this->setup_boundary_coordinates(b, switch_normal, some_file);
     }
 
 
@@ -946,10 +952,59 @@ namespace oomph
     ///          GeomObject (if any) into the interior.
     /// Boolean argument allows switching of the direction of the outer
     /// unit normal.  Output file for doc.
+    void setup_boundary_coordinates(const unsigned& b,
+                                    const bool& switch_normal,
+                                    std::ofstream& outfile)
+    {
+      this->setup_boundary_coordinates(
+        b, switch_normal, outfile, this->dummy_face_element_factory());
+    }
+
+    /// Backwards-compatible templated helper that creates a runtime dummy
+    /// face-element factory for the concrete bulk element type.
+    template<class ELEMENT>
+    void setup_boundary_coordinates(const unsigned& b)
+    {
+      // Dummy file
+      std::ofstream some_file;
+
+      // Don't switch the normal
+      bool switch_normal = false;
+      this->setup_boundary_coordinates<ELEMENT>(b, switch_normal, some_file);
+    }
+
+    /// Backwards-compatible templated helper that creates a runtime dummy
+    /// face-element factory for the concrete bulk element type.
+    template<class ELEMENT>
+    void setup_boundary_coordinates(const unsigned& b,
+                                    const bool& switch_normal)
+    {
+      // Dummy file
+      std::ofstream some_file;
+
+      this->setup_boundary_coordinates<ELEMENT>(b, switch_normal, some_file);
+    }
+
+    /// Backwards-compatible templated helper that creates a runtime dummy
+    /// face-element factory for the concrete bulk element type.
     template<class ELEMENT>
     void setup_boundary_coordinates(const unsigned& b,
                                     const bool& switch_normal,
-                                    std::ofstream& outfile);
+                                    std::ofstream& outfile)
+    {
+      auto face_element_factory_pt =
+        make_face_element_factory_pt<DummyFaceElement<ELEMENT>>();
+      this->setup_boundary_coordinates(
+        b, switch_normal, outfile, *face_element_factory_pt);
+    }
+
+    /// Setup boundary coordinate on boundary b using the supplied runtime
+    /// dummy face-element factory.
+    void setup_boundary_coordinates(
+      const unsigned& b,
+      const bool& switch_normal,
+      std::ofstream& outfile,
+      FaceElementFactoryBase& dummy_face_element_factory);
 
     /// Setup boundary coordinate on boundary b which is
     /// assumed to be planar. Boundary coordinates are the
@@ -970,12 +1025,11 @@ namespace oomph
     ///          to interpolated intrinsic coordinates of an associated
     ///          GeomObject (if any) into the interior.
     /// Output file for doc.
-    template<class ELEMENT>
     void setup_boundary_coordinates(const unsigned& b, std::ofstream& outfile)
     {
       // Don't switch the normal
       bool switch_normal = false;
-      this->setup_boundary_coordinates<ELEMENT>(b, switch_normal, outfile);
+      this->setup_boundary_coordinates(b, switch_normal, outfile);
     }
 
 
@@ -1194,9 +1248,16 @@ namespace oomph
     /// Non-Delaunay split elements that have three faces on a boundary
     /// into sons. Timestepper species timestepper for new nodes; defaults
     /// to to steady timestepper.
-    template<class ELEMENT>
     void split_elements_in_corners(
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
+
+    /// Backwards-compatible templated wrapper.
+    template<class ELEMENT>
+    void split_elements_in_corners(
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+    {
+      split_elements_in_corners(time_stepper_pt);
+    }
 
 
     /// Setup lookup schemes which establish which elements are located
@@ -1214,6 +1275,23 @@ namespace oomph
 
 
   protected:
+    /// Access the runtime dummy face-element factory.
+    FaceElementFactoryBase& dummy_face_element_factory() const
+    {
+      if (Dummy_face_element_factory_pt == 0)
+      {
+        throw OomphLibError(
+          "No dummy face-element factory has been supplied for this mesh",
+          OOMPH_CURRENT_FUNCTION,
+          OOMPH_EXCEPTION_LOCATION);
+      }
+      return *Dummy_face_element_factory_pt;
+    }
+
+    /// Runtime dummy face-element factory used during boundary-coordinate
+    /// setup.
+    FaceElementFactoryPt Dummy_face_element_factory_pt;
+
     /// Vectors of vectors of elements in each region (note: this just
     /// stores them; the region IDs are contained in Region_attribute!)
     Vector<Vector<FiniteElement*>> Region_element_pt;
@@ -1285,10 +1363,11 @@ namespace oomph
   ///          to interpolated intrinsic coordinates of an associated GeomObject
   ///          (if any) into the interior.
   //======================================================================
-  template<class ELEMENT>
-  void TetMeshBase::setup_boundary_coordinates(const unsigned& b,
-                                               const bool& switch_normal,
-                                               std::ofstream& outfile)
+  inline void TetMeshBase::setup_boundary_coordinates(
+    const unsigned& b,
+    const bool& switch_normal,
+    std::ofstream& outfile,
+    FaceElementFactoryBase& dummy_face_element_factory)
   {
     Node* lower_left_node_pt = 0;
     Node* upper_right_node_pt = 0;
@@ -1340,7 +1419,7 @@ namespace oomph
 
           // Create new face element
           face_el_pt.push_back(
-            new DummyFaceElement<ELEMENT>(bulk_elem_pt, face_index));
+            dummy_face_element_factory.new_element(bulk_elem_pt, face_index));
 
           // Output faces?
           if (outfile.is_open())
@@ -1441,7 +1520,7 @@ namespace oomph
         Vector<double> s(2, 0.0);
         if (nv != 3)
         {
-          dynamic_cast<DummyFaceElement<ELEMENT>*>(face_el_pt[0])
+          dynamic_cast<FaceElement*>(face_el_pt[0])
             ->outer_unit_normal(s, normal);
         }
         else
@@ -1486,7 +1565,7 @@ namespace oomph
         {
           // Get (outer) unit normal to face element
           Vector<double> my_normal(3);
-          dynamic_cast<DummyFaceElement<ELEMENT>*>(face_el_pt[e])
+          dynamic_cast<FaceElement*>(face_el_pt[e])
             ->outer_unit_normal(s, my_normal);
 
           // Dot product should be one!
@@ -2143,8 +2222,8 @@ namespace oomph
   /// Non-delaunay split elements that have three faces on a boundary
   /// into sons.
   //========================================================================
-  template<class ELEMENT>
-  void TetMeshBase::split_elements_in_corners(TimeStepper* time_stepper_pt)
+  inline void TetMeshBase::split_elements_in_corners(
+    TimeStepper* time_stepper_pt)
   {
     // Setup boundary lookup scheme if required
     if (!Lookup_for_elements_next_boundary_is_setup)
@@ -2250,7 +2329,7 @@ namespace oomph
         Node* node10_pt = 0;
 
         // Create first new element
-        FiniteElement* el1_pt = new ELEMENT;
+        FiniteElement* el1_pt = this->new_element();
 
         // Copy existing nodes
         el1_pt->node_pt(0) = el_pt->node_pt(0);
@@ -2291,7 +2370,7 @@ namespace oomph
 
 
         // Create second new element
-        FiniteElement* el2_pt = new ELEMENT;
+        FiniteElement* el2_pt = this->new_element();
 
         // Copy existing nodes
         el2_pt->node_pt(0) = el_pt->node_pt(0);
@@ -2328,7 +2407,7 @@ namespace oomph
         }
 
         // Create third new element
-        FiniteElement* el3_pt = new ELEMENT;
+        FiniteElement* el3_pt = this->new_element();
 
         // Copy existing nodes
         el3_pt->node_pt(1) = el_pt->node_pt(1);
@@ -2361,7 +2440,7 @@ namespace oomph
 
 
         // Create fourth new element
-        FiniteElement* el4_pt = new ELEMENT;
+        FiniteElement* el4_pt = this->new_element();
 
         // Copy existing nodes
         el4_pt->node_pt(0) = el_pt->node_pt(0);
