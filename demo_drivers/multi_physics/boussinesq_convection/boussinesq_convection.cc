@@ -117,9 +117,9 @@ public:
  /// Overloaded version of the problem's access function to 
  /// the mesh. Recasts the pointer to the base Mesh object to 
  /// the actual mesh type.
- RectangularQuadMesh<ELEMENT>* mesh_pt() 
+ RectangularQuadTFMesh* mesh_pt()
   {
-   return dynamic_cast<RectangularQuadMesh<ELEMENT>*>(
+   return dynamic_cast<RectangularQuadTFMesh*>(
     Problem::mesh_pt());
   }
  
@@ -155,8 +155,9 @@ ConvectionProblem<ELEMENT>::ConvectionProblem()
  double l_y=1.0;
 
  // Build a standard rectangular quadmesh
- Problem::mesh_pt() = 
-  new RectangularQuadMesh<ELEMENT>(n_x,n_y,l_x,l_y,time_stepper_pt());
+ Problem::mesh_pt() =
+  new RectangularQuadTFMesh(make_element_factory_pt<ELEMENT>(),
+                            n_x,n_y,l_x,l_y,time_stepper_pt());
 
  // Set the boundary conditions for this problem: All nodes are
  // free by default -- only need to pin the ones that have Dirichlet 
