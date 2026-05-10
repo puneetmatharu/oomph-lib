@@ -109,6 +109,30 @@ namespace oomph
     double Ly;
   };
 
+
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+
+  //=========================================================================
+  /// Backwards-compatible templated SimpleRectangularTriMesh wrapper.
+  //=========================================================================
+  template<class ELEMENT>
+  class SimpleRectangularTriMesh : public SimpleRectangularTriTFMesh
+  {
+  public:
+    SimpleRectangularTriMesh(
+      const unsigned& n_x,
+      const unsigned& n_y,
+      const double& l_x,
+      const double& l_y,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : SimpleRectangularTriTFMesh(make_element_factory_pt<ELEMENT>(),
+                                   n_x, n_y, l_x, l_y, time_stepper_pt)
+    {
+    }
+  };
+
 } // namespace oomph
 
 #endif
