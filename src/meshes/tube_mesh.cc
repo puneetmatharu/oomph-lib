@@ -39,8 +39,21 @@ namespace oomph
                          const Vector<double>& radius_box,
                          const unsigned& nlayer,
                          TimeStepper* time_stepper_pt)
-    : Volume_pt(volume_pt)
   {
+    build_tube_mesh(volume_pt, centreline_limits, theta_positions,
+                    radius_box, nlayer, time_stepper_pt);
+  }
+
+  void TubeTFMesh::build_tube_mesh(
+    GeomObject* volume_pt,
+    const Vector<double>& centreline_limits,
+    const Vector<double>& theta_positions,
+    const Vector<double>& radius_box,
+    const unsigned& nlayer,
+    TimeStepper* time_stepper_pt)
+  {
+    Volume_pt = volume_pt;
+
     // Mesh can only be built with 3D Qelements.
     MeshChecker::assert_geometric_element<QElementGeometricBase>(
       element_factory_pt, 3);
