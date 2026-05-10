@@ -88,6 +88,42 @@ namespace oomph
     assign_undeformed_positions();
   }
 
+  //=======================================================================
+  /// Constructor variants that accept a runtime element factory.
+  //=======================================================================
+  OneDLagrangianTFMesh::OneDLagrangianTFMesh(
+    const ElementFactoryPt& element_factory_pt,
+    const unsigned& n_element,
+    const double& length,
+    GeomObject* undef_eulerian_posn_pt,
+    TimeStepper* time_stepper_pt)
+    : OneDTFMesh(element_factory_pt, n_element, length, time_stepper_pt),
+      Undef_eulerian_posn_pt(undef_eulerian_posn_pt)
+  {
+    MeshChecker::assert_geometric_element<QElementGeometricBase>(
+      this->element_factory_pt, 1);
+    set_lagrangian_nodal_coordinates();
+    assign_default_element_gradients();
+    assign_undeformed_positions();
+  }
+
+  OneDLagrangianTFMesh::OneDLagrangianTFMesh(
+    const ElementFactoryPt& element_factory_pt,
+    const unsigned& n_element,
+    const double& xmin,
+    const double& xmax,
+    GeomObject* undef_eulerian_posn_pt,
+    TimeStepper* time_stepper_pt)
+    : OneDTFMesh(element_factory_pt, n_element, xmin, xmax, time_stepper_pt),
+      Undef_eulerian_posn_pt(undef_eulerian_posn_pt)
+  {
+    MeshChecker::assert_geometric_element<QElementGeometricBase>(
+      this->element_factory_pt, 1);
+    set_lagrangian_nodal_coordinates();
+    assign_default_element_gradients();
+    assign_undeformed_positions();
+  }
+
   //=====================================================================
   /// Set the default (initial) gradients within each element, which
   /// are merely the distances between the nodes, scaled by 0.5 because

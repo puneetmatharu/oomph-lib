@@ -75,6 +75,59 @@ namespace oomph
       const double& xmax,
       GeomObject* undef_eulerian_posn_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
+
+    /// Constructor with runtime element factory.
+    OneDLagrangianTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const unsigned& n_element,
+      const double& length,
+      GeomObject* undef_eulerian_posn_pt,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
+
+    /// Constructor with runtime element factory and explicit xmin/xmax.
+    OneDLagrangianTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const unsigned& n_element,
+      const double& xmin,
+      const double& xmax,
+      GeomObject* undef_eulerian_posn_pt,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
+  };
+
+
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+
+  //=========================================================================
+  /// Backwards-compatible templated OneDLagrangianMesh wrapper.
+  //=========================================================================
+  template<class ELEMENT>
+  class OneDLagrangianMesh : public OneDLagrangianTFMesh
+  {
+  public:
+    OneDLagrangianMesh(
+      const unsigned& n_element,
+      const double& length,
+      GeomObject* undef_eulerian_posn_pt,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : OneDLagrangianTFMesh(make_element_factory_pt<ELEMENT>(),
+                             n_element, length, undef_eulerian_posn_pt,
+                             time_stepper_pt)
+    {
+    }
+
+    OneDLagrangianMesh(
+      const unsigned& n_element,
+      const double& xmin,
+      const double& xmax,
+      GeomObject* undef_eulerian_posn_pt,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : OneDLagrangianTFMesh(make_element_factory_pt<ELEMENT>(),
+                             n_element, xmin, xmax, undef_eulerian_posn_pt,
+                             time_stepper_pt)
+    {
+    }
   };
 
 } // namespace oomph
