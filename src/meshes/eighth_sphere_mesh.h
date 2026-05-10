@@ -116,6 +116,43 @@ namespace oomph
     }
   };
 
+
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+
+  //=========================================================================
+  /// Backwards-compatible templated EighthSphereMesh wrappers.
+  //=========================================================================
+  template<class ELEMENT>
+  class EighthSphereMesh : public EighthSphereTFMesh
+  {
+  public:
+    EighthSphereMesh(
+      const double& radius,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : EighthSphereTFMesh(make_element_factory_pt<ELEMENT>(), radius,
+                           time_stepper_pt)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class RefineableEighthSphereMesh : public RefineableEighthSphereTFMesh
+  {
+  public:
+    RefineableEighthSphereMesh(
+      const double& radius,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : EighthSphereTFMesh(make_element_factory_pt<ELEMENT>(), radius,
+                           time_stepper_pt),
+        RefineableEighthSphereTFMesh(make_element_factory_pt<ELEMENT>(),
+                                     radius, time_stepper_pt)
+    {
+    }
+  };
+
 } // namespace oomph
 
 #endif

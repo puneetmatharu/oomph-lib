@@ -135,5 +135,52 @@ namespace oomph
 
   }; // end of mesh
 
+
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+
+  //=========================================================================
+  /// Backwards-compatible templated BackwardStepQuadMesh wrappers.
+  //=========================================================================
+  template<class ELEMENT>
+  class BackwardStepQuadMesh : public BackwardStepQuadTFMesh
+  {
+  public:
+    BackwardStepQuadMesh(
+      const unsigned& nx,
+      const unsigned& ny,
+      const unsigned& nx_cut_out,
+      const unsigned& ny_cut_out,
+      const double& lx,
+      const double& ly,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : BackwardStepQuadTFMesh(make_element_factory_pt<ELEMENT>(), nx, ny,
+                               nx_cut_out, ny_cut_out, lx, ly,
+                               time_stepper_pt)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class RefineableBackwardStepQuadMesh : public RefineableBackwardStepQuadTFMesh
+  {
+  public:
+    RefineableBackwardStepQuadMesh(
+      const unsigned& nx,
+      const unsigned& ny,
+      const unsigned& nx_cut_out,
+      const unsigned& ny_cut_out,
+      const double& lx,
+      const double& ly,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RefineableBackwardStepQuadTFMesh(make_element_factory_pt<ELEMENT>(),
+                                         nx, ny, nx_cut_out, ny_cut_out,
+                                         lx, ly, time_stepper_pt)
+    {
+    }
+  };
+
 } // namespace oomph
 #endif
