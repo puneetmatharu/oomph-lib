@@ -575,6 +575,49 @@ namespace oomph
   ////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////
 
+  //=========================================================================
+  /// Backwards-compatible templated wrappers for the rectangle-with-hole
+  /// and annular region.
+  //=========================================================================
+  template<class ELEMENT>
+  class RectangleWithHoleAndAnnularRegionMesh
+    : public RectangleWithHoleAndAnnularRegionTFMesh
+  {
+  public:
+    RectangleWithHoleAndAnnularRegionMesh(
+      GeomObject* cylinder_pt,
+      const double& annular_region_radius,
+      const double& length,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangleWithHoleAndAnnularRegionTFMesh(
+          make_element_factory_pt<ELEMENT>(), cylinder_pt,
+          annular_region_radius, length, time_stepper_pt)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class RefineableRectangleWithHoleAndAnnularRegionMesh
+    : public RefineableRectangleWithHoleAndAnnularRegionTFMesh
+  {
+  public:
+    RefineableRectangleWithHoleAndAnnularRegionMesh(
+      GeomObject* cylinder_pt,
+      const double& annular_region_radius,
+      const double& length,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RectangleWithHoleAndAnnularRegionTFMesh(
+          make_element_factory_pt<ELEMENT>(), cylinder_pt,
+          annular_region_radius, length, time_stepper_pt),
+        RefineableRectangleWithHoleAndAnnularRegionTFMesh(
+          make_element_factory_pt<ELEMENT>(), cylinder_pt,
+          annular_region_radius, length, time_stepper_pt)
+    {
+    }
+  };
+
+
   //=============================================================================
   /// Backwards-compatible templated moving-cylinder mesh wrapper.
   //=============================================================================
