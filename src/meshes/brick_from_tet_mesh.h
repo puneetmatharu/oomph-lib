@@ -309,6 +309,134 @@ namespace oomph
     }
   };
 
+
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+
+  //=========================================================================
+  /// Backwards-compatible templated BrickFromTet wrappers.
+  //=========================================================================
+  template<class ELEMENT>
+  class BrickFromTetMesh : public BrickFromTetTFMesh
+  {
+  public:
+    BrickFromTetMesh(
+      const std::string xda_file_name,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : BrickFromTetTFMesh(make_element_factory_pt<ELEMENT>(),
+                           xda_file_name, time_stepper_pt)
+    {
+    }
+
+    BrickFromTetMesh(
+      const std::string& node_file_name,
+      const std::string& element_file_name,
+      const std::string& face_file_name,
+      const bool& split_corner_elements,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
+      const bool& use_attributes = false)
+      : BrickFromTetTFMesh(make_element_factory_pt<ELEMENT>(),
+                           node_file_name, element_file_name, face_file_name,
+                           split_corner_elements, time_stepper_pt,
+                           use_attributes)
+    {
+    }
+
+    BrickFromTetMesh(
+      const std::string xda_file_name,
+      XdaTetTFMesh*& xda_tet_mesh_pt,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : BrickFromTetTFMesh(make_element_factory_pt<ELEMENT>(),
+                           xda_file_name, xda_tet_mesh_pt, time_stepper_pt)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class SolidBrickFromTetMesh : public SolidBrickFromTetTFMesh
+  {
+  public:
+    SolidBrickFromTetMesh(
+      const std::string xda_file_name,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : BrickFromTetTFMesh(make_element_factory_pt<ELEMENT>(),
+                           xda_file_name, time_stepper_pt),
+        SolidBrickFromTetTFMesh(make_element_factory_pt<ELEMENT>(),
+                                xda_file_name, time_stepper_pt)
+    {
+    }
+
+    SolidBrickFromTetMesh(
+      const std::string xda_file_name,
+      XdaTetTFMesh*& xda_tet_mesh_pt,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : BrickFromTetTFMesh(make_element_factory_pt<ELEMENT>(),
+                           xda_file_name, xda_tet_mesh_pt, time_stepper_pt),
+        SolidBrickFromTetTFMesh(make_element_factory_pt<ELEMENT>(),
+                                xda_file_name, xda_tet_mesh_pt,
+                                time_stepper_pt)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class RefineableBrickFromTetMesh : public RefineableBrickFromTetTFMesh
+  {
+  public:
+    RefineableBrickFromTetMesh(
+      const std::string xda_file_name,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : BrickFromTetTFMesh(make_element_factory_pt<ELEMENT>(),
+                           xda_file_name, time_stepper_pt),
+        RefineableBrickFromTetTFMesh(make_element_factory_pt<ELEMENT>(),
+                                     xda_file_name, time_stepper_pt)
+    {
+    }
+
+    RefineableBrickFromTetMesh(
+      const std::string xda_file_name,
+      XdaTetTFMesh*& xda_tet_mesh_pt,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : BrickFromTetTFMesh(make_element_factory_pt<ELEMENT>(),
+                           xda_file_name, xda_tet_mesh_pt, time_stepper_pt),
+        RefineableBrickFromTetTFMesh(make_element_factory_pt<ELEMENT>(),
+                                     xda_file_name, xda_tet_mesh_pt,
+                                     time_stepper_pt)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class RefineableSolidBrickFromTetMesh : public RefineableSolidBrickFromTetTFMesh
+  {
+  public:
+    RefineableSolidBrickFromTetMesh(
+      const std::string xda_file_name,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : BrickFromTetTFMesh(make_element_factory_pt<ELEMENT>(),
+                           xda_file_name, time_stepper_pt),
+        RefineableSolidBrickFromTetTFMesh(make_element_factory_pt<ELEMENT>(),
+                                          xda_file_name, time_stepper_pt)
+    {
+    }
+
+    RefineableSolidBrickFromTetMesh(
+      const std::string xda_file_name,
+      XdaTetTFMesh*& xda_tet_mesh_pt,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : BrickFromTetTFMesh(make_element_factory_pt<ELEMENT>(),
+                           xda_file_name, xda_tet_mesh_pt, time_stepper_pt),
+        RefineableSolidBrickFromTetTFMesh(make_element_factory_pt<ELEMENT>(),
+                                          xda_file_name, xda_tet_mesh_pt,
+                                          time_stepper_pt)
+    {
+    }
+  };
+
 } // namespace oomph
 
 #endif
