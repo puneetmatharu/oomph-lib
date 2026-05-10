@@ -688,6 +688,227 @@ namespace oomph
     void update_node_update(AlgebraicNode*& node_pt);
   };
 
+
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+
+  //=========================================================================
+  /// Backwards-compatible templated CollapsibleChannelMesh wrappers.
+  //=========================================================================
+  template<class ELEMENT>
+  class CollapsibleChannelMesh : public CollapsibleChannelTFMesh
+  {
+  public:
+    CollapsibleChannelMesh(
+      const unsigned& nup,
+      const unsigned& ncollapsible,
+      const unsigned& ndown,
+      const unsigned& ny,
+      const double& lup,
+      const double& lcollapsible,
+      const double& ldown,
+      const double& ly,
+      GeomObject* wall_pt,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : CollapsibleChannelTFMesh(make_element_factory_pt<ELEMENT>(), nup,
+                                 ncollapsible, ndown, ny, lup, lcollapsible,
+                                 ldown, ly, wall_pt, time_stepper_pt)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class RefineableCollapsibleChannelMesh
+    : public RefineableCollapsibleChannelTFMesh
+  {
+  public:
+    RefineableCollapsibleChannelMesh(
+      const unsigned& nup,
+      const unsigned& ncollapsible,
+      const unsigned& ndown,
+      const unsigned& ny,
+      const double& lup,
+      const double& lcollapsible,
+      const double& ldown,
+      const double& ly,
+      GeomObject* wall_pt,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : CollapsibleChannelTFMesh(make_element_factory_pt<ELEMENT>(), nup,
+                                 ncollapsible, ndown, ny, lup, lcollapsible,
+                                 ldown, ly, wall_pt, time_stepper_pt),
+        RefineableCollapsibleChannelTFMesh(
+          make_element_factory_pt<ELEMENT>(), nup, ncollapsible, ndown, ny,
+          lup, lcollapsible, ldown, ly, wall_pt, time_stepper_pt)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class MacroElementNodeUpdateCollapsibleChannelMesh
+    : public MacroElementNodeUpdateCollapsibleChannelTFMesh
+  {
+  public:
+    MacroElementNodeUpdateCollapsibleChannelMesh(
+      const unsigned& nup,
+      const unsigned& ncollapsible,
+      const unsigned& ndown,
+      const unsigned& ny,
+      const double& lup,
+      const double& lcollapsible,
+      const double& ldown,
+      const double& ly,
+      GeomObject* wall_pt,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : CollapsibleChannelTFMesh(make_element_factory_pt<ELEMENT>(), nup,
+                                 ncollapsible, ndown, ny, lup, lcollapsible,
+                                 ldown, ly, wall_pt, time_stepper_pt),
+        MacroElementNodeUpdateCollapsibleChannelTFMesh(
+          make_element_factory_pt<ELEMENT>(), nup, ncollapsible, ndown, ny,
+          lup, lcollapsible, ldown, ly, wall_pt, time_stepper_pt)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class MacroElementNodeUpdateRefineableCollapsibleChannelMesh
+    : public MacroElementNodeUpdateRefineableCollapsibleChannelTFMesh
+  {
+  public:
+    MacroElementNodeUpdateRefineableCollapsibleChannelMesh(
+      const unsigned& nup,
+      const unsigned& ncollapsible,
+      const unsigned& ndown,
+      const unsigned& ny,
+      const double& lup,
+      const double& lcollapsible,
+      const double& ldown,
+      const double& ly,
+      GeomObject* wall_pt,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : CollapsibleChannelTFMesh(make_element_factory_pt<ELEMENT>(), nup,
+                                 ncollapsible, ndown, ny, lup, lcollapsible,
+                                 ldown, ly, wall_pt, time_stepper_pt),
+        RefineableCollapsibleChannelTFMesh(
+          make_element_factory_pt<ELEMENT>(), nup, ncollapsible, ndown, ny,
+          lup, lcollapsible, ldown, ly, wall_pt, time_stepper_pt),
+        MacroElementNodeUpdateCollapsibleChannelTFMesh(
+          make_element_factory_pt<ELEMENT>(), nup, ncollapsible, ndown, ny,
+          lup, lcollapsible, ldown, ly, wall_pt, time_stepper_pt),
+        MacroElementNodeUpdateRefineableCollapsibleChannelTFMesh(
+          make_element_factory_pt<ELEMENT>(), nup, ncollapsible, ndown, ny,
+          lup, lcollapsible, ldown, ly, wall_pt, time_stepper_pt)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class AlgebraicCollapsibleChannelMesh : public AlgebraicCollapsibleChannelTFMesh
+  {
+  public:
+    AlgebraicCollapsibleChannelMesh(
+      const unsigned& nup,
+      const unsigned& ncollapsible,
+      const unsigned& ndown,
+      const unsigned& ny,
+      const double& lup,
+      const double& lcollapsible,
+      const double& ldown,
+      const double& ly,
+      GeomObject* wall_pt,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : CollapsibleChannelTFMesh(make_element_factory_pt<ELEMENT>(), nup,
+                                 ncollapsible, ndown, ny, lup, lcollapsible,
+                                 ldown, ly, wall_pt, time_stepper_pt),
+        AlgebraicCollapsibleChannelTFMesh(
+          make_element_factory_pt<ELEMENT>(), nup, ncollapsible, ndown, ny,
+          lup, lcollapsible, ldown, ly, wall_pt, time_stepper_pt)
+    {
+    }
+
+    AlgebraicCollapsibleChannelMesh(
+      const unsigned& nup,
+      const unsigned& ncollapsible,
+      const unsigned& ndown,
+      const unsigned& ny,
+      const double& lup,
+      const double& lcollapsible,
+      const double& ldown,
+      const double& ly,
+      GeomObject* wall_pt,
+      CollapsibleChannelDomain::BLSquashFctPt bl_squash_function_pt,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : CollapsibleChannelTFMesh(make_element_factory_pt<ELEMENT>(), nup,
+                                 ncollapsible, ndown, ny, lup, lcollapsible,
+                                 ldown, ly, wall_pt, time_stepper_pt),
+        AlgebraicCollapsibleChannelTFMesh(
+          make_element_factory_pt<ELEMENT>(), nup, ncollapsible, ndown, ny,
+          lup, lcollapsible, ldown, ly, wall_pt, bl_squash_function_pt,
+          time_stepper_pt)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class RefineableAlgebraicCollapsibleChannelMesh
+    : public RefineableAlgebraicCollapsibleChannelTFMesh
+  {
+  public:
+    RefineableAlgebraicCollapsibleChannelMesh(
+      const unsigned& nup,
+      const unsigned& ncollapsible,
+      const unsigned& ndown,
+      const unsigned& ny,
+      const double& lup,
+      const double& lcollapsible,
+      const double& ldown,
+      const double& ly,
+      GeomObject* wall_pt,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : CollapsibleChannelTFMesh(make_element_factory_pt<ELEMENT>(), nup,
+                                 ncollapsible, ndown, ny, lup, lcollapsible,
+                                 ldown, ly, wall_pt, time_stepper_pt),
+        AlgebraicCollapsibleChannelTFMesh(
+          make_element_factory_pt<ELEMENT>(), nup, ncollapsible, ndown, ny,
+          lup, lcollapsible, ldown, ly, wall_pt, time_stepper_pt),
+        RefineableAlgebraicCollapsibleChannelTFMesh(
+          make_element_factory_pt<ELEMENT>(), nup, ncollapsible, ndown, ny,
+          lup, lcollapsible, ldown, ly, wall_pt, time_stepper_pt)
+    {
+    }
+
+    RefineableAlgebraicCollapsibleChannelMesh(
+      const unsigned& nup,
+      const unsigned& ncollapsible,
+      const unsigned& ndown,
+      const unsigned& ny,
+      const double& lup,
+      const double& lcollapsible,
+      const double& ldown,
+      const double& ly,
+      GeomObject* wall_pt,
+      CollapsibleChannelDomain::BLSquashFctPt bl_squash_function_pt,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : CollapsibleChannelTFMesh(make_element_factory_pt<ELEMENT>(), nup,
+                                 ncollapsible, ndown, ny, lup, lcollapsible,
+                                 ldown, ly, wall_pt, time_stepper_pt),
+        AlgebraicCollapsibleChannelTFMesh(
+          make_element_factory_pt<ELEMENT>(), nup, ncollapsible, ndown, ny,
+          lup, lcollapsible, ldown, ly, wall_pt, bl_squash_function_pt,
+          time_stepper_pt),
+        RefineableAlgebraicCollapsibleChannelTFMesh(
+          make_element_factory_pt<ELEMENT>(), nup, ncollapsible, ndown, ny,
+          lup, lcollapsible, ldown, ly, wall_pt, bl_squash_function_pt,
+          time_stepper_pt)
+    {
+    }
+  };
+
 } // namespace oomph
 
 #endif
