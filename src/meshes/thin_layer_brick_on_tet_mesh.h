@@ -278,6 +278,79 @@ namespace oomph
     }
   };
 
+
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+
+  //=========================================================================
+  /// Backwards-compatible templated ThinLayerBrickOnTetMesh wrappers.
+  //=========================================================================
+
+#define _TLBT_ARGS                                                       \
+  Mesh* tet_mesh_pt, const Vector<unsigned>& boundary_ids,               \
+  ThicknessFctPt thickness_fct_pt, const unsigned& nlayer,               \
+  const Vector<Vector<unsigned>>& in_out_boundary_id,                    \
+  TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper
+
+#define _TLBT_FWD                                                        \
+  tet_mesh_pt, boundary_ids, thickness_fct_pt, nlayer,                   \
+  in_out_boundary_id, time_stepper_pt
+
+  template<class ELEMENT>
+  class ThinLayerBrickOnTetMesh : public ThinLayerBrickOnTetTFMesh
+  {
+  public:
+    ThinLayerBrickOnTetMesh(_TLBT_ARGS)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        ThinLayerBrickOnTetTFMesh(_TLBT_FWD)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class RefineableThinLayerBrickOnTetMesh : public RefineableThinLayerBrickOnTetTFMesh
+  {
+  public:
+    RefineableThinLayerBrickOnTetMesh(_TLBT_ARGS)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        ThinLayerBrickOnTetTFMesh(_TLBT_FWD),
+        RefineableThinLayerBrickOnTetTFMesh(_TLBT_FWD)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class SolidThinLayerBrickOnTetMesh : public SolidThinLayerBrickOnTetTFMesh
+  {
+  public:
+    SolidThinLayerBrickOnTetMesh(_TLBT_ARGS)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        ThinLayerBrickOnTetTFMesh(_TLBT_FWD),
+        SolidThinLayerBrickOnTetTFMesh(_TLBT_FWD)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class RefineableSolidThinLayerBrickOnTetMesh
+    : public RefineableSolidThinLayerBrickOnTetTFMesh
+  {
+  public:
+    RefineableSolidThinLayerBrickOnTetMesh(_TLBT_ARGS)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        ThinLayerBrickOnTetTFMesh(_TLBT_FWD),
+        RefineableSolidThinLayerBrickOnTetTFMesh(_TLBT_FWD)
+    {
+    }
+  };
+
+#undef _TLBT_ARGS
+#undef _TLBT_FWD
+
 } // namespace oomph
 
 #endif
