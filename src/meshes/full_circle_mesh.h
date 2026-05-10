@@ -168,5 +168,46 @@ namespace oomph
     virtual ~RefineableFullCircleTFMesh() {}
   };
 
+
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+
+  //=========================================================================
+  /// Backwards-compatible templated FullCircleMesh wrappers.
+  //=========================================================================
+  template<class ELEMENT>
+  class FullCircleMesh : public FullCircleTFMesh
+  {
+  public:
+    FullCircleMesh(
+      GeomObject* wall_pt,
+      const Vector<double>& theta_positions,
+      const Vector<double>& radius_box,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        FullCircleTFMesh(wall_pt, theta_positions, radius_box,
+                         time_stepper_pt)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class RefineableFullCircleMesh : public RefineableFullCircleTFMesh
+  {
+  public:
+    RefineableFullCircleMesh(
+      GeomObject* wall_pt,
+      const Vector<double>& theta_positions,
+      const Vector<double>& radius_box,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        RefineableFullCircleTFMesh(wall_pt, theta_positions, radius_box,
+                                   time_stepper_pt)
+    {
+    }
+  };
+
 } // namespace oomph
 #endif

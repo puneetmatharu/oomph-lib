@@ -89,6 +89,32 @@ namespace oomph
     Mesh* Tmp_mesh_pt;
   };
 
+
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+
+  //=========================================================================
+  /// Backwards-compatible templated SimpleCubicTetMesh wrapper.
+  //=========================================================================
+  template<class ELEMENT>
+  class SimpleCubicTetMesh : public SimpleCubicTetTFMesh
+  {
+  public:
+    SimpleCubicTetMesh(
+      const unsigned& n_x,
+      const unsigned& n_y,
+      const unsigned& n_z,
+      const double& l_x,
+      const double& l_y,
+      const double& l_z,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        SimpleCubicTetTFMesh(n_x, n_y, n_z, l_x, l_y, l_z, time_stepper_pt)
+    {
+    }
+  };
+
 } // namespace oomph
 
 #endif
