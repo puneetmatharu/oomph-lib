@@ -585,6 +585,136 @@ namespace oomph
     virtual ~PseudoElasticChannelWithLeafletTFMesh() {}
   };
 
+
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+
+  //=========================================================================
+  /// Backwards-compatible templated ChannelWithLeafletMesh wrappers.
+  //=========================================================================
+
+#define _CWL_ARGS                                            \
+  GeomObject* leaflet_pt, const double& lleft,               \
+  const double& lright, const double& hleaflet,              \
+  const double& htot, const unsigned& nleft,                 \
+  const unsigned& nright, const unsigned& ny1,               \
+  const unsigned& ny2,                                       \
+  TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper
+
+#define _CWL_FWD                                             \
+  leaflet_pt, lleft, lright, hleaflet, htot, nleft, nright,  \
+  ny1, ny2, time_stepper_pt
+
+  template<class ELEMENT>
+  class ChannelWithLeafletMesh : public ChannelWithLeafletTFMesh
+  {
+  public:
+    ChannelWithLeafletMesh(_CWL_ARGS)
+      : ChannelWithLeafletTFMesh(make_element_factory_pt<ELEMENT>(), _CWL_FWD)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class RefineableChannelWithLeafletMesh : public RefineableChannelWithLeafletTFMesh
+  {
+  public:
+    RefineableChannelWithLeafletMesh(_CWL_ARGS)
+      : ChannelWithLeafletTFMesh(make_element_factory_pt<ELEMENT>(),
+                                 _CWL_FWD),
+        RefineableChannelWithLeafletTFMesh(make_element_factory_pt<ELEMENT>(),
+                                           _CWL_FWD)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class MacroElementNodeUpdateChannelWithLeafletMesh
+    : public MacroElementNodeUpdateChannelWithLeafletTFMesh
+  {
+  public:
+    MacroElementNodeUpdateChannelWithLeafletMesh(_CWL_ARGS)
+      : ChannelWithLeafletTFMesh(make_element_factory_pt<ELEMENT>(),
+                                 _CWL_FWD),
+        MacroElementNodeUpdateChannelWithLeafletTFMesh(
+          make_element_factory_pt<ELEMENT>(), _CWL_FWD)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class MacroElementNodeUpdateRefineableChannelWithLeafletMesh
+    : public MacroElementNodeUpdateRefineableChannelWithLeafletTFMesh
+  {
+  public:
+    MacroElementNodeUpdateRefineableChannelWithLeafletMesh(_CWL_ARGS)
+      : ChannelWithLeafletTFMesh(make_element_factory_pt<ELEMENT>(),
+                                 _CWL_FWD),
+        RefineableChannelWithLeafletTFMesh(make_element_factory_pt<ELEMENT>(),
+                                           _CWL_FWD),
+        MacroElementNodeUpdateChannelWithLeafletTFMesh(
+          make_element_factory_pt<ELEMENT>(), _CWL_FWD),
+        MacroElementNodeUpdateRefineableChannelWithLeafletTFMesh(
+          make_element_factory_pt<ELEMENT>(), _CWL_FWD)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class AlgebraicChannelWithLeafletMesh : public AlgebraicChannelWithLeafletTFMesh
+  {
+  public:
+    AlgebraicChannelWithLeafletMesh(_CWL_ARGS)
+      : ChannelWithLeafletTFMesh(make_element_factory_pt<ELEMENT>(),
+                                 _CWL_FWD),
+        AlgebraicChannelWithLeafletTFMesh(make_element_factory_pt<ELEMENT>(),
+                                          _CWL_FWD)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class RefineableAlgebraicChannelWithLeafletMesh
+    : public RefineableAlgebraicChannelWithLeafletTFMesh
+  {
+  public:
+    RefineableAlgebraicChannelWithLeafletMesh(_CWL_ARGS)
+      : ChannelWithLeafletTFMesh(make_element_factory_pt<ELEMENT>(),
+                                 _CWL_FWD),
+        AlgebraicChannelWithLeafletTFMesh(make_element_factory_pt<ELEMENT>(),
+                                          _CWL_FWD),
+        RefineableAlgebraicChannelWithLeafletTFMesh(
+          make_element_factory_pt<ELEMENT>(), _CWL_FWD)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class PseudoElasticChannelWithLeafletMesh
+    : public PseudoElasticChannelWithLeafletTFMesh
+  {
+  public:
+    PseudoElasticChannelWithLeafletMesh(_CWL_ARGS)
+      : ChannelWithLeafletTFMesh(make_element_factory_pt<ELEMENT>(),
+                                 _CWL_FWD),
+        AlgebraicChannelWithLeafletTFMesh(make_element_factory_pt<ELEMENT>(),
+                                          _CWL_FWD),
+        PseudoElasticChannelWithLeafletTFMesh(
+          make_element_factory_pt<ELEMENT>(), _CWL_FWD)
+    {
+    }
+  };
+
+#undef _CWL_ARGS
+#undef _CWL_FWD
+
 } // namespace oomph
 
 #endif
