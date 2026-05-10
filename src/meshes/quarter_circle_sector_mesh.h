@@ -659,6 +659,88 @@ namespace oomph
     void update_node_update_in_upper_left_box(AlgebraicNode*& node_pt);
   };
 
+
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+
+  //=========================================================================
+  /// Backwards-compatible templated QuarterCircleSectorMesh wrappers.
+  //=========================================================================
+  template<class ELEMENT>
+  class QuarterCircleSectorMesh : public QuarterCircleSectorTFMesh
+  {
+  public:
+    QuarterCircleSectorMesh(
+      GeomObject* wall_pt,
+      const double& xi_lo,
+      const double& fract_mid,
+      const double& xi_hi,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : QuarterCircleSectorTFMesh(make_element_factory_pt<ELEMENT>(),
+                                  wall_pt, xi_lo, fract_mid, xi_hi,
+                                  time_stepper_pt)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class RefineableQuarterCircleSectorMesh
+    : public RefineableQuarterCircleSectorTFMesh
+  {
+  public:
+    RefineableQuarterCircleSectorMesh(
+      GeomObject* wall_pt,
+      const double& xi_lo,
+      const double& fract_mid,
+      const double& xi_hi,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : RefineableQuarterCircleSectorTFMesh(make_element_factory_pt<ELEMENT>(),
+                                            wall_pt, xi_lo, fract_mid, xi_hi,
+                                            time_stepper_pt)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class MacroElementNodeUpdateRefineableQuarterCircleSectorMesh
+    : public MacroElementNodeUpdateRefineableQuarterCircleSectorTFMesh
+  {
+  public:
+    MacroElementNodeUpdateRefineableQuarterCircleSectorMesh(
+      GeomObject* wall_pt,
+      const double& xi_lo,
+      const double& fract_mid,
+      const double& xi_hi,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : MacroElementNodeUpdateRefineableQuarterCircleSectorTFMesh(
+          make_element_factory_pt<ELEMENT>(),
+          wall_pt, xi_lo, fract_mid, xi_hi, time_stepper_pt)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class AlgebraicRefineableQuarterCircleSectorMesh
+    : public AlgebraicRefineableQuarterCircleSectorTFMesh
+  {
+  public:
+    AlgebraicRefineableQuarterCircleSectorMesh(
+      GeomObject* wall_pt,
+      const double& xi_lo,
+      const double& fract_mid,
+      const double& xi_hi,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : AlgebraicRefineableQuarterCircleSectorTFMesh(
+          make_element_factory_pt<ELEMENT>(),
+          wall_pt, xi_lo, fract_mid, xi_hi, time_stepper_pt)
+    {
+    }
+  };
+
 } // namespace oomph
 
 #endif
