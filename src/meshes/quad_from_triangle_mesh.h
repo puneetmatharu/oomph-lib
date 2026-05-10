@@ -747,6 +747,131 @@ namespace oomph
   };
 
 
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+
+  //=========================================================================
+  /// Backwards-compatible templated QuadFromTriangleMesh wrappers.
+  //=========================================================================
+  template<class ELEMENT>
+  class QuadFromTriangleMesh : public QuadFromTriangleTFMesh
+  {
+  public:
+    QuadFromTriangleMesh(
+      const std::string& node_file_name,
+      const std::string& element_file_name,
+      const std::string& poly_file_name,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
+      const bool& use_attributes = false,
+      const bool& allow_automatic_creation_of_vertices_on_boundaries = true)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        UnstructuredTwoDMeshGeometryBase(
+          make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
+        QuadFromTriangleTFMesh(node_file_name, element_file_name,
+                               poly_file_name, time_stepper_pt,
+                               use_attributes,
+                               allow_automatic_creation_of_vertices_on_boundaries)
+    {
+    }
+
+#ifdef OOMPH_HAS_TRIANGLE_LIB
+    QuadFromTriangleMesh(
+      TriangleMeshParameters& triangle_mesh_parameters,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        UnstructuredTwoDMeshGeometryBase(
+          make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
+        QuadFromTriangleTFMesh(triangle_mesh_parameters, time_stepper_pt)
+    {
+    }
+#endif
+  };
+
+
+  template<class ELEMENT>
+  class RefineableQuadFromTriangleMesh : public RefineableQuadFromTriangleTFMesh
+  {
+  public:
+    RefineableQuadFromTriangleMesh(
+      const std::string& node_file_name,
+      const std::string& element_file_name,
+      const std::string& poly_file_name,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
+      const bool& use_attributes = false)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        UnstructuredTwoDMeshGeometryBase(
+          make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
+        QuadFromTriangleTFMesh(node_file_name, element_file_name,
+                               poly_file_name, time_stepper_pt,
+                               use_attributes),
+        RefineableQuadFromTriangleTFMesh(node_file_name, element_file_name,
+                                         poly_file_name, time_stepper_pt,
+                                         use_attributes)
+    {
+    }
+
+#ifdef OOMPH_HAS_TRIANGLE_LIB
+    RefineableQuadFromTriangleMesh(
+      TriangleMeshParameters& triangle_mesh_parameters,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        UnstructuredTwoDMeshGeometryBase(
+          make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
+        QuadFromTriangleTFMesh(triangle_mesh_parameters, time_stepper_pt),
+        RefineableQuadFromTriangleTFMesh(triangle_mesh_parameters,
+                                         time_stepper_pt)
+    {
+    }
+#endif
+  };
+
+
+  template<class ELEMENT>
+  class SolidQuadFromTriangleMesh : public SolidQuadFromTriangleTFMesh
+  {
+  public:
+    SolidQuadFromTriangleMesh(
+      const std::string& node_file_name,
+      const std::string& element_file_name,
+      const std::string& poly_file_name,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
+      const bool& use_attributes = false)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        UnstructuredTwoDMeshGeometryBase(
+          make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
+        QuadFromTriangleTFMesh(node_file_name, element_file_name,
+                               poly_file_name, time_stepper_pt,
+                               use_attributes),
+        SolidQuadFromTriangleTFMesh(node_file_name, element_file_name,
+                                    poly_file_name, time_stepper_pt,
+                                    use_attributes)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class RefineableSolidQuadFromTriangleMesh
+    : public RefineableSolidQuadFromTriangleTFMesh
+  {
+  public:
+#ifdef OOMPH_HAS_TRIANGLE_LIB
+    RefineableSolidQuadFromTriangleMesh(
+      TriangleMeshParameters& triangle_mesh_parameters,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        UnstructuredTwoDMeshGeometryBase(
+          make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
+        QuadFromTriangleTFMesh(triangle_mesh_parameters, time_stepper_pt),
+        RefineableSolidQuadFromTriangleTFMesh(triangle_mesh_parameters,
+                                              time_stepper_pt)
+    {
+    }
+#endif
+  };
+
+
 } // namespace oomph
 
 #endif // OOMPH_QUAD_FROM_TRIANGLE_MESH_HEADER
