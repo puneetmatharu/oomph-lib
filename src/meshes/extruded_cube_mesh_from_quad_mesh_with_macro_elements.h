@@ -256,6 +256,76 @@ namespace oomph
     }
   };
 
+
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+
+  //=========================================================================
+  /// Backwards-compatible templated extruded-cube wrappers. The element
+  /// factory is set on the inherited Mesh virtual base before the underlying
+  /// build_mesh runs.
+  //=========================================================================
+  template<class ELEMENT>
+  class ExtrudedCubeMeshFromQuadMesh : public ExtrudedCubeMeshFromQuadTFMesh
+  {
+  public:
+    ExtrudedCubeMeshFromQuadMesh(
+      QuadMeshBase* quad_mesh_pt,
+      const unsigned& nz,
+      const double& lz,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        ExtrudedCubeMeshFromQuadTFMesh(quad_mesh_pt, nz, lz, time_stepper_pt)
+    {
+    }
+
+    ExtrudedCubeMeshFromQuadMesh(
+      QuadMeshBase* quad_mesh_pt,
+      const unsigned& nz,
+      const double& zmin,
+      const double& zmax,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        ExtrudedCubeMeshFromQuadTFMesh(quad_mesh_pt, nz, zmin, zmax,
+                                       time_stepper_pt)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class RefineableExtrudedCubeMeshFromQuadMesh
+    : public RefineableExtrudedCubeMeshFromQuadTFMesh
+  {
+  public:
+    RefineableExtrudedCubeMeshFromQuadMesh(
+      QuadMeshBase* quad_mesh_pt,
+      const unsigned& nz,
+      const double& lz,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        ExtrudedCubeMeshFromQuadTFMesh(quad_mesh_pt, nz, lz, time_stepper_pt),
+        RefineableExtrudedCubeMeshFromQuadTFMesh(quad_mesh_pt, nz, lz,
+                                                 time_stepper_pt)
+    {
+    }
+
+    RefineableExtrudedCubeMeshFromQuadMesh(
+      QuadMeshBase* quad_mesh_pt,
+      const unsigned& nz,
+      const double& zmin,
+      const double& zmax,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        ExtrudedCubeMeshFromQuadTFMesh(quad_mesh_pt, nz, zmin, zmax,
+                                       time_stepper_pt),
+        RefineableExtrudedCubeMeshFromQuadTFMesh(quad_mesh_pt, nz, zmin, zmax,
+                                                 time_stepper_pt)
+    {
+    }
+  };
+
 } // End of namespace oomph
 
 #endif
