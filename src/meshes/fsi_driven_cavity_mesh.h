@@ -77,7 +77,25 @@ namespace oomph
       GeomObject* wall_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
 
+    /// Constructor with runtime element factory.
+    FSIDrivenCavityTFMesh(
+      const ElementFactoryPt& element_factory_pt,
+      const unsigned& nx,
+      const unsigned& ny,
+      const double& lx,
+      const double& ly,
+      const double& gap_fraction,
+      GeomObject* wall_pt,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper);
+
   protected:
+    /// Set up boundaries 0..5 and the boundary coordinate on the
+    /// "collapsible" segment. Called by both ctors.
+    void setup_boundaries_helper(const unsigned& nx,
+                                 const unsigned& ny,
+                                 const double& lx,
+                                 const double& ly);
+
     /// Number of elements in x direction
     unsigned Nx;
 
@@ -234,6 +252,73 @@ namespace oomph
     /// any mesh adapation
     void update_node_update(AlgebraicNode*& node_pt);
   };
+
+
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+
+  //=========================================================================
+  /// Backwards-compatible templated FSIDrivenCavityMesh wrappers.
+  //=========================================================================
+
+#define _FSIDC_ARGS                                                  \
+  const unsigned& nx, const unsigned& ny, const double& lx,          \
+  const double& ly, const double& gap_fraction, GeomObject* wall_pt, \
+  TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper
+
+#define _FSIDC_FWD nx, ny, lx, ly, gap_fraction, wall_pt, time_stepper_pt
+
+  template<class ELEMENT>
+  class FSIDrivenCavityMesh : public FSIDrivenCavityTFMesh
+  {
+  public:
+    FSIDrivenCavityMesh(_FSIDC_ARGS)
+      : FSIDrivenCavityTFMesh(make_element_factory_pt<ELEMENT>(), _FSIDC_FWD)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class RefineableFSIDrivenCavityMesh : public RefineableFSIDrivenCavityTFMesh
+  {
+  public:
+    RefineableFSIDrivenCavityMesh(_FSIDC_ARGS)
+      : FSIDrivenCavityTFMesh(make_element_factory_pt<ELEMENT>(), _FSIDC_FWD),
+        RefineableFSIDrivenCavityTFMesh(_FSIDC_FWD)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class AlgebraicFSIDrivenCavityMesh : public AlgebraicFSIDrivenCavityTFMesh
+  {
+  public:
+    AlgebraicFSIDrivenCavityMesh(_FSIDC_ARGS)
+      : FSIDrivenCavityTFMesh(make_element_factory_pt<ELEMENT>(), _FSIDC_FWD),
+        AlgebraicFSIDrivenCavityTFMesh(_FSIDC_FWD)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class RefineableAlgebraicFSIDrivenCavityMesh
+    : public RefineableAlgebraicFSIDrivenCavityTFMesh
+  {
+  public:
+    RefineableAlgebraicFSIDrivenCavityMesh(_FSIDC_ARGS)
+      : FSIDrivenCavityTFMesh(make_element_factory_pt<ELEMENT>(), _FSIDC_FWD),
+        AlgebraicFSIDrivenCavityTFMesh(_FSIDC_FWD),
+        RefineableAlgebraicFSIDrivenCavityTFMesh(_FSIDC_FWD)
+    {
+    }
+  };
+
+#undef _FSIDC_ARGS
+#undef _FSIDC_FWD
 
 } // namespace oomph
 

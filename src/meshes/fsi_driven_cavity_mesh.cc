@@ -33,6 +33,25 @@ namespace oomph
   /// that defines the collapsible segment and pointer to TimeStepper
   /// (defaults to the default timestepper, Steady).
   //========================================================================
+  FSIDrivenCavityTFMesh::FSIDrivenCavityTFMesh(
+    const ElementFactoryPt& element_factory_pt,
+    const unsigned& nx,
+    const unsigned& ny,
+    const double& lx,
+    const double& ly,
+    const double& gap_fraction,
+    GeomObject* wall_pt,
+    TimeStepper* time_stepper_pt)
+    : SimpleRectangularQuadTFMesh(element_factory_pt, nx, ny, lx, ly,
+                                  time_stepper_pt),
+      Nx(nx),
+      Ny(ny),
+      Gap_fraction(gap_fraction),
+      Wall_pt(wall_pt)
+  {
+    setup_boundaries_helper(nx, ny, lx, ly);
+  }
+
   FSIDrivenCavityTFMesh::FSIDrivenCavityTFMesh(const unsigned& nx,
                                                const unsigned& ny,
                                                const double& lx,
@@ -45,6 +64,14 @@ namespace oomph
       Ny(ny),
       Gap_fraction(gap_fraction),
       Wall_pt(wall_pt)
+  {
+    setup_boundaries_helper(nx, ny, lx, ly);
+  }
+
+  void FSIDrivenCavityTFMesh::setup_boundaries_helper(const unsigned& nx,
+                                                      const unsigned& ny,
+                                                      const double& lx,
+                                                      const double& ly)
   {
     // Mesh can only be built with 2D Qelements.
     MeshChecker::assert_geometric_element<QElementGeometricBase>(

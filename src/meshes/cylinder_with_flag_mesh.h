@@ -407,6 +407,81 @@ namespace oomph
     void update_node_update(AlgebraicNode*& node_pt);
   };
 
+
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+
+  //=========================================================================
+  /// Backwards-compatible templated CylinderWithFlagMesh wrappers.
+  //=========================================================================
+
+#define _CWF_ARGS                                                  \
+  Circle* cylinder_pt, GeomObject* top_flag_pt,                    \
+  GeomObject* bottom_flag_pt, GeomObject* tip_flag_pt,             \
+  const double& length, const double& height,                      \
+  const double& flag_length, const double& flag_height,            \
+  const double& centre_x, const double& centre_y, const double& a, \
+  TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper
+
+#define _CWF_FWD                                                   \
+  cylinder_pt, top_flag_pt, bottom_flag_pt, tip_flag_pt,           \
+  length, height, flag_length, flag_height, centre_x, centre_y,    \
+  a, time_stepper_pt
+
+  template<class ELEMENT>
+  class CylinderWithFlagMesh : public CylinderWithFlagTFMesh
+  {
+  public:
+    CylinderWithFlagMesh(_CWF_ARGS)
+      : CylinderWithFlagTFMesh(make_element_factory_pt<ELEMENT>(), _CWF_FWD)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class RefineableCylinderWithFlagMesh : public RefineableCylinderWithFlagTFMesh
+  {
+  public:
+    RefineableCylinderWithFlagMesh(_CWF_ARGS)
+      : RefineableCylinderWithFlagTFMesh(make_element_factory_pt<ELEMENT>(),
+                                         _CWF_FWD)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class AlgebraicCylinderWithFlagMesh : public AlgebraicCylinderWithFlagTFMesh
+  {
+  public:
+    AlgebraicCylinderWithFlagMesh(_CWF_ARGS)
+      : AlgebraicCylinderWithFlagTFMesh(make_element_factory_pt<ELEMENT>(),
+                                        _CWF_FWD)
+    {
+    }
+  };
+
+
+  template<class ELEMENT>
+  class RefineableAlgebraicCylinderWithFlagMesh
+    : public RefineableAlgebraicCylinderWithFlagTFMesh
+  {
+  public:
+    RefineableAlgebraicCylinderWithFlagMesh(_CWF_ARGS)
+      : CylinderWithFlagTFMesh(make_element_factory_pt<ELEMENT>(), _CWF_FWD),
+        AlgebraicCylinderWithFlagTFMesh(make_element_factory_pt<ELEMENT>(),
+                                        _CWF_FWD),
+        RefineableAlgebraicCylinderWithFlagTFMesh(
+          make_element_factory_pt<ELEMENT>(), _CWF_FWD)
+    {
+    }
+  };
+
+#undef _CWF_ARGS
+#undef _CWF_FWD
+
 } // namespace oomph
 
 #endif
