@@ -859,6 +859,167 @@ namespace oomph
     virtual ~SolidTetgenTFMesh() {}
   };
 
+
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+
+  //=========================================================================
+  /// Backwards-compatible templated TetgenMesh wrapper.
+  //=========================================================================
+  template<class ELEMENT>
+  class TetgenMesh : public virtual TetgenTFMesh
+  {
+  public:
+    TetgenMesh(const std::string& node_file_name,
+               const std::string& element_file_name,
+               const std::string& face_file_name,
+               TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
+               const bool& use_attributes = false)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        TetMeshBase(make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
+        TetgenTFMesh(node_file_name,
+                     element_file_name,
+                     face_file_name,
+                     time_stepper_pt,
+                     use_attributes)
+    {
+    }
+
+    TetgenMesh(const std::string& node_file_name,
+               const std::string& element_file_name,
+               const std::string& face_file_name,
+               const bool& split_corner_elements,
+               TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
+               const bool& use_attributes = false)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        TetMeshBase(make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
+        TetgenTFMesh(node_file_name,
+                     element_file_name,
+                     face_file_name,
+                     split_corner_elements,
+                     time_stepper_pt,
+                     use_attributes)
+    {
+    }
+
+    TetgenMesh(tetgenio& tetgen_data,
+               TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
+               const bool& use_attributes = false)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        TetMeshBase(make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
+        TetgenTFMesh(tetgen_data, time_stepper_pt, use_attributes)
+    {
+    }
+
+    TetgenMesh(tetgenio& tetgen_data,
+               const bool& split_corner_elements,
+               TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
+               const bool& use_attributes = false)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        TetMeshBase(make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
+        TetgenTFMesh(tetgen_data,
+                     split_corner_elements,
+                     time_stepper_pt,
+                     use_attributes)
+    {
+    }
+
+    TetgenMesh(
+      TetMeshFacetedClosedSurface* const& outer_boundary_pt,
+      Vector<TetMeshFacetedSurface*>& internal_surface_pt,
+      const double& element_volume,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
+      const bool& use_attributes = false,
+      const bool& split_corner_elements = false,
+      Vector<double>* const& target_element_volume_in_region_pt = nullptr)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        TetMeshBase(make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
+        TetgenTFMesh(outer_boundary_pt,
+                     internal_surface_pt,
+                     element_volume,
+                     time_stepper_pt,
+                     use_attributes,
+                     split_corner_elements,
+                     target_element_volume_in_region_pt)
+    {
+    }
+
+    virtual ~TetgenMesh() {}
+  };
+
+
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+
+  //=========================================================================
+  /// Backwards-compatible templated SolidTetgenMesh wrapper.
+  //=========================================================================
+  template<class ELEMENT>
+  class SolidTetgenMesh : public virtual TetgenMesh<ELEMENT>,
+                          public virtual SolidTFMesh
+  {
+  public:
+    SolidTetgenMesh(const std::string& node_file_name,
+                    const std::string& element_file_name,
+                    const std::string& face_file_name,
+                    const bool& split_corner_elements,
+                    TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
+                    const bool& use_attributes = false)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        TetMeshBase(make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
+        TetgenTFMesh(node_file_name,
+                     element_file_name,
+                     face_file_name,
+                     split_corner_elements,
+                     time_stepper_pt,
+                     use_attributes),
+        TetgenMesh<ELEMENT>(node_file_name,
+                            element_file_name,
+                            face_file_name,
+                            split_corner_elements,
+                            time_stepper_pt,
+                            use_attributes)
+    {
+      this->set_lagrangian_nodal_coordinates();
+    }
+
+    SolidTetgenMesh(const std::string& node_file_name,
+                    const std::string& element_file_name,
+                    const std::string& face_file_name,
+                    const bool& split_corner_elements,
+                    const bool& switch_normal,
+                    TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
+                    const bool& use_attributes = false)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        TetMeshBase(make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
+        TetgenTFMesh(node_file_name,
+                     element_file_name,
+                     face_file_name,
+                     split_corner_elements,
+                     time_stepper_pt,
+                     use_attributes),
+        TetgenMesh<ELEMENT>(node_file_name,
+                            element_file_name,
+                            face_file_name,
+                            split_corner_elements,
+                            time_stepper_pt,
+                            use_attributes)
+    {
+      this->set_lagrangian_nodal_coordinates();
+
+      // Re-setup boundary coordinates with chosen normal orientation
+      unsigned nb = this->nboundary();
+      for (unsigned b = 0; b < nb; b++)
+      {
+        this->setup_boundary_coordinates(b, switch_normal);
+      }
+    }
+
+    virtual ~SolidTetgenMesh() {}
+  };
+
 } // namespace oomph
 
 #endif

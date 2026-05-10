@@ -849,6 +849,13 @@ namespace oomph
     /// Constructor
     TetMeshBase() : Outer_boundary_pt(0) {}
 
+    /// Constructor with runtime dummy face-element factory.
+    TetMeshBase(const FaceElementFactoryPt& dummy_face_element_factory_pt)
+      : Dummy_face_element_factory_pt(dummy_face_element_factory_pt),
+        Outer_boundary_pt(0)
+    {
+    }
+
     /// Broken copy constructor
     TetMeshBase(const TetMeshBase& node) = delete;
 

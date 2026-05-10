@@ -38,6 +38,7 @@
 #include "generic/tet_mesh.h"
 #include "generic/refineable_mesh.h"
 #include "generic/projection.h"
+#include "generic/face_element_as_geometric_object.h"
 #include "tetgen_mesh.h"
 
 namespace oomph
@@ -418,6 +419,124 @@ namespace oomph
 
     /// Empty Destructor
     virtual ~RefineableSolidTetgenTFMesh() {}
+  };
+
+
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+
+  //=========================================================================
+  /// Backwards-compatible templated RefineableTetgenMesh wrapper.
+  //=========================================================================
+  template<class ELEMENT>
+  class RefineableTetgenMesh : public virtual TetgenMesh<ELEMENT>,
+                               public virtual RefineableTetgenTFMesh
+  {
+  public:
+    RefineableTetgenMesh(
+      TetMeshFacetedClosedSurface* const& outer_boundary_pt,
+      Vector<TetMeshFacetedSurface*>& internal_closed_surface_pt,
+      const double& element_volume,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
+      const bool& use_attributes = false,
+      const bool& split_corner_elements = false,
+      Vector<double>* const& target_element_volume_in_region_pt = nullptr)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        TetMeshBase(make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
+        TetgenTFMesh(outer_boundary_pt,
+                     internal_closed_surface_pt,
+                     element_volume,
+                     time_stepper_pt,
+                     use_attributes,
+                     split_corner_elements,
+                     target_element_volume_in_region_pt),
+        TetgenMesh<ELEMENT>(outer_boundary_pt,
+                            internal_closed_surface_pt,
+                            element_volume,
+                            time_stepper_pt,
+                            use_attributes,
+                            split_corner_elements,
+                            target_element_volume_in_region_pt),
+        RefineableTetgenTFMesh(outer_boundary_pt,
+                               internal_closed_surface_pt,
+                               element_volume,
+                               time_stepper_pt,
+                               use_attributes,
+                               split_corner_elements,
+                               target_element_volume_in_region_pt)
+    {
+      this->set_face_element_as_geom_object_factory_pt(
+        make_face_element_factory_pt<FaceElementAsGeomObject<ELEMENT>>());
+      this->set_projection_problem_factory_pt(
+        make_projection_problem_factory_pt<ELEMENT>());
+    }
+
+    virtual ~RefineableTetgenMesh() {}
+  };
+
+
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+
+  //=========================================================================
+  /// Backwards-compatible templated RefineableSolidTetgenMesh wrapper.
+  //=========================================================================
+  template<class ELEMENT>
+  class RefineableSolidTetgenMesh
+    : public virtual RefineableTetgenMesh<ELEMENT>,
+      public virtual RefineableSolidTetgenTFMesh
+  {
+  public:
+    RefineableSolidTetgenMesh(
+      TetMeshFacetedClosedSurface* const& outer_boundary_pt,
+      Vector<TetMeshFacetedSurface*>& internal_closed_surface_pt,
+      const double& element_volume,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper,
+      const bool& use_attributes = false,
+      const bool& split_corner_elements = false)
+      : Mesh(make_element_factory_pt<ELEMENT>()),
+        TetMeshBase(make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
+        TetgenTFMesh(outer_boundary_pt,
+                     internal_closed_surface_pt,
+                     element_volume,
+                     time_stepper_pt,
+                     use_attributes,
+                     split_corner_elements),
+        TetgenMesh<ELEMENT>(outer_boundary_pt,
+                            internal_closed_surface_pt,
+                            element_volume,
+                            time_stepper_pt,
+                            use_attributes,
+                            split_corner_elements),
+        RefineableTetgenTFMesh(outer_boundary_pt,
+                               internal_closed_surface_pt,
+                               element_volume,
+                               time_stepper_pt,
+                               use_attributes,
+                               split_corner_elements),
+        RefineableTetgenMesh<ELEMENT>(outer_boundary_pt,
+                                      internal_closed_surface_pt,
+                                      element_volume,
+                                      time_stepper_pt,
+                                      use_attributes,
+                                      split_corner_elements),
+        RefineableSolidTetgenTFMesh(outer_boundary_pt,
+                                    internal_closed_surface_pt,
+                                    element_volume,
+                                    time_stepper_pt,
+                                    use_attributes,
+                                    split_corner_elements)
+    {
+      this->set_face_element_as_geom_object_factory_pt(
+        make_face_element_factory_pt<FaceElementAsGeomObject<ELEMENT>>());
+      this->set_projection_problem_factory_pt(
+        make_projection_problem_factory_pt<ELEMENT>());
+      this->set_lagrangian_nodal_coordinates();
+    }
+
+    virtual ~RefineableSolidTetgenMesh() {}
   };
 
 
