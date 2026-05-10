@@ -278,35 +278,54 @@ namespace oomph
   class TwoDAnnularMesh : public TwoDAnnularTFMesh
   {
   public:
-    TwoDAnnularMesh(
-      const bool& periodic,
-      const double& azimuthal_fraction,
-      const unsigned& ntheta,
-      const unsigned& nr,
-      const double& a,
-      const double& h,
-      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+    TwoDAnnularMesh(const bool& periodic,
+                    const double& azimuthal_fraction,
+                    const unsigned& ntheta,
+                    const unsigned& nr,
+                    const double& a,
+                    const double& h,
+                    TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : RectangularQuadTFMesh(make_element_factory_pt<ELEMENT>(),
-                              ntheta, nr, 1.0, 1.0, periodic, time_stepper_pt),
-        TwoDAnnularTFMesh(make_element_factory_pt<ELEMENT>(), periodic,
-                          azimuthal_fraction, ntheta, nr, a, h,
+                              ntheta,
+                              nr,
+                              1.0,
+                              1.0,
+                              periodic,
+                              time_stepper_pt),
+        TwoDAnnularTFMesh(make_element_factory_pt<ELEMENT>(),
+                          periodic,
+                          azimuthal_fraction,
+                          ntheta,
+                          nr,
+                          a,
+                          h,
                           time_stepper_pt)
     {
     }
 
-    TwoDAnnularMesh(
-      const bool& periodic,
-      const double& azimuthal_fraction,
-      const unsigned& ntheta,
-      const unsigned& nr,
-      const double& a,
-      const double& h,
-      const double& phi,
-      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+    TwoDAnnularMesh(const bool& periodic,
+                    const double& azimuthal_fraction,
+                    const unsigned& ntheta,
+                    const unsigned& nr,
+                    const double& a,
+                    const double& h,
+                    const double& phi,
+                    TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : RectangularQuadTFMesh(make_element_factory_pt<ELEMENT>(),
-                              ntheta, nr, 1.0, 1.0, periodic, time_stepper_pt),
-        TwoDAnnularTFMesh(make_element_factory_pt<ELEMENT>(), periodic,
-                          azimuthal_fraction, ntheta, nr, a, h, phi,
+                              ntheta,
+                              nr,
+                              1.0,
+                              1.0,
+                              periodic,
+                              time_stepper_pt),
+        TwoDAnnularTFMesh(make_element_factory_pt<ELEMENT>(),
+                          periodic,
+                          azimuthal_fraction,
+                          ntheta,
+                          nr,
+                          a,
+                          h,
+                          phi,
                           time_stepper_pt)
     {
     }
@@ -326,13 +345,28 @@ namespace oomph
       const double& h,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : RectangularQuadTFMesh(make_element_factory_pt<ELEMENT>(),
-                              ntheta, nr, 1.0, 1.0, periodic, time_stepper_pt),
-        TwoDAnnularTFMesh(make_element_factory_pt<ELEMENT>(), periodic,
-                          azimuthal_fraction, ntheta, nr, a, h,
+                              ntheta,
+                              nr,
+                              1.0,
+                              1.0,
+                              periodic,
+                              time_stepper_pt),
+        TwoDAnnularTFMesh(make_element_factory_pt<ELEMENT>(),
+                          periodic,
+                          azimuthal_fraction,
+                          ntheta,
+                          nr,
+                          a,
+                          h,
                           time_stepper_pt),
         RefineableTwoDAnnularTFMesh(make_element_factory_pt<ELEMENT>(),
-                                    periodic, azimuthal_fraction, ntheta,
-                                    nr, a, h, time_stepper_pt)
+                                    periodic,
+                                    azimuthal_fraction,
+                                    ntheta,
+                                    nr,
+                                    a,
+                                    h,
+                                    time_stepper_pt)
     {
     }
   };

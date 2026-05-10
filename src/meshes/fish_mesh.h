@@ -674,10 +674,10 @@ namespace oomph
     RefineableFishMesh(
       GeomObject* back_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : FishTFMesh(make_element_factory_pt<ELEMENT>(), back_pt,
-                   time_stepper_pt),
-        RefineableFishTFMesh(make_element_factory_pt<ELEMENT>(), back_pt,
-                             time_stepper_pt)
+      : FishTFMesh(
+          make_element_factory_pt<ELEMENT>(), back_pt, time_stepper_pt),
+        RefineableFishTFMesh(
+          make_element_factory_pt<ELEMENT>(), back_pt, time_stepper_pt)
     {
     }
   };
@@ -687,21 +687,18 @@ namespace oomph
   class AlgebraicFishMesh : public AlgebraicFishTFMesh
   {
   public:
-    AlgebraicFishMesh(
-      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+    AlgebraicFishMesh(TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : FishTFMesh(make_element_factory_pt<ELEMENT>(), time_stepper_pt),
-        AlgebraicFishTFMesh(make_element_factory_pt<ELEMENT>(),
-                            time_stepper_pt)
+        AlgebraicFishTFMesh(make_element_factory_pt<ELEMENT>(), time_stepper_pt)
     {
     }
 
-    AlgebraicFishMesh(
-      GeomObject* back_pt,
-      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : FishTFMesh(make_element_factory_pt<ELEMENT>(), back_pt,
-                   time_stepper_pt),
-        AlgebraicFishTFMesh(make_element_factory_pt<ELEMENT>(), back_pt,
-                            time_stepper_pt)
+    AlgebraicFishMesh(GeomObject* back_pt,
+                      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : FishTFMesh(
+          make_element_factory_pt<ELEMENT>(), back_pt, time_stepper_pt),
+        AlgebraicFishTFMesh(
+          make_element_factory_pt<ELEMENT>(), back_pt, time_stepper_pt)
     {
     }
   };
@@ -726,14 +723,14 @@ namespace oomph
     AlgebraicRefineableFishMesh(
       GeomObject* back_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : FishTFMesh(make_element_factory_pt<ELEMENT>(), back_pt,
-                   time_stepper_pt),
-        AlgebraicFishTFMesh(make_element_factory_pt<ELEMENT>(), back_pt,
-                            time_stepper_pt),
-        RefineableFishTFMesh(make_element_factory_pt<ELEMENT>(), back_pt,
-                             time_stepper_pt),
-        AlgebraicRefineableFishTFMesh(make_element_factory_pt<ELEMENT>(),
-                                      back_pt, time_stepper_pt)
+      : FishTFMesh(
+          make_element_factory_pt<ELEMENT>(), back_pt, time_stepper_pt),
+        AlgebraicFishTFMesh(
+          make_element_factory_pt<ELEMENT>(), back_pt, time_stepper_pt),
+        RefineableFishTFMesh(
+          make_element_factory_pt<ELEMENT>(), back_pt, time_stepper_pt),
+        AlgebraicRefineableFishTFMesh(
+          make_element_factory_pt<ELEMENT>(), back_pt, time_stepper_pt)
     {
     }
   };
@@ -747,8 +744,8 @@ namespace oomph
     MacroElementNodeUpdateRefineableFishMesh(
       GeomObject* back_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : FishTFMesh(make_element_factory_pt<ELEMENT>(), back_pt,
-                   time_stepper_pt),
+      : FishTFMesh(
+          make_element_factory_pt<ELEMENT>(), back_pt, time_stepper_pt),
         RefineableFishTFMesh(make_element_factory_pt<ELEMENT>(),
                              time_stepper_pt),
         MacroElementNodeUpdateRefineableFishTFMesh(

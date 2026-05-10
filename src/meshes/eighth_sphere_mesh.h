@@ -128,11 +128,10 @@ namespace oomph
   class EighthSphereMesh : public EighthSphereTFMesh
   {
   public:
-    EighthSphereMesh(
-      const double& radius,
-      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : EighthSphereTFMesh(make_element_factory_pt<ELEMENT>(), radius,
-                           time_stepper_pt)
+    EighthSphereMesh(const double& radius,
+                     TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : EighthSphereTFMesh(
+          make_element_factory_pt<ELEMENT>(), radius, time_stepper_pt)
     {
     }
   };
@@ -145,10 +144,10 @@ namespace oomph
     RefineableEighthSphereMesh(
       const double& radius,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : EighthSphereTFMesh(make_element_factory_pt<ELEMENT>(), radius,
-                           time_stepper_pt),
-        RefineableEighthSphereTFMesh(make_element_factory_pt<ELEMENT>(),
-                                     radius, time_stepper_pt)
+      : EighthSphereTFMesh(
+          make_element_factory_pt<ELEMENT>(), radius, time_stepper_pt),
+        RefineableEighthSphereTFMesh(
+          make_element_factory_pt<ELEMENT>(), radius, time_stepper_pt)
     {
     }
   };

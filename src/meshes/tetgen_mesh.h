@@ -918,10 +918,8 @@ namespace oomph
                const bool& use_attributes = false)
       : Mesh(make_element_factory_pt<ELEMENT>()),
         TetMeshBase(make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
-        TetgenTFMesh(tetgen_data,
-                     split_corner_elements,
-                     time_stepper_pt,
-                     use_attributes)
+        TetgenTFMesh(
+          tetgen_data, split_corner_elements, time_stepper_pt, use_attributes)
     {
     }
 

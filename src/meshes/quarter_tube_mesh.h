@@ -647,11 +647,10 @@ namespace oomph
   /// Backwards-compatible templated QuarterTubeMesh wrappers.
   //=========================================================================
 
-#define _QT_ARGS                                                          \
-  GeomObject* wall_pt, const Vector<double>& xi_lo,                       \
-  const double& fract_mid, const Vector<double>& xi_hi,                   \
-  const unsigned& nlayer,                                                 \
-  TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper
+#define _QT_ARGS \
+  GeomObject *wall_pt, const Vector<double>&xi_lo, const double &fract_mid, \
+    const Vector<double>&xi_hi, const unsigned &nlayer, \
+    TimeStepper *time_stepper_pt = &Mesh::Default_TimeStepper
 
 #define _QT_FWD wall_pt, xi_lo, fract_mid, xi_hi, nlayer, time_stepper_pt
 
@@ -660,8 +659,7 @@ namespace oomph
   {
   public:
     QuarterTubeMesh(_QT_ARGS)
-      : Mesh(make_element_factory_pt<ELEMENT>()),
-        QuarterTubeTFMesh(_QT_FWD)
+      : Mesh(make_element_factory_pt<ELEMENT>()), QuarterTubeTFMesh(_QT_FWD)
     {
     }
   };
@@ -709,10 +707,14 @@ namespace oomph
       const double centre_box_size = 1.0,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : Mesh(make_element_factory_pt<ELEMENT>()),
-        QuarterTubeTFMesh(wall_pt, xi_lo, fract_mid, xi_hi, nlayer,
-                          time_stepper_pt),
-        AlgebraicRefineableQuarterTubeTFMesh(wall_pt, xi_lo, fract_mid,
-                                             xi_hi, nlayer, centre_box_size,
+        QuarterTubeTFMesh(
+          wall_pt, xi_lo, fract_mid, xi_hi, nlayer, time_stepper_pt),
+        AlgebraicRefineableQuarterTubeTFMesh(wall_pt,
+                                             xi_lo,
+                                             fract_mid,
+                                             xi_hi,
+                                             nlayer,
+                                             centre_box_size,
                                              time_stepper_pt)
     {
     }

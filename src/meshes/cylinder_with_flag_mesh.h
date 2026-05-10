@@ -416,18 +416,16 @@ namespace oomph
   /// Backwards-compatible templated CylinderWithFlagMesh wrappers.
   //=========================================================================
 
-#define _CWF_ARGS                                                  \
-  Circle* cylinder_pt, GeomObject* top_flag_pt,                    \
-  GeomObject* bottom_flag_pt, GeomObject* tip_flag_pt,             \
-  const double& length, const double& height,                      \
-  const double& flag_length, const double& flag_height,            \
-  const double& centre_x, const double& centre_y, const double& a, \
-  TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper
+#define _CWF_ARGS \
+  Circle *cylinder_pt, GeomObject *top_flag_pt, GeomObject *bottom_flag_pt, \
+    GeomObject *tip_flag_pt, const double &length, const double &height, \
+    const double &flag_length, const double &flag_height, \
+    const double &centre_x, const double &centre_y, const double &a, \
+    TimeStepper *time_stepper_pt = &Mesh::Default_TimeStepper
 
-#define _CWF_FWD                                                   \
-  cylinder_pt, top_flag_pt, bottom_flag_pt, tip_flag_pt,           \
-  length, height, flag_length, flag_height, centre_x, centre_y,    \
-  a, time_stepper_pt
+#define _CWF_FWD \
+  cylinder_pt, top_flag_pt, bottom_flag_pt, tip_flag_pt, length, height, \
+    flag_length, flag_height, centre_x, centre_y, a, time_stepper_pt
 
   template<class ELEMENT>
   class CylinderWithFlagMesh : public CylinderWithFlagTFMesh

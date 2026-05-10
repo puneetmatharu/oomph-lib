@@ -287,8 +287,8 @@ namespace oomph
       const double& zmax,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : Mesh(make_element_factory_pt<ELEMENT>()),
-        ExtrudedCubeMeshFromQuadTFMesh(quad_mesh_pt, nz, zmin, zmax,
-                                       time_stepper_pt)
+        ExtrudedCubeMeshFromQuadTFMesh(
+          quad_mesh_pt, nz, zmin, zmax, time_stepper_pt)
     {
     }
   };
@@ -306,8 +306,8 @@ namespace oomph
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : Mesh(make_element_factory_pt<ELEMENT>()),
         ExtrudedCubeMeshFromQuadTFMesh(quad_mesh_pt, nz, lz, time_stepper_pt),
-        RefineableExtrudedCubeMeshFromQuadTFMesh(quad_mesh_pt, nz, lz,
-                                                 time_stepper_pt)
+        RefineableExtrudedCubeMeshFromQuadTFMesh(
+          quad_mesh_pt, nz, lz, time_stepper_pt)
     {
     }
 
@@ -318,10 +318,10 @@ namespace oomph
       const double& zmax,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : Mesh(make_element_factory_pt<ELEMENT>()),
-        ExtrudedCubeMeshFromQuadTFMesh(quad_mesh_pt, nz, zmin, zmax,
-                                       time_stepper_pt),
-        RefineableExtrudedCubeMeshFromQuadTFMesh(quad_mesh_pt, nz, zmin, zmax,
-                                                 time_stepper_pt)
+        ExtrudedCubeMeshFromQuadTFMesh(
+          quad_mesh_pt, nz, zmin, zmax, time_stepper_pt),
+        RefineableExtrudedCubeMeshFromQuadTFMesh(
+          quad_mesh_pt, nz, zmin, zmax, time_stepper_pt)
     {
     }
   };

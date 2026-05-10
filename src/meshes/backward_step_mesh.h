@@ -155,8 +155,13 @@ namespace oomph
       const double& lx,
       const double& ly,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : BackwardStepQuadTFMesh(make_element_factory_pt<ELEMENT>(), nx, ny,
-                               nx_cut_out, ny_cut_out, lx, ly,
+      : BackwardStepQuadTFMesh(make_element_factory_pt<ELEMENT>(),
+                               nx,
+                               ny,
+                               nx_cut_out,
+                               ny_cut_out,
+                               lx,
+                               ly,
                                time_stepper_pt)
     {
     }
@@ -176,8 +181,13 @@ namespace oomph
       const double& ly,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : RefineableBackwardStepQuadTFMesh(make_element_factory_pt<ELEMENT>(),
-                                         nx, ny, nx_cut_out, ny_cut_out,
-                                         lx, ly, time_stepper_pt)
+                                         nx,
+                                         ny,
+                                         nx_cut_out,
+                                         ny_cut_out,
+                                         lx,
+                                         ly,
+                                         time_stepper_pt)
     {
     }
   };

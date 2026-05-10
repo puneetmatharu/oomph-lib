@@ -768,10 +768,13 @@ namespace oomph
       : Mesh(make_element_factory_pt<ELEMENT>()),
         UnstructuredTwoDMeshGeometryBase(
           make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
-        QuadFromTriangleTFMesh(node_file_name, element_file_name,
-                               poly_file_name, time_stepper_pt,
-                               use_attributes,
-                               allow_automatic_creation_of_vertices_on_boundaries)
+        QuadFromTriangleTFMesh(
+          node_file_name,
+          element_file_name,
+          poly_file_name,
+          time_stepper_pt,
+          use_attributes,
+          allow_automatic_creation_of_vertices_on_boundaries)
     {
     }
 
@@ -802,11 +805,15 @@ namespace oomph
       : Mesh(make_element_factory_pt<ELEMENT>()),
         UnstructuredTwoDMeshGeometryBase(
           make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
-        QuadFromTriangleTFMesh(node_file_name, element_file_name,
-                               poly_file_name, time_stepper_pt,
+        QuadFromTriangleTFMesh(node_file_name,
+                               element_file_name,
+                               poly_file_name,
+                               time_stepper_pt,
                                use_attributes),
-        RefineableQuadFromTriangleTFMesh(node_file_name, element_file_name,
-                                         poly_file_name, time_stepper_pt,
+        RefineableQuadFromTriangleTFMesh(node_file_name,
+                                         element_file_name,
+                                         poly_file_name,
+                                         time_stepper_pt,
                                          use_attributes)
     {
     }
@@ -840,11 +847,15 @@ namespace oomph
       : Mesh(make_element_factory_pt<ELEMENT>()),
         UnstructuredTwoDMeshGeometryBase(
           make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
-        QuadFromTriangleTFMesh(node_file_name, element_file_name,
-                               poly_file_name, time_stepper_pt,
+        QuadFromTriangleTFMesh(node_file_name,
+                               element_file_name,
+                               poly_file_name,
+                               time_stepper_pt,
                                use_attributes),
-        SolidQuadFromTriangleTFMesh(node_file_name, element_file_name,
-                                    poly_file_name, time_stepper_pt,
+        SolidQuadFromTriangleTFMesh(node_file_name,
+                                    element_file_name,
+                                    poly_file_name,
+                                    time_stepper_pt,
                                     use_attributes)
     {
     }

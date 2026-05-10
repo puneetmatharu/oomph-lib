@@ -221,8 +221,8 @@ namespace oomph
       const double& lx,
       const double& ly,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : CircularCylindricalShellTFMesh(make_element_factory_pt<ELEMENT>(),
-                                       nx, ny, lx, ly, time_stepper_pt)
+      : CircularCylindricalShellTFMesh(
+          make_element_factory_pt<ELEMENT>(), nx, ny, lx, ly, time_stepper_pt)
     {
     }
 
@@ -234,7 +234,10 @@ namespace oomph
       AxialBLStretchingFctPt axial_bl_stretching_fct_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : CircularCylindricalShellTFMesh(make_element_factory_pt<ELEMENT>(),
-                                       nx, ny, lx, ly,
+                                       nx,
+                                       ny,
+                                       lx,
+                                       ly,
                                        axial_bl_stretching_fct_pt,
                                        time_stepper_pt)
     {
@@ -249,7 +252,12 @@ namespace oomph
       const double& delta_bl,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : CircularCylindricalShellTFMesh(make_element_factory_pt<ELEMENT>(),
-                                       nx, ny, lx, ly, nx_bl, delta_bl,
+                                       nx,
+                                       ny,
+                                       lx,
+                                       ly,
+                                       nx_bl,
+                                       delta_bl,
                                        time_stepper_pt)
     {
     }

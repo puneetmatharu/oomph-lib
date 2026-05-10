@@ -112,7 +112,9 @@ namespace oomph
       GeomObject* undef_eulerian_posn_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : OneDLagrangianTFMesh(make_element_factory_pt<ELEMENT>(),
-                             n_element, length, undef_eulerian_posn_pt,
+                             n_element,
+                             length,
+                             undef_eulerian_posn_pt,
                              time_stepper_pt)
     {
     }
@@ -124,7 +126,10 @@ namespace oomph
       GeomObject* undef_eulerian_posn_pt,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : OneDLagrangianTFMesh(make_element_factory_pt<ELEMENT>(),
-                             n_element, xmin, xmax, undef_eulerian_posn_pt,
+                             n_element,
+                             xmin,
+                             xmax,
+                             undef_eulerian_posn_pt,
                              time_stepper_pt)
     {
     }

@@ -2352,8 +2352,8 @@ namespace oomph
                 TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : Mesh(make_element_factory_pt<ELEMENT>()),
         TetMeshBase(make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
-        GmshTetTFMesh(gmsh_parameters_pt, use_mesh_grading_from_file,
-                      time_stepper_pt)
+        GmshTetTFMesh(
+          gmsh_parameters_pt, use_mesh_grading_from_file, time_stepper_pt)
     {
     }
   };
@@ -2381,10 +2381,10 @@ namespace oomph
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : Mesh(make_element_factory_pt<ELEMENT>()),
         TetMeshBase(make_face_element_factory_pt<DummyFaceElement<ELEMENT>>()),
-        GmshTetTFMesh(gmsh_parameters_pt, use_mesh_grading_from_file,
-                      time_stepper_pt),
-        RefineableGmshTetTFMesh(gmsh_parameters_pt, use_mesh_grading_from_file,
-                                time_stepper_pt)
+        GmshTetTFMesh(
+          gmsh_parameters_pt, use_mesh_grading_from_file, time_stepper_pt),
+        RefineableGmshTetTFMesh(
+          gmsh_parameters_pt, use_mesh_grading_from_file, time_stepper_pt)
     {
       this->set_projection_problem_factory_pt(
         make_projection_problem_factory_pt<ELEMENT>());

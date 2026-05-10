@@ -42,8 +42,8 @@ namespace oomph
     const double& gap_fraction,
     GeomObject* wall_pt,
     TimeStepper* time_stepper_pt)
-    : SimpleRectangularQuadTFMesh(element_factory_pt, nx, ny, lx, ly,
-                                  time_stepper_pt),
+    : SimpleRectangularQuadTFMesh(
+        element_factory_pt, nx, ny, lx, ly, time_stepper_pt),
       Nx(nx),
       Ny(ny),
       Gap_fraction(gap_fraction),

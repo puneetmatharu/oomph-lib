@@ -262,10 +262,10 @@ namespace oomph
   /// Backwards-compatible templated FSIDrivenCavityMesh wrappers.
   //=========================================================================
 
-#define _FSIDC_ARGS                                                  \
-  const unsigned& nx, const unsigned& ny, const double& lx,          \
-  const double& ly, const double& gap_fraction, GeomObject* wall_pt, \
-  TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper
+#define _FSIDC_ARGS \
+  const unsigned &nx, const unsigned &ny, const double &lx, const double &ly, \
+    const double &gap_fraction, GeomObject *wall_pt, \
+    TimeStepper *time_stepper_pt = &Mesh::Default_TimeStepper
 
 #define _FSIDC_FWD nx, ny, lx, ly, gap_fraction, wall_pt, time_stepper_pt
 

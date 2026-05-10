@@ -678,7 +678,10 @@ namespace oomph
       const double& xi_hi,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : QuarterCircleSectorTFMesh(make_element_factory_pt<ELEMENT>(),
-                                  wall_pt, xi_lo, fract_mid, xi_hi,
+                                  wall_pt,
+                                  xi_lo,
+                                  fract_mid,
+                                  xi_hi,
                                   time_stepper_pt)
     {
     }
@@ -697,7 +700,10 @@ namespace oomph
       const double& xi_hi,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : RefineableQuarterCircleSectorTFMesh(make_element_factory_pt<ELEMENT>(),
-                                            wall_pt, xi_lo, fract_mid, xi_hi,
+                                            wall_pt,
+                                            xi_lo,
+                                            fract_mid,
+                                            xi_hi,
                                             time_stepper_pt)
     {
     }
@@ -717,7 +723,11 @@ namespace oomph
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : MacroElementNodeUpdateRefineableQuarterCircleSectorTFMesh(
           make_element_factory_pt<ELEMENT>(),
-          wall_pt, xi_lo, fract_mid, xi_hi, time_stepper_pt)
+          wall_pt,
+          xi_lo,
+          fract_mid,
+          xi_hi,
+          time_stepper_pt)
     {
     }
   };
@@ -736,7 +746,11 @@ namespace oomph
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : AlgebraicRefineableQuarterCircleSectorTFMesh(
           make_element_factory_pt<ELEMENT>(),
-          wall_pt, xi_lo, fract_mid, xi_hi, time_stepper_pt)
+          wall_pt,
+          xi_lo,
+          fract_mid,
+          xi_hi,
+          time_stepper_pt)
     {
     }
   };

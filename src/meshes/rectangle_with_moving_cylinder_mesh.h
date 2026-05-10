@@ -590,8 +590,11 @@ namespace oomph
       const double& length,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : RectangleWithHoleAndAnnularRegionTFMesh(
-          make_element_factory_pt<ELEMENT>(), cylinder_pt,
-          annular_region_radius, length, time_stepper_pt)
+          make_element_factory_pt<ELEMENT>(),
+          cylinder_pt,
+          annular_region_radius,
+          length,
+          time_stepper_pt)
     {
     }
   };
@@ -608,11 +611,17 @@ namespace oomph
       const double& length,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : RectangleWithHoleAndAnnularRegionTFMesh(
-          make_element_factory_pt<ELEMENT>(), cylinder_pt,
-          annular_region_radius, length, time_stepper_pt),
+          make_element_factory_pt<ELEMENT>(),
+          cylinder_pt,
+          annular_region_radius,
+          length,
+          time_stepper_pt),
         RefineableRectangleWithHoleAndAnnularRegionTFMesh(
-          make_element_factory_pt<ELEMENT>(), cylinder_pt,
-          annular_region_radius, length, time_stepper_pt)
+          make_element_factory_pt<ELEMENT>(),
+          cylinder_pt,
+          annular_region_radius,
+          length,
+          time_stepper_pt)
     {
     }
   };

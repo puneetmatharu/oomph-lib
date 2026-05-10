@@ -83,8 +83,12 @@ namespace oomph
       // Delegate to existing ctor body via placement-new style: simulate by
       // calling the same logic via a helper. We can't delegate to another
       // ctor here because of virtual base; just inline the work.
-      build_tube_mesh(wall_pt, centreline_limits, theta_positions,
-                      radius_box, nlayer, time_stepper_pt);
+      build_tube_mesh(wall_pt,
+                      centreline_limits,
+                      theta_positions,
+                      radius_box,
+                      nlayer,
+                      time_stepper_pt);
     }
 
     /// Destructor: empty
@@ -103,7 +107,6 @@ namespace oomph
                          TimeStepper* time_stepper_pt);
 
   public:
-
     /// Access function to GeomObject representing wall
     GeomObject*& volume_pt()
     {
@@ -218,8 +221,13 @@ namespace oomph
       const Vector<double>& radius_box,
       const unsigned& nlayer,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : TubeTFMesh(element_factory_pt, wall_pt, centreline_limits,
-                   theta_positions, radius_box, nlayer, time_stepper_pt)
+      : TubeTFMesh(element_factory_pt,
+                   wall_pt,
+                   centreline_limits,
+                   theta_positions,
+                   radius_box,
+                   nlayer,
+                   time_stepper_pt)
     {
       for (unsigned ielem = 0; ielem < TubeTFMesh::nelement(); ielem++)
       {
@@ -259,8 +267,12 @@ namespace oomph
              const Vector<double>& radius_box,
              const unsigned& nlayer,
              TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : TubeTFMesh(make_element_factory_pt<ELEMENT>(), wall_pt,
-                   centreline_limits, theta_positions, radius_box, nlayer,
+      : TubeTFMesh(make_element_factory_pt<ELEMENT>(),
+                   wall_pt,
+                   centreline_limits,
+                   theta_positions,
+                   radius_box,
+                   nlayer,
                    time_stepper_pt)
     {
     }
@@ -278,9 +290,13 @@ namespace oomph
       const Vector<double>& radius_box,
       const unsigned& nlayer,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
-      : RefineableTubeTFMesh(make_element_factory_pt<ELEMENT>(), wall_pt,
-                             centreline_limits, theta_positions, radius_box,
-                             nlayer, time_stepper_pt)
+      : RefineableTubeTFMesh(make_element_factory_pt<ELEMENT>(),
+                             wall_pt,
+                             centreline_limits,
+                             theta_positions,
+                             radius_box,
+                             nlayer,
+                             time_stepper_pt)
     {
       // RefineableTubeTFMesh's ctor builds the octree forest manually
       // without propagating the factory to each element. Do it here.

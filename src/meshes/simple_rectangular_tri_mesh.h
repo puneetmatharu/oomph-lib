@@ -128,7 +128,11 @@ namespace oomph
       const double& l_y,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : SimpleRectangularTriTFMesh(make_element_factory_pt<ELEMENT>(),
-                                   n_x, n_y, l_x, l_y, time_stepper_pt)
+                                   n_x,
+                                   n_y,
+                                   l_x,
+                                   l_y,
+                                   time_stepper_pt)
     {
     }
   };

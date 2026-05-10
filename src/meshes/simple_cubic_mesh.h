@@ -323,7 +323,13 @@ namespace oomph
                     const double& lz,
                     TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : SimpleCubicTFMesh(make_element_factory_pt<ELEMENT>(),
-                          nx, ny, nz, lx, ly, lz, time_stepper_pt)
+                          nx,
+                          ny,
+                          nz,
+                          lx,
+                          ly,
+                          lz,
+                          time_stepper_pt)
     {
     }
 
@@ -338,7 +344,15 @@ namespace oomph
                     const double& zmax,
                     TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : SimpleCubicTFMesh(make_element_factory_pt<ELEMENT>(),
-                          nx, ny, nz, xmin, xmax, ymin, ymax, zmin, zmax,
+                          nx,
+                          ny,
+                          nz,
+                          xmin,
+                          xmax,
+                          ymin,
+                          ymax,
+                          zmin,
+                          zmax,
                           time_stepper_pt)
     {
     }
@@ -365,9 +379,21 @@ namespace oomph
       const double& lz,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : SimpleCubicTFMesh(make_element_factory_pt<ELEMENT>(),
-                          nx, ny, nz, lx, ly, lz, time_stepper_pt),
+                          nx,
+                          ny,
+                          nz,
+                          lx,
+                          ly,
+                          lz,
+                          time_stepper_pt),
         RefineableSimpleCubicTFMesh(make_element_factory_pt<ELEMENT>(),
-                                    nx, ny, nz, lx, ly, lz, time_stepper_pt)
+                                    nx,
+                                    ny,
+                                    nz,
+                                    lx,
+                                    ly,
+                                    lz,
+                                    time_stepper_pt)
     {
     }
 
@@ -383,11 +409,27 @@ namespace oomph
       const double& zmax,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : SimpleCubicTFMesh(make_element_factory_pt<ELEMENT>(),
-                          nx, ny, nz, xmin, xmax, ymin, ymax, zmin, zmax,
+                          nx,
+                          ny,
+                          nz,
+                          xmin,
+                          xmax,
+                          ymin,
+                          ymax,
+                          zmin,
+                          zmax,
                           time_stepper_pt),
         RefineableSimpleCubicTFMesh(make_element_factory_pt<ELEMENT>(),
-                                    nx, ny, nz, xmin, xmax, ymin, ymax,
-                                    zmin, zmax, time_stepper_pt)
+                                    nx,
+                                    ny,
+                                    nz,
+                                    xmin,
+                                    xmax,
+                                    ymin,
+                                    ymax,
+                                    zmin,
+                                    zmax,
+                                    time_stepper_pt)
     {
     }
   };

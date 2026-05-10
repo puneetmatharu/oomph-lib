@@ -180,14 +180,12 @@ namespace oomph
   class FullCircleMesh : public FullCircleTFMesh
   {
   public:
-    FullCircleMesh(
-      GeomObject* wall_pt,
-      const Vector<double>& theta_positions,
-      const Vector<double>& radius_box,
-      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+    FullCircleMesh(GeomObject* wall_pt,
+                   const Vector<double>& theta_positions,
+                   const Vector<double>& radius_box,
+                   TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : Mesh(make_element_factory_pt<ELEMENT>()),
-        FullCircleTFMesh(wall_pt, theta_positions, radius_box,
-                         time_stepper_pt)
+        FullCircleTFMesh(wall_pt, theta_positions, radius_box, time_stepper_pt)
     {
     }
   };
@@ -203,8 +201,8 @@ namespace oomph
       const Vector<double>& radius_box,
       TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
       : Mesh(make_element_factory_pt<ELEMENT>()),
-        RefineableFullCircleTFMesh(wall_pt, theta_positions, radius_box,
-                                   time_stepper_pt)
+        RefineableFullCircleTFMesh(
+          wall_pt, theta_positions, radius_box, time_stepper_pt)
     {
     }
   };

@@ -287,15 +287,15 @@ namespace oomph
   /// Backwards-compatible templated ThinLayerBrickOnTetMesh wrappers.
   //=========================================================================
 
-#define _TLBT_ARGS                                                       \
-  Mesh* tet_mesh_pt, const Vector<unsigned>& boundary_ids,               \
-  ThicknessFctPt thickness_fct_pt, const unsigned& nlayer,               \
-  const Vector<Vector<unsigned>>& in_out_boundary_id,                    \
-  TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper
+#define _TLBT_ARGS \
+  Mesh *tet_mesh_pt, const Vector<unsigned>&boundary_ids, \
+    ThicknessFctPt thickness_fct_pt, const unsigned &nlayer, \
+    const Vector<Vector<unsigned>>&in_out_boundary_id, \
+    TimeStepper *time_stepper_pt = &Mesh::Default_TimeStepper
 
-#define _TLBT_FWD                                                        \
-  tet_mesh_pt, boundary_ids, thickness_fct_pt, nlayer,                   \
-  in_out_boundary_id, time_stepper_pt
+#define _TLBT_FWD \
+  tet_mesh_pt, boundary_ids, thickness_fct_pt, nlayer, in_out_boundary_id, \
+    time_stepper_pt
 
   template<class ELEMENT>
   class ThinLayerBrickOnTetMesh : public ThinLayerBrickOnTetTFMesh
@@ -310,7 +310,8 @@ namespace oomph
 
 
   template<class ELEMENT>
-  class RefineableThinLayerBrickOnTetMesh : public RefineableThinLayerBrickOnTetTFMesh
+  class RefineableThinLayerBrickOnTetMesh
+    : public RefineableThinLayerBrickOnTetTFMesh
   {
   public:
     RefineableThinLayerBrickOnTetMesh(_TLBT_ARGS)

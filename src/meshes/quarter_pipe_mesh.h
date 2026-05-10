@@ -258,10 +258,10 @@ namespace oomph
   /// Backwards-compatible templated QuarterPipeMesh wrappers.
   //=========================================================================
 
-#define _QP_ARGS                                                          \
-  const unsigned& ntheta, const unsigned& nr, const unsigned& nz,         \
-  const double& rmin, const double& rmax, const double& length,           \
-  TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper
+#define _QP_ARGS \
+  const unsigned &ntheta, const unsigned &nr, const unsigned &nz, \
+    const double &rmin, const double &rmax, const double &length, \
+    TimeStepper *time_stepper_pt = &Mesh::Default_TimeStepper
 
 #define _QP_FWD ntheta, nr, nz, rmin, rmax, length, time_stepper_pt
 
@@ -272,7 +272,13 @@ namespace oomph
     QuarterPipeMesh(_QP_ARGS)
       : Mesh(make_element_factory_pt<ELEMENT>()),
         SimpleCubicTFMesh(make_element_factory_pt<ELEMENT>(),
-                          ntheta, nr, nz, 1.0, 1.0, 1.0, time_stepper_pt),
+                          ntheta,
+                          nr,
+                          nz,
+                          1.0,
+                          1.0,
+                          1.0,
+                          time_stepper_pt),
         QuarterPipeTFMesh(_QP_FWD)
     {
     }
@@ -286,7 +292,13 @@ namespace oomph
     RefineableQuarterPipeMesh(_QP_ARGS)
       : Mesh(make_element_factory_pt<ELEMENT>()),
         SimpleCubicTFMesh(make_element_factory_pt<ELEMENT>(),
-                          ntheta, nr, nz, 1.0, 1.0, 1.0, time_stepper_pt),
+                          ntheta,
+                          nr,
+                          nz,
+                          1.0,
+                          1.0,
+                          1.0,
+                          time_stepper_pt),
         QuarterPipeTFMesh(_QP_FWD),
         RefineableQuarterPipeTFMesh(_QP_FWD)
     {
@@ -301,7 +313,13 @@ namespace oomph
     ElasticQuarterPipeMesh(_QP_ARGS)
       : Mesh(make_element_factory_pt<ELEMENT>()),
         SimpleCubicTFMesh(make_element_factory_pt<ELEMENT>(),
-                          ntheta, nr, nz, 1.0, 1.0, 1.0, time_stepper_pt),
+                          ntheta,
+                          nr,
+                          nz,
+                          1.0,
+                          1.0,
+                          1.0,
+                          time_stepper_pt),
         QuarterPipeTFMesh(_QP_FWD),
         ElasticQuarterPipeTFMesh(_QP_FWD)
     {
@@ -310,13 +328,20 @@ namespace oomph
 
 
   template<class ELEMENT>
-  class ElasticRefineableQuarterPipeMesh : public ElasticRefineableQuarterPipeTFMesh
+  class ElasticRefineableQuarterPipeMesh
+    : public ElasticRefineableQuarterPipeTFMesh
   {
   public:
     ElasticRefineableQuarterPipeMesh(_QP_ARGS)
       : Mesh(make_element_factory_pt<ELEMENT>()),
         SimpleCubicTFMesh(make_element_factory_pt<ELEMENT>(),
-                          ntheta, nr, nz, 1.0, 1.0, 1.0, time_stepper_pt),
+                          ntheta,
+                          nr,
+                          nz,
+                          1.0,
+                          1.0,
+                          1.0,
+                          time_stepper_pt),
         QuarterPipeTFMesh(_QP_FWD),
         ElasticQuarterPipeTFMesh(_QP_FWD),
         ElasticRefineableQuarterPipeTFMesh(_QP_FWD)
