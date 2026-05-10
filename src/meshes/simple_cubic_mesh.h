@@ -303,6 +303,95 @@ namespace oomph
     }
   };
 
+
+  ////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////
+
+  //=======================================================================
+  /// Backwards-compatible templated SimpleCubicMesh wrapper.
+  //=======================================================================
+  template<class ELEMENT>
+  class SimpleCubicMesh : public SimpleCubicTFMesh
+  {
+  public:
+    SimpleCubicMesh(const unsigned& nx,
+                    const unsigned& ny,
+                    const unsigned& nz,
+                    const double& lx,
+                    const double& ly,
+                    const double& lz,
+                    TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : SimpleCubicTFMesh(make_element_factory_pt<ELEMENT>(),
+                          nx, ny, nz, lx, ly, lz, time_stepper_pt)
+    {
+    }
+
+    SimpleCubicMesh(const unsigned& nx,
+                    const unsigned& ny,
+                    const unsigned& nz,
+                    const double& xmin,
+                    const double& xmax,
+                    const double& ymin,
+                    const double& ymax,
+                    const double& zmin,
+                    const double& zmax,
+                    TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : SimpleCubicTFMesh(make_element_factory_pt<ELEMENT>(),
+                          nx, ny, nz, xmin, xmax, ymin, ymax, zmin, zmax,
+                          time_stepper_pt)
+    {
+    }
+  };
+
+
+  ////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////
+
+  //=======================================================================
+  /// Backwards-compatible templated RefineableSimpleCubicMesh wrapper.
+  //=======================================================================
+  template<class ELEMENT>
+  class RefineableSimpleCubicMesh : public RefineableSimpleCubicTFMesh
+  {
+  public:
+    RefineableSimpleCubicMesh(
+      const unsigned& nx,
+      const unsigned& ny,
+      const unsigned& nz,
+      const double& lx,
+      const double& ly,
+      const double& lz,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : SimpleCubicTFMesh(make_element_factory_pt<ELEMENT>(),
+                          nx, ny, nz, lx, ly, lz, time_stepper_pt),
+        RefineableSimpleCubicTFMesh(make_element_factory_pt<ELEMENT>(),
+                                    nx, ny, nz, lx, ly, lz, time_stepper_pt)
+    {
+    }
+
+    RefineableSimpleCubicMesh(
+      const unsigned& nx,
+      const unsigned& ny,
+      const unsigned& nz,
+      const double& xmin,
+      const double& xmax,
+      const double& ymin,
+      const double& ymax,
+      const double& zmin,
+      const double& zmax,
+      TimeStepper* time_stepper_pt = &Mesh::Default_TimeStepper)
+      : SimpleCubicTFMesh(make_element_factory_pt<ELEMENT>(),
+                          nx, ny, nz, xmin, xmax, ymin, ymax, zmin, zmax,
+                          time_stepper_pt),
+        RefineableSimpleCubicTFMesh(make_element_factory_pt<ELEMENT>(),
+                                    nx, ny, nz, xmin, xmax, ymin, ymax,
+                                    zmin, zmax, time_stepper_pt)
+    {
+    }
+  };
+
 } // namespace oomph
 
 #endif
