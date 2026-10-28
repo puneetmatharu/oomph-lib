@@ -60,6 +60,7 @@ namespace oomph
 #define OOMPH_INITIALISE_DENSE_MATRICES
 #undef OOMPH_INITIALISE_DENSE_MATRICES
 
+
   //=================================================================
   /// Abstract base class for matrices, templated by
   /// the type of object that is stored in them and the type of matrix.
@@ -169,20 +170,22 @@ namespace oomph
       std::ostream& outfile) const = 0;
 
     /// Indexed output function to print a matrix to the stream outfile
-    /// as i,j,a(i,j) for a(i,j)!=0 only.
-    virtual void sparse_indexed_output_helper(std::ostream& outfile) const = 0;
-
+    /// as i,j,a(i,j) for a(i,j)!=0 only. Final optional argument
+    /// specifies max. size of entries which are set to zero on output.
+    virtual void sparse_indexed_output_helper(
+      std::ostream& outfile, const double& cutoff = 0.0) const = 0;
 
     /// Indexed output function to print a matrix to the stream outfile
     /// as i,j,a(i,j) for a(i,j)!=0 only with specified precision (if
     /// precision=0 then nothing is changed). If optional boolean flag is set
     /// to true we also output the "bottom right" entry regardless of it being
     /// zero or not (this allows automatic detection of matrix size in
-    /// e.g. matlab, python).
-    void sparse_indexed_output(
-      std::ostream& outfile,
-      const unsigned& precision = 0,
-      const bool& output_bottom_right_zero = false) const
+    /// e.g. matlab, python). Final optional argument
+    /// specifies max. size of entries which are set to zero on output.
+    void sparse_indexed_output(std::ostream& outfile,
+                               const unsigned& precision = 0,
+                               const bool& output_bottom_right_zero = false,
+                               const double& cutoff = 0.0) const
     {
       // Implemented as a wrapper around "sparse_indexed_output(std::ostream)"
       // so that only one output helper function is needed in derived classes.
@@ -200,7 +203,7 @@ namespace oomph
       }
 
       // Output as normal using the helper function defined in each matrix class
-      sparse_indexed_output_helper(outfile);
+      sparse_indexed_output_helper(outfile, cutoff);
 
       // If requested and there is no output for the last entry then output a
       // zero entry.
@@ -218,15 +221,17 @@ namespace oomph
       }
     }
 
+
     /// Indexed output function to print a matrix to the file named
     /// filename as i,j,a(i,j) for a(i,j)!=0 only with specified precision. If
     /// optional boolean flag is set to true we also output the "bottom right"
     /// entry regardless of it being zero or not (this allows automatic
-    /// detection of matrix size in e.g. matlab, python).
-    void sparse_indexed_output(
-      std::string filename,
-      const unsigned& precision = 0,
-      const bool& output_bottom_right_zero = false) const
+    /// detection of matrix size in e.g. matlab, python). Final optional
+    /// argument specifies max. size of entries which are set to zero on output.
+    void sparse_indexed_output(std::string filename,
+                               const unsigned& precision = 0,
+                               const bool& output_bottom_right_zero = false,
+                               const double& cutoff = 0.0) const
     {
       // Implemented as a wrapper around "sparse_indexed_output(std::ostream)"
       // so that only one output function needs to be written in matrix
@@ -236,10 +241,35 @@ namespace oomph
       std::ofstream some_file(filename.c_str());
 
       // Output as normal
-      sparse_indexed_output(some_file, precision, output_bottom_right_zero);
+      sparse_indexed_output(
+        some_file, precision, output_bottom_right_zero, cutoff);
 
       // Close file
       some_file.close();
+    }
+
+    /// Indexed output function to print a matrix to the stream outfile
+    /// as i,j,a(i,j) for a(i,j)!=0. Final optional argument
+    /// specifies max. size of entries which are set to zero on output.
+    void sparse_indexed_output_with_cutoff(std::ostream& outfile,
+                                           const double& cutoff = 0.0) const
+    {
+      unsigned precision = 0;
+      bool output_bottom_right_zero = false;
+      sparse_indexed_output(
+        outfile, precision, output_bottom_right_zero, cutoff);
+    }
+
+    /// Indexed output function to print a matrix to the stream outfile
+    /// as i,j,a(i,j) for a(i,j)!=0. Final optional argument
+    /// specifies max. size of entries which are set to zero on output.
+    void sparse_indexed_output_with_cutoff(std::string filename,
+                                           const double& cutoff = 0.0) const
+    {
+      unsigned precision = 0;
+      bool output_bottom_right_zero = false;
+      sparse_indexed_output(
+        filename, precision, output_bottom_right_zero, cutoff);
     }
   };
 
@@ -540,8 +570,10 @@ namespace oomph
     void output_bottom_right_zero_helper(std::ostream& outfile) const;
 
     /// Indexed output function to print a matrix to the
-    /// stream outfile as i,j,a(i,j) for a(i,j)!=0 only.
-    void sparse_indexed_output_helper(std::ostream& outfile) const;
+    /// stream outfile as i,j,a(i,j) for a(i,j)!=0 only. Final optional argument
+    /// specifies max. size of entries which are set to zero on output.
+    void sparse_indexed_output_helper(std::ostream& outfile,
+                                      const double& cutoff = 0.0) const;
   };
 
 
@@ -657,8 +689,10 @@ namespace oomph
     }
 
     /// Indexed output function to print a matrix to the
-    /// stream outfile as i,j,a(i,j) for a(i,j)!=0 only.
-    virtual void sparse_indexed_output_helper(std::ostream& outfile) const
+    /// stream outfile as i,j,a(i,j) for a(i,j)!=0 only. Final optional argument
+    /// specifies max. size of entries which are set to zero on output.
+    virtual void sparse_indexed_output_helper(std::ostream& outfile,
+                                              const double& cutoff = 0.0) const
     {
       std::string error_message =
         "SparseMatrix::sparse_indexed_output_helper() is a virtual function.\n";
@@ -824,15 +858,20 @@ namespace oomph
     }
 
     /// Indexed output function to print a matrix to the
-    /// stream outfile as i,j,a(i,j) for a(i,j)!=0 only.
-    void sparse_indexed_output_helper(std::ostream& outfile) const
+    /// stream outfile as i,j,a(i,j) for a(i,j)!=0 only. Final optional argument
+    /// specifies max. size of entries which are set to zero on output.
+    void sparse_indexed_output_helper(std::ostream& outfile,
+                                      const double& cutoff = 0.0) const
     {
       for (unsigned long i = 0; i < this->N; i++)
       {
         for (long j = Row_start[i]; j < Row_start[i + 1]; j++)
         {
-          outfile << i << " " << Column_index[j] << " " << this->Value[j]
-                  << std::endl;
+          if (std::abs(this->Value[j]) > cutoff)
+          {
+            outfile << i << " " << Column_index[j] << " " << this->Value[j]
+                    << std::endl;
+          }
         }
       }
     }
@@ -1019,10 +1058,12 @@ namespace oomph
     }
 
     /// Indexed output function to print a matrix to the
-    /// stream outfile as i,j,a(i,j) for a(i,j)!=0 only.
-    void sparse_indexed_output_helper(std::ostream& outfile) const
+    /// stream outfile as i,j,a(i,j) for a(i,j)!=0 only. Final optional argument
+    /// specifies max. size of entries which are set to zero on output.
+    void sparse_indexed_output_helper(std::ostream& outfile,
+                                      const double& cutoff = 0.0) const
     {
-      CR_matrix.sparse_indexed_output_helper(outfile);
+      CR_matrix.sparse_indexed_output_helper(outfile, cutoff);
     }
 
     /// Indexed output function to print a matrix to a
@@ -1715,6 +1756,9 @@ namespace oomph
     /// 4th Tensor dimension
     unsigned Q;
 
+    /// Boolean to indicate whether data is a copy
+    bool Is_tensordata_a_copy;
+
     /// Range check to catch when an index is out of bounds, if so, it
     /// issues a warning message and dies by throwing an \c OomphLibError
     void range_check(const unsigned long& i,
@@ -1766,7 +1810,10 @@ namespace oomph
 
   public:
     /// Empty constructor
-    RankFourTensor() : Tensordata(0), N(0), M(0), P(0), Q(0) {}
+    RankFourTensor()
+      : Tensordata(0), N(0), M(0), P(0), Q(0), Is_tensordata_a_copy(false)
+    {
+    }
 
     /// Copy constructor: Deep copy
     RankFourTensor(const RankFourTensor& source_tensor)
@@ -1776,6 +1823,7 @@ namespace oomph
       M = source_tensor.nindex2();
       P = source_tensor.nindex3();
       Q = source_tensor.nindex4();
+      Is_tensordata_a_copy = false;
 
       // Assign space for the data
       Tensordata = new T[N * M * P * Q];
@@ -1834,6 +1882,24 @@ namespace oomph
     }
 
 
+    /// Shallow copy of data from source_tensor
+    void shallow_copy_from(const RankFourTensor& source_tensor)
+    {
+      // Set row and column length
+      N = source_tensor.nindex1();
+      M = source_tensor.nindex2();
+      P = source_tensor.nindex3();
+      Q = source_tensor.nindex4();
+      // Delete existing data, if no already a copy
+      if (Is_tensordata_a_copy == false)
+      {
+        delete[] Tensordata;
+      }
+      // Set the pointer
+      Tensordata = source_tensor.Tensordata;
+      Is_tensordata_a_copy = true;
+    }
+
     /// One parameter constructor produces a  nxnxnxn tensor
     RankFourTensor(const unsigned long& n)
     {
@@ -1842,6 +1908,7 @@ namespace oomph
       M = n;
       P = n;
       Q = n;
+      Is_tensordata_a_copy = false;
       // Assign space for the n rows
       Tensordata = new T[N * M * P * Q];
       // Initialise to zero if required
@@ -1861,6 +1928,7 @@ namespace oomph
       M = n_index2;
       P = n_index3;
       Q = n_index4;
+      Is_tensordata_a_copy = false;
       // Assign space for the n rows
       Tensordata = new T[N * M * P * Q];
       // Initialise to zero if required
@@ -1882,6 +1950,7 @@ namespace oomph
       M = n_index2;
       P = n_index3;
       Q = n_index4;
+      Is_tensordata_a_copy = false;
       // Assign space for the n rows
       Tensordata = new T[N * M * P * Q];
       // Initialise to the initial value
@@ -1891,7 +1960,10 @@ namespace oomph
     /// Destructor: delete the pointers
     virtual ~RankFourTensor()
     {
-      delete[] Tensordata;
+      if (Is_tensordata_a_copy == false)
+      {
+        delete[] Tensordata;
+      }
       Tensordata = 0;
     }
 
@@ -1954,7 +2026,14 @@ namespace oomph
         }
       }
       // Now kill storage for old tensor
-      delete[] temp_tensor;
+      if (Is_tensordata_a_copy == false)
+      {
+        delete[] temp_tensor;
+      }
+      else
+      {
+        Is_tensordata_a_copy = false;
+      }
     }
 
     /// Resize to a general tensor
@@ -2011,7 +2090,14 @@ namespace oomph
         }
       }
       // Now kill storage for old tensor
-      delete[] temp_tensor;
+      if (Is_tensordata_a_copy == false)
+      {
+        delete[] temp_tensor;
+      }
+      else
+      {
+        Is_tensordata_a_copy = false;
+      }
     }
 
     /// Initialise all values in the tensor to val
@@ -2056,6 +2142,7 @@ namespace oomph
 #ifdef RANGE_CHECKING
       this->range_check(i, j, k, l);
 #endif
+
       return Tensordata[Q * (P * (M * i + j) + k) + l];
     }
 
@@ -2731,15 +2818,20 @@ namespace oomph
     }
 
     /// Indexed output function to print a matrix to the
-    /// stream outfile as i,j,a(i,j) for a(i,j)!=0 only.
-    void sparse_indexed_output_helper(std::ostream& outfile) const
+    /// stream outfile as i,j,a(i,j) for a(i,j)!=0 only. Final optional argument
+    /// specifies max. size of entries which are set to zero on output.
+    void sparse_indexed_output_helper(std::ostream& outfile,
+                                      const double& cutoff) const
     {
       for (unsigned long j = 0; j < this->N; j++)
       {
         for (long k = Column_start[j]; k < Column_start[j + 1]; k++)
         {
-          outfile << Row_index[k] << " " << j << " " << this->Value[k]
-                  << std::endl;
+          if (std::abs(this->Value[k]) > cutoff)
+          {
+            outfile << Row_index[k] << " " << j << " " << this->Value[k]
+                    << std::endl;
+          }
         }
       }
     }
@@ -3137,10 +3229,12 @@ namespace oomph
   }
 
   //============================================================================
-  /// Sparse indexed output as i,j,a(i,j) for a(i,j)!=0 only.
+  /// Sparse indexed output as i,j,a(i,j) for a(i,j)!=0 only. Final optional
+  /// argument specifies max. size of entries which are set to zero on output.
   //============================================================================
   template<class T>
-  void DenseMatrix<T>::sparse_indexed_output_helper(std::ostream& outfile) const
+  void DenseMatrix<T>::sparse_indexed_output_helper(std::ostream& outfile,
+                                                    const double& cutoff) const
   {
     // Loop over the rows
     for (unsigned i = 0; i < N; i++)
@@ -3150,7 +3244,21 @@ namespace oomph
       {
         if ((*this)(i, j) != T(0))
         {
-          outfile << i << " " << j << " " << (*this)(i, j) << std::endl;
+          // Only do check if the template type an sensibly evaluated
+          // the abs function which returns something that can be converted
+          // to a double
+          if constexpr (HasMagnitude<T>::value)
+          {
+            if (std::abs((*this)(i, j)) > cutoff)
+            {
+              outfile << i << " " << j << " " << (*this)(i, j) << std::endl;
+            }
+          }
+          // otherwise just output it -- at least it's not null!
+          else
+          {
+            outfile << i << " " << j << " " << (*this)(i, j) << std::endl;
+          }
         }
       }
     }
